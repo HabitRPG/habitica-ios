@@ -51,11 +51,13 @@ private struct RegexRoute {
 }
 
 enum Route {
+    case achievements
     case market
     case questShop
     case seasonalShop
     case timeTravelers
     case subscription
+    case purchaseGems
     case giftSubscription(username: String)
     case customizationShop
     
@@ -66,26 +68,36 @@ enum Route {
     case promoInfo
     
     var url: String {
-        // swiftlint:disable
         switch self {
-        case .market: return "/inventory/market"
-        case .questShop: return "/inventory/quests"
-        case .customizationShop: return "/inventory/customizations"
-        case .seasonalShop: return "/inventory/seasonal"
-        case .timeTravelers: return "/inventory/time"
-        case .subscription: return "/user/settings/subscription"
+        case .achievements:
+            return "/user/achievements"
+        case .market:
+            return "/inventory/market"
+        case .questShop:
+            return "/inventory/quests"
+        case .customizationShop:
+            return "/inventory/customizations"
+        case .seasonalShop:
+            return "/inventory/seasonal"
+        case .timeTravelers:
+            return "/inventory/time"
+        case .subscription:
+            return "/user/settings/subscription"
+        case .purchaseGems:
+            return "/user/settings/gems"
         case .giftSubscription(let username):
             return "/user/settings/subscription/gift/\(username)"
-        case .equipment: return "/inventory/equipment"
+        case .equipment:
+            return "/inventory/equipment"
         case .customizations(let type, let group):
             if let group = group {
                 return "/inventory/customizations/\(type)/\(group)"
             } else {
                 return "/inventory/customizations/\(type)"
             }
-        case .promoInfo: return "/promo/info"
+        case .promoInfo:
+            return "/promo/info"
         }
-        // siwftlint:enable
     }
 }
 
@@ -125,13 +137,17 @@ class RouterHandler {
                 viewController.viewModel = viewModel
                 self.push(viewController)
             }
+            register("/challenges") {
+                self.displayTab(index: 4)
+                self.push(StoryboardScene.Social.challengeTableViewController.instantiate())
+            }
             register("/challenges/myChallenges") {
                 self.displayTab(index: 4)
-                self.push(StoryboardScene.Social.guildsOverviewViewController.instantiate())
+                self.push(StoryboardScene.Social.challengeTableViewController.instantiate())
             }
             register("/challenges/findChallenges") {
                 self.displayTab(index: 4)
-                self.push(StoryboardScene.Social.guildsOverviewViewController.instantiate())
+                self.push(StoryboardScene.Social.challengeTableViewController.instantiate())
             }
         }
         register("/party") {
@@ -185,7 +201,7 @@ class RouterHandler {
         }
         register("/inventory/stable") {
             self.displayTab(index: 4)
-            self.push(StoryboardScene.Main.stableViewController.instantiate())
+            self.push(StoryboardScene.Stable.stableViewController.instantiate())
         }
         register("/inventory/customizations/:type/:group") { link in
             self.displayTab(index: 4)
@@ -202,8 +218,8 @@ class RouterHandler {
         }
         register("/inventory/stable/pets/:petType") { link in
             self.displayTab(index: 4)
-            self.push(StoryboardScene.Main.stableViewController.instantiate())
-            let viewController = StoryboardScene.Main.petDetailViewController.instantiate()
+            self.push(StoryboardScene.Stable.stableViewController.instantiate())
+            let viewController = StoryboardScene.Stable.petDetailViewController.instantiate()
             viewController.searchKey = link["petType"] ?? ""
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
                 self.push(viewController)
@@ -211,8 +227,8 @@ class RouterHandler {
         }
         register("/inventory/stable/mounts/:mountType") { link in
             self.displayTab(index: 4)
-            self.push(StoryboardScene.Main.stableViewController.instantiate())
-            let viewController = StoryboardScene.Main.mountDetailViewController.instantiate()
+            self.push(StoryboardScene.Stable.stableViewController.instantiate())
+            let viewController = StoryboardScene.Stable.mountDetailViewController.instantiate()
             viewController.searchKey = link["mountType"] ?? ""
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
                 self.push(viewController)
@@ -222,9 +238,18 @@ class RouterHandler {
             self.displayTab(index: 4)
             self.push(StoryboardScene.Main.newsViewController.instantiate())
         }
+        register("/static/support") {
+            self.displayTab(index: 4)
+            self.push(StoryboardScene.Support.mainSupportViewController.instantiate())
+        }
+        register("/static/report-bug") {
+            self.displayTab(index: 4)
+            self.push(StoryboardScene.Support.reportBugViewController.instantiate())
+        }
         register("/static/faq") {
             self.displayTab(index: 4)
             self.push(StoryboardScene.Support.mainSupportViewController.instantiate())
+            self.push(StoryboardScene.Support.faqViewController.instantiate())
         }
         register("/static/about") {
             self.displayTab(index: 4)
@@ -232,6 +257,8 @@ class RouterHandler {
         }
         register("/static/faq/:index") { link in
             self.displayTab(index: 4)
+            self.push(StoryboardScene.Support.mainSupportViewController.instantiate())
+            self.push(StoryboardScene.Support.faqViewController.instantiate())
             let viewController = StoryboardScene.Support.faqDetailViewController.instantiate()
             viewController.index = Int(string: link["index"] ?? "0") ?? 0
             self.push(viewController)
@@ -253,7 +280,7 @@ class RouterHandler {
             let navController = UINavigationController(rootViewController: viewController)
             self.present(navController)
         }
-        register("/user/settings/gems") {
+        register(.purchaseGems) {
             self.present(StoryboardScene.Main.purchaseGemNavController.instantiate())
         }
         register("/private-messages") {
@@ -272,7 +299,7 @@ class RouterHandler {
             self.displayTab(index: 4)
             self.push(StoryboardScene.User.spellsViewController.instantiate())
         }
-        register("/user/achievements") {
+        register(.achievements) {
             self.displayTab(index: 4)
             self.push(StoryboardScene.User.achievementsCollectionViewController.instantiate())
         }
@@ -288,9 +315,6 @@ class RouterHandler {
         }
         register("/promo/web") {
             self.present(StoryboardScene.Main.promoWebNavController.instantiate())
-        }
-        register("/promo/birthday") {
-            self.present(BirthdayViewController())
         }
         register("/profile/:userID") { link in
             self.displayTab(index: 4)
@@ -405,7 +429,7 @@ class RouterHandler {
     }
     
     private var loadingController: LoadingViewController? {
-        return UIApplication.shared.findKeyWindow()?.rootViewController as? LoadingViewController
+        return UIWindow.findViewController()
     }
     
     private func present(_ viewController: UIViewController) {
@@ -413,6 +437,12 @@ class RouterHandler {
             var presenter: UIViewController = tabbarController
             while presenter.isPresenting, let presented = presenter.presentedViewController {
                 presenter = presented
+            }
+            if presenter.isBeingDismissed {
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                    self.present(viewController)
+                }
+                return
             }
             presenter.present(viewController, animated: true, completion: nil)
         } else {

@@ -20,7 +20,6 @@ class PromoWebViewController: BaseUIViewController, WKNavigationDelegate {
         
     override func viewDidLoad() {
         super.viewDidLoad()
-        doneButton.title = L10n.done
 
         if var url = (configRepository.activePromotion() as? HabiticaWebPromotion)?.url {
             if url.absoluteString.contains("USER_ID") {

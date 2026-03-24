@@ -296,7 +296,7 @@ func lighter(by percentage: CGFloat=30.0) -> UIColor {
     }
     
     func isLight() -> Bool {
-        if brightness < 0.65 {
+        if brightness < 0.55 {
             return false
         } else {
             return true
@@ -371,6 +371,7 @@ extension Color {
         return UIColor(self)
     }
 
+    // swiftlint:disable:next large_tuple
     private func components() -> (red: CGFloat, green: CGFloat, blue: CGFloat, alpha: CGFloat) {
         let scanner = Scanner(string: self.description.trimmingCharacters(in: CharacterSet.alphanumerics.inverted))
         var hexNumber: UInt64 = 0

@@ -85,7 +85,9 @@ extension Avatar {
     }
     
     func getFilenameDictionary(ignoreSleeping: Bool) -> [String: String?] {
-        if isValid() == false { return [:] }
+        if isValid() == false {
+            return [:]
+        }
         return [
             "background": "background_\(background ?? "")",
             "mount-body": "Mount_Body_\(mount ?? "")",
@@ -110,7 +112,7 @@ extension Avatar {
             "mount-head": "Mount_Head_\(mount ?? "")",
             "zzz": "zzz",
             "knockout": "knockout",
-            "pet": "Pet-\(pet ?? "")"
+            "pet": ImageSubstitutionManager.substituteSprite(name: "Pet-\(pet ?? "")", context: "pets")
         ]
     }
 }

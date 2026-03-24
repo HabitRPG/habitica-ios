@@ -380,10 +380,19 @@ class PurchaseHandler: NSObject, SKPaymentTransactionObserver {
                         Task {
                             do {
                                 let statuses = try await Product.SubscriptionInfo.status(for: "20345996")
+                                var latestRenewalInfo: Product.SubscriptionInfo.RenewalInfo?
                                 for status in statuses {
                                     guard case .verified(let renewalInfo) = status.renewalInfo else {
                                         continue
                                     }
+                                    if latestRenewalInfo == nil {
+                                        latestRenewalInfo = renewalInfo
+                                    }
+                                    if let latestRenewal = latestRenewalInfo, renewalInfo.recentSubscriptionStartDate > latestRenewal.recentSubscriptionStartDate {
+                                        latestRenewalInfo = renewalInfo
+                                    }
+                                }
+                                if let renewalInfo = latestRenewalInfo {
                                     let isCancelled = renewalInfo.expirationReason != nil && renewalInfo.expirationReason != .billingError
                                     if !renewalInfo.willAutoRenew || isCancelled || (renewalInfo.expirationReason == .billingError && !renewalInfo.isInBillingRetry) {
                                         self.userRepository.cancelSubscription().observeCompleted {

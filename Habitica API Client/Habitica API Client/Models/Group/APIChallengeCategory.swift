@@ -9,7 +9,7 @@
 import Foundation
 import Habitica_Models
 
-class APIChallengeCategory: ChallengeCategoryProtocol, Decodable {
+class APIChallengeCategory: ChallengeCategoryProtocol, Codable {
     var id: String?
     var slug: String?
     var name: String?

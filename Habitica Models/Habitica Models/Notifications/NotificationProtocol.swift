@@ -15,11 +15,19 @@ public protocol NotificationProtocol: BaseModelProtocol {
     var achievementKey: String? { get set }
     var achievementMessage: String? { get set }
     var achievementModalText: String? { get set }
+    var notificationMessage: String? { get set }
     var seen: Bool { get set }
 }
 
 public extension NotificationProtocol {
     var isDismissable: Bool {
         return !id.contains("invite-")
+    }
+    
+    var safeId: String {
+        if isValid {
+            return id
+        }
+        return ""
     }
 }

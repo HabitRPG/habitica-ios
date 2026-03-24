@@ -48,8 +48,8 @@ class LabeledProgressBar: UIView {
     }
     var fontSize: CGFloat = 12 {
         didSet {
-            labelView.font = UIFontMetrics.default.scaledSystemFont(ofSize: fontSize)
-            typeView.font = UIFontMetrics.default.scaledSystemFont(ofSize: fontSize)
+            labelView.font = UIFontMetrics.default.scaledSystemFont(ofSize: fontSize, ofWeight: .bold)
+            typeView.font = UIFontMetrics.default.scaledSystemFont(ofSize: fontSize, ofWeight: .black)
         }
     }
     var textColor: UIColor = ThemeService.shared.theme.primaryTextColor {
@@ -124,10 +124,10 @@ class LabeledProgressBar: UIView {
     }
     
     private func layout() {
-        iconView.pin.start().size(18)
-        progressBar.pin.after(of: iconView).marginStart(6).end().height(8).top()
-        labelView.pin.below(of: progressBar).marginTop(2).start(to: progressBar.edge.start).sizeToFit()
-        typeView.pin.below(of: progressBar).marginTop(2).end(to: progressBar.edge.end).sizeToFit()
+        iconView.pin.start().size(19)
+        progressBar.pin.after(of: iconView).marginStart(6).end().height(10).top(4)
+        typeView.pin.below(of: progressBar).marginTop(4).start(to: progressBar.edge.start).sizeToFit()
+        labelView.pin.below(of: progressBar).marginTop(4).end(to: progressBar.edge.end).sizeToFit()
         
         progressBar.setNeedsDisplay()
     }

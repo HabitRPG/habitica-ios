@@ -11,6 +11,7 @@ import Foundation
 @objc
 public protocol MemberProtocol: AvatarProtocol {
     var id: String? { get set }
+    var achievements: UserAchievementsProtocol? { get set }
     var profile: ProfileProtocol? { get set }
     var contributor: ContributorProtocol? { get set }
     var backer: BackerProtocol? { get set }

@@ -54,8 +54,8 @@ struct SubscriptionOptionStack: View {
             }
             SubscriptionOptionViewUI(price: Text(viewModel.priceFor(PurchaseHandler.subscriptionIdentifiers[3])), recurring: Text(L10n.subscriptionDuration(L10n.xMonths(12))),
                                      tag: HStack(spacing: 0) {
-                Image(uiImage: Asset.flagFlap.image.withRenderingMode(.alwaysTemplate)).foregroundColor(Color(hexadecimal: "77F4C7"))
-                Text("Popular").foregroundColor(Color(UIColor.teal1)).font(.system(size: 12, weight: .semibold))
+                Image(uiImage: Asset.flagFlap.image.withRenderingMode(.alwaysTemplate)).foregroundStyle(Color(hexadecimal: "77F4C7"))
+                Text("Popular").foregroundStyle(Color(UIColor.teal1)).font(.system(size: 12, weight: .semibold))
                     .frame(height: 24)
                     .padding(.horizontal, 8)
                     .background(LinearGradient(colors: [
@@ -73,8 +73,6 @@ struct SubscriptionOptionStack: View {
 }
 
 class SubscriptionViewModel: BaseSubscriptionViewModel {
-    private let disposable = ScopedDisposable(CompositeDisposable())
-
     let appleValidator: AppleReceiptValidator
     let itunesSharedSecret = Secrets.itunesSharedSecret
     let userRepository = UserRepository()
@@ -128,11 +126,11 @@ class SubscriptionViewModel: BaseSubscriptionViewModel {
             availableSubscriptions.remove(at: 1)
         }
                 
-        disposable.inner.add(inventoryRepository.getLatestMysteryGear().on(value: {[weak self] gear in
+        disposable.add(inventoryRepository.getLatestMysteryGear().on(value: {[weak self] gear in
             self?.mysteryGear = gear
         }).start())
         
-        disposable.inner.add(inventoryRepository.getLatestMysteryGearSet().on(value: {[weak self] set in
+        disposable.add(inventoryRepository.getLatestMysteryGearSet().on(value: {[weak self] set in
             self?.mysteryGearSet = set
         }).start())
         
@@ -236,7 +234,7 @@ struct SubscriptionSeparator: View {
             Rectangle().fill().frame(maxWidth: .infinity).height(1)
             Image(Asset.separatorFancyIcon.name).padding(.vertical, 16).padding(.horizontal, 10)
             Rectangle().fill().frame(maxWidth: .infinity).height(1)
-        }.foregroundColor(Color(UIColor.purple400))
+        }.foregroundStyle(Color(UIColor.purple400))
     }
 }
 
@@ -307,7 +305,7 @@ struct SubscriptionPage: View {
                 if let endDate = viewModel.activePromo?.endDate, viewModel.activePromo?.identifier == "g1g1" {
                     G1G1Banner(endDate: endDate)
                         .frame(height: 96)
-                        .cornerRadius(8)
+                        .cornerRadius(UIConstants.largeCornerRadius)
                         .padding(.horizontal, 20)
                         .padding(.bottom, 30)
                 }
@@ -321,7 +319,7 @@ struct SubscriptionPage: View {
                             }.frame(maxWidth: .infinity)
                             Image(Asset.subBenefitGoldgemsRight.name)
                         }.background(.teal1)
-                            .cornerRadius(12)
+                            .cornerRadius(UIConstants.largeCornerRadius)
                             .padding(.horizontal, 24)
                             .padding(.top, 16)
                             .padding(.bottom, 22)
@@ -359,16 +357,16 @@ struct SubscriptionPage: View {
                             GeometryReader { reader in
                                 ZStack(alignment: .leading) {
                                     Rectangle()
-                                        .foregroundColor(.purple100)
+                                        .foregroundStyle(.purple100)
                                         .fill()
-                                        .cornerRadius(4)
+                                        .cornerRadius(UIConstants.mediumCornerRadius)
                                         .frame(maxWidth: .infinity)
                                         .frame(height: 8)
-                                        Rectangle()
-                                            .foregroundColor(.green100)
-                                            .fill()
-                                            .cornerRadius(4)
-                                            .frame(width: reader.size.width * (CGFloat(viewModel.subscriptionPlan?.gemCapTotal ?? 0) / 50.0), height: 8)
+                                    Rectangle()
+                                        .foregroundStyle(.green100)
+                                        .fill()
+                                        .cornerRadius(UIConstants.mediumCornerRadius)
+                                        .frame(width: reader.size.width * (CGFloat(viewModel.subscriptionPlan?.gemCapTotal ?? 0) / 50.0), height: 8)
                                 }
                             }
                             .frame(height: 8)
@@ -384,9 +382,9 @@ struct SubscriptionPage: View {
                             ForEach(enumerating: viewModel.availableSubscriptions) { sub in
                                 Rectangle()
                                     .fill()
-                                    .foregroundColor(Color(UIColor.purple200))
+                                    .foregroundStyle(Color(UIColor.purple200))
                                     .frame(height: viewModel.showHourglassPromo && sub == viewModel.availableSubscriptions.last ? 186 : 126)
-                                    .cornerRadius(12)
+                                    .cornerRadius(UIConstants.largeCornerRadius)
                                     .padding(.vertical, 4).onTapGesture {
                                         withAnimation {
                                             viewModel.selectedSubscription = sub
@@ -396,18 +394,18 @@ struct SubscriptionPage: View {
                         }
                         Rectangle()
                             .frame(height: viewModel.showHourglassPromo && viewModel.selectedSubscription == viewModel.availableSubscriptions.last ? 186 : 126)
-                            .cornerRadius(12)
+                            .cornerRadius(UIConstants.largeCornerRadius)
                             .offset(y: 4.0 + (CGFloat(viewModel.availableSubscriptions.firstIndex(of: viewModel.selectedSubscription) ?? 0) * 134.0))
                             .animation(.interpolatingSpring(stiffness: 500, damping: 55), value: viewModel.selectedSubscription)
                         SubscriptionOptionStack(viewModel: viewModel)
                     }
-                        .padding(.horizontal, 24)
+                    .padding(.horizontal, 24)
                     Group {
                         if viewModel.isSubscribing {
                             ProgressView().habiticaProgressStyle().frame(height: 48)
                                 .transition(.opacity)
                         } else {
-                            HabiticaButtonUI(label: Text(L10n.subscribe).foregroundColor(Color(UIColor.purple100)), color: Color(UIColor.yellow100), size: .compact) {
+                            HabiticaButtonUI(label: Text(L10n.subscribe).foregroundStyle(.purple100), color: Color(UIColor.yellow100), size: .compact) {
                                 viewModel.subscribeTapped()
                             }
                             .transition(.opacity)
@@ -416,13 +414,12 @@ struct SubscriptionPage: View {
                     .padding(.vertical, 13)
                     .padding(.horizontal, 24)
                     Text(L10n.subscriptionSupportDevelopers)
-                        .foregroundColor(.white)
+                        .foregroundStyle(.white)
                         .font(.system(size: 13))
                         .italic()
                         .multilineTextAlignment(.center)
                         .padding(.horizontal, 32)
                     if viewModel.presentationPoint == nil {
-                        
                         GiftSubscriptionSegment(viewModel: viewModel)
                             .padding(.horizontal, 24)
                             .padding(.vertical, 30)
@@ -466,46 +463,44 @@ struct SubscriptionPage: View {
                         .resizable()
                         .aspectRatio(contentMode: .fit)
                         .frame(maxWidth: .infinity)
+                        .ignoresSafeArea()
                 }
-                    Group {
-                        if viewModel.presentationPoint == nil {
-                            if viewModel.isRestoringPurchase {
-                                ProgressView().habiticaProgressStyle().frame(height: 48)
-                            } else {
-                                Button {
-                                    viewModel.checkForExistingSubscription()
-                                } label: {
-                                    Text(L10n.restorePurchase)
-                                        .foregroundColor(.yellow100)
-                                        .font(.system(size: 17, weight: .semibold))
-                                        .animation(nil)
-                                }
-                                .frame(height: 48)
-                                .animation(nil)
-                            }
+                Group {
+                    if viewModel.presentationPoint == nil {
+                        if viewModel.isRestoringPurchase {
+                            ProgressView().habiticaProgressStyle().frame(height: 48)
                         } else {
                             Button {
-                                RouterHandler.shared.handle(.subscription)
+                                viewModel.checkForExistingSubscription()
                             } label: {
-                                Text(L10n.seeMoreSubOptions)
-                                    .foregroundColor(.yellow100)
+                                Text(L10n.restorePurchase)
+                                    .foregroundStyle(.yellow100)
                                     .font(.system(size: 17, weight: .semibold))
                             }
                             .frame(height: 48)
-                            .transition(.opacity)
                         }
+                    } else {
+                        Button {
+                            RouterHandler.shared.handle(.subscription)
+                        } label: {
+                            Text(L10n.seeMoreSubOptions)
+                                .foregroundStyle(.yellow100)
+                                .font(.system(size: 17, weight: .semibold))
+                        }
+                        .frame(height: 48)
+                        .transition(.opacity)
                     }
+                }
                 
-                        .buttonStyle(.borderless)
-                        .frame(maxWidth: .infinity)
-                        .background(.purple400)
+                .buttonStyle(.borderless)
+                .frame(maxWidth: .infinity)
+                .background(.purple400)
             }
-            .foregroundColor(textColor)
+            .foregroundStyle(textColor)
             .padding(.top, 16)
-            .background(backgroundColor.ignoresSafeArea(.all, edges: .top).padding(.bottom, 4))
-            .ignoresSafeArea()
-        .cornerRadius([.topLeading, .topTrailing], 12)
-    }
+            .background(backgroundColor.ignoresSafeArea().padding(.bottom, 4))
+            .ignoresSafeArea(.all, edges: .vertical)
+        }
 }
 
 struct ScrollableSubscriptionPage: View {
@@ -517,7 +512,8 @@ struct ScrollableSubscriptionPage: View {
                 SubscriptionPage(viewModel: viewModel)
                     .id("page")
             }
-            .onChange(of: viewModel.scrollToTop) { _ in
+            .frame(maxHeight: .infinity)
+            .onChange(of: viewModel.scrollToTop) {
                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.5, execute: {
                     withAnimation {
                         reader.scrollTo("page", anchor: .top)
@@ -525,7 +521,7 @@ struct ScrollableSubscriptionPage: View {
                 })
             }
         }
-        .background(Color.purple400.ignoresSafeArea(.all, edges: .bottom).padding(.top, 200))
+        .background(Color.purple400.ignoresSafeArea().padding(.top, 200))
     }
 }
 
@@ -539,15 +535,12 @@ struct SubscriptionPagePreview: PreviewProvider {
     }
 }
 
-class SubscriptionModalViewController: HostingPanModal<SubscriptionPage> {
+class SubscriptionModalViewController: HostingBottomSheetController<ScrollableSubscriptionPage> {
     let viewModel: SubscriptionViewModel
-    let userRepository = UserRepository()
-    
-    private let upperBackground = UIView()
-    
+        
     init(presentationPoint: PresentationPoint?) {
         viewModel = SubscriptionViewModel(presentationPoint: presentationPoint)
-        super.init(nibName: nil, bundle: nil)
+        super.init(rootView: ScrollableSubscriptionPage(viewModel: viewModel))
         viewModel.dimissVC = {
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.5, execute: {
                 self.dismiss(animated: true)
@@ -579,32 +572,22 @@ class SubscriptionModalViewController: HostingPanModal<SubscriptionPage> {
     }
     
     override func viewDidLoad() {
-        hostingView = UIHostingView(rootView: SubscriptionPage(viewModel: viewModel))
         super.viewDidLoad()
-        view.backgroundColor = .purple400
-        view.insertSubview(upperBackground, at: 0)
-        upperBackground.backgroundColor = .purple300
-        scrollView.bounces = false
 
         viewModel.onGiftButtonTapped = {[weak self] in
             self?.giftSubscriptionButtonTapped()
         }
     }
     
-    override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
-        upperBackground.pin.left().top().right().height(100)
-    }
-    
     func giftSubscriptionButtonTapped() {
-        let navController = EditingFormViewController.buildWithUsernameField(title: L10n.giftRecipientTitle, subtitle: L10n.giftRecipientSubtitle, onSave: { username in
+        let alertController = GiftingAlertController(title: L10n.giftSubscription, message: L10n.giftGemsAlertText) { username in
             RouterHandler.shared.handle(.giftSubscription(username: username))
-        }, saveButtonTitle: L10n.continue)
-        present(navController, animated: true, completion: nil)
+        }
+        alertController.show()
     }
 }
 
-class SubscriptionPageController: UIHostingController<ScrollableSubscriptionPage> {
+class SubscriptionPageController: BaseHostingViewController<ScrollableSubscriptionPage> {
     let viewModel: SubscriptionViewModel
     let userRepository = UserRepository()
 
@@ -631,26 +614,32 @@ class SubscriptionPageController: UIHostingController<ScrollableSubscriptionPage
         super.init(coder: aDecoder, rootView: ScrollableSubscriptionPage(viewModel: viewModel))
     }
     
+    override func applyTheme(theme: any Theme) {
+        super.applyTheme(theme: theme)
+        if #unavailable(iOS 26.0) {
+            navigationController?.navigationBar.backgroundColor = .purple300
+            navigationController?.navigationBar.barTintColor = .purple300
+            navigationController?.navigationBar.isTranslucent = false
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .purple300
-        navigationController?.navigationBar.backgroundColor = .purple300
-        navigationController?.navigationBar.barStyle = .black
-        navigationController?.navigationBar.barTintColor = .purple300
-        navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
-        navigationController?.navigationBar.shadowImage = UIImage()
 
         viewModel.onGiftButtonTapped = {[weak self] in
             self?.giftSubscriptionButtonTapped()
         }
+        
+        if #unavailable(iOS 26.0) {
+            navigationItem.rightBarButtonItem?.style = .done
+        }
     }
     
     func giftSubscriptionButtonTapped() {
-        let navController = EditingFormViewController.buildWithUsernameField(title: L10n.giftRecipientTitle, subtitle: L10n.giftRecipientSubtitle, onSave: { username in
-            DispatchQueue.main.asyncAfter(deadline: .now() + 1, execute: {
-                RouterHandler.shared.handle(.giftSubscription(username: username))
-            })
-        }, saveButtonTitle: L10n.continue)
-        present(navController, animated: true, completion: nil)
+        let alertController = GiftingAlertController(title: L10n.giftSubscription, message: L10n.giftGemsAlertText) { username in
+            RouterHandler.shared.handle(.giftSubscription(username: username))
+        }
+        alertController.show()
     }
 }

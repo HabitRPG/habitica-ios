@@ -27,13 +27,13 @@ class AdventureGuideTableViewCell: UITableViewCell, Themeable {
         let view = GradientView()
 
         view.horizontalMode = true
-        view.cornerRadius = 8
+        view.cornerRadius = UIConstants.mediumCornerRadius
         return view
     }()
     
     private let overlayView: UIView = {
         let view = UIView()
-        view.cornerRadius = 5
+        view.cornerRadius = UIConstants.mediumCornerRadius - 3
         return view
     }()
     
@@ -81,7 +81,7 @@ class AdventureGuideTableViewCell: UITableViewCell, Themeable {
     
     private let rewardBackground: UIView = {
         let view = UIView()
-        view.cornerRadius = 11
+        view.cornerRadius = UIConstants.mediumCornerRadius
         return view
     }()
     
@@ -145,24 +145,24 @@ class AdventureGuideTableViewCell: UITableViewCell, Themeable {
     }
     
     private func layout() {
-        gradientView.pin.top().bottom(4).horizontally(10)
-        overlayView.pin.top(3).bottom(7).horizontally(13)
-        backgroundStarView.pin.end(13).top(3).bottom(7).width(147)
+        gradientView.pin.top(6).bottom(4).horizontally(10)
+        overlayView.pin.top(9).bottom(7).horizontally(13)
+        backgroundStarView.pin.end(13).top(9).bottom(7).width(147)
         starView.pin.start(22).width(30).height(35).vCenter()
-        titleView.pin.start(62).top(13).sizeToFit()
+        titleView.pin.start(62).top(19).sizeToFit()
         progressText.pin.end(28).bottom(15).sizeToFit()
-        progressBar.pin.start(62).bottom(21).before(of: progressText).marginEnd(10).height(5)
+        progressBar.pin.start(62).bottom(18).before(of: progressText).marginEnd(10).height(10)
         
-        rewardBackground.pin.top(11).end(23).width(58).height(22)
+        rewardBackground.pin.top(14).end(23).width(58).height(22)
         goldView.pin.start(to: rewardBackground.edge.start).marginStart(5).top(to: rewardBackground.edge.top).marginTop(3).width(16).height(16)
         goldText.pin.after(of: goldView).marginStart(2).top(to: rewardBackground.edge.top).bottom(to: rewardBackground.edge.bottom).end(to: rewardBackground.edge.end)
     }
     
     override func sizeThatFits(_ size: CGSize) -> CGSize {
-        return CGSize(width: size.width, height: 70)
+        return CGSize(width: size.width, height: 76)
     }
     
     override var intrinsicContentSize: CGSize {
-        return CGSize(width: 0, height: 70)
+        return CGSize(width: 0, height: 76)
     }
 }

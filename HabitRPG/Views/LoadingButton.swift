@@ -22,6 +22,7 @@ enum LoadingButtonType {
 }
 
 struct LoadingButton<Content: View, SuccessContent: View, ErrorContent: View>: View {
+    @ObservedObject var themeService = ThemeService.shared
     @Binding var state: LoadingButtonState
     var type: LoadingButtonType = .normal
     let onTap: () -> Void
@@ -31,7 +32,7 @@ struct LoadingButton<Content: View, SuccessContent: View, ErrorContent: View>: V
     var contentPadding: EdgeInsets = .zero
     
     private func getBackgroundColor() -> UIColor {
-        let theme = ThemeService.shared.theme
+        let theme = themeService.theme
         if type == .destructive {
             return theme.errorColor
         }
@@ -51,8 +52,8 @@ struct LoadingButton<Content: View, SuccessContent: View, ErrorContent: View>: V
     private func getContent() -> some View {
         if state == .loading {
             ProgressView().habiticaProgressStyle(strokeWidth: 6).frame(width: 24, height: 24).overlay(ZStack {
-                Circle().stroke().foregroundColor(.white).frame(width: 17, height: 17)
-                Circle().stroke().foregroundColor(.white).frame(width: 29, height: 29)
+                Circle().stroke().foregroundStyle(.white).frame(width: 17, height: 17)
+                Circle().stroke().foregroundStyle(.white).frame(width: 29, height: 29)
             })
         } else if state == .failed {
             if errorContent is EmptyView {

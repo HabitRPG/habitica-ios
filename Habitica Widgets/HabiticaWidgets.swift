@@ -11,8 +11,7 @@ import SwiftUI
 
 @main
 struct HabiticaWidgets: WidgetBundle {
-    @WidgetBundleBuilder
-    var body: some Widget {
+    @WidgetBundleBuilder var body: some Widget {
         DailiesCountWidget()
         DailyTaskListWidget()
         TodoTaskListWidget()

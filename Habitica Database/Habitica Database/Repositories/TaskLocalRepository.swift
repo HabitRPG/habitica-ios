@@ -28,9 +28,9 @@ public class TaskLocalRepository: BaseLocalRepository {
     }
     
     public func save(userID: String?, task: TaskProtocol) {
-        let tags = getRealm()?.objects(RealmTag.self).filter("id IN %@", task.tags.map({ (tag) -> String? in
-            return tag.id
-        }))
+        // Optimize: Use compactMap to extract non-nil tag IDs in a single operation
+        let tagIds = task.tags.compactMap { $0.id }
+        let tags = getRealm()?.objects(RealmTag.self).filter("id IN %@", tagIds)
         save(userID: userID, task: task, tags: tags)
     }
     
@@ -96,6 +96,12 @@ public class TaskLocalRepository: BaseLocalRepository {
             .sorted(by: sortProperties).reactive().map({ (value, changeset) -> ReactiveResults<[TaskProtocol]> in
             return (value.map({ (task) -> TaskProtocol in return task }), changeset)
         })
+    }
+    
+    public func getTasksAsync(userID: String, predicate: NSPredicate, sortKey: String) -> [TaskProtocol]? {
+        let predicate = NSCompoundPredicate(andPredicateWithSubpredicates: [NSPredicate(format: "ownerID == %@", userID), predicate])
+        let res = getRealm()?.objects(RealmTask.self).filter(predicate)
+        return res?.map({ (task) -> TaskProtocol in return task }).compactMap(\.self)
     }
     
     public func getTask(id: String) -> SignalProducer<TaskProtocol, ReactiveSwiftRealmError> {

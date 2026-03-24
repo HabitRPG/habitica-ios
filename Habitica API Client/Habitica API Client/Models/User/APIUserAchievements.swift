@@ -9,6 +9,11 @@
 import Foundation
 import Habitica_Models
 
+struct QuestAchievement {
+    let key: String
+    let count: Int
+}
+
 class APIUserAchievements: UserAchievementsProtocol, Decodable {
     
     var isValid: Bool = true
@@ -50,24 +55,32 @@ class APIUserAchievements: UserAchievementsProtocol, Decodable {
         rebirthLevel = (try? values.decode(Int.self, forKey: .rebirthLevel)) ?? 0
         quests = []
         challenges = []
-        var combinedQuests = [String: Int]()
+        var combinedQuests = [QuestAchievement]()
         if let userQuests = try? values.decode([String: Int].self, forKey: .quests), !userQuests.isEmpty {
-            combinedQuests.merge(userQuests, uniquingKeysWith: { (first, _) in first })
+            userQuests.forEach { quest in
+                combinedQuests.append(QuestAchievement(key: quest.key, count: quest.value))
+            }
         }
         if let stringCodedQuests = (try? values.decode([String: String].self, forKey: .quests))?.mapValues({ stringValue in
             return Int(stringValue) ?? 0
         }), !stringCodedQuests.isEmpty {
-            combinedQuests.merge(stringCodedQuests, uniquingKeysWith: { (first, _) in first })
+            stringCodedQuests.forEach { quest in
+                combinedQuests.append(QuestAchievement(key: quest.key, count: quest.value))
+            }
         }
         
-        combinedQuests.forEach({ (key, count) in
+        var index = 0
+        combinedQuests.forEach({ quest in
             let achievement = APIAchievement()
-            achievement.key = key
+            achievement.key = quest.key
             achievement.earned = true
-            achievement.optionalCount = count
+            achievement.optionalCount = quest.count
             achievement.category = "quests"
+            achievement.index = index
             quests.append(achievement)
+            index += 1
         })
+        index = 0
         let userChallenges = try? values.decode([String].self, forKey: .challenges)
         userChallenges?.forEach({ key in
             let achievement = APIAchievement()
@@ -75,7 +88,9 @@ class APIUserAchievements: UserAchievementsProtocol, Decodable {
             achievement.title = key
             achievement.earned = true
             achievement.category = "challenges"
+            achievement.index = index
             challenges.append(achievement)
+            index += 1
         })
     }
 }

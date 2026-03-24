@@ -17,6 +17,7 @@ class HabitButton: UIView {
     private let tapArea = UIView()
     private var buttonSize: CGFloat = 24
     private var isActive = false
+    private var isLocked = false
     var dimmOverlayView: UIView = {
         let view = UIView()
         view.backgroundColor = ThemeService.shared.theme.taskOverlayTint
@@ -42,7 +43,6 @@ class HabitButton: UIView {
         roundedView.layer.cornerRadius = buttonSize / 2
         label.contentMode = .scaleAspectFit
         isUserInteractionEnabled = true
-        roundedView.layer.borderWidth = 2
         addSubview(dimmOverlayView)
         addSubview(label)
         interactionOverlay.backgroundColor = .init(white: 1.0, alpha: 0.4)
@@ -54,13 +54,18 @@ class HabitButton: UIView {
         tapArea.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleTap)))
     }
     
-    func configure(task: TaskProtocol, isNegative: Bool) {
+    func configure(task: TaskProtocol, isNegative: Bool, isLocked: Bool = false) {
         isActive = isNegative ? task.down : task.up
+        self.isLocked = isLocked
         let theme = ThemeService.shared.theme
-        if isNegative {
-            label.image = Asset.minus.image.withRenderingMode(.alwaysTemplate)
+        if isLocked {
+            label.image = Asset.taskLockLight.image.withRenderingMode(.alwaysTemplate)
         } else {
-            label.image = Asset.plus.image.withRenderingMode(.alwaysTemplate)
+            if isNegative {
+                label.image = Asset.minus.image.withRenderingMode(.alwaysTemplate)
+            } else {
+                label.image = Asset.plus.image.withRenderingMode(.alwaysTemplate)
+            }
         }
         if isActive {
             backgroundColor = UIColor.forTaskValueLight(task.value)
@@ -74,13 +79,11 @@ class HabitButton: UIView {
             } else {
                 roundedView.backgroundColor = UIColor.forTaskValue(task.value)
             }
-            roundedView.layer.borderColor = UIColor.clear.cgColor
             label.tintColor = .white
         } else {
             backgroundColor = theme.windowBackgroundColor
-            roundedView.layer.borderColor = theme.separatorColor.cgColor
-            roundedView.backgroundColor = theme.windowBackgroundColor
-            label.tintColor = theme.separatorColor
+            roundedView.backgroundColor = theme.separatorColor
+            label.tintColor = theme.quadTextColor
         }
                 
         dimmOverlayView.isHidden = !theme.isDark
@@ -92,7 +95,11 @@ class HabitButton: UIView {
         let horizontalCenter = frame.size.width / 2
         
         roundedView.frame = CGRect(x: horizontalCenter - buttonSize/2, y: verticalCenter - buttonSize/2, width: buttonSize, height: buttonSize)
-        label.frame = CGRect(x: horizontalCenter - 6, y: verticalCenter - 6, width: 12, height: 12)
+        if isLocked {
+            label.frame = CGRect(x: horizontalCenter - 12, y: verticalCenter - 12, width: 24, height: 24)
+        } else {
+            label.frame = CGRect(x: horizontalCenter - 6, y: verticalCenter - 6, width: 12, height: 12)
+        }
         dimmOverlayView.frame = CGRect(x: 0, y: 0, width: frame.size.width, height: frame.size.height)
         interactionOverlay.frame = CGRect(x: 0, y: 0, width: frame.size.width, height: frame.size.height)
         tapArea.frame = CGRect(x: -20, y: -4, width: frame.size.width + 40, height: frame.size.height + 8)
@@ -101,7 +108,7 @@ class HabitButton: UIView {
     
     @objc
     private func handleTap() {
-        if isActive {
+        if isActive && !isLocked {
             if let action = action {
                 action()
             }

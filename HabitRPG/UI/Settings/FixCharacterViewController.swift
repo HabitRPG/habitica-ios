@@ -33,9 +33,10 @@ class FixCharacterViewController: BaseTableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        navigationItem.title = L10n.Titles.fixValues
+        title = L10n.Titles.fixValues
         
         headerLabel.text = L10n.Settings.fixValuesDescription
+        headerLabel.font = .systemFont(ofSize: 15)
         headerLabel.numberOfLines = 0
         headerLabel.lineBreakMode = NSLineBreakMode.byWordWrapping
         headerLabel.translatesAutoresizingMaskIntoConstraints = false
@@ -67,8 +68,17 @@ class FixCharacterViewController: BaseTableViewController {
         }).start())
     }
     
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        userRepository.retrieveUser(forced: true).observeCompleted {
+            
+        }
+    }
+    
     private func sizeHeaderToFit() {
-        guard let headerView = tableView.tableHeaderView else { return }
+        guard let headerView = tableView.tableHeaderView else {
+            return
+        }
         headerView.frame.size.width = tableView.bounds.width
         let size = headerView.systemLayoutSizeFitting(
             CGSize(width: tableView.bounds.width, height: UIView.layoutFittingCompressedSize.height),
@@ -81,8 +91,11 @@ class FixCharacterViewController: BaseTableViewController {
     
     override func applyTheme(theme: Theme) {
         super.applyTheme(theme: theme)
-        headerView.backgroundColor = theme.windowBackgroundColor
-        headerLabel.textColor = theme.quadTextColor
+        headerView.backgroundColor = theme.contentBackgroundColor
+        tableView.backgroundColor = theme.contentBackgroundColor
+        headerLabel.textColor = theme.primaryTextColor
+        navigationItem.rightBarButtonItem?.tintColor = theme.fixedTintColor
+        navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: theme.primaryTextColor]
     }
     
     private func identifierFor(index: Int) -> String {
@@ -114,17 +127,30 @@ class FixCharacterViewController: BaseTableViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
-        
+        cell.backgroundColor = ThemeService.shared.theme.contentBackgroundColor
         if let titleLabel = cell.viewWithTag(1) as? UILabel,
             let iconView = cell.viewWithTag(3) as? UIImageView,
             let valueField = cell.viewWithTag(2) as? UITextField {
             configure(item: indexPath.item, titleLabel: titleLabel, iconView: iconView, valueField: valueField)
             valueField.textColor = ThemeService.shared.theme.primaryTextColor
+            let bottomLabel = cell.viewWithTag(5) as? UILabel
+            let spacing = view.constraints.first { constraint in
+                return constraint.identifier == "extraDescriptionSpacing"
+            }
+            if indexPath.item == tableView.numberOfRows(inSection: indexPath.section) - 1 {
+                bottomLabel?.text = L10n.fcvStreakExplanation
+                bottomLabel?.textColor = ThemeService.shared.theme.ternaryTextColor
+                bottomLabel?.font = .preferredFont(forTextStyle: .subheadline)
+                spacing?.constant = 8
+            } else {
+                bottomLabel?.text = nil
+                spacing?.constant = 2
+            }
         }
         if let wrapper = cell.viewWithTag(4) {
-            wrapper.borderColor = ThemeService.shared.theme.separatorColor
-            wrapper.borderWidth = 1
-            wrapper.backgroundColor = ThemeService.shared.theme.contentBackgroundColor
+            wrapper.borderWidth = 0
+            wrapper.backgroundColor = ThemeService.shared.theme.windowBackgroundColor
+            wrapper.cornerRadius = UIConstants.mediumCornerRadius
         }
         
         return cell
@@ -139,41 +165,37 @@ class FixCharacterViewController: BaseTableViewController {
             valueField.text = "\(floatValue)"
             valueField.keyboardType = .decimalPad
         }
+        let isDark = ThemeService.shared.theme.isDark
         switch item {
         case 0:
             titleLabel.text = L10n.health
-            titleLabel.textColor = UIColor.red10
-            iconView.backgroundColor = UIColor.red500.withAlphaComponent(0.5)
+            titleLabel.textColor = isDark ? .red500 : .red10
             iconView.image = HabiticaIcons.imageOfHeartLightBg
             return
         case 1:
             titleLabel.text = L10n.experience
-            titleLabel.textColor = UIColor.yellow10
-            iconView.backgroundColor = UIColor.yellow500.withAlphaComponent(0.5)
+            titleLabel.textColor = isDark ? .yellow500 : .yellow10
             iconView.image = HabiticaIcons.imageOfExperience
             return
         case 2:
             titleLabel.text = L10n.manaPoints
-            titleLabel.textColor = UIColor.blue10
-            iconView.backgroundColor = UIColor.blue500.withAlphaComponent(0.5)
+            titleLabel.textColor = isDark ? .blue500 : .blue10
             iconView.image = HabiticaIcons.imageOfMagic
             return
         case 3:
             titleLabel.text = L10n.gold
-            titleLabel.textColor = UIColor.yellow10
-            iconView.backgroundColor = UIColor.yellow500.withAlphaComponent(0.5)
+            titleLabel.textColor = isDark ? .orange500 : .yellow10
             iconView.image = HabiticaIcons.imageOfGold
             return
         case 4:
             titleLabel.text = L10n.characterLevel
-            titleLabel.textColor = UIColor.purple300
+            titleLabel.textColor = isDark ? .purple500 : .purple300
             configure(iconView: iconView, forHabitClass: habitClass)
             return
         case 5:
             titleLabel.text = L10n.dayStreaks
             titleLabel.textColor = ThemeService.shared.theme.primaryTextColor
-            iconView.backgroundColor = UIColor.gray500.withAlphaComponent(0.5)
-            iconView.image = #imageLiteral(resourceName: "streak_achievement")
+            iconView.image = Asset.Menu.badge.image
             return
         default:
             return
@@ -207,19 +229,15 @@ class FixCharacterViewController: BaseTableViewController {
     func configure(iconView: UIImageView, forHabitClass habitClass: String) {
         switch habitClass {
         case "warrior":
-            iconView.backgroundColor = UIColor.red500.withAlphaComponent(0.5)
             iconView.image = HabiticaIcons.imageOfWarriorLightBg
             return
         case "wizard":
-            iconView.backgroundColor = UIColor.blue500.withAlphaComponent(0.5)
             iconView.image = HabiticaIcons.imageOfMageLightBg
             return
         case "healer":
-            iconView.backgroundColor = UIColor.yellow500.withAlphaComponent(0.5)
             iconView.image = HabiticaIcons.imageOfHealerLightBg
             return
         case "rogue":
-            iconView.backgroundColor = UIColor.purple400.withAlphaComponent(0.2)
             iconView.image = HabiticaIcons.imageOfRogueLightBg
             return
         default:

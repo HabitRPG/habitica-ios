@@ -10,7 +10,7 @@ import UIKit
 import Habitica_Models
 import SwiftUI
 
-class PetDetailViewController: StableDetailViewController<PetDetailDataSource> {
+class PetDetailViewController: StableDetailViewController<PetProtocol, PetStableItem, PetDetailDataSource> {
     private let userRepository = UserRepository()
     
     private var user: UserProtocol?
@@ -67,13 +67,16 @@ class PetDetailViewController: StableDetailViewController<PetDetailDataSource> {
                                                                               onEquip: {[weak self] in
             self?.inventoryRepository.equip(type: "pet", key: pet.key ?? "").observeCompleted {}
         }))
-        present(sheet, animated: true)
+        sheet.show()
     }
     
     private func showHatchingDialog(forStableItem item: PetStableItem) {
         let ownedItems = datasource?.ownedItemsFor(pet: item)
-        let alert = PetHatchingAlertController(item: item, ownedEggs: ownedItems?.eggs, ownedPotions: ownedItems?.potions)
-        alert.show()
+        let viewC = HostingBottomSheetController(rootView: HatchSuggestionSheet(item: item,
+                                                                                ownedEggCount: ownedItems?.eggs?.numberOwned ?? 0,
+                                                                                ownedPotionCount: ownedItems?.potions?.numberOwned ?? 0),
+        prefersGrabberVisible: false)
+        viewC.show()
     }
     
     @IBAction func unwindToList(_ segue: UIStoryboardSegue) {
@@ -103,7 +106,7 @@ class PetDetailViewController: StableDetailViewController<PetDetailDataSource> {
             if stableItem.trained > 0 && stableItem.pet?.type != "special" && stableItem.canRaise {
                 actions.append(UIAction(title: L10n.Stable.feed, handler: {[weak self] (_) in
                     self?.selectedPet = stableItem.pet
-                    self?.perform(segue: StoryboardSegue.Main.feedSegue)
+                    self?.perform(segue: StoryboardSegue.Stable.feedSegue)
                 }))
             }
             if stableItem.trained > 0 {

@@ -23,7 +23,7 @@ struct ProgressBarUI<V>: View where V: BinaryFloatingPoint {
             ZStack(alignment: .leading) {
                 RoundedRectangle(cornerRadius: radius)
                     .frame(width: reader.size.width, height: reader.size.height)
-                    .foregroundColor(Color(ThemeService.shared.theme.offsetBackgroundColor))
+                    .foregroundStyle(Color(ThemeService.shared.theme.offsetBackgroundColor))
                 
                 RoundedRectangle(cornerRadius: radius)
                     .size(width: reader.size.width * CGFloat(value), height: reader.size.height)
@@ -35,6 +35,7 @@ struct ProgressBarUI<V>: View where V: BinaryFloatingPoint {
 }
 
 class ProgressBar: UIView {
+    private var gradient = CGGradient(colorsSpace: CGColorSpaceCreateDeviceRGB(), colors: [UIColor.clear.cgColor, UIColor.clear.cgColor] as CFArray, locations: [0.0, 1.0])
     
     @objc var value: CGFloat = 0.0 {
         didSet {
@@ -56,6 +57,20 @@ class ProgressBar: UIView {
             setNeedsDisplay()
         }
     }
+    
+    var showGradient = false
+    var gStartColor: UIColor = .lightGray {
+        didSet {
+            gradient = CGGradient(colorsSpace: CGColorSpaceCreateDeviceRGB(), colors: [gStartColor.cgColor, gEndColor.cgColor] as CFArray, locations: [0.0, 1.0])
+        }
+    }
+        
+    var gEndColor: UIColor = .darkGray {
+        didSet {
+            gradient = CGGradient(colorsSpace: CGColorSpaceCreateDeviceRGB(), colors: [gStartColor.cgColor, gEndColor.cgColor] as CFArray, locations: [0.0, 1.0])
+        }
+    }
+    
     @objc var stackedBarColor: UIColor = UIColor.gray {
         didSet {
             setNeedsDisplay()
@@ -115,9 +130,17 @@ class ProgressBar: UIView {
             percent -= stackedPercent
         }
         if !(maxValue == 0 || percent < 0) {
-            let fillPath = UIBezierPath(roundedRect: CGRect.init(x: rect.origin.x, y: rect.origin.y, width: rect.size.width * percent, height: rect.size.height), cornerRadius: rect.size.height/2)
-            context?.setFillColor(barColor.cgColor)
-            fillPath.fill()
+            if showGradient {
+                let fillPath = UIBezierPath(roundedRect: CGRect.init(x: rect.origin.x, y: rect.origin.y, width: rect.size.width * percent, height: rect.size.height), cornerRadius: rect.size.height/2)
+                fillPath.addClip()
+                if let gradient = gradient {
+                    context?.drawLinearGradient(gradient, start: CGPoint.zero, end: CGPoint(x: rect.size.width, y: 0), options: .drawsBeforeStartLocation)
+                }
+            } else {
+                let fillPath = UIBezierPath(roundedRect: CGRect.init(x: rect.origin.x, y: rect.origin.y, width: rect.size.width * percent, height: rect.size.height), cornerRadius: rect.size.height/2)
+                context?.setFillColor(barColor.cgColor)
+                fillPath.fill()
+            }
         }
     }
 }

@@ -15,16 +15,15 @@ class HabiticaSplitViewController: BaseUIViewController, UIScrollViewDelegate {
     @IBOutlet weak var rightViewWidthConstraint: NSLayoutConstraint?
     @IBOutlet weak var separatorView: UIView!
     
-    private let segmentedWrapper = PaddedView()
+    private let segmentedWrapper = UIView()
+    private let segmentedEffectView = UIVisualEffectView()
     internal let segmentedControl = UISegmentedControl(items: ["", ""])
     private var isInitialSetup = true
     var showAsSplitView = false
     var canShowAsSplitView = true
     
     internal var viewID: String?
-    
-    private var borderView = UIView()
-    
+        
     override func viewDidLoad() {
         super.viewDidLoad()
         showAsSplitView = traitCollection.horizontalSizeClass == .regular && traitCollection.verticalSizeClass == .regular
@@ -32,12 +31,19 @@ class HabiticaSplitViewController: BaseUIViewController, UIScrollViewDelegate {
         segmentedControl.selectedSegmentIndex = 0
         segmentedControl.addTarget(self, action: #selector(HabiticaSplitViewController.switchView(_:)), for: .valueChanged)
         segmentedControl.isHidden = false
-        segmentedWrapper.insets = UIEdgeInsets(top: 4, left: 8, bottom: 10, right: 8)
-        segmentedWrapper.containedView = segmentedControl
-        borderView.frame = CGRect(x: 0, y: segmentedWrapper.intrinsicContentSize.height+1, width: self.view.bounds.size.width, height: 1)
-        segmentedWrapper.addSubview(borderView)
+        segmentedEffectView.contentView.addSubview(segmentedControl)
+        segmentedWrapper.addSubview(segmentedEffectView)
+        
+        if #available(iOS 26.0, *) {
+            let glassEffect = UIGlassEffect()
+            segmentedEffectView.effect = glassEffect
+            segmentedEffectView.cornerConfiguration = .capsule()
+        }
+        
         topHeaderCoordinator?.alternativeHeader = segmentedWrapper
         topHeaderCoordinator?.hideHeader = canShowAsSplitView && showAsSplitView
+        topHeaderCoordinator?.followScrollView = false
+        layoutHeader()
         
         scrollView.delegate = self
         scrollView.bounces = false
@@ -48,17 +54,65 @@ class HabiticaSplitViewController: BaseUIViewController, UIScrollViewDelegate {
         ThemeService.shared.addThemeable(themable: self)
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        
-        if let topHeaderNavigationController = navigationController as? TopHeaderViewController {
-            scrollViewTopConstraint.constant = topHeaderNavigationController.contentInset
+    override func applyTheme(theme: any Theme) {
+        super.applyTheme(theme: theme)
+        if #unavailable(iOS 26.0) {
+            segmentedWrapper.backgroundColor = theme.contentBackgroundColor
         }
     }
     
-    override func applyTheme(theme: Theme) {
-        super.applyTheme(theme: theme)
-        borderView.backgroundColor = ThemeService.shared.theme.separatorColor
+    override func viewWillLayoutSubviews() {
+        super.viewWillLayoutSubviews()
+        layoutHeader()
+    }
+
+    override func viewSafeAreaInsetsDidChange() {
+        super.viewSafeAreaInsetsDidChange()
+        layoutHeader()
+    }
+    
+    func layoutHeader() {
+        let size = segmentedControl.intrinsicContentSize
+        var safeLeft = view.safeAreaInsets.left
+        if safeLeft == 0 {
+            safeLeft = 8
+        }
+        var safeRight = view.safeAreaInsets.right
+        if safeRight == 0 {
+            safeRight = 8
+        }
+        let wrapperPadding: CGFloat
+        let verticalPadding: CGFloat = 2
+        let contentInsetExtra: CGFloat
+        let isLandscape = traitCollection.verticalSizeClass == .compact
+        if #available(iOS 26.0, *) {
+            wrapperPadding = isLandscape ? 20 : 0
+            contentInsetExtra = isLandscape ? 24 : 8
+        } else {
+            wrapperPadding = 0
+            contentInsetExtra = 8
+        }
+        segmentedWrapper.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: size.height + 8)
+        segmentedEffectView.frame = CGRect(x: safeLeft, y: wrapperPadding, width: view.frame.width - safeLeft - safeRight, height: size.height + verticalPadding*2)
+        segmentedControl.pin.horizontally(4).vertically(verticalPadding)
+        scrollView.subviews.forEach { subview in
+            var subviews: [UIView] = subview.subviews
+            while !subviews.isEmpty && !(subviews.first is UIScrollView) {
+                subviews = subviews.first?.subviews ?? []
+            }
+            if let scroll = subviews.first as? UIScrollView {
+                if scroll.transform != .identity {
+                    return
+                }
+                let oldTopInset = scroll.contentInset.top
+                let newTopInset = view.safeAreaInsets.top + size.height + contentInsetExtra
+                scroll.contentInset = UIEdgeInsets(top: newTopInset, left: 0, bottom: view.safeAreaInsets.bottom, right: 0)
+                scroll.scrollIndicatorInsets = UIEdgeInsets(top: size.height + wrapperPadding, left: 0, bottom: 0, right: 0)
+                if oldTopInset != newTopInset && scroll.contentOffset.y > -newTopInset && scroll.contentOffset.y <= -oldTopInset + 10 {
+                    scroll.contentOffset.y = -newTopInset
+                }
+            }
+        }
     }
     
     override func viewDidLayoutSubviews() {
@@ -109,7 +163,7 @@ class HabiticaSplitViewController: BaseUIViewController, UIScrollViewDelegate {
         scrollView.isScrollEnabled = !showAsSplitView
         topHeaderCoordinator?.hideHeader = showAsSplitView
         if showAsSplitView {
-            let leftMultiplier = max(0.333, 375 / scrollView.frame.width)
+            let leftMultiplier = max(0.3, 375 / scrollView.frame.width)
             if leftViewWidthConstraint?.multiplier != leftMultiplier {
                 leftViewWidthConstraint = leftViewWidthConstraint?.setMultiplier(multiplier: leftMultiplier)
                 rightViewWidthConstraint = rightViewWidthConstraint?.setMultiplier(multiplier: 1-leftMultiplier)

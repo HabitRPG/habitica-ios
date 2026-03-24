@@ -20,7 +20,7 @@ private struct GroupHelper: Decodable {
     let privacy: String
 }
 
-public class APIChallenge: ChallengeProtocol, Decodable {
+public class APIChallenge: ChallengeProtocol, Codable {
     public var id: String?
     public var name: String?
     public var notes: String?
@@ -83,5 +83,38 @@ public class APIChallenge: ChallengeProtocol, Decodable {
         memberCount = (try? values.decode(Int.self, forKey: .memberCount)) ?? 0
         categories = (try? values.decode([APIChallengeCategory].self, forKey: .categories)) ?? []
         tasksOrder = (try? values.decode([String: [String]].self, forKey: .tasksOrder)) ?? [:]
+    }
+    
+    public init(_ challenge: ChallengeProtocol) {
+        id = challenge.id
+        name = challenge.name
+        shortName = challenge.shortName
+        summary = challenge.summary
+        notes = challenge.notes
+        categories = challenge.categories
+        prize = challenge.prize
+        tasksOrder = challenge.tasksOrder
+        official = challenge.official
+        groupID = challenge.groupID
+    }
+    
+    public func encode(to encoder: Encoder) throws {
+        var container = encoder.container(keyedBy: CodingKeys.self)
+        try? container.encode(id, forKey: .id)
+        try? container.encode(name, forKey: .name)
+        try? container.encode(shortName, forKey: .shortName)
+        try? container.encode(summary, forKey: .summary)
+        try? container.encode(notes, forKey: .notes)
+        try? container.encode(prize, forKey: .prize)
+        try? container.encode(groupID, forKey: .group)
+        try? container.encode(tasksOrder, forKey: .tasksOrder)
+        try? container.encode(categories.map({ challenge in
+            let api = APIChallengeCategory()
+            api.id = challenge.id
+            return api
+        }), forKey: .categories)
+        if let leaderID = self.leaderID {
+            try? container.encode(leaderID, forKey: .leader)
+        }
     }
 }

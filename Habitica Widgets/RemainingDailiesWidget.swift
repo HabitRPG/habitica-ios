@@ -25,25 +25,30 @@ struct DailiesCountProvider: IntentTimelineProvider {
 
     func getTimeline(for configuration: HRPGDailiesCountIntent, in context: Context, completion: @escaping (Timeline<DailiesCountWidgetEntry>) -> Void) {
         var entries: [DailiesCountWidgetEntry] = []
-        SignalProducer.combineLatest(TaskManager.shared.getTasks(predicate: NSPredicate(format: "type == 'daily' && isDue == true")),
-                                     TaskManager.shared.getUser()).on(value: { result in
-                                        let tasks = result.0
-                                        let user = result.1
-                                        var needsCron = user.needsCron
-                                        if !needsCron, let lastCron = user.lastCron {
-                                            let calendar = Calendar.current
-                                            let date1 = calendar.startOfDay(for: lastCron)
-                                            let date2 = calendar.startOfDay(for: Date())
-                                            let components = calendar.dateComponents([.day], from: date1, to: date2)
+        let tasks = TaskManager.shared.getTasks(predicate: NSPredicate(format: "type == 'daily' && isDue == true"))
+        guard let user = TaskManager.shared.getUser() else {
+            let timeline = Timeline(entries: entries, policy: .atEnd)
+            completion(timeline)
+            return
+        }
+        var needsCron = user.needsCron
+        if !needsCron, let lastCron = user.lastCron {
+            let calendar = Calendar.current
+            let date1 = calendar.startOfDay(for: lastCron)
+            let date2 = calendar.startOfDay(for: Date())
+            let components = calendar.dateComponents([.day], from: date1, to: date2)
 
-                                            needsCron = (components.day ?? 0) > (user.preferences?.dayStart ?? 0)
-                                        }
-                                        let entry = DailiesCountWidgetEntry(date: Date(), widgetFamily: context.family, totalCount: tasks.value.count, completedCount: tasks.value.filter({ $0.completed }).count, displayRemaining: configuration.displayRemaining?.boolValue ?? false, needsCron: needsCron)
-                                        entries.append(entry)
-
-                                        let timeline = Timeline(entries: entries, policy: .atEnd)
-                                        completion(timeline)
-        }).take(first: 1).start()
+            needsCron = (components.day ?? 0) > (user.preferences?.dayStart ?? 0)
+        }
+        let entry = DailiesCountWidgetEntry(date: Date(),
+                                            widgetFamily: context.family,
+                                            totalCount: tasks.count,
+                                            completedCount: tasks.filter({ $0.completed }).count,
+                                            displayRemaining: configuration.displayRemaining?.boolValue ?? false,
+                                            needsCron: needsCron)
+        entries.append(entry)
+        let timeline = Timeline(entries: entries, policy: .atEnd)
+        completion(timeline)
     }
 }
 
@@ -63,11 +68,7 @@ struct DailiesCountWidgetView: View {
     var entry: DailiesCountProvider.Entry
 
     private var isLockscreenWidget: Bool {
-        if #available(iOSApplicationExtension 16.0, *) {
-            return entry.widgetFamily == .accessoryInline || entry.widgetFamily == .accessoryCircular
-        } else {
-            return false
-        }
+        return entry.widgetFamily == .accessoryInline || entry.widgetFamily == .accessoryCircular
     }
     
     private var inlineLockScreenContent: some View {
@@ -85,37 +86,35 @@ struct DailiesCountWidgetView: View {
     
     var body: some View {
             if isLockscreenWidget {
-                if #available(iOSApplicationExtension 16.0, *) {
-                    if entry.widgetFamily == .accessoryInline {
-                        Label {
-                            inlineLockScreenContent
-                        } icon: {
-                            Image("gryphon").resizable()
+                if entry.widgetFamily == .accessoryInline {
+                    Label {
+                        inlineLockScreenContent
+                    } icon: {
+                        Image("gryphon").resizable()
+                    }
+                } else {
+                    if entry.needsCron {
+                        VStack(spacing: 2) {
+                            Image("StartDayIcon").resizable().frame(width: 12, height: 12)
+                            Text("Start day").font(.caption)
                         }
+                        .padding(.bottom, 2)
+                        .foregroundStyle(Color.widgetText)
+                        .frame(maxWidth: .infinity, maxHeight: .infinity)
+                        .multilineTextAlignment(.center).background(Color.widgetBackground)
+                        
+                    } else if entry.completedCount == entry.totalCount {
+                        Gauge(value: Float(entry.completedCount) / Float(entry.totalCount)) {
+                            Image("Sparkles").resizable().frame(width: 16, height: 16)
+                        } currentValueLabel: {
+                            Text("\(entry.completedCount) / \(entry.totalCount)")
+                        }.gaugeStyle(.accessoryCircular)
                     } else {
-                        if entry.needsCron {
-                            VStack(spacing: 2) {
-                                Image("StartDayIcon").resizable().frame(width: 12, height: 12)
-                                Text("Start day").font(.caption)
-                            }
-                            .padding(.bottom, 2)
-                            .foregroundColor(Color.widgetText)
-                            .frame(maxWidth: .infinity, maxHeight: .infinity)
-                            .multilineTextAlignment(.center).background(Color.widgetBackground)
-                            
-                        } else if entry.completedCount == entry.totalCount {
-                            Gauge(value: Float(entry.completedCount) / Float(entry.totalCount)) {
-                                Image("Sparkles").resizable().frame(width: 16, height: 16)
-                            } currentValueLabel: {
-                                Text("\(entry.completedCount) / \(entry.totalCount)")
-                            }.gaugeStyle(.accessoryCircular)
-                        } else {
-                            Gauge(value: Float(entry.completedCount) / Float(entry.totalCount)) {
-                                Image("gryphon")
-                            } currentValueLabel: {
-                                Text("\(entry.completedCount) / \(entry.totalCount)")
-                            }.gaugeStyle(.accessoryCircular)
-                        }
+                        Gauge(value: Float(entry.completedCount) / Float(entry.totalCount)) {
+                            Image("gryphon")
+                        } currentValueLabel: {
+                            Text("\(entry.completedCount) / \(entry.totalCount)")
+                        }.gaugeStyle(.accessoryCircular)
                     }
                 }
             } else {
@@ -137,6 +136,9 @@ struct DailiesCountWidgetView: View {
 }
 
 struct CountView: View {
+    @Environment(\.widgetRenderingMode)
+    var renderingMode
+
     var completedCount: Int
     var totalCount: Int
     var displayCount: Int
@@ -152,22 +154,24 @@ struct CountView: View {
         let barColor = colors[Int((Float(completedCount) / Float(totalCount)) * Float(colors.count))]
         VStack(alignment: .leading, spacing: 8) {
             Spacer()
-            Text(String(displayCount)).font(Font.system(size: 50, weight: .semibold)).foregroundColor(Color.dailiesWidgetPurple)
-            Text(displayRemaining ? "Dailies left" : "Dailies done").foregroundColor(Color.widgetText).font(Font.system(size: 15, weight: .semibold)).multilineTextAlignment(.center).padding(.top, -12)
+            Text(String(displayCount)).font(Font.system(size: 50, weight: .semibold)).foregroundStyle(Color.dailiesWidgetPurple)
+            Text(displayRemaining ? "Dailies left" : "Dailies done").foregroundStyle(Color.widgetText).font(Font.system(size: 15, weight: .semibold)).multilineTextAlignment(.center).padding(.top, -12)
             GeometryReader { geometry in
                 let width = geometry.size.width
                 ZStack(alignment: .leading) {
                     Rectangle()
-                        .foregroundColor(Color.progressBackground)
-                        .frame(width: width, height: 7.0)
+                        .foregroundStyle(Color.progressBackground)
+                        .opacity(renderingMode == .fullColor ? 1 : 0.2)
+                        .frame(width: width, height: 12.0)
                     Rectangle()
-                        .foregroundColor(barColor)
-                        .frame(width: width * (CGFloat(completedCount) / CGFloat(totalCount)), height: 7.0)
+                        .foregroundStyle(barColor)
+                        .frame(width: width * (CGFloat(completedCount) / CGFloat(totalCount)), height: 12.0)
                     
                 }
-                .cornerRadius(4.0)
-            }.padding(.top, 12)
-            Text(displayRemaining ? "\(completedCount) done" : "\(totalCount - completedCount) left to do").font(Font.system(size: 12)).padding(.top, 4).foregroundColor(.widgetTextSecondary)
+                .cornerRadius(6.0)
+            }.padding(.top, 10)
+                .frame(height: 12)
+            Text(displayRemaining ? "\(completedCount) done" : "\(totalCount - completedCount) left to do").font(Font.system(size: 12)).padding(.top, 4).foregroundStyle(.widgetTextSecondary)
         }
     }
 }
@@ -177,22 +181,23 @@ struct CompletedView: View {
     var body: some View {
         VStack(alignment: .leading, spacing: 8) {
             Spacer()
-            HStack() {
-                Text(String(totalCount)).font(Font.system(size: 50, weight: .semibold)).foregroundColor(Color.dailiesWidgetPurple)
+            HStack {
+                Text(String(totalCount)).font(Font.system(size: 50, weight: .semibold)).foregroundStyle(Color.dailiesWidgetPurple)
                 Image("Sparkles").padding(.leading, 1)
             }
-            Text("Dailies done").foregroundColor(Color.widgetText).font(Font.system(size: 15, weight: .semibold)).multilineTextAlignment(.center).padding(.top, -12)
+            Text("Dailies done").foregroundStyle(Color.widgetText).font(Font.system(size: 15, weight: .semibold)).multilineTextAlignment(.center).padding(.top, -12)
             GeometryReader { geometry in
                 let width = geometry.size.width
                 ZStack(alignment: .leading) {
                     Rectangle()
-                        .foregroundColor(Color.barPurple)
-                        .frame(width: width, height: 7.0)
+                        .foregroundStyle(Color.barPurple)
+                        .frame(width: width, height: 12.0)
                     
                 }
-                .cornerRadius(4.0)
-            }.padding(.top, 12)
-            Text("All done today!").font(Font.system(size: 12)).padding(.top, 4).foregroundColor(.widgetTextSecondary)
+                .cornerRadius(6.0)
+            }.padding(.top, 10)
+                .frame(height: 12)
+            Text("All done today!").font(Font.system(size: 12)).padding(.top, 4).foregroundStyle(.widgetTextSecondary)
         }
     }
 }
@@ -202,11 +207,10 @@ struct StartDayView: View {
     var body: some View {
         VStack(alignment: .center, spacing: 12) {
             Image("StartDayIcon")
-            Text("Start a new day").foregroundColor(Color.widgetText).font(Font.system(size: 15, weight: .semibold)).multilineTextAlignment(.center)
+            Text("Start a new day").foregroundStyle(Color.widgetText).font(Font.system(size: 15, weight: .semibold)).multilineTextAlignment(.center)
         }
     }
 }
-
 
 struct DailiesCountWidget: Widget {
     let kind: String = "DailiesCountWidget"
@@ -249,13 +253,12 @@ struct DailiesCountWidgetPreview: PreviewProvider {
             DailiesCountWidgetView(entry: DailiesCountWidgetEntry(date: Date(), widgetFamily: .accessoryInline, totalCount: 42, completedCount: 10, needsCron: true))
                 .previewContext(WidgetPreviewContext(family: .accessoryInline))
             
-            
-                DailiesCountWidgetView(entry: DailiesCountWidgetEntry(date: Date(), widgetFamily: .accessoryCircular, totalCount: 42, completedCount: 10))
-                    .previewContext(WidgetPreviewContext(family: .accessoryCircular))
-                DailiesCountWidgetView(entry: DailiesCountWidgetEntry(date: Date(), widgetFamily: .accessoryCircular, totalCount: 42, completedCount: 42))
-                    .previewContext(WidgetPreviewContext(family: .accessoryCircular))
-                DailiesCountWidgetView(entry: DailiesCountWidgetEntry(date: Date(), widgetFamily: .accessoryCircular, totalCount: 42, completedCount: 10, needsCron: true))
-                    .previewContext(WidgetPreviewContext(family: .accessoryCircular))
+            DailiesCountWidgetView(entry: DailiesCountWidgetEntry(date: Date(), widgetFamily: .accessoryCircular, totalCount: 42, completedCount: 10))
+                .previewContext(WidgetPreviewContext(family: .accessoryCircular))
+            DailiesCountWidgetView(entry: DailiesCountWidgetEntry(date: Date(), widgetFamily: .accessoryCircular, totalCount: 42, completedCount: 42))
+                .previewContext(WidgetPreviewContext(family: .accessoryCircular))
+            DailiesCountWidgetView(entry: DailiesCountWidgetEntry(date: Date(), widgetFamily: .accessoryCircular, totalCount: 42, completedCount: 10, needsCron: true))
+                .previewContext(WidgetPreviewContext(family: .accessoryCircular))
         }
     }
 }

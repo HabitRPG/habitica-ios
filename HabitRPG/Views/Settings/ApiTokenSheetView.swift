@@ -9,12 +9,13 @@
 import SwiftUI
 
 struct ApiTokenSheetView: View, Dismissable {
+    @ObservedObject var themeService = ThemeService.shared
     let token: String
     var onCopy: () -> Void
     var dismisser = Dismisser()
-    @Environment(\.colorScheme) var colorScheme
+    @Environment(\.colorScheme)
+    var colorScheme
 
-    
     var buttonColor: Color { Color.yellow100 }
     var buttonTextColor: Color { Color.yellow1 }
 
@@ -22,24 +23,16 @@ struct ApiTokenSheetView: View, Dismissable {
         colorScheme == .dark ? Color.gray100.opacity(0.18) : Color.gray600.opacity(0.95)
     }
 
-    var theme: Theme { ThemeService.shared.theme }
-
     var descriptionColor: Color {
         colorScheme == .dark ? Color.gray400 : Color.gray200
     }
 
     var body: some View {
-        VStack(spacing: 0) {
-            RoundedRectangle(cornerRadius: 2)
-                .fill(Color.gray300.opacity(0.5))
-                .frame(width: 40, height: 5)
-                .padding(.top, 10)
-                .padding(.bottom, 24)
-            
-            VStack(spacing: 20) {
+        let theme = themeService.theme
+        BottomSheetView(content: VStack(spacing: 20) {
                 Text(L10n.apiTokenTitle)
                     .font(.system(size: 16))
-                    .foregroundColor(descriptionColor)
+                    .foregroundStyle(descriptionColor)
                     .fontWeight(.semibold)
                 
                 VStack(alignment: .leading, spacing: 10) {
@@ -47,25 +40,25 @@ struct ApiTokenSheetView: View, Dismissable {
                         .font(.system(size: 16))
                         .kerning(-0.31)
                         .lineSpacing(5)
-                        .foregroundColor(Color(theme.primaryTextColor))
+                        .foregroundStyle(Color(theme.primaryTextColor))
                         .padding(.bottom, 2)
                     Text(L10n.apiTokenPasswordDescription)
                         .font(.system(size: 14))
                         .kerning(-0.08)
                         .lineSpacing(4)
-                        .foregroundColor(descriptionColor)
+                        .foregroundStyle(descriptionColor)
                         .padding(.bottom, 12)
                     Text(L10n.apiTokenResetTitle)
                         .font(.system(size: 16))
                         .kerning(-0.31)
                         .lineSpacing(5)
-                        .foregroundColor(Color(theme.primaryTextColor))
+                        .foregroundStyle(Color(theme.primaryTextColor))
                         .padding(.bottom, 2)
                     Text(L10n.apiTokenResetDesc)
                         .font(.system(size: 14))
                         .kerning(-0.08)
                         .lineSpacing(4)
-                        .foregroundColor(descriptionColor)
+                        .foregroundStyle(descriptionColor)
                         .padding(.bottom, 12)
                 }
                 .frame(maxWidth: .infinity, alignment: .leading)
@@ -77,7 +70,7 @@ struct ApiTokenSheetView: View, Dismissable {
                       .frame(width: 16, height: 16)
                     Text(token)
                         .font(.system(size: 14, weight: .medium, design: .monospaced))
-                        .foregroundColor(.primary)
+                        .foregroundStyle(.primary)
                         .lineLimit(1)
                         .truncationMode(.middle)
                     Spacer()
@@ -85,28 +78,11 @@ struct ApiTokenSheetView: View, Dismissable {
                 .padding(.vertical, 12)
                 .padding(.horizontal, 16)
                 .background(tokenBoxBg)
-                .cornerRadius(8)
+                .cornerRadius(UIConstants.largeCornerRadius)
 
-                Button(action: {
-                    onCopy()
-                }) {
-                    Text(L10n.copyToken)
-                        .frame(maxWidth: .infinity)
-                        .padding()
-                        .background(buttonColor)
-                        .foregroundColor(buttonTextColor)
-                        .font(.headline)
-                        .cornerRadius(8)
-                }
-                .frame(minHeight: 48) 
+            HabiticaButtonUI(label: Text(L10n.copyToken).foregroundStyle(buttonTextColor), color: buttonColor, size: .compact) {
+                onCopy()
             }
-            .padding(.horizontal, 20)
-            .padding(.bottom, 24)
+            })
         }
-        .background(Color(.systemBackground))
-        .cornerRadius(16)
-    }
 }
-
-
-

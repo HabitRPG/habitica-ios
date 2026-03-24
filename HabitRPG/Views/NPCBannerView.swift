@@ -17,6 +17,9 @@ class NPCBannerView: UIView {
     @IBOutlet weak var plaqueImageView: UIImageView!
     @IBOutlet weak var gradientView: UIImageView!
     @IBOutlet weak var bgWhiteView: UILabel!
+    @IBOutlet weak var notesLeadingConstraint: NSLayoutConstraint!
+    @IBOutlet weak var notesTrailingConstraint: NSLayoutConstraint!
+    @IBOutlet weak var plaqueLeadingConstraint: NSLayoutConstraint!
     @objc var shop: ShopProtocol? {
         didSet {
             setupShop()
@@ -63,6 +66,9 @@ class NPCBannerView: UIView {
     }
     
     override var intrinsicContentSize: CGSize {
+        if notesLabel.text?.isEmpty != false {
+            return CGSize(width: UIScreen.main.bounds.size.width, height: 124)
+        }
         notesLabel.sizeToFit()
         var labelHeight: CGFloat = notesLabel.bounds.size.height
         if labelHeight == 0 {
@@ -96,6 +102,8 @@ class NPCBannerView: UIView {
             self.npcNameLabel.text = "Tyler & Vicky"
         case "customizations":
             self.npcNameLabel.text = "Felicitus"
+        case "support":
+            self.npcNameLabel.text = "Daniel"
         default:
             self.npcNameLabel.text = ""
         }
@@ -113,6 +121,15 @@ class NPCBannerView: UIView {
         foregroundImageView.setImagewith(name: identifier + "_scene"+spriteSuffix)
     }
     
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        let safeLeft = safeAreaInsets.left
+        let safeRight = safeAreaInsets.right
+        notesLeadingConstraint?.constant = 16 + safeLeft
+        notesTrailingConstraint?.constant = 16 + safeRight
+        plaqueLeadingConstraint?.constant = 29 + safeLeft
+    }
+
     func setNotes(_ notes: String) {
         let paragraphStyle = NSMutableParagraphStyle()
         paragraphStyle.lineSpacing = 4

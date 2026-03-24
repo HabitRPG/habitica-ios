@@ -16,35 +16,35 @@ public protocol ErrorMessage {
 
 public protocol NetworkErrorHandler {
     var disposable: ScopedDisposable<CompositeDisposable> { get }
-    static var errorMessages: [ErrorMessage]? { get }
-    static func handle(error: NetworkError, messages: [String])
+    var errorMessages: [ErrorMessage]? { get }
+    func handle(error: NetworkError, messages: [String])
 }
 
 public extension NetworkErrorHandler {
     func observe(signal: Signal<NSError, Never>) {
         disposable.inner.add(signal.observeValues({ error in
-            Self.handle(error: NetworkError(message: error.localizedDescription, url: "", code: error.code), messages: [])
+            self.handle(error: NetworkError(message: error.localizedDescription, url: "", code: error.code), messages: [])
         }))
     }
     func observe(signal: Signal<(NetworkError, [String]), Never>) {
         disposable.inner.add(signal.observeValues({ (error, response) in
-            Self.handle(error: error, messages: response)
+            self.handle(error: error, messages: response)
         }))
     }
     func observe(signal: Signal<[NetworkError], Never>) {
         disposable.inner.add(signal.observeValues({ messages in
-            Self.handle(error: messages.first ?? NetworkError(message: "", url: ""), messages: messages.map({ error in
+            self.handle(error: messages.first ?? NetworkError(message: "", url: ""), messages: messages.map({ error in
                 return error.message
             }))
         }))
     }
 }
 
-public class PrintNetworkErrorHandler: NetworkErrorHandler {
+public struct PrintNetworkErrorHandler: NetworkErrorHandler {
     public let disposable = ScopedDisposable(CompositeDisposable())
-    public static var errorMessages: [ErrorMessage]?
+    public var errorMessages: [ErrorMessage]?
     
-    public static func handle(error: NetworkError, messages: [String] = []) {
+    public func handle(error: NetworkError, messages: [String] = []) {
         for message in messages {
             print(message)
         }
@@ -67,7 +67,18 @@ extension UIAlertController {
     }
 }
 
-public class NetworkError: NSError {
+public struct CallbackNetworkErrorHandler: NetworkErrorHandler {
+    let onError: (NetworkError) -> Void
+    
+    public let disposable = ScopedDisposable(CompositeDisposable())
+    public var errorMessages: [ErrorMessage]?
+    
+    public func handle(error: NetworkError, messages: [String] = []) {
+        onError(error)
+    }
+}
+
+public class NetworkError: NSError, @unchecked Sendable {
     public var url: String
     var message: String
     

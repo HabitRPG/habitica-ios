@@ -10,6 +10,7 @@ import XCTest
 
 class Habitica_Snapshots: XCTestCase {
 
+    @MainActor
     override func setUp() {
         let app = XCUIApplication()
         setupSnapshot(app)
@@ -21,8 +22,8 @@ class Habitica_Snapshots: XCTestCase {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
     }
 
+    @MainActor
     func testExample() {
-        
         let app = XCUIApplication()
         let tabBarsQuery = app.tabBars
         tabBarsQuery.buttons.element(boundBy: 0).tap()

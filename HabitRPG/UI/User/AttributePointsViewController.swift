@@ -12,6 +12,10 @@ import ReactiveSwift
 
 class AttributePointsViewController: BaseUIViewController {
     
+    @IBOutlet weak var widthConstraint: NSLayoutConstraint!
+    @IBOutlet weak var bulkAllocationView: UIView!
+    @IBOutlet weak var bulkDistributeButtonWrapper: GradientView!
+
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var pointsToAllocateLabel: PaddedLabel!
     @IBOutlet weak var pointsToAllocateRightView: UIImageView!
@@ -24,21 +28,22 @@ class AttributePointsViewController: BaseUIViewController {
     @IBOutlet weak var autoAllocateLabel: UILabel!
     @IBOutlet weak var autoAllocationSwitch: UISwitch!
     
+    @IBOutlet weak var distributeContainer: UIStackView!
     @IBOutlet weak var distributionStackView: UIStackView!
-    @IBOutlet weak var distributionBackground: UIView!
     @IBOutlet weak var distributeEvenlyView: UIView!
     @IBOutlet weak var distributeEvenlyLabel: UILabel!
-    @IBOutlet weak var distributeEvenlyHelpView: UIImageView!
+    @IBOutlet weak var distributeEvenlyDescription: UILabel!
     @IBOutlet weak var distributeEvenlyCheckmark: UIImageView!
     @IBOutlet weak var distributeClassView: UIView!
     @IBOutlet weak var distributeClassLabel: UILabel!
-    @IBOutlet weak var distributeClassHelpView: UIImageView!
+    @IBOutlet weak var distributeClassDescription: UILabel!
     @IBOutlet weak var distributeClassCheckmark: UIImageView!
     @IBOutlet weak var distributeTaskView: UIView!
     @IBOutlet weak var distributeTasksLabel: UILabel!
-    @IBOutlet weak var distributeTaskHelpView: UIImageView!
+    @IBOutlet weak var distributeTaskDescription: UILabel!
     @IBOutlet weak var distributeTaskCheckmark: UIImageView!
     
+    @IBOutlet weak var statGuideWrapper: StackView!
     @IBOutlet weak var statGuideTitleLabel: UILabel!
     
     @IBOutlet weak var characterBuildTitleLabel: UILabel!
@@ -106,6 +111,12 @@ class AttributePointsViewController: BaseUIViewController {
         ThemeService.shared.addThemeable(themable: self, applyImmediately: true)
         
         setupRefreshControl()
+        
+        bulkDistributeButtonWrapper.cornerRadius = 30
+        bulkDistributeButtonWrapper.startColor = UIColor("#A9DCF6")
+        bulkDistributeButtonWrapper.middleColor = UIColor("#925CF3")
+        bulkDistributeButtonWrapper.endColor = UIColor("#FFB6B8")
+        bulkDistributeButtonWrapper.diagonalMode = true
     }
     
     override func populateText() {
@@ -113,8 +124,11 @@ class AttributePointsViewController: BaseUIViewController {
         
         autoAllocateLabel.text = L10n.Stats.autoAllocatePoints
         distributeEvenlyLabel.text = L10n.Stats.distributeEvenly
+        distributeEvenlyDescription.text = L10n.Stats.distributeEvenlyHelp
         distributeClassLabel.text = L10n.Stats.distributeClass
+        distributeClassDescription.text = L10n.Stats.distributeClassHelp
         distributeTasksLabel.text = L10n.Stats.distributeTasks
+        distributeTaskDescription.text = L10n.Stats.distributeTasksHelp
         
         statGuideTitleLabel.text = L10n.Stats.statGuide
         
@@ -139,31 +153,20 @@ class AttributePointsViewController: BaseUIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
-        pointsToAllocateLeftView.image = HabiticaIcons.imageOfAttributeSparklesLeft
-        pointsToAllocateRightView.image = HabiticaIcons.imageOfAttributeSparklesRight
-        
+    
         strengthStatsView.allocateAction = { [weak self] in self?.allocate("str") }
         intelligenceStatsView.allocateAction = { [weak self] in self?.allocate("int") }
         constitutionStatsView.allocateAction = { [weak self] in self?.allocate("con") }
         perceptionStatsView.allocateAction = { [weak self] in self?.allocate("per") }
         
-        distributeEvenlyHelpView.image = HabiticaIcons.imageOfInfoIcon()
-        distributeClassHelpView.image = HabiticaIcons.imageOfInfoIcon()
-        distributeTaskHelpView.image = HabiticaIcons.imageOfInfoIcon()
-        
         distributeEvenlyView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(distributeEvenlyTapped)))
         distributeClassView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(distributeClassTapped)))
         distributeTaskView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(distributeTaskTapped)))
-        
-        distributeEvenlyHelpView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(distributeEvenlyHelpTapped)))
-        distributeClassHelpView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(distributeClassHelpTapped)))
-        distributeTaskHelpView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(distributeTaskHelpTapped)))
 
         pointsToAllocateLabel.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(openBulkAssignView)))
         pointsToAllocateLabel.horizontalPadding = 12
-        pointsToAllocateLabel.verticalPadding = 4
-        pointsToAllocateLabel.layer.cornerRadius = pointsToAllocateLabel.frame.size.height/2
+        pointsToAllocateLabel.verticalPadding = 2
+        pointsToAllocateLabel.font = .systemFont(ofSize: 15, weight: .semibold)
     }
     
     override func applyTheme(theme: Theme) {
@@ -172,10 +175,16 @@ class AttributePointsViewController: BaseUIViewController {
         distributeClassCheckmark.image = HabiticaIcons.imageOfCheckmark(checkmarkColor: theme.tintColor, percentage: 1.0)
         distributeTaskCheckmark.image = HabiticaIcons.imageOfCheckmark(checkmarkColor: theme.tintColor, percentage: 1.0)
         autoAllocateLabel.textColor = theme.primaryTextColor
-        distributionBackground.backgroundColor = theme.contentBackgroundColorDimmed
+        distributeContainer.backgroundColor = theme.windowBackgroundColor
+        distributeContainer.cornerRadius = UIConstants.largeCornerRadius
+        statGuideWrapper.backgroundColor = theme.windowBackgroundColor
+        statGuideWrapper.cornerRadius = UIConstants.largeCornerRadius
         distributeEvenlyLabel.textColor = theme.primaryTextColor
+        distributeEvenlyDescription.textColor = theme.secondaryTextColor
         distributeTasksLabel.textColor = theme.primaryTextColor
+        distributeTaskDescription.textColor = theme.secondaryTextColor
         distributeClassLabel.textColor = theme.primaryTextColor
+        distributeClassDescription.textColor = theme.secondaryTextColor
         view.backgroundColor = theme.contentBackgroundColor
         statGuideTitleLabel.textColor = theme.primaryTextColor
         characterBuildTitleLabel.textColor = theme.primaryTextColor
@@ -191,6 +200,13 @@ class AttributePointsViewController: BaseUIViewController {
             perceptionStatsView.tintColor = UIColor.purple300
             perceptionTitleLabel.textColor = UIColor.purple300
         }
+        strengthStatsView.attributeBackgroundColor = .red100
+        strengthStatsView.attributeTextColor = .red1
+        intelligenceStatsView.attributeBackgroundColor = .blue100
+        intelligenceStatsView.attributeTextColor = .blue1
+        constitutionStatsView.attributeBackgroundColor = .yellow100
+        constitutionStatsView.attributeTextColor = .yellow1
+        
     }
     
     private func setupRefreshControl() {
@@ -210,12 +226,11 @@ class AttributePointsViewController: BaseUIViewController {
         pointsToAllocateLeftView.isHidden = !canAllocatePoints
         pointsToAllocateRightView.isHidden = !canAllocatePoints
         if !canAllocatePoints {
-            pointsToAllocateLabel.text = L10n.Stats.noPointsToAllocate
-            pointsToAllocateLabel.backgroundColor = UIColor.white
-            pointsToAllocateLabel.textColor = UIColor.gray300
+            bulkAllocationView.isHidden = true
         } else {
-            pointsToAllocateLabel.backgroundColor = UIColor.gray100
-            pointsToAllocateLabel.textColor = UIColor.white
+            bulkAllocationView.isHidden = false
+            pointsToAllocateLabel.backgroundColor = ThemeService.shared.theme.windowBackgroundColor
+            pointsToAllocateLabel.textColor = ThemeService.shared.theme.primaryTextColor
             if pointsToAllocate == 1 {
                 pointsToAllocateLabel.text = L10n.Stats.onePointToAllocate
             } else {
@@ -283,7 +298,6 @@ class AttributePointsViewController: BaseUIViewController {
         let useAutoAllocation = user?.preferences?.automaticAllocation ?? false
         autoAllocationSwitch.isOn = useAutoAllocation
         distributionStackView.isHidden = !useAutoAllocation
-        distributionBackground.isHidden = !useAutoAllocation
         if useAutoAllocation, let allocationMode = user?.preferences?.allocationMode {
             switch allocationMode {
             case "flat":
@@ -302,6 +316,16 @@ class AttributePointsViewController: BaseUIViewController {
                 break
             }
         }
+    }
+    
+    override func viewDidLayoutSubviews() {
+        let safeLeft = view.safeAreaInsets.left
+        let safeRight = view.safeAreaInsets.right
+        let totalPadding = max(16, safeLeft) + max(16, safeRight)
+        widthConstraint.constant = scrollView.bounds.width - totalPadding
+        super.viewDidLayoutSubviews()
+        pointsToAllocateLabel.layer.cornerRadius = pointsToAllocateLabel.frame.size.height/2
+        bulkDistributeButtonWrapper.layer.cornerRadius = bulkDistributeButtonWrapper.frame.size.height/2
     }
     
     @IBAction func autoAllocationChanged(_ sender: UISwitch) {
@@ -324,31 +348,10 @@ class AttributePointsViewController: BaseUIViewController {
     }
     
     @objc
-    func distributeEvenlyHelpTapped() {
-        showHelpView(L10n.Stats.distributeEvenlyHelp)
-    }
-    
-    @objc
-    func distributeClassHelpTapped() {
-        showHelpView(L10n.Stats.distributeClassHelp)
-    }
-    
-    @objc
-    func distributeTaskHelpTapped() {
-        showHelpView(L10n.Stats.distributeTasksHelp)
-    }
-    
-    @objc
     private func refresh() {
         disposable.inner.add(userRepository.retrieveUser().observeCompleted {
             self.refreshControl.endRefreshing()
         })
-    }
-    
-    func showHelpView(_ message: String) {
-        let alert = HabiticaAlertController.alert(title: nil, message: message)
-        alert.addOkAction()
-        alert.show()
     }
     
     private func setAllocationMode(_ mode: String) {
@@ -358,16 +361,15 @@ class AttributePointsViewController: BaseUIViewController {
     
     @objc
     func openBulkAssignView() {
-        let viewController = BulkStatsAllocationViewController(nibName: "BulkStatsAllocationView", bundle: Bundle.main)
-        let alert = HabiticaAlertController()
-        alert.contentView = viewController.view
-        alert.contentViewInsets = .zero
-        alert.addCancelAction()
-        alert.addAction(title: L10n.save, isMainAction: true) { _ in
-            viewController.save()
+        guard let stats = user?.stats else {
+            return
         }
-        alert.buttonAxis = .horizontal
-        alert.containerViewSpacing = 0
-        alert.show()
+        let sheet = HostingBottomSheetController(rootView: BulkStatsAllocationSheet(initialStrength: stats.strength,
+                                                                                    initialIntelligence: stats.intelligence,
+                                                                                    initialConstitution: stats.constitution,
+                                                                                    initialPerception: stats.perception,
+                                                                                    maxToAllocate: stats.points),
+                                                  allowLargeDetent: true)
+        sheet.show()
     }
 }

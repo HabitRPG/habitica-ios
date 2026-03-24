@@ -8,13 +8,14 @@
 
 import UIKit
 import Eureka
+import SwiftUI
 
-public class ThemeService: NSObject {
+public class ThemeService: ObservableObject {
     private let defaults = UserDefaults.standard
 
     public static let shared = ThemeService()
-    public var isDarkTheme: Bool?
-    public var theme: Theme = DefaultTheme() {
+    @Published public var isDarkTheme: Bool?
+    @Published public var theme: Theme = DefaultTheme() {
         didSet {
             applyTheme()
         }
@@ -40,27 +41,32 @@ public class ThemeService: NSObject {
         UINavigationBar.appearance().titleTextAttributes = [
             NSAttributedString.Key.foregroundColor: theme.primaryTextColor
         ]
-        UINavigationBar.appearance().backgroundColor = theme.contentBackgroundColor
-        UINavigationBar.appearance().barTintColor = theme.contentBackgroundColor
-        UITabBar.appearance().barTintColor = theme.contentBackgroundColor
-        UITabBar.appearance().backgroundColor = theme.contentBackgroundColor
-        UITabBar.appearance().backgroundImage = UIImage.from(color: theme.contentBackgroundColor)
-        UITabBar.appearance().shadowImage = UIImage.from(color: theme.contentBackgroundColor)
-        UITabBar.appearance().barStyle = .black
+        if #unavailable(iOS 26.0) {
+            UINavigationBar.appearance().backgroundColor = theme.contentBackgroundColor
+            UINavigationBar.appearance().barTintColor = theme.contentBackgroundColor
+            UITabBar.appearance().barTintColor = theme.contentBackgroundColor
+            UITabBar.appearance().backgroundColor = theme.contentBackgroundColor
+            UITabBar.appearance().backgroundImage = UIImage.from(color: theme.contentBackgroundColor)
+            UITabBar.appearance().shadowImage = UIImage.from(color: theme.contentBackgroundColor)
+            UITabBar.appearance().barStyle = .black
+            UISearchBar.appearance().backgroundColor = theme.windowBackgroundColor
+            UIToolbar.appearance().backgroundColor = theme.contentBackgroundColor
+            UIToolbar.appearance().barTintColor = theme.contentBackgroundColor
+            if theme.isDark {
+                UISearchBar.appearance().barStyle = .black
+                UISearchBar.appearance().isTranslucent = true
+            } else {
+                UISearchBar.appearance().barStyle = .default
+                UISearchBar.appearance().isTranslucent = false
+            }
+        }
         if theme.isDark {
-            UISearchBar.appearance().barStyle = .black
-            UISearchBar.appearance().isTranslucent = true
             UITextField.appearance().keyboardAppearance = .dark
         } else {
-            UISearchBar.appearance().barStyle = .default
-            UISearchBar.appearance().isTranslucent = false
             UITextField.appearance().keyboardAppearance = .default
         }
 
-        UIToolbar.appearance().backgroundColor = theme.contentBackgroundColor
-        UIToolbar.appearance().barTintColor = theme.contentBackgroundColor
         UISwitch.appearance().onTintColor = theme.backgroundTintColor
-        UISearchBar.appearance().backgroundColor = theme.windowBackgroundColor
         UITextField.appearance(whenContainedInInstancesOf: [UISearchBar.self]).backgroundColor = theme.contentBackgroundColor
         UITextField.appearance(whenContainedInInstancesOf: [UISearchBar.self]).textColor = theme.primaryTextColor
 
@@ -76,10 +82,12 @@ public class ThemeService: NSObject {
         UITabBar.appearance().unselectedItemTintColor = theme.quadTextColor
                         
         // The tintColor will trickle down to each view
-        UIApplication.shared.windows.forEach { window in
-            window.tintColor = theme.tintColor
-            window.overrideUserInterfaceStyle = theme.isDark ? .dark : .light
-        }
+        UIApplication.shared.connectedScenes.forEach({ scene in
+            (scene as? UIWindowScene)?.windows.forEach { window in
+                window.tintColor = theme.tintColor
+                window.overrideUserInterfaceStyle = theme.isDark ? .dark : .light
+            }
+        })
         
         // Update each listener. The type cast is needed because allObjects returns [AnyObject]
         listeners.allObjects
@@ -126,4 +134,8 @@ public class ThemeService: NSObject {
 
 public protocol Themeable: AnyObject {
     func applyTheme(theme: Theme)
+}
+
+extension EnvironmentValues {
+    @Entry var themeService = ThemeService.shared
 }

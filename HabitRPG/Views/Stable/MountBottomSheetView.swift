@@ -34,17 +34,17 @@ struct MountBottomSheetView: View, Dismissable {
             
         BottomSheetView(dismisser: dismisser, title: Text(mount.text ?? ""), content: VStack(spacing: 16) {
             StableBackgroundView(content: MountView(mount: mount).padding(.top, 30), animateFlying: false)
-                    .clipShape(.rect(cornerRadius: 12))
-            HabiticaButtonUI(label: Text(L10n.share), color: Color(theme.fixedTintColor), size: .compact) {
+                .clipShape(.rect(cornerRadius: UIConstants.largeCornerRadius))
+            HabiticaButtonUI(label: Text(L10n.share).foregroundStyle(Color(theme.primaryTextColor)), color: Color(theme.offsetBackgroundColor)) {
                 DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
                     SharingManager.share(mount: mount)
                 }
-                dismisser.dismiss?()
+                dismisser.dismiss()
             }
             if owned {
-                HabiticaButtonUI(label: Text(isCurrentMount ? L10n.unequip : L10n.equip), color: Color(theme.fixedTintColor), size: .compact) {
+                HabiticaButtonUI(label: Text(isCurrentMount ? L10n.unequip : L10n.equip), color: Color(theme.fixedTintColor)) {
                     onEquip()
-                    dismisser.dismiss?()
+                    dismisser.dismiss()
                 }
             }
         }
@@ -54,10 +54,9 @@ struct MountBottomSheetView: View, Dismissable {
 
 #Preview {
         return MountBottomSheetView(mount: PreviewMount(egg: "BearCub", potion: "Base", type: "drop", text: "Base Bear Cub"), owned: true, isCurrentMount: false, onEquip: {})
-            .previewLayout(.fixed(width: 400, height: 500))
 }
 
-private class PreviewMount: MountProtocol {
+class PreviewMount: MountProtocol {
     init(egg: String, potion: String, type: String? = nil, text: String? = nil) {
         self.key = "\(egg)-\(potion)"
         self.egg = egg

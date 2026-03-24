@@ -26,13 +26,19 @@ class EquipmentOverviewViewController: BaseUIViewController, UIScrollViewDelegat
     
     private var selectedCostume = false
     private var selectedType = ""
-    
+    private let headerView = AvatarHeaderView()
+
     override func viewDidLoad() {
         super.viewDidLoad()
         if let topHeaderNavigationController = navigationController as? TopHeaderViewController {
             topHeaderCoordinator = TopHeaderCoordinator(topHeaderNavigationController: topHeaderNavigationController, scrollView: scrollView)
         }
+        topHeaderCoordinator?.alternativeHeader = headerView
+        topHeaderCoordinator?.followScrollView = false
+        topHeaderCoordinator?.contentInsetModifier.top = -30
+
         scrollView.delegate = self
+        topHeaderCoordinator?.navbarVisibleColor = ThemeService.shared.theme.windowBackgroundColor
         
         gearView.title = L10n.Equipment.battleGear
         gearView.switchLabel = L10n.Equipment.autoEquip
@@ -67,6 +73,7 @@ class EquipmentOverviewViewController: BaseUIViewController, UIScrollViewDelegat
                 self?.costumeView.configure(outfit: costume)
             }
             self?.costumeView.switchValue = user.preferences?.useCostume ?? false
+            self?.headerView.setAvatar(avatar: user)
         }).start())
     }
     
@@ -74,6 +81,7 @@ class EquipmentOverviewViewController: BaseUIViewController, UIScrollViewDelegat
         super.applyTheme(theme: theme)
         gearView.applyTheme(theme: theme)
         costumeView.applyTheme(theme: theme)
+        topHeaderCoordinator?.navbarVisibleColor = ThemeService.shared.theme.windowBackgroundColor
     }
     
     override func viewWillLayoutSubviews() {
@@ -95,7 +103,6 @@ class EquipmentOverviewViewController: BaseUIViewController, UIScrollViewDelegat
     }
     
     override func populateText() {
-        navigationItem.title = L10n.Titles.equipment
         costumeExplanationLabel.text = L10n.Equipment.costumeExplanation
     }
     

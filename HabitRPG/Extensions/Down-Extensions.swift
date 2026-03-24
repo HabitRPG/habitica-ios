@@ -24,12 +24,13 @@ extension Down {
     }
     
     func toHabiticaAttributedString(baseSize: CGFloat = 15,
+                                    baseWeight: UIFont.Weight = .regular,
                                     textColor: UIColor = ThemeService.shared.theme.primaryTextColor, useAST: Bool = true, highlightUsernames: Bool = true) throws -> NSMutableAttributedString {
         let mentions = matchUsernames(text: markdownString)
         
         if markdownString.range(of: "[*_#\\[<>`]|\\A\\d+[\\.\\)]", options: .regularExpression, range: nil, locale: nil) == nil {
             let string = NSMutableAttributedString(string: markdownString,
-                                                   attributes: [.font: UIFontMetrics.default.scaledSystemFont(ofSize: baseSize),
+                                                   attributes: [.font: UIFontMetrics.default.scaledSystemFont(ofSize: baseSize, ofWeight: baseWeight),
                                                                 .foregroundColor: textColor])
             applyParagraphStyling(string)
             applyCustomChanges(string, mentions: mentions, highlightUsernames: highlightUsernames, baseSize: baseSize)
@@ -37,7 +38,7 @@ extension Down {
         }
         guard let string = try? (useAST ? toAttributedString(styler: HabiticaStyler(ofSize: baseSize, textColor: textColor)) : toAttributedString()).mutableCopy() as? NSMutableAttributedString else {
             let string = NSMutableAttributedString(string: markdownString,
-                                                  attributes: [.font: UIFontMetrics.default.scaledSystemFont(ofSize: baseSize),
+                                                  attributes: [.font: UIFontMetrics.default.scaledSystemFont(ofSize: baseSize, ofWeight: baseWeight),
                                                                .foregroundColor: textColor])
             applyParagraphStyling(string)
             applyCustomChanges(string, mentions: mentions, highlightUsernames: highlightUsernames, baseSize: baseSize)
@@ -92,7 +93,7 @@ extension Down {
         while range.length > 0 {
             string.replaceCharacters(in: range, with: "")
             let endRange = string.mutableString.range(of: "</strong>")
-            if (endRange.isSafe(for: string)) {
+            if endRange.isSafe(for: string) {
                 string.replaceCharacters(in: endRange, with: "")
             }
             let boldStart = range.location
@@ -103,13 +104,18 @@ extension Down {
             
             range = string.mutableString.range(of: "<strong>")
         }
+        removeHtmlTags(string)
+    }
+    
+    private func removeHtmlTags(_ string: NSMutableAttributedString) {
+        replaceIn(string: string, characters: "<[^>]+>", with: "")
     }
     
     private func replaceIn(string: NSMutableAttributedString, characters: String, with replacement: String) {
-        var range = string.mutableString.range(of: characters)
+        var range = string.mutableString.range(of: characters, options: .regularExpression)
         while range.length > 0 {
             string.replaceCharacters(in: range, with: replacement)
-            range = string.mutableString.range(of: characters)
+            range = string.mutableString.range(of: characters, options: .regularExpression)
         }
     }
     

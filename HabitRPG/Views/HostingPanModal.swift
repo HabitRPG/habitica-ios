@@ -48,7 +48,7 @@ class HostingPanModal<Content: View>: BaseUIViewController, PanModalPresentable 
         .contentHeight(300)
     }
 
-    var cornerRadius: CGFloat = 12
+    var cornerRadius: CGFloat = 13
     
     func show() {
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.8) {

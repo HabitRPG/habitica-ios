@@ -14,12 +14,13 @@ struct PetView: View {
     var pet: AnimalProtocol
     
     var body: some View {
-        PixelArtView(name: "stable_Pet-\(pet.key ?? "")").frame(width: 70, height: 70)
+        let substitutedName = ImageSubstitutionManager.substituteSprite(name: "Pet-\(pet.key ?? "")", context: "pets")
+        PixelArtView(name: "stable_\(substitutedName)").frame(width: 70, height: 70)
     }
 }
 
-
 struct PetBottomSheetView: View, Dismissable {
+    @ObservedObject var themeService = ThemeService.shared
     var dismisser: Dismisser = Dismisser()
     
     let pet: PetProtocol
@@ -65,44 +66,45 @@ struct PetBottomSheetView: View, Dismissable {
     }
     
     var body: some View {
-        let theme = ThemeService.shared.theme
+        let theme = themeService.theme
         BottomSheetView(dismisser: dismisser, title: Text(pet.text ?? ""), content: VStack(spacing: 16) {
             ZStack(alignment: .top) {
                 StableBackgroundView(content: PetView(pet: pet).padding(.top, 40), animateFlying: false)
-                    .clipShape(.rect(cornerRadius: 12))
+                    .clipShape(.rect(cornerRadius: UIConstants.largeCornerRadius))
                 if showFeedResponse, let message = feedMessage {
                     Text(message)
                         .font(.system(size: 12))
                         .lineLimit(2)
                         .multilineTextAlignment(.center)
-                        .foregroundColor(Color(theme.primaryTextColor))
+                        .foregroundStyle(Color(theme.primaryTextColor))
                         .padding(.horizontal, 4)
                         .padding(.vertical, 3)
                         .background(Color(theme.contentBackgroundColor))
-                        .cornerRadius(8)
+                        .clipShape(.capsule)
                         .transition(.opacity)
                         .padding(.horizontal, 4)
                         .padding(.bottom, 8)
                         .frame(height: 124, alignment: .bottom)
                         .zIndex(3)
                     ProgressView(value: (feedValue ?? Float(trained)) / 50)
+                        .tint(Color(theme.successColor))
                         .animation(.smooth, value: feedValue)
                         .padding(.horizontal, 4)
                         .padding(.vertical, 3)
                         .background(Color(theme.contentBackgroundColor))
-                        .cornerRadius(8)
+                        .clipShape(.capsule)
                         .frame(width: 200)
                         .transition(.opacity)
                         .padding(.top, 6)
                         .zIndex(4)
                 }
             }
+            let buttonBackground = Color(theme.offsetBackgroundColor)
             if trained > 0 && pet.type != "special" && canRaise {
-                let buttonBackground = Color(theme.tintedSubtleUI)
                 HStack(spacing: 16) {
                     Button(action: {
                         isUsingSaddle = true
-                        dismisser.dismiss?()
+                        dismisser.dismiss()
                         inventoryRepository.feed(pet: pet, food: "Saddle")
                             .observeCompleted {
                             isUsingSaddle = false
@@ -113,42 +115,52 @@ struct PetBottomSheetView: View, Dismissable {
                                 ProgressView().habiticaProgressStyle(strokeWidth: 6)
                             } else {
                                 Image(Asset.feedSaddle.name).interpolation(.none)
-                                Text(L10n.Stable.useSaddle).font(.system(size: 16, weight: .semibold)).foregroundColor(Color(theme.tintedMainText)).underline(UIAccessibility.buttonShapesEnabled)
+                                Text(L10n.Stable.useSaddle).font(.system(size: 16, weight: .semibold)).foregroundStyle(Color(theme.primaryTextColor)).underline(UIAccessibility.buttonShapesEnabled)
                             }
                         }
                     }).buttonStyle { configuration in
-                        configuration.label
+                        let conf = configuration.label
                             .frame(height: 101)
                             .maxWidth(.infinity)
-                            .background(buttonBackground)
-                            .clipShape(.rect(cornerRadius: 12))
+                        if #available(iOS 26.0, *) {
+                            conf.glassEffect(.regular.interactive().tint(buttonBackground.opacity(0.9)), in: RoundedRectangle(cornerRadius: UIConstants.largeCornerRadius))
+                        } else {
+                            conf
+                                .background(buttonBackground)
+                                .clipShape(.rect(cornerRadius: UIConstants.largeCornerRadius))
+                        }
                     }
                     Button(action: {
                         isShowingFeeding = true
                     }, label: {
                         VStack {
                             Image(getFoodName()).interpolation(.none)
-                            Text(L10n.Stable.feed).font(.system(size: 16, weight: .semibold)).foregroundColor(Color(theme.tintedMainText)).underline(UIAccessibility.buttonShapesEnabled)
+                            Text(L10n.Stable.feed).font(.system(size: 16, weight: .semibold)).foregroundStyle(Color(theme.primaryTextColor)).underline(UIAccessibility.buttonShapesEnabled)
                         }
                     }).buttonStyle { configuration in
-                        configuration.label
+                        let conf = configuration.label
                             .frame(height: 101)
                             .maxWidth(.infinity)
-                            .background(buttonBackground)
-                            .clipShape(.rect(cornerRadius: 12))
+                        if #available(iOS 26.0, *) {
+                            conf.glassEffect(.regular.interactive().tint(buttonBackground.opacity(0.9)), in: RoundedRectangle(cornerRadius: UIConstants.largeCornerRadius))
+                        } else {
+                            conf
+                                .background(buttonBackground)
+                                .clipShape(.rect(cornerRadius: UIConstants.largeCornerRadius))
+                        }
                     }
                 }
             }
-            HabiticaButtonUI(label: Text(L10n.share), color: Color(theme.fixedTintColor), size: .compact) {
+            HabiticaButtonUI(label: Text(L10n.share).foregroundStyle(Color(theme.primaryTextColor)), color: buttonBackground) {
                 DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
                     SharingManager.share(pet: pet)
                 }
-                dismisser.dismiss?()
+                dismisser.dismiss()
             }
             if trained > 0 {
-                HabiticaButtonUI(label: Text(isCurrentPet ? L10n.unequip : L10n.equip), color: Color(theme.fixedTintColor), size: .compact) {
+                HabiticaButtonUI(label: Text(isCurrentPet ? L10n.unequip : L10n.equip), color: Color(theme.fixedTintColor)) {
                     onEquip()
-                    dismisser.dismiss?()
+                    dismisser.dismiss()
                 }
             }
         }
@@ -158,7 +170,7 @@ struct PetBottomSheetView: View, Dismissable {
                 FeedSheetView(onFeed: { food in
                         self.feedPet(food: food)
                     }, dismissParent: {
-                        dismisser.dismiss?()
+                        dismisser.dismiss()
                     }).presentationDetents([.medium, .large])
                         .presentationDragIndicator(.visible).navigationTitle(L10n.Titles.feedPet)
                 .navigationBarTitleDisplayMode(.inline)
@@ -178,7 +190,7 @@ struct PetBottomSheetView: View, Dismissable {
     private func feedPet(food: FoodProtocol) {
         self.inventoryRepository.feed(pet: pet, food: food).observeValues { response in
             if response?.data == -1 {
-                dismisser.dismiss?()
+                dismisser.dismiss()
                 return
             }
             withAnimation {
@@ -203,7 +215,7 @@ struct PetBottomSheetView: View, Dismissable {
     return PetBottomSheetView(pet: PreviewPet(egg: "BearCub", potion: "Base", type: "drop", text: "Base Bear Cub"), trained: 10, canRaise: true, isCurrentPet: false, onEquip: {})
 }
 
-private class PreviewPet: PetProtocol {
+class PreviewPet: PetProtocol {
     init(egg: String, potion: String, type: String? = nil, text: String? = nil) {
         self.key = "\(egg)-\(potion)"
         self.egg = egg

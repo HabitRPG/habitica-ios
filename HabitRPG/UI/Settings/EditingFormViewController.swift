@@ -57,7 +57,7 @@ class EditingTextField: UIStackView, UITextFieldDelegate {
         let view = PaddedLabel()
         view.horizontalPadding = 10
         view.translatesAutoresizingMaskIntoConstraints = false
-        view.font = .systemFont(ofSize: 13, weight: .regular)
+        view.font = .systemFont(ofSize: 15, weight: .regular)
         view.textColor = ThemeService.shared.theme.secondaryTextColor
         return view
     }()
@@ -70,16 +70,16 @@ class EditingTextField: UIStackView, UITextFieldDelegate {
         view.borderStyle = .none
         view.backgroundColor = ThemeService.shared.theme.offsetBackgroundColor.withAlphaComponent(0.75)
         view.textColor = ThemeService.shared.theme.primaryTextColor
-        view.cornerRadius = 8
+        view.cornerRadius = UIConstants.largeCornerRadius
         view.borderWidth = 1
         view.borderColor = .clear
-        view.textInsets = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
+        view.textInsets = UIEdgeInsets(top: 16, left: 16, bottom: 16, right: 16)
         return view
     }()
     
     private let errorView: UILabel = {
         let view = PaddedLabel()
-        view.horizontalPadding = 10
+        view.horizontalPadding = 16
         view.translatesAutoresizingMaskIntoConstraints = false
         view.font = .systemFont(ofSize: 13, weight: .regular)
         view.textColor = ThemeService.shared.theme.errorColor
@@ -150,11 +150,11 @@ class EditingTextField: UIStackView, UITextFieldDelegate {
     }
     
     func textFieldDidBeginEditing(_ textField: UITextField) {
-        titleView.font = .systemFont(ofSize: 13, weight: .semibold)
+        titleView.font = .systemFont(ofSize: 15, weight: .semibold)
     }
     
     func textFieldDidEndEditing(_ textField: UITextField, reason: UITextField.DidEndEditingReason) {
-        titleView.font = .systemFont(ofSize: 13, weight: .regular)
+        titleView.font = .systemFont(ofSize: 15, weight: .regular)
         updateValidation(onlyPositive: false)
     }
     
@@ -210,9 +210,15 @@ class EditingFormViewController: UIViewController, Themeable {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        view.backgroundColor = .clear
         title = formTitle
-        navigationItem.leftBarButtonItem = UIBarButtonItem.init(title: L10n.cancel, style: .plain, target: self, action: #selector(dismissForm))
-        navigationItem.rightBarButtonItem = UIBarButtonItem.init(title: saveButtonTitle ?? L10n.save, style: .plain, target: self, action: #selector(saveForm))
+        if #available(iOS 26.0, *) {
+            navigationItem.rightBarButtonItem = UIBarButtonItem.init(barButtonSystemItem: .done, target: self, action: #selector(saveForm))
+            navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(dismissForm))
+        } else {
+            navigationItem.rightBarButtonItem = UIBarButtonItem.init(title: saveButtonTitle ?? L10n.save, style: .plain, target: self, action: #selector(saveForm))
+            navigationItem.leftBarButtonItem = UIBarButtonItem.init(title: L10n.cancel, style: .plain, target: self, action: #selector(dismissForm))
+        }
         view.addSubview(scrollView)
         scrollView.addSubview(stackView)
         
@@ -258,7 +264,6 @@ class EditingFormViewController: UIViewController, Themeable {
         }
     }
 
-    
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         if autoFocusFirstField {
@@ -267,7 +272,11 @@ class EditingFormViewController: UIViewController, Themeable {
     }
     
     func applyTheme(theme: Theme) {
-        scrollView.backgroundColor = theme.contentBackgroundColor
+        if #unavailable(iOS 26.0) {
+            scrollView.backgroundColor = theme.contentBackgroundColor
+        } else {
+            navigationItem.rightBarButtonItem?.tintColor = theme.fixedTintColor
+        }
     }
     
     @objc

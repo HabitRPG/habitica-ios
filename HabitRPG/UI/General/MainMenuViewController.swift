@@ -96,7 +96,7 @@ class MenuItem {
         MenuItem(key: .customizeAvatar, title: "", vcInstantiator: StoryboardScene.Main.avatarOverviewViewController.instantiate),
         MenuItem(key: .equipment, title: "", vcInstantiator: StoryboardScene.Main.equipmentOverviewViewController.instantiate),
         MenuItem(key: .items, title: "", vcInstantiator: StoryboardScene.Main.itemsViewController.instantiate),
-        MenuItem(key: .stable, title: "", vcInstantiator: StoryboardScene.Main.stableViewController.instantiate),
+        MenuItem(key: .stable, title: "", vcInstantiator: StoryboardScene.Stable.stableViewController.instantiate),
         MenuItem(key: .gems, title: "", vcInstantiator: StoryboardScene.Main.purchaseGemNavController.instantiate),
         MenuItem(key: .subscription, title: "", vcInstantiator: StoryboardScene.Main.subscriptionNavController.instantiate),
         MenuItem(key: .party, title: "", vcInstantiator: StoryboardScene.Social.partyViewController.instantiate),
@@ -135,7 +135,7 @@ class MenuItem {
             .questDetail: L10n.quest,
             .challenges: L10n.Titles.challenges,
             .news: L10n.Titles.news,
-            .support: L10n.Menu.support,
+            .support: L10n.Menu.helpFaq,
             .about: L10n.Titles.about,
             .settings: L10n.Titles.settings,
             .messages: L10n.Titles.messages,
@@ -193,6 +193,7 @@ class MainMenuViewController: BaseTableViewController {
     private var disposable = ScopedDisposable(CompositeDisposable())
     private var seasonalShopTimer: Timer?
     private var promoTimer: Timer?
+    private let stretchView = GradientView()
 
     private var menuSections = [MenuSection]()
     var visibleSections: [MenuSection] {
@@ -204,15 +205,20 @@ class MainMenuViewController: BaseTableViewController {
 
     private var user: UserProtocol? {
         didSet {
+            guard user?.isValid == true else {
+                return
+            }
             if let user = self.user {
                 navbarView.configure(user: user)
             }
             let statsItem = menuItem(withKey: .stats)
             if user?.preferences?.disableClasses == true {
                 statsItem.isHidden = true
+            } else if (user?.stats?.level ?? 0) >= 10 && user?.flags?.classSelected == false {
+                statsItem.isHidden = true
             } else {
                 statsItem.isHidden = false
-                if user?.stats?.level ?? 0 < 10 || user?.flags?.classSelected == false {
+                if user?.stats?.level ?? 0 < 10 {
                     statsItem.subtitle = L10n.unlocksLevelTen
                     statsItem.isDisabled = true
                 } else {
@@ -279,6 +285,7 @@ class MainMenuViewController: BaseTableViewController {
     private static let subscriptionFooterTag = 11111
     
     fileprivate func setupFooter() {
+        stretchView.isHidden = true
         if configRepository.bool(variable: .showSubscriptionBanner) {
             if tableView.tableFooterView?.tag == MainMenuViewController.subscriptionFooterTag {
                 return
@@ -293,8 +300,12 @@ class MainMenuViewController: BaseTableViewController {
                 if tableView.tableFooterView?.tag == promoTag {
                     return
                 }
-                let view = PromoMenuView(frame: CGRect(x: 0, y: 0, width: tableView.frame.size.width, height: 148))
+                let view = PromoMenuView(frame: CGRect(x: 0, y: 0, width: tableView.frame.size.width, height: 168))
                 promo.configurePromoMenuView(view: view)
+                stretchView.isHidden = false
+                stretchView.startColor = promo.gradientStart ?? promo.backgroundColor
+                stretchView.endColor = promo.gradientEnd ?? promo.backgroundColor
+                stretchView.diagonalMode = true
                 view.onButtonTapped = { [weak self] in
                     if self?.activePromo?.isWebPromo == true {
                         self?.perform(segue: StoryboardSegue.Main.showWebPromoSegue)
@@ -311,6 +322,7 @@ class MainMenuViewController: BaseTableViewController {
                 tableView.tableFooterView = view
             } else {
                 tableView.tableFooterView = nil
+                stretchView.isHidden = false
             }
         }
     }
@@ -318,6 +330,7 @@ class MainMenuViewController: BaseTableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.register(UINib(nibName: "MainTableviewCell", bundle: nil), forCellReuseIdentifier: "Cell")
+        tableView.rowHeight = UITableView.automaticDimension
         setupHeader()
         
         #if !targetEnvironment(macCatalyst)
@@ -395,16 +408,6 @@ class MainMenuViewController: BaseTableViewController {
         disposable.inner.add(contentRepository.getWorldState()
                                 .combineLatest(with: inventoryRepository.getCurrentTimeLimitedItems())
                                 .on(value: {[weak self] (worldState, items) in
-                                    if let event = self?.configRepository.getBirthdayEvent(), (event.end?.timeIntervalSince1970 ?? 0) > Date().timeIntervalSince1970 {
-                                        let width: CGFloat = (self?.view.bounds.width ?? 300) - 40
-                                        let view = UIHostingView(rootView: BirthdayBannerview(width: width, endDate: event.end).onTapGesture {
-                                            self?.present(BirthdayViewController(), animated: true)
-                                        })
-                                        let container = UIView(frame: CGRect(x: 0, y: 0, width: width, height: 110))
-                                        container.addSubview(view)
-                                        view.frame = CGRect(x: 20, y: 10, width: width, height: 110)
-                                        self?.tableView.tableHeaderView = container
-                                    }
             self?.seasonalShopTimer?.invalidate()
                                     self?.updateSeasonalEntries(worldState: worldState, items: items)
             self?.seasonalShopTimer = Timer.scheduledTimer(withTimeInterval: 60.0, repeats: true, block: {[weak self] _ in
@@ -414,6 +417,7 @@ class MainMenuViewController: BaseTableViewController {
         
         splitViewController?.displayModeButtonVisibility = .always
         splitViewController?.showsSecondaryOnlyButton = true
+        tableView.addSubview(stretchView)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -428,6 +432,16 @@ class MainMenuViewController: BaseTableViewController {
                     self?.updatePromoCells()
                 })
         }
+    }
+    
+    override func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        let contentHeight = scrollView.contentSize.height
+        if contentHeight > 0 {
+            let footerSize = (tableView.tableFooterView?.frame.height ?? 0)
+            let bottomSize = max(0, scrollView.contentOffset.y - (contentHeight - scrollView.frame.size.height)) + footerSize
+            stretchView.frame = CGRect(x: 0, y: contentHeight - footerSize, width: scrollView.frame.size.width, height: bottomSize)
+        }
+        super.scrollViewDidScroll(scrollView)
     }
     
     private func updatePromoCells() {
@@ -762,19 +776,14 @@ class MainMenuViewController: BaseTableViewController {
     }
     
     func giftSubscriptionButtonTapped() {
-        let navController = EditingFormViewController.buildWithUsernameField(title: L10n.giftRecipientTitle, subtitle: L10n.giftRecipientSubtitle, onSave: { username in
-            self.giftRecipientUsername = username
-            self.perform(segue: StoryboardSegue.Main.openGiftSubscriptionDialog)
-        }, saveButtonTitle: L10n.continue)
-        present(navController, animated: true, completion: nil)
+        let alertController = GiftingAlertController(title: L10n.giftSubscription, message: L10n.giftGemsAlertText) { username in
+            RouterHandler.shared.handle(.giftSubscription(username: username))
+        }
+        alertController.show()
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == StoryboardSegue.Main.openGiftSubscriptionDialog.rawValue {
-            let navigationController = segue.destination as? UINavigationController
-            let giftSubscriptionController = navigationController?.topViewController as? GiftSubscriptionViewController
-            giftSubscriptionController?.giftRecipientUsername = giftRecipientUsername
-        } else if segue.identifier == StoryboardSegue.Main.showMarketSegue.rawValue {
+        if segue.identifier == StoryboardSegue.Main.showMarketSegue.rawValue {
             (segue.destination as? ShopViewController)?.shopIdentifier = Constants.MarketKey
         } else if segue.identifier == StoryboardSegue.Main.showQuestShopSegue.rawValue {
             (segue.destination as? ShopViewController)?.shopIdentifier = Constants.QuestShopKey

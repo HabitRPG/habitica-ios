@@ -32,6 +32,8 @@ public enum L10n {
   }
   /// Add
   public static var add: String { return L10n.tr("Mainstrings", "add") }
+  /// Add new Tag
+  public static var addTag: String { return L10n.tr("Mainstrings", "add_tag") }
   /// Complete these onboarding tasks and you’ll earn 5 Achievements and 100 Gold once you’re done!
   public static var adventureGuideDescription: String { return L10n.tr("Mainstrings", "adventure_guide_description") }
   /// I agree to follow the guidelines
@@ -54,6 +56,8 @@ public enum L10n {
   public static var apiTokenResetTitle: String { return L10n.tr("Mainstrings", "api_token_reset_title") }
   /// API Token
   public static var apiTokenTitle: String { return L10n.tr("Mainstrings", "api_token_title") }
+  /// Assigned Stat
+  public static var assignedStat: String { return L10n.tr("Mainstrings", "assigned_stat") }
   /// Back
   public static var back: String { return L10n.tr("Mainstrings", "back") }
   /// Backer Tier: %d
@@ -96,6 +100,8 @@ public enum L10n {
   }
   /// Body Size
   public static var bodySize: String { return L10n.tr("Mainstrings", "body_size") }
+  /// Boss
+  public static var boss: String { return L10n.tr("Mainstrings", "boss") }
   /// Broad
   public static var broad: String { return L10n.tr("Mainstrings", "broad") }
   /// Broken Challenge
@@ -140,6 +146,8 @@ public enum L10n {
   public static var challengeJoinedDescription: String { return L10n.tr("Mainstrings", "challengeJoinedDescription") }
   /// Joined a Challenge
   public static var challengeJoinedTitle: String { return L10n.tr("Mainstrings", "challengeJoinedTitle") }
+  /// Challenges Won
+  public static var challengesWon: String { return L10n.tr("Mainstrings", "challenges_won") }
   /// Change
   public static var change: String { return L10n.tr("Mainstrings", "change") }
   /// Change class to %@
@@ -152,11 +160,21 @@ public enum L10n {
   public static var characterLevel: String { return L10n.tr("Mainstrings", "character_level") }
   /// Chat
   public static var chat: String { return L10n.tr("Mainstrings", "chat") }
+  /// Who would you like to chat with?
+  public static var chatWithQuestion: String { return L10n.tr("Mainstrings", "chat_with_question") }
+  /// You earned a %s for being committed to improving your life
+  public static func checkinPrizeDescription(_ p1: UnsafePointer<CChar>) -> String {
+    return L10n.tr("Mainstrings", "checkin_prize_description", p1)
+  }
   /// You earned a %@ as a reward for your devotion to improving your life.
   public static func checkinPrizeEarned(_ p1: String) -> String {
     return L10n.tr("Mainstrings", "checkin_prize_earned", p1)
   }
-  /// Check off any Dailies you did yesterday:
+  /// You earned a set of %s for being committed to improving your life
+  public static func checkinPrizeSetDescription(_ p1: UnsafePointer<CChar>) -> String {
+    return L10n.tr("Mainstrings", "checkin_prize_set_description", p1)
+  }
+  /// Check off any Dailies you did yesterday before starting today:
   public static var checkinYesterdaysDalies: String { return L10n.tr("Mainstrings", "checkin_yesterdays_dalies") }
   /// Choose Task
   public static var chooseTask: String { return L10n.tr("Mainstrings", "choose_task") }
@@ -166,10 +184,10 @@ public enum L10n {
   }
   /// This will switch which gear is unlocked in the shops, change your available skills, and reset your stat points.
   public static var classChangeConfirmDescription: String { return L10n.tr("Mainstrings", "class_change_confirm_description") }
-  /// You can now use %@ skills and purchase gear from shops. Gain levels to earn stat points you can use to power up your skills.
-  public static func classChangeSuccessDescription(_ p1: String) -> String {
-    return L10n.tr("Mainstrings", "class_change_success_description", p1)
-  }
+  /// Every level you earn a Stat point that you can use to power up your Skills and affect the gameplay aspects of Habitica
+  public static var classChangeSuccessDescription: String { return L10n.tr("Mainstrings", "class_change_success_description") }
+  /// You can now allocate stats
+  public static var classChangeSuccessSubtitle: String { return L10n.tr("Mainstrings", "class_change_success_subtitle") }
   /// You're a %@!
   public static func classChangeSuccessTitle(_ p1: String) -> String {
     return L10n.tr("Mainstrings", "class_change_success_title", p1)
@@ -180,8 +198,12 @@ public enum L10n {
   }
   /// Class System disabled.
   public static var classSystemDisabled: String { return L10n.tr("Mainstrings", "class_system_disabled") }
-  /// You can enable the class system from the apps settings.
+  /// You can enable the class system from Settings to choose a class later
   public static var classSystemEnableInstructions: String { return L10n.tr("Mainstrings", "class_system_enable_instructions") }
+  /// Class system unlocked
+  public static var classSystemUnlocked: String { return L10n.tr("Mainstrings", "class_system_unlocked") }
+  /// Choose a class that fits your play style and unlock special skills and armor to help you on your journey
+  public static var classSystemUnlockedDescription: String { return L10n.tr("Mainstrings", "class_system_unlocked_description") }
   /// Clear
   public static var clear: String { return L10n.tr("Mainstrings", "clear") }
   /// To do this, open Menu > Settings then scroll to the bottom to find the buttons
@@ -224,6 +246,10 @@ public enum L10n {
   public static var `continue`: String { return L10n.tr("Mainstrings", "continue") }
   /// Continue Benefits
   public static var continueBenefits: String { return L10n.tr("Mainstrings", "continue_benefits") }
+  /// Contributor Tiers
+  public static var contributorTiers: String { return L10n.tr("Mainstrings", "contributor_tiers") }
+  /// If you see an account with a colored display name and an icon, that’s a contributor tier! Tiers are given to people who help around Habitica, whether it be for translation, coding, or just being helpful. The higher the tier, the more the player has contributed.
+  public static var contributorTiersDescription: String { return L10n.tr("Mainstrings", "contributor_tiers_description") }
   /// Controls
   public static var controls: String { return L10n.tr("Mainstrings", "controls") }
   /// Copied Message
@@ -312,8 +338,14 @@ public enum L10n {
   public static func deleteChallengeTaskDescription(_ p1: Int, _ p2: String) -> String {
     return L10n.tr("Mainstrings", "delete_challenge_task_description", p1, p2)
   }
+  /// Are you sure you want to delete this Task?
+  public static var deleteTaskConfirmation: String { return L10n.tr("Mainstrings", "delete_task_confirmation") }
   /// Delete Tasks
   public static var deleteTasks: String { return L10n.tr("Mainstrings", "delete_tasks") }
+  /// Delete %s
+  public static func deleteX(_ p1: UnsafePointer<CChar>) -> String {
+    return L10n.tr("Mainstrings", "delete_x", p1)
+  }
   /// Delete %d Tasks
   public static func deleteXTasks(_ p1: Int) -> String {
     return L10n.tr("Mainstrings", "delete_x_tasks", p1)
@@ -350,6 +382,8 @@ public enum L10n {
   public static var editChallengeTasks: String { return L10n.tr("Mainstrings", "edit_challenge_tasks") }
   /// Edit Tag
   public static var editTag: String { return L10n.tr("Mainstrings", "edit_tag") }
+  /// Edit Tags
+  public static var editTags: String { return L10n.tr("Mainstrings", "edit_tags") }
   /// Egg
   public static var egg: String { return L10n.tr("Mainstrings", "egg") }
   /// Eggs
@@ -370,6 +404,8 @@ public enum L10n {
   }
   /// Equip
   public static var equip: String { return L10n.tr("Mainstrings", "equip") }
+  /// Equipped Gear
+  public static var equippedGear: String { return L10n.tr("Mainstrings", "equipped_gear") }
   /// You Equipped %s
   public static func equippedX(_ p1: UnsafePointer<CChar>) -> String {
     return L10n.tr("Mainstrings", "equipped_x", p1)
@@ -398,6 +434,8 @@ public enum L10n {
   public static var failed: String { return L10n.tr("Mainstrings", "failed") }
   /// Fall
   public static var fall: String { return L10n.tr("Mainstrings", "fall") }
+  /// You can restore streaks on individual tasks by tapping them to open the edit view
+  public static var fcvStreakExplanation: String { return L10n.tr("Mainstrings", "fcv_streak_explanation") }
   /// Every Pet has a specific food they enjoy! Experiment to find out which will grow your Pet the fastest
   public static var fedPetDescription: String { return L10n.tr("Mainstrings", "fedPetDescription") }
   /// Fed a Pet
@@ -410,11 +448,13 @@ public enum L10n {
   public static var filter: String { return L10n.tr("Mainstrings", "filter") }
   /// Filter by Tags
   public static var filterByTags: String { return L10n.tr("Mainstrings", "filter_by_tags") }
+  /// You can find stats any time in the Menu
+  public static var findStatsMenu: String { return L10n.tr("Mainstrings", "find_stats_menu") }
   /// Finish
   public static var finish: String { return L10n.tr("Mainstrings", "finish") }
   /// Completing tasks gives you a chance to find eggs, hatching potions, and pet food.
   public static var firstDropExplanation1: String { return L10n.tr("Mainstrings", "first_drop_explanation1") }
-  /// Head to your Items and try combining your new Egg and Hatching Potion!
+  /// Try combining your new Egg and Hatching Potion!
   public static var firstDropExplanation2: String { return L10n.tr("Mainstrings", "first_drop_explanation2") }
   /// You found new items!
   public static var firstDropTitle: String { return L10n.tr("Mainstrings", "first_drop_title") }
@@ -446,7 +486,7 @@ public enum L10n {
   public static var gems: String { return L10n.tr("Mainstrings", "gems") }
   /// Gems are a currency purchased with real money that allow you to buy extra content within Habitica and are one of the main sources of financial support for the Habitica team alongside subscriptions.\n\nAll content purchased through Gems is purely cosmetic or can be obtained for free with time.\n\nYou can also receive Gems through gifts from other players, Challenge prizes, contributing to Habitica, or subscribing.
   public static var gemsDescription: String { return L10n.tr("Mainstrings", "gems_description") }
-  /// Purchasing Gems supports our small team and helps keep Habitica running
+  /// Purchasing Gems supports our small team at Habitica!
   public static var gemsSupportDevelopers: String { return L10n.tr("Mainstrings", "gems_support_developers") }
   /// Get more out of Habitica
   public static var getMoreHabitica: String { return L10n.tr("Mainstrings", "get_more_habitica") }
@@ -470,7 +510,9 @@ public enum L10n {
   public static var giftGems: String { return L10n.tr("Mainstrings", "gift_gems") }
   /// Enter recipient's @username
   public static var giftGemsAlertPrompt: String { return L10n.tr("Mainstrings", "gift_gems_alert_prompt") }
-  /// Who would you like to send your gift to?
+  /// What account would you like to send your gift to?
+  public static var giftGemsAlertText: String { return L10n.tr("Mainstrings", "gift_gems_alert_text") }
+  /// Git Gems
   public static var giftGemsAlertTitle: String { return L10n.tr("Mainstrings", "gift_gems_alert_title") }
   /// Habitica will never require you to gift gems to other players. Begging people for gems is a violation of the Community Guidelines and should be reported to admin@habitica.com.
   public static var giftGemsDisclaimer: String { return L10n.tr("Mainstrings", "gift_gems_disclaimer") }
@@ -510,13 +552,17 @@ public enum L10n {
   public static var giftSubscriptionPrompt: String { return L10n.tr("Mainstrings", "gift_subscription_prompt") }
   /// Glasses
   public static var glasses: String { return L10n.tr("Mainstrings", "glasses") }
+  /// Glossary
+  public static var glossary: String { return L10n.tr("Mainstrings", "glossary") }
   /// Go Shopping
   public static var goShopping: String { return L10n.tr("Mainstrings", "go_shopping") }
   /// Go to Items
   public static var goToItems: String { return L10n.tr("Mainstrings", "go_to_items") }
+  /// Go to Pets & Mounts
+  public static var goToPetsMounts: String { return L10n.tr("Mainstrings", "go_to_pets_mounts") }
   /// Gold
   public static var gold: String { return L10n.tr("Mainstrings", "gold") }
-  /// Gold is the **main form of currency** within Habitica and allows you to buy certain gear, quests, items, or even custom rewards you make for yourself.\n\n**Earn Gold** through completing tasks or quests, or through some Class skills. Higher **Perception stats** raise the amount of Gold you earn.\n\nIf you subscribe to Habitica, you can even use Gold to purchase a number of Gems determined by the length of time you’ve been subscribed.
+  /// Gold is the main form of currency within Habitica and allows you to buy certain gear, quests, items, or even custom rewards you make for yourself.\n\nEarn Gold through completing tasks, quests, or through some Class skills.
   public static var goldDescription: String { return L10n.tr("Mainstrings", "gold_description") }
   /// Got it!
   public static var gotIt: String { return L10n.tr("Mainstrings", "got_it") }
@@ -532,6 +578,8 @@ public enum L10n {
   public static var guildJoinedDescription: String { return L10n.tr("Mainstrings", "guildJoinedDescription") }
   /// Joined a Guild
   public static var guildJoinedTitle: String { return L10n.tr("Mainstrings", "guildJoinedTitle") }
+  /// Habitica Helpers
+  public static var habiticaHelpers: String { return L10n.tr("Mainstrings", "habitica_helpers") }
   /// Hatch
   public static var hatch: String { return L10n.tr("Mainstrings", "hatch") }
   /// Use on Egg
@@ -542,6 +590,8 @@ public enum L10n {
   public static var hatchPetAgain: String { return L10n.tr("Mainstrings", "hatch_pet_again") }
   /// Complete tasks to get a Hatching Potion and Egg then hatch your Pet!
   public static var hatchPetDescription: String { return L10n.tr("Mainstrings", "hatch_pet_description") }
+  /// Hatch a new Pet
+  public static var hatchPetNewTitle: String { return L10n.tr("Mainstrings", "hatch_pet_new_title") }
   /// Hatch a Pet
   public static var hatchPetTitle: String { return L10n.tr("Mainstrings", "hatch_pet_title") }
   /// Hatch with potion
@@ -600,6 +650,12 @@ public enum L10n {
   public static var isClosed: String { return L10n.tr("Mainstrings", "is_closed") }
   /// Open
   public static var isOpen: String { return L10n.tr("Mainstrings", "is_open") }
+  /// Item is locked
+  public static var itemIsLocked: String { return L10n.tr("Mainstrings", "item_is_locked") }
+  /// This item is only available to %s
+  public static func itemOnlyAvailableFor(_ p1: UnsafePointer<CChar>) -> String {
+    return L10n.tr("Mainstrings", "item_only_available_for", p1)
+  }
   /// Join
   public static var join: String { return L10n.tr("Mainstrings", "join") }
   /// Join Challenge
@@ -608,6 +664,10 @@ public enum L10n {
   public static var joinHabitica: String { return L10n.tr("Mainstrings", "join_habitica") }
   /// Joined Challenge
   public static var joinedChallenge: String { return L10n.tr("Mainstrings", "joined_challenge") }
+  /// Joined %s
+  public static func joinedX(_ p1: UnsafePointer<CChar>) -> String {
+    return L10n.tr("Mainstrings", "joined_x", p1)
+  }
   /// Jubilant Gryphatrice
   public static var jubilantGryphatrice: String { return L10n.tr("Mainstrings", "jubilant_gryphatrice") }
   /// Keep Tasks
@@ -668,6 +728,10 @@ public enum L10n {
   public static var limitedEdition: String { return L10n.tr("Mainstrings", "limited_edition") }
   /// Limited Event
   public static var limitedEvent: String { return L10n.tr("Mainstrings", "limited_event") }
+  /// Loading
+  public static var loading: String { return L10n.tr("Mainstrings", "loading") }
+  /// Logins
+  public static var logins: String { return L10n.tr("Mainstrings", "logins") }
   /// Magic Potion
   public static var magicPotion: String { return L10n.tr("Mainstrings", "magic_potion") }
   /// Magic Potions
@@ -686,6 +750,8 @@ public enum L10n {
   public static var maxGemCap: String { return L10n.tr("Mainstrings", "max_gem_cap") }
   /// Member of a Group Plan
   public static var memberGroupPlan: String { return L10n.tr("Mainstrings", "member_group_plan") }
+  /// Membership
+  public static var membership: String { return L10n.tr("Mainstrings", "membership") }
   /// Menu
   public static var menu: String { return L10n.tr("Mainstrings", "menu") }
   /// Message
@@ -704,7 +770,9 @@ public enum L10n {
   public static var monthlyGemCapReached: String { return L10n.tr("Mainstrings", "monthly_gem_cap_reached") }
   /// months
   public static var months: String { return L10n.tr("Mainstrings", "months") }
-  /// You’ll need more Gems to buy this item!
+  /// More Gem packs
+  public static var moreGemPacks: String { return L10n.tr("Mainstrings", "more_gem_packs") }
+  /// You’ll need more Gems to buy this
   public static var moreGemsMessage: String { return L10n.tr("Mainstrings", "more_gems_message") }
   /// Report a Bug
   public static var moreHelpButton: String { return L10n.tr("Mainstrings", "more_help_button") }
@@ -718,12 +786,16 @@ public enum L10n {
   public static var moreQuestionsText: String { return L10n.tr("Mainstrings", "more_questions_text") }
   /// Still have a question?
   public static var moreQuestionsTitle: String { return L10n.tr("Mainstrings", "more_questions_title") }
+  /// Mount
+  public static var mount: String { return L10n.tr("Mainstrings", "mount") }
   /// You have earned the “Mount Master” achievement for taming all the mounts!
   public static var mountMasterDescription: String { return L10n.tr("Mainstrings", "mountMasterDescription") }
   /// Mount Master
   public static var mountMasterTitle: String { return L10n.tr("Mainstrings", "mountMasterTitle") }
   /// Mounts
   public static var mounts: String { return L10n.tr("Mainstrings", "mounts") }
+  /// Mounts Found
+  public static var mountsFound: String { return L10n.tr("Mainstrings", "mounts_found") }
   /// Mute User
   public static var muteUser: String { return L10n.tr("Mainstrings", "mute_user") }
   /// Do you want to mute this user?
@@ -762,11 +834,13 @@ public enum L10n {
   public static func nextPaymentX(_ p1: String) -> String {
     return L10n.tr("Mainstrings", "next_payment_x", p1)
   }
-  /// Next prize at %d Check-Ins
+  /// Next prize at %d days!
   public static func nextPrizeAtXCheckins(_ p1: Int) -> String {
     return L10n.tr("Mainstrings", "next_prize_at_x_checkins", p1)
   }
-  /// Next prize in %d Check-Ins
+  /// Next prize in 1 day!
+  public static var nextPrizeIn1Checkin: String { return L10n.tr("Mainstrings", "next_prize_in_1_checkin") }
+  /// Next prize in %d days!
   public static func nextPrizeInXCheckins(_ p1: Int) -> String {
     return L10n.tr("Mainstrings", "next_prize_in_x_checkins", p1)
   }
@@ -788,6 +862,8 @@ public enum L10n {
   public static func noX(_ p1: String) -> String {
     return L10n.tr("Mainstrings", "no_x", p1)
   }
+  /// None
+  public static var `none`: String { return L10n.tr("Mainstrings", "none") }
   /// Not Due
   public static var notDue: String { return L10n.tr("Mainstrings", "not_due") }
   /// Not enough Gems
@@ -798,6 +874,10 @@ public enum L10n {
   public static var notEnoughHourglasses: String { return L10n.tr("Mainstrings", "not_enough_hourglasses") }
   /// Not getting the right drops? Check out the Market to buy just the things you need!
   public static var notGettingDrops: String { return L10n.tr("Mainstrings", "not_getting_drops") }
+  /// Not right now
+  public static var notNow: String { return L10n.tr("Mainstrings", "not_now") }
+  /// Not participating
+  public static var notParticipating: String { return L10n.tr("Mainstrings", "not_participating") }
   /// Not Recurring
   public static var notRecurring: String { return L10n.tr("Mainstrings", "not_recurring") }
   /// Notes
@@ -808,11 +888,11 @@ public enum L10n {
   public static var ok: String { return L10n.tr("Mainstrings", "ok") }
   /// Onboarding Tasks
   public static var onboardingTasks: String { return L10n.tr("Mainstrings", "onboarding_tasks") }
-  /// You completed your OnboardingTasks!
+  /// You completed your onboarding tasks!
   public static var onboardingCompleteAchievementTitle: String { return L10n.tr("Mainstrings", "onboardingComplete_achievement_title") }
   /// If you want even more, check out Achievements and start collecting!
   public static var onboardingCompleteDescription: String { return L10n.tr("Mainstrings", "onboardingCompleteDescription") }
-  /// You earned 5 Achievements and 100 Gold for your efforts.
+  /// You earned **5 Achievements** and **[100 Gold](/fake)** for your efforts.
   public static var onboardingCompleteTitle: String { return L10n.tr("Mainstrings", "onboardingCompleteTitle") }
   /// 1 Filter
   public static var oneFilter: String { return L10n.tr("Mainstrings", "one_filter") }
@@ -850,6 +930,10 @@ public enum L10n {
   public static func ownTodayFor(_ p1: UnsafePointer<CChar>, _ p2: Int) -> String {
     return L10n.tr("Mainstrings", "own_today_for", p1, p2)
   }
+  /// Ownership
+  public static var ownership: String { return L10n.tr("Mainstrings", "ownership") }
+  /// Participating
+  public static var participating: String { return L10n.tr("Mainstrings", "participating") }
   /// A Party Robe
   public static var partyRobe: String { return L10n.tr("Mainstrings", "party_robe") }
   /// Your party grew to 4 members!
@@ -876,6 +960,8 @@ public enum L10n {
   public static var performanceAnalytics: String { return L10n.tr("Mainstrings", "performance_analytics") }
   /// This is used to improve the player experience, performance, and services of Habitica. Our support team will also use this when handling requests and bug reports.
   public static var performanceAnalyticsDescription: String { return L10n.tr("Mainstrings", "performance_analytics_description") }
+  /// Pet
+  public static var pet: String { return L10n.tr("Mainstrings", "pet") }
   /// %@, Mount Owned
   public static func petAccessibilityLabelMountOwned(_ p1: String) -> String {
     return L10n.tr("Mainstrings", "pet_accessibility_label_mount_owned", p1)
@@ -886,6 +972,8 @@ public enum L10n {
   }
   /// Pets
   public static var pets: String { return L10n.tr("Mainstrings", "pets") }
+  /// Pets Found
+  public static var petsFound: String { return L10n.tr("Mainstrings", "pets_found") }
   /// Photo URL
   public static var photoUrl: String { return L10n.tr("Mainstrings", "photo_url") }
   /// Pin
@@ -894,6 +982,10 @@ public enum L10n {
   public static var plainBackgrounds: String { return L10n.tr("Mainstrings", "plain_backgrounds") }
   /// Player
   public static var player: String { return L10n.tr("Mainstrings", "player") }
+  /// Player has not completed any quests.
+  public static var playerNotCompletedQuests: String { return L10n.tr("Mainstrings", "player_not_completed_quests") }
+  /// Player has not won any challenges.
+  public static var playerNotWonChallenges: String { return L10n.tr("Mainstrings", "player_not_won_challenges") }
   /// Plenty of Potions
   public static var plentyOfPotions: String { return L10n.tr("Mainstrings", "plenty_of_potions") }
   /// We’re bringing back 10 of the community’s favorite Magic Hatching Potions. Head over to the Market to fill out your collection!
@@ -906,7 +998,7 @@ public enum L10n {
   public static var privacyPolicy: String { return L10n.tr("Mainstrings", "privacy_policy") }
   /// Your privacy is important to us. Habitica uses data from your device to analyze performance, handle support requests, and provide you with the best possible gamified experience. To do that, we need to request the following permissions.\n\nYou can change these at any time from your account settings.
   public static var privacyPreferencesFullDescription: String { return L10n.tr("Mainstrings", "privacy_preferences_full_description") }
-  /// Habitica uses data from your device to analyze performance, handle support requests, and provide you with the best possible gamified experience. To do that, we need to request the following permissions.\n\nYou can change this at any time. To learn more, review our [Privacy Policy](https://habitica.com/static/privacy).
+  /// Your privacy is important to us. Habitica uses data from your device to analyze performance, handle support requests, and provide you with the best possible gamified experience. To do that, we need to request the following permissions.\n\nYou can change this at any time. To learn more, review our [Privacy Policy](https://habitica.com/static/privacy).
   public static var privacyPreferencesSheetDescription: String { return L10n.tr("Mainstrings", "privacy_preferences_sheet_description") }
   /// How it works
   public static var promoInfoInstructionsTitle: String { return L10n.tr("Mainstrings", "promo_info_instructions_title") }
@@ -943,6 +1035,10 @@ public enum L10n {
   /// You purchased %@
   public static func purchased(_ p1: String) -> String {
     return L10n.tr("Mainstrings", "purchased", p1)
+  }
+  /// You purchased %d %@
+  public static func purchasedAmount(_ p1: Int, _ p2: String) -> String {
+    return L10n.tr("Mainstrings", "purchased_amount", p1, p2)
   }
   /// Equipment can be practical or just fashionable. Raise your stats to get all sorts of benefits to your avatar
   public static var purchasedEquipmentDescription: String { return L10n.tr("Mainstrings", "purchasedEquipmentDescription") }
@@ -1102,12 +1198,18 @@ public enum L10n {
   public static var spring: String { return L10n.tr("Mainstrings", "spring") }
   /// Staff
   public static var staff: String { return L10n.tr("Mainstrings", "staff") }
+  /// Standard Mounts
+  public static var standardMounts: String { return L10n.tr("Mainstrings", "standard_mounts") }
+  /// Standard Pets
+  public static var standardPets: String { return L10n.tr("Mainstrings", "standard_pets") }
   /// Start my day
   public static var startMyDay: String { return L10n.tr("Mainstrings", "start_my_day") }
   /// Stat Allocation
   public static var statAllocation: String { return L10n.tr("Mainstrings", "stat_allocation") }
   /// All Habitica characters have four stats that affect the gameplay aspects of Habitica.\n\n**Strength (STR)** affects critical hits and raises damage done to a Quest Boss. Warriors and Rogues gain STR from their class equipment.\n\n**Constitution (CON)** raises your HP and makes you take less damage. Healers and Warriors gain CON from their class equipment.\n\n**Intelligence (INT)** raises the amount of EXP you earn and gives you more Mana. Mages and Healers gain INT from their class equipment.\n\n**Perception (PER)** increases the gold you earn and the rate of finding dropped items. Rogues and Mages gain PER from their class equipment.\n\nAfter level 10, you earn 1 Stat Point every level you gain that you can put into any stat you’d like. You can also equip gear that has different combinations of stat boosts.
   public static var statDescription: String { return L10n.tr("Mainstrings", "stat_description") }
+  /// Stats
+  public static var stats: String { return L10n.tr("Mainstrings", "stats") }
   /// Streak
   public static var streak: String { return L10n.tr("Mainstrings", "streak") }
   /// You've completed your Daily for 21 days in a row! Amazing job. Don't break the streak!
@@ -1216,12 +1318,22 @@ public enum L10n {
   }
   /// Tags
   public static var tags: String { return L10n.tr("Mainstrings", "tags") }
+  /// This will take effect immediately after buying!
+  public static var takeEffectImmediately: String { return L10n.tr("Mainstrings", "take_effect_immediately") }
   /// Take me back
   public static var takeMeBack: String { return L10n.tr("Mainstrings", "take_me_back") }
   /// Tap to Show
   public static var tapToShow: String { return L10n.tr("Mainstrings", "tap_to_show") }
+  /// Task
+  public static var task: String { return L10n.tr("Mainstrings", "task") }
+  /// Task Health
+  public static var taskHealth: String { return L10n.tr("Mainstrings", "task_health") }
   /// Task History (Very Experimental)
   public static var taskHistory: String { return L10n.tr("Mainstrings", "task_history") }
+  /// Task Reminder
+  public static var taskReminder: String { return L10n.tr("Mainstrings", "task_reminder") }
+  /// Task Status
+  public static var taskStatus: String { return L10n.tr("Mainstrings", "task_status") }
   /// Teleporting to Habitica
   public static var teleportingHabitica: String { return L10n.tr("Mainstrings", "teleporting_habitica") }
   /// Terms of Service
@@ -1262,6 +1374,8 @@ public enum L10n {
   public static var unbanUserConfirm: String { return L10n.tr("Mainstrings", "unban_user_confirm") }
   /// Unblock
   public static var unblockUser: String { return L10n.tr("Mainstrings", "unblock_user") }
+  /// Undo
+  public static var undo: String { return L10n.tr("Mainstrings", "undo") }
   /// Unequip
   public static var unequip: String { return L10n.tr("Mainstrings", "unequip") }
   /// Unhatched Pet
@@ -1274,6 +1388,8 @@ public enum L10n {
   public static var unlockDropsDescription: String { return L10n.tr("Mainstrings", "unlockDropsDescription") }
   /// You unlocked the drop system!
   public static var unlockDropsTitle: String { return L10n.tr("Mainstrings", "unlockDropsTitle") }
+  /// You unlocked another check-in prize!
+  public static var unlockedAnotherCheckinPrize: String { return L10n.tr("Mainstrings", "unlocked_another_checkin_prize") }
   /// Unlocks at level 10
   public static var unlocksLevelTen: String { return L10n.tr("Mainstrings", "unlocks_level_ten") }
   /// Unlocks after selecting a class
@@ -1346,6 +1462,8 @@ public enum L10n {
   public static var viewOnboardingTasks: String { return L10n.tr("Mainstrings", "view_onboarding_tasks") }
   /// View Participant Progress
   public static var viewParticipantProgress: String { return L10n.tr("Mainstrings", "view_participant_progress") }
+  /// View Stats
+  public static var viewStats: String { return L10n.tr("Mainstrings", "view_stats") }
   /// Visit the Market
   public static var visitTheMarket: String { return L10n.tr("Mainstrings", "visit_the_market") }
   /// Weak
@@ -1391,6 +1509,10 @@ public enum L10n {
   /// %d Gems
   public static func xGems(_ p1: Int) -> String {
     return L10n.tr("Mainstrings", "x_gems", p1)
+  }
+  /// %d Gems for %s
+  public static func xGemsForY(_ p1: Int, _ p2: UnsafePointer<CChar>) -> String {
+    return L10n.tr("Mainstrings", "x_gems_for_y", p1, p2)
   }
   /// %d gems a month
   public static func xGemsMonth(_ p1: Int) -> String {
@@ -1707,31 +1829,39 @@ public enum L10n {
     }
     /// Healer
     public static var healer: String { return L10n.tr("Mainstrings", "classes.healer") }
-    /// Healers stand impervious against harm, and extend that protection to others. Missed Dailies and bad Habits don't faze them much, and they have ways to recover Health from failure. Play a Healer if you enjoy assisting others in your Party, or if the idea of cheating Death through hard work inspires you!
+    /// Healers learn skills that protect themselves and their Party from damage. Play a Healer if you enjoy assisting others or lose HP frequently. Healers benefit from a high Constitution stat.
     public static var healerDescription: String { return L10n.tr("Mainstrings", "classes.healer_description") }
     /// Healers
     public static var healers: String { return L10n.tr("Mainstrings", "classes.healers") }
     /// Mage
     public static var mage: String { return L10n.tr("Mainstrings", "classes.mage") }
-    /// Mages learn swiftly, gaining Experience and Levels faster than other classes. They also get a great deal of Mana for using special abilities. Play a Mage if you enjoy the tactical game aspects of Habitica, or if you are strongly motivated by leveling up and unlocking advanced features!
+    /// Mages learn skills that damage Quest bosses and boost Exp and Mana. Play a Mage if you're motivated by leveling up quickly. Mages benefit from a high Intelligence stat.
     public static var mageDescription: String { return L10n.tr("Mainstrings", "classes.mage_description") }
     /// Mages
     public static var mages: String { return L10n.tr("Mainstrings", "classes.mages") }
     /// Rogue
     public static var rogue: String { return L10n.tr("Mainstrings", "classes.rogue") }
-    /// Rogues love to accumulate wealth, gaining more Gold than anyone else, and are adept at finding random items. Their iconic Stealth ability lets them duck the consequences of missed Dailies. Play a Rogue if you find strong motivation from Rewards and Achievements, striving for loot and badges!
+    /// Rogues learn skills that boost the rewards you receive from completing tasks. Play a Rogue if you're after more item drops and Gold. Rogues benefit from a high Perception stat.
     public static var rogueDescription: String { return L10n.tr("Mainstrings", "classes.rogue_description") }
     /// Rogues
     public static var rogues: String { return L10n.tr("Mainstrings", "classes.rogues") }
     /// Warrior
     public static var warrior: String { return L10n.tr("Mainstrings", "classes.warrior") }
-    /// Warriors score more and better "critical hits", which randomly give bonus Gold, Experience, and drop chance for scoring a task. They also deal heavy damage to boss monsters. Play a Warrior if you find motivation from unpredictable jackpot-style rewards, or want to dish out the hurt in boss Quests!
+    /// Warriors score more critical hits and deal more damage to Quest bosses. Play a Warrior if you want to defeat monsters easily with powerful blows. Warriors benefit from a high Strength stat.
     public static var warriorDescription: String { return L10n.tr("Mainstrings", "classes.warrior_description") }
     /// Warriors
     public static var warriors: String { return L10n.tr("Mainstrings", "classes.warriors") }
   }
 
   public enum Empty {
+    /// You aren’t a part of any Challenges
+    public static var challenges: String { return L10n.tr("Mainstrings", "empty.challenges") }
+    /// Browse the Discover section to find and join tons of themed Challenges created by other players. It’s a great way to fill out your task list!
+    public static var challengesDescription: String { return L10n.tr("Mainstrings", "empty.challenges_description") }
+    /// You don’t have any messages
+    public static var messages: String { return L10n.tr("Mainstrings", "empty.messages") }
+    /// Send a message to start a conversation with your Party members or another Habitica player
+    public static var messagesDescription: String { return L10n.tr("Mainstrings", "empty.messages_description") }
     /// You don’t own any of these items
     public static var noItems: String { return L10n.tr("Mainstrings", "empty.no_items") }
     /// Head over to the Customization Shop to browse the many ways you can customize your avatar!
@@ -1933,11 +2063,11 @@ public enum L10n {
     public static var groupPlanSettings: String { return L10n.tr("Mainstrings", "groups.group_plan_settings") }
     /// Groups
     public static var groups: String { return L10n.tr("Mainstrings", "groups.groups") }
-    /// **@%@** invited you to join the Guild: **%@**
+    /// **@%@** invited you to join the Goup **%@**
     public static func guildInvitationInvitername(_ p1: String, _ p2: String) -> String {
       return L10n.tr("Mainstrings", "groups.guild_invitation_invitername", p1, p2)
     }
-    /// Someone invited you to join the Guild: **%@**
+    /// Someone invited you to join the Group **%@**
     public static func guildInvitationNoInvitername(_ p1: String) -> String {
       return L10n.tr("Mainstrings", "groups.guild_invitation_no_invitername", p1)
     }
@@ -2073,8 +2203,10 @@ public enum L10n {
     public static var avatarShirtCustomization: String { return L10n.tr("Mainstrings", "inventory.avatar_shirt_customization") }
     /// Avatar Skin Customization
     public static var avatarSkinCustomization: String { return L10n.tr("Mainstrings", "inventory.avatar_skin_customization") }
-    /// You hatched a new pet!
-    public static var hatched: String { return L10n.tr("Mainstrings", "inventory.hatched") }
+    /// You hatched a new %s Pet!
+    public static func hatched(_ p1: UnsafePointer<CChar>) -> String {
+      return L10n.tr("Mainstrings", "inventory.hatched", p1)
+    }
     /// I just hatched a %@ %@ pet in Habitica by completing my real-life tasks!
     public static func hatchedSharing(_ p1: String, _ p2: String) -> String {
       return L10n.tr("Mainstrings", "inventory.hatched_sharing", p1, p2)
@@ -2200,7 +2332,7 @@ public enum L10n {
   }
 
   public enum Member {
-    /// Last logged in
+    /// Last Login
     public static var lastLoggedIn: String { return L10n.tr("Mainstrings", "member.last_logged_in") }
     /// Member Since
     public static var memberSince: String { return L10n.tr("Mainstrings", "member.member_since") }
@@ -2439,8 +2571,10 @@ public enum L10n {
     public static var changeAboutMessage: String { return L10n.tr("Mainstrings", "settings.change_about_message") }
     /// Change Class
     public static var changeClass: String { return L10n.tr("Mainstrings", "settings.change_class") }
-    /// This will reset your character's class and allocated points (you'll get them all back to re-allocate), and costs 3 gems.
+    /// This will remove your current class and refund all stat points then let you select a new class
     public static var changeClassDisclaimer: String { return L10n.tr("Mainstrings", "settings.change_class_disclaimer") }
+    /// Change class for 3 Gems?
+    public static var changeClassTitle: String { return L10n.tr("Mainstrings", "settings.change_class_title") }
     /// Change Display Name
     public static var changeDisplayName: String { return L10n.tr("Mainstrings", "settings.change_display_name") }
     /// Change Email
@@ -2793,6 +2927,8 @@ public enum L10n {
     }
     /// Feed
     public static var feed: String { return L10n.tr("Mainstrings", "stable.feed") }
+    /// Pets & Mounts
+    public static var petsAndMounts: String { return L10n.tr("Mainstrings", "stable.pets_and_mounts") }
     /// Magic Potion
     public static var premium: String { return L10n.tr("Mainstrings", "stable.premium") }
     /// Quest Mounts
@@ -2834,7 +2970,7 @@ public enum L10n {
     public static var characterBuildTitle: String { return L10n.tr("Mainstrings", "stats.character_build_title") }
     /// Class-Bonus
     public static var classBonus: String { return L10n.tr("Mainstrings", "stats.class_bonus") }
-    /// Decreases the amount of damage taken from your tasks. Does not decrease the damage received from bosses.
+    /// Reduces damage taken from missed Dailies and negative Habits. Does not reduce damage from Quest bosses.
     public static var constitutionText: String { return L10n.tr("Mainstrings", "stats.constitution_text") }
     /// Constitution
     public static var constitutionTitle: String { return L10n.tr("Mainstrings", "stats.constitution_title") }
@@ -2850,7 +2986,7 @@ public enum L10n {
     public static var distributeTasks: String { return L10n.tr("Mainstrings", "stats.distribute_tasks") }
     /// Assigns points based on the Strength, Intelligence, Constitution, and Perception categories associated with the tasks you complete.
     public static var distributeTasksHelp: String { return L10n.tr("Mainstrings", "stats.distribute_tasks_help") }
-    /// Increases EXP earned from completing tasks. Also increases your mana cap and how fast mana regenerates over time.
+    /// Increases Experience earned from tasks. Also increases your Mana cap and Mana regeneration rate.
     public static var intelligenceText: String { return L10n.tr("Mainstrings", "stats.intelligence_text") }
     /// Intelligence
     public static var intelligenceTitle: String { return L10n.tr("Mainstrings", "stats.intelligence_title") }
@@ -2860,17 +2996,17 @@ public enum L10n {
     public static var noPointsToAllocate: String { return L10n.tr("Mainstrings", "stats.no_points_to_allocate") }
     /// 1 Point to Allocate
     public static var onePointToAllocate: String { return L10n.tr("Mainstrings", "stats.one_point_to_allocate") }
-    /// Increases the likelihood of finding drops when completing Tasks, the daily drop-cap, Streak Bonuses, and the amount of gold awarded for Tasks.
+    /// Increases item drop chance, daily item drop cap, task streak bonuses, and Gold earned when completing tasks.
     public static var perceptionText: String { return L10n.tr("Mainstrings", "stats.perception_text") }
     /// Perception
     public static var perceptionTitle: String { return L10n.tr("Mainstrings", "stats.perception_title") }
-    /// %d Point to Allocate
+    /// %d Points to Allocate
     public static func pointsToAllocate(_ p1: Int) -> String {
       return L10n.tr("Mainstrings", "stats.points_to_allocate", p1)
     }
     /// Stat guide
     public static var statGuide: String { return L10n.tr("Mainstrings", "stats.stat_guide") }
-    /// Increases the bonus of critical hits and makes them more likely when scoring a task. Also increases damage dealt to bosses.
+    /// Increases critical hit chance and damage when scoring tasks. Also increases damage dealt to Quest bosses.
     public static var strengthText: String { return L10n.tr("Mainstrings", "stats.strength_text") }
     /// Strength
     public static var strengthTitle: String { return L10n.tr("Mainstrings", "stats.strength_title") }

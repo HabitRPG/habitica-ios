@@ -35,9 +35,9 @@ struct GiftSubscriptionPage: View {
                         ForEach(enumerating: viewModel.availableSubscriptions) { sub in
                             Rectangle()
                                 .fill()
-                                .foregroundColor(Color(UIColor.purple200))
+                                .foregroundStyle(Color(UIColor.purple200))
                                 .frame(height: 126)
-                                .cornerRadius(12)
+                                .cornerRadius(UIConstants.largeCornerRadius)
                                 .padding(.vertical, 4).onTapGesture {
                                     withAnimation {
                                         viewModel.selectedSubscription = sub
@@ -46,9 +46,9 @@ struct GiftSubscriptionPage: View {
                         }
                     }
                     Rectangle()
-                        .foregroundColor(.white)
+                        .foregroundStyle(.white)
                         .frame(height: 126)
-                        .cornerRadius(12)
+                        .cornerRadius(UIConstants.largeCornerRadius)
                         .offset(y: 4.0 + (CGFloat(viewModel.availableSubscriptions.firstIndex(of: viewModel.selectedSubscription) ?? 0) * 134.0))
                         .animation(.interpolatingSpring(stiffness: 500, damping: 55), value: viewModel.selectedSubscription)
                     VStack(spacing: 0) {
@@ -67,10 +67,11 @@ struct GiftSubscriptionPage: View {
                                                  instantGems: "24",
                                                  isSelected: PurchaseHandler.noRenewSubscriptionIdentifiers[2] == viewModel.selectedSubscription,
                                                  isGift: true)
-                        SubscriptionOptionViewUI(price: Text(viewModel.priceFor(PurchaseHandler.noRenewSubscriptionIdentifiers[3])), recurring: Text(viewModel.titleFor(PurchaseHandler.noRenewSubscriptionIdentifiers[3])),
+                        SubscriptionOptionViewUI(price: Text(viewModel.priceFor(PurchaseHandler.noRenewSubscriptionIdentifiers[3])),
+                                                 recurring: Text(viewModel.titleFor(PurchaseHandler.noRenewSubscriptionIdentifiers[3])),
                                                  tag: HStack(spacing: 0) {
-                            Image(uiImage: Asset.flagFlap.image.withRenderingMode(.alwaysTemplate)).foregroundColor(Color(hexadecimal: "77F4C7"))
-                            Text("Popular").foregroundColor(Color(UIColor.teal1)).font(.system(size: 12, weight: .semibold))
+                            Image(uiImage: Asset.flagFlap.image.withRenderingMode(.alwaysTemplate)).foregroundStyle(Color(hexadecimal: "77F4C7"))
+                            Text("Popular").foregroundStyle(Color(UIColor.teal1)).font(.system(size: 12, weight: .semibold))
                                 .frame(height: 24)
                                 .padding(.horizontal, 8)
                                 .background(LinearGradient(colors: [
@@ -90,7 +91,7 @@ struct GiftSubscriptionPage: View {
                     if viewModel.isSubscribing {
                         ProgressView().habiticaProgressStyle().frame(height: 48).transition(.opacity)
                     } else {
-                        HabiticaButtonUI(label: Text(L10n.giftSubscription).foregroundColor(Color(UIColor.purple100)), color: Color(UIColor.yellow100), size: .compact) {
+                        HabiticaButtonUI(label: Text(L10n.giftSubscription).foregroundStyle(Color(UIColor.purple100)), color: Color(UIColor.yellow100), size: .compact) {
                             viewModel.subscribeToPlan()
                         }.transition(.opacity)
                     }
@@ -112,7 +113,7 @@ struct GiftSubscriptionPage: View {
                             .multilineTextAlignment(.center)
                             .padding(.horizontal, 50)
                             .lineSpacing(2)
-                    }.foregroundColor(.white)
+                    }.foregroundStyle(.white)
                         .frame(maxWidth: .infinity)
                         .padding(.bottom, 32)
                         .background(LinearGradient(colors: [
@@ -123,7 +124,7 @@ struct GiftSubscriptionPage: View {
             }
             .ignoresSafeArea(.all, edges: .bottom)
             .background(Color.purple300.ignoresSafeArea(.all, edges: .top).padding(.bottom, 4))
-        }.foregroundColor(.white)
+        }.foregroundStyle(.white)
             .ignoresSafeArea(.all, edges: .bottom)
             .background((Color.purple400).ignoresSafeArea(.all, edges: .bottom).padding(.top, 200))
     }

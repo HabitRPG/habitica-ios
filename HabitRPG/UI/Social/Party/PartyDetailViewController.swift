@@ -59,11 +59,22 @@ class PartyDetailViewController: GroupDetailViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
+        if let scrollView = scrollView {
+            for constraint in scrollView.constraints where constraint.firstItem === mainStackView || constraint.secondItem === mainStackView {
+                let attrs: [NSLayoutConstraint.Attribute] = [.leading, .trailing, .width, .left, .right]
+                if attrs.contains(constraint.firstAttribute) || attrs.contains(constraint.secondAttribute) {
+                    constraint.isActive = false
+                }
+            }
+            mainStackView.leadingAnchor.constraint(equalTo: scrollView.safeAreaLayoutGuide.leadingAnchor, constant: 16).isActive = true
+            mainStackView.trailingAnchor.constraint(equalTo: scrollView.safeAreaLayoutGuide.trailingAnchor, constant: -16).isActive = true
+        }
+
         if let groupNameLabel = self.groupNameLabel {
             mainStackView.setCustomSpacing(16, after: groupNameLabel)
         }
-        
+
         questContentStackView.separatorColor = .clear
         
         questInvitationUserAvatarView.showPet = false
@@ -129,11 +140,12 @@ class PartyDetailViewController: GroupDetailViewController {
         partyChallengesButton.backgroundColor = theme.windowBackgroundColor
         partyChallengesButton.setTitleColor(theme.tintColor, for: .normal)
         questContentStackView.backgroundColor = theme.windowBackgroundColor
-        questContentStackView.cornerRadius = 12
+        questContentStackView.cornerRadius = UIConstants.largeCornerRadius
         inviteMemberButton.backgroundColor = theme.windowBackgroundColor
         inviteMemberButton.setTitleColor(theme.tintColor, for: .normal)
         startQuestButton.backgroundColor = theme.windowBackgroundColor
         startQuestButton.setTitleColor(theme.tintColor, for: .normal)
+        startQuestButton.cornerRadius = UIConstants.largeCornerRadius
         groupDescriptionTextView?.backgroundColor = theme.windowBackgroundColor
         questTitleSeparator.backgroundColor = theme.separatorColor
         questMechanicsButton.backgroundColor = nil
@@ -150,6 +162,7 @@ class PartyDetailViewController: GroupDetailViewController {
         membersStackview.backgroundColor = theme.contentBackgroundColor
         
         leaveButton?.titleLabel?.font = UIFontMetrics.default.scaledSystemFont(ofSize: 17, ofWeight: .semibold)
+        leaveButton?.tintColor = theme.errorColor
     }
     
     override func populateText() {
@@ -191,7 +204,6 @@ class PartyDetailViewController: GroupDetailViewController {
                 if self?.isLeader == true && self?.groupProperty.value?.leaderID != member.id {
                     BottomSheetMenuitem(title: L10n.transferOwnership) {
                         self?.showTransferOwnershipDialog(memberID: member.id ?? "", displayName: member.profile?.name ?? "")
-
                     }
                     BottomSheetMenuitem(title: L10n.Party.removeFromParty) {
                         self?.showRemoveMemberDialog(memberID: member.id ?? "", displayName: member.profile?.name ?? "")
@@ -199,7 +211,7 @@ class PartyDetailViewController: GroupDetailViewController {
                     }
                 }
             }))
-            self?.present(sheet, animated: true)
+            sheet.show()
         })
         let controller = UIHostingController(rootView: memberListView)
         controller.view.backgroundColor = .clear
@@ -397,37 +409,37 @@ class PartyDetailViewController: GroupDetailViewController {
                     .padding(.bottom, 12)
                     .frame(maxWidth: .infinity, alignment: .center)
                 Text(L10n.questMechanicsBossTitle)
-                    .foregroundColor(Color(ThemeService.shared.theme.primaryTextColor))
+                    .foregroundStyle(Color(ThemeService.shared.theme.primaryTextColor))
                     .font(.system(size: 16))
                 Text(L10n.questMechanicsBossDescription)
                     .font(.system(size: 12))
                     .padding(.bottom, 12)
                 Text(L10n.questMechanicsCollectingTitle)
-                    .foregroundColor(Color(ThemeService.shared.theme.primaryTextColor))
+                    .foregroundStyle(Color(ThemeService.shared.theme.primaryTextColor))
                     .font(.system(size: 16))
                 Text(L10n.questMechanicsCollectingDescription)
                     .font(.system(size: 12))
                     .padding(.bottom, 12)
                 Text(L10n.questMechanicsDamageTitle)
-                    .foregroundColor(Color(ThemeService.shared.theme.primaryTextColor))
+                    .foregroundStyle(Color(ThemeService.shared.theme.primaryTextColor))
                     .font(.system(size: 16))
                 Text(L10n.questMechanicsDamageDescription)
                     .font(.system(size: 12))
                     .padding(.bottom, 12)
                 Text(L10n.questMechanicsPausingTitle)
-                    .foregroundColor(Color(ThemeService.shared.theme.primaryTextColor))
+                    .foregroundStyle(Color(ThemeService.shared.theme.primaryTextColor))
                     .font(.system(size: 16))
                 Text(L10n.questMechanicsPausingDescription)
                     .font(.system(size: 12))
                     .padding(.bottom, 12)
                 Text(L10n.questMechanicsRageTitle)
-                    .foregroundColor(Color(ThemeService.shared.theme.primaryTextColor))
+                    .foregroundStyle(Color(ThemeService.shared.theme.primaryTextColor))
                     .font(.system(size: 16))
                 Text(L10n.questMechanicsRageDescription)
                     .font(.system(size: 12))
                 Spacer()
             }
-            .foregroundColor(Color(ThemeService.shared.theme.ternaryTextColor))
+            .foregroundStyle(Color(ThemeService.shared.theme.ternaryTextColor))
             .padding(.horizontal, 30)
             .padding(.vertical, 16)
         }))

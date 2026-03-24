@@ -29,6 +29,9 @@ class GroupChatViewDataSource: BaseReactiveTableViewDataSource<ChatMessageProtoc
         tableView?.reloadData()
         
         disposable.add(userRepository.getUser().on(value: {[weak self] user in
+            guard !UserManager.shared.isLoggingOut else {
+                return
+            }
             let isFirstLoad = self?.user == nil
             self?.user = user
             self?.tableView?.reloadData()
@@ -73,14 +76,14 @@ class GroupChatViewDataSource: BaseReactiveTableViewDataSource<ChatMessageProtoc
             isExpanded = expandedChatPath == indexPath
         }
         
-        cell.isFirstMessage = indexPath?.item == 0
+        cell.isFirstMessage = indexPath?.item == (sections[0].items.count - 1)
         var username = user?.username ?? ""
         if username.isEmpty {
             username = self.user?.profile?.name ?? ""
         }
         cell.configure(chatMessage: chatMessage,
-                       previousMessage: item(at: IndexPath(item: (indexPath?.item ?? 0)+1, section: indexPath?.section ?? 0)),
-                       nextMessage: item(at: IndexPath(item: (indexPath?.item ?? 0)-1, section: indexPath?.section ?? 0)),
+                       previousMessage: item(at: IndexPath(item: (indexPath?.item ?? 0)-1, section: indexPath?.section ?? 0)),
+                       nextMessage: item(at: IndexPath(item: (indexPath?.item ?? 0)+1, section: indexPath?.section ?? 0)),
                        userID: self.user?.id ?? "",
                        username: username,
                        isModerator: self.user?.isModerator == true,
@@ -94,8 +97,9 @@ class GroupChatViewDataSource: BaseReactiveTableViewDataSource<ChatMessageProtoc
             profileViewController.username = chatMessage.username
             self?.viewController?.navigationController?.pushViewController(profileViewController, animated: true)
         }
-        cell.reportAction = {
-            FlagViewController(type: .chatMessage, offendingItem: chatMessage).show()
+        cell.reportAction = {[weak self] in
+            let controller = FlagViewController(type: .chatMessage, offendingItem: chatMessage)
+            self?.viewController?.present(controller, animated: true)
         }
         cell.replyAction = {[weak self] in
             self?.viewController?.configureReplyTo(name: chatMessage.username ?? chatMessage.displayName)

@@ -29,13 +29,13 @@
 /* (No Comment) */
 "classes.healer" = "医者";
 /* (No Comment) */
-"classes.healer_description" = "医者不惧伤害，并将这种保护延伸到他人身上。未完成的日常任务和坏习惯都不会让他们感到害怕，而且他们有办法在失败后恢复生命值。如果你喜欢在队伍中协助他人，或者通过努力工作来救死扶伤的想法更能激励你，那就选择医者吧！";
+"classes.healer_description" = "医者可习得保护自身及队友免受伤害的技能。如果你乐于助人或频繁失去生命值，那就选择医者吧！体质是医者的核心属性。";
 /* (No Comment) */
 "classes.mage" = "法师";
 /* (No Comment) */
 "classes.rogue" = "盗贼";
 /* (No Comment) */
-"classes.rogue_description" = "盗贼热衷于积累财富，获得的金币比任何人都多，而且善于寻找随机物品。他们标志性的潜行技能可以让他们躲避未完成的日常任务的伤害。如果奖励、成就、战利品和徽章更能激励你，那就选择盗贼吧！";
+"classes.rogue_description" = "盗贼可习得增加任务完成奖励的技能。若你渴望收获更多掉落物品和金币，那就选择盗贼吧！感知是盗贼的核心属性。";
 /* (No Comment) */
 "classes.warrior" = "战士";
 /* (No Comment) */
@@ -87,7 +87,7 @@
 /* (No Comment) */
 "mana" = "法力值";
 /* (No Comment) */
-"member.last_logged_in" = "上一次登录时间";
+"member.last_logged_in" = "上次登录";
 /* (No Comment) */
 "member.member_since" = "成员自";
 /* (No Comment) */
@@ -145,7 +145,7 @@
 /* (No Comment) */
 "settings.change_class" = "更改职业";
 /* (No Comment) */
-"settings.change_class_disclaimer" = "这将会重置你角色职业和已经分配的属性点(它们将会被返还让你重新分配)，消耗3个宝石。";
+"settings.change_class_disclaimer" = "这将重置您当前的职业并退还所有属性点数，然后让您选择一个新职业。";
 /* (No Comment) */
 "settings.clear_cache" = "清空缓存";
 /* (No Comment) */
@@ -261,13 +261,13 @@
 "stats.distribute_tasks_help" = "根据你完成任务的类型，分配力量、智力、体质和感知点数。";
 "stats.character_build_text" = "每提升一级你都会获得一个可自由分配的属性点数。你可以手动分配，也可以使用自动分配让游戏根据某种分配选项帮你分配。";
 "stats.strength_title" = "力量";
-"stats.strength_text" = "增加暴击的奖励及完成任务时触发暴击的几率。也会增加对Boss造成的伤害。";
+"stats.strength_text" = "完成任务时的暴击率和伤害值。也会增加对Boss造成的伤害。";
 "stats.intelligence_title" = "智力";
-"stats.intelligence_text" = "增加完成任务时获得的经验值。还能增加法力值的上限并提高法力值的再生速度。";
+"stats.intelligence_text" = "提高从任务中获得的经验值。同时提你的法力值上限与法力值恢复速度。";
 "stats.constitution_title" = "体质";
-"stats.constitution_text" = "降低未完成的任务造成的伤害。但不会降低来自Boss的伤害。";
+"stats.constitution_text" = "减少因未完成每日任务和负面习惯所受到的伤害。但无法减免副本首领造成的伤害。";
 "stats.perception_title" = "感知";
-"stats.perception_text" = "增加完成任务时的物品掉率、每日物品掉落上限、连击奖励和任务奖励的金币数量。";
+"stats.perception_text" = "提高任务完成时的物品掉落几率、每日掉落上限、连续完成奖励以及获得的金币。";
 "create" = "创建";
 "tasks.reward" = "奖励";
 "tasks.habits" = "习惯";
@@ -459,7 +459,7 @@
 "hatch_egg" = "孵化这个蛋";
 "hatch_potion" = "使用孵化药水";
 "share" = "分享";
-"inventory.hatched" = "你孵化出一只新宠物！";
+"inventory.hatched" = "你孵化出一只新 %s 宠物！";
 "stable.standard_pets" = "基础宠物";
 "stable.standard_mounts" = "基础坐骑";
 "stable.standard" = "基础";
@@ -510,7 +510,7 @@
 "quests.rage_attack" = "怒气攻击：%@";
 "groups.leader_challenges" = "只有队长才能创建挑战";
 "groups.assign_new_leader" = "选出新会长";
-"groups.guild_invitation_no_invitername" = "有人邀请你加入公会：**%@**";
+"groups.guild_invitation_no_invitername" = "有人邀请你加入团队：**%@**";
 "groups.guild_invitation_invitername" = "**@%@**邀请你加入公会：**%@**";
 "confirm" = "确认";
 "inventory.no_gems_left" = "你已购买了本月的所有宝石。更多宝石将在每月的前三天上架。感谢你的订阅！";
@@ -661,8 +661,8 @@
 "intro.card1.text" = "大功告成！接下来，请同两百万玩家一起行动，完成任务，共同提升生活品质吧。";
 "theme.teal" = "蓝绿";
 "equipment.costume_explanation" = "选择“使用服装”来装备你的角色形象不会影响你的战斗装备的属性点！这意味着你可以随便装扮你的角色，而不会改变你的最优属性点的战斗装备。";
-"classes.warrior_description" = "战士可以打出更频繁和更强大的暴击，在完成任务时触发暴击可随机获得额外的金币、经验和物品掉落机会。暴击还可以对boss造成非常强大的伤害。如果不可预知的随机大奖更能激励你，或者想在副本中重创boss，那就选择战士吧！";
-"classes.mage_description" = "法师相比其他职业学习更加迅速，获得经验和提升等级的速度更快。他们还可以使用特殊的职业技能获得大量法力值。如果你喜欢Habitica游戏的策略性部分，或者提升等级和解锁高级功能更能激励你，那就选择法师吧！";
+"classes.warrior_description" = "战士有更高的暴击率，可以对Boss打出更高伤害。若你渴望轻松打败怪物，那就选择战士吧！力量是战士的核心属性。";
+"classes.mage_description" = "法师可习得对BOSS造成伤害并提升经验值与法力值的技能。若你渴望快速升级，那就选择法师吧！智力是法师的核心属性。";
 "party.create_party_description" = "与朋友一起或独自进行副本。与怪物战斗，创建挑战，并通过队伍帮助自己保持责任感。";
 "inactive" = "不活跃";
 "active_on" = "%@ 前有效";
@@ -724,7 +724,7 @@
 "world_boss.rage_strike_explanation" = "Boss会造成3次狂暴攻击\n如果有玩家忘记做每日任务，这个进度条就会前进。如果进度条满了，DysHeartener就会释放毁天灭地心碎攻击，还会随机攻击Habitica的一个店主。要记得完成你的任务哟！";
 "buffs" = "增益";
 "allocated" = "已分配";
-"checkin_yesterdays_dalies" = "检查你昨天的日常任务：";
+"checkin_yesterdays_dalies" = "在开始今天之前，勾选昨天已经完成的日常任务：";
 "start_my_day" = "开始新的一天";
 "gems" = "宝石";
 "teleporting_habitica" = "传送到Habitica";
@@ -785,7 +785,7 @@
 "send_gift" = "赠送礼物";
 "gift_one_get_one_title" = "赠一得一";
 "gift_one_get_one_description" = "现在赠送一份订阅，你也将免费获得一份相同的订阅！";
-"gems_support_developers" = "购买订阅支持我们，帮助Habitica运作";
+"gems_support_developers" = "购买宝石为Habitica小型团队提供有力支持！";
 "gem_benefits_title" = "宝石可用于购买更多小玩意，包括：";
 "buy_for_x" = "花费%@购买";
 "moderator" = "版主";
@@ -969,7 +969,7 @@
 "learn_more" = "了解更多";
 "insufficient_hourglasses_message_subscriber" = "你需要更多的神秘沙漏来购买该物品！保持订阅，以继续接收你的沙漏。";
 "insufficient_hourglasses_message" = "你需要更多的神秘沙漏来购买该物品！沙漏连续订阅会获得奖励。";
-"more_gems_message" = "你需要更多宝石才能购买此物品！";
+"more_gems_message" = "你需要更多宝石才能购买此物品";
 "complete_more_tasks" = "你还需要完成更多任务才能购买这件物品！";
 "gift_sent_to" = "你发送%@：";
 "gift_sent_confirmation" = "你的礼物已送出！";
@@ -977,9 +977,9 @@
 "gift_gems_explanation_purchase" = "在下面选择要赠送的宝石数量，或从当前余额中将标签切换到赠送的宝石";
 "gift_gems_disclaimer" = "Habitica决不会要求你向其他玩家赠送宝石。向他人讨要宝石是一种违反社区准则的行为，应举报至admin@habitica.com。";
 "gift_gems_alert_prompt" = "输入收信人的@用户名";
-"gift_gems_alert_title" = "你想将礼物送给谁？";
+"gift_gems_alert_title" = "赠送宝石";
 "gift_gems_prompt" = "想要将闪闪发光的宝石赠送别人吗？";
-"onboardingCompleteTitle" = "你通过努力获得了5项成就和100金币。";
+"onboardingCompleteTitle" = "你通过努力获得了**5项成就**和**100金币**。";
 "purchasedEquipmentDescription" = "装备可以为了实用，也可以只为装饰。提升属性可让你的角色获得各种增益";
 "fedPetDescription" = "每只宠物都有自己喜欢的特定食物！尝试找出哪种食物能让你的宠物长得最快吧";
 "hatchedPetDescription" = "有这么多宠物可以收集，你一定有自己的最爱。如果你喂它们食物，它们就会长大……";
@@ -1006,7 +1006,7 @@
 "view_onboarding_tasks" = "查看新手任务";
 "first_drop_title" = "你找到了新物品！";
 "go_to_items" = "前往物品栏";
-"first_drop_explanation2" = "前往物品栏，尝试使用孵化药水孵化你新获得的宠物蛋！";
+"first_drop_explanation2" = "尝试使用孵化药水孵化你新获得的宠物蛋！";
 "first_drop_explanation1" = "完成任务有概率掉落宠物蛋、孵化药水和宠物食物。";
 "view_achievements" = "查看成就";
 "you_got_achievement" = "你获得了一项成就！";
@@ -1112,7 +1112,7 @@
 "limited_event" = "限时活动";
 "subscriber_currency" = "订阅者货币";
 "mana_description" = "法力值在10级时通过职业系统解锁，并在你11级开始学习技能后允许你**使用技能**。\n\n每日重置时会**恢复一些法力值**，你也可以通过完成任务或使用法师的职业技能恢复更多法力值。";
-"gold_description" = "金币是Habitica中的**主要货币**，可用于购买某些装备、副本、物品，甚至是你自己的自定义奖励。\n\n通过完成任务或副本，或通过某些职业技能可以**获得金币**。更高的**感知属性**会提高你获取的金币数量。\n\n如果你订阅了Habitica，你可以使用金币购买一定数量的宝石，具体数量由你的订阅时长决定。";
+"gold_description" = "金币是Habitica中的主要货币，可用于购买某些装备、副本、物品，甚至是你自己的自定义奖励。\n\n通过完成任务或副本，或通过某些职业技能可以获得金币。";
 "health_description" = "这代表你的角色的生命。未完成日常任务或点击负面习惯会**减少你的生命值**。\n\n提升等级、使用治疗药水或具有治疗能力的职业技能可以**恢复生命值**。\n\n如果你的**生命值降到0**，你将降低一级，失去所有金币和一件装备。丢失的装备可以重新购买。";
 "can_hatch_pet" = "对你的%@蛋使用%@药水来孵化这只宠物吧！";
 "use_immediately_disclaimer" = "购买后立即生效！";
@@ -1139,7 +1139,7 @@
 "pet_accessibility_label_raised" = "%@, 喂养 %d%%";
 "unlocks_selecting_class_prompt" = "你达到了10级，你可以选择一个职业!";
 "unlocks_selecting_class_description" = "当您达到10级且选择了职业之后，就可以解锁技能";
-"class_system_enable_instructions" = "您可以在应用程序的设置中，开启职业系统。";
+"class_system_enable_instructions" = "你可以在设置中开启职业系统，之后可选择职业";
 "end_challenge_description" = "要结束挑战，请登录Habitica网页版，然后点击挑战页面右侧的“结束挑战”按钮。";
 "settings.launch_screen" = "启动页";
 "create_challenge_description" = "创建挑战的话，登录habitica网站，在“我的挑战”界面，点击“创建”按钮。";
@@ -1272,9 +1272,9 @@
 "subscription.info_faint_title" = "获得复活机会";
 "groups.by_invite" = "通过邀请";
 "groups.invite_pending" = "待接受的邀请";
-"next_prize_at_x_checkins" = "下一个奖励将在第%d次签到解锁";
+"next_prize_at_x_checkins" = "下一个奖励将在%d天后解锁！";
 "next_checkin_prize_in_x_days" = "你的下一个奖励还需再签到%d次";
-"next_prize_in_x_checkins" = "下一个奖励还需再签到%d次";
+"next_prize_in_x_checkins" = "下一个奖励将在%d天后解锁！";
 "checkin_prize_earned" = "你获得了%@作为你致力改善生活的奖励。";
 "settings.pauseDamage.resume_damage_title2" = "你的连击次数和习惯计数器可以重置";
 "settings.pauseDamage.pause_damage_title2" = "你的连击次数和习惯计数器将不会重置";
@@ -1481,7 +1481,7 @@
 "subscription.stay_motivated_with_more_rewards" = "订阅以获得更多激励奖品";
 "gift_one_get_one_description_date" = "赠一得一活动持续至%@";
 "class_change_confirm_description" = "此操作将切换商店中已解锁的装备、变更可用技能，并重置属性点数。";
-"class_change_success_description" = "你现在可以使用%@技能并在商店中购买装备。升级时获得的属性点数可以用于强化你的技能。";
+"class_change_success_description" = "每升一级即可获得一个属性点，用于强化技能，提升你在Habitica的游戏体验";
 "subscription.thanks_for_subscribing" = "感谢订阅";
 "subscription.enjoy_these_benefits" = "享受你的订阅者专属奖励";
 "subscription.subscribers_receive" = "订阅者特权：每月前两日将获得一个神秘沙漏，一组神秘装备套装，并且商店中可兑换的宝石也将更新";
@@ -1522,7 +1522,7 @@
 "api_token_reset_title" = "如需重置API Token";
 "api_token_reset_desc" = "修改密码将自动重置 Token。重置后需要：在所有您使用Habitica的设备上进行重新登录，在您使用的第三方工具中更新为新的API Token。";
 "copy_token" = "复制Token";
-"privacy_preferences_sheet_description" = "Habitica 将使用您设备中的数据用于：分析性能表现、处理支持请求提供最佳游戏化体验。因此，我们需要申请以下权限。\n\n您可随时修改权限设置。更多详情请查看[隐私政策](https://habitica.com/static/privacy)。";
+"privacy_preferences_sheet_description" = "您的隐私对我们来说至关重要。Habitica 将使用您设备中的数据用于：分析性能表现、处理支持请求提供最佳游戏化体验。因此，我们需要申请以下权限。\n\n您可随时修改权限设置。更多详情请查看[隐私政策](https://habitica.com/static/privacy)。";
 "settings.user_data" = "用户数据";
 "settings.privacy_preferences" = "隐私设置";
 "settings.manage_privacy_preferences" = "修改隐私权限";
@@ -1550,3 +1550,58 @@
 "quest_items_found" = "你找到了%d副本物品";
 "save_preferences" = "保存偏好设置";
 "login.username_description" = "此为专属名称，支持随时修改！";
+"take_effect_immediately" = "购买后即刻生效！";
+"settings.change_class_title" = "使用3颗宝石以更改职业？";
+"chat_with_question" = "你想和谁聊天？";
+"stats" = "属性";
+"participating" = "正在参与";
+"not_participating" = "未参加";
+"ownership" = "所有权";
+"task_reminder" = "任务提醒";
+"membership" = "参与状态";
+"pet" = "宠物";
+"mount" = "坐骑";
+"equipped_gear" = "当前装备";
+"stable.pets_and_mounts" = "宠物与坐骑";
+"challenges_won" = "赢得的挑战";
+"player_not_won_challenges" = "玩家尚未赢得任何挑战。";
+"player_not_completed_quests" = "玩家尚未完成任何副本。";
+"pets_found" = "已发现的宠物";
+"standard_pets" = "基础宠物";
+"mounts_found" = "已发现的坐骑";
+"standard_mounts" = "基础坐骑";
+"none" = "无";
+"joined_x" = "加入了%s";
+"item_is_locked" = "物品已被锁定";
+"edit_tags" = "编辑标签";
+"add_tag" = "添加标签";
+"unlocked_another_checkin_prize" = "你已解锁又一签到奖励！";
+"checkin_prize_description" = "因致力于改善生活，你获得了 %s";
+"class_system_unlocked" = "已解锁职业系统";
+"class_system_unlocked_description" = "选择适合你游戏风格的职业，解锁专属技能与护甲，伴您一路前行";
+"class_change_success_subtitle" = "现在可以分配属性点了";
+"view_stats" = "查看属性";
+"find_stats_menu" = "你可随时在菜单中查看属性";
+"go_to_pets_mounts" = "前往宠物与坐骑";
+"not_now" = "稍后";
+"undo" = "撤销";
+"assigned_stat" = "已分配属性";
+"empty.messages" = "暂无消息";
+"glossary" = "术语表";
+"empty.challenges" = "你没有参加任何挑战";
+"empty.challenges_description" = "快来“探索”板块逛逛吧！这里有海量其他玩家创建的趣味挑战等你发现和加入，是充实待办清单的绝佳方式！";
+"empty.messages_description" = "发送消息，开始与你的队伍成员或其他 Habitica 玩家交流吧";
+"purchased_amount" = "你购买了%d %@";
+"hatch_pet_new_title" = "孵化一只新宠物";
+"gift_gems_alert_text" = "你想给哪个帐户赠送礼物？";
+"fcv_streak_explanation" = "你可以通过点击任务打开编辑视图，从而恢复该任务的连胜纪录";
+"checkin_prize_set_description" = "因致力于改善生活，你获得了 %s 套装";
+"next_prize_in_1_checkin" = "下一个奖励将在1天后解锁！";
+"loading" = "加载中";
+"task_status" = "任务状态";
+"contributor_tiers_description" = "如果你看到一个用户有彩色昵称和图标，那就是贡献者等级！无论是通过翻译、编码，或者只是有所帮助，为Habitica做出贡献的人都会被授予等级。等级越高，表示此玩家的贡献越大。";
+"contributor_tiers" = "贡献者等级";
+"delete_x" = "删除%s";
+"delete_task_confirmation" = "确定要删除这项任务吗？";
+"task" = "任务";
+"item_only_available_for" = "此物品仅限%s使用";

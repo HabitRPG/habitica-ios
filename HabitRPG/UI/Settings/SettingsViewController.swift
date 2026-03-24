@@ -66,7 +66,9 @@ class SettingsViewController: FormViewController, Themeable {
         tableView.cellLayoutMarginsFollowReadableWidth = false
         super.viewDidLoad()
         navigationItem.title = L10n.Titles.settings
-        doneButton.title = L10n.done
+        if #unavailable(iOS 26.0) {
+            doneButton.style = .done
+        }
         setupForm()
         loadSettingsFromUserDefaults()
         
@@ -110,6 +112,9 @@ class SettingsViewController: FormViewController, Themeable {
     
     private func handleGroupPlans() {
         disposable.inner.add(userRepository.getGroupPlans().on(value: {[weak self] plans in
+            guard !UserManager.shared.isLoggingOut else {
+                return
+            }
             if plans.value.isEmpty {
                 self?.groupPlanSection.hidden = Condition(booleanLiteral: true)
             } else {
@@ -266,10 +271,13 @@ class SettingsViewController: FormViewController, Themeable {
                 row.title = L10n.Settings.logOut
                 row.cellUpdate({ (cell, _) in
                     cell.textLabel?.textColor = UIColor.red50
-                }).onCellSelection({ (_, _) in
-                    self.userRepository.logoutAccount()
-                    self.contentRepository.retrieveContent(force: true).observeCompleted {}
-                    (UIApplication.shared.delegate as? HabiticaAppDelegate)?.showLoginScreen()
+                }).onCellSelection({[weak self] (_, _) in
+                    self?.disposable.inner.dispose()
+                    self?.userRepository.logoutAccount { [weak self] in
+                        (UIApplication.shared.delegate as? HabiticaAppDelegate)?.showLoginScreen()
+                        UserManager.shared.logoutCompleted()
+                        self?.contentRepository.retrieveContent(force: true).observeCompleted {}
+                    }
                 })
         }
     }
@@ -288,7 +296,7 @@ class SettingsViewController: FormViewController, Themeable {
                     if isEnabling {
                         UNUserNotificationCenter.current().getNotificationSettings { settings in
                             if settings.authorizationStatus == .notDetermined {
-                                UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound, .badge]) { granted, error in
+                                UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound, .badge]) { granted, _ in
                                     DispatchQueue.main.async {
                                         if granted {
                                             defaults.set(true, forKey: "dailyReminderActive")
@@ -382,9 +390,13 @@ class SettingsViewController: FormViewController, Themeable {
                     }
                 })
                 row.onPresent({ (_, to) in
+                    to.title = L10n.Settings.dayStartAdjustment
+                    to.tableViewStyle = .insetGrouped
                     to.enableDeselection = false
                     to.selectableRowCellUpdate = { cell, _ in
                         cell.textLabel?.textColor = ThemeService.shared.theme.primaryTextColor
+                        cell.backgroundColor = ThemeService.shared.theme.windowBackgroundColor
+                        to.tableView.backgroundColor = ThemeService.shared.theme.contentBackgroundColor
                     }
                 })
             }
@@ -448,14 +460,22 @@ class SettingsViewController: FormViewController, Themeable {
                     return (form.rowBy(tag: SettingsTags.disableAllNotifications) as? SwitchRow)?.value == true
                 })
                 row.cellUpdate { (cell, _) in
-                    cell.textLabel?.textColor = ThemeService.shared.theme.primaryTextColor
-                    cell.detailTextLabel?.textColor = ThemeService.shared.theme.quadTextColor
+                    if row.isDisabled {
+                        cell.textLabel?.textColor = ThemeService.shared.theme.dimmedTextColor
+                        cell.detailTextLabel?.textColor = ThemeService.shared.theme.dimmedTextColor
+                    } else {
+                        cell.textLabel?.textColor = ThemeService.shared.theme.primaryTextColor
+                        cell.detailTextLabel?.textColor = ThemeService.shared.theme.quadTextColor
+                    }
                     cell.tintColor = ThemeService.shared.theme.tintColor
                     cell.backgroundColor = ThemeService.shared.theme.windowBackgroundColor
                 }
                 row.onPresent({ (_, to) in
+                    to.tableViewStyle = .insetGrouped
                     to.selectableRowCellUpdate = { cell, _ in
                         cell.textLabel?.textColor = ThemeService.shared.theme.primaryTextColor
+                        cell.backgroundColor = ThemeService.shared.theme.windowBackgroundColor
+                        to.tableView.backgroundColor = ThemeService.shared.theme.contentBackgroundColor
                     }
                 })
                 row.onChange({[weak self] (row) in
@@ -502,15 +522,23 @@ class SettingsViewController: FormViewController, Themeable {
                 row.disabled = Condition.function([SettingsTags.disableAllEmails], { (form) -> Bool in
                     return (form.rowBy(tag: SettingsTags.disableAllEmails) as? SwitchRow)?.value == true
                 })
-                row.cellUpdate { (cell, _) in
-                    cell.textLabel?.textColor = ThemeService.shared.theme.primaryTextColor
-                    cell.detailTextLabel?.textColor = ThemeService.shared.theme.quadTextColor
+                row.cellUpdate { (cell, row) in
+                    if row.isDisabled {
+                        cell.textLabel?.textColor = ThemeService.shared.theme.dimmedTextColor
+                        cell.detailTextLabel?.textColor = ThemeService.shared.theme.dimmedTextColor
+                    } else {
+                        cell.textLabel?.textColor = ThemeService.shared.theme.primaryTextColor
+                        cell.detailTextLabel?.textColor = ThemeService.shared.theme.quadTextColor
+                    }
                     cell.tintColor = ThemeService.shared.theme.tintColor
                     cell.backgroundColor = ThemeService.shared.theme.windowBackgroundColor
                 }
                 row.onPresent({ (_, to) in
+                    to.tableViewStyle = .insetGrouped
                     to.selectableRowCellUpdate = { cell, _ in
                         cell.textLabel?.textColor = ThemeService.shared.theme.primaryTextColor
+                        cell.backgroundColor = ThemeService.shared.theme.windowBackgroundColor
+                        to.tableView.backgroundColor = ThemeService.shared.theme.contentBackgroundColor
                     }
                 })
                 row.onChange({[weak self] (row) in
@@ -564,8 +592,12 @@ class SettingsViewController: FormViewController, Themeable {
                     }
                 })
                 row.onPresent({ (_, to) in
+                    to.title = L10n.Settings.language
+                    to.tableViewStyle = .insetGrouped
                     to.selectableRowCellUpdate = { cell, _ in
                         cell.textLabel?.textColor = ThemeService.shared.theme.primaryTextColor
+                        cell.backgroundColor = ThemeService.shared.theme.windowBackgroundColor
+                        to.tableView.backgroundColor = ThemeService.shared.theme.contentBackgroundColor
                     }
                 })
             }
@@ -589,8 +621,12 @@ class SettingsViewController: FormViewController, Themeable {
                     }
                 }
                 row.onPresent { _, to in
+                    to.title = L10n.Settings.launchScreen
+                    to.tableViewStyle = .insetGrouped
                     to.selectableRowCellUpdate = { cell, _ in
                         cell.textLabel?.textColor = ThemeService.shared.theme.primaryTextColor
+                        cell.backgroundColor = ThemeService.shared.theme.windowBackgroundColor
+                        to.tableView.backgroundColor = ThemeService.shared.theme.contentBackgroundColor
                     }
                 }
             }
@@ -618,8 +654,12 @@ class SettingsViewController: FormViewController, Themeable {
                     }
                 })
                 row.onPresent({ (_, to) in
+                    to.title = L10n.Settings.soundTheme
+                    to.tableViewStyle = .insetGrouped
                     to.selectableRowCellUpdate = { cell, _ in
                         cell.textLabel?.textColor = ThemeService.shared.theme.primaryTextColor
+                        cell.backgroundColor = ThemeService.shared.theme.windowBackgroundColor
+                        to.tableView.backgroundColor = ThemeService.shared.theme.contentBackgroundColor
                     }
                 })
             }
@@ -651,12 +691,20 @@ class SettingsViewController: FormViewController, Themeable {
                     }
                 })
                 row.onPresent({ (_, to) in
-                    to.selectableRowCellUpdate = { cell, _ in
-                        cell.textLabel?.textColor = ThemeService.shared.theme.primaryTextColor
+                    to.title = L10n.Settings.themeColor
+                    to.tableViewStyle = .insetGrouped
+                    to.selectableRowCellUpdate = { cell, row in
+                        if let newTheme = ThemeName(rawValue: row.selectableValue?.value ?? "") {
+                            cell.textLabel?.textColor = newTheme.themeClass.tintColor
+                        } else {
+                            cell.textLabel?.textColor = ThemeService.shared.theme.primaryTextColor
+                        }
+                        cell.backgroundColor = ThemeService.shared.theme.windowBackgroundColor
+                        to.tableView.backgroundColor = ThemeService.shared.theme.contentBackgroundColor
                     }
                 })
             }
-        <<< PushRow<LabeledFormValue<String>>(SettingsTags.themeMode) { row in
+        <<< ActionSheetRow<LabeledFormValue<String>>(SettingsTags.themeMode) { row in
             row.title = L10n.Settings.themeMode
             row.cellUpdate { cell, _ in
                 cell.textLabel?.textColor = ThemeService.shared.theme.primaryTextColor
@@ -683,11 +731,6 @@ class SettingsViewController: FormViewController, Themeable {
                     ThemeService.shared.updateDarkMode()
                 }
             })
-            row.onPresent({ (_, to) in
-                to.selectableRowCellUpdate = { cell, _ in
-                    cell.textLabel?.textColor = ThemeService.shared.theme.primaryTextColor
-                }
-            })
         }
         form +++ section
         section <<< PushRow<String>(SettingsTags.appIcon) { row in
@@ -703,14 +746,19 @@ class SettingsViewController: FormViewController, Themeable {
             })
             row.value = UIApplication.shared.alternateIconName ?? AppIconName.defaultTheme.rawValue
             row.onPresent({ (_, to) in
+                to.title = L10n.Settings.appIcon
+                to.tableViewStyle = .insetGrouped
                 to.selectableRowCellUpdate = { cell, row in
                     let filename = AppIconName(rawValue: row.title ?? "")?.fileName ?? "Purple"
+                    var config = cell.defaultContentConfiguration()
+                    config.image = UIImage(named: filename)?.resize(maxWidthHeight: 60)
+                    config.text = row.title
+                    cell.contentConfiguration = config
                     cell.height = { 68 }
-                    cell.imageView?.cornerRadius = 12
-                    cell.imageView?.contentMode = .scaleAspectFit
-                    cell.imageView?.image = UIImage(named: filename)?.resize(maxWidthHeight: 60)
                     
                     cell.textLabel?.textColor = ThemeService.shared.theme.primaryTextColor
+                    cell.backgroundColor = ThemeService.shared.theme.windowBackgroundColor
+                    to.tableView.backgroundColor = ThemeService.shared.theme.contentBackgroundColor
                 }
             })
             row.onChange({[weak self] (row) in
@@ -922,15 +970,15 @@ class SettingsViewController: FormViewController, Themeable {
         if user.canChooseClassForFree == true {
             _ = UserManager.shared.showClassSelection(user: user)
         } else {
-            let alertController = HabiticaAlertController(title: L10n.Settings.areYouSure, message: L10n.Settings.changeClassDisclaimer)
+            let alertController = HabiticaAlertController(title: L10n.Settings.changeClassTitle, message: L10n.Settings.changeClassDisclaimer)
             let changeClassCosts = changeClassCosts
             
-            alertController.addAction(title: L10n.Settings.changeClass) { _ in
+            alertController.addAction(title: L10n.Settings.changeClass, isMainAction: true) { _ in
                 if user.gemCount < changeClassCosts {
-                    HRPGBuyItemModalViewController.displayInsufficientGemsModal(reason: "class change", delayDisplay: false)
+                    BuySheetViewModel.displayInsufficientGemsModal(reason: "class change")
                     return
                 }
-                _ = UserManager.shared.showClassSelection(user: user)
+                UserManager.shared.showClassSelection(user: user)
             }
             alertController.addCancelAction()
             alertController.show()
@@ -995,7 +1043,7 @@ class SettingsViewController: FormViewController, Themeable {
         let sheet = HostingBottomSheetController(rootView: PauseDamageView(isPaused: isPaused, tappedButton: {
             self.userRepository.sleep().observeCompleted {}
         }))
-        present(sheet, animated: true)
+        sheet.show()
     }
 }
 
@@ -1009,38 +1057,38 @@ struct PauseDamageView: View, Dismissable {
 
         BottomSheetView(title: Text(isPaused ? L10n.resumeDamage : L10n.pauseDamage).padding(.bottom, 18), content: VStack(alignment: .leading, spacing: 0) {
             if isPaused {
-                Text(L10n.Settings.PauseDamage.resumeDamageTitle1).foregroundColor(Color(theme.primaryTextColor))
+                Text(L10n.Settings.PauseDamage.resumeDamageTitle1).foregroundStyle(Color(theme.primaryTextColor))
                     .font(.system(size: 16)).padding(.bottom, 2)
-                Text(L10n.Settings.PauseDamage.resumeDamageDescription1).foregroundColor(Color(theme.secondaryTextColor))
+                Text(L10n.Settings.PauseDamage.resumeDamageDescription1).foregroundStyle(Color(theme.secondaryTextColor))
                     .font(.system(size: 14)).padding(.bottom, 12)
-                Text(L10n.Settings.PauseDamage.resumeDamageTitle2).foregroundColor(Color(theme.primaryTextColor))
+                Text(L10n.Settings.PauseDamage.resumeDamageTitle2).foregroundStyle(Color(theme.primaryTextColor))
                     .font(.system(size: 16)).padding(.bottom, 2)
-                Text(L10n.Settings.PauseDamage.resumeDamageDescription2).foregroundColor(Color(theme.secondaryTextColor))
+                Text(L10n.Settings.PauseDamage.resumeDamageDescription2).foregroundStyle(Color(theme.secondaryTextColor))
                     .font(.system(size: 14)).padding(.bottom, 12)
-                Text(L10n.Settings.PauseDamage.resumeDamageTitle3).foregroundColor(Color(theme.primaryTextColor))
+                Text(L10n.Settings.PauseDamage.resumeDamageTitle3).foregroundStyle(Color(theme.primaryTextColor))
                     .font(.system(size: 16)).padding(.bottom, 2)
-                Text(L10n.Settings.PauseDamage.resumeDamageDescription3).foregroundColor(Color(theme.secondaryTextColor))
+                Text(L10n.Settings.PauseDamage.resumeDamageDescription3).foregroundStyle(Color(theme.secondaryTextColor))
                     .font(.system(size: 14)).padding(.bottom, 19)
-                HabiticaButtonUI(label: Text(L10n.resumeDamage).foregroundColor(.yellow1), color: .yellow100) {
+                HabiticaButtonUI(label: Text(L10n.resumeDamage).foregroundStyle(.yellow1), color: .yellow100) {
                     tappedButton()
-                    dismisser.dismiss?()
+                    dismisser.dismiss()
                 }
             } else {
-                Text(L10n.Settings.PauseDamage.pauseDamageTitle1).foregroundColor(Color(theme.primaryTextColor))
+                Text(L10n.Settings.PauseDamage.pauseDamageTitle1).foregroundStyle(Color(theme.primaryTextColor))
                     .font(.system(size: 16)).padding(.bottom, 2)
-                Text(L10n.Settings.PauseDamage.pauseDamageDescription1).foregroundColor(Color(theme.secondaryTextColor))
+                Text(L10n.Settings.PauseDamage.pauseDamageDescription1).foregroundStyle(Color(theme.secondaryTextColor))
                     .font(.system(size: 14)).padding(.bottom, 12)
-                Text(L10n.Settings.PauseDamage.pauseDamageTitle2).foregroundColor(Color(theme.primaryTextColor))
+                Text(L10n.Settings.PauseDamage.pauseDamageTitle2).foregroundStyle(Color(theme.primaryTextColor))
                     .font(.system(size: 16)).padding(.bottom, 2)
-                Text(L10n.Settings.PauseDamage.pauseDamageDescription2).foregroundColor(Color(theme.secondaryTextColor))
+                Text(L10n.Settings.PauseDamage.pauseDamageDescription2).foregroundStyle(Color(theme.secondaryTextColor))
                     .font(.system(size: 14)).padding(.bottom, 12)
-                Text(L10n.Settings.PauseDamage.pauseDamageTitle3).foregroundColor(Color(theme.primaryTextColor))
+                Text(L10n.Settings.PauseDamage.pauseDamageTitle3).foregroundStyle(Color(theme.primaryTextColor))
                     .font(.system(size: 16)).padding(.bottom, 2)
-                Text(L10n.Settings.PauseDamage.pauseDamageDescription3).foregroundColor(Color(theme.secondaryTextColor))
+                Text(L10n.Settings.PauseDamage.pauseDamageDescription3).foregroundStyle(Color(theme.secondaryTextColor))
                     .font(.system(size: 14)).padding(.bottom, 19)
-                HabiticaButtonUI(label: Text(L10n.pauseDamage).foregroundColor(.yellow1), color: .yellow100, size: .compact) {
+                HabiticaButtonUI(label: Text(L10n.pauseDamage).foregroundStyle(.yellow1), color: .yellow100, size: .compact) {
                     tappedButton()
-                    dismisser.dismiss?()
+                    dismisser.dismiss()
                 }
             }
         })

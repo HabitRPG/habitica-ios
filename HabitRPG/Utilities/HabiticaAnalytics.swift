@@ -7,63 +7,67 @@
 //
 
 import Foundation
-import Amplitude
-import FirebaseAnalytics
+import AmplitudeSwift
 
 public class HabiticaAnalytics {
     public static let shared = HabiticaAnalytics()
     
+    private var amplitude: Amplitude?
     private var analyticsConsented: Bool = false
     
     public func initialize() {
-        Amplitude.instance().initializeApiKey(Secrets.amplitudeApiKey)
-        Amplitude.instance().setUserId(AuthenticationManager.shared.currentUserId)
-        Amplitude.instance().optOut = true
-        Analytics.setAnalyticsCollectionEnabled(false)
+        amplitude = Amplitude(configuration: Configuration(apiKey: Secrets.amplitudeApiKey,
+                                                           optOut: true))
+        
+        setUserID(AuthenticationManager.shared.currentUserId)
     }
     
     public func setUserID(_ userID: String?) {
-        Amplitude.instance().setUserId(userID)
+        amplitude?.setUserId(userId: userID)
         if userID == nil {
             analyticsConsented = false
-            Amplitude.instance().optOut = true
-            Analytics.setAnalyticsCollectionEnabled(false)
+            amplitude?.optOut = true
         }
     }
     
     public func setUserProperty(key: String, value: String?) {
-        guard analyticsConsented else { return }
-        Analytics.setUserProperty(value, forName: key)
+        guard analyticsConsented else {
+            return
+        }
+        amplitude?.identify(userProperties: [key: value ?? ""])
     }
     
     public func logNavigationEvent(_ pageName: String) {
-        guard analyticsConsented else { return }
+        guard analyticsConsented else {
+            return
+        }
         let properties = [
             "eventAction": "navigated",
             "eventCategory": "navigation",
             "hitType": "pageview"
         ]
-        Amplitude.instance().logEvent(pageName, withEventProperties: properties)
+        let event = BaseEvent(eventType: pageName, eventProperties: properties)
+        amplitude?.track(event: event)
     }
     
     public func log(_ eventName: String, withEventProperties properties: [String: Any] = [:]) {
-        guard analyticsConsented else { return }
-        Amplitude.instance().logEvent(eventName, withEventProperties: properties)
-        Analytics.logEvent(eventName, parameters: properties)
+        guard analyticsConsented else {
+            return
+        }
+        let event = BaseEvent(eventType: eventName, eventProperties: properties)
+        amplitude?.track(event: event)
     }
     
     public func resetAnalyticsOnLogout() {
         analyticsConsented = false
-        Amplitude.instance().optOut = true
-        Analytics.setAnalyticsCollectionEnabled(false)
-        Amplitude.instance().setUserId(nil)
+        amplitude?.optOut = true
+        amplitude?.setUserId(userId: nil)
     }
     
     public func setAnalyticsConsents(_ consented: Bool) {
         analyticsConsented = consented
         let enable = consented == true
-        Amplitude.instance().optOut = !enable
-        Analytics.setAnalyticsCollectionEnabled(enable)
+        amplitude?.optOut = !enable
         if enable {
             let userDefaults = UserDefaults.standard
             var properties: [String: Any] = [
@@ -84,7 +88,7 @@ public class HabiticaAnalytics {
                     userDefaults.removeObject(forKey: "pendingAttribution_searchAdConversionDate")
                 }
             }
-            Amplitude.instance().setUserProperties(properties)
+            amplitude?.identify(userProperties: properties)
         }
     }
 }

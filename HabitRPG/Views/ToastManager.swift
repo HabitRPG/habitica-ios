@@ -6,6 +6,8 @@
 //  Copyright © 2017 HabitRPG Inc. All rights reserved.
 //
 import UIKit
+import SwiftUI
+import SwiftUIX
 
 // swiftlint:disable:next attributes
 @objc public enum ToastColor: Int {
@@ -31,79 +33,98 @@ import UIKit
             return UIColor.black
         }
     }
+    
+    func getColor() -> Color {
+        switch self {
+        case .blue:
+            return .blue50
+        case .green:
+            return .green100
+        case .red:
+            return .red10
+        case .gray:
+            return .gray50
+        case .yellow:
+            return .yellow10
+        case .purple:
+            return .purple200
+        case .subscriberPerk:
+            return .teal100
+        case .black:
+            return .black
+        }
+    }
 }
 
 class ToastManager: NSObject {
     
     static let shared = ToastManager()
 
-    var displayQueue: [ToastView] = [ToastView]()
+    var displayQueue: [UIHostingView<ToastView>] = [UIHostingView<ToastView>]()
     var showingNotification: Bool {
         return displayQueue.isEmpty == false
     }
     
-    private func present(toast: ToastView, completion: (() -> Void)?) {
-        if var viewController = UIApplication.topViewController() {
-            if let tabbarController = viewController.tabBarController {
-                viewController = tabbarController
-            }
-            if let navigationController = viewController.navigationController {
-                viewController = navigationController
-            }
-            if viewController is HRPGBuyItemModalViewController, let mainController = viewController.presentingViewController {
-                viewController = mainController
-            }
-            UIAccessibility.post(notification: UIAccessibility.Notification.announcement, argument: toast.accessibilityLabel)
+    private func present(toast: UIHostingView<ToastView>, completion: (() -> Void)?) {
+        if let window = UIApplication.shared.findKeyWindow() {
             let contentView = toast
-            contentView.frame = CGRect(x: 0, y: 0, width: viewController.view.frame.size.width, height: viewController.view.frame.size.height)
+            contentView.frame = window.bounds
             contentView.setNeedsLayout()
-            contentView.alpha = 0
-            contentView.backgroundView.transform = CGAffineTransform(scaleX: 0.85, y: 0.85)
-            viewController.view.addSubview(contentView)
+            window.addSubview(contentView)
             let bottomOffset = KeyboardManager.height > 0 ? KeyboardManager.height - 44 : 0
-            viewController.view.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|-0-[view]-\(bottomOffset)-|",
+            contentView.translatesAutoresizingMaskIntoConstraints = false
+            window.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|-0-[view]-\(bottomOffset)-|",
                                                                               options: NSLayoutConstraint.FormatOptions(rawValue: 0),
                                                                               metrics: nil, views: ["view": contentView]))
-            viewController.view.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|-0-[view]-0-|",
+            window.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|-0-[view]-0-|",
                                                                               options: NSLayoutConstraint.FormatOptions(rawValue: 0),
                                                                               metrics: nil, views: ["view": contentView]))
-            UIView.animate(withDuration: 0.25, delay: 0.0, usingSpringWithDamping: 100, initialSpringVelocity: 20, animations: {
-                contentView.alpha = 1
-                contentView.backgroundView.transform = CGAffineTransform(scaleX: 1, y: 1)
-            }, completion: { _ in
-                if let completionBlock = completion {
-                    completionBlock()
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.3, execute: {
+                if #available(iOS 17.0, *) {
+                    withAnimation {
+                        contentView.rootView.options.isVisible = true
+                    } completion: {
+                        if let completionBlock = completion {
+                            completionBlock()
+                        }
+                    }
+                } else {
+                    withAnimation {
+                        contentView.rootView.options.isVisible = true
+                    }
+                    if let completionBlock = completion {
+                        completionBlock()
+                    }
                 }
-            })
-                UIView.animate(withDuration: 0.2, animations: { () -> Void in
-                }, completion: { (_) in
-                    
             })
         } else {
             displayQueue.removeFirst()
         }
     }
     
-    private func dismiss(toast: ToastView, completion: (() -> Void)?) {
-        UIView.animate(
-            withDuration: 0.2,
-            animations: { () -> Void in
-                toast.alpha = 0
-                toast.backgroundView.transform = CGAffineTransform(scaleX: 0.9, y: 0.9)
-                toast.transform = CGAffineTransform(translationX: 0, y: 15)
-        }, completion: { (_) in
+    private func dismiss(toast: UIHostingView<ToastView>, completion: (() -> Void)?) {
+        if #available(iOS 17.0, *) {
+            withAnimation {
+                toast.rootView.options.isVisible = false
+            } completion: {
+                toast.removeFromSuperview()
+                if let completionBlock = completion {
+                    completionBlock()
+                }
+            }
+        } else {
             toast.removeFromSuperview()
             if let completionBlock = completion {
                 completionBlock()
             }
-        })
+        }
      }
     
-    private func display(toast: ToastView) {
-        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + toast.options.delayDuration) {[weak self] in
+    private func display(toast: UIHostingView<ToastView>) {
+        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + toast.rootView.options.delayDuration) {[weak self] in
             self?.present(toast: toast) {
-                DispatchQueue.main.asyncAfter(deadline: DispatchTime.now()+toast.options.displayDuration) {[weak self] in
-                    self?.dismiss(toast: toast) { () -> Void in
+                DispatchQueue.main.asyncAfter(deadline: DispatchTime.now()+toast.rootView.options.displayDuration) {[weak self] in
+                    self?.dismiss(toast: toast) {
                         if self?.displayQueue.isEmpty == true {
                             return
                         }
@@ -119,18 +140,18 @@ class ToastManager: NSObject {
         }
     }
     
-    private func add(toast: ToastView) {
+    private func add(toast: UIHostingView<ToastView>) {
+        toast.isUserInteractionEnabled = false
         if !showingNotification {
-            displayQueue.append((toast))
+            displayQueue.append(toast)
             display(toast: toast)
         } else {
-            displayQueue.append((toast))
+            displayQueue.append(toast)
         }
     }
     
-    @objc
     class func show(toast: ToastView) {
-        shared.add(toast: toast)
+        shared.add(toast: UIHostingView(rootView: toast))
     }
     
     class func show(text: String, color: ToastColor, duration: Double? = nil, delay: Double? = nil) {
@@ -138,19 +159,22 @@ class ToastManager: NSObject {
     }
 }
 
-struct ToastOptions {
+class ToastOptions: ObservableObject {
+    @Published var isVisible = false
     
-    var title: String?
-    var subtitle: String?
+    @Published var title: String?
+    @Published var subtitle: String?
     
-    var leftImage: UIImage?
+    @Published var leftImage: UIImage?
     
     var displayDuration = 2.0
     var delayDuration = 0.0
 
-    var backgroundColor = ToastColor.red
+    @Published var backgroundColor = ToastColor.red
     
-    var rightIcon: UIImage?
-    var rightText: String?
-    var rightTextColor = UIColor.gray50
+    @Published var rightIcon: UIImage?
+    @Published var rightText: String?
+    @Published var rightTextColor = UIColor.gray50
+    
+    @Published var statsChanges: [StatsChange] = []
 }

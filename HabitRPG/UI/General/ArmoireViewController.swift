@@ -33,10 +33,11 @@ extension View {
     }
 }
 
-private struct ArmoirePlus: View {
+struct ArmoirePlus: View {
+    @ObservedObject var themeService = ThemeService.shared
     var thickness: CGFloat = 6
     var length: CGFloat = 12
-    var maxSpacing: CGFloat = 4
+    var maxSpacing: CGFloat = 3
     var color = Color(ThemeService.shared.theme.tintColor)
     
     @State private var isAnimating = false
@@ -44,26 +45,26 @@ private struct ArmoirePlus: View {
         VStack(alignment: .center, spacing: 0) {
             color
                 .frame(width: thickness, height: length)
-                .cornerRadius(thickness/2)
+                .clipShape(.capsule)
                 .offset(x: 0, y: isAnimating ? -maxSpacing : 0)
             HStack(spacing: 0) {
                 color
                     .frame(width: length, height: thickness)
-                    .cornerRadius(thickness/2)
+                    .clipShape(.capsule)
                     .offset(x: isAnimating ? -maxSpacing : 0, y: 0)
                 Spacer()
                     .frame(width: thickness)
                 color
                     .frame(width: length, height: thickness)
-                    .cornerRadius(thickness/2)
+                    .clipShape(.capsule)
                     .offset(x: isAnimating ? maxSpacing : 0, y: 0)
             }
             color
                 .frame(width: thickness, height: length)
-                .cornerRadius(thickness/2)
+                .clipShape(.capsule)
                 .offset(x: 0, y: isAnimating ? maxSpacing : 0)
         }
-        .animation(.easeInOut(duration: Double.random(in: 3...4)).repeatForever(autoreverses: true))
+        .animation(.easeInOut(duration: Double.random(in: 3...6)).repeatForever(autoreverses: true), value: isAnimating)
         .onAppear {
             withAnimation {
                 isAnimating = true
@@ -72,8 +73,7 @@ private struct ArmoirePlus: View {
     }
 }
 
-private class ViewModel: ObservableObject {
-    private let disposable = ScopedDisposable(CompositeDisposable())
+private class ArmoireViewModel: ViewModel {
     let userRepository = UserRepository()
     let inventoryRepository = InventoryRepository()
     
@@ -86,20 +86,18 @@ private class ViewModel: ObservableObject {
     @Published var key: String = ""
     @Published var value: Float = 0
     @Published var remainingCount = 0
-    @Published var enableSubBenefit = false
     @Published var isSubscribed = false
     @Published var isUsingPerk = false
     @Published var hideGold = false
     @Published var usedPerk = false
     
     init(gold: Double? = nil) {
-        enableSubBenefit = ConfigRepository.shared.bool(variable: .enableArmoireSubs)
-
+        super.init()
         if let gold = gold {
             self.gold = gold
             self.initialGold = gold
         } else {
-            disposable.inner.add(userRepository.getUser().on(value: { user in
+            disposable.add(userRepository.getUser().on(value: { user in
                 self.isSubscribed = user.isSubscribed
                 if self.gold == 0 {
                     self.initialGold = Double(user.stats?.gold ?? 0) + 100
@@ -107,7 +105,7 @@ private class ViewModel: ObservableObject {
                 }
             }).start())
             
-            disposable.inner.add(inventoryRepository.getArmoireRemainingCount().on(value: {gear in
+            disposable.add(inventoryRepository.getArmoireRemainingCount().on(value: {gear in
                 self.remainingCount = gear.value.count
             }).start())
         }
@@ -201,8 +199,9 @@ private class ViewModel: ObservableObject {
 }
 
 struct ArmoireView: View {
+    @ObservedObject var themeService = ThemeService.shared
     var onDismiss: (() -> Void) = {}
-    @ObservedObject fileprivate var viewModel: ViewModel
+    @ObservedObject fileprivate var viewModel: ArmoireViewModel
     
     @State var isBobbing = false
     @State var confettiCounter = 0
@@ -224,7 +223,7 @@ struct ArmoireView: View {
                 Image(uiImage: HabiticaIcons.imageOfGold)
                 Text("\(Int(viewModel.initialGold))")
                     .padding(.horizontal, 12)
-                    .foregroundColor(Color.clear)
+                    .foregroundStyle(Color.clear)
                     .animatingOverlay(for: viewModel.gold)
                     .animation(.linear(duration: 2), value: viewModel.gold)
                     .onAppear {
@@ -232,14 +231,14 @@ struct ArmoireView: View {
                         confettiCounter = 1
                     }
             }
-            .foregroundColor(Color(ThemeService.shared.theme.isDark ? UIColor.yellow500 : UIColor.yellow1))
+            .foregroundStyle(Color(themeService.theme.isDark ? UIColor.yellow500 : UIColor.yellow1))
             .font(.system(size: 20, weight: .bold))
             .frame(height: 32)
             .padding(.leading, 12)
             .background(Color(UIColor.yellow100).opacity(0.4))
             .opacity(viewModel.hideGold ? 0.0 : 1.0)
             .animation(.linear(duration: 0.1), value: viewModel.hideGold)
-            .cornerRadius(16)
+            .clipShape(.capsule)
             .padding(.top, 24 * paddingScaling)
             .padding(.bottom, 16 * paddingScaling)
             Spacer()
@@ -250,20 +249,25 @@ struct ArmoireView: View {
                         .confettiCannon(trigger: $confettiCounter,
                                         num: 5,
                                         confettis: [.image(Asset.confettiPill.name)],
-                                        colors: [Color(UIColor.yellow100), Color(UIColor.red100), Color(UIColor.blue100), Color(UIColor.purple400)], confettiSize: 10,
+                                        colors: [.yellow100, .red100, .blue100, .purple400], confettiSize: 10,
                                         rainHeight: UIScreen.main.bounds.height, fadesOut: false,
                                         openingAngle: .degrees(30),
                                         closingAngle: .degrees(150), radius: 400,
                                         repetitions: 20,
                                         repetitionInterval: 0.1)
                 }
-                    PixelArtView(source: viewModel.icon)
+                Group {
+                    if viewModel.type == "experience" {
+                        Image(Asset.armoireExperience.name)
+                    } else {
+                        PixelArtView(source: viewModel.icon)
+                    }
+                }
                         .frame(width: viewModel.iconWidth, height: viewModel.iconHeight)
-                        .opacity(1)
                         .offset(y: isBobbing ? 5 : -5)
                     .frame(width: 158, height: 158)
                     .background(Color(UIColor.gray700))
-                    .cornerRadius(79)
+                    .clipShape(.circle)
                 ArmoirePlus()
                     .offset(x: -70, y: -60)
                 ArmoirePlus()
@@ -271,7 +275,7 @@ struct ArmoireView: View {
             }
             .opacity(viewModel.type != nil ? 1.0 : 0.0)
             Text(viewModel.title)
-                .foregroundColor(.primaryTextColor)
+                .foregroundStyle(Color(themeService.theme.primaryTextColor))
                 .font(.system(size: 28, weight: .bold))
                 .multilineTextAlignment(.center)
                 .padding(.top, 24 * paddingScaling)
@@ -282,7 +286,7 @@ struct ArmoireView: View {
                     .animation(.linear, value: viewModel.type)
             if paddingScaling >= 1 {
                 Text(viewModel.subtitle)
-                    .foregroundColor(.ternaryTextColor)
+                    .foregroundStyle(Color(themeService.theme.ternaryTextColor))
                     .multilineTextAlignment(.center)
                     .font(.system(size: 22))
                     .frame(maxWidth: 310)
@@ -294,7 +298,7 @@ struct ArmoireView: View {
             VStack {
                 Text(L10n.Armoire.equipmentRemaining(viewModel.remainingCount))
                     .font(.system(size: 18, weight: .bold))
-                    .foregroundColor(.white)
+                    .foregroundStyle(.white)
                 HStack {
                     if viewModel.type == "gear" {
                         HabiticaButtonUI(label: Text(L10n.equip), color: .white) {
@@ -311,8 +315,7 @@ struct ArmoireView: View {
                 .padding(.horizontal, 24)
                 let gradientColors: [Color] = [Color(hexadecimal: "72CFFF"),
                                       Color(hexadecimal: "77F4C7")]
-                if viewModel.isSubscribed || !viewModel.enableSubBenefit {
-                    if viewModel.enableSubBenefit {
+                if viewModel.isSubscribed {
                         Button(action: {
                             if viewModel.isUsingPerk || viewModel.usedPerk {
                                 return
@@ -333,14 +336,15 @@ struct ArmoireView: View {
                                     Text(L10n.Armoire.subbedButtonPrompt)
                                 }
                             }
-                                .foregroundColor(Color(UIColor.green1))
+                                .foregroundStyle(Color(UIColor.green1))
                                 .font(.headline)
                                 .padding(.vertical, 6)
                                 .frame(minHeight: 60)
                                 .frame(maxWidth: .infinity)
                                 .background(LinearGradient(colors: gradientColors, startPoint: .leading, endPoint: .trailing))
-                                .overlay(RoundedRectangle(cornerRadius: 8).stroke(LinearGradient(colors: gradientColors, startPoint: .trailing, endPoint: .leading), lineWidth: 3))
-                                .cornerRadius(8)
+                                .overlay(RoundedRectangle(cornerRadius: UIConstants.largeCornerRadius)
+                                    .stroke(LinearGradient(colors: gradientColors, startPoint: .trailing, endPoint: .leading), lineWidth: 3))
+                                .cornerRadius(UIConstants.largeCornerRadius)
                         })
                         .frame(maxWidth: 600)
                         .padding(.horizontal, 24)
@@ -348,31 +352,24 @@ struct ArmoireView: View {
                         .opacity(viewModel.usedPerk ? 0.0 : 1.0)
                         .animation(.linear, value: viewModel.usedPerk)
                         Text(L10n.Armoire.subbedFooter)
-                            .foregroundColor(.white)
+                            .foregroundStyle(.white)
                             .font(.system(size: 15, weight: .semibold))
                             .multilineTextAlignment(.center)
+                            .fixedSize(horizontal: false, vertical: true)
                             .padding(.horizontal, 36)
-                    }
-                    Text(L10n.Armoire.dropRate)
-                        .foregroundColor(Color(UIColor.purple600))
-                        .font(.system(size: 15))
-                        .padding(.top, 4)
-                        .padding(.bottom, (UIApplication.shared.findKeyWindow()?.safeAreaInsets.bottom ?? 0) + 12)
-                        .onTapGesture {
-                            showArmoireAlert = true
-                        }
                 } else {
                     VStack(alignment: .center, spacing: 8) {
-                        HabiticaButtonUI(label: Text(L10n.Armoire.unsubbedButtonPrompt).foregroundColor(Color(UIColor.teal10)), color: .white) {
-                            SubscriptionModalViewController(presentationPoint: .armoire).show()
+                        HabiticaButtonUI(label: Text(L10n.Armoire.unsubbedButtonPrompt).foregroundStyle(Color(UIColor.teal10)), color: .white) {
+                            HabiticaApplication.shared.topmostViewController?.present(SubscriptionModalViewController(presentationPoint: .armoire), animated: true)
                         }.frame(maxWidth: 600)
                         Text(L10n.Armoire.unsubbedFooter)
-                            .foregroundColor(Color(UIColor.teal1))
+                            .foregroundStyle(Color(UIColor.teal1))
                             .font(.system(size: 15, weight: .semibold))
                             .multilineTextAlignment(.center)
                             .padding(.horizontal, 16)
+                            .fixedSize(horizontal: false, vertical: true)
                         Text(L10n.Armoire.dropRate)
-                            .foregroundColor(Color(UIColor.teal1))
+                            .foregroundStyle(Color(UIColor.teal1))
                             .opacity(0.75)
                             .font(.system(size: 15))
                             .onTapGesture {
@@ -385,11 +382,11 @@ struct ArmoireView: View {
                     .frame(maxWidth: .infinity)
                     .edgesIgnoringSafeArea(.bottom)
                     .background(RotatingLinearGradient(colors: gradientColors, animationDuration: 20.0).edgesIgnoringSafeArea(.bottom))
-                    .cornerRadius([.topLeading, .topTrailing], 24)
+                    .cornerRadius([.topLeading, .topTrailing], UIConstants.largeCornerRadius)
                     .padding(.top, 8)
                 }
             }
-            .padding(.top, 70)
+            .padding(.top, 90)
             .frame(minHeight: UIScreen.main.bounds.height > 700 ? 330 : 250, alignment: .center)
             .frame(maxWidth: .infinity)
             .edgesIgnoringSafeArea(.bottom)
@@ -409,25 +406,25 @@ struct ArmoireView: View {
                         .font(.system(size: 16, weight: .semibold))
                         .padding(.bottom, 18)
                     Text(L10n.Armoire.rateEquipmentTitle)
-                        .foregroundColor(Color(ThemeService.shared.theme.primaryTextColor))
+                        .foregroundStyle(Color(themeService.theme.primaryTextColor))
                         .font(.system(size: 16))
                     Text(L10n.Armoire.rateEquipmentDescription)
                         .font(.system(size: 12))
                         .padding(.bottom, 18)
                     Text(L10n.Armoire.rateFoodTitle)
-                        .foregroundColor(Color(ThemeService.shared.theme.primaryTextColor))
+                        .foregroundStyle(Color(themeService.theme.primaryTextColor))
                         .font(.system(size: 16))
                     Text(L10n.Armoire.rateFoodDescription)
                         .font(.system(size: 12))
                         .padding(.bottom, 18)
                     Text(L10n.Armoire.rateExperienceTitle)
-                        .foregroundColor(Color(ThemeService.shared.theme.primaryTextColor))
+                        .foregroundStyle(Color(themeService.theme.primaryTextColor))
                         .font(.system(size: 16))
                     Text(L10n.Armoire.rateExperienceDescription)
                         .font(.system(size: 12))
                     Spacer()
                 }
-                .foregroundColor(Color(ThemeService.shared.theme.ternaryTextColor))
+                .foregroundStyle(Color(themeService.theme.ternaryTextColor))
                 .padding(.horizontal, 30)
                 .padding(.vertical, 16)
                 .toolbar {
@@ -447,7 +444,7 @@ struct ArmoireView: View {
 }
 
 class ArmoireViewController: UIHostingController<ArmoireView> {
-    fileprivate let viewModel = ViewModel()
+    fileprivate let viewModel = ArmoireViewModel()
     
     init() {
         super.init(rootView: ArmoireView(viewModel: viewModel))
@@ -472,34 +469,15 @@ class ArmoireViewController: UIHostingController<ArmoireView> {
             viewModel.value = value
         }
     }
-    
-    func show() {
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.8) {
-            if var topController = UIApplication.topViewController() {
-                if let tabBarController = topController.tabBarController {
-                    topController = tabBarController
-                }
-                if (topController as? HRPGBuyItemModalViewController) != nil {
-                    self.show()
-                    return
-                }
-                self.modalTransitionStyle = .crossDissolve
-                self.modalPresentationStyle = .overCurrentContext
-                topController.present(self, animated: true) {
-                }
-            }
-        }
-    }
 }
 
 struct ArmoireView_Previews: PreviewProvider {
     
-    private static func makeViewModel(type: String, isSubscribed: Bool) -> ViewModel {
-        let model = ViewModel(gold: 5000)
+    private static func makeViewModel(type: String, isSubscribed: Bool) -> ArmoireViewModel {
+        let model = ArmoireViewModel(gold: 5000)
         model.type = type
         model.text = "Meat"
         model.key = "Meat"
-        model.enableSubBenefit = true
         model.isSubscribed = isSubscribed
         return model
     }

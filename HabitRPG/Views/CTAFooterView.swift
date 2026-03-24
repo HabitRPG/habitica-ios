@@ -9,6 +9,7 @@
 import SwiftUI
 
 struct CTAFooterView: View {
+    @ObservedObject var themeService = ThemeService.shared
     let type: String
     let hasItems: Bool
     
@@ -42,7 +43,7 @@ struct CTAFooterView: View {
         if textElements.count == 3 {
             Group {
                 Text(textElements[0]) +
-                Text(textElements[1]).foregroundColor(Color(ThemeService.shared.theme.tintColor)) +
+                Text(textElements[1]).foregroundColor(Color(themeService.theme.tintColor)) +
                 Text(textElements[2])
             }
         } else {
@@ -55,9 +56,9 @@ struct CTAFooterView: View {
             Image(uiImage: image).padding(.bottom, 8)
             Text(hasItems ? L10n.Empty.wantMoreItems : L10n.Empty.noItems)
                 .fontWeight(.semibold)
-                .foregroundColor(Color(ThemeService.shared.theme.primaryTextColor))
+                .foregroundStyle(Color(themeService.theme.primaryTextColor))
             description()
-                .foregroundColor(Color(ThemeService.shared.theme.secondaryTextColor))
+                .foregroundStyle(Color(themeService.theme.secondaryTextColor))
                 .multilineTextAlignment(.center)
         }
         .font(.system(size: 13))

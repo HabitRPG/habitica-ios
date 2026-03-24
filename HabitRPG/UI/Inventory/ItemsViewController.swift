@@ -34,7 +34,8 @@ class ItemsViewController: BaseTableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        cancelButton.title = L10n.cancel
+        topHeaderCoordinator?.hideHeader = true
+        topHeaderCoordinator?.followScrollView = false
         
         dataSource.tableView = tableView
         dataSource.itemType = itemType
@@ -228,7 +229,7 @@ class ItemsViewController: BaseTableViewController {
                 }
             }
         })
-        present(sheet, animated: true)
+        sheet.show()
     }
     
     private func openMysteryItem() {

@@ -87,9 +87,9 @@ class InventoryRepository: BaseRepository<InventoryLocalRepository> {
     func hatchPet(egg: String?, potion: String?) -> Signal<UserItemsProtocol?, Never> {
         let call = HatchPetCall(egg: egg ?? "", potion: potion ?? "")
         
-        return call.objectSignal.on(value: {[weak self]userItems in
-            if let userItems = userItems, let userID = self?.currentUserId {
-                self?.localUserRepository.updateUser(id: userID, userItems: userItems)
+        return call.objectSignal.on(value: { userItems in
+            if let userItems = userItems, let userID = self.currentUserId {
+                self.localUserRepository.updateUser(id: userID, userItems: userItems)
             }
             
             StableRepository().getPets(keys: ["\(egg ?? "")-\(potion ?? "")"])
@@ -99,24 +99,11 @@ class InventoryRepository: BaseRepository<InventoryLocalRepository> {
                 })
                 .skipNil()
                 .on(value: { pet in
-                    let alert = HabiticaAlertController()
-                    alert.title = L10n.Inventory.hatched
-                    let hostingView = UIHostingView(rootView: VStack(spacing: 8) {
-                        StableBackgroundView(content: PetView(pet: pet).padding(.top, 40), animateFlying: true).clipShape(.rect(cornerRadius: 12))
-                        Text("\(pet.text ?? "") Pet").font(.system(size: 16, weight: .medium)).foregroundColor(Color(ThemeService.shared.theme.primaryTextColor))
-                    }.ignoresSafeArea())
-                    hostingView.shouldResizeToFitContent = true
-                    alert.contentView = hostingView
-                    alert.addAction(title: L10n.equip, isMainAction: true) { _ in
-                        self?.equip(type: "pet", key: pet.key ?? "").observeCompleted {}
+                    let sheet = PetHatchedSheet(pet: pet) {
+                        self.equip(type: "pet", key: pet.key ?? "").observeCompleted {}
                     }
-                    alert.addAction(title: L10n.share) { _ in
-                        SharingManager.share(pet: pet, shareIdentifier: "hatchedPet")
-                    }
-                    alert.setCloseAction(title: L10n.close, handler: {})
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-                        alert.show()
-                    }
+                    let viewController = HostingBottomSheetController(rootView: sheet, prefersGrabberVisible: false)
+                    viewController.show()
                 }).start()
         })
     }
@@ -146,11 +133,15 @@ class InventoryRepository: BaseRepository<InventoryLocalRepository> {
                     if openArmoireView {
                         let viewController = ArmoireViewController()
                         viewController.configure(type: armoire.type ?? "", text: armoire.dropText ?? "", key: armoire.dropKey, value: armoire.value)
-                        viewController.show()
+                        viewController.showFullscreen()
                     }
                 } else {
                     DispatchQueue.main.asyncAfter(deadline: DispatchTime.now()+1.0) {
-                        ToastManager.show(text: L10n.purchased(text), color: .green)
+                        if quantity > 1 {
+                            ToastManager.show(text: L10n.purchasedAmount(quantity, text), color: .green)
+                        } else {
+                            ToastManager.show(text: L10n.purchased(text), color: .green)
+                        }
                     }
                 }
                 UINotificationFeedbackGenerator.oneShotNotificationOccurred(.success)
@@ -169,7 +160,11 @@ class InventoryRepository: BaseRepository<InventoryLocalRepository> {
                 self?.localUserRepository.updateUser(id: userID, updateUser: updatedUser)
             }
             DispatchQueue.main.asyncAfter(deadline: DispatchTime.now()+1) {
-                ToastManager.show(text: L10n.purchased(text), color: .green)
+                if quantity > 1 {
+                    ToastManager.show(text: L10n.purchasedAmount(quantity, text), color: .green)
+                } else {
+                    ToastManager.show(text: L10n.purchased(text), color: .green)
+                }
             }
         })
     }
@@ -299,24 +294,12 @@ class InventoryRepository: BaseRepository<InventoryLocalRepository> {
             if response?.data == -1 {
                 StableLocalRepository().getMounts(keys: [pet.key ?? ""]).map { mounts in
                     return mounts.value.first?.text
-                }.on(value: { mountText in
-                    let alert = HabiticaAlertController()
-                    alert.title = L10n.youRaisedPet(pet.text ?? "")
-                    alert.contentView = UIHostingView(rootView: VStack(spacing: 8) {
-                        StableBackgroundView(content: MountView(mount: pet).padding(.top, 30), animateFlying: false).clipShape(.rect(cornerRadius: 12))
-                        Text("\(mountText ?? "") Mount").font(.system(size: 16, weight: .medium)).foregroundColor(Color(ThemeService.shared.theme.primaryTextColor))
-                        Text("Let's go for a ride!").font(.system(size: 14)).foregroundColor(Color(ThemeService.shared.theme.secondaryTextColor))
-                    })
-                    alert.addAction(title: L10n.equip, isMainAction: true) { _ in
+                }.on(value: { _ in
+                    let sheet = MountRaisedSheet(mount: pet) {
                         self?.equip(type: "mount", key: pet.key ?? "").observeCompleted {}
                     }
-                    alert.addAction(title: L10n.share) { _ in
-                        SharingManager.share(mount: pet, shareIdentifier: "raisedPet")
-                    }
-                    alert.setCloseAction(title: L10n.close, handler: {})
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-                        alert.show()
-                    }
+                    let viewController = HostingBottomSheetController(rootView: sheet, prefersGrabberVisible: false)
+                    viewController.show()
                 }).start()
             }
             if let userID = self?.currentUserId, let trained = response?.data {

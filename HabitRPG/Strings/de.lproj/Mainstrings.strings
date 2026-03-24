@@ -37,19 +37,19 @@
 /* (No Comment) */
 "classes.healer" = "Heiler";
 /* (No Comment) */
-"classes.healer_description" = "Heiler stehen Schaden unbeeindruckt gegenüber und erweitern diesen Schutz auf Andere. Verpasste tägliche Aufgaben und schlechte Angewohnheiten schaden ihnen nicht viel und sie haben Mittel und Wege Lebenspunkte wiederherzustellen. Spiele einen Heiler, wenn Du gerne Anderen in einer Gruppe hilfst, oder wenn es Dich besonders reizt, dem Tod durch harte Arbeit zu entkommen!";
+"classes.healer_description" = "Heiler lernen Fähigkeiten, die sich und deren Party vor Schaden schützen können. Spiele einen Heiler, wenn du es magst, andere zu unterstützen oder du häufig HP verlierst. Heiler profitieren von einem hohen Ausdauer-Wert.";
 /* (No Comment) */
 "classes.mage" = "Magier";
 /* (No Comment) */
-"classes.mage_description" = "Magier lernen rasch, sie erhalten schneller Erfahrung und Level als andere Klassen. Sie bekommen zudem eine große Menge an Mana, die sie für Spezialfähigkeiten einsetzen können. Entscheide dich für den Magier, wenn du die taktischen Spielaspekte von Habitica liebst oder wenn du hochmotiviert bist, Stufen aufzusteigen und weitere Features freizuschalten!";
+"classes.mage_description" = "Magier lernen Fähigkeiten, die Quest-Bossen Schaden zufügen sowie Erfahrung und Mana steigern. Spiele einen Magier, wenn dich schnelles Leveln motiviert. Magier profitieren von einem hohen Intelligenz-Wert.";
 /* (No Comment) */
 "classes.rogue" = "Schurke";
 /* (No Comment) */
-"classes.rogue_description" = "Schurken lieben es, Reichtümer anzuhäufen, indem sie mehr Gold als Andere verdienen und geschickt darin sind, neue Gegenstände zu finden. Ihre typische Fähigkeit sich im Verborgenen zu bewegen, erlaubt Dir gelegentlich die Folgen verpasster täglicher Aufgaben zu vermeiden. Spiele einen Schurken, wenn Dich Spielbelohnungen und Erfolge besonders reizen und Du nach Beute und Ehrenabzeichen trachtest!";
+"classes.rogue_description" = "Schurken lernen Fähigkeiten, welche die Breite von erledigten Aufgaben erhöhen. Spiele einen Schurken, wenn du es mehr Gegenstände und Gold abgesehen hast. Schurken profitieren von einem hohen Wahrnehmung-Wert.";
 /* (No Comment) */
 "classes.warrior" = "Krieger";
 /* (No Comment) */
-"classes.warrior_description" = "Krieger verursachen mehr und stärkere \"kritische Treffer\", die zufällige Boni auf Gold, Erfahrung und Beute beim Erfüllen einer Aufgabe geben. Sie sind auch sehr stark gegen Bossmonster. Spiele einen Krieger, wenn Dich die Chance auf Belohnungen im Lottogewinn-Stil besonders reizt und Du besonders effektiv gegen Bossmonster sein willst!";
+"classes.warrior_description" = "Krieger erzielen mehr kritische Treffer und verursachen mehr Schaden an Quest-Bossen. Spiele einen Krieger, wenn du Monster einfach mit kraftvollen Schlägen erledigen möchtest. Krieger profitieren von einem hohen Stärke-Wert.";
 /* (No Comment) */
 "close" = "Schließen";
 /* (No Comment) */
@@ -143,7 +143,7 @@
 /* (No Comment) */
 "inventory.available_until" = "Verfügbar bis %@";
 /* (No Comment) */
-"inventory.hatched" = "Du hast ein neues Haustier ausgebrütet!";
+"inventory.hatched" = "Du hast ein neues %s Haustier ausgebrütet!";
 /* (No Comment) */
 "inventory.no_gems_left" = "Du hast alle Edelsteine erworben, die Du in diesem Monat kaufen kannst. Mehr werden in den ersten drei Tagen jedes Monats verfügbar sein. Danke für Dein Abonnement!";
 /* (No Comment) */
@@ -169,7 +169,7 @@
 /* (No Comment) */
 "mana" = "Mana";
 /* (No Comment) */
-"member.last_logged_in" = "Zuletzt eingeloggt";
+"member.last_logged_in" = "Letzter Login";
 /* (No Comment) */
 "member.member_since" = "Mitglied seit";
 /* (No Comment) */
@@ -273,7 +273,7 @@
 /* (No Comment) */
 "settings.change_class" = "Klasse ändern";
 /* (No Comment) */
-"settings.change_class_disclaimer" = "Das wird Deine Klasse zurücksetzen und Du erhältst alle Attributpunkte als freie Punkte zurück. Es kostet 3 Edelsteine.";
+"settings.change_class_disclaimer" = "Das wird deine aktuelle Klasse entfernen, alle Attributpunkte zurückerstatten und dich anschließend eine neue Klasse wählen lassen";
 /* (No Comment) */
 "settings.clear_cache" = "Cache löschen";
 /* (No Comment) */
@@ -531,11 +531,11 @@
 "stats.stat_guide" = "Attribut-Helfer";
 "stats.strength_title" = "Stärke";
 "stats.intelligence_title" = "Intelligenz";
-"stats.intelligence_text" = "Du erhältst mehr Erfahrung von erledigten Aufgaben. Außerdem wird Dein Mana-Limit erhöht, und Du regenerierst Dein Mana schneller.";
+"stats.intelligence_text" = "Erhöht von Aufgaben verdiente Erfahrung. Erhöht zudem dein Mana-Limit und deine Mana-Regeneration.";
 "stats.constitution_title" = "Ausdauer";
-"stats.constitution_text" = "Verringert den Schaden, den Du von verpassten Aufgaben erhältst. Schaden durch Bosse wird allerdings nicht verringert.";
+"stats.constitution_text" = "Verringert den Schaden von verpassten Aufgaben und negativen Angewohnheiten. Schaden durch Bosse wird nicht verringert.";
 "stats.perception_title" = "Wahrnehmung";
-"stats.perception_text" = "Erhöht die Wahrscheinlichkeit, Beute zu finden wenn Du Aufgaben erledigst. Ausserdem werden Dein tägliches Beutelimit, der Strähnenbonus und die Goldmenge für erledigte Aufgaben erhöht.";
+"stats.perception_text" = "Erhöht Wahrscheinlichkeit Beute zu finden, das tägliche Beute-Limit, Aufgaben-Strähnen-Boni und verdientes Geld beim erledigen von Aufgaben.";
 "tasks.habits" = "Gewohnheiten";
 "tasks.dailies" = "Tägliche Aufgaben";
 "tasks.rewards" = "Belohnungen";
@@ -820,7 +820,7 @@
 "tasks.team" = "Team";
 "tasks.due_tomorrow" = "Morgen";
 "tasks.due_in_x_days" = "in %d Tagen";
-"stats.strength_text" = "Erhöht die Wahrscheinlichkeit und den Bonus von kritischen Treffern, wenn Du eine Aufgabe erledigst. Außerdem wird der Schaden gegen Bosse erhöht.";
+"stats.strength_text" = "Erhöht Wahrscheinlichkeit und Schaden kritischer Treffer, wenn du Aufgaben erledigst. Außerdem wird der Schaden gegen Bosse erhöht.";
 "tasks.due_today" = "Heute";
 "settings.change_about_message" = "Info ändern";
 "settings.reset_account_description" = "Du wirst alle deine Level, Gold und Erfahrung verlieren. Alle Ihre Aufgaben und ihre historischen Daten werden gelöscht (Herausforderungsaufgaben bleiben erhalten). Du wirst alle Ausrüstungsgegenstände verlieren, mit Ausnahme von Abonnenten-Gegenständen und kostenlosen Erinnerungsgegenständen, aber du wirst sie zurückkaufen können. Du wirst der richtigen Klasse angehören müssen, um klassenspezifische Ausrüstung wieder zu kaufen. Du behältst deine aktuelle Klasse, deine Errungenschaften sowie deine Haustiere und Reittiere. Um das Zurücksetzen zu bestätigen, gib dein Passwort unten ein.";
@@ -964,7 +964,7 @@
 "invalid_recipient_message" = "Du musst einen gültigen Habitica-Benutzernamen als Empfänger angeben.";
 "earned_achievement_share" = "Ich habe in Habitica einen neuen Erfolg verdient!";
 "buy_for_x" = "Kaufe für %@";
-"gems_support_developers" = "Der Erwerb von Edelsteinen unterstützt unser kleines Team und hilft Habitica am Laufen zu halten";
+"gems_support_developers" = "Der Erwerb von Edelsteinen unterstützt unser kleines Team bei Habitica!";
 "gift_one_get_one_title" = "Verschenk' Eins, Bekomm' Eins";
 "send_gift" = "Geschenk schicken";
 "subscribe" = "Abonnieren";
@@ -988,7 +988,7 @@
 "force_start" = "Erzwinge den Start";
 "decline" = "Ablehnen";
 "start_my_day" = "Starte meinen Tag";
-"checkin_yesterdays_dalies" = "Hake die Tagesaufgaben ab, die Du gestern erledigt hast:";
+"checkin_yesterdays_dalies" = "Hake die Tagesaufgaben ab, die Du gestern erledigt hast, bevor du in den neuen Tag startest:";
 "world_boss.rage_strike_title" = "%@ wurde angegriffen!";
 "world_boss.third_bullet" = "Du kannst weiterhin Quest-Bosse bekämpfen, Dein Schaden wird beiden zugefügt werden";
 "world_boss.second_bullet" = "Der Boss wird Dir keinen Schaden für nicht erledigte Aufgaben zufügen, aber sein Raserei-Balken wird ansteigen. Wenn dieser voll ist, wird der Boss einen von Habiticas Händlern angreifen!";
@@ -1100,7 +1100,7 @@
 "gift_gems_explanation_balance" = "Gib unten ein, wie viele Deiner Edelsteine Du schenken möchtest, oder wechsle den Tab, um Edelsteine zum Verschenken zu kaufen";
 "gift_gems_disclaimer" = "Habitica würde von Dir niemals verlangen, anderen Edelsteine zu schenken. Um Edelsteine zu bitten stellt einen Verstoß gegen die Community-Richtlinien dar und sollte an admin@habitica.com gemeldet werden.";
 "gift_gems_alert_prompt" = "@Benutzernamen der empfangenden Person eingeben";
-"gift_gems_alert_title" = "Wem würdest Du gerne Dein Geschenk schicken?";
+"gift_gems_alert_title" = "Edelsteine schenken";
 "purchasedEquipmentTitle" = "Hat Ausrüstung gekauft";
 "fedPetTitle" = "Hat ein Haustier gefüttert";
 "hatchedPetTitle" = "Hat ein Haustier geschlüpft";
@@ -1128,7 +1128,7 @@
 "view_onboarding_tasks" = "Einstiegsaufgaben ansehen";
 "first_drop_title" = "Du hast neue Gegenstände gefunden!";
 "go_to_items" = "Zu Gegenständen gehen";
-"first_drop_explanation2" = "Schau in Deinen Gegenständen nach und versuche, ein Schlüpfelixier mit einem Ei zu kombinieren!";
+"first_drop_explanation2" = "Versuche dein neues Ei mit einem Schlüpfelixier zu kombinieren!";
 "first_drop_explanation1" = "Durch das Abschließen von Aufgaben erhältst Du die Chance, Gegenstände wie etwa Eier, Schlüpfelixiere und Futter zu finden.";
 "view_achievements" = "Erfolge ansehen";
 "you_got_achievement" = "Du hast einen Erfolg erzielt!";
@@ -1219,7 +1219,7 @@
 "stat_description" = "Alle Habitica-Charaktere haben vier Attribute, die Habiticas Spielablauf beeinflussen. \n \n**Stärke (STR)** beeinflusst kritische Treffer und erhöht den Schaden, den Du einem Quest Boss zufügst. Krieger und Schurken erhalten STR von Ihrer Klassenausrüstung. \n \n**Ausdauer (CON)** erhöht Deine HP und sorgt dafür, dass Du weniger Schaden nimmst. Heiler und Krieger erhalten CON von Ihrer Klassenausrüstung. \n \n**Intelligenz (INT)** steigert die Menge an EXP, die Du verdienst und gibt Dir mehr Mana. Magier und Heiler erhalten INT von Ihrer Klassenausrüstung. \n \n**Wahrnehmung (PER)** erhöht die Goldmenge, die Du erhältst, und die Fundrate von Gegenständen. Schurken und Magier erhalten PER von Ihrer Klassenausrüstung. \n \nAb Level 10 verdienst Du einen Attributspunkt für jedes Level, das Du aufsteigst. Diesen Punkt kannst Du in ein beliebiges Attribut stecken. Außerdem kannst Du Ausrüstung anziehen, die unterschiedliche Attributsboni gewährt.";
 "stat_allocation" = "Attributpunktezuweisung";
 "mana_description" = "Mana-Punkte werden mit dem Klassensystem ab Level 10 freigeschaltet und ermöglichen Dir **Fähigkeiten zu verwenden**, sobald Du ab Level 11 welche erlernt hast.\n\nBeim Tageswechsel wird täglich etwas **Mana aufgefüllt**, aber Du kannst mehr Mana dazugewinnen, indem Du Aufgaben erledigst oder Fähigkeiten eines Magiers anwendest.";
-"gold_description" = "Gold ist die **Hauptwährung** in Habitica und ermöglicht Dir, Ausrüstung, Quests, Gegenstände oder sogar maßgeschneiderte Belohnungen zu kaufen. \n \n**Verdiene Gold** durch das Abschließen von Quests oder mittels Klassenfähigkeiten. Höhere **Wahrnehmungswerte** erhöhen die Menge an Gold, die Du verdienst. \n \nWenn Du Habitica abonnierst, kannst Du mit Gold sogar eine gewisse, von der Dauer Deines Abonnements abhängige, Anzahl an Edelsteinen kaufen.";
+"gold_description" = "Gold ist die Hauptwährung in Habitica und ermöglicht Dir, Ausrüstung, Quests, Gegenstände oder sogar maßgeschneiderte Belohnungen zu kaufen. \n \nVerdiene Gold durch das Abschließen von Quests oder mittels Klassenfähigkeiten.";
 "experience_description" = "Erfahrungspunkte zeigen Deinen Fortschritt und ermöglichen Dir, ein Level aufzusteigen. Du kannst hauptsächlich **EXP gewinnen**, indem Du Aufgaben erledigst oder Quests abschließt, aber es gibt auch einige Klassenfähigkeiten, die EXP geben.\n\nSchwierigere Aufgaben und auch rot gefärbte Aufgaben geben Dir **mehr EXP**. Der **Intelligenz-Wert** erhöht Deinen EXP-Gewinn ebenfalls.";
 "experience_points" = "Erfahrungspunkte";
 "health_description" = "Dies stellt das Leben Deines Avatars dar. Eine Tagesaufgabe zu versäumen oder einer schlechten Gewohnheit nachzugehen **senkt Deine Lebenspunkte**.\n\n**Stelle Lebenspunkte wieder her*, indem Du ein Level aufsteigst, durch einen Heiltrank, oder mit einer Klassenfähigkeit, die heilt.\n\nWenn Deine **Lebenspunkte auf 0 sinken**, wirst Du ein Level verlieren, sowie alles Gold und einen Ausrüstungsgegenstand. Verlorene Ausrüstung kann wieder gekauft werden.";
@@ -1326,7 +1326,7 @@
 "tasks.form.adjust_counter" = "Zähler anpassen";
 "tasks.form.last_scored" = "Zuletzt erreicht";
 "see_you_tomorrow" = "Bis morgen";
-"next_prize_in_x_checkins" = "Nächster Preis in %d Anmeldungen";
+"next_prize_in_x_checkins" = "Nächster Preis in %d Tagen!";
 "scheduled" = "geplant";
 "completed" = "erledigt";
 "not_due" = "Noch nicht fällig";
@@ -1493,7 +1493,7 @@
 "armoire.equipment_remaining" = "Ausrüstungsgegenstände verbleibend: %d";
 "sale_ends_in" = "Angebot endet in %@";
 "next_checkin_prize_in_x_days" = "Dein nächster Preis wird nach %d weiteren Anmeldungen freigeschaltet";
-"next_prize_at_x_checkins" = "Nächster Preis bei %d Anmeldungen";
+"next_prize_at_x_checkins" = "Nächster Preis nach %d Tagen!";
 "subscription.stay_motivated_with_more_rewards" = "Bleibe als Abonent mit noch mehr Belohnungen motiviert";
 "subscription.thanks_for_subscribing" = "Danke für dein Abonnement";
 "subscription.info_faint_title" = "Bekomme eine zweite Chance";
@@ -1630,7 +1630,7 @@
 "quest_mechanics_boss_description" = "Erledige jede Art von Aufgabe oder setze Fähigkeiten ein, um ausstehenden Schaden anzuhäufen! Der Schaden wird am nächsten Tag zugefügt. Die Stärke beeinflusst, wie viel Schaden du anrichtest.";
 "quest_mechanics_rage_title" = "Raserei-Balken";
 "quest_mechanics_collecting_description" = "Erledige bei einer Sammelquest deine Aufgaben, um eine zufällige Chance zu haben, einen Questgegenstand zu finden. Ausstehende Gegenstände werden beim Reset am nächsten Tag übernommen. Wahrnehmung erhöht deine Chancen.";
-"class_change_success_description" = "Du kannst nun deine Fertigkeit %@ verwenden und Ausrüstungen im Shop erwerben. Erhöhe dein Level, um Punkte für die Aufwertung deiner Fertigkeiten zu erhalten.";
+"class_change_success_description" = "Mit jedem Level erhältst du einen Attributspunkt, den du nutzen kannst, um deine Fähigkeiten zu verstärken und die spielerischen Aspekte von Habitica zu beeinflussen";
 "quest_mechanics_collecting_title" = "Questgegenstände sammeln";
 "quest_mechanics_damage_description" = "Der Bossschaden wird jedes Mal berechnet, wenn ein Mitglied der Party im Laufe des Tages eincheckt. Dieser Schaden wird angewandt, wenn du das nächste Mal eine Aktion ausführst, die mit dem Server synchronisiert wird. Der Boss-Schaden wird im Chat eurer Party aufgezeichnet.";
 "quest_mechanics_pausing_title" = "Schaden aussetzen";
@@ -1664,7 +1664,7 @@
 "change_password_helper" = "Passwörter müssen mindestens 8 Zeichen lang sein. Das Ändern deines Passwortes wird dich von all deinen Geräten und Drittanbieter-Anwendungen abmelden.";
 "next_switch_in_x" = "Nächster Wechsel in %@";
 "privacy_preferences_full_description" = "Habitica verwendet Daten deines Geräts zur Analyse der Leistung, um Support-Anfragen zu bearbeiten und um dir die bestmögliche gamifizierte Erfahrung zu bieten. Hierfür benötigen wir deine Zustimmung für folgende Berechtigungen.\n\nDu kannst dies jederzeit in deinen Konto-Einstellungen ändern.";
-"privacy_preferences_sheet_description" = "Habitica verwendet Daten deines Geräts zur Analyse der Leistung, um Support-Anfragen zu bearbeiten und um dir die bestmögliche gamifizierte Erfahrung zu bieten. Hierfür benötigen wir deine Zustimmung für folgende Berechtigungen.\n\nDu kannst deine Zustimmung jederzeit widerrufen. Weitere Informationen findest du in unseren [Datenschutzbestimmungen](https://habitica.com/static/privacy).";
+"privacy_preferences_sheet_description" = "Deine Privatsphäre ist uns wichtig. Habitica verwendet Daten deines Geräts zur Analyse der Leistung, um Support-Anfragen zu bearbeiten und um dir die bestmögliche gamifizierte Erfahrung zu bieten. Hierfür benötigen wir deine Zustimmung für folgende Berechtigungen.\n\nDu kannst deine Zustimmung jederzeit widerrufen. Weitere Informationen findest du in unseren [Datenschutzbestimmungen](https://habitica.com/static/privacy).";
 "api_token_reset_title" = "Falls du einen neuen API-Schüssel benötigst";
 "api_token_reset_desc" = "Du kannst dein Passwort ändern, um ihn zurückzusetzen. Einmal zurückgesetzt, musst du dich auf all deinen Geräten, auf denen du Habitica verwendest, erneut anmelden und deinen neuen API-Schlüssel in Drittanbieter-Anwendungen angeben, die du verwendest.";
 "copy_token" = "Schüssel kopieren";
@@ -1675,3 +1675,51 @@
 "one_quest_item_found" = "Du hast 1 Quest-Gegenstand gefunden";
 "errors.username_already_taken" = "Benutzername bereits vergeben.";
 "quest_items_found" = "Du hast %d Quest-Gegenstände gefunden";
+"take_effect_immediately" = "Dies wird sofort nach dem Kauf wirksam!";
+"settings.change_class_title" = "Klasse ändern für 3 Edelsteine?";
+"chat_with_question" = "Mit wem möchtest du gerne chatten?";
+"stats" = "Werte";
+"membership" = "Mitgliedschaft";
+"participating" = "Teilnehmer";
+"not_participating" = "Nicht Teilnehmer";
+"ownership" = "Besitz";
+"task_reminder" = "Aufgaben-Erinnerung";
+"pet" = "Haustier";
+"mount" = "Reittier";
+"equipped_gear" = "Angelegte Ausrüstung";
+"challenges_won" = "Gewonnene Herausforderungen";
+"player_not_completed_quests" = "Der Spieler hat noch keine Quests abgeschlossen.";
+"pets_found" = "Gefundene Haustiere";
+"standard_pets" = "Standard Haustiere";
+"mounts_found" = "Reittiere gefunden";
+"standard_mounts" = "Standard-Reittiere";
+"none" = "Keine";
+"logins" = "Logins";
+"joined_x" = "Beigetreten %s";
+"stable.pets_and_mounts" = "Haus- und Reittiere";
+"player_not_won_challenges" = "Der Spieler hat noch keine Herausforderungen gewonnen.";
+"item_is_locked" = "Gegenstand gesperrt";
+"edit_tags" = "Tags Bearbeiten";
+"add_tag" = "Tag hinzufügen";
+"unlocked_another_checkin_prize" = "Du hast eine weitere Check-In-Belohnung freigeschaltet!";
+"checkin_prize_description" = "Du hast %s erhalten, da du dich stark engagiert hast dein Leben zu verbessern";
+"class_system_unlocked" = "Klassen-System freigeschaltet";
+"class_system_unlocked_description" = "Wähle eine Klasse die zu deinem Spielstil passt und schalte spezielle Fähigkeiten frei die dir auf deinem Weg helfen";
+"class_change_success_subtitle" = "Du kannst jetzt Werte vergeben";
+"view_stats" = "Werte ansehen";
+"find_stats_menu" = "Du kannst die Werte jederzeit in Menü finden";
+"go_to_pets_mounts" = "Zu den Haus- und Reittieren gehen";
+"not_now" = "Jetzt nicht";
+"undo" = "Rückgängig";
+"assigned_stat" = "Statuswert zugewiesen";
+"empty.challenges_description" = "Stöbere im Entdecken-Bereich und finde unzählige themenbezogene Herausforderungen, die anderer Spieler*innen erstellt haben. Das ist eine tolle Möglichkeit deine Aufgabenliste zu füllen!";
+"empty.messages" = "Du hast keine Nachrichten";
+"empty.messages_description" = "Sende eine Nachricht, um eine Unterhaltung mit deinen Partymitgliedern oder anderen Habitica-Spieler*innen zu beginnen";
+"empty.challenges" = "Du nimmst noch an keinen Herausforderungen teil";
+"glossary" = "Glossar";
+"purchased_amount" = "Du hast %d %@ gekauft";
+"gift_gems_alert_text" = "Welchem Account möchtest du dein Geschenk schicken?";
+"hatch_pet_new_title" = "Ein neues Haustier ausbrüten";
+"fcv_streak_explanation" = "Du kannst Strähnen einzelner Aufgaben wiederherstellen, in dem du sie antippst um die Bearbeitungsansicht zu öffnen";
+"checkin_prize_set_description" = "Du hast dir ein Set von %s verdient, weil entschieden bist dein Leben zu verbessern";
+"next_prize_in_1_checkin" = "Nächster Preis in 1 Tag!";

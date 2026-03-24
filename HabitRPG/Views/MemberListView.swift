@@ -12,6 +12,7 @@ import PinLayout
 import SwiftUI
 
 struct MemberListItem: View {
+    @ObservedObject var themeService = ThemeService.shared
     let member: MemberProtocol
     let onTap: (MemberProtocol) -> Void
     let onMoreTap: (MemberProtocol) -> Void
@@ -32,7 +33,7 @@ struct MemberListItem: View {
                             } label: {
                                 Image(uiImage: Asset.moreInteractionsIcon.image)
                             }.overlay {
-                                Rectangle().foregroundColor(.clear)
+                                Rectangle().foregroundStyle(.clear)
                                     .frame(width: 40, height: 40)
                                     .contentShape(Rectangle())
                                     .onTapGesture {
@@ -42,7 +43,7 @@ struct MemberListItem: View {
                         }
                     }
                     HStack {
-                        Text("@\(member.username ?? "") · Lvl \(member.stats?.level ?? 0)").font(.subheadline).foregroundColor(.secondary)
+                        Text("@\(member.username ?? "") · Lvl \(member.stats?.level ?? 0)").font(.subheadline).foregroundStyle(.secondary)
                         Spacer()
                         if member.stats?.buffs?.isBuffed == true {
                             Image(uiImage: HabiticaIcons.imageOfBuffIcon)
@@ -50,9 +51,9 @@ struct MemberListItem: View {
                     }
                     HStack(spacing: 12) {
                         VStack {
-                            ProgressBarUI(value: stats.health / stats.maxHealth).foregroundColor(Color(UIColor.red100)).frame(height: 8)
-                            ProgressBarUI(value: stats.experience / stats.toNextLevel).foregroundColor(Color(UIColor.yellow50)).frame(height: 8)
-                            ProgressBarUI(value: stats.mana / stats.maxMana).foregroundColor(Color(UIColor.blue100)).frame(height: 8)
+                            ProgressBarUI(value: stats.health / stats.maxHealth).foregroundStyle(Color(UIColor.red100)).frame(height: 8)
+                            ProgressBarUI(value: stats.experience / stats.toNextLevel).foregroundStyle(Color(UIColor.yellow50)).frame(height: 8)
+                            ProgressBarUI(value: stats.mana / stats.maxMana).foregroundStyle(Color(UIColor.blue100)).frame(height: 8)
                         }
                         VStack(alignment: .leading, spacing: 0) {
                             Text("\(stats.health, specifier: "%.0f") / \(stats.maxHealth, specifier: "%.0f")")
@@ -63,14 +64,14 @@ struct MemberListItem: View {
                                 .frame(height: 16)
                         }
                         .font(.system(size: 12))
-                        .foregroundColor(Color(ThemeService.shared.theme.ternaryTextColor))
+                        .foregroundStyle(Color(themeService.theme.ternaryTextColor))
                     }
                 }.frame(maxWidth: .infinity)
             }
         }
         .padding(16)
-        .background(Color(ThemeService.shared.theme.windowBackgroundColor))
-        .cornerRadius(12)
+        .background(Color(themeService.theme.windowBackgroundColor))
+        .cornerRadius(UIConstants.largeCornerRadius)
         .onTapGesture {
             onTap(member)
         }
@@ -78,6 +79,7 @@ struct MemberListItem: View {
 }
 
 struct MemberList: View {
+    @ObservedObject var themeService = ThemeService.shared
     let members: [MemberProtocol]
     @State var invites: [MemberProtocol]
     let isLeader: Bool
@@ -116,8 +118,8 @@ struct MemberList: View {
                         }
                     }, canInvite: isLeader, isPending: true)
                     .padding(16)
-                    .background(Color(ThemeService.shared.theme.windowBackgroundColor))
-                    .cornerRadius(12)
+                    .background(Color(themeService.theme.windowBackgroundColor))
+                    .cornerRadius(UIConstants.largeCornerRadius)
                 }
             }
         }

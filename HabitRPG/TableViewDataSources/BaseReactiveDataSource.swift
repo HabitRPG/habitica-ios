@@ -23,7 +23,7 @@ class ItemSection<MODEL> {
     var isHidden = false
     var showIfEmpty = false
     var items = [MODEL]()
-    var endDates: Set<Date>? = nil
+    var endDates: Set<Date>?
     
     var isVisible: Bool {
         return !isHidden && (items.isEmpty == false || showIfEmpty)
@@ -102,6 +102,9 @@ class BaseReactiveTableViewDataSource<MODEL>: BaseReactiveDataSource<MODEL>, UIT
     }
     
     override func notify(changes: ReactiveChangeset?, section: Int = 0) {
+        guard !UserManager.shared.isLoggingOut else {
+            return
+        }
         if changes == nil {
             return
         }
@@ -122,7 +125,6 @@ class BaseReactiveTableViewDataSource<MODEL>: BaseReactiveDataSource<MODEL>, UIT
             emptyDelegate?.dataSourceIsEmpty()
             if emptyDataSource != nil {
                 tableView?.dataSource = emptyDataSource
-                tableView?.backgroundColor = ThemeService.shared.theme.contentBackgroundColor
                 tableView?.separatorStyle = .none
                 tableView?.allowsSelection = false
                 tableView?.bounces = false
@@ -132,7 +134,6 @@ class BaseReactiveTableViewDataSource<MODEL>: BaseReactiveDataSource<MODEL>, UIT
             emptyDelegate?.dataSourceHasItems()
             if emptyDataSource != nil {
                 tableView?.dataSource = self
-                tableView?.backgroundColor = ThemeService.shared.theme.contentBackgroundColor
                 tableView?.separatorStyle = .singleLine
                 tableView?.allowsSelection = true
                 tableView?.bounces = true
@@ -184,6 +185,9 @@ class BaseReactiveCollectionViewDataSource<MODEL>: BaseReactiveDataSource<MODEL>
     }
     
     override func notify(changes: ReactiveChangeset?, section: Int = 0) {
+        guard !UserManager.shared.isLoggingOut else {
+            return
+        }
         if userDrivenDataUpdate {
             return
         }

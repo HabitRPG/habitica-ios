@@ -1,5 +1,5 @@
 {
-  "originHash" : "5434b1d10caaef84e574160d8f513e3df034d6e287b8d7c02e72a4132de5744e",
+  "originHash" : "135f02fb57136b1f461368fa197dade7e795ddc7a5fd2eea6704ef853565f05d",
   "pins" : [
     {
       "identity" : "abseil-cpp-binary",
@@ -11,12 +11,21 @@
       }
     },
     {
-      "identity" : "amplitude-ios",
+      "identity" : "amplitude-swift",
       "kind" : "remoteSourceControl",
-      "location" : "https://github.com/amplitude/Amplitude-iOS",
+      "location" : "https://github.com/amplitude/Amplitude-Swift",
       "state" : {
-        "revision" : "7ec0f8971b68c1cb859028655fbff1bcde8170dd",
-        "version" : "8.22.2"
+        "revision" : "1f368406d103c7a45b0d8dbd7cddb0361f48d00b",
+        "version" : "1.15.4"
+      }
+    },
+    {
+      "identity" : "amplitudecore-swift",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/amplitude/AmplitudeCore-Swift.git",
+      "state" : {
+        "revision" : "1d9b590e202c3e2abb27ccb6b5b5ae62145406f0",
+        "version" : "1.2.4"
       }
     },
     {
@@ -105,8 +114,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/firebase/firebase-ios-sdk",
       "state" : {
-        "revision" : "4e62da1e5e6baf61674d3f5ae23d6d60c19f9c4a",
-        "version" : "12.0.0"
+        "revision" : "087bb95235f676c1a37e928769a5b6645dcbd325",
+        "version" : "12.6.0"
       }
     },
     {
@@ -114,8 +123,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/googleads/google-ads-on-device-conversion-ios-sdk",
       "state" : {
-        "revision" : "428d8bb138e00f9a3f4f61cc6cd8863607524f65",
-        "version" : "2.1.0"
+        "revision" : "35b601a60fbbea2de3ea461f604deaaa4d8bbd0c",
+        "version" : "3.2.0"
       }
     },
     {
@@ -123,8 +132,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/google/GoogleAppMeasurement.git",
       "state" : {
-        "revision" : "63c18311aac00032f15f5ce431c9e83ada96c386",
-        "version" : "12.0.0"
+        "revision" : "c2d59acf17a8ba7ed80a763593c67c9c7c006ad1",
+        "version" : "12.5.0"
       }
     },
     {
@@ -150,8 +159,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/google/grpc-binary.git",
       "state" : {
-        "revision" : "cc0001a0cf963aa40501d9c2b181e7fc9fd8ec71",
-        "version" : "1.69.0"
+        "revision" : "75b31c842f664a0f46a2e590a570e370249fd8f6",
+        "version" : "1.69.1"
       }
     },
     {
@@ -159,8 +168,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/google/gtm-session-fetcher.git",
       "state" : {
-        "revision" : "a2ab612cb980066ee56d90d60d8462992c07f24b",
-        "version" : "3.5.0"
+        "revision" : "fb7f2740b1570d2f7599c6bb9531bf4fad6974b7",
+        "version" : "5.0.0"
       }
     },
     {
@@ -168,8 +177,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/nathantannar4/InputBarAccessoryView.git",
       "state" : {
-        "revision" : "dfdc822b0d4a0d1b5777100347c399069e9bfc62",
-        "version" : "7.0.0"
+        "revision" : "b2c054a72655133f595980899731af8bdfafa715",
+        "version" : "7.0.3"
       }
     },
     {
@@ -204,8 +213,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/onevcat/Kingfisher.git",
       "state" : {
-        "revision" : "2015fda791daa72c8058619545a593bf8c1dd59f",
-        "version" : "8.5.0"
+        "revision" : "d30a5fad881137e2267f96a8e3fc35c58999bb94",
+        "version" : "8.6.2"
       }
     },
     {
@@ -249,8 +258,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/layoutBox/PinLayout",
       "state" : {
-        "revision" : "8eaa3a15e4dcabaca4c95aea4c0ff0c9b4a67213",
-        "version" : "1.10.5"
+        "revision" : "72f5300042618340df21500f6c4ce71bb78b93e1",
+        "version" : "1.10.6"
       }
     },
     {
@@ -285,8 +294,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/realm/realm-core",
       "state" : {
-        "revision" : "23f60515a00f076a9e3f2dc672fe1ae07601ee90",
-        "version" : "11.4.1"
+        "revision" : "cccb3ca9e26ec452a29f2f0d4050d1e38b8a3d43",
+        "version" : "14.14.0"
       }
     },
     {
@@ -294,8 +303,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/realm/realm-swift.git",
       "state" : {
-        "revision" : "9f43d0da902c55b493d6c8bb63203764caa8acbe",
-        "version" : "10.18.0"
+        "branch" : "master",
+        "revision" : "c22f9303d446fc3c044e4c151ed19597464b6bd7"
       }
     },
     {
@@ -303,8 +312,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/apple/swift-protobuf.git",
       "state" : {
-        "revision" : "102a647b573f60f73afdce5613a51d71349fe507",
-        "version" : "1.30.0"
+        "revision" : "c169a5744230951031770e27e475ff6eefe51f9d",
+        "version" : "1.33.3"
       }
     },
     {

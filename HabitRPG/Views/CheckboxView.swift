@@ -49,7 +49,11 @@ class CheckboxView: UIView {
     
     var checked = false {
         didSet {
-            checkView.isHidden = !checked
+            if isLocked {
+                checkView.isHidden = false
+            } else {
+                checkView.isHidden = !checked
+            }
         }
     }
     var size: CGFloat = 24
@@ -60,6 +64,7 @@ class CheckboxView: UIView {
     var centerCheckbox = true
     var padding: CGFloat = 12
     var borderedBox = false
+    private var isLocked = false
     var dimmOverlayView: UIView = {
         let view = UIView()
         view.backgroundColor = ThemeService.shared.theme.taskOverlayTint
@@ -103,11 +108,16 @@ class CheckboxView: UIView {
         addSubview(dimmOverlayView)
     }
     
-    func configure(task: TaskProtocol, completed: Bool) {
+    func configure(task: TaskProtocol, completed: Bool, isLocked: Bool = false) {
+        self.isLocked = isLocked
         checked = completed
-        checkView.image = Asset.checkmarkSmall.image
+        if isLocked {
+            checkView.image = Asset.taskLockLight.image.withRenderingMode(.alwaysTemplate)
+        } else {
+            checkView.image = Asset.checkmarkSmall.image
+        }
         if let layer = self.layer as? CheckmarkLayer {
-            layer.drawPercentage = checked ? 1 : 0
+            layer.drawPercentage = (checked || isLocked) ? 1 : 0
         }
         
         let theme = ThemeService.shared.theme
@@ -135,6 +145,9 @@ class CheckboxView: UIView {
                 backgroundColor = theme.windowBackgroundColor
                 boxFillColor = theme.offsetBackgroundColor
                 checkColor = theme.dimmedTextColor
+            } else if task.isOfficial {
+                backgroundColor = .purple400
+                checkColor = .purple300
             } else {
                 backgroundColor = UIColor.forTaskValueLight(task.value)
                 checkColor = UIColor.forTaskValue(task.value)
@@ -189,7 +202,7 @@ class CheckboxView: UIView {
     
     @objc
     private func viewTapped() {
-        if let action = wasTouched {
+        if !isLocked, let action = wasTouched {
             checked = !checked
             action()
         }

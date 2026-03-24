@@ -34,8 +34,4 @@ class DailyTableViewController: TaskTableViewController {
     override func getCellNibName() -> String {
         return "DailyTableViewCell"
     }
-    
-    override func refresh() {
-        super.refresh()
-    }
 }

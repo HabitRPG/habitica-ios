@@ -74,11 +74,24 @@ public class UserLocalRepository: BaseLocalRepository {
     }
     
     public func save(userID: String, messages: [InboxMessageProtocol]) {
+        let minValidDate = Date(timeIntervalSince1970: 946684800)
         save(objects: messages.map { (messsage) in
+            let message: RealmInboxMessage
             if let realmInboxMessage = messsage as? RealmInboxMessage {
-                return realmInboxMessage
+                message = realmInboxMessage
+            } else {
+                message = RealmInboxMessage(userID: userID, inboxMessage: messsage)
             }
-            return RealmInboxMessage(userID: userID, inboxMessage: messsage)
+            let existingMessage = getRealm()?.object(ofType: RealmInboxMessage.self, forPrimaryKey: message.id)
+            let needsTimestamp = message.timestamp == nil || (message.timestamp ?? Date.distantPast) < minValidDate
+            if needsTimestamp {
+                if let existing = existingMessage, let existingTimestamp = existing.timestamp, existingTimestamp >= minValidDate {
+                    message.timestamp = existingTimestamp
+                } else {
+                    message.timestamp = Date()
+                }
+            }
+            return message
         })
     }
     
@@ -192,6 +205,10 @@ public class UserLocalRepository: BaseLocalRepository {
         return RealmUser.findBy(query: "id == '\(id)'").reactive().map({ (users, _) -> UserProtocol? in
             return users.first
         }).skipNil()
+    }
+    
+    public func getUserAsync(_ id: String) -> UserProtocol? {
+        return getRealm()?.objects(RealmUser.self).filter("id == '\(id)'").first
     }
     
     public func hasUserData(id: String) -> Bool {
@@ -339,7 +356,7 @@ public class UserLocalRepository: BaseLocalRepository {
     
     public func getNotifications(userID: String) -> SignalProducer<ReactiveResults<[NotificationProtocol]>, ReactiveSwiftRealmError> {
         return RealmNotification.findBy(query: "userID == '\(userID)' && realmType != ''").sorted(key: "priority").reactive().map({ (value, changeset) -> ReactiveResults<[NotificationProtocol]> in
-            return (value.map({ (notification) -> NotificationProtocol in return notification }), changeset)
+            return (value.map({ (notification) -> NotificationProtocol in return notification.freeze() }), changeset)
         })
     }
     

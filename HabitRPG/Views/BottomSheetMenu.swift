@@ -11,10 +11,21 @@ import SwiftUI
 import Kingfisher
 
 class Dismisser: ObservableObject {
-    var dismiss: (() -> Void)?
+    var dismissAction: (() -> Void)?
+    var onDismiss: (() -> Void)?
+    
+    func dismiss() {
+        if let action = onDismiss {
+            action()
+        }
+        if let action = dismissAction {
+            action()
+        }
+    }
 }
 
 struct BottomSheetMenuitem<Title: View>: View {
+    @ObservedObject var themeService = ThemeService.shared
     @EnvironmentObject private var dismisser: Dismisser
     
     enum Style {
@@ -35,9 +46,9 @@ struct BottomSheetMenuitem<Title: View>: View {
     
     var body: some View {
         HabiticaButtonUI(label: title,
-                         color: style == .normal ? Color(ThemeService.shared.theme.fixedTintColor) : style == .destructive ? Color(UIColor.red100) : .windowBackgroundColor,
+                         color: style == .normal ? Color(themeService.theme.fixedTintColor) : style == .destructive ? .red100 : Color(themeService.theme.windowBackgroundColor),
                          size: .small) {
-            dismisser.dismiss?()
+            dismisser.dismiss()
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
                 onTap()
             }
@@ -53,9 +64,40 @@ extension BottomSheetMenuitem where Title == Text {
     }
 }
 
-struct BottomSheetMenuSeparator: View {
+struct BottomSheetHeaderBar<Title: View, Left: View, Right: View>: View {
+    @ObservedObject var themeService = ThemeService.shared
+    var title: Title
+    var leftAction: Left
+    var isLeftProminent = false
+    var rightAction: Right
+    var isRightProminent = true
+    
     var body: some View {
-        Separator()
+        HStack {
+            if #available(iOS 26.0, *) {
+                leftAction
+                    .buttonStyle(.glass)
+                    .buttonBorderShape(.circle)
+            } else {
+                leftAction
+                    .clipShape(.circle)
+                    .tintColor(Color(isLeftProminent ? themeService.theme.tintColor : themeService.theme.windowBackgroundColor))
+            }
+            Spacer()
+            title
+                .font(.headline)
+                .foregroundStyle(Color(themeService.theme.primaryTextColor))
+            Spacer()
+            if #available(iOS 26.0, *) {
+                rightAction
+                    .buttonStyle(.glassProminent)
+                    .buttonBorderShape(.circle)
+            } else {
+                rightAction
+                    .clipShape(.circle)
+                    .tintColor(Color(isRightProminent ? themeService.theme.tintColor : themeService.theme.windowBackgroundColor))
+            }
+        }
     }
 }
 
@@ -63,22 +105,22 @@ struct BottomSheetView<Title: View, Content: View>: View, Dismissable {
     var dismisser: Dismisser = Dismisser()
     var title: Title
     let content: Content
+    var topPadding: CGFloat = 24
+    var bottomPadding: CGFloat = 12
 
     var body: some View {
         Group {
-            title
-                .font(.headline)
-                .foregroundColor(.primaryTextColor)
+            title.font(.headline)
             content
-        }.padding(.horizontal, 24)
-            .padding(.top, 20)
-            .padding(.bottom, 12)
+        }.padding(.horizontal, 20)
+            .padding(.top, topPadding)
+            .padding(.bottom, bottomPadding)
     }
 }
 
 extension BottomSheetView where Title == EmptyView {
-    init(content: Content) {
-        self.init(title: EmptyView(), content: content)
+    init(dismisser: Dismisser = Dismisser(), content: Content, topPadding: CGFloat = 28, bottomPadding: CGFloat = 12) {
+        self.init(dismisser: dismisser, title: EmptyView(), content: content, topPadding: topPadding, bottomPadding: bottomPadding)
     }
 }
 
@@ -134,22 +176,4 @@ extension BottomSheetMenu where Title == EmptyView {
         self.init(EmptyView(), iconName: iconName, menuItems: menuItems)
 
       }
-}
-
-extension Color {
-    static var primaryTextColor: Color {
-            return Color(ThemeService.shared.theme.primaryTextColor)
-    }
-    static var secondaryTextColor: Color {
-            return Color(ThemeService.shared.theme.secondaryTextColor)
-    }
-    static var ternaryTextColor: Color {
-            return Color(ThemeService.shared.theme.ternaryTextColor)
-    }
-    static var tintColor: Color {
-            return Color(ThemeService.shared.theme.tintColor)
-    }
-    static var windowBackgroundColor: Color {
-            return Color(ThemeService.shared.theme.windowBackgroundColor)
-    }
 }

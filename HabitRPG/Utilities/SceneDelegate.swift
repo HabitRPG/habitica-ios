@@ -71,6 +71,7 @@ class SceneDelegate: NSObject, UIWindowSceneDelegate {
     }
     
     func sceneDidEnterBackground(_ scene: UIScene) {
+        UserManager.shared.stopListening()
         reloadWidgetData()
     }
     

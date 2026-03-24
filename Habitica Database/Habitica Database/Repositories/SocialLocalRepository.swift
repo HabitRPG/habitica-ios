@@ -80,7 +80,6 @@ public class SocialLocalRepository: BaseLocalRepository {
         })
     }
     
-    
     public func deleteAllChallenges() {
         updateCall { realm in
             let allChallenges = realm.objects(RealmChallenge.self)
@@ -103,8 +102,15 @@ public class SocialLocalRepository: BaseLocalRepository {
             save(object: realmChatMessage)
         } else {
             let message = RealmChatMessage(groupID: groupID, chatMessage: chatMessage)
-            if message.timestamp == nil, let existingMessage = getRealm()?.object(ofType: RealmChatMessage.self, forPrimaryKey: message.id) {
-                message.timestamp = existingMessage.timestamp
+            let existingMessage = getRealm()?.object(ofType: RealmChatMessage.self, forPrimaryKey: message.id)
+            let minValidDate = Date(timeIntervalSince1970: 946684800)
+            let needsTimestamp = message.timestamp == nil || (message.timestamp ?? Date.distantPast) < minValidDate
+            if needsTimestamp {
+                if let existing = existingMessage, let existingTimestamp = existing.timestamp, existingTimestamp >= minValidDate {
+                    message.timestamp = existingTimestamp
+                } else {
+                    message.timestamp = Date()
+                }
             }
             save(object: message)
         }
@@ -114,7 +120,18 @@ public class SocialLocalRepository: BaseLocalRepository {
         if let realmMessage = message as? RealmInboxMessage {
             save(object: realmMessage)
         } else {
-            save(object: RealmInboxMessage(userID: userID, inboxMessage: message))
+            let message = RealmInboxMessage(userID: userID, inboxMessage: message)
+            let existingMessage = getRealm()?.object(ofType: RealmInboxMessage.self, forPrimaryKey: message.id)
+            let minValidDate = Date(timeIntervalSince1970: 946684800)
+            let needsTimestamp = message.timestamp == nil || (message.timestamp ?? Date.distantPast) < minValidDate
+            if needsTimestamp {
+                if let existing = existingMessage, let existingTimestamp = existing.timestamp, existingTimestamp >= minValidDate {
+                    message.timestamp = existingTimestamp
+                } else {
+                    message.timestamp = Date()
+                }
+            }
+            save(object: message)
         }
     }
     
@@ -299,7 +316,6 @@ public class SocialLocalRepository: BaseLocalRepository {
         }
     }
     
-    
     public func getGroup(groupID: String) -> SignalProducer<GroupProtocol?, ReactiveSwiftRealmError> {
         return RealmGroup.findBy(query: "id == '\(groupID)'").reactive().map({ (groups, _) -> GroupProtocol? in
             return groups.first
@@ -320,7 +336,9 @@ public class SocialLocalRepository: BaseLocalRepository {
     
     public func getChatMessages(groupID: String) -> SignalProducer<ReactiveResults<[ChatMessageProtocol]>, ReactiveSwiftRealmError> {
         return RealmChatMessage.findBy(query: "groupID == '\(groupID)'").sorted(key: "timestamp", ascending: false).reactive().map({ (value, changeset) -> ReactiveResults<[ChatMessageProtocol]> in
-            return (value.map({ (message) -> ChatMessageProtocol in return message }), changeset)
+            let messages: [ChatMessageProtocol] = value.map({ $0 as ChatMessageProtocol })
+            let sorted = messages.sorted { ($0.timestamp ?? Date()) > ($1.timestamp ?? Date()) }
+            return (sorted, changeset)
         })
     }
     
@@ -339,7 +357,9 @@ public class SocialLocalRepository: BaseLocalRepository {
             query = RealmChallenge.findAll()
         }
         // swiftlint:disable:next force_unwrapping
-        return query!.sorted(by: [SortDescriptor(keyPath: "official", ascending: false), SortDescriptor(keyPath: "createdAt", ascending: false)]).reactive().map({ (value, changeset) -> ReactiveResults<[ChallengeProtocol]> in
+        return query!.sorted(by: [SortDescriptor(keyPath: "official", ascending: false), SortDescriptor(keyPath: "createdAt", ascending: false)])
+            .reactive()
+            .map({ (value, changeset) -> ReactiveResults<[ChallengeProtocol]> in
             return (value.map({ (challenge) -> ChallengeProtocol in return challenge }), changeset)
         })
     }
@@ -404,7 +424,9 @@ public class SocialLocalRepository: BaseLocalRepository {
         return RealmInboxMessage.findBy(query: "ownUserID == '\(userID)' && userID = '\(withUserID)'")
             .sorted(key: "timestamp", ascending: false)
             .reactive().map({ (value, changeset) -> ReactiveResults<[InboxMessageProtocol]> in
-                return (value.map({ (message) -> InboxMessageProtocol in return message }), changeset)
+                let messages: [InboxMessageProtocol] = value.map({ $0 as InboxMessageProtocol })
+                let sorted = messages.sorted { ($0.timestamp ?? Date()) > ($1.timestamp ?? Date()) }
+                return (sorted, changeset)
             })
     }
     
@@ -420,9 +442,20 @@ public class SocialLocalRepository: BaseLocalRepository {
         return RealmGroup()
     }
     
+    public func getNewChallenge() -> ChallengeProtocol {
+        return RealmChallenge()
+    }
+    
     public func getEditableGroup(id: String) -> GroupProtocol? {
         if let group = getRealm()?.object(ofType: RealmGroup.self, forPrimaryKey: id) {
             return RealmGroup(value: group)
+        }
+        return nil
+    }
+    
+    public func getEditableChallenge(id: String) -> ChallengeProtocol? {
+        if let challenge = getRealm()?.object(ofType: RealmChallenge.self, forPrimaryKey: id) {
+            return RealmChallenge(value: challenge)
         }
         return nil
     }

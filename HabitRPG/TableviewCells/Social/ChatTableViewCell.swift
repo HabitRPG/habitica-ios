@@ -108,13 +108,19 @@ class ChatTableViewCell: UITableViewCell, UITextViewDelegate, Themeable {
         
         positionLabel.horizontalPadding = 8
         
-        if frame.size.width < 375 {
+        if frame.size.width < 320 {
             isAvatarHidden = true
         }
         
         reportView.setImage(#imageLiteral(resourceName: "ChatReport").withRenderingMode(.alwaysTemplate), for: .normal)
         
         messageTextView.font = UIFontMetrics.default.scaledSystemFont(ofSize: 15, ofWeight: .regular)
+        
+        if #available(iOS 26.0, *) {
+            messageWrapper.cornerConfiguration = .uniformCorners(radius: .fixed(UIConstants.mediumCornerRadius))
+        } else {
+            messageWrapper.cornerRadius = UIConstants.mediumCornerRadius
+        }
     }
     
     func configure(chatMessage: ChatMessageProtocol, previousMessage: ChatMessageProtocol?, nextMessage: ChatMessageProtocol?, userID: String, username: String, isModerator: Bool, isExpanded: Bool) {

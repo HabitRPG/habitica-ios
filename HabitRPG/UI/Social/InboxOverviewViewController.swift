@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import SwiftUI
+import SwiftUIX
 
 class InboxOverviewViewController: BaseTableViewController {
     
@@ -18,20 +20,32 @@ class InboxOverviewViewController: BaseTableViewController {
     private var newMessageUsername: String?
     private var newMessageUserID: String?
 
+    let emptyView = UIHostingView(rootView: NoContentView(icon: Image(Asset.Empty.messages.name), title: Text(L10n.Empty.messages), content: Text(L10n.Empty.messagesDescription)))
+
     override func viewDidLoad() {
         tutorialIdentifier = "inbox"
         super.viewDidLoad()
-        doneButton.title = L10n.done
         dataSource.tableView = tableView
         clearsSelectionOnViewWillAppear = false
         tableView.rowHeight = UITableView.automaticDimension
         tableView.estimatedRowHeight = 60
+        
+        if #unavailable(iOS 26.0) {
+            doneButton.style = .done
+        } else {
+            tableView.topEdgeEffect.isHidden = true
+            tableView.bottomEdgeEffect.isHidden = true
+        }
         
         #if !targetEnvironment(macCatalyst)
         refreshControl = HabiticaRefresControl()
         refreshControl?.addTarget(self, action: #selector(refresh), for: .valueChanged)
         #endif
         refresh()
+        
+        view.addSubview(emptyView)
+        emptyView.isHidden = true
+        dataSource.emptyView = emptyView
     }
     
     override func applyTheme(theme: Theme) {
@@ -83,16 +97,17 @@ class InboxOverviewViewController: BaseTableViewController {
 
     @IBAction func showNewMessageAlert(_ sender: Any) {
         let alertController = HabiticaAlertController(title: L10n.newMessage)
+        alertController.message = L10n.chatWithQuestion
         let stackView = UIStackView()
+        stackView.alignment = .fill
         stackView.axis = .vertical
-        stackView.spacing = 16
-        let usernameTextField = UITextField()
-        usernameTextField.attributedPlaceholder = NSAttributedString(string: L10n.username, attributes: [.foregroundColor: ThemeService.shared.theme.dimmedTextColor])
-        usernameTextField.borderStyle = .roundedRect
-        usernameTextField.autocapitalizationType = .none
-        usernameTextField.spellCheckingType = .no
-        usernameTextField.backgroundColor = ThemeService.shared.theme.windowBackgroundColor
-        usernameTextField.textColor = ThemeService.shared.theme.primaryTextColor
+        stackView.spacing = 12
+        let usernameTextField = GlassTextField()
+        usernameTextField.textField.attributedPlaceholder = NSAttributedString(string: L10n.username, attributes: [.foregroundColor: ThemeService.shared.theme.ternaryTextColor])
+        
+        usernameTextField.textField.autocapitalizationType = .none
+        usernameTextField.textField.spellCheckingType = .no
+        usernameTextField.textField.textColor = ThemeService.shared.theme.primaryTextColor
         stackView.addArrangedSubview(usernameTextField)
         alertController.contentView = stackView
         
@@ -114,7 +129,7 @@ class InboxOverviewViewController: BaseTableViewController {
             errorView.isHidden = true
             activityIndicator.startAnimating()
             if let username = usernameTextField.text {
-                self?.socialRepository.retrieveMember(userID: username).on(
+                self?.socialRepository.retrieveMember(userID: username, handleErrors: false).on(
                     value: { member in
                         foundUser = true
                         self?.newMessageUsername = username
@@ -133,7 +148,14 @@ class InboxOverviewViewController: BaseTableViewController {
             }
         }
         alertController.addCancelAction()
+        alertController.onAppeared = {
+            usernameTextField.becomeFirstResponder()
+        }
         alertController.show()
-        usernameTextField.becomeFirstResponder()
+    }
+    
+    override func viewWillLayoutSubviews() {
+        emptyView.pin.left().right().top(40).sizeToFit(.width)
+        super.viewWillLayoutSubviews()
     }
 }

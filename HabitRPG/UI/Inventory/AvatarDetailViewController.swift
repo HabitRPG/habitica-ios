@@ -22,9 +22,7 @@ class AvatarDetailViewController: BaseCollectionViewController, UICollectionView
     var customizationType: String?
     
     private let headerView = AvatarHeaderView()
-    
-    private var newCustomizationLayout = false
-    
+        
     override func viewDidLoad() {
         topHeaderCoordinator?.hideNavBar = false
         super.viewDidLoad()
@@ -36,16 +34,16 @@ class AvatarDetailViewController: BaseCollectionViewController, UICollectionView
         if topHeaderCoordinator?.alternativeHeader == nil {
             topHeaderCoordinator?.alternativeHeader = headerView
         }
+        topHeaderCoordinator?.navbarVisibleColor = ThemeService.shared.theme.windowBackgroundColor
         topHeaderCoordinator?.followScrollView = false
-        
-        newCustomizationLayout = configRepository.bool(variable: .enableCustomizationShop) || configRepository.testingLevel.isDeveloper
-        
+        topHeaderCoordinator?.contentInsetModifier.top = -30
+
         if let type = customizationType {
             if type == "eyewear" || type == "headAccessory" || type == "back" || type == "animalTails" {
-                gearDataSource = AvatarGearDetailViewDataSource(type: type, newCustomizationLayout: newCustomizationLayout)
+                gearDataSource = AvatarGearDetailViewDataSource(type: type)
                 gearDataSource?.collectionView = collectionView
             } else {
-                customizationDataSource = AvatarDetailViewDataSource(type: type, group: customizationGroup, newCustomizationLayout: newCustomizationLayout)
+                customizationDataSource = AvatarDetailViewDataSource(type: type, group: customizationGroup)
                 customizationDataSource?.collectionView = collectionView
                 
                 customizationDataSource?.purchaseSet = {[weak self] set in
@@ -61,19 +59,16 @@ class AvatarDetailViewController: BaseCollectionViewController, UICollectionView
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForFooterInSection section: Int) -> CGSize {
-        if section == collectionView.numberOfSections - 1 && newCustomizationLayout {
+        if section == collectionView.numberOfSections - 1 {
             return CGSize(width: collectionView.frame.width, height: 200)
-        } else if newCustomizationLayout {
-            return CGSize(width: collectionView.frame.width, height: 20)
         }
-        return CGSize(width: collectionView.frame.width, height: 60)
+        return CGSize(width: collectionView.frame.width, height: 20)
     }
     
     override func applyTheme(theme: Theme) {
         super.applyTheme(theme: theme)
         collectionView.backgroundColor = theme.contentBackgroundColor
-        collectionView.layer.cornerRadius = 22
-        topHeaderCoordinator?.navbarVisibleColor = theme.windowBackgroundColor
+        topHeaderCoordinator?.navbarVisibleColor = ThemeService.shared.theme.windowBackgroundColor
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
@@ -87,7 +82,9 @@ class AvatarDetailViewController: BaseCollectionViewController, UICollectionView
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
         let width = 80
-        let viewWidth = Int(collectionView.frame.size.width)
+        let safeLeft = collectionView.safeAreaInsets.left
+        let safeRight = collectionView.safeAreaInsets.right
+        let viewWidth = Int(collectionView.frame.size.width - safeLeft - safeRight)
         var count = 3
         if let dataSource = gearDataSource {
             let inSection = dataSource.collectionView(collectionView, numberOfItemsInSection: section)
@@ -102,7 +99,7 @@ class AvatarDetailViewController: BaseCollectionViewController, UICollectionView
         }
         let totalWidth = width * count + (10 * (count-1))
         let spacing = CGFloat(viewWidth - totalWidth) / 2
-        return UIEdgeInsets(top: 0, left: spacing, bottom: 0, right: spacing)
+        return UIEdgeInsets(top: 0, left: spacing + safeLeft, bottom: 0, right: spacing + safeRight)
     }
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
@@ -156,16 +153,14 @@ class AvatarDetailViewController: BaseCollectionViewController, UICollectionView
                 Image(uiImage: HabiticaIcons.imageOfGem)
             }) {[weak self] in
                 if self?.customizationDataSource?.canAfford(price: customization.price) != true {
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.8, execute: {
-                        HRPGBuyItemModalViewController.displayInsufficientGemsModal(reason: "customization", delayDisplay: false)
-                    })
+                    BuySheetViewModel.displayInsufficientGemsModal(reason: "customization")
                     return
                 }
                 self?.customizationRepository.unlock(customization: customization, value: customization.price).observeCompleted {}
             }
             })
         )
-        present(sheet, animated: true)
+        sheet.show()
     }
     
     private func showPurchaseDialog(gear: GearProtocol, withSource sourceView: UIView?) {
@@ -182,7 +177,7 @@ class AvatarDetailViewController: BaseCollectionViewController, UICollectionView
             }
             })
         )
-        present(sheet, animated: true)
+        sheet.show()
     }
     
     private func showPurchaseDialog(customizationSet: CustomizationSetProtocol, withSource sourceView: UIView?) {
@@ -201,16 +196,14 @@ class AvatarDetailViewController: BaseCollectionViewController, UICollectionView
                 Image(uiImage: HabiticaIcons.imageOfGem)
             }) {[weak self] in
                 if self?.customizationDataSource?.canAfford(price: customizationSet.setPrice) != true {
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.8, execute: {
-                        HRPGBuyItemModalViewController.displayInsufficientGemsModal(reason: "customization", delayDisplay: false)
-                    })
+                    BuySheetViewModel.displayInsufficientGemsModal(reason: "customization")
                     return
                 }
                 self?.customizationRepository.unlock(customizationSet: customizationSet, value: customizationSet.setPrice).observeCompleted {}
             }
             })
         )
-        present(sheet, animated: true)
+        sheet.show()
     }
     
     private func showTimeTravelDialog() {

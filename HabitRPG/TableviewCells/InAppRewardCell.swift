@@ -161,6 +161,8 @@ class InAppRewardCell: UICollectionViewCell {
         unlockLabel.textColor = theme.secondaryTextColor
         pinnedIndicatorView.tintColor = theme.dimmedTextColor
         checkmarkView.tintColor = theme.dimmedTextColor
+        
+        containerView.cornerRadius = UIConstants.mediumCornerRadius
     }
     
     func wasRecentlyPurchased(_ lastPurchase: Date) -> Bool {

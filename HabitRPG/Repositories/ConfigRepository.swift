@@ -23,12 +23,10 @@ enum ConfigVariable: Int {
     
     case shopSpriteSuffix
     case maxChatLength
-    case spriteSubstitutions
     case lastVersionNumber
     case lastVersionCode
     case randomizeAvatar
     case showSubscriptionBanner
-    case raiseShops
     case knownIssues
     case activePromotion
     case customMenu
@@ -38,7 +36,6 @@ enum ConfigVariable: Int {
     
     // A/B Tests
     case moveAdventureGuide
-    case enableUsernameAutocomplete
     case reorderMenu
     case enableIPadUI
     case showQuestInMenu
@@ -50,10 +47,6 @@ enum ConfigVariable: Int {
     case enableCronButton
     
     case hideChallenges
-    
-    case enableFaintSubs
-    case enableArmoireSubs
-    case enableCustomizationShop
     case enableReviewRequest
 
     // swiftlint:disable cyclomatic_complexity
@@ -68,13 +61,10 @@ enum ConfigVariable: Int {
         case .apiVersion: return "apiVersion"
         case .shopSpriteSuffix: return "shopSpriteSuffix"
         case .maxChatLength: return "maxChatLength"
-        case .enableUsernameAutocomplete: return "enableUsernameAutocomplete"
-        case .spriteSubstitutions: return "spriteSubstitutions"
         case .lastVersionNumber: return "lastVersionNumber"
         case .lastVersionCode: return "lastVersionCode"
         case .randomizeAvatar: return "randomizeAvatar"
         case .showSubscriptionBanner: return "showSubscriptionBanner"
-        case .raiseShops: return "raiseShops"
         case .feedbackURL: return "feedbackURL"
         case .moveAdventureGuide: return "moveAdventureGuide"
         case .knownIssues: return "knownIssues"
@@ -92,9 +82,6 @@ enum ConfigVariable: Int {
         case .advertiseTaskGraphs: return "advertiseTaskGraphs"
         case .enableCronButton: return "enableCronButton"
         case .hideChallenges: return "hideChallenges"
-        case .enableFaintSubs: return "enableFaintSubs"
-        case .enableArmoireSubs: return "enableArmoireSubs"
-        case .enableCustomizationShop: return "enableCustomizationShop"
         case .enableReviewRequest: return "enableReviewRequest"
         }
         // swiftlint:enable switch_case_on_newline
@@ -118,17 +105,11 @@ enum ConfigVariable: Int {
             return "" as NSString
         case .maxChatLength:
             return 3000 as NSNumber
-        case .enableUsernameAutocomplete:
-            return false as NSNumber
-        case .spriteSubstitutions:
-            return "{}" as NSString
         case .lastVersionNumber:
             return "" as NSString
         case .lastVersionCode:
             return 0 as NSNumber
         case .randomizeAvatar:
-            return false as NSNumber
-        case .raiseShops:
             return false as NSNumber
         case .moveAdventureGuide:
             return false as NSNumber
@@ -164,13 +145,7 @@ enum ConfigVariable: Int {
             return false as NSNumber
         case .enableCronButton:
             return false as NSNumber
-        case .enableFaintSubs:
-            return false as NSNumber
-        case .enableArmoireSubs:
-            return false as NSNumber
         case .hideChallenges:
-            return false as NSNumber
-        case .enableCustomizationShop:
             return false as NSNumber
         case .enableReviewRequest:
             return false as NSNumber
@@ -187,12 +162,9 @@ enum ConfigVariable: Int {
             .apiVersion,
             .shopSpriteSuffix,
             .maxChatLength,
-            .enableUsernameAutocomplete,
-            .spriteSubstitutions,
             .lastVersionNumber,
             .lastVersionCode,
             .randomizeAvatar,
-            .raiseShops,
             .feedbackURL,
             .moveAdventureGuide,
             .knownIssues,
@@ -208,10 +180,7 @@ enum ConfigVariable: Int {
             .showTaskGraphs,
             .advertiseTaskGraphs,
             .enableCronButton,
-            .enableFaintSubs,
-            .enableArmoireSubs,
-            .hideChallenges,
-            .enableCustomizationShop
+            .hideChallenges
         ]
     }
     // swiftlint:enable cyclomatic_complexity
@@ -397,14 +366,4 @@ class ConfigRepository: NSObject {
             return ProcessInfo.processInfo.isiOSAppOnMac
         #endif
     }()
-    
-    func getBirthdayEvent() -> WorldStateEventProtocol? {
-        for event in worldState?.events ?? [] where event.eventKey == "birthday10" {
-            if let end = event.end, end > Date() {
-                return event
-            }
-            break
-        }
-        return nil
-    }
 }

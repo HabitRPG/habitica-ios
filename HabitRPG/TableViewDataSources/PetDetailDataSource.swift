@@ -16,7 +16,7 @@ struct PetStableItem {
     var canRaise: Bool
 }
 
-class PetDetailDataSource: BaseReactiveCollectionViewDataSource<PetStableItem> {
+class PetDetailDataSource: StableDetailDataSource<PetProtocol, PetStableItem> {
     
     private let stableRepsository = StableRepository()
     private let inventoryRepository = InventoryRepository()
@@ -72,9 +72,12 @@ class PetDetailDataSource: BaseReactiveCollectionViewDataSource<PetStableItem> {
                         }))
 
             .on(value: {[weak self](ownedPets, ownedMounts, pets, mounts) in
+                guard !UserManager.shared.isLoggingOut else { return }
                 self?.sections[0].items.removeAll()
                 self?.sections[1].items.removeAll()
-                pets.forEach({ (pet) in
+                pets.sorted(by: { first, second in
+                    return (first.key ?? "") < (second.key ?? "")
+                }).forEach({ (pet) in
                     let item = PetStableItem(pet: pet, trained: ownedPets[pet.key ?? ""] ?? 0, canRaise: ownedMounts[pet.key ?? ""] ?? mounts[pet.key ?? ""] ?? false)
                     if pet.type == "premium" {
                         self?.sections[1].items.append(item)
@@ -82,9 +85,6 @@ class PetDetailDataSource: BaseReactiveCollectionViewDataSource<PetStableItem> {
                         self?.sections[0].items.append(item)
                     }
                 })
-                if self?.visibleSections.count == 1 {
-                    self?.visibleSections[0].title = nil
-                }
                 self?.collectionView?.reloadData()
             }).start())
         
@@ -96,9 +96,10 @@ class PetDetailDataSource: BaseReactiveCollectionViewDataSource<PetStableItem> {
                             }
                             return itemMap
                         })
-                        .on(value: { ownedItems in
-                            self.ownedItems = ownedItems
-                            self.collectionView?.reloadData()
+                        .on(value: {[weak self] ownedItems in
+                            guard !UserManager.shared.isLoggingOut else { return }
+                            self?.ownedItems = ownedItems
+                            self?.collectionView?.reloadData()
                         }).start())
         disposable.add(userRepository.getUser().map { $0.items?.currentPet }
             .on(value: {[weak self] pet in

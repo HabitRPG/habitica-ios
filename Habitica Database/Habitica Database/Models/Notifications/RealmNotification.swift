@@ -19,7 +19,9 @@ class RealmNotification: BaseModel,
     NotificationNewMysteryItemProtocol,
     NotificationLoginIncentiveProtocol,
     NotificationFirstDropProtocol,
-    NotificationItemReceivedProtocol {
+    NotificationItemReceivedProtocol,
+    NotificationGroupTaskProtocol,
+    NotificationCardReceivedProtocol {
     @objc dynamic var id: String = ""
     @objc dynamic var realmType: String = ""
     var type: HabiticaNotificationType {
@@ -35,6 +37,7 @@ class RealmNotification: BaseModel,
     @objc dynamic var userID: String = ""
     @objc dynamic var priority: Int = 0
     @objc dynamic var date: Date? = Date()
+    @objc dynamic var notificationMessage: String?
 
     @objc dynamic var title: String?
     @objc dynamic var groupID: String?
@@ -49,6 +52,10 @@ class RealmNotification: BaseModel,
     @objc dynamic var achievementModalText: String?
     @objc dynamic var egg: String?
     @objc dynamic var hatchingPotion: String?
+    
+    @objc dynamic var cardKey: String?
+    @objc dynamic var cardSenderID: String?
+    @objc dynamic var cardSenderName: String?
     
     @objc dynamic var nextRewardAt: Int = -1
     @objc dynamic var message: String?
@@ -87,6 +94,7 @@ class RealmNotification: BaseModel,
         self.userID = userID ?? ""
         self.id = protocolObject.id
         self.type = protocolObject.type
+        self.notificationMessage = protocolObject.notificationMessage
         if let notification = protocolObject as? NotificationNewChatProtocol {
             groupID = notification.groupID
             groupName = notification.groupName
@@ -108,6 +116,11 @@ class RealmNotification: BaseModel,
             message = notification.message
             icon = notification.icon
             openDestination = notification.openDestination
+        }
+        if let notification = protocolObject as? NotificationCardReceivedProtocol {
+            cardKey = notification.cardKey
+            cardSenderID = notification.cardSenderID
+            cardSenderName = notification.cardSenderName
         }
         achievementKey = protocolObject.achievementKey
         achievementMessage = protocolObject.achievementMessage

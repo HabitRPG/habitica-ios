@@ -10,7 +10,7 @@ import SwiftUI
 
 struct StableBackgroundView<Content: View>: View {
     let content: Content
-    let animateFlying: Bool
+    var animateFlying: Bool = false
     
     private func getBackground() -> ImageAsset {
         let month = Calendar.current.component(.month, from: Date())
@@ -44,8 +44,8 @@ struct StableBackgroundView<Content: View>: View {
         }
     }
     
+    @Environment(\.scenePhase) var scenePhase
     @State var bounceHeight: CGFloat?
-    @State var animationTask: Task<(), Never>?
     
     func bounceAnimation(totalHeight: CGFloat) {
         withAnimation(Animation.easeOut(duration: 0.2).delay(0)) {
@@ -77,7 +77,8 @@ struct StableBackgroundView<Content: View>: View {
         }
         .maxWidth(.infinity)
         .height(124)
-        .task {
+        .task(id: scenePhase) {
+            guard scenePhase == .active else { return }
             try? await Task.sleep(nanoseconds: 1000000000)
             do {
                 while true {
@@ -92,6 +93,12 @@ struct StableBackgroundView<Content: View>: View {
                 // task is cancelled
             }
         }
+    }
+}
+
+extension StableBackgroundView where Content == EmptyView {
+    init() {
+        self.init(content: EmptyView())
     }
 }
 

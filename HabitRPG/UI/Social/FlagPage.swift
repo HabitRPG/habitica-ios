@@ -102,36 +102,46 @@ class FlagViewModel: ObservableObject {
 }
 
 struct FlagPage: View {
+    @ObservedObject var themeService = ThemeService.shared
     @ObservedObject var viewModel: FlagViewModel
     @State var isFirstResponder = true
+    
     var body: some View {
-        let theme = ThemeService.shared.theme
+        let theme = themeService.theme
         let typeText = viewModel.typeText
         VStack(alignment: .leading, spacing: 0) {
-            Rectangle().fill().foregroundColor(Color(UIColor.gray400)).frame(width: 22, height: 3).cornerRadius(1.5)
-                .frame(maxWidth: .infinity, alignment: .top)
-                .padding(.top, 10)
             HStack {
-                Text(L10n.reportX(typeText)).foregroundColor(Color(theme.primaryTextColor)).font(.system(size: 20, weight: .medium))
+                Text(L10n.reportX(typeText)).foregroundStyle(Color(theme.primaryTextColor)).font(.system(size: 20, weight: .medium))
                 Spacer()
-                Button(L10n.report) {
-                    viewModel.sendReport()
-                }.buttonStyle(.plain).foregroundColor(Color(UIColor.red100))
+                if #available(iOS 26.0, *) {
+                    Button(L10n.report) {
+                        viewModel.sendReport()
+                    }.buttonStyle(.glassProminent)
+                        .foregroundStyle(.white)
+                        .tint(Color(theme.errorColor))
+                } else {
+                    Button(L10n.report) {
+                        viewModel.sendReport()
+                    }.buttonStyle(.plain)
+                        .foregroundStyle(.white)
+                        .tint(Color(theme.errorColor))
+                }
             }.padding(.vertical, 32)
             VStack {
                 Text(viewModel.offendingText).font(.system(size: 16, weight: .medium)).frame(maxWidth: .infinity, alignment: .leading)
             }
             .padding(16)
             .overlay(
-                RoundedRectangle(cornerRadius: 8)
+                RoundedRectangle(cornerRadius: UIConstants.largeCornerRadius)
                     .stroke(Color(theme.separatorColor), lineWidth: 1)
             )
             Text(L10n.reportXQuestion(typeText)).font(.system(size: 16, weight: .medium)).padding(.top, 20)
             FocusableTextField(placeholder: L10n.reasonForReport, text: $viewModel.reason, isFirstResponder: $isFirstResponder)
-                .padding(16).background(Color(UIColor.gray400).opacity(0.12)).cornerRadius(8)
+                .padding(16).background(Color(UIColor.gray400).opacity(0.12))
+                .cornerRadius(UIConstants.largeCornerRadius)
                 .padding(.top, 12).padding(.bottom, 15)
             if viewModel.type == .member {
-                Text(L10n.thisWillAlsoBlockX(viewModel.offendingText)).font(.system(size: 14, weight: .medium)).foregroundColor(Color(theme.ternaryTextColor))
+                Text(L10n.thisWillAlsoBlockX(viewModel.offendingText)).font(.system(size: 14, weight: .medium)).foregroundStyle(Color(theme.ternaryTextColor))
             }
             Text(AttributedString(L10n.reportingDisclaimer(typeText)).withCommunityGuidelinesLinked().withTermsOfServiceLinked())
                 .environment(\.openURL, OpenURLAction(handler: { url in
@@ -141,8 +151,8 @@ struct FlagPage: View {
                     }
                     return .systemAction
                 }))
-                .font(.system(size: 14)).foregroundColor(Color(theme.ternaryTextColor)).padding(.bottom, 12)
-        }.padding(.horizontal, 32).foregroundColor(Color(theme.primaryTextColor))
+                .font(.system(size: 14)).foregroundStyle(Color(theme.ternaryTextColor)).padding(.bottom, 12)
+        }.padding(.horizontal, 32).foregroundStyle(Color(theme.primaryTextColor))
     }
 }
 
@@ -166,7 +176,8 @@ class FlagViewController: HostingBottomSheetController<FlagPage> {
         }
     }
     
-    @MainActor required dynamic init?(coder aDecoder: NSCoder) {
+    @MainActor
+    required dynamic init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
 }

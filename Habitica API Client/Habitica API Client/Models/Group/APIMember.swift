@@ -11,6 +11,7 @@ import Habitica_Models
 
 public class APIMember: MemberProtocol, Decodable {
     public var id: String?
+    public var achievements: UserAchievementsProtocol?
     public var stats: StatsProtocol?
     public var preferences: PreferencesProtocol?
     public var profile: ProfileProtocol?
@@ -27,6 +28,7 @@ public class APIMember: MemberProtocol, Decodable {
     enum CodingKeys: String, CodingKey {
         case id
         case uid = "_id"
+        case achievements
         case stats
         case flags
         case preferences
@@ -55,5 +57,6 @@ public class APIMember: MemberProtocol, Decodable {
         flags = try? values.decode(APIFlags.self, forKey: .flags)
         loginIncentives = (try? values.decode(Int.self, forKey: .loginIncentives)) ?? 0
         authentication = try? values.decode(APIAuthentication.self, forKey: .authentication)
+        achievements = try? values.decode(APIUserAchievements.self, forKey: .achievements)
     }
 }

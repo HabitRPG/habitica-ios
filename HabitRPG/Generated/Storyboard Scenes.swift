@@ -13,13 +13,6 @@ import UIKit
 // swiftlint:disable explicit_type_interface identifier_name line_length prefer_self_in_static_references
 // swiftlint:disable type_body_length type_name
 internal enum StoryboardScene {
-  internal enum BuyModal: StoryboardType {
-    internal static let storyboardName = "BuyModal"
-
-    internal static let initialScene = InitialSceneType<Habitica.HRPGBuyItemModalViewController>(storyboard: BuyModal.self)
-
-    internal static let hrpgBuyItemModalViewController = SceneType<Habitica.HRPGBuyItemModalViewController>(storyboard: BuyModal.self, identifier: "HRPGBuyItemModalViewController")
-  }
   internal enum Intro: StoryboardType {
     internal static let storyboardName = "Intro"
 
@@ -60,17 +53,9 @@ internal enum StoryboardScene {
 
     internal static let mainTabBarController = SceneType<Habitica.MainTabBarController>(storyboard: Main.self, identifier: "MainTabBarController")
 
-    internal static let mountDetailViewController = SceneType<Habitica.MountDetailViewController>(storyboard: Main.self, identifier: "MountDetailViewController")
-
-    internal static let mountsOverviewViewController = SceneType<Habitica.MountOverviewViewController>(storyboard: Main.self, identifier: "MountsOverviewViewController")
-
     internal static let newsViewController = SceneType<Habitica.NewsViewController>(storyboard: Main.self, identifier: "NewsViewController")
 
     internal static let notificationsNavigationController = SceneType<Habitica.ThemedNavigationController>(storyboard: Main.self, identifier: "NotificationsNavigationController")
-
-    internal static let petDetailViewController = SceneType<Habitica.PetDetailViewController>(storyboard: Main.self, identifier: "PetDetailViewController")
-
-    internal static let petsOverviewViewController = SceneType<Habitica.PetOverviewViewController>(storyboard: Main.self, identifier: "PetsOverviewViewController")
 
     internal static let promoWebNavController = SceneType<UIKit.UINavigationController>(storyboard: Main.self, identifier: "PromoWebNavController")
 
@@ -86,8 +71,6 @@ internal enum StoryboardScene {
 
     internal static let spellUserNavigationController = SceneType<UIKit.UINavigationController>(storyboard: Main.self, identifier: "SpellUserNavigationController")
 
-    internal static let stableViewController = SceneType<Habitica.StableSplitViewController>(storyboard: Main.self, identifier: "StableViewController")
-
     internal static let subscriptionNavController = SceneType<UIKit.UINavigationController>(storyboard: Main.self, identifier: "SubscriptionNavController")
 
     internal static let taskBoardViewController = SceneType<UIKit.UIViewController>(storyboard: Main.self, identifier: "TaskBoardViewController")
@@ -95,8 +78,6 @@ internal enum StoryboardScene {
     internal static let todosViewController = SceneType<Habitica.ToDoTableViewController>(storyboard: Main.self, identifier: "TodosViewController")
 
     internal static let avatarDetailViewController = SceneType<Habitica.AvatarDetailViewController>(storyboard: Main.self, identifier: "avatarDetailViewController")
-
-    internal static let oldAvatarDetailViewController = SceneType<Habitica.OldAvatarDetailViewController>(storyboard: Main.self, identifier: "oldAvatarDetailViewController")
 
     internal static let spellTaskNavigationController = SceneType<UIKit.UINavigationController>(storyboard: Main.self, identifier: "spellTaskNavigationController")
 
@@ -131,8 +112,6 @@ internal enum StoryboardScene {
 
     internal static let guidelinesViewController = SceneType<Habitica.GuidelinesViewController>(storyboard: Social.self, identifier: "GuidelinesViewController")
 
-    internal static let guildsOverviewViewController = SceneType<Habitica.GuildOverviewViewController>(storyboard: Social.self, identifier: "GuildsOverviewViewController")
-
     internal static let inboxChatNavigationController = SceneType<Habitica.ThemedNavigationController>(storyboard: Social.self, identifier: "InboxChatNavigationController")
 
     internal static let inboxChatViewController = SceneType<Habitica.InboxChatViewController>(storyboard: Social.self, identifier: "InboxChatViewController")
@@ -150,6 +129,21 @@ internal enum StoryboardScene {
     internal static let userProfileNavController = SceneType<UIKit.UINavigationController>(storyboard: Social.self, identifier: "UserProfileNavController")
 
     internal static let userProfileViewController = SceneType<Habitica.UserProfileViewController>(storyboard: Social.self, identifier: "UserProfileViewController")
+  }
+  internal enum Stable: StoryboardType {
+    internal static let storyboardName = "Stable"
+
+    internal static let initialScene = InitialSceneType<Habitica.StableSplitViewController>(storyboard: Stable.self)
+
+    internal static let mountDetailViewController = SceneType<Habitica.MountDetailViewController>(storyboard: Stable.self, identifier: "MountDetailViewController")
+
+    internal static let mountsOverviewViewController = SceneType<Habitica.MountOverviewViewController>(storyboard: Stable.self, identifier: "MountsOverviewViewController")
+
+    internal static let petDetailViewController = SceneType<Habitica.PetDetailViewController>(storyboard: Stable.self, identifier: "PetDetailViewController")
+
+    internal static let petsOverviewViewController = SceneType<Habitica.PetOverviewViewController>(storyboard: Stable.self, identifier: "PetsOverviewViewController")
+
+    internal static let stableViewController = SceneType<Habitica.StableSplitViewController>(storyboard: Stable.self, identifier: "StableViewController")
   }
   internal enum Support: StoryboardType {
     internal static let storyboardName = "Support"

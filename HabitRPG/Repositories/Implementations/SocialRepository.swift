@@ -12,8 +12,8 @@ import Habitica_Models
 import Habitica_API_Client
 import Habitica_Database
 
+// swiftlint:disable:next type_body_length
 class SocialRepository: BaseRepository<SocialLocalRepository> {
-    
     private let userRepository = UserRepository()
     
     func getGroups(predicate: NSPredicate) -> SignalProducer<ReactiveResults<[GroupProtocol]>, ReactiveSwiftRealmError> {
@@ -249,8 +249,8 @@ class SocialRepository: BaseRepository<SocialLocalRepository> {
         })
     }
     
-    public func retrieveMember(userID: String, fromHall: Bool = false) -> Signal<MemberProtocol?, Never> {
-        return RetrieveMemberCall(userID: userID, fromHall: fromHall).objectSignal.on(value: {[weak self] member in
+    public func retrieveMember(userID: String, fromHall: Bool = false, handleErrors: Bool = true) -> Signal<MemberProtocol?, Never> {
+        return RetrieveMemberCall(userID: userID, fromHall: fromHall, onError: handleErrors ? nil : { _ in }).objectSignal.on(value: {[weak self] member in
             if let member = member, !fromHall {
                 self?.localRepository.save(member)
             }
@@ -357,6 +357,31 @@ class SocialRepository: BaseRepository<SocialLocalRepository> {
             }
         }
         return call.objectSignal
+    }
+    
+    public func createChallenge(challenge: ChallengeProtocol) -> Signal<ChallengeProtocol?, Error> {
+        localRepository.save(challenge)
+        let call = CreateChallengeCall(challenge: challenge)
+        
+        return call.httpResponseSignal.promoteError().flatMap(.latest, { response in
+            if response.statusCode == 201 {
+                return SignalProducer(value: response)
+            } else {
+                return SignalProducer(error: NSError(domain: "", code: -1))
+            }
+        }).flatMap(.latest, { _ in
+            return call.objectSignal
+        })
+    }
+    
+    public func updateChallenge(challenge: ChallengeProtocol) -> Signal<ChallengeProtocol?, Never> {
+        localRepository.save(challenge)
+        return UpdateChallengeCall(challenge: challenge)
+            .objectSignal.on(value: {[weak self] returnedChallenge in
+            if let returnedChallenge = returnedChallenge {
+                self?.localRepository.save(returnedChallenge)
+            }
+        })
     }
     
     public func joinChallenge(challengeID: String) -> Signal<ChallengeProtocol?, Never> {
@@ -471,6 +496,14 @@ class SocialRepository: BaseRepository<SocialLocalRepository> {
         return localRepository.getEditableGroup(id: id)
     }
     
+    func getNewChallenge() -> ChallengeProtocol {
+        return localRepository.getNewChallenge()
+    }
+
+    func getEditableChallenge(id: String) -> ChallengeProtocol? {
+        return localRepository.getEditableChallenge(id: id)
+    }
+    
     func createGroup(_ group: GroupProtocol) -> Signal<GroupProtocol?, Never> {
         localRepository.save(group)
         return CreateGroupCall(group: group)
@@ -520,5 +553,11 @@ class SocialRepository: BaseRepository<SocialLocalRepository> {
         return BlockMemberCall(userID: userID).objectSignal.flatMap(.latest) { _ in
             return self.userRepository.retrieveUser()
         }
+    }
+    
+    func retrieveMemberAchievements(userID: String) -> Signal<[AchievementProtocol]?, Never> {
+        return RetrieveAchievementsCall(userID: userID).objectSignal.map({ achievementList in
+            return achievementList?.achievements
+        })
     }
 }

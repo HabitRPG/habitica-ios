@@ -13,7 +13,7 @@ import InputBarAccessoryView
 
 class MessagesViewController: BaseUIViewController, UITableViewDelegate, UIScrollViewDelegate {
     let inputBar: InputBarAccessoryView = InputBarAccessoryView()
-
+    let inputBarContainer: UIVisualEffectView = UIVisualEffectView()
     let socialRepository = SocialRepository()
     private let userRepository = UserRepository()
     private let configRepository = ConfigRepository.shared
@@ -35,8 +35,21 @@ class MessagesViewController: BaseUIViewController, UITableViewDelegate, UIScrol
     override func loadView() {
         view = UIView()
         view.addSubview(tableView)
-        view.addSubview(inputBar)
+        view.addSubview(inputBarContainer)
+        inputBarContainer.contentView.addSubview(inputBar)
+        if #available(iOS 26.0, *) {
+            inputBarContainer.effect = UIGlassEffect(style: .regular)
+        } else {
+            inputBarContainer.effect = UIBlurEffect(style: .systemMaterial)
+        }
+        inputBar.inputTextView.isImagePasteEnabled = false
+        inputBarContainer.cornerRadius = UIConstants.largeCornerRadius
+        inputBar.backgroundColor = .clear
+        inputBar.backgroundView.backgroundColor = .clear
+        inputBar.separatorLine.isHidden = true
+        autocompleteManager.tableView.backgroundColor = .clear
     }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         hidesBottomBarWhenPushed = true
@@ -52,15 +65,25 @@ class MessagesViewController: BaseUIViewController, UITableViewDelegate, UIScrol
         tableView.rowHeight = UITableView.automaticDimension
         tableView.estimatedRowHeight = 90
         tableView.keyboardDismissMode = .interactive
+        tableView.translatesAutoresizingMaskIntoConstraints = false
+        tableView.insetsContentViewsToSafeArea = false
+        tableView.insetsLayoutMarginsFromSafeArea = false
+        tableView.contentInsetAdjustmentBehavior = .never
+        
         #if !targetEnvironment(macCatalyst)
-        tableView.refreshControl = HabiticaRefresControl()
-        tableView.refreshControl?.addTarget(self, action: #selector(refresh), for: .valueChanged)
+            tableView.refreshControl = HabiticaRefresControl()
+            tableView.refreshControl?.addTarget(self, action: #selector(refresh), for: .valueChanged)
         #endif
         
         inputBar.delegate = self
         inputBar.inputTextView.keyboardType = .twitter
         inputBar.inputTextView.placeholder = L10n.writeMessage
         inputBar.bottomStackView.isHidden = true
+        let configuration = UIImage.SymbolConfiguration(pointSize: 32)
+        inputBar.sendButton.image = UIImage(systemName: "arrow.up.circle.fill", withConfiguration: configuration)?.withRenderingMode(.alwaysTemplate)
+        inputBar.sendButton.title = nil
+        inputBar.sendButton.alpha = 0
+        inputBar.sendButton.transform = CGAffineTransform(translationX: 30, y: 0)
         disposable.inner.add(userRepository.getUser().on(value: {[weak self] user in
             self?.checkGuidelinesAccepted(user: user)
         }).start())
@@ -81,40 +104,47 @@ class MessagesViewController: BaseUIViewController, UITableViewDelegate, UIScrol
         inputBar.inputTextView.tintColor = theme.tintColor
         inputBar.sendButton.tintColor = theme.tintColor
         inputBar.sendButton.setTitleColor(theme.tintColor, for: .normal)
+        inputBar.sendButton.setTitleColor(theme.dimmedTextColor, for: .disabled)
+        if #available(iOS 26.0, *) {
+            (inputBarContainer.effect as? UIGlassEffect)?.tintColor = theme.contentBackgroundColor
+        }
         tableView.backgroundColor = theme.windowBackgroundColor
         tableView.reloadData()
     }
     
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        super.viewWillTransition(to: size, with: coordinator)
+        coordinator.animate(alongsideTransition: { _ in
+            self.tableView.visibleCells.forEach { $0.setNeedsLayout() }
+        })
+    }
+
     func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
         isScrolling = true
     }
-    
+
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
         isScrolling = false
     }
-    
+
     override func viewDidLayoutSubviews() {
         if view.frame.height > (parent?.view.frame.height ?? 0) {
             super.viewDidLayoutSubviews()
             return
         }
-        tableView.frame = view.frame
-        var safearea: CGFloat = 0
-        var tabbarOffset: CGFloat = (view.window?.safeAreaInsets.bottom ?? 0) + 40
-        if tabBarController == nil {
-            tabbarOffset = 0
-            safearea = (view.window?.safeAreaInsets.bottom ?? 0)
-        }
-        var keyboardOffset = KeyboardManager.height > 0 ? KeyboardManager.height - tabbarOffset : safearea
-        if (modalPresentationStyle == .pageSheet || modalPresentationStyle == .formSheet) && view.window?.traitCollection.isIPadFullSize == true {
-            safearea = 0
+        tableView.pin.all()
+        let safearea = view.window?.safeAreaInsets ?? .zero
+        var safeheight: CGFloat = (tabBarController?.tabBar.frame.size.height ?? safearea.bottom)
+        var keyboardOffset = (KeyboardManager.height > 0 ? KeyboardManager.height : safeheight) + 12
+        if (modalPresentationStyle == .pageSheet || modalPresentationStyle == .formSheet) && traitCollection.isIPadFullSize == true {
             if (view.window?.bounds.size.height ?? 0) - KeyboardManager.height > view.bounds.size.height {
-                keyboardOffset = 0
+                keyboardOffset = safearea.bottom + 16
             } else {
                 keyboardOffset = KeyboardManager.height - ((view.window?.bounds.height ?? 0) -  (abs(view?.window?.convert(CGPoint(x: 0, y: 0), to: view).y ?? 0) + view.bounds.height))
             }
         }
-        let inputBarHeight = inputBar.requiredInputTextViewHeight + inputBar.padding.top + inputBar.padding.bottom + inputBar.topStackViewPadding.top
+        let textViewHeight = inputBar.maxTextViewHeight > 0 ? min(inputBar.requiredInputTextViewHeight, inputBar.maxTextViewHeight) : inputBar.requiredInputTextViewHeight
+        let inputBarHeight = textViewHeight + inputBar.padding.top + inputBar.topStackViewPadding.top + 2
         let autocompleteSize = autocompleteManager.tableView.intrinsicContentSize
         let autocompleteHeight: CGFloat
         if autocompleteManager.currentSession != nil {
@@ -122,21 +152,18 @@ class MessagesViewController: BaseUIViewController, UITableViewDelegate, UIScrol
         } else {
             autocompleteHeight = 0
         }
-        
-        var inputBarOffset = keyboardOffset + autocompleteHeight
-        if tabBarController != nil {
-            inputBarOffset += inputBarHeight + autocompleteHeight
-        } else {
-            inputBarOffset -= 4
-        }
-        tableView.contentInset.top = inputBarOffset
-        inputBar.pin.start().end().height(inputBarHeight + autocompleteHeight).bottom(keyboardOffset)
+
+        let inputBarOffset = keyboardOffset + autocompleteHeight + inputBarHeight + 10
+        tableView.contentInset.top = inputBarOffset + 16
+        tableView.contentInset.bottom = navigationController?.navigationBar.frame.totalHeight ?? 0
+        inputBarContainer.pin.left(safearea.left + 20)
+            .right(safearea.right + 20)
+            .height(inputBarHeight + autocompleteHeight + 10)
+            .bottom(keyboardOffset == 0 && safeheight == 0 ? safearea.bottom + 8 : keyboardOffset)
+        inputBar.pin.start(8).end(-10).top().bottom()
+        inputBar.inputTextView.contentInset = .zero
         if let acceptView = view.viewWithTag(999) {
-            let yPos: CGFloat = view.frame.size.height-90
-            let height: CGFloat = 90
-            if acceptView.frame.origin.y != yPos || acceptView.frame.height != height {
-                acceptView.frame = CGRect(x: 0, y: yPos, width: view.frame.size.width, height: height)
-            }
+            acceptView.pin.left(20).right(20).bottom((tabBarController?.tabBar.frame.height ?? 0) + 6).height(90)
         }
         super.viewDidLayoutSubviews()
     }
@@ -147,24 +174,30 @@ class MessagesViewController: BaseUIViewController, UITableViewDelegate, UIScrol
     
     private func checkGuidelinesAccepted(user: UserProtocol) {
         let acceptView = view.viewWithTag(999)
-        if !(user.flags?.communityGuidelinesAccepted ?? false) {
-            if acceptView != nil {
-                return
-            }
+        if acceptView == nil && !(user.flags?.communityGuidelinesAccepted ?? false) {
             guard let acceptView = Bundle.main.loadNibNamed("GuidelinesPromptView", owner: self, options: nil)?[0] as? UIView else {
                 return
             }
             let acceptButton = acceptView.viewWithTag(1) as? UIButton
             acceptButton?.setTitle(L10n.accept, for: .normal)
             acceptButton?.addTarget(self, action: #selector(acceptGuidelines), for: .touchUpInside)
+            if #available(iOS 26.0, *) {
+                acceptButton?.cornerConfiguration = .capsule()
+            } else {
+                acceptButton?.cornerRadius = UIConstants.largeCornerRadius
+            }
             let descriptionButton = acceptView.viewWithTag(2) as? UIButton
             descriptionButton?.addTarget(self, action: #selector(openGuidelinesView), for: .touchUpInside)
             acceptView.frame = CGRect(x: 0, y: view.frame.size.height-90, width: view.frame.size.width, height: 90)
             acceptView.tag = 999
+            acceptView.cornerRadius = UIConstants.largeCornerRadius
             view.addSubview(acceptView)
-        } else {
+        } else if acceptView != nil && (user.flags?.communityGuidelinesAccepted ?? false) {
             acceptView?.removeFromSuperview()
+        } else {
+            return
         }
+        view.setNeedsLayout()
     }
     
     @objc
@@ -218,6 +251,13 @@ extension MessagesViewController: AutocompleteManagerDelegate, AutocompleteManag
     
     @objc
     func inputBar(_ inputBar: InputBarAccessoryView, textViewTextDidChangeTo text: String) {
+        if text.isEmpty && inputBar.sendButton.isAnimating {
+            return
+        }
+        UIView.animate(withDuration: 0.25, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 4) {
+            inputBar.sendButton.alpha = text.isEmpty ? 0 : 1
+            inputBar.sendButton.transform = CGAffineTransform(translationX: text.isEmpty ? 30 : 0, y: 0)
+        }
         guard autocompleteManager.currentSession?.prefix == "@" else {
             return
         }
@@ -238,6 +278,7 @@ extension MessagesViewController: AutocompleteManagerDelegate, AutocompleteManag
             attributedText = NSAttributedString(string: ":\(session.completion?.text ?? "")".unicodeEmoji + " :") + attributedText
         }
         cell.textLabel?.attributedText = attributedText
+        cell.backgroundColor = .clear
         return cell
     }
 

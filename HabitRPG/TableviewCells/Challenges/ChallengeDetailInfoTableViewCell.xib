@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19162" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="24412" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="24405"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -16,13 +18,13 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Challenge Title" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4WQ-0g-PAH">
-                        <rect key="frame" x="16" y="8" width="288" height="20.5"/>
+                        <rect key="frame" x="16" y="7.9999999999999982" width="288" height="20.333333333333329"/>
                         <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
                         <color key="textColor" red="0.30588235294117649" green="0.29019607843137252" blue="0.3411764705882353" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="z75-Sz-mPV">
-                        <rect key="frame" x="16" y="137.5" width="136" height="60"/>
+                        <rect key="frame" x="16" y="137.66666666666666" width="136" height="60"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Participants" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nC3-FU-LgD">
                                 <rect key="frame" x="27" y="49" width="91" height="21"/>
@@ -37,7 +39,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="participants_details" translatesAutoresizingMaskIntoConstraints="NO" id="SXe-v0-yLB">
-                                <rect key="frame" x="35" y="11.5" width="24" height="24"/>
+                                <rect key="frame" x="35" y="11.333333333333343" width="24" height="24"/>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -57,10 +59,10 @@
                         </userDefinedRuntimeAttributes>
                     </view>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="y1q-zC-HVD">
-                        <rect key="frame" x="168" y="137.5" width="136" height="60"/>
+                        <rect key="frame" x="168" y="137.66666666666666" width="136" height="60"/>
                         <subviews>
                             <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="JNN-zz-1gk" customClass="CurrencyCountView" customModule="Habitica" customModuleProvider="target">
-                                <rect key="frame" x="8" y="8" width="128" height="33"/>
+                                <rect key="frame" x="0.0" y="8" width="136" height="33"/>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Challenge Prize" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VPE-JY-daU">
                                 <rect key="frame" x="28" y="49" width="89" height="21"/>
@@ -71,7 +73,9 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="JNN-zz-1gk" firstAttribute="top" secondItem="y1q-zC-HVD" secondAttribute="top" constant="13" id="Hen-ZB-giO"/>
+                            <constraint firstAttribute="trailing" secondItem="JNN-zz-1gk" secondAttribute="trailing" id="0sY-hW-Epl"/>
+                            <constraint firstItem="JNN-zz-1gk" firstAttribute="leading" secondItem="y1q-zC-HVD" secondAttribute="leading" id="8a3-fQ-7BH"/>
+                            <constraint firstItem="JNN-zz-1gk" firstAttribute="top" secondItem="y1q-zC-HVD" secondAttribute="top" constant="8" id="Hen-ZB-giO"/>
                             <constraint firstAttribute="bottom" secondItem="VPE-JY-daU" secondAttribute="bottom" constant="8" id="Sla-uD-ahS"/>
                             <constraint firstItem="JNN-zz-1gk" firstAttribute="centerX" secondItem="y1q-zC-HVD" secondAttribute="centerX" id="TKC-Np-Wcs"/>
                             <constraint firstItem="VPE-JY-daU" firstAttribute="centerX" secondItem="y1q-zC-HVD" secondAttribute="centerX" id="WxK-BI-vAn"/>
@@ -83,16 +87,16 @@
                         </userDefinedRuntimeAttributes>
                     </view>
                     <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ends on " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dcc-fD-hHj">
-                        <rect key="frame" x="135.5" y="36.5" width="49" height="14.5"/>
+                        <rect key="frame" x="135.66666666666666" y="36.333333333333336" width="49" height="14.666666666666664"/>
                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
                         <color key="textColor" red="0.52941176469999995" green="0.50588235290000005" blue="0.56470588239999997" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="calendar" translatesAutoresizingMaskIntoConstraints="NO" id="IER-c7-s8I">
-                        <rect key="frame" x="107.5" y="34" width="20" height="20"/>
+                        <rect key="frame" x="113.66666666666667" y="37.333333333333336" width="14" height="13"/>
                     </imageView>
                     <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9o1-yw-Y5u">
-                        <rect key="frame" x="16" y="59" width="288" height="70.5"/>
+                        <rect key="frame" x="16" y="59.000000000000007" width="288" height="70.666666666666686"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </view>
                 </subviews>
@@ -131,7 +135,7 @@
         </tableViewCell>
     </objects>
     <resources>
-        <image name="calendar" width="20" height="20"/>
+        <image name="calendar" width="14" height="13"/>
         <image name="participants_details" width="24" height="24"/>
     </resources>
 </document>

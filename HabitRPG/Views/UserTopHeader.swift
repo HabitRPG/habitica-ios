@@ -15,18 +15,19 @@ import SwiftUI
 
 class UserTopHeader: UIView, Themeable {
     
+    @IBOutlet weak var avatarButton: UIButton!
     @IBOutlet weak var avatarView: AvatarView!
     
     @IBOutlet weak var healthLabel: LabeledProgressBar!
     @IBOutlet weak var experienceLabel: LabeledProgressBar!
     @IBOutlet weak var magicLabel: LabeledProgressBar!
     
+    @IBOutlet weak var levelStackview: UIStackView!
     @IBOutlet weak var levelLabel: UILabel!
-    @IBOutlet weak var usernameLabel: UILabel!
-    @IBOutlet weak var buffIconView: UIImageView!
     
     @IBOutlet weak var classImageView: UIImageView!
     
+    @IBOutlet weak var currencyStackView: StackView!
     @IBOutlet weak var gemView: CurrencyCountView!
     @IBOutlet weak var goldView: CurrencyCountView!
     @IBOutlet weak var hourglassView: CurrencyCountView!
@@ -41,13 +42,6 @@ class UserTopHeader: UIView, Themeable {
     
     private var contributorTier: Int = 0 {
         didSet {
-            if contributorTier > 0 {
-                usernameLabel.textColor = UIColor.contributorColor(forTier: contributorTier)
-                levelLabel.textColor = UIColor.contributorColor(forTier: contributorTier)
-            } else {
-                usernameLabel.textColor = ThemeService.shared.theme.primaryTextColor
-                levelLabel.textColor = ThemeService.shared.theme.primaryTextColor
-            }
         }
     }
     
@@ -65,31 +59,62 @@ class UserTopHeader: UIView, Themeable {
         magicLabel.icon = HabiticaIcons.imageOfMagic
         
         if UIDevice.current.userInterfaceIdiom == .pad {
-            healthLabel.fontSize = 13
-            experienceLabel.fontSize = 13
-            magicLabel.fontSize = 13
+            healthLabel.fontSize = 14
+            experienceLabel.fontSize = 14
+            magicLabel.fontSize = 14
         } else {
-            healthLabel.fontSize = 11
-            experienceLabel.fontSize = 11
-            magicLabel.fontSize = 11
+            healthLabel.fontSize = 12
+            experienceLabel.fontSize = 12
+            magicLabel.fontSize = 12
         }
         
         configureAccessibilitySizing()
-        
-        buffIconView.image = HabiticaIcons.imageOfBuffIcon
-        
+                
         goldView.currency = .gold
         gemView.currency = .gem
+        gemView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(onGemTapped)))
         hourglassView.currency = .hourglass
-        
-        avatarView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(showUserBottomSheetMenu)))
+        hourglassView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(onHourglassTapped)))
+
+        avatarButton.menu = UIMenu(children: [
+            UIAction(title: L10n.openProfile, image: UIImage(systemName: "person.crop.circle")) { _ in
+                RouterHandler.shared.handle(urlString: "/profile/" + self.userID)
+            },
+            UIAction(title: L10n.Menu.customizeAvatar, image: UIImage(systemName: "theatermask.and.paintbrush")) { _ in
+                RouterHandler.shared.handle(urlString: "/user/avatar")
+            },
+            UIAction(title: L10n.Equipment.equipment.localizedCapitalized, image: UIImage(systemName: "tshirt")) { _ in
+                RouterHandler.shared.handle(urlString: "/inventory/equipment")
+            },
+            UIAction(title: L10n.shareAvatar, image: UIImage(systemName: "square.and.arrow.up")) { _ in
+                if let user = self.user {
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                        SharingManager.share(avatar: user)
+                    }
+                }
+            }
+        ])
         avatarView.isUserInteractionEnabled = true
-        gemView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(showGemView)))
+        avatarButton.showsMenuAsPrimaryAction = true
         
-        usernameLabel.font = UIFontMetrics.default.scaledSystemFont(ofSize: 15)
-        levelLabel.font = UIFontMetrics.default.scaledSystemFont(ofSize: 11)
-        usernameLabel.adjustsFontForContentSizeCategory = true
-        levelLabel.adjustsFontForContentSizeCategory = true
+        levelLabel.font = UIFontMetrics.default.scaledSystemFont(ofSize: 15, ofWeight: .bold)
+        hourglassView.font = UIFontMetrics.default.scaledSystemFont(ofSize: 15, ofWeight: .bold)
+        gemView.font = UIFontMetrics.default.scaledSystemFont(ofSize: 15, ofWeight: .bold)
+        goldView.font = UIFontMetrics.default.scaledSystemFont(ofSize: 15, ofWeight: .bold)
+        
+        healthLabel.type = "HP"
+        experienceLabel.type = "EXP"
+        magicLabel.type = "MP"
+        
+        healthLabel.progressBar.showGradient = true
+        healthLabel.progressBar.gStartColor = UIColor("#F74E52")
+        healthLabel.progressBar.gEndColor = UIColor("#FF976A")
+        experienceLabel.progressBar.showGradient = true
+        experienceLabel.progressBar.gStartColor = UIColor("#FF944C")
+        experienceLabel.progressBar.gEndColor = UIColor("#FFD76F")
+        magicLabel.progressBar.showGradient = true
+        magicLabel.progressBar.gStartColor = UIColor("#46A7D9")
+        magicLabel.progressBar.gEndColor = UIColor("#5ADEEA")
         
         disposable.inner.add(repository.getUser().on(value: {[weak self] user in
             self?.set(user: user)
@@ -119,46 +144,26 @@ class UserTopHeader: UIView, Themeable {
     }
     
     private func configureAccessibilitySizing() {
-        if traitCollection.preferredContentSizeCategory.isAccessibilityCategory && healthLabel.type != "Hp" {
-            healthLabel.type = "Hp"
-            experienceLabel.type = "Exp"
-            magicLabel.type = "Mp"
-        } else if !traitCollection.preferredContentSizeCategory.isAccessibilityCategory && healthLabel.type != L10n.health {
-            healthLabel.type = L10n.health
-            experienceLabel.type = L10n.experience
-            magicLabel.type = L10n.mana
-        }
-        
         if traitCollection.preferredContentSizeCategory.isAccessibilityCategory && healthLabelAvatarSpacing.constant != 10 {
-            healthLabelAvatarSpacing.constant = 10
-            experienceLabelAvatarSpacing.constant = 10
-            magicLabelAvatarSpacing.constant = 10
-            avatarLeadingSpacing.constant = 12
+            healthLabelAvatarSpacing.constant = 8
+            experienceLabelAvatarSpacing.constant = 8
+            magicLabelAvatarSpacing.constant = 8
         } else if !traitCollection.preferredContentSizeCategory.isAccessibilityCategory && healthLabelAvatarSpacing.constant != 25 {
-            healthLabelAvatarSpacing.constant = 25
-            experienceLabelAvatarSpacing.constant = 25
-            magicLabelAvatarSpacing.constant = 25
-            avatarLeadingSpacing.constant = 22
+            healthLabelAvatarSpacing.constant = 13
+            experienceLabelAvatarSpacing.constant = 13
+            magicLabelAvatarSpacing.constant = 13
         }
     }
     
     func applyTheme(theme: Theme) {
-        theme.applyBackgroundColor(views: [
-            self,
-            classImageView,
-            usernameLabel,
-            levelLabel,
-            hourglassView,
-            gemView,
-            goldView
-            ], color: theme.contentBackgroundColor)
-        healthLabel.textColor = theme.secondaryTextColor
+        avatarView.borderColor = theme.contentBackgroundColor
+        healthLabel.textColor = theme.isDark ? UIColor.maroon500 : UIColor.maroon100
         healthLabel.backgroundColor = theme.contentBackgroundColor
         healthLabel.progressBar.barBackgroundColor = theme.contentBackgroundColorDimmed
-        experienceLabel.textColor = theme.secondaryTextColor
+        experienceLabel.textColor = theme.isDark ? UIColor.yellow500 : UIColor.yellow1
         experienceLabel.backgroundColor = theme.contentBackgroundColor
         experienceLabel.progressBar.barBackgroundColor = theme.contentBackgroundColorDimmed
-        magicLabel.textColor = theme.secondaryTextColor
+        magicLabel.textColor = theme.isDark ? UIColor.blue500 : UIColor.blue10
         magicLabel.backgroundColor = theme.contentBackgroundColor
         magicLabel.progressBar.barBackgroundColor = theme.contentBackgroundColorDimmed
         
@@ -179,8 +184,14 @@ class UserTopHeader: UIView, Themeable {
             magicLabel.iconView.alpha = 1.0
             classImageView.alpha = 1.0
         }
-        let tier = contributorTier
-        contributorTier = tier
+        currencyStackView.backgroundColor = theme.windowBackgroundColor
+        if #available(iOS 26.0, *) {
+            currencyStackView.cornerRadius = UIConstants.largeCornerRadius
+            levelStackview.cornerConfiguration = .capsule()
+        } else {
+            currencyStackView.cornerRadius = UIConstants.mediumCornerRadius
+            levelStackview.cornerRadius = UIConstants.mediumCornerRadius
+        }
         goldView.updateStateValues()
         gemView.updateStateValues()
         hourglassView.updateStateValues()
@@ -206,13 +217,8 @@ class UserTopHeader: UIView, Themeable {
             
             configureMagicBar(user: user)
             
-            let levelString = L10n.level
-            usernameLabel.text = "\(levelString) \(stats.level)"
             configureClassDisplay(user: user)
             goldView.amount = Int(stats.gold)
-            
-            buffIconView.isHidden = stats.buffs?.isBuffed != true
-            layoutBuffIcon()
         }
         contributorTier = user.contributor?.level ?? 0
         gemView.amount = user.gemCount
@@ -255,17 +261,41 @@ class UserTopHeader: UIView, Themeable {
     }
     
     private func configureClassDisplay(user: UserProtocol) {
-        if user.preferences?.disableClasses != true && (user.stats?.level ?? 0) >= 10 {
-            levelLabel.text = user.stats?.habitClassNice?.capitalized
+        levelLabel.text = "Lvl \(user.stats?.level ?? 0)"
+        if user.preferences?.disableClasses != true && user.flags?.classSelected == true && (user.stats?.level ?? 0) >= 10 {
             switch user.stats?.habitClass ?? "" {
             case "warrior":
                 classImageView.image = HabiticaIcons.imageOfWarriorLightBg
+                levelStackview.backgroundColor = .red500.withAlphaComponent(0.3)
+                if ThemeService.shared.theme.isDark {
+                    levelLabel.textColor = .red500
+                } else {
+                    levelLabel.textColor = .red1
+                }
             case "wizard":
                 classImageView.image = HabiticaIcons.imageOfMageLightBg
+                levelStackview.backgroundColor = .blue500.withAlphaComponent(0.3)
+                if ThemeService.shared.theme.isDark {
+                    levelLabel.textColor = .blue500
+                } else {
+                    levelLabel.textColor = .blue1
+                }
             case "healer":
                 classImageView.image = HabiticaIcons.imageOfHealerLightBg
+                levelStackview.backgroundColor = .yellow500.withAlphaComponent(0.3)
+                if ThemeService.shared.theme.isDark {
+                    levelLabel.textColor = .yellow500
+                } else {
+                    levelLabel.textColor = .yellow1
+                }
             case "rogue":
                 classImageView.image = HabiticaIcons.imageOfRogueLightBg
+                levelStackview.backgroundColor = .purple500.withAlphaComponent(0.3)
+                if ThemeService.shared.theme.isDark {
+                    levelLabel.textColor = .purple500
+                } else {
+                    levelLabel.textColor = .purple300
+                }
             default:
                 classImageView.image = nil
             }
@@ -273,43 +303,19 @@ class UserTopHeader: UIView, Themeable {
         } else {
             classImageView.image = nil
             classImageView.isHidden = true
-            levelLabel.text = nil
+            levelLabel.textColor = ThemeService.shared.theme.secondaryTextColor
+            levelStackview.backgroundColor = ThemeService.shared.theme.windowBackgroundColor
         }
     }
     
     @objc
-    private func showGemView() {
-        
+    private func onGemTapped() {
+        RouterHandler.shared.handle(.purchaseGems)
     }
     
     @objc
-    private func showUserBottomSheetMenu() {
-        let sheet = HostingBottomSheetController(rootView: BottomSheetMenu(Text(""), menuItems: {
-            BottomSheetMenuitem(title: L10n.openProfile) {
-                RouterHandler.shared.handle(urlString: "/profile/" + self.userID)
-            }
-            BottomSheetMenuitem(title: L10n.Menu.customizeAvatar) {
-                RouterHandler.shared.handle(urlString: "/user/avatar")
-            }
-            BottomSheetMenuitem(title: L10n.shareAvatar) {
-                if let user = self.user {
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-                        SharingManager.share(avatar: user)
-                    }
-                }
-            }
-        }))
-        nearestNavigationController?.present(sheet, animated: true)
-    }
-    
-    override func layoutSubviews() {
-        super.layoutSubviews()
-        layoutBuffIcon()
-    }
-    
-    private func layoutBuffIcon() {
-        let usernameLabelSize = usernameLabel.sizeThatFits(levelLabel.bounds.size)
-        buffIconView.pin.size(15).start(usernameLabelSize.width + 6).top((usernameLabelSize.height - 15)/2)
+    private func onHourglassTapped() {
+        RouterHandler.shared.handle(.subscription)
     }
 }
 

@@ -51,24 +51,25 @@ struct AvatarProvider: TimelineProvider {
 
     func getTimeline(in context: Context, completion: @escaping (Timeline<AvatarEntry>) -> Void) {
         var entries: [AvatarEntry] = []
-        TaskManager.shared.getUser().on(value: { user in
-            let avatar = AvatarViewModel(avatar: user)
-            let viewDictionary = avatar.getViewDictionary(showsBackground: true, showsMount: false, showsPet: false, isFainted: false, ignoreSleeping: false)
-            let nameDictionary = avatar.getFilenameDictionary(ignoreSleeping: false)
-            var names = [String]()
-            viewOrder.forEach { key in
-                if viewDictionary[key] ?? false {
-                    if let name = nameDictionary[key], let nName = name {
-                        names.append(nName)
-                    }
+        guard let user = TaskManager.shared.getUser() else {
+            return
+        }
+        let avatar = AvatarViewModel(avatar: user)
+        let viewDictionary = avatar.getViewDictionary(showsBackground: true, showsMount: false, showsPet: false, isFainted: false, ignoreSleeping: false)
+        let nameDictionary = avatar.getFilenameDictionary(ignoreSleeping: false)
+        var names = [String]()
+        viewOrder.forEach { key in
+            if viewDictionary[key] ?? false {
+                if let name = nameDictionary[key], let nName = name {
+                    names.append(nName)
                 }
             }
-            let entry = AvatarEntry(date: Date(), widgetFamily: context.family, imageNames: names)
-            entries.append(entry)
+        }
+        let entry = AvatarEntry(date: Date(), widgetFamily: context.family, imageNames: names)
+        entries.append(entry)
 
-            let timeline = Timeline(entries: entries, policy: .atEnd)
-            completion(timeline)
-        }).take(first: 1).start()
+        let timeline = Timeline(entries: entries, policy: .atEnd)
+        completion(timeline)
     }
 }
 

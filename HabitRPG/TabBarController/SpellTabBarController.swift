@@ -18,9 +18,9 @@ class SpellTabBarController: UITabBarController {
         super.viewDidLoad()
         
         navigationItem.title = L10n.chooseTask
-        tabBar.items?[0].title = L10n.Tasks.habits
-        tabBar.items?[1].title = L10n.Tasks.dailies
-        tabBar.items?[2].title = L10n.Tasks.todos
+        tabBar.items?[0].accessibilityLabel = L10n.Tasks.habits
+        tabBar.items?[1].accessibilityLabel = L10n.Tasks.dailies
+        tabBar.items?[2].accessibilityLabel = L10n.Tasks.todos
         
         var tabIndex = 0
         for controller in viewControllers ?? [] {

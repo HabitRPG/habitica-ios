@@ -9,7 +9,11 @@
 import Foundation
 import SwiftUI
 
-class BaseHostingViewController<Content: View>: UIHostingController<Content>, Themeable, TutorialStepsProtocol {
+protocol HostingViewController {
+    
+}
+
+class BaseHostingViewController<Content: View>: UIHostingController<Content>, Themeable, TutorialStepsProtocol, HostingViewController {
     var displayedTutorialStep: Bool = false
     
     var activeTutorial: TutorialStepView?

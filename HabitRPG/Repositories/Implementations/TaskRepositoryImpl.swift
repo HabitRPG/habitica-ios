@@ -115,7 +115,7 @@ class TaskRepository: BaseRepository<TaskLocalRepository> {
                 let magicDiff = (response.magic ?? 0) - stats.mana
                 var expDiff = (response.experience ?? 0) - stats.experience
                 if stats.level < (response.level ?? 0) {
-                    let levelUpView = LevelUpOverlayView()
+                    let levelUpView = HostingBottomSheetController(rootView: LevelupSheet(), prefersGrabberVisible: false)
                     levelUpView.show()
                     SoundManager.shared.play(effect: .levelUp)
                     
@@ -150,28 +150,16 @@ class TaskRepository: BaseRepository<TaskLocalRepository> {
                                               background: healthDiff >= 0 ? .green : .red)
                     ToastManager.show(toast: toastView)
                 }
-                var dropMessage = ""
                 if let drop = response.temp?.drop {
-                    dropMessage = drop.dialog ?? "You found a \(drop.key ?? "")"
+                    ToastManager.show(text: drop.dialog ?? "You found a \(drop.key ?? "")", color: .gray)
                 }
-                if let questItemsFound = response.temp?.quest?.collection, questItemsFound > 0 {
-                    let questItemsText = questItemsFound == 1 ? L10n.oneQuestItemFound : L10n.questItemsFound(questItemsFound)
-                    if !dropMessage.isEmpty {
-                        dropMessage += "\n"
-                    }
-                    dropMessage += questItemsText
-                }
-                
-                if !dropMessage.isEmpty {
-                    ToastManager.show(text: dropMessage, color: .gray)
+                if TaskRepository.currentUserQuestStatus == .questCollect, let questItemsFound = response.temp?.quest?.collection, questItemsFound > 0 {
+                    ToastManager.show(text: questItemsFound == 1 ? L10n.oneQuestItemFound : L10n.questItemsFound(questItemsFound), color: .gray)
                 }
             }).map({ (response, _) in
                 return response
             })
     }
-    
-        
-    
     
     func score(checklistItem: ChecklistItemProtocol, task: TaskProtocol) -> Signal<TaskProtocol?, Never> {
         let call = ScoreChecklistItem(item: checklistItem, task: task)
@@ -230,9 +218,12 @@ class TaskRepository: BaseRepository<TaskLocalRepository> {
         })
     }
     
+    func createChallengeTask(challengeID: String, task: TaskProtocol) -> Signal<TaskProtocol?, Never> {
+        return CreateChallengeTaskCall(challengeID: challengeID, task: task).objectSignal
+    }
+    
     func createTasks(_ tasks: [TaskProtocol]) -> Signal<[TaskProtocol]?, Never> {
         let call = CreateTasksCall(tasks: tasks)
-        
         return call.arraySignal
     }
     

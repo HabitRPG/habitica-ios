@@ -26,6 +26,18 @@ class StableSplitViewController: HabiticaSplitViewController {
         canShowAsSplitView = false
         super.viewDidLoad()
         organizeByColor = UserDefaults.standard.bool(forKey: "stableOrganize")
+        organizeByButton.menu = UIMenu(title: L10n.organizeBy, children: [
+            UIDeferredMenuElement.uncached {[weak self] call in
+                call([
+                    UIAction(title: L10n.Stable.color, image: UIImage(systemName: "paintbrush"), state: self?.organizeByColor == true ? .on : .off) { _ in
+                        self?.organizeByColor = true
+                    },
+                    UIAction(title: L10n.Stable.type, image: UIImage(systemName: "pawprint"), state: self?.organizeByColor == true ? .off : .on) { _ in
+                        self?.organizeByColor = false
+                    }
+                ])
+            }
+        ])
         
         for childViewController in children {
             if let viewController = childViewController as? PetOverviewViewController {
@@ -37,27 +49,12 @@ class StableSplitViewController: HabiticaSplitViewController {
                 viewController.organizeByColor = organizeByColor
             }
         }
-        
-        HabiticaAnalytics.shared.log("open_stable")
     }
     
     override func populateText() {
         navigationItem.title = L10n.Titles.petsAndMounts
         segmentedControl.setTitle(L10n.pets, forSegmentAt: 0)
         segmentedControl.setTitle(L10n.mounts, forSegmentAt: 1)
-        organizeByButton.title = L10n.organizeBy
-    }
-    
-    @IBAction func changeOrganizeBy(_ sender: Any) {
-        let sheet = HostingBottomSheetController(rootView: BottomSheetMenu(menuItems: {
-            BottomSheetMenuitem(title: L10n.Stable.color, onTap: {[weak self] in
-                self?.organizeByColor = true
-            })
-            BottomSheetMenuitem(title: L10n.Stable.type, onTap: {[weak self] in
-                self?.organizeByColor = false
-            })
-        }))
-        sheet.preferredSheetSizing = .large
-        present(sheet, animated: true)
+        organizeByButton.image = UIImage(systemName: "slider.horizontal.3")
     }
 }

@@ -96,12 +96,15 @@ class TaskTableViewDataSource: BaseReactiveTableViewDataSource<TaskProtocol>, Ta
         super.init()
         sections.append(ItemSection<TaskProtocol>())
         if configRepository.bool(variable: .moveAdventureGuide) {
-            disposable.add(userRepository.getUser().on(value: { user in
-                self.showingAdventureGuide = !(user.achievements?.hasCompletedOnboarding ?? true)
-                if self.showingAdventureGuide {
-                    self.adventureGuideCompletedCount = user.achievements?.onboardingAchievements.filter({ $0.value }).count ?? 0
-                    self.adventureGuideTotalCount = 5
-                    self.tableView?.reloadData()
+            disposable.add(userRepository.getUser().on(value: {[weak self] user in
+                guard !UserManager.shared.isLoggingOut else {
+                    return
+                }
+                self?.showingAdventureGuide = !(user.achievements?.hasCompletedOnboarding ?? true)
+                if self?.showingAdventureGuide == true {
+                    self?.adventureGuideCompletedCount = user.achievements?.onboardingAchievements.filter({ $0.value }).count ?? 0
+                    self?.adventureGuideTotalCount = 5
+                    self?.tableView?.reloadData()
                 }
             }).start())
         }
@@ -123,7 +126,11 @@ class TaskTableViewDataSource: BaseReactiveTableViewDataSource<TaskProtocol>, Ta
                 logger.record(error: error)
                 self?.fetchTasks()
             }, value: {[weak self] (tasks, changes) in
-                self?.sections[0].items = tasks
+                if self?.sortKey == "duedate" {
+                    self?.sections[0].items = tasks.sorted { ($0.duedate?.timeIntervalSince1970 ?? 0) < ($1.duedate?.timeIntervalSince1970 ?? 0) }
+                } else {
+                    self?.sections[0].items = tasks.sorted { $0.order < $1.order }
+                }
                 self?.notify(changes: changes)
                 self?.isProcessingDeletion = false
         }).start()
@@ -377,7 +384,7 @@ class TaskTableViewDataSource: BaseReactiveTableViewDataSource<TaskProtocol>, Ta
                         return self.repository.retrieveTasks()
                     }.observeCompleted {}
                 })
-                alert.setCloseAction(title: L10n.close, handler: {})
+                alert.addCloseAction()
                 alert.show()
         }
         ).start()
@@ -393,7 +400,7 @@ class TaskTableViewDataSource: BaseReactiveTableViewDataSource<TaskProtocol>, Ta
             alert.addAction(title: L10n.deleteXTasks(taskCount), style: .destructive) { _ in
                 self.repository.unlinkAllTasks(challengeID: task.challengeID ?? "", keepOption: "remove-all").observeCompleted {}
             }
-            alert.setCloseAction(title: L10n.close, handler: {})
+            alert.addCloseAction()
             alert.show()
             }).start()
     }

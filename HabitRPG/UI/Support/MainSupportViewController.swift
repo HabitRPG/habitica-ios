@@ -58,22 +58,37 @@ class MainSupportViewController: BaseUIViewController {
         let buttonTintColor = theme.fixedTintColor
         questionsContainer.backgroundColor = theme.windowBackgroundColor
         questionsTitleLabel.textColor = theme.primaryTextColor
+        questionsTitleLabel.font = UIFontMetrics.default.scaledSystemFont(ofSize: 17, ofWeight: .semibold)
         questionsDescriptionLabel.textColor = theme.ternaryTextColor
+        questionsDescriptionLabel.font = UIFontMetrics.default.scaledSystemFont(ofSize: 15)
         questionsButton.buttonColor = buttonTintColor
+        questionsButton.titleLabel?.font = UIFontMetrics.default.scaledSystemFont(ofSize: 15)
         
         bugContainer.backgroundColor = theme.windowBackgroundColor
         bugTitle.textColor = theme.primaryTextColor
+        bugTitle.font = UIFontMetrics.default.scaledSystemFont(ofSize: 17, ofWeight: .semibold)
         bugDescription.textColor = theme.ternaryTextColor
+        bugDescription.font = UIFontMetrics.default.scaledSystemFont(ofSize: 15)
         bugButton.buttonColor = buttonTintColor
+        bugButton.titleLabel?.font = UIFontMetrics.default.scaledSystemFont(ofSize: 15)
         
         suggestionsContainer.backgroundColor = theme.windowBackgroundColor
         suggestionsTitle.textColor = theme.primaryTextColor
+        suggestionsTitle.font = UIFontMetrics.default.scaledSystemFont(ofSize: 17, ofWeight: .semibold)
         suggestionsDescription.textColor = theme.ternaryTextColor
+        suggestionsDescription.font = UIFontMetrics.default.scaledSystemFont(ofSize: 15)
         suggestionsButton.buttonColor = buttonTintColor
+        suggestionsButton.titleLabel?.font = UIFontMetrics.default.scaledSystemFont(ofSize: 15)
         
         resetTutorialContainer.backgroundColor = theme.windowBackgroundColor
         resetTutorialButton.buttonColor = theme.offsetBackgroundColor
         resetTutorialButton.setTitleColor(theme.primaryTextColor, for: .normal)
+        resetTutorialButton.titleLabel?.font = UIFontMetrics.default.scaledSystemFont(ofSize: 15)
+        
+        questionsContainer.cornerRadius = UIConstants.largeCornerRadius
+        bugContainer.cornerRadius = UIConstants.largeCornerRadius
+        suggestionsContainer.cornerRadius = UIConstants.largeCornerRadius
+        resetTutorialContainer.cornerRadius = UIConstants.largeCornerRadius
     }
     
     @IBAction func suggestionButtonTapped(_ sender: Any) {

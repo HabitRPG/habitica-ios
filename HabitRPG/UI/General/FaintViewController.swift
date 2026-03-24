@@ -11,74 +11,20 @@ import Habitica_Models
 import SwiftUI
 import ReactiveSwift
 
-struct HabiticaButtonUI<Label: View>: View {
-    enum Size {
-        case small
-        case compact
-        case normal
-        
-        var height: CGFloat {
-            switch self {
-            case .small:
-                return 40
-            case .compact:
-                return 48
-            case .normal:
-                return 60
-            }
-        }
-    }
-    enum ButtonType {
-        case solid
-        case bordered
-    }
-    let label: Label
-    let color: Color
-    var size: Size = .normal
-    var type: ButtonType = .solid
-    var onTap: (() -> Void)
-    
-    private func getForegroundColor() -> Color {
-        if type == .solid {
-            return color == .white ? Color(UIColor.purple400) : .white
-        } else {
-            return color
-        }
-    }
-    var body: some View {
-        Button(action: onTap, label: {
-                label.underline(UIAccessibility.buttonShapesEnabled, color: getForegroundColor())
-        }).buttonStyle { configuration in
-            configuration.label
-                .foregroundColor(getForegroundColor())
-                .font(.headline)
-                .padding(.vertical, 6)
-                .frame(minHeight: size.height)
-                .frame(maxWidth: .infinity)
-                .background(type == .bordered ? Color.clear : color)
-                .overlay(RoundedRectangle(cornerRadius: 8).stroke(color, lineWidth: type == .bordered ? 3 : 0))
-                .cornerRadius(8)
-        }
-    }
-}
-
-private class ViewModel: ObservableObject {
+private class FaintViewModel: ViewModel {
     let userRepository = UserRepository()
     @Published var lossText: LocalizedStringKey = ""
-    @Published var enableSubBenefit = false
     @Published var isSubscribed = false
     @Published var nextPerkUsage: Date?
     
-    init() {
-        enableSubBenefit = ConfigRepository.shared.bool(variable: .enableFaintSubs)
-        if enableSubBenefit {
-            let defaults = UserDefaults()
-            let lastUsage = defaults.value(forKey: "lastFaintSubBenefit")
-            let calendar = Calendar.current
-            if let usage = lastUsage as? Date, calendar.isDate(usage, inSameDayAs: Date()) {
-                let tomorrow = calendar.date(byAdding: .day, value: 1, to: Date()) ?? Date()
-                nextPerkUsage = calendar.date(bySettingHour: 0, minute: 0, second: 0, of: tomorrow)
-            }
+    override init() {
+        super.init()
+        let defaults = UserDefaults()
+        let lastUsage = defaults.value(forKey: "lastFaintSubBenefit")
+        let calendar = Calendar.current
+        if let usage = lastUsage as? Date, calendar.isDate(usage, inSameDayAs: Date()) {
+            let tomorrow = calendar.date(byAdding: .day, value: 1, to: Date()) ?? Date()
+            nextPerkUsage = calendar.date(bySettingHour: 0, minute: 0, second: 0, of: tomorrow)
         }
         
         userRepository.getUser()
@@ -162,13 +108,14 @@ struct RotatingLinearGradient: View {
 }
 
 struct FaintView: View {
+    @ObservedObject var themeService = ThemeService.shared
     var onDismiss: (() -> Void)
     
     init() {
         self.onDismiss = {}
     }
     
-    fileprivate init(viewModel: ViewModel) {
+    fileprivate init(viewModel: FaintViewModel) {
         self.init()
         self.viewModel = viewModel
     }
@@ -176,7 +123,7 @@ struct FaintView: View {
     @State var appear = false
     @State var isReviving = false
     @State var isUsingPerk = false
-    @ObservedObject fileprivate var viewModel = ViewModel()
+    @ObservedObject fileprivate var viewModel = FaintViewModel()
     private let positions = (0..<6).map { _ in Int.random(in: 5...50) }
     
     var body: some View {
@@ -185,135 +132,172 @@ struct FaintView: View {
             ZStack {
                 ForEach(0..<6, id: \.self) { index in
                     Image(uiImage: HabiticaIcons.imageOfGoldReward)
-                        .offset(x: CGFloat(-90 + (((index % 2 == 0) ? -1 : 1) * positions[index])), y: appear ? -90 : 0)
+                        .offset(x: CGFloat(-180 + (((index % 2 == 0) ? -1 : 1) * positions[index])), y: appear ? -90 : 0)
                         .scaleEffect(appear ? 1.0 : 0.1)
                         .opacity(appear ? 0 : 1.0)
                         .animation(.easeOut(duration: 4).delay(4 / Double(index+1)).repeatForever(autoreverses: false), value: appear)
                 }.offset(y: 20)
                 ForEach(0..<6, id: \.self) { index in
                     Image(uiImage: HabiticaIcons.imageOfGoldReward)
-                        .offset(x: CGFloat(90 + (((index % 2 == 0) ? -1 : 1) * positions[index])), y: appear ? -90 : 0)
+                        .offset(x: CGFloat(180 + (((index % 2 == 0) ? -1 : 1) * positions[index])), y: appear ? -90 : 0)
                         .scaleEffect(appear ? 1.0 : 0.1)
                         .opacity(appear ? 0 : 1.0)
                         .animation(.easeOut(duration: 4).delay(Double(index)).repeatForever(autoreverses: false), value: appear)
                 }.offset(y: 20)
                 Image(Asset.faintGhost.name)
                     .offset(y: appear ? -10 : 0)
-                    .animation(.easeInOut(duration: 4).repeatForever(autoreverses: true))
+                    .animation(.easeInOut(duration: 4).repeatForever(autoreverses: true), value: appear)
                     .onAppear { appear = true }
                 Image(Asset.faintHeart.name)
                     .offset(y: 25)
             }
             .padding(.horizontal, 24)
-            Text(L10n.Faint.title)
-                .font(.system(size: 30, weight: .bold))
-                .multilineTextAlignment(.center)
-                .padding(.horizontal, 40)
-            Text(viewModel.lossText)
-                .foregroundColor(.primaryTextColor)
-                .font(.system(size: 20))
-                .multilineTextAlignment(.center)
-                .frame(maxWidth: 400)
-                .padding(.top, 12)
-                .padding(.horizontal, 40)
-            Text(L10n.Faint.disclaimer)
-                .foregroundColor(.ternaryTextColor)
-                .font(.system(size: 14))
-                .multilineTextAlignment(.center)
-                .padding(.top, 12)
-                .padding(.horizontal, 48)
             Spacer()
-            HabiticaButtonUI(label: Group {
-                if isReviving {
-                    HStack(spacing: 12) {
-                        ProgressView().habiticaProgressStyle().frame(width: 28, height: 28)
-                        Text("Reviving...")
-                    }
-                } else {
-                    Text(L10n.Faint.button)
+            GeometryReader { reader in
+                // swiftlint:disable:next identifier_name
+                let h = reader.size.height
+                // swiftlint:disable:next identifier_name
+                let w = reader.size.width
+                Path { path in
+                    path.move(to: CGPoint(x: w, y: h))
+                    path.addLine(to: CGPoint(x: w, y: 0))
+                    path.addCurve(to: CGPoint(x: w * 0.4, y: h * 0.5),
+                                  control1: CGPoint(x: w * 0.7, y: h * 0.1),
+                                  control2: CGPoint(x: w * 0.65, y: h * 0.6))
+                    path.addCurve(to: CGPoint(x: 0, y: h),
+                                  control1: CGPoint(x: w * 0.25, y: h * 0.4),
+                                  control2: CGPoint(x: w * 0.1, y: h * 0.7))
+                    path.closeSubpath()
                 }
-            }, color: Color(UIColor.maroon100)) {
-                if isReviving {
-                    return
-                }
-                isReviving = true
-                viewModel.userRepository.revive()
-                    .observeResult { _ in
-                        onDismiss()
+                .foregroundStyle(.yellow100)
+                    .background {
+                        Path { path in
+                            path.move(to: CGPoint(x: 0, y: reader.size.height))
+                            path.addLine(to: CGPoint(x: 0, y: 0))
+                            path.addCurve(to: CGPoint(x: w * 0.5, y: h * 0.7),
+                                          control1: CGPoint(x: w * 0.3, y: h * 0.1),
+                                          control2: CGPoint(x: w * 0.35, y: h * 0.6))
+                            path.addCurve(to: CGPoint(x: w, y: h),
+                                          control1: CGPoint(x: w * 0.8, y: h * 0.5),
+                                          control2: CGPoint(x: w * 0.85, y: h * 0.8))
+                            path.closeSubpath()
+                        }.foregroundStyle(.orange100)
                     }
-            }.frame(maxWidth: 600)
-                .padding(.horizontal, 24)
-                .padding(.bottom, viewModel.enableSubBenefit ? 15 : 42)
-            if viewModel.enableSubBenefit {
-                let gradientColors: [Color] = [Color(hexadecimal: "72CFFF"),
-                                      Color(hexadecimal: "77F4C7")
-                                     ]
-                if viewModel.isSubscribed {
-                    if let nextUsage = viewModel.nextPerkUsage {
-                        Text(L10n.Faint.subbedUsed(nextUsage.getShortRemainingString()))
-                            .foregroundColor(Color(ThemeService.shared.theme.isDark ? UIColor.teal500 : UIColor.teal1))
-                            .font(.system(size: 15, weight: .semibold))
-                            .multilineTextAlignment(.center)
-                            .padding(.horizontal, 36)
-                            .padding(.bottom, 38)
+            }.frame(height: 71)
+            VStack {
+                Text(L10n.Faint.title)
+                    .font(.system(size: 30, weight: .bold))
+                    .multilineTextAlignment(.center)
+                    .padding(.horizontal, 40)
+                    .padding(.top, 16)
+                Text(viewModel.lossText)
+                    .font(.system(size: 18))
+                    .multilineTextAlignment(.center)
+                    .frame(maxWidth: 400)
+                    .padding(.top, 12)
+                    .padding(.horizontal, 40)
+                Text(L10n.Faint.disclaimer)
+                    .font(.system(size: 12, weight: .semibold))
+                    .multilineTextAlignment(.center)
+                    .padding(.top, 32)
+                    .padding(.bottom, 8)
+                    .padding(.horizontal, 36)
+                HabiticaButtonUI(label: Group {
+                    if isReviving {
+                        HStack(spacing: 12) {
+                            ProgressView().habiticaProgressStyle().frame(width: 28, height: 28)
+                            Text("Reviving...").foregroundStyle(.maroon100)
+                        }
                     } else {
-                        Button(action: {
-                            if isUsingPerk {
-                                return
-                            }
-                            isUsingPerk = true
-                            viewModel.useSubBenefit {
-                                onDismiss()
-                            }
-                        }, label: {
-                            Group {
+                        Text(L10n.Faint.button).foregroundStyle(.maroon100)
+                    }
+                }, color: .white) {
+                    if isReviving {
+                        return
+                    }
+                    isReviving = true
+                    viewModel.userRepository.revive()
+                        .observeResult { _ in
+                            onDismiss()
+                        }
+                }.frame(maxWidth: 600)
+                    .padding(.horizontal, 24)
+                    .padding(.bottom, 10)
+                let gradientColors: [Color] = [Color(hexadecimal: "72CFFF"),
+                                               Color(hexadecimal: "77F4C7")
+                ]
+                VStack(spacing: 6) {
+                    if viewModel.isSubscribed {
+                        if let nextUsage = viewModel.nextPerkUsage {
+                            Text(L10n.Faint.subbedUsed(nextUsage.getShortRemainingString()))
+                                .foregroundStyle(Color(themeService.theme.isDark ? UIColor.teal500 : UIColor.teal1))
+                                .font(.system(size: 14, weight: .semibold))
+                                .multilineTextAlignment(.center)
+                                .padding(.horizontal, 36)
+                                .padding(.bottom, 38)
+                        } else {
+                            HabiticaButtonUI(label: Group {
                                 if isUsingPerk {
                                     ProgressView().habiticaProgressStyle().frame(width: 28, height: 28)
                                 } else {
                                     Text(L10n.Faint.subbedButtonPrompt)
                                 }
                             }
-                                .foregroundColor(Color(UIColor.green1))
+                                .foregroundStyle(Color(UIColor.teal10))
                                 .font(.headline)
                                 .padding(.vertical, 6)
                                 .frame(minHeight: 60)
-                                .frame(maxWidth: .infinity)
-                                .background(LinearGradient(colors: gradientColors, startPoint: .leading, endPoint: .trailing))
-                                .overlay(RoundedRectangle(cornerRadius: 8).stroke(LinearGradient(colors: gradientColors, startPoint: .trailing, endPoint: .leading), lineWidth: 3))
-                                .cornerRadius(8)
-                        })
+                                .frame(maxWidth: .infinity),
+                                             color: .white
+                            ) {
+                                if isUsingPerk {
+                                    return
+                                }
+                                isUsingPerk = true
+                                viewModel.useSubBenefit {
+                                    onDismiss()
+                                }
+                            }
+                            .frame(maxWidth: 600)
+                            .padding(.horizontal, 24)
+                            .padding(.bottom, 8)
+                            Text(L10n.Faint.subbedFooter)
+                                .foregroundStyle(Color.teal1)
+                                .font(.system(size: 14, weight: .semibold))
+                                .multilineTextAlignment(.center)
+                                .padding(.horizontal, 36)
+                                .padding(.bottom, 38)
+                        }
+                    } else {
+                        HabiticaButtonUI(label: Text(L10n.Faint.unsubbedButtonPrompt).foregroundStyle(Color(UIColor.teal10))
+                            .font(.headline)
+                            .padding(.vertical, 6)
+                            .frame(minHeight: 60)
+                            .frame(maxWidth: .infinity),
+                                         color: .white
+                        ) {
+                            
+                        }
                         .frame(maxWidth: 600)
                         .padding(.horizontal, 24)
                         .padding(.bottom, 8)
-                        Text(L10n.Faint.subbedFooter)
-                            .foregroundColor(Color(ThemeService.shared.theme.isDark ? UIColor.teal500 : UIColor.teal1))
-                            .font(.system(size: 15, weight: .semibold))
+                        Text(L10n.Faint.unsubbedFooter)
+                            .foregroundStyle(Color.teal1)
+                            .font(.system(size: 14, weight: .semibold))
                             .multilineTextAlignment(.center)
                             .padding(.horizontal, 36)
                             .padding(.bottom, 38)
                     }
-                } else {
-                    VStack(alignment: .center, spacing: 8) {
-                        HabiticaButtonUI(label: Text(L10n.Faint.unsubbedButtonPrompt).foregroundColor(Color(UIColor.teal10)), color: .white) {
-                            SubscriptionModalViewController(presentationPoint: .faint).show()
-                        }.frame(maxWidth: 600)
-                        Text(L10n.Faint.unsubbedFooter)
-                            .foregroundColor(Color(UIColor.teal1))
-                            .font(.system(size: 15, weight: .semibold))
-                            .multilineTextAlignment(.center)
-                            .padding(.horizontal, 16)
-                    }
-                    .padding(.horizontal, 24)
-                    .padding(.top, 16)
-                    .padding(.bottom, 38)
-                    .frame(maxWidth: .infinity)
-                    .background(RotatingLinearGradient(colors: gradientColors, animationDuration: 20.0))
-                    .cornerRadius([.topLeading, .topTrailing], 24)
                 }
-            }
+                .padding(.top, 16)
+                .background(RotatingLinearGradient(colors: gradientColors, animationDuration: 20))
+                .cornerRadius([.topLeading, .topTrailing], UIConstants.largeCornerRadius)
+            }.background(.yellow100)
+                .foregroundStyle(.red1)
         }
+        .padding(.top, idiom == .pad ? 64 : 24)
+        .background(.red50)
         .ignoresSafeArea(.all)
-            .padding(.top, idiom == .pad ? 64 : 24)
     }
 }
 
@@ -338,31 +322,13 @@ class FaintViewController: UIHostingController<FaintView> {
         
         SoundManager.shared.play(effect: .death)
     }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-    }
-    
+
     private func dismiss() {
         UIView.animate(withDuration: 0.8, animations: {
             self.view.alpha = 0
         }, completion: { (_) in
             self.dismiss(animated: false, completion: nil)
         })
-    }
-    
-    func show() {
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-            if var topController = UIApplication.topViewController() {
-                if let tabBarController = topController.tabBarController {
-                    topController = tabBarController
-                }
-                self.modalTransitionStyle = .crossDissolve
-                self.modalPresentationStyle = .overCurrentContext
-                topController.present(self, animated: true) {
-                }
-            }
-        }
     }
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
@@ -375,22 +341,19 @@ class FaintViewController: UIHostingController<FaintView> {
 }
 
 struct FaintViewPreview: PreviewProvider {
-    private static var unsubbedViewModel: ViewModel = {
-        let unsubbedViewModel = ViewModel()
-        unsubbedViewModel.enableSubBenefit = true
+    private static var unsubbedViewModel: FaintViewModel = {
+        let unsubbedViewModel = FaintViewModel()
         return unsubbedViewModel
     }()
     
-    private static var subbedViewModel: ViewModel = {
-        let subbedViewModel = ViewModel()
-        subbedViewModel.enableSubBenefit = true
+    private static var subbedViewModel: FaintViewModel = {
+        let subbedViewModel = FaintViewModel()
         subbedViewModel.isSubscribed = true
         return subbedViewModel
     }()
     
-    private static var subbedUsedViewModel: ViewModel = {
-        let subbedViewModel = ViewModel()
-        subbedViewModel.enableSubBenefit = true
+    private static var subbedUsedViewModel: FaintViewModel = {
+        let subbedViewModel = FaintViewModel()
         subbedViewModel.isSubscribed = true
         subbedViewModel.nextPerkUsage = Calendar.current.date(byAdding: .day, value: 1, to: Date())
         return subbedViewModel

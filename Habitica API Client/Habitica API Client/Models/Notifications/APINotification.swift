@@ -18,17 +18,26 @@ private class APINotificationAchievementData: Decodable {
 private class APIItemReceivedData: Decodable {
     var title: String
     var icon: String
-    var destination: String
+    var destination: String?
     var text: String
 }
 
-public class APINotification: NotificationProtocol, NotificationNewsProtocol, NotificationNewChatProtocol,
-                              NotificationUnallocatedStatsProtocol, NotificationFirstDropProtocol, NotificationLoginIncentiveProtocol, NotificationItemReceivedProtocol, Decodable {
+public class APINotification: NotificationProtocol,
+                              NotificationNewsProtocol,
+                              NotificationNewChatProtocol,
+                              NotificationUnallocatedStatsProtocol,
+                              NotificationFirstDropProtocol,
+                              NotificationLoginIncentiveProtocol,
+                              NotificationItemReceivedProtocol,
+                              NotificationGroupTaskProtocol,
+                              NotificationCardReceivedProtocol,
+                              Decodable {
     public var isValid: Bool = true
     public var isManaged: Bool = false
     
     public var id: String = ""
     public var type: HabiticaNotificationType = .generic
+    public var notificationMessage: String?
     public var seen: Bool = false
     public var groupID: String?
     public var groupName: String?
@@ -44,6 +53,10 @@ public class APINotification: NotificationProtocol, NotificationNewsProtocol, No
     public var message: String?
     public var rewardKey: [String] = []
     public var rewardText: String?
+    
+    public var cardKey: String?
+    public var cardSenderID: String?
+    public var cardSenderName: String?
     
     public var icon: String?
     public var openDestination: String?
@@ -78,7 +91,7 @@ public class APINotification: NotificationProtocol, NotificationNewsProtocol, No
         case .loginIncentive:
             let data = try? values.decode(APILoginIncentiveData.self, forKey: .data)
             nextRewardAt = data?.nextRewardAt ?? 0
-            message = data?.message
+            notificationMessage = data?.message
             rewardKey = data?.rewardKey ?? []
             rewardText = data?.rewardText
         case .itemReceived:
@@ -87,8 +100,19 @@ public class APINotification: NotificationProtocol, NotificationNewsProtocol, No
             message = data?.text
             icon = data?.icon
             openDestination = data?.destination
+        case .cardReceived:
+            let data = try? values.decode(APINotificationCardReceivedData.self, forKey: .data)
+            cardKey = data?.card
+            cardSenderID = data?.sender?.id
+            cardSenderName = data?.sender?.name
         default:
             break
+        }
+        
+        if type.isGroupPlan {
+            let data = try? values.decode(APINotificationGroupTaskData.self, forKey: .data)
+            notificationMessage = data?.message
+            groupID = data?.groupId
         }
         
         if type.rawValue.contains("ACHIEVEMENT") || type == .loginIncentive {

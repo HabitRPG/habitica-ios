@@ -122,16 +122,12 @@ class RewardViewController: BaseCollectionViewController, UICollectionViewDelega
             editedReward = reward
             performSegue(withIdentifier: "FormSegue", sender: self)
         } else {
-            let storyboard = UIStoryboard(name: "BuyModal", bundle: nil)
-            if let viewController = storyboard.instantiateViewController(withIdentifier: "HRPGBuyItemModalViewController") as? HRPGBuyItemModalViewController {
-                viewController.modalTransitionStyle = .crossDissolve
-                viewController.reward = dataSource.item(at: indexPath) as? InAppRewardProtocol
-                if let tabbarController = self.tabBarController {
-                    tabbarController.present(viewController, animated: true, completion: nil)
-                } else {
-                    present(viewController, animated: true, completion: nil)
-                }
+            guard let item = dataSource.item(at: indexPath) as? InAppRewardProtocol else {
+                return
             }
+            let sheet = HostingBottomSheetController(rootView: BuySheet(item: item),
+                                                     prefersGrabberVisible: false)
+            sheet.show()
         }
     }
     
@@ -166,6 +162,7 @@ class RewardViewController: BaseCollectionViewController, UICollectionViewDelega
             group.interItemSpacing = .flexible(1)
             let section = NSCollectionLayoutSection(group: group)
             section.contentInsets = sectionType.sectionInset
+            section.contentInsetsReference = .safeArea
             return section
         }
         return layout

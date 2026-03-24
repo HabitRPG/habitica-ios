@@ -12,16 +12,15 @@ import StoreKit
 
 private struct DetailContainer<Content: View>: View {
     var verticalPadding: CGFloat = 19
-    @ViewBuilder
-    let content: Content
+    @ViewBuilder let content: Content
     
     var body: some View {
         content
-            .padding(.horizontal, 19)
+            .padding(.horizontal, 20)
             .padding(.vertical, verticalPadding)
             .frame(maxWidth: .infinity)
             .background(Color.purple200)
-            .cornerRadius(8)
+            .cornerRadius(UIConstants.largeCornerRadius)
     }
 }
 
@@ -36,8 +35,8 @@ private struct StatusPill: View {
             .padding(.horizontal, 12)
             .padding(.vertical, 3)
             .background(background)
-            .cornerRadius(20)
-            .foregroundColor(textColor)
+            .clipShape(.capsule)
+            .foregroundStyle(textColor)
     }
 }
 
@@ -99,8 +98,7 @@ struct SubscriptionDetailViewUI: View {
         }
     }
     
-    @ViewBuilder
-    var activityPill: some View {
+    @ViewBuilder var activityPill: some View {
         if plan.isActive {
             if plan.isGifted {
                 StatusPill(text: L10n.Subscription.gifted, background: .yellow10, textColor: .purple100)
@@ -184,19 +182,19 @@ struct SubscriptionDetailViewUI: View {
     }
     
     var body: some View {
-        VStack(spacing: 8) {
+        VStack(spacing: 12) {
             if plan.extraMonths > 0 {
                 Text(LocalizedStringKey(L10n.subscriptionCreditTitle(plan.extraMonths)))
                     .font(.system(size: 15))
                     .multilineTextAlignment(.center)
-                    .foregroundColor(.green500)
+                    .foregroundStyle(.green500)
                     .frame(maxWidth: .infinity)
                     .padding(.vertical, 11)
                     .padding(.horizontal, 15)
                     .overlay {
-                        RoundedRectangle(cornerRadius: 8)
+                        RoundedRectangle(cornerRadius: UIConstants.largeCornerRadius)
                             .stroke(lineWidth: 3)
-                            .foregroundColor(.green100)
+                            .foregroundStyle(.green100)
                     }
             }
             DetailContainer {
@@ -227,7 +225,7 @@ struct SubscriptionDetailViewUI: View {
                     }
                 }
             }
-            HStack(spacing: 8) {
+            HStack(spacing: 12) {
                 DetailContainer(verticalPadding: 14) {
                     VStack(spacing: 6) {
                         HStack(spacing: 4) {
@@ -289,7 +287,7 @@ struct SubscriptionDetailViewUI: View {
                         }.font(.system(size: 15, weight: .semibold))
                         Text(cancelDescription).font(.system(size: 13))
                         if let text = cancelButtonText {
-                            HabiticaButtonUI(label: Text(text).foregroundColor(.purple100), color: .yellow100, size: .compact) {
+                            HabiticaButtonUI(label: Text(text).foregroundStyle(.purple100), color: .yellow100, size: .compact) {
                                 cancelSubscription()
                             }.padding(.top, 7)
                         }

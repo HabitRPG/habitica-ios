@@ -44,14 +44,13 @@ public class StableLocalRepository: ContentLocalRepository {
     }
     
     public func getPets(keys: [String]?, sortKey: String = "key") -> SignalProducer<ReactiveResults<[PetProtocol]>, ReactiveSwiftRealmError> {
-        var producer: SignalProducer<Results<RealmPet>, ReactiveSwiftRealmError>?
+        var producer: SignalProducer<Results<RealmPet>, ReactiveSwiftRealmError>
         if let keys = keys {
             producer = RealmPet.findBy(predicate: NSPredicate(format: "key IN %@", keys))
         } else {
             producer = RealmPet.findAll()
         }
-        // swiftlint:disable:next force_unwrapping
-        return producer!.sorted(key: sortKey).reactive().map({ (value, changeset) -> ReactiveResults<[PetProtocol]> in
+        return producer.sorted(by: [SortDescriptor(keyPath: sortKey, ascending: true)]).reactive().map({ (value, changeset) -> ReactiveResults<[PetProtocol]> in
             return (value.map({ (item) -> PetProtocol in return item }), changeset)
         })
     }

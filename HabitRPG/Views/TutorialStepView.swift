@@ -114,7 +114,9 @@ class TutorialStepView: UIView {
     
     @objc
     func viewTapped() {
-        if textList.isEmpty {
+        if speechbubbleView.textView.isAnimating {
+            speechbubbleView.textView.finishAnimating()
+        } else if textList.isEmpty {
             dismiss(animated: true)
         } else {
             setText(textList.removeFirst())

@@ -29,26 +29,6 @@ class MainTabBarController: UITabBarController {
     
     private var presentedPrivacyPreferencesAt: Date?
     
-    private var _displayBirthdayIcon: Bool = false {
-        didSet {
-            if _displayBirthdayIcon {
-                tabBar.items?[4].image = Asset.birthdayIconUnselected.image.withRenderingMode(.alwaysOriginal)
-                tabBar.items?[4].selectedImage = Asset.birthdayIconSelected.image.withRenderingMode(.alwaysOriginal)
-            } else {
-                tabBar.items?[4].image = Asset.tabbarMenu.image
-                tabBar.items?[4].selectedImage = nil
-            }
-        }
-    }
-    var displayBirthdayIcon: Bool {
-        get { return _displayBirthdayIcon }
-        set {
-            if _displayBirthdayIcon != newValue {
-                _displayBirthdayIcon = newValue
-            }
-        }
-    }
-    
     private var badges: [Int: PaddedView]? {
         get {
             return (tabBar as? MainTabBar)?.badges
@@ -143,15 +123,17 @@ class MainTabBarController: UITabBarController {
             }
             
             if user.preferences?.analyticsConsentGiven == false {
-                if self?.presentedPrivacyPreferencesAt == nil || Date().timeIntervalSince(self?.presentedPrivacyPreferencesAt ?? Date()) > 60 {
+                if self?.presentedPrivacyPreferencesAt == nil {
                     self?.presentedPrivacyPreferencesAt = Date()
                     let controller = UIHostingController(rootView: PrivacyPreferencesScreenView())
                     controller.modalPresentationStyle = .fullScreen
-                    controller.rootView.dismisser.dismiss = {
+                    controller.rootView.dismisser.dismissAction = {
                         controller.dismiss(animated: true)
                     }
                     self?.present(controller, animated: true)
                 }
+            } else {
+                UserDefaults.standard.set(false, forKey: "isInSetup")
             }
         }).start())
         disposable.inner.add(taskRepository.getDueTasks().on(value: {[weak self] tasks in
@@ -172,21 +154,6 @@ class MainTabBarController: UITabBarController {
             self?.updateToDoBadge()
             self?.updateAppBadge()
         }).start())
-        disposable.inner.add(contentRepository.getWorldState()
-            .on(value: {[weak self] _ in
-                let event = self?.configRepository.getBirthdayEvent()
-                if event != nil && self?.displayBirthdayIcon == false {
-                    self?.displayBirthdayIcon = true
-                    if let date = event?.end, date.timeIntervalSinceNow < 3600 {
-                        DispatchQueue.main.asyncAfter(deadline: .now() + date.timeIntervalSinceNow) {
-                            self?.displayBirthdayIcon = false
-                        }
-                    }
-                } else if event == nil && self?.displayBirthdayIcon == true {
-                    self?.displayBirthdayIcon = false
-                }
-            })
-            .start())
     }
     
     private func updateTutorialSteps(_ tutorials: [TutorialStepProtocol]) {
@@ -231,7 +198,7 @@ class MainTabBarController: UITabBarController {
             label.textAlignment = .center
             badge.containedView = label
         }
-        badge.backgroundColor = .gray50
+        badge.backgroundColor = ThemeService.shared.theme.isDark ? .gray100 : .gray50
         if let label = badge.containedView as? UILabel {
             label.text = "\(count)"
         }
@@ -245,9 +212,9 @@ class MainTabBarController: UITabBarController {
     private func updateAppBadge() {
         let defaults = UserDefaults.standard
         if defaults.bool(forKey: "appBadgeActive") == true {
-            UIApplication.shared.applicationIconBadgeNumber = dueDailiesCount + dueToDosCount
+            UNUserNotificationCenter.current().setBadgeCount(dueDailiesCount + dueToDosCount)
         } else {
-            UIApplication.shared.applicationIconBadgeNumber = 0
+            UNUserNotificationCenter.current().setBadgeCount(0)
         }
     }
     
@@ -261,30 +228,30 @@ class MainTabBar: UITabBar, Themeable {
 
     override open func sizeThatFits(_ size: CGSize) -> CGSize {
         var sizeThatFits = super.sizeThatFits(size)
-        guard let window = UIApplication.shared.findKeyWindow() else {
-            return sizeThatFits
-        }
-        if window.safeAreaInsets.bottom > 0 {
-            sizeThatFits.height = 42 + window.safeAreaInsets.bottom
+        if #unavailable(iOS 26.0) {
+            guard let window = UIApplication.shared.findKeyWindow() else {
+                return sizeThatFits
+            }
+            if window.safeAreaInsets.bottom > 0 {
+                sizeThatFits.height = 42 + window.safeAreaInsets.bottom
+            }
         }
         return sizeThatFits
     }
     
     func applyTheme(theme: Theme) {
-        items?.forEach({
-            $0.badgeColor = theme.badgeColor
-            if theme.badgeColor.isLight() {
-                $0.setBadgeTextAttributes([.foregroundColor: UIColor.gray50], for: .normal)
-            } else {
-                $0.setBadgeTextAttributes([.foregroundColor: UIColor.gray700], for: .normal)
-            }
+        badges.values.forEach({
+            $0.backgroundColor = theme.isDark ? .gray100 : .gray50
         })
         tintColor = theme.fixedTintColor
-        barTintColor = theme.contentBackgroundColor
-        backgroundColor = theme.contentBackgroundColor
-        backgroundImage = UIImage.from(color: theme.contentBackgroundColor)
-        shadowImage = UIImage.from(color: theme.contentBackgroundColor)
-        barStyle = .black
+        unselectedItemTintColor = theme.ternaryTextColor
+        if #unavailable(iOS 26.0) {
+            barTintColor = theme.contentBackgroundColor
+            backgroundColor = theme.contentBackgroundColor
+            backgroundImage = UIImage.from(color: theme.contentBackgroundColor)
+            shadowImage = UIImage.from(color: theme.contentBackgroundColor)
+            barStyle = .black
+        }
     }
     
     override func layoutSubviews() {
@@ -294,17 +261,63 @@ class MainTabBar: UITabBar, Themeable {
     
     func layoutBadges() {
         for entry in badges {
-            let frame = frameForTab(atIndex: entry.key)
             let size = entry.value.intrinsicContentSize
             let width = max(size.height, size.width)
-            // Find the edge of the icon and then center the badge there
+            if #available(iOS 26.0, *) {
+                if let iconFrame = iconFrameForTab(atIndex: entry.key) {
+                    entry.value.frame = CGRect(x: iconFrame.maxX - width / 2 - 4, y: iconFrame.minY - size.height / 2 + 4, width: width, height: size.height)
+                    entry.value.cornerRadius = size.height / 2
+                    continue
+                }
+            }
+            let frame = frameForTab(atIndex: entry.key)
             entry.value.frame = CGRect(x: frame.origin.x + (frame.size.width/2) + 15 - (width/2), y: frame.origin.y + 4, width: width, height: size.height)
             entry.value.cornerRadius = size.height / 2
         }
     }
-    
+
+    @available(iOS 26.0, *)
+    private func iconFrameForTab(atIndex index: Int) -> CGRect? {
+        var buttons = [UIControl]()
+        if let platterView = subviews.first(where: { !($0 is PaddedView) })?.subviews.first(where: { $0.description.contains("UITabBarPlatterView") }) {
+            buttons = platterView.subviews.compactMap { $0 as? UIControl }
+        }
+        buttons.sort { $0.frame.origin.x < $1.frame.origin.x }
+        guard index < buttons.count else {
+            return nil
+        }
+        let button = buttons[index]
+
+        if let imageView = findImageView(in: button) {
+            return imageView.convert(imageView.bounds, to: self)
+        }
+        return nil
+    }
+
+    private func findImageView(in view: UIView) -> UIImageView? {
+        for subview in view.subviews {
+            if let imageView = subview as? UIImageView, imageView.image != nil {
+                return imageView
+            }
+            if let found = findImageView(in: subview) {
+                return found
+            }
+        }
+        return nil
+    }
+
     private func frameForTab(atIndex index: Int) -> CGRect {
-        var frames = subviews.compactMap { (view: UIView) -> CGRect? in
+        var container: UIView = self
+        if #available(iOS 26.0, *) {
+            if let foundView = container.subviews.first(where: { view in
+                    !(view is PaddedView)
+                })?.subviews.first(where: { view in
+                    view.description.contains("UITabBarPlatterView")
+                }) {
+                container = foundView
+            }
+        }
+        var frames = container.subviews.compactMap { (view: UIView) -> CGRect? in
             if let view = view as? UIControl {
                 return view.frame
             }

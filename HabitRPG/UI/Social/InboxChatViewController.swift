@@ -26,6 +26,10 @@ class InboxChatViewController: MessagesViewController {
         dataSource.tableView = tableView
         dataSource.viewController = self
         
+        if #available(iOS 26.0, *) {
+            tableView.topEdgeEffect.isHidden = true
+        }
+        
         tableView.register(UINib(nibName: "EmptyTableViewCell", bundle: Bundle.main), forCellReuseIdentifier: "emptyCell")
         dataSource.emptyDataSource = SingleItemTableViewDataSource<EmptyTableViewCell>(cellIdentifier: "emptyCell", styleFunction: EmptyTableViewCell.inboxChatStyle)
         
@@ -92,23 +96,26 @@ class InboxChatViewController: MessagesViewController {
     }
     
     override func inputBar(_ inputBar: InputBarAccessoryView, didPressSendButtonWith text: String) {
-        guard let message = inputBar.inputTextView.text else {
-            return
-        }
-
+        inputBar.sendButton.startAnimating()
         inputBar.inputTextView.text = String()
         inputBar.invalidatePlugins()
-
-        // Send button activity animation
-        inputBar.sendButton.startAnimating()
         UIImpactFeedbackGenerator.oneShotImpactOccurred(.light)
-        socialRepository.post(inboxMessage: message, toUserID: userID ?? "").observeResult { (result) in
-            inputBar.sendButton.stopAnimating()
+        socialRepository.post(inboxMessage: text, toUserID: userID ?? "").observeResult { (result) in
+            UIView.animate(withDuration: 0.3) {
+                inputBar.sendButton.alpha = 0
+            } completion: { _ in
+                inputBar.sendButton.stopAnimating()
+                inputBar.sendButton.transform = CGAffineTransform(translationX: 30, y: 0)
+            }
             switch result {
             case .failure:
-                inputBar.inputTextView.text = message
+                inputBar.inputTextView.text = text
             case .success:
-                return
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+                    if self.tableView.numberOfRows(inSection: 0) > 0 {
+                        self.tableView.scrollToRow(at: IndexPath(row: 0, section: 0), at: .bottom, animated: true)
+                    }
+                }
             }
         }
     }

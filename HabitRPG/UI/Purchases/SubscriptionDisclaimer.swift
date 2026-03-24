@@ -5,8 +5,6 @@
 //  Created by Phillip Thelen on 04.09.24.
 //  Copyright © 2024 HabitRPG Inc. All rights reserved.
 //
-
-
 import Foundation
 import SwiftUI
 import SwiftyStoreKit
@@ -21,10 +19,11 @@ struct SubscriptionDisclaimer: View {
                 .font(.system(size: 11))
             HStack(spacing: 0) {
                 Text("By continuing you accept the ")
-                // swiftlint:disable force_unwrapping
-                Link("Terms of Use", destination: URL(string: "https://habitica.com/static/terms")!).font(.system(size: 11, weight: .semibold)).foregroundColor(.yellow100)
+                // swiftlint:disable:next force_unwrapping
+                Link("Terms of Use", destination: URL(string: "https://habitica.com/static/terms")!).font(.system(size: 11, weight: .semibold)).foregroundStyle(.yellow100)
                 Text(" and ")
-                Link("Privacy Policy", destination: URL(string: "https://habitica.com/static/privacy")!).font(.system(size: 11, weight: .semibold)).foregroundColor(.yellow100)
+                // swiftlint:disable:next force_unwrapping
+                Link("Privacy Policy", destination: URL(string: "https://habitica.com/static/privacy")!).font(.system(size: 11, weight: .semibold)).foregroundStyle(.yellow100)
             }
             .padding(.top, 16)
             .font(.system(size: 11))
@@ -33,7 +32,7 @@ struct SubscriptionDisclaimer: View {
         .padding(.bottom, 20)
         .padding(.horizontal, 24)
         .frame(maxWidth: .infinity, alignment: .leading)
-        .foregroundColor(.white)
+        .foregroundStyle(.white)
         .background(.purple400)
     }
 }

@@ -41,24 +41,24 @@ public struct UsernameScreen: View {
                             Image(Asset.usernameHeader.name)
                             Text(L10n.Login.whatCallYou)
                                 .scaledFont(size: 22, weight: .bold)
-                                .foregroundColor(.white)
+                                .foregroundStyle(.white)
                             Text(L10n.Login.usernameDescription)
                                 .multilineTextAlignment(.center)
                                 .scaledFont(size: 15, weight: .semibold)
-                                .foregroundColor(.purple600)
+                                .foregroundStyle(.purple600)
                                 .padding(.horizontal, 16)
                                 .padding(.top, 5)
                                 .padding(.bottom, 16)
                             LoginTextInput(placeholder: L10n.username, prefix: "@", icon: EmptyView(), isValid: viewModel.usernameValid, text: $viewModel.username)
                                 .focused($isFocused)
-                                .onChange(of: viewModel.username) { _ in
+                                .onChange(of: viewModel.username) {
                                     viewModel.verifyUsername()
                                 }
                             VStack(spacing: 4) {
                                 ForEach(viewModel.usernameIssues, id: \.self) { issue in
                                     Text(issue)
                                         .multilineTextAlignment(.center)
-                                        .foregroundColor(.red500)
+                                        .foregroundStyle(.red500)
                                         .scaledFont(size: 15, weight: .semibold)
                                         .padding(.horizontal, 30)
                                         .transition(.push(from: .top))
@@ -83,7 +83,7 @@ public struct UsernameScreen: View {
                         Text(formattedTermsText)
                             .scaledFont(size: 13)
                             .lineSpacing(4)
-                            .foregroundColor(.purple600)
+                            .foregroundStyle(.purple600)
                             .tint(.white)
                     }
                     .onTapGesture {
@@ -108,7 +108,7 @@ public struct UsernameScreen: View {
                 }
             } label: {
                 Image(systemName: "chevron.backward")
-                    .foregroundColor(.white)
+                    .foregroundStyle(.white)
                     .font(.headline.bold())
                     .padding()
             }

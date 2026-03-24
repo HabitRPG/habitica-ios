@@ -51,9 +51,9 @@ class LeaveGroupInteractor: Interactor<GroupProtocol, GroupProtocol?> {
                 observer.send(value: (true, false, group))
             })
         }
-        alert.setCloseAction(title: L10n.close, handler: {
+        alert.addCloseAction { _ in
             observer.send(value: (false, false, group))
-        })
+        }
         alert.show()
     }
 }

@@ -19,8 +19,8 @@ public class RetrieveTasksCall: ResponseArrayCall<TaskProtocol, APITask> {
             var dateString = formatter.string(from: date)
             let regex = try? NSRegularExpression(pattern: "T([0-9]):", options: .caseInsensitive)
             dateString = regex?.stringByReplacingMatches(in: dateString, options: [], range: NSRange(location: 0, length: dateString.count), withTemplate: "T0$1:") ?? ""
-            url = "\(url)?type=dailys&dueDate=\(dateString)"
-            url = url.replacingOccurrences(of: "+", with: "%2B")
+            let encodedDateString = (dateString.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? dateString).replacingOccurrences(of: "+", with: "%2B")
+            url = "\(url)?type=dailys&dueDate=\(encodedDateString)"
         }
         if let type = type {
             url = "\(url)?type=\(type)"

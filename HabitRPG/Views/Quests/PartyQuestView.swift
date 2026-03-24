@@ -22,7 +22,7 @@ class PartyQuestView: UIView {
         view.isHidden = true
         let theme = ThemeService.shared.theme
         view.backgroundColor = theme.windowBackgroundColor
-        view.cornerRadius = 12
+        view.cornerRadius = UIConstants.mediumCornerRadius
         return view
     }()
     var progressBarViews = [QuestProgressBarView]()
@@ -35,7 +35,7 @@ class PartyQuestView: UIView {
         view.font = .systemFont(ofSize: 12, weight: .semibold)
         view.textColor = .white
         view.backgroundColor = ThemeService.shared.theme.secondaryBadgeColor
-        view.cornerRadius = 12
+        view.cornerRadius = UIConstants.mediumCornerRadius
         view.layer.maskedCorners = [.layerMinXMaxYCorner, .layerMaxXMaxYCorner]
         return view
     }()

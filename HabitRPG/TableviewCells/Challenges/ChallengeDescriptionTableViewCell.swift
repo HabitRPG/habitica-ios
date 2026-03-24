@@ -19,11 +19,6 @@ class ChallengeDescriptionTableViewCell: ResizableTableViewCell, ChallengeConfig
     
     private var isExpanded = true
     
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
-    }
-    
     func configure(with challenge: ChallengeProtocol, userID: String?) {
         if let notes = challenge.notes {
             descriptionLabel.setMarkdownString(notes.unicodeEmoji)

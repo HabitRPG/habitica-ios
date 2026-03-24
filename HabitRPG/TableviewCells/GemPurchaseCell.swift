@@ -54,9 +54,10 @@ class GemPurchaseCell: UICollectionViewCell {
         if isLoading {
             priceLabel.isHidden = true
             loadingIndicator.isHidden = false
+            loadingIndicator.startAnimating()
         } else {
-                priceLabel.isHidden = false
-                loadingIndicator.isHidden = true
+            priceLabel.isHidden = false
+            loadingIndicator.isHidden = true
         }
     }
 }

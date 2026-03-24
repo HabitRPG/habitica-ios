@@ -70,6 +70,9 @@ class SpellsTableViewDataSource: BaseReactiveTableViewDataSource<Any>, SpellsTab
         sections.append(ItemSection<Any>())
         sections.append(ItemSection<Any>(title: L10n.Skills.transformationItems))
         disposable.add(userRepository.getUser().on(value: {[weak self]user in
+            guard !UserManager.shared.isLoggingOut else {
+                return
+            }
             self?.classSelected = user.flags?.classSelected ?? false
             self?.disabledClasses = user.preferences?.disableClasses ?? false
             if let stats = user.stats {

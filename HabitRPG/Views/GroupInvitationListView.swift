@@ -32,7 +32,9 @@ class GroupInvitationListView: UIView {
             let view = GroupInvitationView()
             view.set(invitation: invitation)
             view.responseAction = {[weak self] didAccept in
-                if !invitation.isValid { return }
+                if !invitation.isValid {
+                    return
+                }
                 guard let groupID = invitation.id else {
                     return
                 }

@@ -20,68 +20,50 @@ struct PrivacyPreferencesScreenView: View, Dismissable {
         ScrollView {
             VStack(alignment: .leading, spacing: 0) {
                 Text(L10n.yourPrivacyPreferences)
-                    .foregroundStyle(Color(ThemeService.shared.theme.primaryTextColor))
+                    .foregroundStyle(.white)
                     .scaledFont(size: 30, weight: .bold)
                     .padding(.bottom, 20)
                     .padding(.horizontal, 13)
                 Text(L10n.privacyPreferencesFullDescription)
-                    .foregroundStyle(Color(ThemeService.shared.theme.primaryTextColor))
+                    .foregroundStyle(.white)
                     .scaledFont(size: 16)
                     .lineSpacing(4)
                     .padding(.bottom, 16)
                     .padding(.horizontal, 13)
                 PrivacyToggleContainer(title: Text(L10n.performanceAnalytics),
                                        description: Text(L10n.performanceAnalyticsDescription),
-                                       titleTextColor: Color(ThemeService.shared.theme.primaryTextColor),
-                                       descriptionTextColor: Color(ThemeService.shared.theme.secondaryTextColor),
-                                       backgroundColor: Color(ThemeService.shared.theme.windowBackgroundColor),
+                                       titleTextColor: .white,
+                                       descriptionTextColor: .gray500,
+                                       backgroundColor: .purple50,
                                        isOn: $analyticsConsent)
                 .padding(.bottom, 8)
                 PrivacyToggleContainer(title: Text(L10n.strictlyNecessary),
                                        description: Text(L10n.strictlyNecessaryDescription),
-                                       titleTextColor: Color(ThemeService.shared.theme.primaryTextColor),
-                                       descriptionTextColor: Color(ThemeService.shared.theme.secondaryTextColor),
-                                       backgroundColor: Color(ThemeService.shared.theme.windowBackgroundColor),
+                                       titleTextColor: .white,
+                                       descriptionTextColor: .gray500,
+                                       backgroundColor: .purple50,
                                        isOn: .constant(true),
                                        disabled: true)
-                Button {
+                HabiticaButtonUI(label: Text(L10n.acceptAll).foregroundStyle(.gray50), color: .white, colorOpacity: 1.0) {
                     analyticsConsent = true
                     userRepository.updateUser(key: "preferences.analyticsConsent", value: analyticsConsent).observeCompleted {
-                        if let dismiss = dismisser.dismiss {
-                            dismiss()
-                        }
+                        UserDefaults.standard.set(false, forKey: "isInSetup")
+                        dismisser.dismiss()
                     }
-                } label: {
-                    Text(L10n.acceptAll)
-                        .scaledFont(size: 16, weight: .bold)
-                        .foregroundColor(.gray50)
-                        .frame(maxWidth: .infinity)
                 }
-                .height(60)
-                .background(.white)
-                .cornerRadius(16)
                 .padding(.top, 13)
-                Button {
+                HabiticaButtonUI(label: Text(L10n.savePreferences), color: .purple400) {
                     userRepository.updateUser(key: "preferences.analyticsConsent", value: analyticsConsent).observeCompleted {
-                        if let dismiss = dismisser.dismiss {
-                            dismiss()
-                        }
+                        UserDefaults.standard.set(false, forKey: "isInSetup")
+                        dismisser.dismiss()
                     }
-                } label: {
-                    Text(L10n.savePreferences)
-                        .scaledFont(size: 16, weight: .bold)
-                        .foregroundColor(.white)
-                        .frame(maxWidth: .infinity)
                 }
-                .height(60)
-                .background(.purple400)
-                .cornerRadius(16)
                 .padding(.top, 8)
                 if let url = URL(string: "https://habitica.com/static/privacy") {
                     Link("Habitica's Privacy Policy", destination: url)
                         .scaledFont(size: 16, weight: .bold)
                         .frame(maxWidth: .infinity)
-                        .foregroundColor(.purple600)
+                        .foregroundStyle(.purple600)
                         .height(60)
                         .padding(.top, 12)
                 }
@@ -94,7 +76,7 @@ struct PrivacyPreferencesScreenView: View, Dismissable {
                 }).start()
             }
         }
-        .background(Color(ThemeService.shared.theme.contentBackgroundColor).ignoresSafeArea())
+        .background(Color(.purple300).ignoresSafeArea())
     }
 }
 

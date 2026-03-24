@@ -21,8 +21,9 @@ class PetDetailCell: UICollectionViewCell {
         bgView.backgroundColor = ThemeService.shared.theme.windowBackgroundColor
         let percentage = Float(petItem.trained) / 50.0
         if let key = petItem.pet?.key {
+            let substitutedName = ImageSubstitutionManager.substituteSprite(name: "Pet-\(key)", context: "pets")
             if petItem.trained != 0 {
-                imageView.setImagewith(name: "stable_Pet-\(key)")
+                imageView.setImagewith(name: "stable_\(substitutedName)")
                 if petItem.trained > 0 && petItem.canRaise {
                     accessibilityLabel = L10n.petAccessibilityLabelRaised(petItem.pet?.text ?? "", Int(percentage*100))
                 } else if !petItem.canRaise {
@@ -43,7 +44,8 @@ class PetDetailCell: UICollectionViewCell {
             imageView.alpha = 1.0
         }
         progressView.tintColor = ThemeService.shared.theme.successColor
-        progressView.trackTintColor = ThemeService.shared.theme.offsetBackgroundColor
+        progressView.trackTintColor = ThemeService.shared.theme.windowBackgroundColor
+        progressView.borderColor = ThemeService.shared.theme.tableviewSeparatorColor
         if petItem.pet?.type != " " && petItem.trained > 0 && petItem.canRaise == true {
             progressView.isHidden = false
             progressView.progress = percentage
@@ -56,5 +58,6 @@ class PetDetailCell: UICollectionViewCell {
         
         shouldGroupAccessibilityChildren = true
         isAccessibilityElement = true
+        bgView.cornerRadius = UIConstants.mediumCornerRadius
     }
 }

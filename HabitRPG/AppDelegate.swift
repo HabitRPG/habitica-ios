@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import Amplitude
 import Habitica_API_Client
 import Habitica_Models
 import RealmSwift
@@ -38,7 +37,6 @@ class HabiticaAppDelegate: UIResponder, MessagingDelegate, UIApplicationDelegate
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]? = nil) -> Bool {
         Measurements.start(identifier: "didFinishLaunchingWithOptions")
-        Measurements.start(identifier: "task list loaded")
         logger = RemoteLogger()
         self.application = application
         
@@ -60,8 +58,14 @@ class HabiticaAppDelegate: UIResponder, MessagingDelegate, UIApplicationDelegate
             object: nil,
             queue: .main
         ) { [weak self] _ in
-            guard let self = self else { return }
-            self.userRepository.logoutAccount()
+            guard let self = self else {
+                return
+            }
+            self.userRepository.logoutAccount { [weak self] in
+                self?.showLoginScreen()
+                UserManager.shared.logoutCompleted()
+                self?.contentRepository.retrieveContent(force: true).observeCompleted {}
+            }
         }
         KeyboardManager.shared.observeKeyboardNotifications()
         
@@ -114,7 +118,6 @@ class HabiticaAppDelegate: UIResponder, MessagingDelegate, UIApplicationDelegate
     func setupFirebase() {
         Messaging.messaging().delegate = self
         
-        
         let userDefaults = UserDefaults.standard
         #if !targetEnvironment(macCatalyst)
         Crashlytics.crashlytics().setCustomValue(-(NSTimeZone.local.secondsFromGMT() / 60), forKey: "timezone_offset")
@@ -153,7 +156,7 @@ class HabiticaAppDelegate: UIResponder, MessagingDelegate, UIApplicationDelegate
         PurchaseHandler.shared.completionHandler()
         #endif
     }
-    
+
     func setupNetworkClient() {
         NetworkAuthenticationManager.shared.currentUserId = AuthenticationManager.shared.currentUserId
         NetworkAuthenticationManager.shared.currentUserKey = AuthenticationManager.shared.currentUserKey
@@ -244,15 +247,10 @@ class HabiticaAppDelegate: UIResponder, MessagingDelegate, UIApplicationDelegate
     @objc
     private func handleInvalidCredentials() {
         DispatchQueue.main.async { [weak self] in
-            // cancel any pending network requests to prevent race conditions
-            URLSession.shared.getAllTasks { tasks in
-                tasks.forEach { $0.cancel() }
-            }
-            
-            self?.userRepository.logoutAccount()
-            
-            self?.contentRepository.retrieveContent(force: true).observeCompleted {
+            self?.userRepository.logoutAccount { [weak self] in
                 self?.showLoginScreen()
+                UserManager.shared.logoutCompleted()
+                self?.contentRepository.retrieveContent(force: true).observeCompleted {}
             }
         }
     }
@@ -469,7 +467,7 @@ class HabiticaAppDelegate: UIResponder, MessagingDelegate, UIApplicationDelegate
     }
     
     func displayInAppNotification(taskID: String, text: String) {
-        let alertController = HabiticaAlertController(title: text)
+        let alertController = HabiticaAlertController(title: L10n.taskReminder, message: text)
         alertController.addAction(title: L10n.complete, style: .default, isMainAction: true, closeOnTap: true, identifier: nil) {[weak self] _ in
             self?.scoreTask(taskID, direction: .up) {}
         }
@@ -478,4 +476,3 @@ class HabiticaAppDelegate: UIResponder, MessagingDelegate, UIApplicationDelegate
         UINotificationFeedbackGenerator.oneShotNotificationOccurred(.warning)
     }
 }
-

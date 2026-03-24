@@ -41,7 +41,7 @@ class FeedViewController: BaseTableViewController {
         let button = view?.viewWithTag(3) as? UIButton
         button?.borderColor = ThemeService.shared.theme.tintColor
         button?.borderWidth = 1
-        button?.cornerRadius = 5
+        button?.cornerRadius = UIConstants.largeCornerRadius
         button?.addTarget(self, action: #selector(openMarket), for: .touchUpInside)
         return view
     }

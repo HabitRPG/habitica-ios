@@ -135,8 +135,15 @@ class UserRepository: BaseRepository<UserLocalRepository> {
     }
     
     func runCron(checklistItems: [(TaskProtocol, ChecklistItemProtocol)], tasks: [TaskProtocol]) {
+        guard !UserManager.shared.isLoggingOut else {
+            return
+        }
+
         var disposable: Disposable?
         getUser().take(first: 1).on(value: {[weak self]user in
+            guard !UserManager.shared.isLoggingOut else {
+                return
+            }
             self?.localRepository.updateCall { _ in
                 user.needsCron = false
             }
@@ -216,11 +223,12 @@ class UserRepository: BaseRepository<UserLocalRepository> {
         
         return call.objectSignal.merge(with: call.responseSignal.map({ _ -> LoginResponseProtocol? in
             return nil
-        })).on(value: { loginResponse in
+        }))
+            .on(value: { loginResponse in
             self.updateAuth(response: loginResponse)
         })
     }
-
+    
     func register(username: String, password: String, confirmPassword: String, email: String) -> Signal<LoginResponseProtocol?, Never> {
         return LocalRegisterCall(username: username, password: password, confirmPassword: confirmPassword, email: email).objectSignal.on(value: { loginResponse in
             self.updateAuth(response: loginResponse)
@@ -229,41 +237,34 @@ class UserRepository: BaseRepository<UserLocalRepository> {
     
     func login(userID: String, network: String, accessToken: String, allowRegister: Bool) -> Signal<LoginResponseProtocol?, Never> {
         let call = SocialLoginCall(userID: userID, network: network, accessToken: accessToken, allowRegister: allowRegister)
-        return call.objectSignal.on(value: { loginResponse in
-            self.updateAuth(response: loginResponse)
-        }).merge(with: call.httpResponseSignal.map({ response -> LoginResponseProtocol? in
-            if response.statusCode == 404 {
-                let loginResponse = APILoginResponse()
-                loginResponse.newUser = true
-                return loginResponse
+        return call.objectSignal.merge(with: call.httpResponseSignal.map({ response -> LoginResponseProtocol? in
+            if response.statusCode == 200 {
+                return nil
             }
-            return nil
-        }))
+            let response = APILoginResponse()
+            response.newUser = true
+            return response
+        }).filter({ response in
+            return response != nil
+        })).on(value: { loginResponse in
+            self.updateAuth(response: loginResponse)
+        })
     }
     
     func loginApple(identityToken: String, name: String, allowRegister: Bool) -> Signal<LoginResponseProtocol?, Never> {
         let call = AppleLoginCall(identityToken: identityToken, name: name, allowRegister: allowRegister)
-        return call.objectSignal
-            .on(value: { loginResponse in
+        return call.objectSignal.merge(with: call.jsonSignal.map({ response -> LoginResponseProtocol? in
+            if let json = response as? [String: Any], json["id_token"] == nil {
+                return nil
+            }
+            let loginResponse = APILoginResponse()
+            loginResponse.newUser = true
+            return loginResponse
+        }).filter({ response in
+            return response != nil
+        })).on(value: { loginResponse in
             self.updateAuth(response: loginResponse)
         })
-            .map({ response in
-                if response == nil {
-                    let loginResponse = APILoginResponse()
-                    loginResponse.newUser = true
-                    return loginResponse
-                } else {
-                    return response
-                }
-            })
-            .merge(with: call.httpResponseSignal.map({ response -> LoginResponseProtocol? in
-            if response.statusCode == 404 {
-                let loginResponse = APILoginResponse()
-                loginResponse.newUser = true
-                return loginResponse
-            }
-            return nil
-        }))
     }
     
     func disconnectSocial(_ network: String) -> Signal<EmptyResponseProtocol?, Never> {
@@ -276,31 +277,71 @@ class UserRepository: BaseRepository<UserLocalRepository> {
         })
     }
     
-    func deleteAccount(password: String) -> Signal<HTTPURLResponse, Never> {
+    func deleteAccount(password: String, onLogoutComplete: (() -> Void)? = nil) -> Signal<HTTPURLResponse, Never> {
         return DeleteAccountCall(password: password).httpResponseSignal.on(value: {[weak self] response in
             if response.statusCode == 200 {
-                self?.logoutAccount()
+                self?.logoutAccount(completion: onLogoutComplete)
             }
         })
     }
     
-    func logoutAccount() {
-        localRepository.clearDatabase()
-        if let userID = currentUserId {
-            AuthenticationManager.shared.clearAuthentication(userId: userID)
+    func logoutAccount(completion: (() -> Void)? = nil) {
+        guard !UserManager.shared.isLoggingOut else {
+            completion?()
+            return
         }
-        HabiticaAnalytics.shared.resetAnalyticsOnLogout()
-        deregisterPushDevice().observeCompleted {}
+        UserManager.shared.prepareForLogout()
+
+        URLSession.shared.getAllTasks { tasks in
+            tasks.forEach { $0.cancel() }
+        }
+
+        let userID = currentUserId
+
         let defaults = UserDefaults.standard
         let themeMode = defaults.string(forKey: "themeMode")
         let launchScreen = defaults.string(forKey: "initialScreenURL")
-        let chosenServer = defaults.string(forKey: "chosenServer")
+
         defaults.dictionaryRepresentation().keys.forEach { defaults.removeObject(forKey: $0) }
         defaults.set(themeMode, forKey: "themeMode")
         defaults.set(launchScreen, forKey: "initialScreenURL")
-        if ConfigRepository.shared.testingLevel.isTrustworthy {
-            defaults.set(chosenServer, forKey: "chosenServer")
+
+        if let userID = userID {
+            var hasFinalized = false
+            let finalize = { [weak self] in
+                DispatchQueue.main.async {
+                    guard !hasFinalized else {
+                        return
+                    }
+                    hasFinalized = true
+                    self?.finalizeLogout(userID: userID, completion: completion)
+                }
+            }
+
+            DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
+                finalize()
+            }
+
+            deregisterPushDevice().observe { event in
+                switch event {
+                case .completed, .interrupted:
+                    finalize()
+                default:
+                    break
+                }
+            }
+        } else {
+            DispatchQueue.main.async { [weak self] in
+                self?.localRepository.clearDatabase()
+                completion?()
+            }
         }
+    }
+
+    private func finalizeLogout(userID: String, completion: (() -> Void)?) {
+        AuthenticationManager.shared.clearAuthentication(userId: userID)
+        localRepository.clearDatabase()
+        completion?()
     }
     
     func updateEmail(newEmail: String, password: String) -> Signal<UserProtocol, ReactiveSwiftRealmError> {
@@ -317,12 +358,26 @@ class UserRepository: BaseRepository<UserLocalRepository> {
         })
     }
     
-    func updateUsername(newUsername: String, password: String? = nil) -> Signal<UserProtocol?, Never> {
+    func updateUsername(newUsername: String, password: String? = nil) -> Signal<UserProtocol, ReactiveSwiftRealmError> {
         let call = UpdateUsernameCall(username: newUsername, password: password)
         
-        return call.objectSignal.flatMap(.latest) { _ in
-            return self.retrieveUser(forced: true)
-        }
+        return call.objectSignal
+            .filter({ (response) -> Bool in
+                return response != nil
+            })
+            .flatMap(.latest, {[weak self] _ in
+                return self?.retrieveUser(forced: true) ?? Signal.empty
+            })
+            .flatMap(.latest, {[weak self] (_) in
+                return self?.getUser().take(first: 1) ?? SignalProducer.empty
+        }).on(value: {[weak self]user in
+            self?.localRepository.updateCall { _ in
+                if let local = user.authentication?.local {
+                    local.username = newUsername
+                    user.flags?.verifiedUsername = true
+                }
+            }
+        })
     }
     
     func verifyUsername(_ newUsername: String) -> Signal<VerifyUsernameResponse?, Never> {
@@ -347,7 +402,7 @@ class UserRepository: BaseRepository<UserLocalRepository> {
                     if response.apiToken?.isEmpty == false {
                         AuthenticationManager.shared.currentUserKey = response.apiToken
                         ToastManager.show(
-                                            text:  L10n.Settings.updatedPassword,
+                                            text: L10n.Settings.updatedPassword,
                                             color: .green
                                         )
                     }
@@ -432,15 +487,11 @@ class UserRepository: BaseRepository<UserLocalRepository> {
         lastClassSelection = Date()
         return SelectClassCall(class: habiticaClass).httpResponseSignal
             .on(value: { response in
-                if response.statusCode == 200 && habiticaClass != nil {
-                    let alert = HabiticaAlertController(
-                        title: L10n.classChangeSuccessTitle(habiticaClass?.translatedName ?? ""),
-                        message: L10n.classChangeSuccessDescription(habiticaClass?.translatedName ?? ""))
-                    alert.addAction(title: L10n.gotIt, isMainAction: true)
-                    alert.addAction(title: L10n.openStats) { _ in
-                        RouterHandler.shared.handle(urlString: "/user/stats")
+                if response.statusCode == 200, let habiticaClass = habiticaClass {
+                    let viewController = HostingBottomSheetController(rootView: ClassConfirmationSheet(selectedClass: habiticaClass), prefersGrabberVisible: false)
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+                        viewController.show()
                     }
-                    alert.show()
                     
                     UIApplication.requestReview()
                 }
@@ -501,6 +552,7 @@ class UserRepository: BaseRepository<UserLocalRepository> {
         }
     }
     
+    @discardableResult
     func cancelSubscription() -> Signal<UserProtocol?, Never> {
         return CancelSubscribeCall().objectSignal.flatMap(.latest) {[weak self] _ in
             return self?.retrieveUser(withTasks: false, forced: true) ?? Signal.empty

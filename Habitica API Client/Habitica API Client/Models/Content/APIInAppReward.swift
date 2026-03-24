@@ -42,6 +42,8 @@ public class APIInAppReward: InAppRewardProtocol, Decodable {
     public var unlockConditionIncentiveThreshold: Int = 0
     public var previous: String?
     public var level: Int = 0
+    public var klass: String?
+    public var specialClass: String?
     
     enum CodingKeys: String, CodingKey {
         case key
@@ -63,6 +65,8 @@ public class APIInAppReward: InAppRewardProtocol, Decodable {
         case level
         case event
         case endDate = "end"
+        case klass
+        case specialClass
     }
     
     public required init(from decoder: Decoder) throws {
@@ -93,6 +97,8 @@ public class APIInAppReward: InAppRewardProtocol, Decodable {
         eventStart = event?.start
         eventEnd = event?.end
         endDate = try? values.decode(Date.self, forKey: .endDate)
+        klass = try? values.decode(String.self, forKey: .klass)
+        specialClass = try? values.decode(String.self, forKey: .specialClass)
     }
     
     init() {

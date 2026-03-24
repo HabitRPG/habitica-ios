@@ -24,23 +24,25 @@ struct Provider: TimelineProvider {
 
     func getTimeline(in context: Context, completion: @escaping (Timeline<UserEntry>) -> Void) {
         var entries: [UserEntry] = []
-        TaskManager.shared.getUser().on(value: { user in
-            let entry = UserEntry(date: Date(),
-                                  widgetFamily: context.family,
-                                  health: user.stats?.health ?? 0.0,
-                                  maxHealth: user.stats?.maxHealth ?? 0.0,
-                                  experience: user.stats?.experience ?? 0.0,
-                                  maxExperience: user.stats?.toNextLevel ?? 0.0,
-                                  mana: user.stats?.mana ?? 0.0,
-                                  maxMana: user.stats?.maxMana ?? 0.0,
-                                  level: user.stats?.level ?? 0,
-                                  gold: user.stats?.gold ?? 0.0,
-                                  gems: user.gemCount)
-            entries.append(entry)
-
+        guard let user = TaskManager.shared.getUser() else {
             let timeline = Timeline(entries: entries, policy: .atEnd)
             completion(timeline)
-        }).take(first: 1).start()
+            return
+        }
+        let entry = UserEntry(date: Date(),
+                              widgetFamily: context.family,
+                              health: user.stats?.health ?? 0.0,
+                              maxHealth: user.stats?.maxHealth ?? 0.0,
+                              experience: user.stats?.experience ?? 0.0,
+                              maxExperience: user.stats?.toNextLevel ?? 0.0,
+                              mana: user.stats?.mana ?? 0.0,
+                              maxMana: user.stats?.maxMana ?? 0.0,
+                              level: user.stats?.level ?? 0,
+                              gold: user.stats?.gold ?? 0.0,
+                              gems: user.gemCount)
+        entries.append(entry)
+        let timeline = Timeline(entries: entries, policy: .atEnd)
+        completion(timeline)
     }
 }
 
@@ -73,22 +75,27 @@ struct StatsWidgetView: View {
             if entry.widgetFamily != .systemSmall {
                 Spacer()
                 HStack {
-                    Text(L10n.levelNumber(entry.level)).font(.footnote).foregroundColor(Color.widgetText)
+                    Text(L10n.levelNumber(entry.level))
                     Spacer()
                     Image("Gold")
-                    Text("\(entry.gold)".stringWithAbbreviatedNumber()).font(.footnote).foregroundColor(Color.widgetText)
+                    Text("\(entry.gold)".stringWithAbbreviatedNumber())
                         .padding(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 8))
                     Image("Gem")
-                    Text("\(entry.gems)".stringWithAbbreviatedNumber()).font(.footnote).foregroundColor(Color.widgetText)
+                    Text("\(entry.gems)".stringWithAbbreviatedNumber())
                 }
             }
-                }.frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity, alignment: .leading)
+                }
+        .font(.system(size: 13, weight: .semibold)).foregroundStyle(Color.widgetText)
+        .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity, alignment: .leading)
             .padding(widgetPadding())
         .widgetBackground(Color.widgetBackground)
             }
 }
 
 struct ValueBar: View {
+    @Environment(\.widgetRenderingMode)
+    var renderingMode
+    
     var title: String
     var value: Float
     var maxValue: Float
@@ -98,9 +105,9 @@ struct ValueBar: View {
     
     var thickness: CGFloat {
         if showLabels {
-            return 8
-        } else {
             return 10
+        } else {
+            return 12
         }
     }
     
@@ -110,16 +117,21 @@ struct ValueBar: View {
             VStack(alignment: .center, spacing: 0, content: {
                 GeometryReader { metrics in
                     ZStack(alignment: .leading, content: {
-                        Rectangle().fill(Color.progressBackground).frame(width: metrics.size.width, height: thickness, alignment: .leading).cornerRadius(4)
-                        Rectangle().fill(color).frame(width: metrics.size.width * CGFloat(value / maxValue), height: thickness, alignment: .leading).cornerRadius(4)
+                        Rectangle().fill(Color.progressBackground).frame(width: metrics.size.width, height: thickness, alignment: .leading)
+                            .cornerRadius(thickness / 2)
+                            .opacity(renderingMode == .fullColor ? 1 : 0.2)
+                        Rectangle().fill(color).frame(width: metrics.size.width * CGFloat(value / maxValue), height: thickness, alignment: .leading)
+                            .cornerRadius(thickness / 2)
+                            .widgetAccentable()
                     })
                 }.frame(height: thickness, alignment: .center)
                     .frame(maxWidth: .infinity, alignment: .center)
                 if showLabels { HStack {
-                    Text(title).font(.caption).foregroundColor(Color.widgetText)
+                    Text(title)
                     Spacer()
-                    Text("\(Int(value))/\(Int(maxValue))").font(.caption).foregroundColor(Color.widgetText)
-                }.padding(.top, 2) }
+                    Text("\(Int(value))/\(Int(maxValue))")
+                }
+                    .padding(.top, 2) }
             })
         }
     }

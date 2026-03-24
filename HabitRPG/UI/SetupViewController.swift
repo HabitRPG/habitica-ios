@@ -182,7 +182,6 @@ class SetupViewController: UIViewController, UIScrollViewDelegate {
             return
         }
         isCompletingSetup = true
-        UserDefaults.standard.set(false, forKey: "isInSetup")
         UserDefaults.standard.set(0, forKey: "currentSetupStep")
         if let viewController = taskSetupViewController {
             for taskCategory in viewController.selectedCategories {
@@ -194,6 +193,10 @@ class SetupViewController: UIViewController, UIScrollViewDelegate {
                 self?.userRepository.updateUser(key: "flags.welcomed", value: true)
                     .flatMap(.latest, { _ in
                         return (self?.userRepository.retrieveUser() ?? Signal.empty)
+                    }).on(value: { user in
+                        if let user = user {
+                            UserManager.shared.syncTutorialSteps(from: user)
+                        }
                     }).observeCompleted {
                         self?.showMainView()
                     }
@@ -252,7 +255,11 @@ class SetupViewController: UIViewController, UIScrollViewDelegate {
     }
     
     func showMainView() {
-        UIApplication.shared.firstKeyWindow?.rootViewController = StoryboardScene.Main.mainSplitViewController.instantiate()
+        if ConfigRepository.shared.enableIPadUI() {
+            UIApplication.shared.firstKeyWindow?.rootViewController = StoryboardScene.Main.mainSplitViewController.instantiate()
+        } else {
+            UIApplication.shared.firstKeyWindow?.rootViewController = StoryboardScene.Main.mainTabBarController.instantiate()
+        }
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

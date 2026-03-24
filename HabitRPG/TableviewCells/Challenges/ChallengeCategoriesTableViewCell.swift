@@ -18,10 +18,6 @@ class ChallengeCategoriesTableViewCell: ResizableTableViewCell, ChallengeConfigu
     
     private var isExpanded = true
     
-    override func awakeFromNib() {
-        super.awakeFromNib()
-    }
-    
     func configure(with challenge: ChallengeProtocol, userID: String?) {
         categories = challenge.categories.map { $0.name ?? "" }
         if isExpanded {
@@ -50,7 +46,7 @@ class ChallengeCategoriesTableViewCell: ResizableTableViewCell, ChallengeConfigu
     
     func createCategoryLabel(_ category: String) -> UILabel {
         let label = emptyTagLabel()
-        label.text = "  \(CategoryNameHelper.localizedCategoryNameFor(name: category) ?? category)  "
+        label.text = "  \(ChallengeCategory.localizedCategoryNameFor(name: category) ?? category)  "
         label.textColor = ThemeService.shared.theme.ternaryTextColor
         label.backgroundColor = ThemeService.shared.theme.offsetBackgroundColor
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -61,7 +57,7 @@ class ChallengeCategoriesTableViewCell: ResizableTableViewCell, ChallengeConfigu
     func emptyTagLabel() -> UILabel {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 12)
-        label.cornerRadius = 8
+        label.cornerRadius = UIConstants.mediumCornerRadius
         return label
     }
     

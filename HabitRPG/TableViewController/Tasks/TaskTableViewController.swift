@@ -20,7 +20,7 @@ class TaskTableViewController: BaseTableViewController, UISearchBarDelegate, UIT
     var typeName: String?
     var extraCellSpacing: Int = 0
     var searchBar = UISearchBar()
-    var searchBarWrapper = UIView()
+    var searchBarWrapper = UIVisualEffectView()
     var searchBarCancelButton = UIButton()
     var scrollTimer: Timer?
     var autoScrollSpeed: CGFloat = 0.0
@@ -29,9 +29,22 @@ class TaskTableViewController: BaseTableViewController, UISearchBarDelegate, UIT
     var editable: Bool = false
     var sourceIndexPath: IndexPath?
     var snapshot: UIView?
+        
+    var fakeHeader = UIView(frame: CGRect(origin: .zero, size: CGSize(width: 100, height: 1)))
+    let headerWrapper = UIView()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        fakeHeader.backgroundColor = .clear
+        topHeaderCoordinator?.hideHeader = true
+        topHeaderCoordinator?.followScrollView = false
+        topHeaderCoordinator?.alternativeHeader = fakeHeader
+        
+        tableView.tableHeaderView = headerWrapper
+        let nibViews = Bundle.main.loadNibNamed("UserTopHeader", owner: self, options: nil)
+        if let userHeader = nibViews?[0] as? UserTopHeader {
+            headerWrapper.addSubview(userHeader)
+        }
         
         createDataSource()
         dataSource?.tableView = tableView
@@ -55,8 +68,15 @@ class TaskTableViewController: BaseTableViewController, UISearchBarDelegate, UIT
         searchBar.showsCancelButton = false
         searchBarCancelButton.setTitle(L10n.cancel, for: .normal)
         searchBarCancelButton.addTarget(self, action: #selector(searchBarCancelButtonClicked), for: .touchUpInside)
-        searchBarWrapper.addSubview(searchBar)
-        searchBarWrapper.addSubview(searchBarCancelButton)
+        searchBarWrapper.contentView.addSubview(searchBar)
+        searchBarWrapper.contentView.addSubview(searchBarCancelButton)
+        
+        if #available(iOS 26.0, *) {
+            let glassEffect = UIGlassEffect()
+            searchBarWrapper.effect = glassEffect
+            searchBarWrapper.layer.cornerRadius = UIConstants.largeCornerRadius
+            searchBarWrapper.clipsToBounds = true
+        }
         
         NotificationCenter.default.addObserver(self, selector: #selector(didChangeFilter), name: NSNotification.Name(rawValue: "taskFilterChanged"), object: nil)
         didChangeFilter()
@@ -80,17 +100,21 @@ class TaskTableViewController: BaseTableViewController, UISearchBarDelegate, UIT
     
     override func applyTheme(theme: Theme) {
         super.applyTheme(theme: theme)
-        if theme.isDark {
-            searchBar.barStyle = .black
-            searchBar.isTranslucent = true
-        } else {
-            searchBar.barStyle = .default
-            searchBar.isTranslucent = false
-        }
-        searchBar.backgroundColor = theme.contentBackgroundColor
         tableView.backgroundColor = theme.contentBackgroundColor
         tableView.separatorColor = theme.contentBackgroundColor
-        searchBarWrapper.backgroundColor = theme.contentBackgroundColor
+        if #unavailable(iOS 26.0) {
+            searchBar.backgroundColor = theme.contentBackgroundColor
+            searchBarWrapper.backgroundColor = theme.contentBackgroundColor
+            if theme.isDark {
+                searchBar.barStyle = .black
+                searchBar.isTranslucent = true
+            } else {
+                searchBar.barStyle = .default
+                searchBar.isTranslucent = false
+            }
+        } else {
+            searchBar.backgroundColor = .clear
+        }
         searchBarCancelButton.setTitleColor(theme.tintColor, for: .normal)
     }
     
@@ -119,12 +143,16 @@ class TaskTableViewController: BaseTableViewController, UISearchBarDelegate, UIT
             scrollToTask(with: taskId)
             scrollToTaskAfterLoading = nil
         }
-        Measurements.stop(identifier: "task list loaded")
     }
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        tableView.layoutMargins = UIEdgeInsets.zero
+        if let userHeader = headerWrapper.subviews.first as? UserTopHeader, let topHeaderController = navigationController as? TopHeaderViewController {
+            headerWrapper.frame = CGRect(x: 0, y: 0, width: view.bounds.width, height: topHeaderController.defaultHeaderHeight + 12)
+            let safeLeft = view.safeAreaInsets.left
+            let safeRight = view.safeAreaInsets.right
+            userHeader.frame = CGRect(x: safeLeft, y: 0, width: headerWrapper.bounds.size.width - safeLeft - safeRight, height: topHeaderController.defaultHeaderHeight)
+        }
     }
     
     @objc
@@ -215,7 +243,7 @@ class TaskTableViewController: BaseTableViewController, UISearchBarDelegate, UIT
     @IBAction func unwindFilterChanged(segue: UIStoryboardSegue?) {
         if let tagVC = segue?.source as? FilterViewController {
             if let tabVC = tabBarController as? MainTabBarController {
-                tabVC.selectedTags = tagVC.selectedTags
+                tabVC.selectedTags = tagVC.viewModel.selectedTags
                 NotificationCenter.default.post(name: NSNotification.Name(rawValue: "taskFilterChanged"), object: nil)
             }
         }
@@ -264,7 +292,7 @@ class TaskTableViewController: BaseTableViewController, UISearchBarDelegate, UIT
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         #if targetEnvironment(simulator)
         if HabiticaAppDelegate.isRunningScreenshots() {
-            let levelUpView = LevelUpOverlayView()
+            let levelUpView = HostingBottomSheetController(rootView: LevelupSheet(), prefersGrabberVisible: false)
             levelUpView.show()
             return
         }
@@ -356,6 +384,12 @@ class TaskTableViewController: BaseTableViewController, UISearchBarDelegate, UIT
     private func hideSearchBar() {
         UIView.animate(withDuration: 0.3, animations: {
             self.searchBarWrapper.alpha = 0
+            self.navigationItem.rightBarButtonItems?.forEach { item in
+                item.isHidden = false
+            }
+            self.navigationItem.leftBarButtonItems?.forEach { item in
+                item.isHidden = false
+            }
         }, completion: { _ in
             self.searchBarWrapper.removeFromSuperview()
         })
@@ -382,8 +416,9 @@ class TaskTableViewController: BaseTableViewController, UISearchBarDelegate, UIT
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
         self.searchBar.text = ""
         self.searchBar.resignFirstResponder()
-        
+
         (tabBarController as? MainTabBarController)?.searchString = nil
+        dataSource?.predicate = getPredicate()
         hideSearchBar()
         tableView.reloadData()
     }
@@ -411,8 +446,8 @@ class TaskTableViewController: BaseTableViewController, UISearchBarDelegate, UIT
             if let tabVC = tabBarController as? MainTabBarController,
                 let navVC = segue.destination as? UINavigationController,
                 let filterVC = navVC.topViewController as? FilterViewController {
-                filterVC.selectedTags = tabVC.selectedTags
-                filterVC.taskType = typeName
+                filterVC.viewModel.selectedTags = tabVC.selectedTags
+                filterVC.viewModel.taskType = typeName ?? ""
             }
         }
     }
@@ -454,13 +489,19 @@ class TaskTableViewController: BaseTableViewController, UISearchBarDelegate, UIT
     
     @IBAction func searchButtonTapped(_ sender: Any) {
         navigationController?.navigationBar.addSubview(searchBarWrapper)
-        searchBarWrapper.frame = CGRect(x: 12, y: 0, width: tableView.bounds.size.width - 24, height: navigationController?.navigationBar.frame.size.height ?? 48)
-        searchBarCancelButton.pin.top().end().bottom().sizeToFit(.height)
-        searchBar.pin.start().before(of: searchBarCancelButton).top().bottom()
+        searchBarWrapper.frame = CGRect(x: 20, y: -4, width: tableView.bounds.size.width - 40, height: navigationController?.navigationBar.frame.size.height ?? 48)
+        searchBarCancelButton.pin.top().end(8).bottom().sizeToFit(.height)
+        searchBar.pin.start(6).before(of: searchBarCancelButton).marginRight(8).top().bottom()
         searchBar.becomeFirstResponder()
         searchBarWrapper.alpha = 0
         UIView.animate(withDuration: 0.3) {
             self.searchBarWrapper.alpha = 1
+            self.navigationItem.rightBarButtonItems?.forEach { item in
+                item.isHidden = true
+            }
+            self.navigationItem.leftBarButtonItems?.forEach { item in
+                item.isHidden = true
+            }
         }
     }
 }

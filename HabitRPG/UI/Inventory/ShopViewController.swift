@@ -13,18 +13,8 @@ class ShopViewController: BaseCollectionViewController, ShopCollectionViewDataSo
     
     private let userRepository = UserRepository()
     
-    func showGearSelection(sourceView: UIView) {
-        let alertController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
-        for title in ["warrior", "mage", "healer", "rogue", "none"] {
-            let action = UIAlertAction(title: title.localizedCapitalized, style: .default) {[weak self] _ in
-                self?.selectedGearCategory = title
-            }
-            alertController.addAction(action)
-        }
-        alertController.addAction(UIAlertAction.cancelAction())
-        alertController.popoverPresentationController?.sourceView = sourceView
-        alertController.popoverPresentationController?.sourceRect = sourceView.bounds
-        present(alertController, animated: true, completion: nil)
+    func changeGearCategory(to className: String) {
+        self.selectedGearCategory = className
     }
     
     func updateShopHeader(shop: ShopProtocol?) {
@@ -83,6 +73,13 @@ class ShopViewController: BaseCollectionViewController, ShopCollectionViewDataSo
         userRepository.getUser().on(value: {[weak self] user in
             self?.updateNavBar(gold: Int(user.stats?.gold ?? 0.0), gems: user.gemCount, hourglasses: user.purchased?.subscriptionPlan?.consecutive?.hourglasses ?? 0)
         }).start()
+        
+        goldView.insets = UIEdgeInsets(top: 0, left: 8, bottom: 0, right: 0)
+        goldView.font = UIFontMetrics.default.scaledSystemFont(ofSize: 15, ofWeight: .bold)
+        gemView.insets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 8)
+        gemView.font = UIFontMetrics.default.scaledSystemFont(ofSize: 15, ofWeight: .bold)
+        hourglassView.insets = UIEdgeInsets(top: 0, left: 8, bottom: 0, right: 8)
+        hourglassView.font = UIFontMetrics.default.scaledSystemFont(ofSize: 15, ofWeight: .bold)
     }
     
     private var isSubscribed: Bool?
@@ -92,7 +89,7 @@ class ShopViewController: BaseCollectionViewController, ShopCollectionViewDataSo
         
         userRepository.getUser().on(value: {[weak self] user in
             if self?.isSubscribed == nil && self?.shopIdentifier == "timeTravelersShop" && !user.isSubscribed && user.purchased?.subscriptionPlan?.consecutive?.hourglasses == 0 {
-                SubscriptionModalViewController(presentationPoint: .timetravelers).show()
+                self?.present(SubscriptionModalViewController(presentationPoint: .timetravelers), animated: true)
             }
             self?.isSubscribed = user.isSubscribed
         }).start()
@@ -119,6 +116,9 @@ class ShopViewController: BaseCollectionViewController, ShopCollectionViewDataSo
                 UIBarButtonItem(customView: goldView)
             ]
         }
+        navigationItem.rightBarButtonItems?.forEach { item in
+            item.isEnabled = false
+        }
     }
     
     private func setupCollectionView() {
@@ -144,6 +144,18 @@ class ShopViewController: BaseCollectionViewController, ShopCollectionViewDataSo
         dataSource?.collectionView = collectionView
     }
     
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        if let flowLayout = collectionView.collectionViewLayout as? UICollectionViewFlowLayout {
+            let safeLeft = view.safeAreaInsets.left
+            let safeRight = view.safeAreaInsets.right
+            let newInsets = UIEdgeInsets(top: 0, left: 6 + safeLeft, bottom: 40, right: 6 + safeRight)
+            if flowLayout.sectionInset != newInsets {
+                flowLayout.sectionInset = newInsets
+            }
+        }
+    }
+
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         dataSource?.dispose()
@@ -161,7 +173,7 @@ class ShopViewController: BaseCollectionViewController, ShopCollectionViewDataSo
     func didSelectItem(_ item: InAppRewardProtocol?, indexPath: IndexPath) {
         if item?.key == "gem" && isSubscribed == false {
             let sheet = SubscriptionModalViewController(presentationPoint: .gemForGold)
-            sheet.show()
+            present(sheet, animated: true)
             return
         }
         if item == nil {
@@ -212,18 +224,10 @@ class ShopViewController: BaseCollectionViewController, ShopCollectionViewDataSo
     }
     
     private func displayBuyDialogFor(item: InAppRewardProtocol) {
-        let viewController = StoryboardScene.BuyModal.hrpgBuyItemModalViewController.instantiate()
-        viewController.reward = item
-        viewController.shopIdentifier = shopIdentifier
-        viewController.onInventoryRefresh = {[weak self] in
-            self?.dataSource?.retrieveShopInventory(nil)
-        }
-        viewController.modalTransitionStyle = .crossDissolve
-        viewController.modalPresentationStyle = .overFullScreen
-        viewController.shopViewController = self
-        if let controller = tabBarController ?? navigationController {
-            controller.present(viewController, animated: true, completion: nil)
-        }
+        let sheet = HostingBottomSheetController(rootView: BuySheet(item: item, shopIdentifier: shopIdentifier, onInventoryRefresh: {
+            self.refresh()
+        }), prefersGrabberVisible: false)
+        sheet.show()
     }
     
     override func applyTheme(theme: Theme) {

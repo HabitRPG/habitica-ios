@@ -75,6 +75,8 @@ class CurrencyCountView: UIView {
         }
     }
     
+    public var insets: UIEdgeInsets = .zero
+    
     private let countLabel = AbbreviatedNumberLabel()
     private let currencyImageView: UIImageView = UIImageView(image: HabiticaIcons.imageOfGold)
     
@@ -154,13 +156,13 @@ class CurrencyCountView: UIView {
     }
     
     private var requiredWidth: CGFloat {
-        return iconWidth + 4 + countLabel.bounds.size.width
+        return iconWidth + 4 + countLabel.bounds.size.width + insets.horizontal
     }
     
     private func layout() {
         countLabel.pin.vertically().sizeToFit(.height)
         let halfSize = requiredWidth / 2
-        let offset = ((bounds.size.width / 2) - halfSize) + 4 + iconWidth
+        let offset = ((bounds.size.width / 2) - halfSize) + 4 + iconWidth + insets.left
         countLabel.pin.left(offset)
         currencyImageView.pin.vertically().left(of: countLabel).marginRight(4)
     }

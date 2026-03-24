@@ -18,9 +18,9 @@ struct IntroPage<TitleView: View, SubtitleView: View>: View {
     
     var body: some View {
         VStack(spacing: 24) {
-            title.font(.title).foregroundColor(.white).multilineTextAlignment(.center)
+            title.font(.title).foregroundStyle(.white).multilineTextAlignment(.center)
             image
-            subtitle.font(.subheadline).foregroundColor(.white).multilineTextAlignment(.center)
+            subtitle.font(.subheadline).foregroundStyle(.white).multilineTextAlignment(.center)
         }
         .padding(.horizontal, 32)
         .edgesIgnoringSafeArea(.all)
@@ -42,8 +42,8 @@ private struct Indicator: View {
             }
             Image(uiImage: Asset.indicatorDiamondSelected.image.withRenderingMode(.alwaysTemplate))
                 .padding(.leading, 24 * CGFloat(currentPage))
-                .foregroundColor(.white)
-                .animation(.bouncy())
+                .foregroundStyle(.white)
+                .animation(.bouncy(), value: currentPage)
         }
     }
 }
@@ -90,13 +90,13 @@ ZStack(alignment: .bottom) {
                         }, label: {
                             Text(L10n.skip)
                                 .padding()
-                        }).foregroundColor(.white)
+                        }).foregroundStyle(.white)
                         .opacity(isLastPage ? 0 : 1)
-                        .animation(.bouncy())
+                        .animation(.bouncy(), value: isLastPage)
                     }.padding(.top, geometry.safeAreaInsets.top)
                 Spacer()
                 Indicator(currentPage: currentPage, pageCount: pages.count)
-                Button(action: {
+                let button = Button(action: {
                     withAnimation {
                         if isLastPage {
                             if let action = finishIntro {
@@ -108,11 +108,19 @@ ZStack(alignment: .bottom) {
                     }
                 }, label: {
                     Text(isLastPage ? L10n.getStarted : L10n.next).padding(.vertical, 10)
+                        .foregroundStyle(.white)
                         .frame(maxWidth: .infinity)
-                        .background(Color.black.opacity(0.3))
-                        .foregroundColor(.white)
-                        .cornerRadius(8)
                 })
+                
+                if #available(iOS 26.0, *) {
+                    button
+                        .buttonStyle(.glass(.clear))
+                } else {
+                    button
+                        .background(Color.black.opacity(0.3))
+                        .foregroundStyle(.white)
+                        .cornerRadius(UIConstants.largeCornerRadius)
+                }
             }
             .padding(.bottom, geometry.safeAreaInsets.bottom + 12)
             .padding(.horizontal, 20)

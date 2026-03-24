@@ -7,200 +7,406 @@
 //
 
 import UIKit
+import SwiftUI
 import Habitica_Models
 
-class FilterViewController: BaseTableViewController {
-    
-    var selectedTags = [String]()
-    var taskType: String?
-    
-    private let dataSource = FilterTableViewDataSource()
-    
-    @IBOutlet var editButton: UIBarButtonItem!
-    @IBOutlet var clearButton: UIBarButtonItem!
-    @IBOutlet var doneButton: UIBarButtonItem!
-    @IBOutlet var toolBarSpace: UIBarButtonItem!
-    @IBOutlet weak var doneNavbarButton: UIBarButtonItem!
-    
-    private let headerView = UIView()
-    private var filterTypeControl = UISegmentedControl()
-        
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        setupUI()
-        
-        dataSource.tableView = tableView
-        dataSource.selectedTagIds = selectedTags
-        
-        doneButtonTapped(doneButton)
-        
-        NotificationCenter.default.addObserver(self, selector: #selector(languageChanged), name: .languageChanged, object: nil)
-    }
-    
-    private func setupUI() {
-        self.navigationItem.title = L10n.filter
-        self.clearButton.title = L10n.clear
-        self.editButton.title = L10n.edit
-        self.doneButton.title = L10n.done
-        self.doneNavbarButton.title = L10n.done
-        
-        headerView.subviews.forEach { $0.removeFromSuperview() }
-        
-        if taskType == "habit" {
-            filterTypeControl = UISegmentedControl(items: [L10n.all, L10n.weak, L10n.strong])
-        } else if taskType == "daily" {
-            filterTypeControl = UISegmentedControl(items: [L10n.all, L10n.due, L10n.notDue])
-        } else if taskType == "todo" {
-            filterTypeControl = UISegmentedControl(items: [L10n.active, L10n.scheduled, L10n.completed])
-        }
-        let defaults = UserDefaults.standard
-        filterTypeControl.selectedSegmentIndex = defaults.integer(forKey: "\(taskType ?? "")Filter")
-        
-        filterTypeControl.addTarget(self, action: #selector(filterTypeChanged), for: .valueChanged)
-        headerView.addSubview(filterTypeControl)
-        tableView.tableHeaderView = headerView
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        navigationController?.setToolbarHidden(false, animated: false)
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        tableView.reloadData()
-    }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        navigationController?.setToolbarHidden(true, animated: false)
-    }
-    
-    override func viewWillLayoutSubviews() {
-        super.viewWillLayoutSubviews()
-        headerView.frame = CGRect(x: 0, y: 0, width: view.frame.size.width, height: 46)
-        filterTypeControl.frame = CGRect(x: 8, y: headerView.frame.size.height - 30, width: headerView.frame.size.width - 16, height: 30)
-    }
-    
-    deinit {
-        NotificationCenter.default.removeObserver(self)
-    }
-    
-    @objc
-    private func languageChanged() {
-        setupUI()
-        tableView.reloadData()
-    }
-    
-    override func applyTheme(theme: Theme) {
-        super.applyTheme(theme: theme)
-        tableView.backgroundColor = theme.contentBackgroundColor
-        navigationController?.navigationBar.barTintColor = theme.contentBackgroundColor
-        navigationController?.navigationBar.titleTextAttributes = [
-            NSAttributedString.Key.foregroundColor: theme.primaryTextColor
-        ]
-        navigationController?.navigationBar.tintColor = theme.tintColor
-        navigationController?.toolbar?.barTintColor = theme.contentBackgroundColor
-        navigationController?.toolbar?.tintColor = theme.tintColor
-    }
-    
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        return true
-    }
-    
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if isEditing {
-            let tag = dataSource.tagAt(indexPath: indexPath)
-            showFormAlertFor(tag: tag)
-        } else {
-            dataSource.selectTag(at: indexPath)
-            (presentingViewController as? MainTabBarController)?.selectedTags = dataSource.selectedTagIds
+class TaskFilterViewModel: ViewModel {
+    private let taskRepository = TaskRepository()
+    @Published var tags = [TagProtocol]()
+    @Published var editedTags = [TagProtocol]()
+    @Published var deletedTags: [(TagProtocol, Int)] = []
+    @Published var selectedTags = [String]()
+    @Published var selectedFilterType = 0 {
+        didSet {
+            let defaults = UserDefaults.standard
+            defaults.set(selectedFilterType, forKey: "\(taskType)Filter")
             NotificationCenter.default.post(name: Notification.Name("taskFilterChanged"), object: nil)
         }
     }
     
-    @IBAction func clearTags(_ sender: UIBarButtonItem) {
-	    resetFilterTypeControl()
-        dataSource.clearTags()
+    @Published var isEditing = false
+    @Published var isSaving = false
+    
+    var onDismiss: (() -> Void)?
+    
+    var hasActiveFilters: Bool {
+        return selectedFilterType != 0 || !selectedTags.isEmpty
+    }
+    
+    override init() {
+        super.init()
+        disposable.add(taskRepository.getTags().on(value: { tags in
+            self.tags = tags.value.compactMap({[weak self] tag in
+                return self?.taskRepository.getEditableTag(id: tag.id ?? "")
+            })
+        }).start())
+    }
+    
+    var taskType: String = "" {
+        didSet {
+            let defaults = UserDefaults.standard
+            selectedFilterType = defaults.integer(forKey: "\(taskType)Filter")
+        }
+    }
+    
+    func dismiss() {
+        if let action = onDismiss {
+            action()
+        }
+    }
+    
+    func isSelected(tag: TagProtocol) -> Bool {
+        return selectedTags.contains(where: { id in
+            return id == tag.id
+        })
+    }
+    
+    func tagTapped(tag: TagProtocol) {
+        withAnimation(.interactiveSpring(duration: 0.2)) {
+            if isSelected(tag: tag) {
+                selectedTags.removeAll { id in
+                    return id == tag.id
+                }
+            } else if let id = tag.id {
+                selectedTags.append(id)
+            }
+            selectedTags = selectedTags
+        }
+    }
+    
+    func clearFilters() {
+        withAnimation {
+            selectedFilterType = 0
+            selectedTags = []
+        }
+    }
+    
+    func beginEditing() {
+        var newEditedTags = [TagProtocol]()
+        tags.forEach { tag in
+            if let editable = taskRepository.getEditableTag(id: tag.id ?? "") {
+                newEditedTags.append(editable)
+            }
+        }
+        withAnimation(.bouncy) {
+            editedTags = newEditedTags
+            isEditing = true
+        }
+    }
+    
+    func cancelEditing() {
+        withAnimation(.interactiveSpring) {
+            isEditing = false
+            deletedTags = []
+        }
+    }
+    
+    func save() {
+        if isSaving {
+            return
+        }
+        isSaving = true
+        deletedTags = []
+        let tagsToDelete = tags.filter { tag in
+            return !editedTags.contains { editedTag in
+                return editedTag.id == tag.id
+            }
+        }
+        let tagsToCreate = editedTags.filter { editedTag in
+            if editedTag.id?.isEmpty != false {
+                return true
+            }
+            return !tags.contains { tag in
+                return editedTag.id == tag.id
+            }
+        }
+        let tagsToUpdate = editedTags.filter { editedTag in
+            let original = tags.first { tag in
+                return editedTag.id == tag.id
+            }
+            return original?.text != editedTag.text
+        }
+        for tag in tagsToDelete {
+            deleteTag(tag: tag)
+        }
+        for tag in tagsToCreate {
+            if let text = tag.text {
+                createTag(text: text)
+            }
+        }
+        for tag in tagsToUpdate {
+            if let id = tag.id, let text = tag.text {
+                updateTag(id: id, text: text)
+            }
+        }
+        withAnimation {
+            isEditing = false
+            isSaving = false
+        }
+    }
+    
+    func getNewTag() -> TagProtocol {
+        return taskRepository.getNewTag()
+    }
+    
+    func undoDelete() {
+        guard let (tag, index) = deletedTags.popLast() else {
+            return
+        }
+        withAnimation {
+            editedTags.insert(tag, at: index)
+        }
+    }
+    
+    func deleteTag(tag: TagProtocol) {
+        if isEditing && !isSaving {
+            withAnimation {
+                let index: Int = editedTags.firstIndex { removingTag in
+                    return removingTag.id == tag.id
+                } ?? -1
+                if index >= 0 {
+                    editedTags.remove(at: index)
+                    deletedTags.append((tag, index))
+                }
+            }
+        } else {
+            taskRepository.deleteTag(tag).observeCompleted {}
+        }
+    }
+    
+    func deleteTag(at index: Int) {
+        if index < tags.count {
+            deleteTag(tag: tags[index])
+        }
+    }
+    
+    func createTag(text: String) {
+        let tag = taskRepository.getNewTag()
+        tag.text = text
+        taskRepository.createTag(tag).observeCompleted {}
+    }
+    
+    func updateTag(id: String, text: String) {
+        if let tag = taskRepository.getEditableTag(id: id) {
+            tag.text = text
+            taskRepository.updateTag(tag).observeCompleted {}
+        }
+    }
+}
+
+struct TagFormItemView: View {
+    let tag: TagProtocol
+    @State var isFirstResponder = false
+        
+    init(tag: TagProtocol, focusItemId: String?) {
+        self.tag = tag
+        _isFirstResponder = State(initialValue: (tag.id == focusItemId))
     }
 
-	private func resetFilterTypeControl() {
-	    filterTypeControl.selectedSegmentIndex = 0
-        filterTypeChanged()
-	}
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        selectedTags = dataSource.selectedTagIds
+    private var text: Binding<String> {
+        Binding<String>(get: { self.tag.text ?? "" }, set: {
+            if !self.tag.isManaged {
+                self.tag.text = $0
+            }
+        })
     }
-    
-    @objc
-    private func filterTypeChanged() {
-        let defaults = UserDefaults.standard
-        defaults.set(filterTypeControl.selectedSegmentIndex, forKey: "\(taskType ?? "")Filter")
-        NotificationCenter.default.post(name: Notification.Name("taskFilterChanged"), object: nil)
+    var body: some View {
+        FocusableTextField(placeholder: "", text: text, isFirstResponder: $isFirstResponder)
     }
-    
-    @IBAction func editButtonTapped(_ sender: UIBarButtonItem) {
-        setEditing(true, animated: true)
-        toolbarItems = [doneButton]
-    }
-    
-    @IBAction func doneButtonTapped(_ sender: UIBarButtonItem) {
-        setEditing(false, animated: true)
-        toolbarItems = [editButton, toolBarSpace, clearButton]
-    }
-    
-    @IBAction func addButtonTapped(_ sender: UIBarButtonItem) {
-        showFormAlert()
-    }
-    
-    private func showFormAlert() {
-        showFormAlertFor(tag: nil)
-    }
-    
-    private func showFormAlertFor(tag: TagProtocol?) {
-        var title: String?
-        if tag != nil {
-            title = L10n.editTag
-        } else {
-            title = L10n.createTag
+}
+
+struct TaskFilterPage: View {
+    @ObservedObject var themeService = ThemeService.shared
+    @ObservedObject var viewModel: TaskFilterViewModel
+    @State var focusItemId: String?
+
+    var body: some View {
+        VStack {
+            VStack(alignment: .leading, spacing: 10) {
+                Group {
+                    if viewModel.taskType == "habit" {
+                        Text(L10n.taskHealth)
+                    } else {
+                        Text(L10n.taskStatus)
+                    }
+                }.foregroundStyle(Color(themeService.theme.secondaryTextColor))
+                    .scaledFont(size: 15, weight: .semibold)
+                    .padding(.leading, 16)
+                Picker(selection: $viewModel.selectedFilterType) {
+                    if viewModel.taskType == "habit" {
+                        Text(L10n.all).tag(0)
+                        Text(L10n.weak).tag(1)
+                        Text(L10n.strong).tag(2)
+                    } else if viewModel.taskType == "daily" {
+                        Text(L10n.all).tag(0)
+                        Text(L10n.due).tag(1)
+                        Text(L10n.notDue).tag(2)
+                    } else if viewModel.taskType == "todo" {
+                        Text(L10n.active).tag(0)
+                        Text(L10n.scheduled).tag(1)
+                        Text(L10n.completed).tag(2)
+                    }
+                }.pickerStyle(.segmented)
+            }.padding(.horizontal, 16)
+            List {
+                Section(content: {
+                    ForEach((viewModel.isEditing ? viewModel.editedTags : viewModel.tags), id: \.id) { tag in
+                        let isSelected = viewModel.isSelected(tag: tag)
+                        HStack(spacing: 18) {
+                            if viewModel.isEditing {
+                                Button {
+                                    viewModel.deleteTag(tag: tag)
+                                } label: {
+                                    Image(systemName: "minus.circle.fill")
+                                        .scaledFont(size: 20)
+                                        .foregroundStyle(Color(themeService.theme.errorColor))
+                                }
+                                .contentShape(Rectangle())
+                                .frame(width: 24, height: 22)
+                                .transition(.asymmetric(insertion: .push(from: .leading), removal: .push(from: .trailing)))
+                                TagFormItemView(tag: tag, focusItemId: focusItemId)
+                            } else {
+                                Text(tag.text ?? "")
+                                    .scaledFont(size: 17, weight: isSelected ? .semibold : .regular)
+                                    .foregroundStyle(Color(isSelected ? themeService.theme.tintedMainText : themeService.theme.primaryTextColor))
+                                Spacer()
+                            }
+                            if isSelected && !viewModel.isEditing {
+                                Image(systemName: "checkmark")
+                                    .foregroundStyle(Color(themeService.theme.tintColor))
+                                    .transition(.scale.combined(with: .opacity))
+                            }
+                        }
+                        .animation(.spring, value: viewModel.isEditing)
+                        .contentShape(Rectangle())
+                        .listRowBackground(Color(themeService.theme.windowBackgroundColor))
+                        .onTapGesture(disabled: viewModel.isEditing, perform: {
+                            viewModel.tagTapped(tag: tag)
+                        })
+                    }.onDelete { set in
+                        for item in set {
+                            viewModel.deleteTag(at: item)
+                        }
+                    }.listRowBackground(Color(themeService.theme.windowBackgroundColor))
+                    if viewModel.isEditing {
+                        HStack(spacing: 18) {
+                            Image(systemName: "minus.circle.fill")
+                                .scaledFont(size: 20)
+                                .foregroundStyle(Color(themeService.theme.errorColor))
+                            Button(action: {
+                                let tag = viewModel.getNewTag()
+                                tag.id = UUID().uuidString
+                                withAnimation {
+                                    viewModel.editedTags.append(tag)
+                                }
+                                focusItemId = tag.id
+                            }, label: {
+                                Text(L10n.addTag).underline(UIAccessibility.buttonShapesEnabled)
+                                    .foregroundStyle(Color(themeService.theme.ternaryTextColor))
+                                    .frame(maxWidth: .infinity, alignment: .leading)
+                            })
+                        }.listRowBackground(Color(themeService.theme.windowBackgroundColor))
+                    }
+                }, header: {
+                    Text(L10n.tags).foregroundStyle(Color(themeService.theme.secondaryTextColor))
+                        .scaledFont(size: 15, weight: .semibold)
+                })
+                
+                if viewModel.isSaving {
+                    HabiticaProgressView().frame(height: 60)
+                } else if viewModel.isEditing {
+                    Button {
+                        viewModel.save()
+                    } label: {
+                        Text(L10n.save)
+                            .frame(maxWidth: .infinity)
+                    }.listRowBackground(Color(themeService.theme.windowBackgroundColor))
+                } else {
+                    Button {
+                        viewModel.beginEditing()
+                    } label: {
+                        Text(L10n.editTags)
+                            .frame(maxWidth: .infinity)
+                    }.listRowBackground(Color(themeService.theme.windowBackgroundColor))
+                }
+            }.listStyle(.insetGrouped)
+                .scrollContentBackground(.hidden)
         }
-        
-        let alertController = UIAlertController(title: title, message: nil, preferredStyle: .alert)
-        alertController.addAction(UIAlertAction.cancelAction())
-        alertController.addAction(UIAlertAction(title: L10n.save, style: .default, handler: { (_) in
-            let textField = alertController.textFields?[0]
-            let newTagName = textField?.text ?? ""
-            if tag != nil {
-                self.dataSource.updateTag(id: tag?.id ?? "", text: newTagName)
+        .toolbar {
+            if !viewModel.deletedTags.isEmpty {
+                ToolbarItem(placement: .topBarTrailing) {
+                    Button {
+                        viewModel.undoDelete()
+                    } label: {
+                        Text(L10n.undo)
+                    }
+                }
+            }
+            if viewModel.isEditing {
+                ToolbarItem(placement: .topBarLeading) {
+                    if #available(iOS 26.0, *) {
+                        Button(role: .cancel) {
+                            viewModel.cancelEditing()
+                        }.disabled(viewModel.isSaving)
+                    } else {
+                        Button {
+                            viewModel.cancelEditing()
+                        } label: {
+                            Text(L10n.cancel)
+                        }.disabled(viewModel.isSaving)
+                    }
+                }
             } else {
-                self.dataSource.createTag(text: newTagName)
-            }
-        }))
-        
-        alertController.addTextField { (textField) in
-            if tag != nil {
-                textField.text = tag?.text
+                ToolbarItem(placement: .topBarLeading) {
+                    if #available(iOS 26.0, *) {
+                        Button {
+                            viewModel.clearFilters()
+                        } label: {
+                            Text(L10n.clear).foregroundStyle(Color.red100)
+                        }.buttonStyle(.glassProminent)
+                            .tint(.red100.opacity(0.14))
+                            .opacity(viewModel.hasActiveFilters ? 1 : 0.5)
+                            .disabled(!viewModel.hasActiveFilters)
+                    } else {
+                        Button {
+                            viewModel.clearFilters()
+                        } label: {
+                            Text(L10n.clear)
+                        }.tint(.red100)
+                            .disabled(!viewModel.hasActiveFilters)
+                    }
+                }
+                ToolbarItem(placement: .topBarTrailing) {
+                    if #available(iOS 26.0, *) {
+                        Button(role: .confirm) {
+                            viewModel.dismiss()
+                        }.buttonStyle(.glassProminent)
+                            .tint(Color(themeService.theme.fixedTintColor))
+                    } else {
+                        Button {
+                            viewModel.dismiss()
+                        } label: {
+                            Text(L10n.done)
+                        }
+                    }
+                }
             }
         }
-        present(alertController, animated: true, completion: nil)
     }
+}
+
+class FilterViewController: BaseHostingViewController<TaskFilterPage> {
+    let viewModel = TaskFilterViewModel()
     
-    override func numberOfSections(in tableView: UITableView) -> Int {
-        return dataSource.numberOfSections(in: tableView)
-    }
-    
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return dataSource.tableView(tableView, numberOfRowsInSection: section)
-    }
-    
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        return dataSource.tableView(tableView, cellForRowAt: indexPath)
-    }
-    
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            dataSource.deleteTag(at: indexPath)
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder, rootView: TaskFilterPage(viewModel: viewModel))
+        viewModel.onDismiss = {
+            self.perform(segue: StoryboardSegue.Main.filterChangedSegue)
         }
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        self.navigationItem.title = L10n.filter
     }
 }

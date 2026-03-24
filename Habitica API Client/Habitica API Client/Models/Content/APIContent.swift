@@ -145,11 +145,11 @@ public class APIContent: ContentProtocol, Decodable {
             return entry
         }) ?? []
         let parsedSkills = (try? values.decode([String: [String: APISkill]].self, forKey: .skills)) ?? [:]
-        skills = []
-        for skillSection in parsedSkills {
-            for skill in skillSection.value {
+        // Optimize: Use flatMap to avoid nested loops
+        skills = parsedSkills.flatMap { skillSection in
+            skillSection.value.map { skill in
                 skill.value.habitClass = skillSection.key
-                skills?.append(skill.value)
+                return skill.value
             }
         }
         self.pets = try? values.decode([String: APIPet].self, forKey: .pets).map({ (_, value) in

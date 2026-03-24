@@ -10,7 +10,7 @@ import UIKit
 import Habitica_Models
 import SwiftUI
 
-class MountDetailViewController: StableDetailViewController<MountDetailDataSource> {
+class MountDetailViewController: StableDetailViewController<MountProtocol, MountStableItem, MountDetailDataSource> {
 
     private var stableRepository = StableRepository()
     private let userRepository = UserRepository()
@@ -63,6 +63,6 @@ class MountDetailViewController: StableDetailViewController<MountDetailDataSourc
                                                                                 onEquip: {[weak self] in
             self?.inventoryRepository.equip(type: "mount", key: mount.key ?? "").observeCompleted {}
         }))
-        present(sheet, animated: true)
+        sheet.show()
     }
 }

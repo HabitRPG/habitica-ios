@@ -13,22 +13,24 @@ import Habitica_Database
 
 @objc
 class UserManager: NSObject {
-    
+
     @objc public static let shared = UserManager()
-    
+
     private let userRepository = UserRepository()
     private let taskRepository = TaskRepository()
     private let inventoryRepository = InventoryRepository()
-    private let disposable = CompositeDisposable()
+    private let contentRepository = ContentRepository()
+    private var disposable = CompositeDisposable()
     private let configRepository = ConfigRepository.shared
-    
+
     private weak var faintViewController: FaintViewController?
     weak var classSelectionViewController: ClassSelectionViewController?
     private var lastClassSelectionDisplayed: Date?
     private var lastQuestCompletionDisplayed: Date?
     private var lastYesterdailyDialog: Date?
-    weak var yesterdailiesDialog: YesterdailiesDialogView?
-    
+
+    @objc public private(set) var isLoggingOut = false
+
     private var tutorialSteps = [String: Bool]()
         
     private func getYesterday() -> Date? {
@@ -36,13 +38,41 @@ class UserManager: NSObject {
         return Calendar.current.date(byAdding: .day, value: -1, to: today)
     }
     
+    func stopListening() {
+        disposable.dispose()
+        disposable = CompositeDisposable()
+    }
+
+    func prepareForLogout() {
+        isLoggingOut = true
+        stopListening()
+    }
+
+    func logoutCompleted() {
+        isLoggingOut = false
+    }
+
     func beginListening() {
+        guard !isLoggingOut else {
+            return
+        }
+        if !disposable.isDisposed {
+            disposable.dispose()
+        }
+        disposable = CompositeDisposable()
+        disposable.add(contentRepository.getWorldState()
+            .on(value: { worldState in
+                if let substitutions = worldState.currentEvent?.spriteSubstitutions {
+                    ImageSubstitutionManager.substitutions = substitutions
+                }
+            })
+            .start())
         disposable.add(userRepository.getUser()
             .throttle(0.5, on: QueueScheduler.main)
             .on(value: {[weak self]user in
                 self?.onUserUpdated(user: user)
-            }).filter({[weak self] (user) -> Bool in
-                return user.needsCron && self?.yesterdailiesDialog == nil
+            }).filter({ (user) -> Bool in
+                return user.needsCron
             }).flatMap(.latest, {[weak self] user in
                 return self?.taskRepository.retrieveTasks(dueOnDay: self?.getYesterday()).skipNil()
                     .map({ tasks in
@@ -51,12 +81,6 @@ class UserManager: NSObject {
                         })
                     }).withLatest(from: SignalProducer<UserProtocol, Never>(value: user)) ?? Signal<([TaskProtocol], UserProtocol), Never>.empty
             }).on(value: {[weak self] (tasks, user) in
-                
-                if UserDefaults.standard.bool(forKey: "isInSetup") && user.flags?.welcomed == false {
-                    self?.userRepository.updateUser(key: "flags.welcomed", value: true).observeCompleted {
-                    }
-                }
-                
                 var uncompletedTaskCount = 0
                 for task in tasks {
                     if task.type == "daily" && !task.completed {
@@ -84,6 +108,9 @@ class UserManager: NSObject {
     }
     
     private func runCron(tasks: [TaskProtocol], uncompletedTaskCount: Int) {
+        guard !isLoggingOut else {
+            return
+        }
         if (lastYesterdailyDialog?.timeIntervalSinceNow ?? -600) > -600 {
             return
         }
@@ -100,21 +127,9 @@ class UserManager: NSObject {
             return
         }
         
-        let viewController = YesterdailiesDialogView()
-        viewController.tasks = tasks
-        let alert = HabiticaAlertController()
-        alert.title = L10n.welcomeBack
-        alert.message = L10n.checkinYesterdaysDalies
-        alert.contentView = viewController.view
-        alert.contentViewInsets = .zero
-        alert.dismissOnBackgroundTap = false
-        alert.maxAlertWidth = 400
-        alert.addAction(title: L10n.startMyDay, style: .default, isMainAction: true, closeOnTap: true) {[weak self] _ in
-            viewController.runCron()
-            self?.yesterdailiesDialog = nil
-        }
-        yesterdailiesDialog = viewController
-        alert.enqueue()
+        let sheet = HostingBottomSheetController(rootView: RYABottomSheet(tasks: tasks, onCronRun: {
+        }), prefersGrabberVisible: false, interactiveDismiss: false)
+        sheet.show()
     }
     
     private func updateQuestStatus(user: UserProtocol?) {
@@ -150,8 +165,12 @@ class UserManager: NSObject {
     }
     
     private func onUserUpdated(user: UserProtocol) {
-        if !user.isValid {
+        guard !isLoggingOut, user.isValid else {
             return
+        }
+        if UserDefaults.standard.bool(forKey: "isInSetup") && user.flags?.welcomed == false {
+            userRepository.updateUser(key: "flags.welcomed", value: true).observeCompleted {
+            }
         }
         updateQuestStatus(user: user)
         SoundManager.shared.currentTheme = SoundTheme(rawValue: user.preferences?.sound ?? "") ?? SoundTheme.none
@@ -164,9 +183,11 @@ class UserManager: NSObject {
         })
         
         faintViewController = checkFainting(user: user)
-        
-        _ = checkClassSelection(user: user)
-        
+
+        if user.needsToChooseClass {
+            showClassSelection(user: user)
+        }
+
         handleQuestCompletion(user)
         
         userRepository.registerPushDevice(user: user).observeCompleted {}
@@ -213,19 +234,13 @@ class UserManager: NSObject {
     private func checkFainting(user: UserProtocol) -> FaintViewController? {
         if user.stats != nil && (user.stats?.health ?? 0) <= 0.0 && faintViewController == nil {
             let faintView = FaintViewController()
-            faintView.show()
+            faintView.showFullscreen()
             return faintView
         }
         return faintViewController
     }
     
-    func checkClassSelection(user: UserProtocol) -> Bool {
-        if user.flags?.classSelected == false && user.preferences?.disableClasses == false && (user.stats?.level ?? 0) >= 10 {
-            return showClassSelection(user: user)
-        }
-        return false
-    }
-    
+    @discardableResult
     func showClassSelection(user: UserProtocol) -> Bool {
         if let lastSelection = lastClassSelectionDisplayed, lastSelection.timeIntervalSinceNow > -10 {
             return false
@@ -236,7 +251,7 @@ class UserManager: NSObject {
                 self.classSelectionViewController = classSelectionController.topViewController as? ClassSelectionViewController
                 lastClassSelectionDisplayed = Date()
                 classSelectionController.modalTransitionStyle = .crossDissolve
-                classSelectionController.modalPresentationStyle = .overCurrentContext
+                classSelectionController.modalPresentationStyle = .overFullScreen
                 topController.present(classSelectionController, animated: true) {
                 }
                 return true
@@ -247,6 +262,15 @@ class UserManager: NSObject {
     
     func shouldDisplayTutorialStep(key: String) -> Bool {
         return !(tutorialSteps[key] ?? true)
+    }
+
+    func syncTutorialSteps(from user: UserProtocol) {
+        tutorialSteps = [:]
+        user.flags?.tutorials.forEach({ (tutorial) in
+            if let key = tutorial.key {
+                tutorialSteps[key] = tutorial.wasSeen
+            }
+        })
     }
     
     func markTutorialAsSeen(type: String, key: String) {
@@ -331,7 +355,7 @@ class UserManager: NSObject {
         let taskText = reminder.task?.text?.unicodeEmoji
         
         let content = UNMutableNotificationContent()
-        content.body = taskText ?? ""
+        content.title = taskText ?? ""
         content.sound = UNNotificationSound.default
         if let taskID = reminder.task?.id, let taskType = reminder.task?.type {
             content.userInfo = [
@@ -358,9 +382,7 @@ class UserManager: NSObject {
     private func setTimezoneOffset(_ user: UserProtocol) {
         let offset = -(NSTimeZone.local.secondsFromGMT() / 60)
         if user.preferences?.timezoneOffset != offset {
-            userRepository.updateUser(key: "preferences.timezoneOffset", value: offset).observeCompleted {
-                
-            }
+            userRepository.updateUser(key: "preferences.timezoneOffset", value: offset).observeCompleted {}
         }
     }
     

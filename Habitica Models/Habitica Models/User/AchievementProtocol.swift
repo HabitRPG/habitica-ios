@@ -18,6 +18,7 @@ public protocol AchievementProtocol {
     var earned: Bool { get set }
     var index: Int { get set }
     var optionalCount: Int { get set }
+
 }
 
 public extension AchievementProtocol {

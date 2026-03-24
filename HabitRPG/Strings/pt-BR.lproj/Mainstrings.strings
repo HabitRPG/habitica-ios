@@ -137,7 +137,7 @@
 /* (No Comment) */
 "inventory.available_until" = "Disponível até %@";
 /* (No Comment) */
-"inventory.hatched" = "Você chocou um novo mascote!";
+"inventory.hatched" = "Você chocou um novo %s mascote!";
 /* (No Comment) */
 "inventory.no_gems_left" = "Você comprou todas as Gemas disponíveis deste mês. Mais ficarão disponíveis nos três primeiros dias de cada mês. Obrigado por assinar!";
 /* (No Comment) */
@@ -263,7 +263,7 @@
 /* (No Comment) */
 "settings.change_class" = "Mudar de Classe";
 /* (No Comment) */
-"settings.change_class_disclaimer" = "Isso irá resetar a classe de seu personagem e os pontos atribuídos (você terá todos eles de volta para redistribuir), e custa 3 gemas.";
+"settings.change_class_disclaimer" = "Isso irá resetar a classe de seu personagem e os pontos atribuídos (você terá todos eles de volta para redistribuir), e custa 3 gemas";
 /* (No Comment) */
 "settings.clear_cache" = "Limpar Cache";
 /* (No Comment) */
@@ -355,7 +355,7 @@
 /* (No Comment) */
 "stats.one_point_to_allocate" = "1 Ponto para Distribuir";
 /* (No Comment) */
-"stats.points_to_allocate" = "%d Pontos para Distribuir";
+"stats.points_to_allocate" = "%d Pontos para Atribuir";
 /* (No Comment) */
 "summary" = "Sumário";
 /* (No Comment) */
@@ -505,7 +505,7 @@
 "stats.stat_guide" = "Guia de Atributos";
 "stats.strength_title" = "Força";
 "stats.intelligence_title" = "Inteligência";
-"stats.intelligence_text" = "Aumenta a experiência obtida ao completar tarefas. Também aumenta seu limite e taxa de recuperação de mana.";
+"stats.intelligence_text" = "Aumenta a Experiência recebida das tarefas. Além disso, aumenta a quantidade total de Mana e acelera sua regeneração.";
 "stats.constitution_title" = "Constituição";
 "stats.constitution_text" = "Diminui o dano recebido pelas tarefas. Não diminui o dano causado por chefões.";
 "stats.perception_title" = "Percepção";
@@ -739,7 +739,7 @@
 "tutorials.stats" = "Toque no botão cinza para distribuir vários de seus atributos de uma vez, ou clique nas setas para distribuir um de cada vez.";
 "world_boss.pending_strike" = "Dano Pendente";
 "world_boss.rage_strike_explanation_button" = "O que é um Golpe de Fúria?";
-"buffs" = "Buffs";
+"buffs" = "Melhorias";
 "allocated" = "Distribuído";
 "gems" = "Gemas";
 "teleporting_habitica" = "Teleportando para Habitica";
@@ -803,7 +803,7 @@
 "titles.avatar" = "Personagem";
 "titles.gift_subscription" = "Presentear Assinatura";
 "stats.total" = "Total";
-"stats.strength_text" = "Aumenta o bônus de acertos críticos e os torna mais prováveis ao marcar uma tarefa. Também aumenta o dano causado aos chefes.";
+"stats.strength_text" = "Aumenta a chance e o dano de acerto crítico ao concluir tarefas. Também aumenta o dano causado aos Chefões de Missão.";
 "tasks.team" = "Time";
 "tasks.due_today" = "Hoje";
 "tasks.due_tomorrow" = "Vencimento amanhã";
@@ -864,7 +864,7 @@
 "gift_confirmation_body_g1g1" = "Você enviou a %@ uma assinatura Habitica de %@-mês/meses e a mesma assinatura foi aplicada à sua conta para a nossa promoção \"presenteie uma e ganhe uma\"!";
 "gift_confirmation_body" = "Você enviou para %@ uma assinatura Habitica de %@-mês/meses.";
 "gift_subscription_prompt" = "Escolha abaixo a assinatura que você gostaria de presentear! Esta compra não será renovada automaticamente.";
-"gem_cap" = "Desbloqueia %d Gemas adquiríveis com Ouro por mês";
+"gem_cap" = "Desbloqueia %d Gemas compráveis com Ouro mensalmente";
 "hourglass_count" = "+%d Ampulheta Mística";
 "intro.welcome_prompt" = "Como devemos chamar você?";
 "intro.avatar_setup_speechbubble" = "Você deve ser novo aqui. Eu sou Justin, serei seu guia no Habitica.\n\nEntão, como você gostaria de parecer? Não se preocupe, você pode mudar isso mais tarde.";
@@ -920,7 +920,7 @@
 "send_gift" = "Enviar presente";
 "gift_one_get_one_title" = "Presenteie uma, Ganhe outra";
 "gift_one_get_one_description" = "Dê uma assinatura de presente agora e você receberá a mesma assinatura de graça!";
-"gems_support_developers" = "Comprar Gemas apoia nossa pequena equipe e ajuda a manter o Habitica em execução";
+"gems_support_developers" = "Comprar Gemas apoia nossa pequena equipe do Habitica!";
 "buy_for_x" = "Compre por %@";
 "earned_achievement_share" = "Eu ganhei uma nova conquista em Habitica!";
 "invalid_recipient_message" = "Você precisa especificar um nome de usuário Habitica válido como destinatário.";
@@ -1122,7 +1122,7 @@
 "view_onboarding_tasks" = "Exibir tarefas de integração";
 "first_drop_title" = "Você encontrou novos itens!";
 "go_to_items" = "Ir para Itens";
-"first_drop_explanation2" = "Vá para os seus Itens e tente combinar seu novo Ovo e Poção de Eclosão!";
+"first_drop_explanation2" = "Tente combinar seu novo Ovo e Poção de Eclosão!";
 "first_drop_explanation1" = "A conclusão de tarefas dá a você a chance de encontrar Ovos, Poções de Eclosão e Comida para mascotes.";
 "view_achievements" = "Visualizar Conquistas";
 "you_got_achievement" = "Você ganhou uma Conquista!";
@@ -1201,7 +1201,7 @@
 "stat_description" = "Todos os personagens no Habitica possuem quatro atributos que afetam os aspectos da jogabilidade.\n\n**Força (FOR)** afeta acertos críticos e aumenta o dano causado a um Chefão de Missão. Guerreiros e Ladinos ganham FOR a partir dos seus equipamentos de classe.\n\n**Constituição (CON)** aumenta seu PV e faz com que você sofra menos danos. Curandeiros e Guerreiros ganham CON a partir dos seus equipamentos de classe.\n\n**Inteligência (INT)** aumenta a quantidade de EXP que você ganha e concede mais Mana. Magos e Curandeiros ganham INT a partir dos seus equipamentos de classe.\n\n**Percepção (PER)** aumenta a quantidade de ouro que você ganha e a capacidade de encontrar itens \"dropáveis\". Ladinos e Magos ganham PER a partir dos seus equipamentos de classe.\n\nApós o nível 10, você ganha 1 Ponto de Atributo para cada nível obtido e pode distribuir estes pontos em qualquer atributo que desejar. Você também pode usar equipamentos com diferentes combinações de aumento de atributos.";
 "stat_allocation" = "Alocação de Atributo";
 "mana_description" = "Pontos de Mana são desbloqueados com o sistema de classes no nível 10 e permitem a **utilização de Habilidades** uma vez que você comece a aprendê-las no nível 11.\n\nAlguns **MP são restaurados** diariamente no reinício do dia, mas você pode recuperar mais completando tarefas ou usando uma habilidade de classe Mago(a).";
-"gold_description" = "Ponto de Ouro é a **principal forma de moeda*** dentro do Habitica e permite que você compre certos equipamentos, missões, itens ou até mesmo recompensas personalizadas que você criar.\n\n*Ganhe Ouro** através da conclusão de tarefas, missões ou através de algumas habilidades de classe. Valores mais altos do **atributo Percepção*** aumentam a quantidade de Ouro que você ganha.\n\nSe você assinar Habitica, você pode até mesmo usar o Ouro para comprar um certo número de Gemas determinado pelo tempo da sua assinatura.";
+"gold_description" = "O ouro é a principal moeda do Habitica e permite comprar certos equipamentos, missões, itens ou até mesmo recompensas personalizadas que você cria para si mesmo.\n\nGanhe ouro completando tarefas, missões ou usando algumas habilidades de classe.";
 "experience_description" = "Pontos de experiência representam seu progresso e permitem que você suba de nível. Você irá ** ganhar EXP** principalmente ao completar tarefas ou missões, mas também existem algumas habilidades de classe que dão EXP.\n\nTarefas de maior dificuldade, ou tarefas de cor vermelha lhe darão ** mais EXP***. O **atributo Inteligência** também aumenta sua taxa de ganho de EXP.";
 "experience_points" = "Pontos de Experiência";
 "health_description" = "Isso representa a vida de seu avatar. Falhar com uma Diária ou praticar um Hábito negativo **reduz seu HP**.\n\n**Recupere seu HP*** subindo de nível, usando uma Poção de Vida ou uma habilidade de classe com capacidade de cura.\n\nSe seu **HP atingir 0*** você perderá um nível, todos os Pontos de Ouro, e um equipamento. O equipamento perdido pode ser readquirido.";
@@ -1495,9 +1495,9 @@
 "settings.push_notifications.content_release" = "Lançamento de conteúdo + Eventos";
 "inventory.no_saddle_description" = "Selas fazem Mascotes crescerem imediatamente para Montarias. Você pode comprá-las no Mercado.";
 "faint.subbed_button_prompt" = "Segunda chance: Continue com 1 de Vida!";
-"faint.subbed_footer" = "Sua assinatura permite uma nova chance a cada dia se a sua Vida acabar.";
+"faint.subbed_footer" = "Sua assinatura permite uma nova chance a cada dia se a sua vida acabar";
 "faint.unsubbed_button_prompt" = "Assine para continuar com 1 de Vida!";
-"faint.unsubbed_footer" = "Uma nova chance de não zerar sua vida a cada dia, só assinando.";
+"faint.unsubbed_footer" = "Uma nova chance de não zerar sua vida a cada dia com uma assinatura";
 "faint.subbed_used" = "Você já usou sua segunda chance hoje. Você receberá outra em %s.";
 "faint.perk_success" = "Você recebeu uma segunda chance com 1 de Vida!";
 "sub_perk" = "benefício de assinante";
@@ -1547,7 +1547,7 @@
 "classes.mages" = "Magos";
 "classes.warriors" = "Guerreiros";
 "classes.healers" = "Curandeiros";
-"classes.rogues" = "Gatunos";
+"classes.rogues" = "Ladinos";
 "locations.customizations" = "Personalizações";
 "shops.purchased_all_gear_armoire_empty" = "Novos equipamentos são lançados durante as Grandes Galas. O estoque do Armário Encantado é renovado a cada mês também!";
 "shops.purchased_all_gear_title" = "Você possui todos os %@ Equipamentos";
@@ -1572,7 +1572,7 @@
 "shops.try_on_equipment" = "Você pode experimentá-los em \"Equipamentos\". Novos equipamentos estão disponíveis no começo de cada mês!";
 "shops.try_on_customize_avatar_return_next_month" = "Você pode experimentá-los customizando seu avatar. Certifique-se de voltar no próximo mês para conferir as novidades!";
 "shops.try_on_customize_avatar_return_next_season" = "Você pode experimentá-los customizando seu avatar. Certifique-se de voltar mais tarde para conferir as opções da próxima estação!";
-"empty.want_more_items" = "Procurando algo mais?";
+"empty.want_more_items" = "Buscando algo a mais?";
 "shops.try_on_customize_avatar" = "Você pode experimentá-los customizando seu avatar.";
 "shops.customization_notes" = "Gostaria de um novo visual? Veio ao lugar certo! Sempre recebemos novidades.";
 "empty.want_more_items_description" = "Confira a Loja de Personalização para encontrar ainda mais opções diferentes de personalizar seu avatar!";
@@ -1632,7 +1632,7 @@
 "performance_analytics" = "Desempenho e Análises";
 "performance_analytics_description" = "Isso é usado para melhorar a experiência do usuário, o desempenho e os serviços do Habitica. Nossa equipe de suporte também usará isso para lidar com solicitações e relatórios de bugs.";
 "strictly_necessary_description" = "Estes são dados necessários para o funcionamento do nosso aplicativo. Inclui dados como suas preferências salvas nas configurações, bem como informações sobre falhas.";
-"class_change_success_description" = "Agora você pode usar as habilidades de %@ e comprar equipamentos em lojas. Suba de nível para ganhar pontos de atributos que podem ser usados para aprimorar suas habilidades.";
+"class_change_success_description" = "Todo nível você ganha pontos de atributo que você pode usar para melhorar suas habilidades e impactar o jogabilidade do Habitica";
 "login.password_length_error" = "A senha precisa ter 8 ou mais caracteres.";
 "login.tagline" = "Divirta-se realizando tarefas";
 "login.continue_with_apple" = "Continue com Apple";
@@ -1662,3 +1662,49 @@
 "api_token_reset_title" = "Se você precisar de um novo Token de API";
 "api_token_reset_desc" = "Você pode alterar sua senha para redefini-la. Após redefini-la, você precisará fazer login novamente em todos os outros dispositivos em que usa o Habitica e fornecer o novo Token de API para ferramentas de terceiros que você possa usar.";
 "copy_token" = "Copiar Token";
+"settings.change_class_title" = "Mudar a classe por 3 gemas?";
+"task_reminder" = "Lembrete de tarefa";
+"mount" = "Montaria";
+"logins" = "Acessos";
+"stats" = "Atributos";
+"participating" = "Participando";
+"not_participating" = "Não participando";
+"joined_x" = "Ingressou %s";
+"stable.pets_and_mounts" = "Mascotes e Montarias";
+"pet" = "Mascote";
+"chat_with_question" = "Com quem gostaria de conversar?";
+"take_effect_immediately" = "Isso entrará em vigor imediatamente após a compra!";
+"membership" = "Assinatura";
+"ownership" = "Propriedade";
+"equipped_gear" = "Equipamento em uso";
+"challenges_won" = "Desafios Vencidos";
+"player_not_won_challenges" = "Jogador não venceu nenhum desafio.";
+"player_not_completed_quests" = "Jogador não completou nenhuma missão.";
+"pets_found" = "Mascotes encontrados";
+"standard_pets" = "Mascotes Básicos";
+"mounts_found" = "Montarias Encontradas";
+"none" = "Nenhum";
+"standard_mounts" = "Montarias Básicas";
+"item_is_locked" = "Item está bloqueado";
+"edit_tags" = "Editar Etiquetas";
+"add_tag" = "Adicionar Etiqueta";
+"unlocked_another_checkin_prize" = "Você desbloqueou um novo premio de check-in!";
+"checkin_prize_description" = "Você ganhou um %s por ter se comprometido em melhorar sua vida";
+"class_system_unlocked" = "Sistema de classes desbloqueado";
+"class_system_unlocked_description" = "Escolha a classe que se encaixa em seu estilo de jogo e desbloqueie habilidades e equipamentos que te ajudarão em sua jornada";
+"class_change_success_subtitle" = "Você pode alocar atributos";
+"view_stats" = "Ver atributos";
+"find_stats_menu" = "Você pode encontrar os atributos a qualquer momento no menu";
+"go_to_pets_mounts" = "Ir para pets e montarias";
+"not_now" = "Agora não";
+"undo" = "Desfazer";
+"assigned_stat" = "Atributo atribuído";
+"empty.messages" = "Você não possui mensagens";
+"empty.messages_description" = "Envie uma mensagem para iniciar uma conversa com os membros do seu grupo ou com outro jogador do Habitica";
+"empty.challenges" = "Você não está em nenhum Desafio";
+"empty.challenges_description" = "Navegue pela seção Descobrir para encontrar e participar de diversos Desafios temáticos criados por outros jogadores. É uma ótima maneira de completar sua lista de tarefas!";
+"glossary" = "Glossário";
+"purchased_amount" = "Você adquiriu %d %@";
+"checkin_prize_set_description" = "Você ganhou um conjunto de %s por estar comprometido em melhorar sua vida";
+"next_prize_in_1_checkin" = "Próxima recompensa em 1 dia!";
+"gift_gems_alert_text" = "Para qual conta você gostaria de enviar seu presente?";

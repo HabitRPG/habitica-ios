@@ -18,6 +18,12 @@ class SystemMessageTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         messageTextView.textContainerInset = UIEdgeInsets.zero
+        
+        if #available(iOS 26.0, *) {
+            messageWrapper.cornerConfiguration = .uniformCorners(radius: .fixed(UIConstants.mediumCornerRadius))
+        } else {
+            messageWrapper.cornerRadius = UIConstants.mediumCornerRadius
+        }
     }
     
     @objc
@@ -32,5 +38,6 @@ class SystemMessageTableViewCell: UITableViewCell {
         contentView.backgroundColor = theme.windowBackgroundColor
         messageTextView.textColor = theme.tintColor
         messageWrapper.borderColor = theme.separatorColor
+        messageTextView.font = UIFontMetrics.default.scaledSystemFont(ofSize: 15, ofWeight: .regular)
     }
 }

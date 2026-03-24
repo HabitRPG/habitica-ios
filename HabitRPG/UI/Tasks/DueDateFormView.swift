@@ -9,20 +9,21 @@
 import SwiftUI
 
 struct DueDateFormView: View {
+    @ObservedObject var themeService = ThemeService.shared
     @Binding var date: Date?
     
     var body: some View {
         VStack(spacing: 0) {
             FormDatePicker(title: Text(L10n.Tasks.Form.dueDate), value: $date)
             if date != nil {
-                Separator()
+                Divider()
                 Button(action: {
                     withAnimation {
                         date = nil
                     }
                 }, label: {
-                    Text(L10n.Tasks.Form.clear).font(.system(size: 15, weight: .semibold)).foregroundColor(.accentColor)
-                }).frame(maxWidth: .infinity).frame(height: 48).background(Color(ThemeService.shared.theme.windowBackgroundColor).cornerRadius(8))
+                    Text(L10n.Tasks.Form.clear).font(.system(size: 15, weight: .semibold)).foregroundStyle(.tint)
+                }).frame(maxWidth: .infinity).frame(height: 48).background(Color(themeService.theme.windowBackgroundColor).cornerRadius(UIConstants.largeCornerRadius))
             }
         }
     }

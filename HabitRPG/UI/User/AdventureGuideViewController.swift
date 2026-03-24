@@ -26,6 +26,7 @@ class AdventureGuideViewController: BaseUIViewController {
         self.navigationController?.navigationBar.shadowImage = UIImage()
         self.navigationController?.navigationBar.isTranslucent = true
         self.navigationController?.view.backgroundColor = .clear
+        achievementsStackview.spacing = 8
 
         userRepository.getUser().on(value: { user in
             if let achievements = user.achievements?.onboardingAchievements {
@@ -148,6 +149,8 @@ class AdventureGuideAchievement: UIView, Themeable {
         addSubview(descriptionLabel)
         
         ThemeService.shared.addThemeable(themable: self)
+        
+        cornerRadius = UIConstants.largeCornerRadius
     }
     
     func applyTheme(theme: Theme) {
@@ -163,6 +166,7 @@ class AdventureGuideAchievement: UIView, Themeable {
             titleLabel.textColor = theme.primaryTextColor
             descriptionLabel.textColor = theme.primaryTextColor
         }
+        backgroundColor = theme.windowBackgroundColor
     }
     
     func setAchievement(title: String, description: String, iconName: String, isCompleted: Bool) {
@@ -182,7 +186,7 @@ class AdventureGuideAchievement: UIView, Themeable {
     }
     
     override var intrinsicContentSize: CGSize {
-        return CGSize(width: 100, height: 80)
+        return CGSize(width: 100, height: 88)
     }
     
     override func layoutSubviews() {
@@ -191,9 +195,9 @@ class AdventureGuideAchievement: UIView, Themeable {
     }
     
     private func layout() {
-        iconView.pin.start().top().bottom().width(48)
+        iconView.pin.start(26).top().bottom().width(48)
         titleLabel.pin.after(of: iconView).marginStart(26).sizeToFit()
-        descriptionLabel.pin.after(of: iconView).marginStart(26).right().sizeToFit(.width)
+        descriptionLabel.pin.after(of: iconView).marginStart(26).right(26).sizeToFit(.width)
         let textHeight = titleLabel.frame.size.height + descriptionLabel.frame.size.height + 4
         let offset = (frame.size.height - textHeight) / 2
         titleLabel.pin.top(offset)

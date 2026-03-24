@@ -18,6 +18,7 @@ public class APIWorldStateEvent: WorldStateEventProtocol, Decodable {
     public var aprilFools: String?
     public var gear: Bool
     public var season: String?
+    public var spriteSubstitutions: [String: [String: String]]?
     
     enum CodingKeys: String, CodingKey {
         case event
@@ -28,6 +29,7 @@ public class APIWorldStateEvent: WorldStateEventProtocol, Decodable {
         case aprilFools
         case gear
         case season
+        case spriteSubstitutions
     }
     
     public required init(from decoder: Decoder) throws {
@@ -40,6 +42,7 @@ public class APIWorldStateEvent: WorldStateEventProtocol, Decodable {
         aprilFools = try? values.decode(String.self, forKey: .aprilFools)
         gear = (try? values.decode(Bool.self, forKey: .gear)) ?? false
         season = try? values.decode(String.self, forKey: .season)
+        spriteSubstitutions = try? values.decode([String: [String: String]].self, forKey: .spriteSubstitutions)
     }
 }
 
