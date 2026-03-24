@@ -20,6 +20,7 @@ public protocol DataSourceEmptyDelegate {
 class ItemSection<MODEL> {
     var key: String?
     var title: String?
+    var notes: String?
     var isHidden = false
     var showIfEmpty = false
     var items = [MODEL]()

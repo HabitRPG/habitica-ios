@@ -49,7 +49,7 @@ class BuySheetViewModel: ViewModel {
     }
     
     var isInstantUse: Bool {
-        return item.key == "potion"
+        return item.key == "potion" || item.purchaseType == "fortify" || item.purchaseType == "rebirth_orb"
     }
     
     var canPin: Bool {
@@ -192,6 +192,10 @@ class BuySheetViewModel: ViewModel {
                 }
                 return
             }
+            if item.purchaseType == "rebirth_orb" {
+                displayRebirthConfirmationDialog()
+                return
+            }
             remainingPurchaseQuantity { remainingQuantity in
                 var quantity = self.quantity
                 if remainingQuantity >= 0 {
@@ -246,6 +250,8 @@ class BuySheetViewModel: ViewModel {
                     return self.userRepository.retrieveUser()
                 }).observeResult(handleResult)
             }
+        } else if purchaseType == "rebirth_orb" {
+            userRepository.rebirth().observeResult(handleResult)
         } else if purchaseType == "fortify" {
             userRepository.reroll().observeResult(handleResult)
         } else if purchaseType == "backgrounds" || purchaseType == "customization" {
@@ -421,6 +427,44 @@ class BuySheetViewModel: ViewModel {
         alert.addCancelAction()
         DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
             alert.enqueue()
+        }
+    }
+}
+
+extension BuySheetViewModel {
+    var rebirthBannerText: String? {
+        guard item.purchaseType == "rebirth_orb" else { return nil }
+        let userLevel = user?.stats?.level ?? 0
+        if userLevel >= 100 {
+            if let lastFreeRebirth = user?.flags?.lastFreeRebirth {
+                let daysSinceLastFree = Calendar.current.dateComponents([.day], from: lastFreeRebirth, to: Date()).day ?? 0
+                if daysSinceLastFree < 45 {
+                    let daysRemaining = 45 - daysSinceLastFree
+                    if daysRemaining == 1 {
+                        return L10n.Shops.dayUntilFreeRebirth(1)
+                    } else {
+                        return L10n.Shops.daysUntilFreeRebirth(daysRemaining)
+                    }
+                }
+            }
+        } else if userLevel >= 50 {
+            return L10n.Shops.freeRebirthAtLevel100
+        }
+        return nil
+    }
+
+    func displayRebirthConfirmationDialog() {
+        let sheet = RebirthConfirmationSheet(gemCost: Int(item.value)) { [weak self] in
+            guard let self = self else { return }
+            withAnimation {
+                self.isPurchasing = true
+            }
+            self.buyItem(quantity: 1)
+        }
+        let viewController = HostingBottomSheetController(rootView: sheet, prefersGrabberVisible: false)
+        dismiss()
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.25) {
+            viewController.show()
         }
     }
 }

@@ -56,7 +56,7 @@ class NotificationManager {
                     return $0.type == HabiticaNotificationType.achievementOnboardingComplete
                 })
             case HabiticaNotificationType.rebirthEnabled:
-                notificationDisplayed = NotificationManager.displayAchievement(notification: notification, isOnboarding: false, isLastOnboardingAchievement: false)
+                notificationDisplayed = NotificationManager.displayRebirthEnabled(notification: notification)
             case HabiticaNotificationType.rebirthAchievement:
                 notificationDisplayed = NotificationManager.displayRebirthAchievement(notification: notification)
             case HabiticaNotificationType.loginIncentive:
@@ -220,16 +220,22 @@ class NotificationManager {
         return true
     }
 
+    static func displayRebirthEnabled(notification: NotificationProtocol) -> Bool {
+        userRepository.retrieveUser(forced: true).observeCompleted {}
+        userRepository.readNotification(notification: notification).observeCompleted {}
+        let viewC = HostingBottomSheetController(rootView: RebirthEnabledSheet(), prefersGrabberVisible: false)
+        viewC.show()
+        return true
+    }
+
     static func displayRebirthAchievement(notification: NotificationProtocol) -> Bool {
         userRepository.readNotification(notification: notification).observeCompleted {}
         userRepository.retrieveUser(forced: true).observeValues { user in
             DispatchQueue.main.async {
-                let alert = AchievementAlertController()
-                alert.title = L10n.youGotAchievement
-                alert.setRebirthAchievement(user: user)
-                DispatchQueue.main.asyncAfter(deadline: .now() + 0.8) {
-                    alert.enqueue()
-                }
+                let rebirthCount = user?.rebirths ?? 0
+                let rebirthLevel = user?.rebirthLevel ?? 0
+                let viewC = HostingBottomSheetController(rootView: RebirthAchievementSheet(rebirthCount: rebirthCount, rebirthLevel: rebirthLevel), prefersGrabberVisible: false)
+                viewC.show()
             }
         }
         return true

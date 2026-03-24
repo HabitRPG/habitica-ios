@@ -34,6 +34,8 @@ private class RebirthOrbItem: InAppRewardProtocol {
     var previous: String?
     var level: Int = 0
     var category: ShopCategoryProtocol?
+    var klass: String?
+    var specialClass: String?
     var isValid: Bool { return true }
     var isManaged: Bool { return false }
 }
@@ -183,6 +185,10 @@ class ShopCollectionViewDataSource: BaseReactiveCollectionViewDataSource<InAppRe
             if let specialSectionIndex = sections.firstIndex(where: { $0.key == "special" }) {
                 let rebirthItem = createRebirthItem()
                 sections[specialSectionIndex].items.append(rebirthItem)
+                let userLevel = user?.stats?.level ?? 0
+                if userLevel >= 50 && userLevel < 100 {
+                    sections[specialSectionIndex].notes = L10n.Shops.freeRebirthAtLevel100
+                }
             }
         }
 
@@ -349,6 +355,13 @@ class ShopCollectionViewDataSource: BaseReactiveCollectionViewDataSource<InAppRe
                 }
                 headerView.titleLabel.text = titleFor(section: indexPath.section)?.localizedUppercase
                 headerView.otherClassDisclaimer.isHidden = true
+                if let notes = section.notes, !notes.isEmpty {
+                    headerView.notesLabel.isHidden = false
+                    headerView.notesLabel.text = notes
+                } else {
+                    headerView.notesLabel.isHidden = true
+                    headerView.notesLabel.text = nil
+                }
             }
             headerView.setNeedsLayout()
             headerView.backgroundColor = ThemeService.shared.theme.contentBackgroundColor
@@ -375,11 +388,14 @@ class ShopCollectionViewDataSource: BaseReactiveCollectionViewDataSource<InAppRe
             }
         }
         let section = visibleSections[section]
+        var height: CGFloat = 40
         if section.endDates?.isEmpty == false {
-            return CGSize(width: collectionView.bounds.width, height: 75)
-        } else {
-            return CGSize(width: collectionView.bounds.width, height: 40)
+            height = 75
         }
+        if section.notes?.isEmpty == false {
+            height += 24
+        }
+        return CGSize(width: collectionView.bounds.width, height: height)
     }
     
     override func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
