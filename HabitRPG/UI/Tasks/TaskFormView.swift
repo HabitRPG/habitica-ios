@@ -401,8 +401,8 @@ class TaskFormController: UIHostingController<TaskFormView> {
         task.daysOfMonth = []
         task.weeksOfMonth = []
 
-        if let startDate = task.startDate {
-            if viewModel.frequency == "monthly" && viewModel.dayOrWeekMonth == "week" {
+        if let startDate = task.startDate, viewModel.frequency == "monthly" {
+            if viewModel.dayOrWeekMonth == "week" {
                 let day = Calendar.current.component(.day, from: startDate)
                 let weekIndex = (day - 1) / 7
                 task.weeksOfMonth.append(weekIndex)
@@ -415,25 +415,11 @@ class TaskFormController: UIHostingController<TaskFormView> {
                 task.weekRepeat?.friday = (dayOfWeek == 6)
                 task.weekRepeat?.saturday = (dayOfWeek == 7)
                 task.weekRepeat?.sunday = (dayOfWeek == 1)
-            } else if viewModel.frequency == "monthly" {
-                task.daysOfMonth.append(Calendar.current.component(.day, from: startDate))
-                task.weekRepeat?.monday = viewModel.monday
-                task.weekRepeat?.tuesday = viewModel.tuesday
-                task.weekRepeat?.wednesday = viewModel.wednesday
-                task.weekRepeat?.thursday = viewModel.thursday
-                task.weekRepeat?.friday = viewModel.friday
-                task.weekRepeat?.saturday = viewModel.saturday
-                task.weekRepeat?.sunday = viewModel.sunday
             } else {
-                task.weekRepeat?.monday = viewModel.monday
-                task.weekRepeat?.tuesday = viewModel.tuesday
-                task.weekRepeat?.wednesday = viewModel.wednesday
-                task.weekRepeat?.thursday = viewModel.thursday
-                task.weekRepeat?.friday = viewModel.friday
-                task.weekRepeat?.saturday = viewModel.saturday
-                task.weekRepeat?.sunday = viewModel.sunday
+                task.daysOfMonth.append(Calendar.current.component(.day, from: startDate))
             }
-        } else {
+        }
+        if !(viewModel.frequency == "monthly" && viewModel.dayOrWeekMonth == "week") {
             task.weekRepeat?.monday = viewModel.monday
             task.weekRepeat?.tuesday = viewModel.tuesday
             task.weekRepeat?.wednesday = viewModel.wednesday
