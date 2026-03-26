@@ -303,6 +303,12 @@ class RouterHandler {
             self.displayTab(index: 4)
             self.push(StoryboardScene.Main.avatarOverviewViewController.instantiate())
         }
+        register("/avatar/backgrounds") {
+            self.displayTab(index: 4)
+            self.push(StoryboardScene.Main.avatarOverviewViewController.instantiate())
+            let detailController = StoryboardScene.Main.avatarDetailViewController.instantiate()
+            detailController.customizationType = "background"
+        }
         register("/user/onboarding") {
             self.present(StoryboardScene.Main.adventureGuideNavigationViewController.instantiate())
         }
