@@ -253,15 +253,10 @@ class ChallengeTableViewController: BaseTableViewController, UISearchBarDelegate
     }
     
     @IBAction func addChallengeAction(_ sender: Any) {
-        let alert = HabiticaAlertController(title: L10n.createChallenge, message: L10n.createChallengeDescription)
-        alert.addAction(title: L10n.openWebsite, style: .default, isMainAction: true) { _ in
-            guard let url = URL(string: "https://habitica.com/challenges/myChallenges") else {
-                return
-            }
-            UIApplication.shared.open(url)
-        }
-        alert.addCloseAction()
-        alert.show()
+        let viewController = CreateChallengeViewController()
+        viewController.modalPresentationStyle = .formSheet
+        viewController.isModalInPresentation = true
+        self.present(viewController, animated: true)
     }
     
     @IBAction func searchButtonTapped(_ sender: Any) {

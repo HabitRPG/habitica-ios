@@ -18,6 +18,7 @@ private struct UITextViewWrapper: UIViewRepresentable {
     var onEditingChanged: ((Bool) -> Void)?
     var giveInitialResponder = false
     var textColor = UIColor.black
+    var placeholder: String?
 
     func makeUIView(context: UIViewRepresentableContext<UITextViewWrapper>) -> UITextView {
         let textField = UITextView()
@@ -128,7 +129,7 @@ struct MultilineTextField: View {
 
     @State private var dynamicHeight: CGFloat = 40
 
-    init (_ placeholder: String = "", text: Binding<String>, onCommit: (() -> Void)? = nil, onEditingChanged: ((Bool) -> Void)? = nil, giveInitialResponder: Bool = false, textColor: Color) {
+    init (_ placeholder: String = "", text: Binding<String>, onCommit: (() -> Void)? = nil, onEditingChanged: ((Bool) -> Void)? = nil, giveInitialResponder: Bool = false, textColor: Color = Color(ThemeService.shared.theme.primaryTextColor)) {
         self.placeholder = placeholder
         self.onCommit = onCommit
         self.onEditingChanged = onEditingChanged
@@ -143,7 +144,8 @@ struct MultilineTextField: View {
                           onDone: onCommit,
                           onEditingChanged: onEditingChanged,
                           giveInitialResponder: giveInitialResponder,
-                          textColor: textColor.uiColor())
+                          textColor: textColor.uiColor(),
+                          placeholder: placeholder)
             .frame(minHeight: dynamicHeight, maxHeight: dynamicHeight)
     }
 }

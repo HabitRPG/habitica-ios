@@ -137,6 +137,10 @@ class RouterHandler {
                 viewController.viewModel = viewModel
                 self.push(viewController)
             }
+            register("/challenges") {
+                self.displayTab(index: 4)
+                self.push(StoryboardScene.Social.challengeTableViewController.instantiate())
+            }
             register("/challenges/myChallenges") {
                 self.displayTab(index: 4)
                 self.push(StoryboardScene.Social.challengeTableViewController.instantiate())

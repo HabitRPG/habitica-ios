@@ -11,6 +11,21 @@ import Habitica_Models
 import ReactiveSwift
 import Habitica_Database
 
+struct CurrencyView: View {
+    let value: Int
+    let currency: Currency
+    let textColor: Color
+    
+    var body: some View {
+        HStack(spacing: 5) {
+            Image(uiImage: currency.getImage())
+            Text("\(value.formatted(.number))")
+                .font(.system(size: 22, weight: .bold))
+                .foregroundStyle(textColor)
+        }
+    }
+}
+
 struct BuyCurrencyView: View {
     @ObservedObject var themeService = ThemeService.shared
     let value: Int
@@ -39,12 +54,9 @@ struct BuyCurrencyView: View {
     }
     
     var body: some View {
-        let content = HStack(spacing: 5) {
-            Image(uiImage: currency.getImage())
-            Text("\(value.formatted(.number))")
-                .font(.system(size: 22, weight: .bold))
-                .foregroundStyle(textColor)
-        }.padding(.vertical, 9)
+        let content = CurrencyView(value: value,
+                                   currency: currency,
+                                   textColor: textColor).padding(.vertical, 9)
             .padding(.horizontal, 12)
         
         if #available(iOS 26.0, *) {

@@ -155,6 +155,9 @@
 		295611072056DD2800D9711A /* APIQuest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 295611062056DD2800D9711A /* APIQuest.swift */; };
 		295611092056DE9F00D9711A /* APIQuestBoss.swift in Sources */ = {isa = PBXBuildFile; fileRef = 295611082056DE9F00D9711A /* APIQuestBoss.swift */; };
 		2956110D2056E18A00D9711A /* APIQuestCollect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2956110C2056E18A00D9711A /* APIQuestCollect.swift */; };
+		2956FA5F2F61AC9C00C36330 /* CreateChallengeTaskCall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2956FA5E2F61AC9C00C36330 /* CreateChallengeTaskCall.swift */; };
+		2956FA612F61ACD300C36330 /* CreateChallengeCall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2956FA602F61ACD000C36330 /* CreateChallengeCall.swift */; };
+		2956FA632F61AE8800C36330 /* UpdateChallengeCall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2956FA622F61AE8800C36330 /* UpdateChallengeCall.swift */; };
 		295D42FA20936CE400948E7E /* DisableClassesCall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 295D42F920936CE400948E7E /* DisableClassesCall.swift */; };
 		295D42FC20936D4300948E7E /* SelectClassCall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 295D42FB20936D4300948E7E /* SelectClassCall.swift */; };
 		295D43022097395800948E7E /* APITutorialStep.swift in Sources */ = {isa = PBXBuildFile; fileRef = 295D43012097395800948E7E /* APITutorialStep.swift */; };
@@ -412,6 +415,9 @@
 		295611062056DD2800D9711A /* APIQuest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIQuest.swift; sourceTree = "<group>"; };
 		295611082056DE9F00D9711A /* APIQuestBoss.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIQuestBoss.swift; sourceTree = "<group>"; };
 		2956110C2056E18A00D9711A /* APIQuestCollect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIQuestCollect.swift; sourceTree = "<group>"; };
+		2956FA5E2F61AC9C00C36330 /* CreateChallengeTaskCall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateChallengeTaskCall.swift; sourceTree = "<group>"; };
+		2956FA602F61ACD000C36330 /* CreateChallengeCall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateChallengeCall.swift; sourceTree = "<group>"; };
+		2956FA622F61AE8800C36330 /* UpdateChallengeCall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateChallengeCall.swift; sourceTree = "<group>"; };
 		295D42F920936CE400948E7E /* DisableClassesCall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisableClassesCall.swift; sourceTree = "<group>"; };
 		295D42FB20936D4300948E7E /* SelectClassCall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectClassCall.swift; sourceTree = "<group>"; };
 		295D43012097395800948E7E /* APITutorialStep.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APITutorialStep.swift; sourceTree = "<group>"; };
@@ -694,9 +700,7 @@
 				291E1A25209B703C00BA1FFB /* ForceStartQuestCall.swift */,
 				292D6C982101F5660078288A /* InviteToGroupCall.swift */,
 				294973CF2081039300F02AC3 /* InviteToQuestCall.swift */,
-				292726A920B70303009DD08A /* JoinChallengeCall.swift */,
 				290B6292207E3E24007287C4 /* JoinGroupCall.swift */,
-				292726AB20B70329009DD08A /* LeaveChallengeCall.swift */,
 				290B6294207E3E6C007287C4 /* LeaveGroupCall.swift */,
 				297F19D4260E0A2D00385C5C /* LeaveQuestCall.swift */,
 				292F9663206E4F5500804151 /* LikeChatMessageCall.swift */,
@@ -706,9 +710,6 @@
 				292844F020DD37F40011DC43 /* RejectGroupInvitationCall.swift */,
 				291E1A1F209B6FAB00BA1FFB /* RejectQuestInvitationCall.swift */,
 				293F22DC232FBF4B00A33928 /* RemoveMemberCall.swift */,
-				292726A520B70290009DD08A /* RetrieveChallengeCall.swift */,
-				292726A720B702C4009DD08A /* RetrieveChallengesCall.swift */,
-				29DBFF0620D01EE000DF9CF2 /* RetrieveChallengeTasksCall.swift */,
 				292F965A206E2AE300804151 /* RetrieveChatCall.swift */,
 				290C3045206D44670066AF5B /* RetrieveGroupCall.swift */,
 				29F272A72A40B14100F3B50F /* RetrieveGroupInvitesCall.swift */,
@@ -764,6 +765,7 @@
 				292DEEA8204F71290086D5F7 /* ScoreTaskCall.swift */,
 				29B4788B20BEFBDC00B6123F /* ScoreChecklistItem.swift */,
 				29A6B86F206940F80086B2A6 /* CreateTaskCall.swift */,
+				2956FA5E2F61AC9C00C36330 /* CreateChallengeTaskCall.swift */,
 				295E9DDF20B31B8600D58D45 /* CreateTagCall.swift */,
 				295E9DD920B2FBC000D58D45 /* CreateTasksCall.swift */,
 				29A6B871206941210086B2A6 /* UpdateTaskCall.swift */,
@@ -901,6 +903,20 @@
 			path = Content;
 			sourceTree = "<group>";
 		};
+		2956FA5B2F61AC5E00C36330 /* Challenges */ = {
+			isa = PBXGroup;
+			children = (
+				2956FA602F61ACD000C36330 /* CreateChallengeCall.swift */,
+				2956FA622F61AE8800C36330 /* UpdateChallengeCall.swift */,
+				292726A920B70303009DD08A /* JoinChallengeCall.swift */,
+				292726AB20B70329009DD08A /* LeaveChallengeCall.swift */,
+				292726A520B70290009DD08A /* RetrieveChallengeCall.swift */,
+				292726A720B702C4009DD08A /* RetrieveChallengesCall.swift */,
+				29DBFF0620D01EE000DF9CF2 /* RetrieveChallengeTasksCall.swift */,
+			);
+			path = Challenges;
+			sourceTree = "<group>";
+		};
 		295E9DC020B2DE6600D58D45 /* Shops */ = {
 			isa = PBXGroup;
 			children = (
@@ -946,6 +962,7 @@
 				291E95AC20986CDE006EE585 /* DateEncodingStrategy-Extension.swift */,
 				29323E2C2051B43100AC6D6F /* DebugOutputHandler.swift */,
 				29DBFEFE20CE6D7F00DF9CF2 /* Decoding-Extensions.swift */,
+				2956FA5B2F61AC5E00C36330 /* Challenges */,
 				290C3043206D44580066AF5B /* Group */,
 				29B586F5204D92CF00301955 /* Habitica_API_Client.h */,
 				292DEE90204F4A0F0086D5F7 /* HabiticaServerConfig.swift */,
@@ -1109,6 +1126,7 @@
 				295D42FA20936CE400948E7E /* DisableClassesCall.swift in Sources */,
 				2974BDA1208E16E100EC1A25 /* APISubscriptionConsecutive.swift in Sources */,
 				290B627B207BA9A1007287C4 /* LocalRegisterCall.swift in Sources */,
+				2956FA612F61ACD300C36330 /* CreateChallengeCall.swift in Sources */,
 				290C3042206D3EC30066AF5B /* APIChatMessage.swift in Sources */,
 				29A6B872206941210086B2A6 /* UpdateTaskCall.swift in Sources */,
 				29B4788C20BEFBDC00B6123F /* ScoreChecklistItem.swift in Sources */,
@@ -1188,6 +1206,7 @@
 				292F966A206E4FD100804151 /* PostChatMessageCall.swift in Sources */,
 				292726A620B70290009DD08A /* RetrieveChallengeCall.swift in Sources */,
 				292726B420B70747009DD08A /* APIChallengeMembership.swift in Sources */,
+				2956FA5F2F61AC9C00C36330 /* CreateChallengeTaskCall.swift in Sources */,
 				29A62B07216CC6CC00D4BD90 /* VerifyUsernameCall.swift in Sources */,
 				290B6283207BAAA2007287C4 /* APILoginResponse.swift in Sources */,
 				295E9DCC20B2DFEB00D58D45 /* PurchaseQuestCall.swift in Sources */,
@@ -1197,6 +1216,7 @@
 				29323E2520509B9000AC6D6F /* HabiticaResponse.swift in Sources */,
 				2953D85828BCE91A00DC456E /* APITaskPreferences.swift in Sources */,
 				29EBDA81232912AF006611E3 /* RetrieveInboxConversationsCall.swift in Sources */,
+				2956FA632F61AE8800C36330 /* UpdateChallengeCall.swift in Sources */,
 				295611092056DE9F00D9711A /* APIQuestBoss.swift in Sources */,
 				29144894208A1C9400F3A6B5 /* APIHair.swift in Sources */,
 				292F9664206E4F5500804151 /* LikeChatMessageCall.swift in Sources */,
