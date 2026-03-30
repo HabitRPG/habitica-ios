@@ -413,8 +413,8 @@ class BuySheetViewModel: ViewModel {
     }
     
     func displaySomeRemainingConfirmationDialog(quantity: Int) {
-        let alert = HabiticaAlertController(title: L10n.excessItems, message: L10n.excessXItemsLeft(quantity, item.text ?? "", quantity))
-        alert.addAction(title: L10n.purchaseX(quantity), isMainAction: true) { _ in
+        let alert = HabiticaAlertController(title: L10n.excessItems, message: L10n.excessXItemsLeft(quantity, item.text ?? "", self.quantity))
+        alert.addAction(title: L10n.purchaseX(self.quantity), isMainAction: true) { _ in
             self.buyItem(quantity: self.quantity)
             alert.dismiss(animated: true, completion: nil)
         }
