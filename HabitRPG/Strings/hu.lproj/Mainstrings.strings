@@ -1490,5 +1490,5 @@
 "pets_found" = "Talált kisállatok";
 "undo" = "Visszavonás";
 "assigned_stat" = "Hozzárendelt tulajdonság";
-"item_only_available_for" = "Ez a tétel csak %s számára elérhető";
+"item_only_available_for" = "Ez a tárgy csak %s számára elérhető";
 "boss" = "Ellenség";
