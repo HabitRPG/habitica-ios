@@ -162,7 +162,7 @@ class CheckboxView: UIView {
         layer.setNeedsDisplay()
     }
     
-    func configure(checklistItem: ChecklistItemProtocol, withTitle: Bool, checkColor: UIColor, checkboxColor: UIColor, taskType: String?) {
+    func configure(checklistItem: ChecklistItemProtocol, withTitle: Bool, taskType: String?) {
         size = 20
         boxCornerRadius = taskType == TaskType.daily.rawValue ? 4 : (size/2)
         padding = 10
@@ -177,7 +177,7 @@ class CheckboxView: UIView {
                 self.addSubview(label)
             }
             guard let attributedString = try? Down(markdownString: checklistItem.text?.unicodeEmoji ?? "")
-                    .toHabiticaAttributedString(baseSize: 15, textColor: ThemeService.shared.theme.primaryTextColor) else {
+                .toHabiticaAttributedString(baseSize: 16, baseWeight: .semibold, textColor: ThemeService.shared.theme.primaryTextColor) else {
                     return
             }
             if checked {
@@ -189,11 +189,11 @@ class CheckboxView: UIView {
             }
         }
         let theme = ThemeService.shared.theme
-        label.textColor = checked ? theme.dimmedTextColor : theme.primaryTextColor
-        backgroundColor = UIColor.clear
-        boxFillColor = checkboxColor
+        label.textColor = checked ? theme.quadTextColor : theme.primaryTextColor
+        backgroundColor = .clear
+        boxFillColor = theme.offsetBackgroundColor
         boxBorderColor = nil
-        self.checkColor = checkColor
+        self.checkColor = theme.quadTextColor
         centerCheckbox = false
         borderedBox = true
         checkView.tintColor = self.checkColor
