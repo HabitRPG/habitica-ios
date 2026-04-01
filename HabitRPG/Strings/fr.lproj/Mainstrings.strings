@@ -1673,3 +1673,4 @@
 "task" = "Tâche";
 "item_only_available_for" = "Cet objet n'est disponible que pour %s";
 "boss" = "Boss";
+"login.custom_url" = "URL personnalisée";
