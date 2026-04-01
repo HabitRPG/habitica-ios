@@ -927,7 +927,7 @@
 "faint.title" = "Je hebt geen Gezondheid meer!";
 "tutorials.spells" = "Vaardigheden zorgen ervoor dat je machine dingen kunt doen! Klik op een vaardigheid om hem te gebruiken. Het kost Mana (de blauwe balk), die je kunt verdienen door elke dag in te checken en je taken te volbrengen. Meer informatie vind je in de FAQ in het menu!";
 "about.no_email_message" = "Oeps, het lijkt erop dat je nog geen e-mail heb ingesteld op deze telefoon. Stel een account in in de iOS mail app om de optie van direct rapporteren te gebruiken, of email ons gewoon direct op %@";
-"settings.reset_account_description" = "LET OP! Dit reset een heleboel onderdelen van je account! Dit wordt sterk ontmoedigd, maar sommige mensen doen dit in het begin als ze voor een korte termijn hebben gespeeld. \n\nJe verliest al je levels, goud en ervaringspunten. Alle taken (behalve die van uitdagingen) worden permanent verwijderd en je verliest alle gegevens van je geschiedenis. Je verliest je volledige uitrusting, maar het is mogelijk om dit allemaal terug te kopen, inclusief alle limited edition uitrusting of mysterieuze voorwerpen van de abonnementen (je moet wel in de juiste klasse zitten om klasse-specifieke voorwerpen terug te kopen). Je behoudt je huidige klasse en ook je huis- en rijdieren. In plaats van dit kun je misschien beter de orb van wedergeboorte gebruiken. Dat is een veel veiligere optie en daardoor behoud je al je taken en uitrusting.";
+"settings.reset_account_description" = "Je verliest al je levels, Goud en Ervaringspunten. Alle taken en geschiedenisgegevens worden permanent verwijderd (Uitdagingstaken blijven wel behouden). Je verliest alle uitrusting, behalve abonnee items en gratis gedenk items, maar je kunt ze wel terugkopen. Je moet wel de juiste klasse zijn om klasse-specifieke uitrusting terug te kunnen kopen. Je behoudt je huidige klasse, Prestaties en je huis- en rijdieren. Om de reset te bevestigen, vul je wachtwoord in hieronder.";
 "invalid_recipient_message" = "Je moet bij ontvanger een geldige Habitica gebruikersnaam invullen.";
 "world_boss.fourth_bullet" = "Kijk in de taverne om te zien hoe het gaat met de eindbaas en de woedeaanvallen";
 "world_boss.second_bullet" = "De eindbaas doet je geen kwaad als je taken mist, maar zijn woedemeter gaat om hoog. Als de hele meter vol is, valt de baas een van de winkeliers aan!";
@@ -1358,3 +1358,18 @@
 "item_only_available_for" = "Dit voorwerp is alleen beschikbaar voor %s";
 "settings.change_class_title" = "Klasse veranderen voor 3 Edelstenen?";
 "assigned_stat" = "Toegewezen Eigenschap";
+"settings.reset_account_description_social" = "Je zal al je levels, goud en ervaringspunten verliezen. Al je taken en hun geschiedenis data worden verwijderd (Uitdagingstaken zullen blijven). Je raakt al je uitrusting, behalve Abonee-voorwerpen en gratis herinneringsvoorwerpen, verliezen, maar je kan het terugkopen. Je moet in de juiste klasse zijn op klasse-specifieke uitrusting opnieuw the kunnen kopen. Je behoudt de klasse, prestaties, Huisdieren en Rijdieren die je momenteel hebt. Als je het zeker weet, type RESET in het tekstvak hieronder.";
+"subscription.hourglasses_header" = "Abonnees krijgen elke maand een Mystieke Zandloper samen met deze andere exclusieve voordelen!";
+"subscription.subscribe_again_hourglasses" = "Abonneer je opnieuw om Mystieke Zandlopers te blijven ontvangen";
+"subscription.thanks_for_subscribing" = "Bedankt voor het afsluiten van een abonnement";
+"subscription.enjoy_these_benefits" = "Geniet met je abonnement al deze exclusieve voordelen";
+"subscription.monthly_gems" = "Maandelijkse Edelstenen";
+"subscription.gifted" = "Geschonken";
+"subscription.payment_method" = "Betalingsmethode";
+"subscription.months_subscribed" = "Maanden geaboneerd";
+"subscription.next_hourglass_delivery" = "Volgende Zandloper levering";
+"subscription.gem_for_gold_header" = "Abonneer je om Edelstenen met Goud te kunnen kopen en ontvang deze andere exclusieve voordelen!";
+"see_more_sub_options" = "Bekijk meer abonnementsopties";
+"settings.delete_account_confirm" = "Weet je zeker dat je het wilt verwijderen?";
+"subscription.stay_motivated_with_more_rewards" = "Blijf gemotiveerd met nog meer beloningen als je een abonnement neemt";
+"subscription.subscribers_receive" = "Abonnees ontvangen een Mystieke Zandloper, een Mysterie Uitrusting Set en Edelstenen, die worden bijgevuld in de Marktplaats binnen de eerste twee dagen van de maand";
