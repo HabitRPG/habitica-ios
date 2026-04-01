@@ -2285,6 +2285,8 @@ public enum L10n {
     public static var continueWithEmail: String { return L10n.tr("Mainstrings", "login.continue_with_email") }
     /// Continue with Google
     public static var continueWithGoogle: String { return L10n.tr("Mainstrings", "login.continue_with_google") }
+    /// Custom URL
+    public static var customUrl: String { return L10n.tr("Mainstrings", "login.custom_url") }
     /// Please enter a valid email.
     public static var emailInvalid: String { return L10n.tr("Mainstrings", "login.email_invalid") }
     /// Email a Password Reset Link
@@ -2329,8 +2331,6 @@ public enum L10n {
     public static var usernameDescription: String { return L10n.tr("Mainstrings", "login.username_description") }
     /// What should we call you?
     public static var whatCallYou: String { return L10n.tr("Mainstrings", "login.what_call_you") }
-    // Custom URL
-    public static var customUrl: String { return L10n.tr("Mainstrings", "login.custom_url") }
   }
 
   public enum Member {

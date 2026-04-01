@@ -217,10 +217,10 @@ struct LoginForm: View {
                     onLogin()
                 }
         }
-        if (chosenServer == "custom") {
+        if chosenServer == "custom" {
             LoginTextInput(placeholder: L10n.Login.customUrl,
                            icon: Image(Asset.pillGryphon.name),
-                           isValid: customUrl == "" ? nil : true,
+                           isValid: customUrl.isEmpty ? nil : true,
                            text: $customUrl)
                 .padding(.top, 7)
                 .submitLabel(.next)
@@ -478,7 +478,7 @@ struct LoginScreen: View {
                             let appDelegate = UIApplication.shared.delegate as? HabiticaAppDelegate
                             appDelegate?.updateServer()
                         }
-                } else if (customUrlEnabled) {
+                } else if customUrlEnabled {
                     Picker(selection: $chosenServer) {
                         Text(Servers.production.niceName).tag(Servers.production.rawValue)
                         Text(Servers.custom.niceName).tag(Servers.custom.rawValue)
