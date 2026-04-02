@@ -147,29 +147,28 @@ class TaskRepeatablesSummaryInteractorTests: XCTestCase {
         task.everyX = 1
         task.frequency = "monthly"
         task.daysOfMonth = [31]
-        expect(self.interactor.repeatablesSummary(self.task)) == "Repeats monthly on the 31"
+        expect(self.interactor.repeatablesSummary(self.task)) == "Repeats every Month on the 31"
     }
-    
+
     func testMonthyEveryThreeDayOfMonth() {
         task.everyX = 3
         task.frequency = "monthly"
         task.daysOfMonth = [31]
-        expect(self.interactor.repeatablesSummary(self.task)) == "Repeats every 3 months on the 31"
+        expect(self.interactor.repeatablesSummary(self.task)) == "Repeats every 3 Months on the 31"
     }
-    
+
     func testMonthyEveryWeekOfMonth() {
         task.everyX = 1
         task.frequency = "monthly"
-        task.weeksOfMonth = [5]
-        expect(self.interactor.repeatablesSummary(self.task)) == "Repeats monthly on the 5 Tuesday"
+        task.weeksOfMonth = [4]
+        expect(self.interactor.repeatablesSummary(self.task)) == "Repeats every Month on the 5th Tuesday of the month. This task will not appear due during months with less Tuesdays"
     }
-    
+
     func testMonthyEveryThreeWeekOfMonth() {
         task.everyX = 3
         task.frequency = "monthly"
-        task.weeksOfMonth = [5]
-        expect(self.interactor.repeatablesSummary(self.task)) == "Repeats every 3 months on the 5 Tuesday"
-        
+        task.weeksOfMonth = [4]
+        expect(self.interactor.repeatablesSummary(self.task)) == "Repeats every 3 Months on the 5th Tuesday of the month. This task will not appear due during months with less Tuesdays"
     }
     
     func testYearlyEvery() {

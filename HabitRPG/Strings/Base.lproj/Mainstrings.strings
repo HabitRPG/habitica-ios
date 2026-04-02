@@ -171,12 +171,14 @@
 "tasks.repeats.repeats_every" = "Repeats %@";
 "tasks.repeats.daily" = "daily";
 "tasks.repeats.weekly" = "weekly";
-"tasks.repeats.monthly" = "monthly";
+"tasks.repeats.monthly" = "every Month";
 "tasks.repeats.yearly" = "yearly";
 "tasks.repeats.every_day" = "every day";
 "tasks.repeats.weekdays" = "weekdays";
 "tasks.repeats.weekends" = "weekends";
 "tasks.repeats.monthly_the" = "the %@";
+"tasks.repeats.monthly_week_of" = "the %1$@ %2$@ of the month";
+"tasks.repeats.fifth_week_warning" = "This task will not appear due during months with less %@s.";
 "tasks.quality.worst" = "Worst";
 "tasks.quality.worse" = "Worse";
 "tasks.quality.bad" = "Bad";
@@ -816,7 +818,7 @@
 "year" = "year";
 "days" = "days";
 "weeks" = "weeks";
-"months" = "months";
+"months" = "Months";
 "years" = "years";
 "leave_challenge_title" = "Leave Challenge?";
 "leave_challenge_prompt" = "Do you want to leave the Challenge and keep or delete the tasks?";

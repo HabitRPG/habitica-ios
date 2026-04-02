@@ -274,19 +274,31 @@ class TaskRepeatablesSummaryInteractor: NSObject {
     }
 
     private func monthlyRepeatOn(_ task: RepeatableTask) -> String? {
-            if task.daysOfMonth.isEmpty == false {
-                var days = [String]()
-                for day in task.daysOfMonth {
-                    days.append(String(day))
-                }
-                return L10n.Tasks.Repeats.monthlyThe(days.joined(separator: ", "))
+        if task.daysOfMonth.isEmpty == false {
+            var days = [String]()
+            for day in task.daysOfMonth {
+                days.append(String(day))
             }
-            if task.weeksOfMonth.isEmpty == false {
-                if let startDate = task.startDate {
-                    self.dateFormatter.dateFormat = monthlyFormat
-                    return L10n.Tasks.Repeats.monthlyThe(dateFormatter.string(from: startDate))
+            return L10n.Tasks.Repeats.monthlyThe(days.joined(separator: ", "))
+        }
+        if task.weeksOfMonth.isEmpty == false {
+            if let startDate = task.startDate {
+                let weekNumber = (task.weeksOfMonth.first ?? 0) + 1
+                let ordinalFormatter = NumberFormatter()
+                ordinalFormatter.numberStyle = .ordinal
+                let ordinal = ordinalFormatter.string(from: NSNumber(value: weekNumber)) ?? "\(weekNumber)"
+
+                let dayFormatter = DateFormatter()
+                dayFormatter.dateFormat = "EEEE"
+                let dayName = dayFormatter.string(from: startDate)
+
+                var result = L10n.Tasks.Repeats.monthlyWeekOf(ordinal, dayName)
+                if task.weeksOfMonth.first == 4 {
+                    result += ". " + L10n.Tasks.Repeats.fifthWeekWarning(dayName)
                 }
+                return result
             }
+        }
         return nil
     }
 

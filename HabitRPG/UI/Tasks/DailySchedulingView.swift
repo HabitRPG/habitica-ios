@@ -27,7 +27,18 @@ struct DailySchedulingView: View {
     @Binding var dayOrWeekMonth: String
     
     var tintColor: Color
-    
+
+    private var computedDaysOfMonth: [Int]? {
+        guard frequency == "monthly", dayOrWeekMonth == "day", let date = startDate else { return nil }
+        return [Calendar.current.component(.day, from: date)]
+    }
+
+    private var computedWeeksOfMonth: [Int]? {
+        guard frequency == "monthly", dayOrWeekMonth == "week", let date = startDate else { return nil }
+        let day = Calendar.current.component(.day, from: date)
+        return [(day - 1) / 7]
+    }
+
     private static let dailyRepeatOptions = [
         LabeledFormValue<String>(value: "daily", label: L10n.daily),
         LabeledFormValue<String>(value: "weekly", label: L10n.weekly),
@@ -145,8 +156,8 @@ struct DailySchedulingView: View {
                                                                        saturday: saturday,
                                                                        sunday: sunday,
                                                                        startDate: startDate,
-                                                                       daysOfMonth: nil,
-                                                                       weeksOfMonth: nil))
+                                                                       daysOfMonth: computedDaysOfMonth,
+                                                                       weeksOfMonth: computedWeeksOfMonth))
                 .padding(.horizontal, 14)
                 .padding(.vertical, 8)
                 .font(.caption)
