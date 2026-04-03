@@ -43,6 +43,7 @@ class CheckedTableViewCell: TaskTableViewCell {
 
         mainTaskWrapper.clipsToBounds = true
         checklistContainer.clipsToBounds = true
+        checklistContainer.isHidden = true
         contentView.clipsToBounds = true
     }
     
@@ -54,7 +55,7 @@ class CheckedTableViewCell: TaskTableViewCell {
             self?.checkTask()
         }
         
-        handleChecklist(task)
+        self.handleChecklist(animate: false)
         
         if task.completed(by: userID) {
             titleLabel.textColor = ThemeService.shared.theme.quadTextColor
@@ -62,10 +63,15 @@ class CheckedTableViewCell: TaskTableViewCell {
         }
     }
     
-    func handleChecklist(_ task: TaskProtocol) {
+    func handleChecklist(animate: Bool) {
+        guard let task = self.task else {
+            return
+        }
         let checklistCount = task.checklist.count
         let theme = ThemeService.shared.theme
 
+        var checklistDueAlpha: CGFloat = 1
+        
         if checklistCount > 0 {
             var checkedCount = 0
             for item in task.checklist where item.completed {
@@ -76,17 +82,18 @@ class CheckedTableViewCell: TaskTableViewCell {
             checklistTotalLabel.text = "\(checklistCount)"
             checklistTotalLabel.font = UIFontMetrics.default.scaledSystemFont(ofSize: 12, ofWeight: .medium)
             checklistIndicator.backgroundColor = theme.offsetBackgroundColor
+            checklistIndicator.cornerRadius = UIConstants.miniCornerRadius
             if checkedCount == checklistCount {
                 checklistDoneLabel.textColor = theme.quadTextColor
                 checklistTotalLabel.textColor = theme.quadTextColor
                 checklistIndicatorSeparator.backgroundColor = theme.quadTextColor
-                checklistDueIndicator.isHidden = true
+                checklistDueAlpha = 0
             } else {
                 checklistDoneLabel.textColor = theme.primaryTextColor
                 checklistTotalLabel.textColor = theme.primaryTextColor
                 checklistIndicatorSeparator.backgroundColor = theme.primaryTextColor
                 checklistDueIndicator.backgroundColor = .forTaskValue(task.value)
-                checklistDueIndicator.isHidden = isExpanded
+                checklistDueAlpha = isExpanded ? 0 : 1
             }
             checklistIndicator.isHidden = false
             checklistTapArea.isHidden = false
@@ -95,16 +102,45 @@ class CheckedTableViewCell: TaskTableViewCell {
             checklistDueIndicator.isHidden = true
             checklistTapArea.isHidden = true
         }
+        if animate {
+            UIView.animate(withDuration: 0.3) {
+                self.checklistDueIndicator.alpha = checklistDueAlpha
+            }
+        }
 
         checklistContainer.backgroundColor = .clear
-        checklistContainer.arrangedSubviews.forEach { (view) in
-            view.removeFromSuperview()
-        }
         if isExpanded && checklistCount > 0 {
+            checklistContainer.arrangedSubviews.forEach { (view) in
+                view.removeFromSuperview()
+            }
             addChecklistViews(task: task)
-            checklistContainer.isHidden = false
+            if animate {
+                checklistContainer.alpha = 0
+                checklistContainer.isHidden = false
+                UIView.animate(withDuration: 0.4) {
+                    self.checklistContainer.alpha = 1
+                }
+            } else {
+                checklistContainer.isHidden = false
+            }
         } else {
-            checklistContainer.isHidden = true
+            if animate {
+                checklistContainer.alpha = 1
+                UIView.animate(withDuration: 0.3) {
+                    self.checklistContainer.alpha = 0
+                } completion: { _ in
+                    self.checklistContainer.arrangedSubviews.forEach { (view) in
+                        view.removeFromSuperview()
+                    }
+                    self.checklistContainer.isHidden = true
+                }
+
+            } else {
+                checklistContainer.arrangedSubviews.forEach { (view) in
+                    view.removeFromSuperview()
+                }
+                checklistContainer.isHidden = true
+            }
         }
     }
     
@@ -194,12 +230,17 @@ class CheckedTableViewCell: TaskTableViewCell {
         if !checklistIndicator.isHidden {
             let lineHeight = checklistTotalLabel.font.lineHeight
             let charCount = max(checklistTotalLabel.text?.count ?? 0, checklistDoneLabel.text?.count ?? 0)
-            checklistIndicator.pin.height(lineHeight * 2 + 10).vCenter().width(CGFloat(charCount) * 0.7 * lineHeight + 16).end(12)
+            checklistIndicator.pin.height(lineHeight * 2 + 10).vCenter().minWidth(32).width(CGFloat(charCount) * 0.7 * lineHeight + 16).end(12)
             checklistIndicatorSeparator.pin.width(10).height(1).center()
             checklistDoneLabel.pin.above(of: checklistIndicatorSeparator).marginBottom(2).start().end().sizeToFit(.width)
             checklistTotalLabel.pin.below(of: checklistIndicatorSeparator).marginTop(2).start().end().sizeToFit(.width)
             checklistTapArea.pin.start(to: checklistIndicator.edge.start).end().margin(0, -15).top().bottom()
-            checklistDueIndicator.pin.center(to: checklistIndicator.anchor.topEnd).size(10)
+            checklistDueIndicator.pin
+                .right(to: checklistIndicator.edge.end)
+                .marginEnd(-2)
+                .top(to: checklistIndicator.edge.top)
+                .marginTop(-2)
+                .size(10)
         }
         
         if isExpanded && (task?.checklist.count ?? 0) > 0 {

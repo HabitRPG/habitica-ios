@@ -31,4 +31,12 @@ class UIConstants {
             return 4
         }
     }
+    
+    static var miniCornerRadius: CGFloat {
+        if #available(iOS 26.0, *) {
+            return 6
+        } else {
+            return 3
+        }
+    }
 }

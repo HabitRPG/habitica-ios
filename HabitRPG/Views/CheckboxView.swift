@@ -101,6 +101,7 @@ class CheckboxView: UIView {
     }
     
     private func setupView() {
+        clipsToBounds = true
         addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(viewTapped)))
         isUserInteractionEnabled = true
         label.numberOfLines = 0

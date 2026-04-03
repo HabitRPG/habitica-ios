@@ -303,12 +303,17 @@ class TaskTableViewDataSource: BaseReactiveTableViewDataSource<TaskProtocol>, Ta
                 expandedIndexPath = nil
             }
             tableView?.beginUpdates()
-            tableView?.reloadRows(at: [indexPath], with: .fade)
+            let cell = tableView?.cellForRow(at: indexPath) as? CheckedTableViewCell
+            cell?.isExpanded = self.expandedIndexPath != nil
+            cell?.handleChecklist(animate: true)
             tableView?.endUpdates()
         } else {
             if let path = expandedPath {
                 tableView?.beginUpdates()
-                tableView?.reloadRows(at: [indexPath, path], with: .fade)
+                let newCell = tableView?.cellForRow(at: indexPath) as? CheckedTableViewCell
+                newCell?.isExpanded = true
+                let oldCell = tableView?.cellForRow(at: path) as? CheckedTableViewCell
+                oldCell?.isExpanded = false
                 tableView?.endUpdates()
             }
         }
