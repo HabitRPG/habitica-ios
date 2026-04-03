@@ -565,8 +565,8 @@
 "party.join_party_title" = "パーティーをお探しですか？";
 "party.party_challenges" = "パーティーチャレンジ";
 "party.start_quest" = "クエストをはじめる";
-"groups.guild_invitation_no_invitername" = "誰かがあなたをギルドへ招待しました： %@";
-"groups.guild_invitation_invitername" = "%@ があなたをギルドへ招待しました： %@";
+"groups.guild_invitation_no_invitername" = "誰かがあなたをグループへ招待しました： **%@**";
+"groups.guild_invitation_invitername" = "**@%@**があなたをグループへ招待しました： **%@**";
 "inactive" = "アクティブではない";
 "one_month" = "1 ヶ月";
 "x_months" = "%dヶ月";
@@ -1623,7 +1623,7 @@
 "copy_token" = "トークンをコピーする";
 "settings.daily_reminder_permission_needed" = "デイリーリマインダーを使用するには設定で通知を有効にしてください";
 "continue_benefits" = "メリットを続ける";
-"privacy_preferences_sheet_description" = "Habiticaでは、パフォーマンスの分析、サポートリクエストへの対応、そして最高のゲーム体験を提供するために、あなたのデバイスからのデータを利用します。そのために、以下の権限をリクエストする必要があります。\n\nこれらの設定はいつでも変更できます。詳しくは[プライバシーポリシー](https://habitica.com/static/privacy)をご覧ください。";
+"privacy_preferences_sheet_description" = "あなたのプライバシーは私たちにとって重要です。Habiticaでは、パフォーマンスの分析、サポートリクエストへの対応、そして最高のゲーム体験を提供するために、あなたのデバイスからのデータを利用します。そのために、以下の権限をリクエストする必要があります。\n\nこれらの設定はいつでも変更できます。詳しくは[プライバシーポリシー](https://habitica.com/static/privacy)をご覧ください。";
 "stats" = "ステータス";
 "privacy_preferences_full_description" = "あなたのプライバシーは私たちにとって重要です。Habiticaでは、パフォーマンスの分析、サポートリクエストへの対応、そして最高のゲーム体験を提供するために、あなたのデバイスからのデータを利用します。そのために、以下の権限をリクエストする必要があります。\n\nこれらの設定は、アカウント設定からいつでも変更できます。";
 "performance_analytics_description" = "これは、ユーザー体験、パフォーマンス、そして Habitica のサービスを改善するために使用されます。また、サポートチームがリクエストやバグ報告に対応する際にも利用されます。";
