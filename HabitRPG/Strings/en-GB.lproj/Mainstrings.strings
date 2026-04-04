@@ -243,3 +243,8 @@
 "gift_gems_alert_title" = "Gift Gems";
 "classes.mage_description" = "Mages learn skills that damage Quest bosses and boost Exp and Mana. Play a Mage if you're motivated by levelling up quickly. Mages benefit from a high Intelligence stat.";
 "contributor_tiers_description" = "If you see an account with a coloured display name and an icon, that’s a contributor tier! Tiers are given to people who help around Habitica, whether it be for translation, coding, or just being helpful. The higher the tier, the more the player has contributed.";
+"challenge_category.getting_organized" = "Getting Organised";
+"tasks.examples.chores_todo_text" = "Organise clutter";
+"organize_by" = "Organise By";
+"randomize" = "Randomise";
+"class_system_unlocked_description" = "Choose a class that fits your play style and unlock special skills and armour to help you on your journey";
