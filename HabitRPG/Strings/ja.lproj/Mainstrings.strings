@@ -1134,7 +1134,7 @@
 "delete_challenge_task" = "チャレンジのタスクを削除しますか？";
 "delete_x_tasks" = "%dのタスクを削除する";
 "keep_x_tasks" = "%dのタスクを残す";
-"broken_challenge_description" = "このタスクは%dチャレンジの一部です。このチャレンジは終了しました。残ったタスクをどうしますか？";
+"broken_challenge_description" = "これは終了したチャレンジに関する%dつのタスクのうちの一つです。残ったタスクをどうしますか？";
 "broken_challenge" = "チャレンジのリンク切れ";
 "gift_subscription" = "有料プランをプレゼントする";
 "gift_gems" = "ジェムを送る";
@@ -1405,7 +1405,7 @@
 "armoire.equipment" = "宝箱の中から珍しい装備を発見！";
 "armoire.enchanted_armoire_drop_rates" = "ラッキー宝箱のドロップ率";
 "armoire.rate_equipment_description" = "毎月、新しい装備品が追加されます。すべての装備品を所持している場合、50%/50%の確率で「えさ」または「経験値」を獲得できます。";
-"next_prize_at_x_checkins" = "次に賞品を受け取れるのは計%d日目のログインです";
+"next_prize_at_x_checkins" = "次に賞品を受け取れるのは計%d日目のログインです！";
 "ban_user" = "ユーザーを追放";
 "shadow_mute_user" = "ユーザーをシャドーミュート";
 "ban_user_confirm" = "このユーザーを追放しますか？";
@@ -1666,3 +1666,5 @@
 "contributor_tiers" = "貢献者の段位";
 "x_gems_for_y" = "%sでジェムを%d個";
 "item_only_available_for" = "このアイテムは%sだけに発売中です";
+"loading" = "ロード中";
+"boss" = "ボス";
