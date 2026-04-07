@@ -17,11 +17,13 @@ struct TaskFormChecklistItemView: View {
         }
     }
     let onDelete: () -> Void
+    let onNewItem: () -> Void
     @State var isFirstResponder = false
     
-    init(item: ChecklistItemProtocol, onDelete: @escaping () -> Void, focusItemId: String?) {
+    init(item: ChecklistItemProtocol, onDelete: @escaping () -> Void, onNewItem: @escaping () -> Void, focusItemId: String?) {
         self.item = item
         self.onDelete = onDelete
+        self.onNewItem = onNewItem
         _text = State(initialValue: item.text ?? "")
         _isFirstResponder = State(initialValue: (item.id == focusItemId))
     }
@@ -53,7 +55,11 @@ struct TaskFormChecklistItemView: View {
                     configuration.label.padding(4)
                 }
             }
-            FocusableTextField(placeholder: "Enter your checklist line", text: textProxy, isFirstResponder: $isFirstResponder)
+            FocusableTextField(placeholder: "Enter your checklist line", text: textProxy, isFirstResponder: $isFirstResponder, onReturnPressed: {
+                if !text.isEmpty {
+                    onNewItem()
+                }
+            })
             Image(uiImage: Asset.grabIndicator.image).foregroundStyle(Color(themeService.theme.tableviewSeparatorColor))
                     .padding(.trailing, 13)
         }.background(Color(themeService.theme.windowBackgroundColor).cornerRadius(UIConstants.largeCornerRadius))
@@ -68,11 +74,21 @@ struct TaskFormChecklistView: View {
     @Binding var items: [ChecklistItemProtocol]
     @State var focusItemId: String?
     
-    var addButton: some View { Button(action: {
+    func addNewItem() {
         let item = taskRepository.getNewChecklistItem()
-            item.id = UUID().uuidString
+        item.id = UUID().uuidString
+        if let id = focusItemId, let index = items.firstIndex(where: { item in
+            return item.id == id
+        }) {
+            items.insert(item, at: index + 1)
+        } else {
             items.append(item)
-            focusItemId = item.id
+        }
+        focusItemId = item.id
+    }
+    
+    var addButton: some View { Button(action: {
+            addNewItem()
         }, label: {
             Text(L10n.Tasks.Form.newChecklistItem).underline(UIAccessibility.buttonShapesEnabled)
         }).buttonStyle { configuration in
@@ -99,6 +115,8 @@ struct TaskFormChecklistView: View {
                                     items.remove(at: index)
                                 }
                             }
+                        }, onNewItem: {
+                            addNewItem()
                         }, focusItemId: focusItemId).onDrag({
                             if lastOnDrag.timeIntervalSinceNow > -0.2 {
                                 return NSItemProvider(item: nil, typeIdentifier: "checklistitem")

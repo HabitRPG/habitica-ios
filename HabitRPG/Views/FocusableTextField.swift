@@ -42,12 +42,16 @@ struct FocusableTextField: UIViewRepresentable {
     @Binding public var text: String
     public var placeholder: String
     
+    public var onReturnPressed: (() -> Void)?
+    
     public var configuration = { (_: UITextField) in }
 
-    public init(placeholder: String, text: Binding<String>, isFirstResponder: Binding<Bool>, configuration: @escaping (UITextField) -> Void = { _ in }) {
+    public init(placeholder: String, text: Binding<String>, isFirstResponder: Binding<Bool>,
+                onReturnPressed: (() -> Void)? = nil, configuration: @escaping (UITextField) -> Void = { _ in }) {
         self.configuration = configuration
         self._text = text
         self.placeholder = placeholder
+        self.onReturnPressed = onReturnPressed
         self._isFirstResponder = isFirstResponder
     }
 
@@ -83,16 +87,18 @@ struct FocusableTextField: UIViewRepresentable {
     }
 
     public func makeCoordinator() -> Coordinator {
-        Coordinator($text, isFirstResponder: $isFirstResponder)
+        Coordinator($text, isFirstResponder: $isFirstResponder, onReturnPressed: onReturnPressed)
     }
 
     public class Coordinator: NSObject, UITextFieldDelegate {
         var text: Binding<String>
         var isFirstResponder: Binding<Bool>
+        var onReturnPressed: (() -> Void)?
 
-        init(_ text: Binding<String>, isFirstResponder: Binding<Bool>) {
+        init(_ text: Binding<String>, isFirstResponder: Binding<Bool>, onReturnPressed: (() -> Void)?) {
             self.text = text
             self.isFirstResponder = isFirstResponder
+            self.onReturnPressed = onReturnPressed
         }
 
         @objc
@@ -110,6 +116,14 @@ struct FocusableTextField: UIViewRepresentable {
 
         public func textFieldDidEndEditing(_ textField: UITextField) {
             self.isFirstResponder.wrappedValue = false
+        }
+        
+        public func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+            if let action = onReturnPressed {
+                action()
+                return false
+            }
+            return true
         }
     }
 }

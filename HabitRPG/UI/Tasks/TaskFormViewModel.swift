@@ -27,8 +27,8 @@ class TaskFormViewModel: ObservableObject {
     @Published var selectedTags: [TagProtocol] = []
     
     @Published var streak: Int = 0
-    @Published var counterUp: String = "0"
-    @Published var counterDown: String = "0"
+    @Published var counterUp: Int = 0
+    @Published var counterDown: Int = 0
     
     @Published var monday: Bool = true
     @Published var tuesday: Bool = true
@@ -74,8 +74,8 @@ class TaskFormViewModel: ObservableObject {
             _dueDate = Published(initialValue: task?.duedate)
             
             _streak = Published(initialValue: task?.streak ?? 0)
-            _counterUp = Published(initialValue: String(task?.counterUp ?? 0))
-            _counterDown = Published(initialValue: String(task?.counterDown ?? 0))
+            _counterUp = Published(initialValue: task?.counterUp ?? 0)
+            _counterDown = Published(initialValue: task?.counterDown ?? 0)
 
             _selectedTags = Published(initialValue: task?.tags ?? [])
             

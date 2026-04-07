@@ -12,6 +12,7 @@ struct FormRow<TitleView: View, LabelView: View>: View {
     @ObservedObject var themeService = ThemeService.shared
     let title: TitleView
     let valueLabel: LabelView
+    var embedValueLabel: Bool = true
     var action: (() -> Void)?
     
     var body: some View {
@@ -20,12 +21,16 @@ struct FormRow<TitleView: View, LabelView: View>: View {
                 HStack {
                     title.foregroundStyle(Color(themeService.theme.primaryTextColor))
                     Spacer()
-                    valueLabel
-                        .padding(.vertical, 6)
-                        .padding(.horizontal, 11)
-                        .background(Color(themeService.theme.offsetBackgroundColor))
-                        .cornerRadius(UIConstants.largeCornerRadius)
-                }.frame(height: 45).padding(.leading, 26).padding(.trailing, 12)
+                    if embedValueLabel {
+                        valueLabel
+                            .padding(.vertical, 6)
+                            .padding(.horizontal, 11)
+                            .background(Color(themeService.theme.offsetBackgroundColor))
+                            .cornerRadius(UIConstants.largeCornerRadius)
+                    } else {
+                        valueLabel
+                    }
+                }.frame(minHeight: 45).padding(.leading, 26).padding(.trailing, 12)
             }).buttonStyle { configuration in
                 if UIAccessibility.buttonShapesEnabled {
                     configuration.label
@@ -39,12 +44,16 @@ struct FormRow<TitleView: View, LabelView: View>: View {
             HStack {
                 title.foregroundStyle(.primary)
                 Spacer()
-                valueLabel
-                    .padding(.vertical, 6)
-                    .padding(.horizontal, 11)
-                    .background(Color(themeService.theme.offsetBackgroundColor))
-                    .cornerRadius(UIConstants.largeCornerRadius)
-            }.frame(height: 45).padding(.leading, 26).padding(.trailing, 12)
+                if embedValueLabel {
+                    valueLabel
+                        .padding(.vertical, 6)
+                        .padding(.horizontal, 11)
+                        .background(Color(themeService.theme.offsetBackgroundColor))
+                        .cornerRadius(UIConstants.largeCornerRadius)
+                } else {
+                    valueLabel
+                }
+            }.frame(minHeight: 45).padding(.leading, 26).padding(.trailing, 12)
         }
     }
 }
