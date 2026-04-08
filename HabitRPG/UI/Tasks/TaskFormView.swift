@@ -144,12 +144,18 @@ struct TaskFormView: View {
     }
     
     @ViewBuilder private var habitCounterSection: some View {
-        TaskFormSection(header: Text(L10n.Tasks.Form.adjustCounter.localizedCapitalized),
-                        content: VStack(spacing: 12) {
-            FormRow(title: Text(L10n.Tasks.Form.positive), valueLabel: PlusMinusStepperView(amount: $viewModel.counterUp, icon: EmptyView(), minAmount: 0), embedValueLabel: false)
-            FormRow(title: Text(L10n.Tasks.Form.negative), valueLabel: PlusMinusStepperView(amount: $viewModel.counterDown, icon: EmptyView(), minAmount: 0), embedValueLabel: false
-            )
-        }, backgroundColor: .clear)
+        if viewModel.up || viewModel.down {
+            TaskFormSection(header: Text(L10n.Tasks.Form.adjustCounter.localizedCapitalized),
+                            content: VStack(spacing: 12) {
+                if viewModel.up {
+                    FormRow(title: Text(L10n.Tasks.Form.positive), valueLabel: PlusMinusStepperView(amount: $viewModel.counterUp, icon: EmptyView(), minAmount: 0), embedValueLabel: false)
+                }
+                if viewModel.down {
+                    FormRow(title: Text(L10n.Tasks.Form.negative), valueLabel: PlusMinusStepperView(amount: $viewModel.counterDown, icon: EmptyView(), minAmount: 0), embedValueLabel: false
+                    )
+                }
+            }, backgroundColor: .clear)
+        }
     }
     
     var body: some View {

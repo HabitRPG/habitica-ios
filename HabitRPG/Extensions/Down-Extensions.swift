@@ -287,12 +287,20 @@ private class HabiticaStyler: DownStyler {
         str.addAttribute(.link, value: url, range: range)
     }
     override func style(image str: NSMutableAttributedString, title: String?, url: String?) {
-        if let imageURL = URL(string: url ?? ""), let data = try? Data(contentsOf: imageURL) {
+        if let imageURL = URL(string: url ?? "") {
             let attachment = NSTextAttachment()
-            let resizableImage = UIImage(data: data)
-            attachment.image = resizableImage?.resize(maxWidthHeight: 200)
             let addedString = NSAttributedString(attachment: attachment)
+            let configuration = UIImage.SymbolConfiguration(pointSize: 150)
+            attachment.image = UIImage(systemName: "photo", withConfiguration: configuration)
             str.replaceCharacters(in: NSRange(location: 0, length: str.length), with: addedString)
+            Task {
+                let response = try? (await URLSession.shared.data(from: imageURL))
+                guard let data = response?.0 else {
+                    return
+                }
+                let resizableImage = UIImage(data: data)
+                attachment.image = resizableImage?.resize(maxWidthHeight: 200)
+            }
         }
     }
 }
