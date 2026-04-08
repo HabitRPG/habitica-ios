@@ -27,6 +27,7 @@ struct DailySchedulingView: View {
     @Binding var dayOrWeekMonth: String
     
     var tintColor: Color
+    var pickerTintColor: Color
 
     private var computedDaysOfMonth: [Int]? {
         guard frequency == "monthly", dayOrWeekMonth == "day", let date = startDate else { return nil }
@@ -140,13 +141,12 @@ struct DailySchedulingView: View {
                     TaskFormPicker(options: [
                         LabeledFormValue(value: "day", label: L10n.Tasks.Form.dayOfMonth),
                         LabeledFormValue(value: "week", label: L10n.Tasks.Form.dayOfWeek)
-                    ], selection: $dayOrWeekMonth)
-                    .tint(tintColor)
+                    ], selection: $dayOrWeekMonth, tintColor: pickerTintColor)
                     .transition(.move(edge: .top).combined(with: .opacity))
                     .padding(.horizontal, 12).padding(.top, 10)
                 }
             }
-            Text(TaskRepeatablesSummaryInteractor().repeatablesSummary(frequency: frequency,
+            Text(TaskRepeatablesSummaryInteractor().attributedRepeatablesSummary(frequency: frequency,
                                                                        everyX: everyX,
                                                                        monday: monday,
                                                                        tuesday: tuesday,
