@@ -164,7 +164,7 @@ class CheckboxView: UIView {
     }
     
     func configure(checklistItem: ChecklistItemProtocol, withTitle: Bool, taskType: String?) {
-        size = 20
+        size = 24
         boxCornerRadius = taskType == TaskType.daily.rawValue ? 4 : (size/2)
         padding = 10
         checked = checklistItem.completed

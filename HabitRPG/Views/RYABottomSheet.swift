@@ -25,6 +25,13 @@ class RYABottomSheetViewModel: ViewModel {
         self.tasks = tasks
         self.onCronRun = onCronRun
         super.init()
+        for task in tasks {
+            for checklistItem in task.checklist {
+                if checklistItem.completed, let id = checklistItem.id {
+                    checkedChecklistItems.append(id)
+                }
+            }
+        }
     }
     
     func runCron() {
@@ -157,7 +164,7 @@ struct ChecklistItemView: View {
             ZStack {
                 Rectangle().cornerRadius(6)
                     .fill()
-                    .frame(width: 20, height: 20)
+                    .frame(width: 24, height: 24)
                     .foregroundStyle(Color(themeService.theme.offsetBackgroundColor))
                 if isChecked {
                     Image(systemName: "checkmark")
@@ -178,7 +185,7 @@ struct ChecklistItemView: View {
         .fixedSize(horizontal: false, vertical: true)
         .foregroundStyle(Color(checklistItem.completed ? themeService.theme.secondaryTextColor : themeService.theme.primaryTextColor))
         .scaledFont(size: 16, weight: .semibold)
-        .frame(minHeight: 40)
+        .frame(minHeight: 50)
     }
 }
 
@@ -211,6 +218,7 @@ struct RYATaskView: View {
                     .foregroundStyle(Color(themeService.theme.secondaryTextColor))
                     .padding(.horizontal, 6)
                         .padding(.vertical, 2)
+                        .frame(minWidth: 32)
                         .background(Color(themeService.theme.offsetBackgroundColor))
                         .cornerRadius(UIConstants.smallCornerRadius)
                 }

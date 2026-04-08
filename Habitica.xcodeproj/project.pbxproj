@@ -2005,19 +2005,19 @@
 		29DF933B2EC6401F0047801F /* Gamified */ = {
 			isa = PBXGroup;
 			children = (
-				299E6C972F193BFB00F78D2B /* OnboardingCompletedSheet.swift */,
-				29CBCDA32EC4E5090020FC14 /* GamifiedWaveBackground.swift */,
-				29CBCDA52EC4E5EC0020FC14 /* FanfareContainer.swift */,
-				29DF933C2EC640860047801F /* GamifiedBottomSheet.swift */,
-				29DF93422ECC8A880047801F /* PetHatchedSheet.swift */,
-				29DF93442ECCC3370047801F /* MountRaisedSheet.swift */,
-				29DF93462ECCCD3B0047801F /* HatchSuggestionSheet.swift */,
-				29DF93482ECCE0640047801F /* ClassConfirmationSheet.swift */,
 				29DF934A2ECDE5150047801F /* AchievementReceivedSheet.swift */,
+				29DF93482ECCE0640047801F /* ClassConfirmationSheet.swift */,
+				29CBCDA52EC4E5EC0020FC14 /* FanfareContainer.swift */,
 				29DF934C2ECDEE9C0047801F /* FirstDropSheet.swift */,
-				29DF934E2ECDFAB60047801F /* LoginIncentiveSheet.swift */,
-				29DF93502ECDFDB90047801F /* LevelupSheet.swift */,
+				29DF933C2EC640860047801F /* GamifiedBottomSheet.swift */,
+				29CBCDA32EC4E5090020FC14 /* GamifiedWaveBackground.swift */,
+				29DF93462ECCCD3B0047801F /* HatchSuggestionSheet.swift */,
 				29DF93522ECE1B9E0047801F /* InsufficientCurrencySheet.swift */,
+				29DF93502ECDFDB90047801F /* LevelupSheet.swift */,
+				29DF934E2ECDFAB60047801F /* LoginIncentiveSheet.swift */,
+				29DF93442ECCC3370047801F /* MountRaisedSheet.swift */,
+				299E6C972F193BFB00F78D2B /* OnboardingCompletedSheet.swift */,
+				29DF93422ECC8A880047801F /* PetHatchedSheet.swift */,
 			);
 			path = Gamified;
 			sourceTree = "<group>";

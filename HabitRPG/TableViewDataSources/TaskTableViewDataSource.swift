@@ -312,8 +312,10 @@ class TaskTableViewDataSource: BaseReactiveTableViewDataSource<TaskProtocol>, Ta
                 tableView?.beginUpdates()
                 let newCell = tableView?.cellForRow(at: indexPath) as? CheckedTableViewCell
                 newCell?.isExpanded = true
+                newCell?.handleChecklist(animate: true)
                 let oldCell = tableView?.cellForRow(at: path) as? CheckedTableViewCell
                 oldCell?.isExpanded = false
+                oldCell?.handleChecklist(animate: true)
                 tableView?.endUpdates()
             }
         }

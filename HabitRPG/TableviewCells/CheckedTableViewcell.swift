@@ -82,7 +82,7 @@ class CheckedTableViewCell: TaskTableViewCell {
             checklistTotalLabel.text = "\(checklistCount)"
             checklistTotalLabel.font = UIFontMetrics.default.scaledSystemFont(ofSize: 12, ofWeight: .medium)
             checklistIndicator.backgroundColor = theme.offsetBackgroundColor
-            checklistIndicator.cornerRadius = UIConstants.miniCornerRadius
+            checklistIndicator.cornerRadius = UIConstants.smallCornerRadius
             if checkedCount == checklistCount {
                 checklistDoneLabel.textColor = theme.quadTextColor
                 checklistTotalLabel.textColor = theme.quadTextColor
@@ -99,13 +99,15 @@ class CheckedTableViewCell: TaskTableViewCell {
             checklistTapArea.isHidden = false
         } else {
             checklistIndicator.isHidden = true
-            checklistDueIndicator.isHidden = true
+            checklistDueAlpha = 0
             checklistTapArea.isHidden = true
         }
         if animate {
             UIView.animate(withDuration: 0.3) {
                 self.checklistDueIndicator.alpha = checklistDueAlpha
             }
+        } else {
+            self.checklistDueIndicator.alpha = checklistDueAlpha
         }
 
         checklistContainer.backgroundColor = .clear
@@ -122,6 +124,7 @@ class CheckedTableViewCell: TaskTableViewCell {
                 }
             } else {
                 checklistContainer.isHidden = false
+                checklistContainer.alpha = 1
             }
         } else {
             if animate {
@@ -247,8 +250,8 @@ class CheckedTableViewCell: TaskTableViewCell {
             checklistContainer.pin.below(of: checkBox).marginTop(10).start().end()
             var containerHeight: CGFloat = 0
             for checkbox in checklistContainer.arrangedSubviews {
-                checkbox.pin.sizeToFit(.width)
-                containerHeight += checkbox.frame.size.height
+                let height = max(50, checkbox.intrinsicContentSize.height)
+                containerHeight += height
             }
             checklistContainer.pin.height(containerHeight)
             mainTaskWrapper.pin.height(checkBox.frame.origin.y + checkBox.frame.size.height + containerHeight + 20)
