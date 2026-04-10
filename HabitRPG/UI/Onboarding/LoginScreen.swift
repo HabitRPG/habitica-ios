@@ -219,8 +219,7 @@ struct LoginForm: View {
         }
         if chosenServer == "custom" {
             LoginTextInput(placeholder: L10n.Login.customUrl,
-                           icon: Image(Asset.pillGryphon.name),
-                           isValid: customUrl.isEmpty ? nil : true,
+                           icon: Image(systemName: "server.rack").foregroundStyle(.purple500),
                            text: $customUrl)
                 .padding(.top, 7)
                 .submitLabel(.next)

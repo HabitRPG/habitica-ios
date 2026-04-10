@@ -58,7 +58,7 @@ public class HabiticaServerConfig {
             let hostname: String?
             
             if #available(iOS 16.0, *) {
-                hostname = customUrl?.host()
+                hostname = customUrl?.host() ?? customUrl?.absoluteString
             } else {
                 hostname = customUrl?.host
             }
