@@ -440,3 +440,4 @@
 "recipient" = "Modtager";
 "not_enough_gems" = "Ikke nok Ædelsten";
 "choose_task" = "Vælg Opgave";
+"not_due" = "ikke på grund af";
