@@ -519,7 +519,7 @@
 "inventory.available_until" = "%@前可购买";
 "one_month" = "一个月";
 "x_months" = "%d个月";
-"unsubscribe_itunes" = "想要更改或取消订阅？你可以从手机设置中进入Apple ID订阅页面，找到编辑或取消订阅的选项。";
+"unsubscribe_itunes" = "想要更改或取消订阅？你可以从设置里的Apple ID订阅页面，找到编辑或取消订阅的选项。取消后，任何剩余的订阅月份将会计入你的结束日期。";
 "open_itunes" = "打开Apple ID Subscriptions";
 "open_app_store" = "打开App Store";
 "unsubscribe_website" = "不想继续订阅了？由于你的支付方式，你只能通过网页版取消订阅。为此，请点击下方按钮，登录你的账号，点击右上方的用户头像，进入订阅部分。取消后，任何剩余的订阅月份将会计入你的结束日期。欢迎下次光临！";
@@ -649,7 +649,7 @@
 "titles.about" = "关于";
 "titles.news" = "新闻";
 "titles.avatar" = "头像";
-"titles.choose_user" = "选择成员";
+"titles.choose_user" = "选择用户";
 "titles.choose_recipient" = "选择收信人";
 "titles.guidelines" = "规范";
 "titles.invite_members" = "邀请成员";
@@ -1514,7 +1514,7 @@
 "next_payment_x" = "下一笔付款 %@";
 "gift_one_get_one_screen_banner" = "在这项促销活动期间，您赠送礼物后将自动获得相应的订阅。";
 "next_switch_in_x" = "下次切换在%@后";
-"party.quest_participant_one" = "1位参与者";
+"party.quest_participant_one" = "1位参加者";
 "change_password_helper" = "密码必须为 8 个字符或以上。更改密码后，您将无法使用任何其他设备以及第三方工具。";
 "api_token_title" = "API Token";
 "api_token_password_description" = "切勿公开泄露。您可能偶尔需提供用户ID，但 绝对禁止在GitHub等公开平台泄露API Token。";
