@@ -519,7 +519,7 @@
 "inventory.available_until" = "%@前可购买";
 "one_month" = "一个月";
 "x_months" = "%d个月";
-"unsubscribe_itunes" = "想要更改或取消订阅？你可以从设置里的Apple ID订阅页面，找到编辑或取消订阅的选项。取消后，任何剩余的订阅月份将会计入你的结束日期。";
+"unsubscribe_itunes" = "想要更改或取消订阅？你可以通过手机设置的Apple ID订阅页面，编辑或取消订阅的选项。取消后，任何剩余的订阅月份将会计入你的结束日期。";
 "open_itunes" = "打开Apple ID Subscriptions";
 "open_app_store" = "打开App Store";
 "unsubscribe_website" = "不想继续订阅了？由于你的支付方式，你只能通过网页版取消订阅。为此，请点击下方按钮，登录你的账号，点击右上方的用户头像，进入订阅部分。取消后，任何剩余的订阅月份将会计入你的结束日期。欢迎下次光临！";
