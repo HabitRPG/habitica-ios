@@ -145,7 +145,7 @@
 /* (No Comment) */
 "settings.change_class" = "更改职业";
 /* (No Comment) */
-"settings.change_class_disclaimer" = "这将重置您当前的职业并退还所有属性点数，然后让您选择一个新职业。";
+"settings.change_class_disclaimer" = "这将重置您当前的职业并退还所有属性点数，然后让您选择一个新职业";
 /* (No Comment) */
 "settings.clear_cache" = "清空缓存";
 /* (No Comment) */
@@ -519,7 +519,7 @@
 "inventory.available_until" = "%@前可购买";
 "one_month" = "一个月";
 "x_months" = "%d个月";
-"unsubscribe_itunes" = "想要更改或取消订阅？你可以通过手机设置的Apple ID订阅页面，编辑或取消订阅的选项。取消后，任何剩余的订阅月份将会计入你的结束日期。";
+"unsubscribe_itunes" = "想要更改或取消订阅？你可以通过手机设置的Apple ID订阅页面，编辑或取消订阅的选项。剩下的月份将会被加到截止日期后。";
 "open_itunes" = "打开Apple ID Subscriptions";
 "open_app_store" = "打开App Store";
 "unsubscribe_website" = "不想继续订阅了？由于你的支付方式，你只能通过网页版取消订阅。为此，请点击下方按钮，登录你的账号，点击右上方的用户头像，进入订阅部分。取消后，任何剩余的订阅月份将会计入你的结束日期。欢迎下次光临！";
@@ -1479,7 +1479,7 @@
 "two_gems_per_month" = "每月宝石获取数量+2";
 "max_gem_cap" = "最大宝石持有数";
 "subscription.stay_motivated_with_more_rewards" = "订阅以获得更多激励奖品";
-"gift_one_get_one_description_date" = "赠一得一活动持续至%@";
+"gift_one_get_one_description_date" = "在%@之前赠予订阅可以获得一份免费订阅";
 "class_change_confirm_description" = "此操作将切换商店中已解锁的装备、变更可用技能，并重置属性点数。";
 "class_change_success_description" = "每升一级即可获得一个属性点，用于强化技能，提升你在Habitica的游戏体验";
 "subscription.thanks_for_subscribing" = "感谢订阅";
@@ -1609,3 +1609,6 @@
 "more_gem_packs" = "更多宝石礼包";
 "boss" = "首领";
 "logins" = "登入次数";
+"x_gems_for_y" = "给%s %d颗宝石";
+"task_health" = "任务血量";
+"habitica_helpers" = "Habitica 贡献者";
