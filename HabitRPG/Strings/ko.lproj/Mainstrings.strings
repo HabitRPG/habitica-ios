@@ -1474,3 +1474,4 @@
 "class_system_unlocked" = "직업 시스템 해금";
 "stable.pets_and_mounts" = "펫과 탈것";
 "boss" = "보스";
+"login.custom_url" = "맞춤형 URL";

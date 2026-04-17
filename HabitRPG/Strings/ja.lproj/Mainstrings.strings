@@ -1668,3 +1668,9 @@
 "item_only_available_for" = "このアイテムは%sだけに発売中です";
 "loading" = "ロード中";
 "boss" = "ボス";
+"login.custom_url" = "カスタムURL";
+"delete_task_confirmation" = "本当にこのタスクを削除してもいいですか？";
+"contributor_tiers_description" = "もし色付きの表示名とアイコンのあるアカウントを見かけたら、それは貢献者段位です！段位はHabiticaで翻訳やコーディングを手伝ってくれた人に与えられます。段位が高いほど、より多くの貢献をしていることになります。";
+"glossary" = "用語集";
+"delete_x" = "%sを削除する";
+"task" = "タスク";
