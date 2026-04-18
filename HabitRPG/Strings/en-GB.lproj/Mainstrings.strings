@@ -367,3 +367,5 @@
 "settings.no_email" = "No E-mail";
 "email" = "E-mail";
 "items.empty.quest_description" = "Get Quests from levelling up, log in bonuses, or the Quest Shop!";
+"tutorials.stats" = "Tap the grey button to allocate lots of your stats at once, or tap the arrows to add them one point at a time.";
+"armoire.rate_food_description" = "You’ll receive one of the ten types of Food. During special events, normal foods will change to their cake or sweet counterparts.";
