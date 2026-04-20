@@ -786,7 +786,7 @@
 "titles.skills" = "Навыки";
 "titles.avatar" = "Аватар";
 "titles.gift_subscription" = "Подписка в подарок";
-"stats.strength_text" = "Увеличивает бонус критических ударов и повышает их вероятность при выполнении заданий. Также увеличивает урон, наносимый боссам.";
+"stats.strength_text" = "Повышает шанс критического удара и урон при выполнении заданий. Также увеличивает урон, наносимый боссам.";
 "tasks.team" = "Команда";
 "tasks.due_today" = "Истекает сегодня";
 "tasks.due_in_x_days" = "Через %d дн";
@@ -821,7 +821,7 @@
 "login.password_confirm_error" = "Пароль и подтверждение пароля должны совпадать.";
 "login.authentication_error" = "Кажется, возникли технические проблемы на сервере. Повторите попытку позже";
 "login.forgot_password" = "Напомнить пароль";
-"groups.error_name_required" = "В приглашении нет текста.";
+"groups.error_name_required" = "Имя не может быть пустым.";
 "gift_recipient_title" = "Послать подарок";
 "gift_recipient_subtitle" = "Введите @ имя получателя";
 "continue" = "Продолжить";
@@ -1609,3 +1609,4 @@
 "boss" = "Босс";
 "mount" = "Скакун";
 "logins" = "Входы";
+"item_only_available_for" = "Этот предмет доступен только для %s";
