@@ -691,3 +691,9 @@
 "resync_task" = "ponownie zsynchronizuj to zadanie";
 "tasks.examples.team_daily_text" = "Aktualizowanie statusu zespołu";
 "menu.gems" = "kupuj klejnoty";
+"game_mechanics" = "Mechaniki Gry";
+"more_help_title" = "Potrzebujesz pomocy?";
+"sale_ends_in" = "Wyprzedaż kończy się %@";
+"more_questions_title" = "Wciąż masz pytanie?";
+"leave_and_delete_task" = "Wyjdź i Usuń Zadanie";
+"support.questions_title" = "Pytania Habitica";
