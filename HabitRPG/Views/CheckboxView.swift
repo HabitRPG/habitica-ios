@@ -101,6 +101,7 @@ class CheckboxView: UIView {
     }
     
     private func setupView() {
+        clipsToBounds = true
         addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(viewTapped)))
         isUserInteractionEnabled = true
         label.numberOfLines = 0
@@ -124,7 +125,7 @@ class CheckboxView: UIView {
         boxFillColor = UIColor(white: theme.isDark ? 0.0 : 1.0, alpha: theme.isDark ? 0.25 : 0.7)
         
         if task.type == "daily" {
-            boxCornerRadius = 3
+            boxCornerRadius = 6
             if checked {
                 backgroundColor = theme.windowBackgroundColor
                 checkColor = theme.dimmedTextColor
@@ -162,9 +163,9 @@ class CheckboxView: UIView {
         layer.setNeedsDisplay()
     }
     
-    func configure(checklistItem: ChecklistItemProtocol, withTitle: Bool, checkColor: UIColor, checkboxColor: UIColor, taskType: String?) {
-        size = 20
-        boxCornerRadius = taskType == TaskType.daily.rawValue ? 4 : (size/2)
+    func configure(checklistItem: ChecklistItemProtocol, withTitle: Bool, taskType: String?) {
+        size = 24
+        boxCornerRadius = taskType == TaskType.daily.rawValue ? 6 : (size/2)
         padding = 10
         checked = checklistItem.completed
         checkView.image = Asset.checkChecklist.image
@@ -177,7 +178,7 @@ class CheckboxView: UIView {
                 self.addSubview(label)
             }
             guard let attributedString = try? Down(markdownString: checklistItem.text?.unicodeEmoji ?? "")
-                    .toHabiticaAttributedString(baseSize: 15, textColor: ThemeService.shared.theme.primaryTextColor) else {
+                .toHabiticaAttributedString(baseSize: 16, baseWeight: .semibold, textColor: ThemeService.shared.theme.primaryTextColor) else {
                     return
             }
             if checked {
@@ -189,11 +190,11 @@ class CheckboxView: UIView {
             }
         }
         let theme = ThemeService.shared.theme
-        label.textColor = checked ? theme.dimmedTextColor : theme.primaryTextColor
-        backgroundColor = UIColor.clear
-        boxFillColor = checkboxColor
+        label.textColor = checked ? theme.quadTextColor : theme.primaryTextColor
+        backgroundColor = .clear
+        boxFillColor = theme.offsetBackgroundColor
         boxBorderColor = nil
-        self.checkColor = checkColor
+        self.checkColor = theme.quadTextColor
         centerCheckbox = false
         borderedBox = true
         checkView.tintColor = self.checkColor

@@ -316,6 +316,8 @@ class RealmUser: BaseModel, UserProtocol {
     var needsCron: Bool = false
     var lastCron: Date?
     var loginIncentives: Int = 0
+    var rebirths: Int = 0
+    var rebirthLevel: Int = 0
 
     var pinnedItemsOrder: [String] {
         get {
@@ -362,5 +364,7 @@ class RealmUser: BaseModel, UserProtocol {
         achievements = user.achievements
         loginIncentives = user.loginIncentives
         pinnedItemsOrder = user.pinnedItemsOrder
+        rebirths = user.rebirths
+        rebirthLevel = user.rebirthLevel
     }
 }

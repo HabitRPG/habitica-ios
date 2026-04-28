@@ -274,20 +274,114 @@ class TaskRepeatablesSummaryInteractor: NSObject {
     }
 
     private func monthlyRepeatOn(_ task: RepeatableTask) -> String? {
-            if task.daysOfMonth.isEmpty == false {
-                var days = [String]()
-                for day in task.daysOfMonth {
-                    days.append(String(day))
-                }
-                return L10n.Tasks.Repeats.monthlyThe(days.joined(separator: ", "))
+        if task.daysOfMonth.isEmpty == false {
+            var days = [String]()
+            let ordinalFormatter = NumberFormatter()
+            ordinalFormatter.numberStyle = .ordinal
+            for day in task.daysOfMonth {
+                days.append(ordinalFormatter.string(from: NSNumber(value: day)) ?? String(day))
             }
-            if task.weeksOfMonth.isEmpty == false {
-                if let startDate = task.startDate {
-                    self.dateFormatter.dateFormat = monthlyFormat
-                    return L10n.Tasks.Repeats.monthlyThe(dateFormatter.string(from: startDate))
+            return L10n.Tasks.Repeats.monthlyThe(days.joined(separator: ", ")) + "."
+        }
+        if task.weeksOfMonth.isEmpty == false {
+            if let startDate = task.startDate {
+                let weekNumber = (task.weeksOfMonth.first ?? 0) + 1
+                let ordinalFormatter = NumberFormatter()
+                ordinalFormatter.numberStyle = .ordinal
+                let ordinal = ordinalFormatter.string(from: NSNumber(value: weekNumber)) ?? "\(weekNumber)"
+
+                let dayFormatter = DateFormatter()
+                dayFormatter.dateFormat = "EEEE"
+                let dayName = dayFormatter.string(from: startDate)
+
+                var result = L10n.Tasks.Repeats.monthlyWeekOf(ordinal, dayName)
+                if task.weeksOfMonth.first == 4 {
+                    result += ". " + L10n.Tasks.Repeats.fifthWeekWarning(dayName)
+                } else {
+                    result += "."
                 }
+                return result
             }
+        }
         return nil
+    }
+
+    // swiftlint:disable:next function_parameter_count
+    func attributedRepeatablesSummary(frequency: String?,
+                                      everyX: Int?,
+                                      monday: Bool?,
+                                      tuesday: Bool?,
+                                      wednesday: Bool?,
+                                      thursday: Bool?,
+                                      friday: Bool?,
+                                      saturday: Bool?,
+                                      sunday: Bool?,
+                                      startDate: Date?,
+                                      daysOfMonth: [Int]?,
+                                      weeksOfMonth: [Int]?) -> AttributedString {
+        let task = RepeatableTask(frequency: frequency,
+                                  everyX: everyX,
+                                  monday: monday,
+                                  tuesday: tuesday,
+                                  wednesday: wednesday,
+                                  thursday: thursday,
+                                  friday: friday,
+                                  saturday: saturday,
+                                  sunday: sunday,
+                                  startDate: startDate,
+                                  daysOfMonth: daysOfMonth,
+                                  weeksOfMonth: weeksOfMonth)
+        return self.attributedRepeatablesSummary(task)
+    }
+
+    func attributedRepeatablesSummary(_ task: RepeatableTask) -> AttributedString {
+        let plainText = repeatablesSummary(task)
+        var result = AttributedString(plainText)
+
+        guard task.frequency == "monthly" else { return result }
+
+        if task.everyX == 1 {
+            let monthlyStr = L10n.Tasks.Repeats.monthly
+            let prefix = "every "
+            if monthlyStr.hasPrefix(prefix) {
+                let nounPart = String(monthlyStr.dropFirst(prefix.count))
+                if let range = result.range(of: nounPart) {
+                    result[range].inlinePresentationIntent = .stronglyEmphasized
+                }
+            }
+        } else if task.everyX > 1 {
+            let boldPart = "\(task.everyX) \(L10n.months)"
+            if let range = result.range(of: boldPart) {
+                result[range].inlinePresentationIntent = .stronglyEmphasized
+            }
+        }
+
+        if !task.daysOfMonth.isEmpty {
+            let ordinalFormatter = NumberFormatter()
+            ordinalFormatter.numberStyle = .ordinal
+            for day in task.daysOfMonth {
+                if let ordinal = ordinalFormatter.string(from: NSNumber(value: day)),
+                   let range = result.range(of: ordinal) {
+                    result[range].inlinePresentationIntent = .stronglyEmphasized
+                }
+            }
+        } else if !task.weeksOfMonth.isEmpty, let startDate = task.startDate {
+            let weekNumber = (task.weeksOfMonth.first ?? 0) + 1
+            let ordinalFormatter = NumberFormatter()
+            ordinalFormatter.numberStyle = .ordinal
+            let ordinal = ordinalFormatter.string(from: NSNumber(value: weekNumber)) ?? "\(weekNumber)"
+
+            let dayFormatter = DateFormatter()
+            dayFormatter.dateFormat = "EEEE"
+            let dayName = dayFormatter.string(from: startDate)
+
+            let boldPart = "\(ordinal) \(dayName)"
+            if let range = result.range(of: boldPart) {
+                result[range].inlinePresentationIntent = .stronglyEmphasized
+            }
+        }
+
+        return result
     }
 
     private func yearlyRepeatOn(_ task: RepeatableTask) -> String? {

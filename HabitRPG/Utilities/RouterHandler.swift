@@ -307,6 +307,12 @@ class RouterHandler {
             self.displayTab(index: 4)
             self.push(StoryboardScene.Main.avatarOverviewViewController.instantiate())
         }
+        register("/avatar/backgrounds") {
+            self.displayTab(index: 4)
+            self.push(StoryboardScene.Main.avatarOverviewViewController.instantiate())
+            let detailController = StoryboardScene.Main.avatarDetailViewController.instantiate()
+            detailController.customizationType = "background"
+        }
         register("/user/onboarding") {
             self.present(StoryboardScene.Main.adventureGuideNavigationViewController.instantiate())
         }
@@ -420,8 +426,13 @@ class RouterHandler {
         }
     }
     
+    private weak var cachedTabBarController: MainTabBarController?
+    
     private var tabbarController: MainTabBarController? {
-        return UIWindow.findViewController()
+        if cachedTabBarController == nil {
+            cachedTabBarController = UIWindow.findViewController()
+        }
+        return cachedTabBarController
     }
     
     private var selectedNavigationController: UINavigationController? {

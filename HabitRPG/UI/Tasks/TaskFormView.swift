@@ -134,11 +134,27 @@ struct TaskFormView: View {
                                                          daysOfMonth: $viewModel.daysOfMonth,
                                                          weeksOfMonth: $viewModel.weeksOfMonth,
                                                          dayOrWeekMonth: $viewModel.dayOrWeekMonth,
-                                                         tintColor: viewModel.taskTintColor
+                                                         tintColor: viewModel.taskTintColor,
+                                                         pickerTintColor: viewModel.pickerTintColor
                                                          ))
         } else if viewModel.taskType == .todo && viewModel.isTaskEditable {
             TaskFormSection(header: Text(L10n.Tasks.Form.scheduling.localizedCapitalized),
                             content: DueDateFormView(date: $viewModel.dueDate))
+        }
+    }
+    
+    @ViewBuilder private var habitCounterSection: some View {
+        if viewModel.up || viewModel.down {
+            TaskFormSection(header: Text(L10n.Tasks.Form.adjustCounter.localizedCapitalized),
+                            content: VStack(spacing: 12) {
+                if viewModel.up {
+                    FormRow(title: Text(L10n.Tasks.Form.positive), valueLabel: PlusMinusStepperView(amount: $viewModel.counterUp, icon: EmptyView(), minAmount: 0), embedValueLabel: false)
+                }
+                if viewModel.down {
+                    FormRow(title: Text(L10n.Tasks.Form.negative), valueLabel: PlusMinusStepperView(amount: $viewModel.counterDown, icon: EmptyView(), minAmount: 0), embedValueLabel: false
+                    )
+                }
+            }, backgroundColor: .clear)
         }
     }
     
@@ -174,28 +190,7 @@ struct TaskFormView: View {
                                 TaskFormSection(header: Text(L10n.Tasks.Form.adjustStreak.localizedCapitalized),
                                                 content: PlusMinusStepperView(amount: $viewModel.streak, icon: EmptyView(), minAmount: 0), backgroundColor: .clear)
                             } else if viewModel.taskType == .habit && viewModel.task?.id != nil {
-                                
-                                TaskFormSection(header: Text(L10n.Tasks.Form.adjustCounter.localizedCapitalized),
-                                                content: VStack {
-                                    FormRow(title: Text(L10n.Tasks.Form.positive), valueLabel: FocusableTextField(
-                                        placeholder: L10n.Tasks.Form.positive,
-                                        text: $viewModel.counterUp,
-                                        isFirstResponder: $isEditingCounterUp,
-                                        configuration: { textField in
-                                            textField.keyboardType = .numberPad
-                                            textField.textAlignment = .right
-                                        }
-                                    ))
-                                    FormRow(title: Text(L10n.Tasks.Form.negative), valueLabel: FocusableTextField(
-                                        placeholder: L10n.Tasks.Form.negative,
-                                        text: $viewModel.counterDown,
-                                        isFirstResponder: $isEditingCounterDown,
-                                        configuration: { textField in
-                                            textField.keyboardType = .numberPad
-                                            textField.textAlignment = .right
-                                        }
-                                    ))
-                                })
+                                habitCounterSection
                             }
                             TaskFormSection(header: Text(L10n.Tasks.Form.tags.localizedCapitalized),
                                             content: TagList(selectedTags: $viewModel.selectedTags, allTags: tags, taskColor: viewModel.taskTintColor))
@@ -395,8 +390,8 @@ class TaskFormController: UIHostingController<TaskFormView> {
         task.attribute = viewModel.stat
         
         task.streak = viewModel.streak
-        task.counterUp = Int(string: viewModel.counterUp) ?? 0
-        task.counterDown = Int(string: viewModel.counterDown) ?? 0
+        task.counterUp = viewModel.counterUp
+        task.counterDown = viewModel.counterDown
         
         task.daysOfMonth = []
         task.weeksOfMonth = []

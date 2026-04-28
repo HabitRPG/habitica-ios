@@ -52,6 +52,23 @@ public class HabiticaServerConfig {
             return HabiticaServerConfig.starfish
         case "turtle":
             return HabiticaServerConfig.turtle
+        case "custom":
+            let customUrl = URL(string: UserDefaults.standard.string(forKey: "customUrl") ?? "")
+            let scheme = customUrl?.scheme ?? "https"
+            let hostname: String?
+            
+            if #available(iOS 16.0, *) {
+                hostname = customUrl?.host() ?? customUrl?.absoluteString
+            } else {
+                hostname = customUrl?.host
+            }
+            
+            var host = hostname ?? ""
+            if let port = customUrl?.port {
+                host = "\(host):\(port)"
+            }
+            
+            return ServerConfiguration(scheme: scheme, host: host, apiRoute: "api/\(Constants.defaultApiVersion)")
         default:
             return HabiticaServerConfig.production
         }

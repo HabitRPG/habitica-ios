@@ -217,7 +217,7 @@ class TaskTableViewCell: UITableViewCell, UITextViewDelegate {
             }
             if !taskDetailLine.isHidden {
                 taskDetailLine.pin.below(of: lastView)
-                    .marginTop(12)
+                    .marginTop(2)
                     .start(to: contentStartEdge)
                     .marginStart(12)
                     .marginEnd(12)

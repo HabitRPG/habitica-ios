@@ -102,8 +102,10 @@ class PartyDetailViewController: GroupDetailViewController {
                 }).combineLatest(with: self?.socialRepository.retrieveGroupInvites(groupID: groupID) ?? Signal.empty) ?? SignalProducer.empty
             }).on(value: {[weak self] (members, invites) in
                 self?.members = members.value
-                self?.invitations = invites ?? []
-                self?.set(members: members.value, invites: invites)
+                if let invites = invites {
+                    self?.invitations = invites
+                }
+                self?.set(members: members.value, invites: self?.invitations)
                 self?.finishedInitialLoad = true
         }).start())
         
@@ -128,8 +130,10 @@ class PartyDetailViewController: GroupDetailViewController {
         super.viewDidAppear(animated)
         if finishedInitialLoad {
             socialRepository.retrieveGroupInvites(groupID: groupID ?? "").observeValues { invites in
-                self.invitations = invites ?? []
-                self.set(members: self.members, invites: invites)
+                if let invites = invites {
+                    self.invitations = invites
+                }
+                self.set(members: self.members, invites: self.invitations)
             }
         }
     }

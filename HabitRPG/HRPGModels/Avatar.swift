@@ -80,7 +80,7 @@ extension Avatar {
             "mount-head": showsMount && isValueValid(mount),
             "zzz": (isSleep && !ignoreSleeping) && !isFainted,
             "knockout": isFainted,
-            "pet": showsPet && isValueValid(pet)
+            "pet": showsPet
         ]
     }
     
@@ -112,7 +112,7 @@ extension Avatar {
             "mount-head": "Mount_Head_\(mount ?? "")",
             "zzz": "zzz",
             "knockout": "knockout",
-            "pet": ImageSubstitutionManager.substituteSprite(name: "Pet-\(pet ?? "")", context: "pets")
+            "pet": ImageSubstitutionManager.substituteSprite(name: pet?.isEmpty == false ? "Pet-\(pet ?? "")" : "", context: "pets")
         ]
     }
 }

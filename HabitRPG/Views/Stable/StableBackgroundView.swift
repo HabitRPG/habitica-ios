@@ -44,7 +44,7 @@ struct StableBackgroundView<Content: View>: View {
         }
     }
     
-    @Environment(\.scenePhase) var scenePhase
+    @State var bounceIsActive: Bool = true
     @State var bounceHeight: CGFloat?
     
     func bounceAnimation(totalHeight: CGFloat) {
@@ -77,9 +77,11 @@ struct StableBackgroundView<Content: View>: View {
         }
         .maxWidth(.infinity)
         .height(124)
-        .task(id: scenePhase) {
-            guard scenePhase == .active else { return }
-            try? await Task.sleep(nanoseconds: 1000000000)
+        .task(id: bounceIsActive) {
+            if !bounceIsActive {
+                return
+            }
+            try? await Task.sleep(for: .seconds(1))
             do {
                 while true {
                     self.bounceAnimation(totalHeight: -24)
@@ -92,6 +94,12 @@ struct StableBackgroundView<Content: View>: View {
             } catch {
                 // task is cancelled
             }
+        }
+        .onReceive(NotificationCenter.default.publisher(for: UIScene.willDeactivateNotification)) { _ in
+            bounceIsActive = false
+        }
+        .onReceive(NotificationCenter.default.publisher(for: UIScene.didActivateNotification)) { _ in
+            bounceIsActive = true
         }
     }
 }

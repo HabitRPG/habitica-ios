@@ -139,6 +139,12 @@ struct LoginForm: View {
     @Binding var repeatPassword: String
     var showLoadingIndicator: Bool
     
+    @AppStorage("chosenServer")
+    var chosenServer: String = "production"
+
+    @AppStorage("customUrl")
+    var customUrl: String = ""
+    
     let onLogin: () -> Void
     let onAppleLogin: () -> Void
     let onGoogleLogin: () -> Void
@@ -209,6 +215,18 @@ struct LoginForm: View {
                 .submitLabel(.continue)
                 .onSubmit {
                     onLogin()
+                }
+        }
+        if chosenServer == "custom" {
+            LoginTextInput(placeholder: L10n.Login.customUrl,
+                           icon: Image(systemName: "server.rack").foregroundStyle(.purple500),
+                           text: $customUrl)
+                .padding(.top, 7)
+                .submitLabel(.next)
+                .keyboardType(.URL)
+                .onChange(of: customUrl) { _ in
+                    let appDelegate = UIApplication.shared.delegate as? HabiticaAppDelegate
+                    appDelegate?.updateServer()
                 }
         }
         if showLoadingIndicator {
@@ -299,9 +317,14 @@ struct LoginScreen: View {
     @ObservedObject var viewModel: LoginViewModel
     @State fileprivate var viewState: LoginViewState
     @State var isShowingForm = false
+    @State var isGryphonTapped = false
+    @State var showCustomServerModal = false
     
     @AppStorage("chosenServer")
     var chosenServer: String = "production"
+
+    @AppStorage("customUrlEnabled")
+    var customUrlEnabled: Bool = false
     
     var body: some View {
         let isSmallDevice = UIApplication.shared.firstKeyWindow?.frame.height ?? 812 < 896
@@ -322,8 +345,26 @@ struct LoginScreen: View {
             .ignoresSafeArea()
             VStack(spacing: 0) {
                 let icon = Image(Asset.loginLogo.name)
+                    .opacity(isGryphonTapped ? 0.5 : 1)
                     .scaleEffect(x: viewState == .initial ? 1.0 : 0.67, y: viewState == .initial ? 1.0 : 0.67)
                     .padding(.top, viewState == .initial ? 65 : 0)
+                    .onTapGesture(count: 8) {
+                        showCustomServerModal = true
+                        customUrlEnabled = true
+                    }
+                    .simultaneousGesture(
+                        DragGesture(minimumDistance: 0)
+                            .onChanged({ _ in
+                                withAnimation {
+                                    isGryphonTapped = true
+                                }
+                            })
+                            .onEnded({ _ in
+                                withAnimation {
+                                    isGryphonTapped = false
+                                }
+                            })
+                    )
                 let scrollView = ScrollView {
                     if viewState == .initial {
                         Text(L10n.Login.tagline)
@@ -430,18 +471,20 @@ struct LoginScreen: View {
                     .transition(.asymmetric(insertion: .push(from: .bottom), removal: .push(from: .top)))
                 }
             }
-            if viewState != .initial {
-                Button {
-                    withAnimation {
-                        viewState = .initial
+            HStack {
+                if viewState != .initial {
+                    Button {
+                        withAnimation {
+                            viewState = .initial
+                        }
+                    } label: {
+                        Image(systemName: "chevron.backward")
+                            .foregroundStyle(.white)
+                            .font(.headline.bold())
+                            .padding()
                     }
-                } label: {
-                    Image(systemName: "chevron.backward")
-                        .foregroundStyle(.white)
-                        .font(.headline.bold())
-                        .padding()
                 }
-            } else {
+                Spacer()
                 if ConfigRepository.shared.testingLevel.isTrustworthy {
                     Picker(selection: $chosenServer) {
                         ForEach(Servers.allServers) { server in
@@ -453,10 +496,32 @@ struct LoginScreen: View {
                             let appDelegate = UIApplication.shared.delegate as? HabiticaAppDelegate
                             appDelegate?.updateServer()
                         }
+                        .alignmentGuide(.trailing)
+                } else if customUrlEnabled {
+                    Picker(selection: $chosenServer) {
+                        Text(Servers.production.niceName).tag(Servers.production.rawValue)
+                        Text(Servers.custom.niceName).tag(Servers.custom.rawValue)
+                    }.pickerStyle(.menu)
+                        .onChange(of: chosenServer) {
+                            let appDelegate = UIApplication.shared.delegate as? HabiticaAppDelegate
+                            appDelegate?.updateServer()
+                        }
+                        .alignmentGuide(.trailing)
                 }
-            }
-
+            }.frame(maxWidth: .infinity)
         }.frame(maxWidth: .infinity, maxHeight: .infinity)
+            .alert("Custom Server enabled", isPresented: $showCustomServerModal) {
+                Button(action: {
+                    showCustomServerModal = false
+                }, label: Text("Continue"))
+                .keyboardShortcut(.defaultAction)
+                Button(action: {
+                    customUrlEnabled = false
+                    showCustomServerModal = false
+                }, label: Text("Disable again"))
+            } message: {
+                Text("This option allows you to specify a custom habitica server URL. This should only be used if you know what you are doing.")
+            }
     }
 }
 
