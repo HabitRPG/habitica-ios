@@ -55,6 +55,10 @@ class NotificationManager {
                 notificationDisplayed = NotificationManager.displayAchievement(notification: notification, isOnboarding: true, isLastOnboardingAchievement: notifications.contains {
                     return $0.type == HabiticaNotificationType.achievementOnboardingComplete
                 })
+            case HabiticaNotificationType.rebirthEnabled:
+                notificationDisplayed = NotificationManager.displayRebirthEnabled(notification: notification)
+            case HabiticaNotificationType.rebirthAchievement:
+                notificationDisplayed = NotificationManager.displayRebirthAchievement(notification: notification)
             case HabiticaNotificationType.loginIncentive:
                 notificationDisplayed = NotificationManager.displayLoginIncentive(notification: notification)
             case HabiticaNotificationType.firstDrop:
@@ -76,7 +80,7 @@ class NotificationManager {
         guard let firstDropNotification = notification as? NotificationFirstDropProtocol else {
             return true
         }
-        userRepository.retrieveUser().observeCompleted {}
+        userRepository.retrieveUser(forced: true).observeCompleted {}
         userRepository.readNotification(notification: notification).observeCompleted {}
         let viewC = HostingBottomSheetController(rootView: FirstDropSheet(eggKey: firstDropNotification.egg ?? "", potionKey: firstDropNotification.hatchingPotion ?? ""), prefersGrabberVisible: false)
         viewC.show()
@@ -101,7 +105,7 @@ class NotificationManager {
             return true
         }
 
-        userRepository.retrieveUser().observeCompleted {}
+        userRepository.retrieveUser(forced: true).observeCompleted {}
         userRepository.readNotification(notification: notification).observeCompleted {}
         
         var key = notification.type.rawValue
@@ -215,13 +219,34 @@ class NotificationManager {
         }
         return true
     }
-    
+
+    static func displayRebirthEnabled(notification: NotificationProtocol) -> Bool {
+        userRepository.retrieveUser(forced: true).observeCompleted {}
+        userRepository.readNotification(notification: notification).observeCompleted {}
+        let viewC = HostingBottomSheetController(rootView: RebirthEnabledSheet(), prefersGrabberVisible: false)
+        viewC.show()
+        return true
+    }
+
+    static func displayRebirthAchievement(notification: NotificationProtocol) -> Bool {
+        userRepository.readNotification(notification: notification).observeCompleted {}
+        userRepository.retrieveUser(forced: true).observeValues { user in
+            DispatchQueue.main.async {
+                let rebirthCount = user?.rebirths ?? 0
+                let rebirthLevel = user?.rebirthLevel ?? 0
+                let viewC = HostingBottomSheetController(rootView: RebirthAchievementSheet(rebirthCount: rebirthCount, rebirthLevel: rebirthLevel), prefersGrabberVisible: false)
+                viewC.show()
+            }
+        }
+        return true
+    }
+
     static func displayLoginIncentive(notification: NotificationProtocol) -> Bool {
         guard let loginIncentiveNotification = notification as? NotificationLoginIncentiveProtocol else {
             return true
         }
         let nextRewardAt = loginIncentiveNotification.nextRewardAt
-        userRepository.retrieveUser().observeValues { user in
+        userRepository.retrieveUser(forced: true).observeValues { user in
             if !loginIncentiveNotification.rewardKey.isEmpty {
                 var nextRewardIn = 0
                 if let loginIncentives = user?.loginIncentives {

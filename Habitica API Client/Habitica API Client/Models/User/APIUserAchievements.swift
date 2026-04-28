@@ -27,7 +27,9 @@ class APIUserAchievements: UserAchievementsProtocol, Decodable {
     var hatchedPet: Bool = false
     var fedPet: Bool = false
     var purchasedEquipment: Bool = false
-    
+    var rebirths: Int = 0
+    var rebirthLevel: Int = 0
+
     enum CodingKeys: String, CodingKey {
         case quests
         case challenges
@@ -37,6 +39,8 @@ class APIUserAchievements: UserAchievementsProtocol, Decodable {
         case hatchedPet
         case fedPet
         case purchasedEquipment
+        case rebirths
+        case rebirthLevel
     }
     
     public required init(from decoder: Decoder) throws {
@@ -47,6 +51,8 @@ class APIUserAchievements: UserAchievementsProtocol, Decodable {
         fedPet = (try? values.decode(Bool.self, forKey: .fedPet)) ?? false
         purchasedEquipment = (try? values.decode(Bool.self, forKey: .purchasedEquipment)) ?? false
         streak = (try? values.decode(Int.self, forKey: .streak)) ?? 0
+        rebirths = (try? values.decode(Int.self, forKey: .rebirths)) ?? 0
+        rebirthLevel = (try? values.decode(Int.self, forKey: .rebirthLevel)) ?? 0
         quests = []
         challenges = []
         var combinedQuests = [QuestAchievement]()

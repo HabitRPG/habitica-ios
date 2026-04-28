@@ -11,7 +11,7 @@ import Foundation
 @objc
 public protocol UserAchievementsProtocol: BaseModelProtocol {
     var isValid: Bool { get }
-    
+
     var quests: [AchievementProtocol] { get set }
     var challenges: [AchievementProtocol] { get set }
     var streak: Int { get set }
@@ -20,6 +20,8 @@ public protocol UserAchievementsProtocol: BaseModelProtocol {
     var hatchedPet: Bool { get set }
     var fedPet: Bool { get set }
     var purchasedEquipment: Bool { get set }
+    var rebirths: Int { get set }
+    var rebirthLevel: Int { get set }
 
 }
 

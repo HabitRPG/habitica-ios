@@ -467,6 +467,9 @@
 		29DF934F2ECDFAB60047801F /* LoginIncentiveSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29DF934E2ECDFAB60047801F /* LoginIncentiveSheet.swift */; };
 		29DF93512ECDFDB90047801F /* LevelupSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29DF93502ECDFDB90047801F /* LevelupSheet.swift */; };
 		29DF93532ECE1B9E0047801F /* InsufficientCurrencySheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29DF93522ECE1B9E0047801F /* InsufficientCurrencySheet.swift */; };
+		066C5326277834A579626B59 /* RebirthEnabledSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFC4D0BB65279CB739EE01A1 /* RebirthEnabledSheet.swift */; };
+		FED442C2846F244654A40CCD /* RebirthAchievementSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BF2BE8A390A17E6EE7EF36B /* RebirthAchievementSheet.swift */; };
+		F922621EC9F65C3F7E546747 /* RebirthConfirmationSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF0201600C523E353B9ABCF2 /* RebirthConfirmationSheet.swift */; };
 		29DF93572ECE26840047801F /* QuestDetailRewardView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 29DF93562ECE26840047801F /* QuestDetailRewardView.xib */; };
 		29DFBEFA2B10AE8E000B554B /* FlagPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29DFBEF92B10AE8E000B554B /* FlagPage.swift */; };
 		29E162E01FFBBDDC00685640 /* UsernameLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29E162DF1FFBBDDC00685640 /* UsernameLabel.swift */; };
@@ -1188,6 +1191,9 @@
 		29DF934E2ECDFAB60047801F /* LoginIncentiveSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginIncentiveSheet.swift; sourceTree = "<group>"; };
 		29DF93502ECDFDB90047801F /* LevelupSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LevelupSheet.swift; sourceTree = "<group>"; };
 		29DF93522ECE1B9E0047801F /* InsufficientCurrencySheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InsufficientCurrencySheet.swift; sourceTree = "<group>"; };
+		FFC4D0BB65279CB739EE01A1 /* RebirthEnabledSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RebirthEnabledSheet.swift; sourceTree = "<group>"; };
+		7BF2BE8A390A17E6EE7EF36B /* RebirthAchievementSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RebirthAchievementSheet.swift; sourceTree = "<group>"; };
+		BF0201600C523E353B9ABCF2 /* RebirthConfirmationSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RebirthConfirmationSheet.swift; sourceTree = "<group>"; };
 		29DF93562ECE26840047801F /* QuestDetailRewardView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = QuestDetailRewardView.xib; sourceTree = "<group>"; };
 		29DFBEF92B10AE8E000B554B /* FlagPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlagPage.swift; sourceTree = "<group>"; };
 		29E162DF1FFBBDDC00685640 /* UsernameLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsernameLabel.swift; sourceTree = "<group>"; };
@@ -2013,6 +2019,9 @@
 				29CBCDA32EC4E5090020FC14 /* GamifiedWaveBackground.swift */,
 				29DF93462ECCCD3B0047801F /* HatchSuggestionSheet.swift */,
 				29DF93522ECE1B9E0047801F /* InsufficientCurrencySheet.swift */,
+				FFC4D0BB65279CB739EE01A1 /* RebirthEnabledSheet.swift */,
+				7BF2BE8A390A17E6EE7EF36B /* RebirthAchievementSheet.swift */,
+				BF0201600C523E353B9ABCF2 /* RebirthConfirmationSheet.swift */,
 				29DF93502ECDFDB90047801F /* LevelupSheet.swift */,
 				29DF934E2ECDFAB60047801F /* LoginIncentiveSheet.swift */,
 				29DF93442ECCC3370047801F /* MountRaisedSheet.swift */,
@@ -3766,6 +3775,9 @@
 				2914486E2085EAD300F3A6B5 /* MountDetailDataSource.swift in Sources */,
 				29CEA822264150CA00101C0A /* UIColor-Contributor.swift in Sources */,
 				29DF934B2ECDE5150047801F /* AchievementReceivedSheet.swift in Sources */,
+				066C5326277834A579626B59 /* RebirthEnabledSheet.swift in Sources */,
+				FED442C2846F244654A40CCD /* RebirthAchievementSheet.swift in Sources */,
+				F922621EC9F65C3F7E546747 /* RebirthConfirmationSheet.swift in Sources */,
 				D9D17CDE1E6AFFD900AD9232 /* ChallengeDetailAlert.swift in Sources */,
 				2914485D2084E6ED00F3A6B5 /* MountOverviewViewController.swift in Sources */,
 				49DCB7C21F40D7F10079FDD0 /* NPCBannerView.swift in Sources */,
