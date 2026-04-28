@@ -125,7 +125,7 @@ class CheckboxView: UIView {
         boxFillColor = UIColor(white: theme.isDark ? 0.0 : 1.0, alpha: theme.isDark ? 0.25 : 0.7)
         
         if task.type == "daily" {
-            boxCornerRadius = 3
+            boxCornerRadius = 6
             if checked {
                 backgroundColor = theme.windowBackgroundColor
                 checkColor = theme.dimmedTextColor
@@ -165,7 +165,7 @@ class CheckboxView: UIView {
     
     func configure(checklistItem: ChecklistItemProtocol, withTitle: Bool, taskType: String?) {
         size = 24
-        boxCornerRadius = taskType == TaskType.daily.rawValue ? 4 : (size/2)
+        boxCornerRadius = taskType == TaskType.daily.rawValue ? 6 : (size/2)
         padding = 10
         checked = checklistItem.completed
         checkView.image = Asset.checkChecklist.image

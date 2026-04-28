@@ -217,9 +217,15 @@ class CheckedTableViewCell: TaskTableViewCell {
         checkBox.pin.start().width(40)
     }
     
+    private func layoutChecklistIndicator() {
+        let lineHeight = checklistTotalLabel.font.lineHeight
+        let charCount = max(checklistTotalLabel.text?.count ?? 0, checklistDoneLabel.text?.count ?? 0)
+        checklistIndicator.pin.height(lineHeight * 2 + 10).vCenter().minWidth(32).width(CGFloat(charCount) * 0.7 * lineHeight + 16).end(12)
+    }
+    
     override func layoutContentEndEdge() {
         if !checklistIndicator.isHidden {
-            checklistIndicator.pin.end(12).width(24)
+            layoutChecklistIndicator()
             contentEndEdge = checklistIndicator.edge.start
         } else {
             contentEndEdge = mainTaskWrapper.edge.end
@@ -231,9 +237,7 @@ class CheckedTableViewCell: TaskTableViewCell {
         super.layout()
         checkBox.pin.start().top().bottom().width(40)
         if !checklistIndicator.isHidden {
-            let lineHeight = checklistTotalLabel.font.lineHeight
-            let charCount = max(checklistTotalLabel.text?.count ?? 0, checklistDoneLabel.text?.count ?? 0)
-            checklistIndicator.pin.height(lineHeight * 2 + 10).vCenter().minWidth(32).width(CGFloat(charCount) * 0.7 * lineHeight + 16).end(12)
+            layoutChecklistIndicator()
             checklistIndicatorSeparator.pin.width(10).height(1).center()
             checklistDoneLabel.pin.above(of: checklistIndicatorSeparator).marginBottom(2).start().end().sizeToFit(.width)
             checklistTotalLabel.pin.below(of: checklistIndicatorSeparator).marginTop(2).start().end().sizeToFit(.width)
