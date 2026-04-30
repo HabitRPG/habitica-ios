@@ -223,6 +223,8 @@ class UserRepository: BaseRepository<UserLocalRepository> {
         
         return call.objectSignal.merge(with: call.responseSignal.map({ _ -> LoginResponseProtocol? in
             return nil
+        })).merge(with: call.errorSignal.map({ _ -> LoginResponseProtocol? in
+            return nil
         }))
             .on(value: { loginResponse in
             self.updateAuth(response: loginResponse)
@@ -301,10 +303,16 @@ class UserRepository: BaseRepository<UserLocalRepository> {
         let defaults = UserDefaults.standard
         let themeMode = defaults.string(forKey: "themeMode")
         let launchScreen = defaults.string(forKey: "initialScreenURL")
+        let customUrlEnabled = defaults.bool(forKey: "customUrlEnabled")
+        let customServerUrl = defaults.string(forKey: "customUrl")
+        let chosenCustomServer = defaults.string(forKey: "chosenServer")
 
         defaults.dictionaryRepresentation().keys.forEach { defaults.removeObject(forKey: $0) }
         defaults.set(themeMode, forKey: "themeMode")
         defaults.set(launchScreen, forKey: "initialScreenURL")
+        defaults.set(customUrlEnabled, forKey: "customUrlEnabled")
+        defaults.set(customServerUrl, forKey: "customUrl")
+        defaults.set(chosenCustomServer, forKey: "chosenServer")
 
         if let userID = userID {
             var hasFinalized = false

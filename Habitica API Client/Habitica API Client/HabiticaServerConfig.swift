@@ -68,6 +68,10 @@ public class HabiticaServerConfig {
                 host = "\(host):\(port)"
             }
             
+            if host.isEmpty {
+                return HabiticaServerConfig.production
+            }
+            
             return ServerConfiguration(scheme: scheme, host: host, apiRoute: "api/\(Constants.defaultApiVersion)")
         default:
             return HabiticaServerConfig.production

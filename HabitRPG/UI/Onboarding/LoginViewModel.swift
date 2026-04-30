@@ -271,8 +271,10 @@ class LoginViewModel: ObservableObject {
     func login() {
         self.showLoadingIndicator = true
         userRepository.login(username: email, password: password)
-            .observeResult { result in
+            .on(event: { _ in
                 self.showLoadingIndicator = false
+            })
+            .observeResult { result in
                 switch result {
                 case .success(let response):
                     self.onSuccessfulLogin(response?.newUser ?? false)
