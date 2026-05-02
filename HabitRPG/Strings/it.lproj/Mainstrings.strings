@@ -360,11 +360,11 @@
 "stats.stat_guide" = "Guida alle statistiche";
 "stats.strength_title" = "Forza";
 "stats.intelligence_title" = "Intelligenza";
-"stats.intelligence_text" = "Aumenta l'EXP guadagnata dalle attività completate. Aumenta anche il mana massimo e la sua velocità di rigenerazione nel tempo.";
+"stats.intelligence_text" = "Aumenta l'Esperienza guadagnata dalle attività completate. Aumenta anche il Mana massimo e la sua velocità di rigenerazione nel tempo.";
 "stats.constitution_title" = "Costituzione";
 "stats.constitution_text" = "Diminuisce la quantità di danno subito dalle tue attività. Non diminuisce il danno subito dai boss.";
 "stats.perception_title" = "Percezione";
-"stats.perception_text" = "Aumenta la probabilità di ottenere oggetti quando si completano le attività, aumenta il numero massimo di oggetti per giorno, i bonus dati dagli streak, e l'oro guadagnato per ogni attività completata.";
+"stats.perception_text" = "Aumenta la probabilità di ottenere oggetti, il numero massimo di oggetti al giorno, i bonus dati dalle serie e l'Oro guadagnato per ogni attività completata.";
 "controls" = "Controlli";
 "tasks.habits" = "Abitudini";
 "tasks.dailies" = "Attività Giornaliere";
