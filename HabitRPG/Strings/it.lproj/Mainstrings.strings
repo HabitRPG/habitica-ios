@@ -1437,7 +1437,7 @@
 "errors.password_length" = "La password deve avere almeno &d caratteri";
 "errors.enter_valid_email" = "Inserisci un indirizzo email valido";
 "errors.password_not_matching" = "Le password devono corrispondere";
-"faint.good_luck_text" = "Ma con l'impegno potrai recuperare tutto! Ti auguro buona fortuna, andrà tutto bene. ";
+"faint.good_luck_text" = "Ma potrai recuperare tutto con un po' d'impegno! Buona fortuna, ce la farai. ";
 "faint.disclaimer" = "L'equipaggiamento rotto può essere riacquistato nel Mercato";
 "armoire.drop_rate" = "Tasso di Bottino dello Scrigno";
 "armoire.equipment" = "Nello Scrigno hai trovato un pezzo di Equipaggiamento raro!";
