@@ -341,7 +341,7 @@
 "titles.guild" = "Gilda";
 "titles.challenges" = "Sfide";
 "titles.shops" = "Negozi";
-"titles.choose_user" = "Scegli un membro";
+"titles.choose_user" = "Scegli un Membro";
 "titles.choose_recipient" = "Scegli Destinatario";
 "titles.feed_pet" = "Dai cibo ad Animale";
 "titles.guidelines" = "Linee guida";
@@ -1248,7 +1248,7 @@
 "settings.next_cron_run" = "Prossimo reset giornaliero: %@";
 "settings.day_start_adjustment" = "Regola inizio giornata";
 "settings.adjustment" = "Regolazione";
-"settings.cleared_cache" = "Cache ripulita";
+"settings.cleared_cache" = "Cache Ripulita";
 "settings.reloaded_content" = "Contenuto ricaricato";
 "settings.change" = "Cambia";
 "settings.add_email" = "Aggiungi Email";
