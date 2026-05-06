@@ -122,7 +122,7 @@ extension AccountSettingsViewController: ASAuthorizationControllerDelegate {
     }
     
     func performAppleLogin(identityToken: String, name: String) {
-        userRepository.loginApple(identityToken: identityToken, name: name, allowRegister: false).observeResult {[weak self] (result) in
+        userRepository.loginApple(identityToken: identityToken, name: name, email: "", allowRegister: false).observeResult {[weak self] (result) in
             switch result {
             case .success:
                 self?.userRepository.retrieveUser().observeCompleted {}
