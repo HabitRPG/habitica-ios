@@ -13,6 +13,7 @@ class APIFlags: FlagsProtocol, Decodable {
     var armoireEmpty: Bool = false
     var cronCount: Int = 0
     var rebirthEnabled: Bool = false
+    var lastFreeRebirth: Date?
     var communityGuidelinesAccepted: Bool = false
     var hasNewStuff: Bool = false
     var armoireOpened: Bool = false
@@ -23,11 +24,12 @@ class APIFlags: FlagsProtocol, Decodable {
     var verifiedUsername: Bool = false
     var tutorials: [TutorialStepProtocol]
     var welcomed: Bool = false
-    
+
     enum CodingKeys: String, CodingKey {
         case armoireEmpty
         case cronCount
         case rebirthEnabled
+        case lastFreeRebirth
         case communityGuidelinesAccepted
         case hasNewStuff = "newStuff"
         case armoireOpened
@@ -45,6 +47,7 @@ class APIFlags: FlagsProtocol, Decodable {
         armoireEmpty = (try? values.decode(Bool.self, forKey: .armoireEmpty)) ?? false
         cronCount = (try? values.decode(Int.self, forKey: .cronCount)) ?? 0
         rebirthEnabled = (try? values.decode(Bool.self, forKey: .rebirthEnabled)) ?? false
+        lastFreeRebirth = try? values.decode(Date.self, forKey: .lastFreeRebirth)
         communityGuidelinesAccepted = (try? values.decode(Bool.self, forKey: .communityGuidelinesAccepted)) ?? false
         hasNewStuff = (try? values.decode(Bool.self, forKey: .hasNewStuff)) ?? false
         armoireOpened = (try? values.decode(Bool.self, forKey: .armoireOpened)) ?? false

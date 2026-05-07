@@ -204,18 +204,19 @@ class SettingsViewController: FormViewController, Themeable {
                 row.hidden = true
                 
                 let customUrlEnabled = UserDefaults.standard.bool(forKey: "customUrlEnabled")
-                if (configRepository.testingLevel.isTrustworthy) {
+                let chosenServer = UserDefaults().string(forKey: "chosenServer")
+                if configRepository.testingLevel.isTrustworthy {
                     row.options = Servers.allServers.map({ (server) -> LabeledFormValue<String> in
                         return LabeledFormValue(value: server.rawValue, label: server.niceName)
                     })
-                } else if (customUrlEnabled) {
+                } else if customUrlEnabled && chosenServer != nil {
                     row.options = [
                         LabeledFormValue(value: Servers.production.rawValue, label: Servers.production.niceName),
                         LabeledFormValue(value: Servers.custom.niceName, label: Servers.custom.niceName)
                     ]
                 }
                 
-                if let server = Servers(rawValue: UserDefaults().string(forKey: "chosenServer") ?? "") {
+                if let server = Servers(rawValue: chosenServer ?? "") {
                     row.value = LabeledFormValue(value: server.rawValue, label: server.niceName)
                 }
                 row.cellUpdate({ (cell, _) in
@@ -893,7 +894,7 @@ class SettingsViewController: FormViewController, Themeable {
             serverRow?.hidden = false
             serverRow?.evaluateHidden()
             
-            if (chosenServer == "custom") {
+            if chosenServer == "custom" {
                 customUrlRow?.hidden = false
                 customUrlRow?.evaluateHidden()
             }

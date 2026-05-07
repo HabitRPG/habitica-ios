@@ -134,11 +134,27 @@ struct TaskFormView: View {
                                                          daysOfMonth: $viewModel.daysOfMonth,
                                                          weeksOfMonth: $viewModel.weeksOfMonth,
                                                          dayOrWeekMonth: $viewModel.dayOrWeekMonth,
-                                                         tintColor: viewModel.taskTintColor
+                                                         tintColor: viewModel.taskTintColor,
+                                                         pickerTintColor: viewModel.pickerTintColor
                                                          ))
         } else if viewModel.taskType == .todo && viewModel.isTaskEditable {
             TaskFormSection(header: Text(L10n.Tasks.Form.scheduling.localizedCapitalized),
                             content: DueDateFormView(date: $viewModel.dueDate))
+        }
+    }
+    
+    @ViewBuilder private var habitCounterSection: some View {
+        if viewModel.up || viewModel.down {
+            TaskFormSection(header: Text(L10n.Tasks.Form.adjustCounter.localizedCapitalized),
+                            content: VStack(spacing: 12) {
+                if viewModel.up {
+                    FormRow(title: Text(L10n.Tasks.Form.positive), valueLabel: PlusMinusStepperView(amount: $viewModel.counterUp, icon: EmptyView(), minAmount: 0), embedValueLabel: false)
+                }
+                if viewModel.down {
+                    FormRow(title: Text(L10n.Tasks.Form.negative), valueLabel: PlusMinusStepperView(amount: $viewModel.counterDown, icon: EmptyView(), minAmount: 0), embedValueLabel: false
+                    )
+                }
+            }, backgroundColor: .clear)
         }
     }
     
@@ -174,28 +190,7 @@ struct TaskFormView: View {
                                 TaskFormSection(header: Text(L10n.Tasks.Form.adjustStreak.localizedCapitalized),
                                                 content: PlusMinusStepperView(amount: $viewModel.streak, icon: EmptyView(), minAmount: 0), backgroundColor: .clear)
                             } else if viewModel.taskType == .habit && viewModel.task?.id != nil {
-                                
-                                TaskFormSection(header: Text(L10n.Tasks.Form.adjustCounter.localizedCapitalized),
-                                                content: VStack {
-                                    FormRow(title: Text(L10n.Tasks.Form.positive), valueLabel: FocusableTextField(
-                                        placeholder: L10n.Tasks.Form.positive,
-                                        text: $viewModel.counterUp,
-                                        isFirstResponder: $isEditingCounterUp,
-                                        configuration: { textField in
-                                            textField.keyboardType = .numberPad
-                                            textField.textAlignment = .right
-                                        }
-                                    ))
-                                    FormRow(title: Text(L10n.Tasks.Form.negative), valueLabel: FocusableTextField(
-                                        placeholder: L10n.Tasks.Form.negative,
-                                        text: $viewModel.counterDown,
-                                        isFirstResponder: $isEditingCounterDown,
-                                        configuration: { textField in
-                                            textField.keyboardType = .numberPad
-                                            textField.textAlignment = .right
-                                        }
-                                    ))
-                                })
+                                habitCounterSection
                             }
                             TaskFormSection(header: Text(L10n.Tasks.Form.tags.localizedCapitalized),
                                             content: TagList(selectedTags: $viewModel.selectedTags, allTags: tags, taskColor: viewModel.taskTintColor))
@@ -395,25 +390,38 @@ class TaskFormController: UIHostingController<TaskFormView> {
         task.attribute = viewModel.stat
         
         task.streak = viewModel.streak
-        task.counterUp = Int(string: viewModel.counterUp) ?? 0
-        task.counterDown = Int(string: viewModel.counterDown) ?? 0
+        task.counterUp = viewModel.counterUp
+        task.counterDown = viewModel.counterDown
         
-        task.weekRepeat?.monday = viewModel.monday
-        task.weekRepeat?.tuesday = viewModel.tuesday
-        task.weekRepeat?.wednesday = viewModel.wednesday
-        task.weekRepeat?.thursday = viewModel.thursday
-        task.weekRepeat?.friday = viewModel.friday
-        task.weekRepeat?.saturday = viewModel.saturday
-        task.weekRepeat?.sunday = viewModel.sunday
         task.daysOfMonth = []
         task.weeksOfMonth = []
-        
-        if let startDate = task.startDate {
+
+        if let startDate = task.startDate, viewModel.frequency == "monthly" {
             if viewModel.dayOrWeekMonth == "week" {
-                task.weeksOfMonth.append(Calendar.current.component(.weekOfMonth, from: startDate)-1)
+                let day = Calendar.current.component(.day, from: startDate)
+                let weekIndex = (day - 1) / 7
+                task.weeksOfMonth.append(weekIndex)
+
+                let dayOfWeek = Calendar.current.component(.weekday, from: startDate)
+                task.weekRepeat?.monday = (dayOfWeek == 2)
+                task.weekRepeat?.tuesday = (dayOfWeek == 3)
+                task.weekRepeat?.wednesday = (dayOfWeek == 4)
+                task.weekRepeat?.thursday = (dayOfWeek == 5)
+                task.weekRepeat?.friday = (dayOfWeek == 6)
+                task.weekRepeat?.saturday = (dayOfWeek == 7)
+                task.weekRepeat?.sunday = (dayOfWeek == 1)
             } else {
                 task.daysOfMonth.append(Calendar.current.component(.day, from: startDate))
             }
+        }
+        if !(viewModel.frequency == "monthly" && viewModel.dayOrWeekMonth == "week") {
+            task.weekRepeat?.monday = viewModel.monday
+            task.weekRepeat?.tuesday = viewModel.tuesday
+            task.weekRepeat?.wednesday = viewModel.wednesday
+            task.weekRepeat?.thursday = viewModel.thursday
+            task.weekRepeat?.friday = viewModel.friday
+            task.weekRepeat?.saturday = viewModel.saturday
+            task.weekRepeat?.sunday = viewModel.sunday
         }
         
         task.checklist = viewModel.checklistItems

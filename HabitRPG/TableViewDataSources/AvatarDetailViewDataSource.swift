@@ -219,7 +219,6 @@ class AvatarDetailViewDataSource: BaseReactiveCollectionViewDataSource<Customiza
     }
     
     override func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
-        
         let view = super.collectionView(collectionView, viewForSupplementaryElementOfKind: kind, at: indexPath)
         let section = sections[indexPath.section]
         

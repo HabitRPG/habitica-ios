@@ -181,6 +181,12 @@ class LoginViewModel: ObservableObject {
                 self?.showLoadingIndicator = false
                 self?.acceptedTerms = false
                 self?.repeatPassword = ""
+                
+                let defaults = UserDefaults.standard
+                if defaults.string(forKey: "chosenServer") == "production" {
+                    defaults.removeObject(forKey: "customUrl")
+                    defaults.set(false, forKey: "customUrlEnabled")
+                }
         }
     }
     

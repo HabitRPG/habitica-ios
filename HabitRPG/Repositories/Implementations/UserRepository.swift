@@ -512,7 +512,19 @@ class UserRepository: BaseRepository<UserLocalRepository> {
             return self?.retrieveUser() ?? Signal.empty
         })
     }
-    
+
+    func rebirth() -> Signal<UserProtocol?, Never> {
+        return RebirthCall().objectSignal
+            .on(value: {[weak self] user in
+                if let user = user {
+                    self?.localRepository.save(user)
+                }
+            })
+            .flatMap(.latest, {[weak self] (_) in
+            return self?.retrieveUser(forced: true) ?? Signal.empty
+        })
+    }
+
     func sendPasswordResetEmail(email: String) -> Signal<EmptyResponseProtocol?, Never> {
         return SendPasswordResetEmailCall(email: email).objectSignal
     }

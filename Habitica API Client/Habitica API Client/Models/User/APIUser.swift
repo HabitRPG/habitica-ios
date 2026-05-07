@@ -38,7 +38,9 @@ public class APIUser: UserProtocol, Decodable {
     public var achievements: UserAchievementsProtocol?
     public var loginIncentives: Int
     public var pinnedItemsOrder: [String]
-    
+    public var rebirths: Int
+    public var rebirthLevel: Int
+
     enum CodingKeys: String, CodingKey {
         case id
         case stats
@@ -65,6 +67,8 @@ public class APIUser: UserProtocol, Decodable {
         case achievements
         case loginIncentives
         case pinnedItemsOrder
+        case rebirths
+        case rebirthLevel
     }
     
     public required init(from decoder: Decoder) throws {
@@ -109,5 +113,7 @@ public class APIUser: UserProtocol, Decodable {
         achievements = try? values.decode(APIUserAchievements.self, forKey: .achievements)
         loginIncentives = (try? values.decode(Int.self, forKey: .loginIncentives)) ?? 0
         pinnedItemsOrder = (try? values.decode([String].self, forKey: .pinnedItemsOrder)) ?? []
+        rebirths = achievements?.rebirths ?? 0
+        rebirthLevel = achievements?.rebirthLevel ?? 0
     }
 }

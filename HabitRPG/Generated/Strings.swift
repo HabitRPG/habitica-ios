@@ -768,7 +768,7 @@ public enum L10n {
   public static var monthlyBackgrounds: String { return L10n.tr("Mainstrings", "monthly_backgrounds") }
   /// Monthly Gem Cap Reached
   public static var monthlyGemCapReached: String { return L10n.tr("Mainstrings", "monthly_gem_cap_reached") }
-  /// months
+  /// Months
   public static var months: String { return L10n.tr("Mainstrings", "months") }
   /// More Gem packs
   public static var moreGemPacks: String { return L10n.tr("Mainstrings", "more_gem_packs") }
@@ -902,7 +902,7 @@ public enum L10n {
   public static var oneMonth: String { return L10n.tr("Mainstrings", "one_month") }
   /// You've found 1 quest item
   public static var oneQuestItemFound: String { return L10n.tr("Mainstrings", "one_quest_item_found") }
-  /// Onwards
+  /// Onwards!
   public static var onwards: String { return L10n.tr("Mainstrings", "onwards") }
   /// Open
   public static var `open`: String { return L10n.tr("Mainstrings", "open") }
@@ -2285,6 +2285,8 @@ public enum L10n {
     public static var continueWithEmail: String { return L10n.tr("Mainstrings", "login.continue_with_email") }
     /// Continue with Google
     public static var continueWithGoogle: String { return L10n.tr("Mainstrings", "login.continue_with_google") }
+    /// Custom URL
+    public static var customUrl: String { return L10n.tr("Mainstrings", "login.custom_url") }
     /// Please enter a valid email.
     public static var emailInvalid: String { return L10n.tr("Mainstrings", "login.email_invalid") }
     /// Email a Password Reset Link
@@ -2819,6 +2821,20 @@ public enum L10n {
     public static var customizationNotes: String { return L10n.tr("Mainstrings", "shops.customization_notes") }
     /// customizing your avatar
     public static var customizingYourAvatar: String { return L10n.tr("Mainstrings", "shops.customizing_your_avatar") }
+    /// %d days until FREE Orb of Rebirth
+    public static func daysUntilFreeRebirth(_ p1: Int) -> String {
+      return L10n.tr("Mainstrings", "shops.daysUntilFreeRebirth", p1)
+    }
+    /// %d day until FREE Orb of Rebirth
+    public static func dayUntilFreeRebirth(_ p1: Int) -> String {
+      return L10n.tr("Mainstrings", "shops.dayUntilFreeRebirth", p1)
+    }
+    /// FREE Orb of Rebirth at level 100
+    public static var freeRebirthAtLevel100: String { return L10n.tr("Mainstrings", "shops.freeRebirthAtLevel100") }
+    /// Go Back
+    public static var goBack: String { return L10n.tr("Mainstrings", "shops.goBack") }
+    /// Go to Market
+    public static var goToMarket: String { return L10n.tr("Mainstrings", "shops.goToMarket") }
     /// You can only purchase gear for your current class
     public static var otherClassDisclaimer: String { return L10n.tr("Mainstrings", "shops.other_class_disclaimer") }
     /// You own all of these items
@@ -2833,6 +2849,56 @@ public enum L10n {
     public static func purchasedAllGearTitle(_ p1: String) -> String {
       return L10n.tr("Mainstrings", "shops.purchased_all_gear_title", p1)
     }
+    /// You've begun a new adventure! This is Rebirth %d for you, and the highest Level you've attained is %d.
+    public static func rebirthAchievementDescription(_ p1: Int, _ p2: Int) -> String {
+      return L10n.tr("Mainstrings", "shops.rebirthAchievementDescription", p1, p2)
+    }
+    /// You've begun a new adventure! This is Rebirth %d for you, and the highest Level you've attained is %d or higher.
+    public static func rebirthAchievementDescriptionMax(_ p1: Int, _ p2: Int) -> String {
+      return L10n.tr("Mainstrings", "shops.rebirthAchievementDescriptionMax", p1, p2)
+    }
+    /// You've Been Reborn!
+    public static var rebirthAchievementTitle: String { return L10n.tr("Mainstrings", "shops.rebirthAchievementTitle") }
+    /// Restart (FREE)
+    public static var rebirthConfirmFree: String { return L10n.tr("Mainstrings", "shops.rebirthConfirmFree") }
+    /// Restart (%d Gems)
+    public static func rebirthConfirmGems(_ p1: Int) -> String {
+      return L10n.tr("Mainstrings", "shops.rebirthConfirmGems", p1)
+    }
+    /// You will keep:
+    public static var rebirthConfirmKeepHeader: String { return L10n.tr("Mainstrings", "shops.rebirthConfirmKeepHeader") }
+    /// Your task list
+    public static var rebirthConfirmKeepItem1: String { return L10n.tr("Mainstrings", "shops.rebirthConfirmKeepItem1") }
+    /// All Equipment, Pets, and Mounts
+    public static var rebirthConfirmKeepItem2: String { return L10n.tr("Mainstrings", "shops.rebirthConfirmKeepItem2") }
+    /// Your Achievements
+    public static var rebirthConfirmKeepItem3: String { return L10n.tr("Mainstrings", "shops.rebirthConfirmKeepItem3") }
+    /// Your Party and Challenges
+    public static var rebirthConfirmKeepItem4: String { return L10n.tr("Mainstrings", "shops.rebirthConfirmKeepItem4") }
+    /// Are you sure you want to use the Orb of Rebirth?\n\nYou will:\n• Return to Level 1 as a Warrior\n• Reset all your stats and skill points\n• Lose all your gold and mana\n• Reset all task values and streaks\n\nYou will keep:\n• All your equipment, pets, and mounts\n• All your achievements\n• Your guild, party, and challenge memberships
+    public static var rebirthConfirmMessage: String { return L10n.tr("Mainstrings", "shops.rebirthConfirmMessage") }
+    /// You will reset:
+    public static var rebirthConfirmResetHeader: String { return L10n.tr("Mainstrings", "shops.rebirthConfirmResetHeader") }
+    /// Your levels and class
+    public static var rebirthConfirmResetItem1: String { return L10n.tr("Mainstrings", "shops.rebirthConfirmResetItem1") }
+    /// All your Stat points
+    public static var rebirthConfirmResetItem2: String { return L10n.tr("Mainstrings", "shops.rebirthConfirmResetItem2") }
+    /// All your Gold and Mana
+    public static var rebirthConfirmResetItem3: String { return L10n.tr("Mainstrings", "shops.rebirthConfirmResetItem3") }
+    /// All task values and streaks
+    public static var rebirthConfirmResetItem4: String { return L10n.tr("Mainstrings", "shops.rebirthConfirmResetItem4") }
+    /// Are you sure you want to use the Orb of Rebirth?
+    public static var rebirthConfirmTitle: String { return L10n.tr("Mainstrings", "shops.rebirthConfirmTitle") }
+    /// Use the Orb of Rebirth to breathe new life into your Habitica adventure once you feel you've achieved it all! Begin again at level 1 while keeping your tasks, Achievements, and Pets with this special item found in the Market.
+    public static var rebirthEnabledDescription: String { return L10n.tr("Mainstrings", "shops.rebirthEnabledDescription") }
+    /// A new adventure is available!
+    public static var rebirthEnabledSubtitle: String { return L10n.tr("Mainstrings", "shops.rebirthEnabledSubtitle") }
+    /// Orb of Rebirth Unlocked
+    public static var rebirthEnabledTitle: String { return L10n.tr("Mainstrings", "shops.rebirthEnabledTitle") }
+    /// Orb of Rebirth
+    public static var rebirthShop: String { return L10n.tr("Mainstrings", "shops.rebirthShop") }
+    /// Instantly restart your adventure as a level 1 Warrior while retaining Achievements, Items, and Equipment. Your tasks will reset to yellow but will retain their history. All personal task streaks will reset. Your Gold, Experience, Mana, and the effects of all Skills will be removed.
+    public static var rebirthShopDescription: String { return L10n.tr("Mainstrings", "shops.rebirthShopDescription") }
     /// You can try them on by customizing your avatar.
     public static var tryOnCustomizeAvatar: String { return L10n.tr("Mainstrings", "shops.try_on_customize_avatar") }
     /// You can try them on by customizing your avatar. Be sure to check back later for next month’s options!
@@ -2841,6 +2907,8 @@ public enum L10n {
     public static var tryOnCustomizeAvatarReturnNextSeason: String { return L10n.tr("Mainstrings", "shops.try_on_customize_avatar_return_next_season") }
     /// You can try them on from Equipment. New stock comes in at the beginning of each month!
     public static var tryOnEquipment: String { return L10n.tr("Mainstrings", "shops.try_on_equipment") }
+    /// Use Orb Of Rebirth
+    public static var useOrbOfRebirth: String { return L10n.tr("Mainstrings", "shops.useOrbOfRebirth") }
   }
 
   public enum Skills {
@@ -3346,11 +3414,19 @@ public enum L10n {
       public static var daily: String { return L10n.tr("Mainstrings", "tasks.repeats.daily") }
       /// every day
       public static var everyDay: String { return L10n.tr("Mainstrings", "tasks.repeats.every_day") }
-      /// monthly
+      /// This task will not appear due during months with less %@s.
+      public static func fifthWeekWarning(_ p1: String) -> String {
+        return L10n.tr("Mainstrings", "tasks.repeats.fifth_week_warning", p1)
+      }
+      /// every Month
       public static var monthly: String { return L10n.tr("Mainstrings", "tasks.repeats.monthly") }
       /// the %@
       public static func monthlyThe(_ p1: String) -> String {
         return L10n.tr("Mainstrings", "tasks.repeats.monthly_the", p1)
+      }
+      /// the %1$@ %2$@ of the month
+      public static func monthlyWeekOf(_ p1: String, _ p2: String) -> String {
+        return L10n.tr("Mainstrings", "tasks.repeats.monthly_week_of", p1, p2)
       }
       /// Repeats %@
       public static func repeatsEvery(_ p1: String) -> String {

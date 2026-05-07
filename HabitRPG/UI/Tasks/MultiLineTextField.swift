@@ -48,7 +48,7 @@ private struct UITextViewWrapper: UIViewRepresentable {
     @State private var wasAssignedResponder = false
     
     func updateUIView(_ uiView: UITextView, context: UIViewRepresentableContext<UITextViewWrapper>) {
-        if uiView.text != self.text {
+        if uiView.markedTextRange == nil && uiView.text != self.text {
             uiView.text = self.text
         }
         if giveInitialResponder && uiView.isFirstResponder && !wasAssignedResponder {
@@ -86,7 +86,9 @@ private struct UITextViewWrapper: UIViewRepresentable {
         }
 
         func textViewDidChange(_ uiView: UITextView) {
-            text.wrappedValue = uiView.text
+            if uiView.markedTextRange == nil {
+                text.wrappedValue = uiView.text
+            }
             UITextViewWrapper.recalculateHeight(view: uiView, result: calculatedHeight)
         }
         

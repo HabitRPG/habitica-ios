@@ -41,10 +41,14 @@ class StableOverviewCell: UICollectionViewCell {
             textLabel?.numberOfLines = 2
             countLabel?.isHidden = true
             countLabelHeightConstraint.constant = 0
+            var substitutedName = ImageSubstitutionManager.substituteSprite(name: item.imageName.replacingOccurrences(of: "stable_", with: ""), context: "pets")
+            if !substitutedName.starts(with: "stable_") {
+                substitutedName = "stable_\(substitutedName)"
+            }
             if item.numberOwned != 0 {
-                imageView.setImagewith(name: item.imageName)
+                imageView.setImagewith(name: substitutedName)
             } else {
-                imageView.setImagewith(name: "\(item.imageName)-outline")
+                imageView.setImagewith(name: "\(substitutedName)-outline")
             }
         } else {
             textLabel?.numberOfLines = 1

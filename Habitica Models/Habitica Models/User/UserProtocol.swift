@@ -17,7 +17,7 @@ public enum HabiticaClass: String {
 
 @objc
 public protocol UserProtocol: AvatarProtocol {
-    
+
     var id: String? { get set }
     var flags: FlagsProtocol? { get set }
     var profile: ProfileProtocol? { get set }
@@ -40,6 +40,8 @@ public protocol UserProtocol: AvatarProtocol {
     var achievements: UserAchievementsProtocol? { get set }
     var loginIncentives: Int { get set }
     var pinnedItemsOrder: [String] { get set }
+    var rebirths: Int { get set }
+    var rebirthLevel: Int { get set }
 }
 
 public extension UserProtocol {

@@ -28,9 +28,19 @@ class HRPGShopSectionHeaderCollectionReusableView: UICollectionReusableView {
     @IBOutlet weak var changeClassSubtitle: UILabel!
     @IBOutlet weak var changeClassPriceLabel: CurrencyCountView!
     
+    lazy var notesLabel: UILabel = {
+        let label = UILabel()
+        label.font = UIFontMetrics.default.scaledFont(for: .systemFont(ofSize: 13, weight: .semibold))
+        label.textColor = .yellow1
+        label.textAlignment = .center
+        label.numberOfLines = 0
+        addSubview(label)
+        return label
+    }()
+
     var newClassName: String?
     var onClassChange: (() -> Void)?
-    
+
     override func awakeFromNib() {
         super.awakeFromNib()
         titleLabel.textColor = .white
@@ -158,6 +168,10 @@ class HRPGShopSectionHeaderCollectionReusableView: UICollectionReusableView {
 
         if !changeClassWrapper.isHidden {
             changeClassWrapper.pin.below(of: otherClassDisclaimer).marginTop(6).start(horizontalPadding).end(horizontalPaddingEnd).height(60)
+        }
+
+        if !notesLabel.isHidden, notesLabel.text?.isEmpty == false {
+            notesLabel.pin.below(of: backgroundView).marginTop(8).start(horizontalPadding).end(horizontalPaddingEnd).sizeToFit(.width)
         }
     }
 }

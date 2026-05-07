@@ -65,7 +65,11 @@ class CustomizationDetailCell: UICollectionViewCell {
     
     private func applyTheme() {
         let theme = ThemeService.shared.theme
-        backgroundColor = theme.windowBackgroundColor
+        if theme.isDark {
+            backgroundColor = .gray50
+        } else {
+            backgroundColor = theme.windowBackgroundColor
+        }
         currencyView.backgroundColor = theme.offsetBackgroundColor
         borderColor = theme.tintColor
     }

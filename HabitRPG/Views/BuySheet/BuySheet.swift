@@ -230,6 +230,10 @@ struct BuySheet: View, Dismissable {
                 BuyBanner(color: Color(ThemeService.shared.theme.offsetBackgroundColor),
                           content: Text(viewModel.item.lockedReason ?? viewModel.item.shortLockedReason ?? L10n.itemIsLocked).foregroundStyle(Color(ThemeService.shared.theme.secondaryTextColor)))
             }
+            if let rebirthBanner = viewModel.rebirthBannerText {
+                BuyBanner(color: (isDarkTheme ? Color.yellow500 : .yellow100).opacity(0.4),
+                          content: Text(rebirthBanner).foregroundStyle(isDarkTheme ? Color.yellow500 : Color.yellow1))
+            }
             if viewModel.item.key == "gem" {
                 let total = viewModel.user?.purchased?.subscriptionPlan?.gemCapTotal ?? 0
                 if total > 0 && viewModel.user?.isSubscribed == true {

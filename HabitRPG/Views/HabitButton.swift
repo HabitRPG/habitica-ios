@@ -55,6 +55,8 @@ class HabitButton: UIView {
     }
     
     func configure(task: TaskProtocol, isNegative: Bool, isLocked: Bool = false) {
+        interactionOverlay.layer.removeAllAnimations()
+        interactionOverlay.alpha = 0
         isActive = isNegative ? task.down : task.up
         self.isLocked = isLocked
         let theme = ThemeService.shared.theme
