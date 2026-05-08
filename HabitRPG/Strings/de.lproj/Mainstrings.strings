@@ -1723,3 +1723,7 @@
 "fcv_streak_explanation" = "Du kannst Strähnen einzelner Aufgaben wiederherstellen, in dem du sie antippst um die Bearbeitungsansicht zu öffnen";
 "checkin_prize_set_description" = "Du hast dir ein Set von %s verdient, weil entschieden bist dein Leben zu verbessern";
 "next_prize_in_1_checkin" = "Nächster Preis in 1 Tag!";
+"login.custom_url" = "brauch URL";
+"boss" = "Schurke";
+"tasks.repeats.monthly_week_of" = "das %1$@%2$@ das monats";
+"tasks.repeats.fifth_week_warning" = "diese aufgabe werd nicht erscheinen falling während monats mit nicht weigner %@s.";
