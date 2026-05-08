@@ -66,15 +66,17 @@ public class AuthenticatedCall: JsonNetworkCall {
     }
     
     public static override func jsonHeaders() -> [String: String] {
-            var headers = super.jsonHeaders()
-            if let apiKey = NetworkAuthenticationManager.shared.currentUserKey, let userId = NetworkAuthenticationManager.shared.currentUserId {
-                headers[AuthenticatedCall.apiKeyHeader] = apiKey
-                headers[AuthenticatedCall.apiUserIdHeader] = userId
-            }
-            headers[AuthenticatedCall.clientHeader] = "habitica-ios"
-            headers["Authorization"] = "Basic YWRtaW46QUJtaWV2dk5QUzdRUW1PUQ=="
-            return headers
-        
+        var headers = super.jsonHeaders()
+        if let apiKey = NetworkAuthenticationManager.shared.currentUserKey, let userId = NetworkAuthenticationManager.shared.currentUserId {
+            headers[AuthenticatedCall.apiKeyHeader] = apiKey
+            headers[AuthenticatedCall.apiUserIdHeader] = userId
+        }
+        headers[AuthenticatedCall.clientHeader] = "habitica-ios"
+    
+        if let hash = HabiticaServerConfig.authHash {
+            headers["Authorization"] = "Basic \(hash)"
+        }
+        return headers
     }
     
     public override func fire() {

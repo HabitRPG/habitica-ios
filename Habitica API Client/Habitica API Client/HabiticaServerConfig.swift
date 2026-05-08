@@ -32,6 +32,8 @@ public class HabiticaServerConfig {
     
     public static var stubs = [String: CallStub]()
     
+    public static var authHash: String?
+    
     public static func from(_ configName: String) -> ServerConfiguration {
         switch configName {
         case "staging":
