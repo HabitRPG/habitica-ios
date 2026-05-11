@@ -46,6 +46,7 @@ class LoginViewModel: ObservableObject {
     private let userRepository = UserRepository()
     
     @Published var username: String = ""
+    @Published var debouncedUsername: String = ""
     @Published var email: String = ""
     @Published var password: String = ""
     @Published var repeatPassword: String = ""
@@ -64,6 +65,11 @@ class LoginViewModel: ObservableObject {
         )
     }
     @Published var needsEmailField: Bool = false
+    
+    init() {
+        $username.debounce(for: 1, scheduler: DispatchQueue.main)
+                    .assign(to: &$debouncedUsername)
+    }
 
     private let googleLoginButtonPressedProperty = MutableProperty(())
     func googleLoginButtonPressed() {
