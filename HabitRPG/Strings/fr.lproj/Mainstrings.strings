@@ -1677,7 +1677,7 @@
 "tasks.repeats.monthly_week_of" = "le %1$@ %2$@ du mois";
 "tasks.repeats.fifth_week_warning" = "Cette tâche n'apparaîtra pas comme \"à faire\" durant les mois comptant moins de %@s.";
 "shops.rebirthShop" = "Orbe de Renaissance";
-"shops.rebirthConfirmTitle" = "Êtes-vous sûre de vouloir utiliser l'Orbe de Renaissance ?";
+"shops.rebirthConfirmTitle" = "Vous-vous vraiment utiliser l'Orbe de Renaissance ?";
 "shops.rebirthConfirmFree" = "Redémarrer (GRATUIT)";
 "shops.rebirthConfirmGems" = "Redémarrer (%d Gemmes)";
 "shops.rebirthEnabledTitle" = "Orbe de Renaissance Débloquée";
@@ -1698,3 +1698,9 @@
 "shops.rebirthConfirmKeepItem2" = "Tous vos Équipements, Familiers, et Montures";
 "shops.rebirthConfirmKeepItem3" = "Vos Succès";
 "shops.rebirthConfirmKeepItem4" = "Votre Équipe et Défis";
+"shops.rebirthConfirmMessage" = "Êtes-vous sûre de vouloir utiliser l'Orbe de Renaissance ?\n\nVous allez :\n• Redevenir Guerri·er·ère Niveau 1\n• Réinitialiser tous vos attributs et points de compétence\n• Perdre tout votre or et votre mana\n• Réinitialiser la couleur et les combos de vos tâches\n\nVos conserverez :\n• Tout votre équipement, vos familiers et vos montures\n• Tous vos succès\n• Votre équipe, groupe, et inscription(s) au(x) défi(s)";
+"shops.rebirthEnabledDescription" = "Utilisez l'Orbe de Renaissance pour instaurer un nouveau souffle dans votre aventure Habitica quand vous aurez la sensation d'avoir tout accompli ! Recommencez au niveau 1 sans perdre vos tâches, Succès, et Familiers avec cet objet spécial que vous trouverez au Marché.";
+"shops.rebirthAchievementTitle" = "Vous avez été Réincarné·e !";
+"shops.rebirthAchievementDescription" = "Vous avez commencé une nouvelle aventure ! C'est votre %1$d Renaissance. Le plus haut Niveau qui vous avez atteint est %2$d.";
+"shops.rebirthAchievementDescriptionMax" = "Vous avez commencé une nouvelle aventure ! C'est votre %1$d Renaissance. Le plus haut Niveau qui vous avez atteint est %2$d ou plus.";
+"shops.rebirthShopDescription" = "Recommencez instantanément votre aventure en tant qu'un Guerri·er·ère niveau 1, tout en gardant vos Succès, vos Objets et votre Équipement. Vos tâches seront réinitialisées en jaune mais conserveront leur historique. Tous vos combos de tâches seront réinitialisées. Votre Or, votre Expérience, votre Mana et tous effets de Compétences seront retirés.";
