@@ -1336,7 +1336,7 @@
 "empty.rewards.title" = "These are your Rewards";
 "empty.inbox.description" = "Start chatting below! Remember to be friendly and follow the Community Guidelines.";
 "empty.no_items" = "You don’t own any of these items";
-"chat_with_question" = "Whom would you like to chat with?";
+"chat_with_question" = "With whom would you like to chat?";
 "partyOnTitle" = "Party On";
 "partyOnDescription" = "Your party grew to 4 members!";
 "excess_items" = "Excess Items";
