@@ -1028,7 +1028,7 @@
 "invitations" = "Convites";
 "accessibility.tap_hide_boss_art" = "Toque duplo para ocultar a arte do chefe";
 "accessibility.score_habit_down" = "Pontuar Hábito Negativo";
-"world_boss.rage_strike_damaged" = "%@ está de coração partido!\nO nosso querido %@ ficou devastado quando %@ destruiu o %@. Rápido, conclua as suas tarefas para derrotar o monstro e ajudar a reconstruir!";
+"world_boss.rage_strike_damaged" = "%@ está de Coração Partido!\nO nosso querido %@ ficou devastado quando %@ destruiu o %@. Rápido, conclui as tuas tarefas para derrotar o monstro e ajudar a reconstruir!";
 "world_boss.pending_strike" = "Golpe Pendente";
 "world_boss.rage_strike_explanation_button" = "O que é um Golpe de Fúria?";
 "world_boss.rage_strike_explanation" = "Existem 3 potenciais Golpes de Fúria\nEste medidor enche quando os Habiticanos falham as suas Tarefas Diárias. Se ficar cheio, o Desalentador irá desencadear o seu ataque de Coração Despedaçador contra um dos lojistas do Habitica, por isso certifique-se de cumprir as suas tarefas!";
