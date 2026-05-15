@@ -715,7 +715,7 @@
 "errors.request" = "Er was een fout met je verzoek: %@";
 "days" = "dagen";
 "weeks" = "weken";
-"months" = "maanden";
+"months" = "Maanden";
 "years" = "jaren";
 "leave_challenge_title" = "Uitdaging verlaten?";
 "leave_challenge_prompt" = "Wil je de uitdaging verlaten en de taken behouden of verwijderen?";
@@ -1124,7 +1124,7 @@
 "gift_gems_disclaimer" = "Habitica vereist nooit dat je edelstenen schenkt aan andere spelers. Mensen die smeken om edelstenen schenden de communityrichtlijnen en moet worden gemeld aan admin@habitica.com.";
 "gift_gems_alert_prompt" = "Vul de @username van de ontvanger in";
 "gift_gems_alert_title" = "Naar wie wil je het geschenk sturen?";
-"onwards" = "Voorwaarts";
+"onwards" = "Voorwaarts!";
 "add" = "Toevoegen";
 "edit_challenge_tasks" = "Uitdagingstaken hebben slechts beperkte opties om te bewerken.";
 "is_open" = "Open";
@@ -1486,3 +1486,14 @@
 "mount" = "Rijdier";
 "classes.mages" = "Magiërs";
 "ends_in_x" = "Eindt in %s";
+"challenge" = "Uitdaging";
+"faint.subbed_button_prompt" = "Tweede kans: Overleven met 1HP!";
+"menu.quest_shop" = "Queesten";
+"limited_edition" = "Beperkte Oplage";
+"classes.warriors" = "Krijger";
+"armoire.unsubbed_button_prompt" = "Abonneer je om weer gratis te openen!";
+"x_gems" = "%d Edelstenen";
+"jubilant_gryphatrice" = "Juichende Gryphatrice";
+"groups.invited_x" = "Je heeft @%@ Uitgenodigd";
+"mute_user" = "Gebruiker Dempen";
+"stats" = "Stats";
