@@ -814,7 +814,7 @@
 "show_details" = "Показити деталі";
 "new_message" = "Нове повідомлення";
 "add" = "Додати";
-"onwards" = "Вперед";
+"onwards" = "Вперед!";
 "gift_gems_alert_prompt" = "Введіть @ім'я_одержувача";
 "gift_sent_to" = "Ви надіслали %@:";
 "complete_more_tasks" = "Вам потрібно виконати більше завдань, перш ніж ви зможете собі дозволити цей предмет!";
@@ -1515,3 +1515,11 @@
 "shops.rebirthConfirmResetHeader" = "Ви скинете:";
 "shops.goToMarket" = "На Ринок";
 "shops.rebirthConfirmResetItem1" = "Ваш рівень і клас";
+"shops.rebirthConfirmResetItem2" = "Всі ваші Очки Характеристик";
+"shops.rebirthConfirmResetItem3" = "Все ваше Золото та Ману";
+"shops.rebirthConfirmResetItem4" = "Всі значення завдань та всі серії";
+"shops.rebirthConfirmKeepHeader" = "Ви збережете:";
+"shops.rebirthConfirmKeepItem1" = "Ваш список завданнь";
+"shops.rebirthConfirmKeepItem2" = "Все Спорядження, Улюбленців та Скакунів";
+"shops.rebirthConfirmKeepItem3" = "Ваші Досягнення";
+"shops.rebirthConfirmKeepItem4" = "Вашу Команду та Випробування";
