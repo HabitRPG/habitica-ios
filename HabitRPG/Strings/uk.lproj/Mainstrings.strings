@@ -1503,3 +1503,15 @@
 "shops.rebirthConfirmGems" = "Перезапуск (%d Самоцвітів)";
 "shops.rebirthEnabledTitle" = "Куля Переродження розблокована";
 "shops.rebirthEnabledSubtitle" = "Доступна нова пригода!";
+"shops.rebirthAchievementTitle" = "Ви Переродились!";
+"shops.rebirthEnabledDescription" = "Використайте Кулю Переродження, щоб вдихнути нове життя у свої пригоди в Habitica, коли відчуєте, що досягли всього! Почніть заново з 1-го рівня, зберігши свої завдання, досягнення та улюбленців за допомогою цього особливого предмета, який можна знайти на Ринку.";
+"shops.rebirthAchievementDescription" = "Ви розпочали нову пригоду! Для вас це вже %d Відродження, а найвищий рівень, якого ви досягли, це %d.";
+"shops.rebirthAchievementDescriptionMax" = "Ви розпочали нову пригоду! Для вас це вже %d Відродження, а найвищий рівень, якого ви досягли, це %d або вище.";
+"shops.freeRebirthAtLevel100" = "БЕЗКОШТОВНА Куля Переродження на рівні 100";
+"shops.dayUntilFreeRebirth" = "%d дня до БЕЗКОШТОВНОЇ Кулі Переродження";
+"shops.useOrbOfRebirth" = "Використати Кулю Переродження";
+"shops.daysUntilFreeRebirth" = "%d дні до БЕЗКОШТОВНОЇ Кулі Переродження";
+"shops.goBack" = "Назад";
+"shops.rebirthConfirmResetHeader" = "Ви скинете:";
+"shops.goToMarket" = "На Ринок";
+"shops.rebirthConfirmResetItem1" = "Ваш рівень і клас";
