@@ -1481,7 +1481,7 @@
 "subscription.stay_motivated_with_more_rewards" = "订阅以获得更多激励奖品";
 "gift_one_get_one_description_date" = "在%@之前赠予订阅可以获得一份免费订阅";
 "class_change_confirm_description" = "商店中允许购买的装备会随职业变更，你习得的技能也随之更改，并且属性点数的分配会被重置。";
-"class_change_success_description" = "你现在可以使用%@的职业技能并在商店中购买相应的装备。升级时获得的属性点数可以用于强化你的技能。";
+"class_change_success_description" = "每次等级提升都可以获得属性点，你可以使用属性点来增强你的技能并提高你在Habitica的游戏体验";
 "subscription.thanks_for_subscribing" = "感谢订阅";
 "subscription.enjoy_these_benefits" = "享受你的订阅者专属奖励";
 "subscription.subscribers_receive" = "订阅者特权：每月前两日将获得一个神秘沙漏，一组神秘装备套装，并且商店中可兑换的宝石也将更新";
@@ -1493,7 +1493,7 @@
 "subscription.next_hourglass_delivery" = "下次神秘沙漏交付";
 "x_x_gem_cap" = "宝石数量上限为%d / %d";
 "resubscribe_to_pick_up" = "重新订阅以继续旅程！";
-"restore_purchase" = "恢复购买";
+"restore_purchase" = "同步购买记录";
 "unlock_x_gear_and_skills" = "解锁%@职业的装备与技能";
 "class_change_success_title" = "你成为了一位%@！";
 "got_it" = "明白！";
