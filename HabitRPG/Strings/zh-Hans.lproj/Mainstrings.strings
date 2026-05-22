@@ -813,7 +813,7 @@
 "shops.other_class_disclaimer" = "你只能购买当前职业的装备";
 "shops.purchased_all_gear" = "新装备会魔法宝箱在季节性晚会上发布。在那之前，魔法宝箱里还有%d件装备需要找到!";
 "purchased" = "你已购买%@";
-"buy_reward" = "你购买了'%@'，花了%@金币";
+"buy_reward" = "你购入“%@”，并花费了%@个金币";
 "accessibility.score_habit_up" = "习惯得分提升";
 "accessibility.score_habit_down" = "习惯得分下降";
 "titles.messages" = "信息";
@@ -1125,7 +1125,7 @@
 "create_guild" = "创建公会";
 "gift_confirmation_body_g1_g1" = "你向%@赠送了一份为期%@个月的Habitica订阅，由于我们的赠一得一促销活动，相同的订阅也已添加至你的账号！";
 "gift_one_get_one_data.purchase_banner_title" = "赠一得一活动持续至%@";
-"gift_one_get_one_data.info_limitations" = "本活动为限时活动，从%@ (%@ UTC)开始，到%@ (%@ UTC)结束。本促销仅适用于你向另一位Habitica居民赠送订阅。如果你或你的礼物接收人已经拥有一份订阅，赠送的订阅将增加至结存订阅，只有在当前订阅被取消或过期后才会生效。";
+"gift_one_get_one_data.info_limitations" = "本次限时促销活动将从%@ (%@ UTC)开始并于%@ (%@ UTC)结束。本促销仅适用于你向另一位Habitica居民赠送订阅。如果你或你的礼物接收人已经拥有了一份订阅，那么赠送的订阅将被留存，并在当前订阅被取消或过期后生效。";
 "gift_one_get_one_data.info_instructions" = "点击“赠送订阅”，输入你想要赠送的账号的用户名。然后选择要赠送的订阅长度并付款。你的账号将自动获得与你刚刚赠送的订阅相同的订阅。";
 "gift_one_get_one_data.infoPrompt" = "为了庆祝这个送礼的节日，我们再次推出了特别促销活动。现在，当你向他人赠送一份订阅后，自己也将免费获得相同的订阅！";
 "suggest_pet_hatch_again_missing_both" = "你需要一枚%@和一瓶%@药水来再次孵化此宠物";
@@ -1493,13 +1493,13 @@
 "subscription.next_hourglass_delivery" = "下次神秘沙漏交付";
 "x_x_gem_cap" = "宝石数量上限为%d / %d";
 "resubscribe_to_pick_up" = "重新订阅以继续旅程！";
-"restore_purchase" = "同步购买记录";
+"restore_purchase" = "恢复已有的订阅";
 "unlock_x_gear_and_skills" = "解锁%@职业的装备与技能";
 "class_change_success_title" = "你成为了一位%@！";
 "got_it" = "明白！";
 "buy_gems_with_gold" = "使用金币兑换宝石";
-"subscriber_benefit" = "订阅者额外奖励";
-"no_active_subscription_to_restore" = "未找到可恢复的有效订阅";
+"subscriber_benefit" = "订阅奖励";
+"no_active_subscription_to_restore" = "未找到激活中的订阅记录以同步";
 "see_more_sub_options" = "查看更多订阅选项";
 "subscription_info_3_description_gear" = "始终保持穿着最新专属装备。立即订阅以获取%@’s %@！";
 "nye" = "新年的";
@@ -1550,7 +1550,7 @@
 "quest_items_found" = "你找到了%d副本物品";
 "save_preferences" = "保存偏好设置";
 "login.username_description" = "此为专属名称，支持随时修改！";
-"take_effect_immediately" = "购买后即刻生效！";
+"take_effect_immediately" = "购买后立即有效！";
 "settings.change_class_title" = "使用3颗宝石以更改职业？";
 "chat_with_question" = "你想和谁聊天？";
 "stats" = "属性";
