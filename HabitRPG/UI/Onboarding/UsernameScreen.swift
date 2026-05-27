@@ -33,12 +33,14 @@ public struct UsernameScreen: View {
     }
     
     public var body: some View {
-        let canSubmit = viewModel.acceptedTerms && viewModel.usernameValid == true
+        let canSubmit = viewModel.canSubmitUsername
         ZStack(alignment: .topLeading) {
                 VStack {
                     ScrollView {
                         VStack(spacing: 0) {
-                            Image(Asset.usernameHeader.name)
+                            if !viewModel.needsEmailField {
+                                Image(Asset.usernameHeader.name)
+                            }
                             Text(L10n.Login.whatCallYou)
                                 .scaledFont(size: 22, weight: .bold)
                                 .foregroundStyle(.white)
@@ -65,6 +67,9 @@ public struct UsernameScreen: View {
                                 }
                             }.padding(.top, 5)
                                 .padding(.bottom, 4)
+                            if viewModel.needsEmailField {
+                                LoginTextInput(placeholder: L10n.email, icon: Image(Asset.loginEmail.name), text: $viewModel.email)
+                            }
                         }
                         .padding(.top, isFocused ? 0 : 44)
                         .animation(.easeInOut, value: isFocused)

@@ -32,6 +32,8 @@ public class HabiticaServerConfig {
     
     public static var stubs = [String: CallStub]()
     
+    public static var authHash: String?
+    
     public static func from(_ configName: String) -> ServerConfiguration {
         switch configName {
         case "staging":
@@ -66,6 +68,10 @@ public class HabiticaServerConfig {
             var host = hostname ?? ""
             if let port = customUrl?.port {
                 host = "\(host):\(port)"
+            }
+            
+            if host.isEmpty {
+                return HabiticaServerConfig.production
             }
             
             return ServerConfiguration(scheme: scheme, host: host, apiRoute: "api/\(Constants.defaultApiVersion)")

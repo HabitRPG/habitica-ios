@@ -185,6 +185,7 @@ class HabiticaAppDelegate: UIResponder, MessagingDelegate, UIApplicationDelegate
             AuthenticatedCall.defaultConfiguration = HabiticaServerConfig.stub
             return
         }
+        HabiticaServerConfig.authHash = Secrets.authHash
         if let host = ProcessInfo.processInfo.environment["CUSTOM_DOMAIN"], let apiVersion = configRepository.string(variable: .apiVersion) {
             let config = ServerConfiguration(scheme: "https", host: host, apiRoute: "api/\(apiVersion.isEmpty ? "v4" : apiVersion)")
             AuthenticatedCall.defaultConfiguration = config

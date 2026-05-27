@@ -46,6 +46,7 @@ class LoginViewModel: ObservableObject {
     private let userRepository = UserRepository()
     
     @Published var username: String = ""
+    @Published var debouncedUsername: String = ""
     @Published var email: String = ""
     @Published var password: String = ""
     @Published var repeatPassword: String = ""
@@ -57,6 +58,18 @@ class LoginViewModel: ObservableObject {
     
     private var socialLoginMethod: String?
     private var socialLoginAccessToken: String?
+    
+    var canSubmitUsername: Bool {
+        return acceptedTerms && usernameValid == true && (
+            socialLoginAccessToken == nil || !email.isEmpty
+        )
+    }
+    @Published var needsEmailField: Bool = false
+    
+    init() {
+        $username.debounce(for: 1, scheduler: DispatchQueue.main)
+                    .assign(to: &$debouncedUsername)
+    }
 
     private let googleLoginButtonPressedProperty = MutableProperty(())
     func googleLoginButtonPressed() {
@@ -91,6 +104,8 @@ class LoginViewModel: ObservableObject {
                         let content = decode(jwtToken: token)
                         if let email = content["email"] as? String {
                             self?.email = email
+                        } else {
+                            self?.needsEmailField = true
                         }
                     }
                     self?.userRepository.login(userID: "", network: "google", accessToken: self?.socialLoginAccessToken ?? "", allowRegister: false)
@@ -145,10 +160,12 @@ class LoginViewModel: ObservableObject {
         let content = decode(jwtToken: identityToken)
         if let email = content["email"] as? String, !email.contains("privaterelay.appleid.com") {
             self.email = email
+        } else if email.isEmpty {
+            needsEmailField = true
         }
         socialLoginMethod = "apple"
         socialLoginAccessToken = identityToken
-        userRepository.loginApple(identityToken: identityToken, name: name, allowRegister: false).observeResult {[weak self] (result) in
+        userRepository.loginApple(identityToken: identityToken, name: name, email: email, allowRegister: false).observeResult {[weak self] (result) in
             switch result {
             case .success(let response):
                 if response == nil || response?.newUser == true {
@@ -235,7 +252,7 @@ class LoginViewModel: ObservableObject {
         self.showLoadingIndicator = true
         var responseSignal: Signal<LoginResponseProtocol?, Never>
         if socialLoginMethod == "apple" {
-            responseSignal = userRepository.loginApple(identityToken: socialLoginAccessToken ?? "", name: "", allowRegister: true)
+            responseSignal = userRepository.loginApple(identityToken: socialLoginAccessToken ?? "", name: "", email: email, allowRegister: true)
         } else if socialLoginMethod == "google" {
             responseSignal = userRepository.login(userID: "", network: "google", accessToken: socialLoginAccessToken ?? "", allowRegister: true)
         } else {
@@ -271,8 +288,10 @@ class LoginViewModel: ObservableObject {
     func login() {
         self.showLoadingIndicator = true
         userRepository.login(username: email, password: password)
-            .observeResult { result in
+            .on(event: { _ in
                 self.showLoadingIndicator = false
+            })
+            .observeResult { result in
                 switch result {
                 case .success(let response):
                     self.onSuccessfulLogin(response?.newUser ?? false)

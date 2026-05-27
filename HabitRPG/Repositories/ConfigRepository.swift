@@ -197,7 +197,7 @@ enum TestingLevel: String {
         if self == .production || self == .beta {
             return false
         } else {
-            return false
+            return true
         }
     }
     

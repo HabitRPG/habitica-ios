@@ -317,6 +317,7 @@ struct LoginScreen: View {
     @ObservedObject var viewModel: LoginViewModel
     @State fileprivate var viewState: LoginViewState
     @State var isShowingForm = false
+    @State var gryphonTapCount = 0
     @State var isGryphonTapped = false
     @State var showCustomServerModal = false
     
@@ -345,17 +346,21 @@ struct LoginScreen: View {
             .ignoresSafeArea()
             VStack(spacing: 0) {
                 let icon = Image(Asset.loginLogo.name)
-                    .opacity(isGryphonTapped ? 0.5 : 1)
+                    .opacity(isGryphonTapped ? 0.25 : 1)
                     .scaleEffect(x: viewState == .initial ? 1.0 : 0.67, y: viewState == .initial ? 1.0 : 0.67)
                     .padding(.top, viewState == .initial ? 65 : 0)
-                    .onTapGesture(count: 8) {
-                        showCustomServerModal = true
-                        customUrlEnabled = true
+                    .onTapGesture {
+                        gryphonTapCount += 1
+                        if gryphonTapCount >= 8 {
+                            showCustomServerModal = true
+                            customUrlEnabled = true
+                            gryphonTapCount = 0
+                        }
                     }
                     .simultaneousGesture(
                         DragGesture(minimumDistance: 0)
                             .onChanged({ _ in
-                                withAnimation {
+                                withAnimation(.easeOut(duration: 0.15)) {
                                     isGryphonTapped = true
                                 }
                             })
@@ -513,9 +518,11 @@ struct LoginScreen: View {
                 Button(action: {
                     showCustomServerModal = false
                 }, label: Text("Continue"))
+                .buttonStyle(.borderless)
                 .keyboardShortcut(.defaultAction)
                 Button(action: {
                     customUrlEnabled = false
+                    chosenServer = "production"
                     showCustomServerModal = false
                 }, label: Text("Disable again"))
             } message: {
