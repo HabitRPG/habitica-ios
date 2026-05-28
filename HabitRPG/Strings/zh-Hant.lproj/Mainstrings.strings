@@ -459,3 +459,4 @@
 "menu" = "選單";
 "filter" = "篩選";
 "settings.daily_reminder" = "日常任務提醒";
+"tasks.repeats.monthly_week_of" = "本月的第 %1$@ %2$@ 週";
