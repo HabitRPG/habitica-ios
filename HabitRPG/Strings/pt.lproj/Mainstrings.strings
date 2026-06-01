@@ -77,7 +77,7 @@
 "stats.stat_guide" = "Guia de estatísticas";
 "stats.strength_title" = "Força";
 "stats.intelligence_title" = "Inteligência";
-"stats.intelligence_text" = "Aumenta a EXP obtida ao completar tarefas. Também aumenta seu limite de mana e a rapidez com que a mana se regenera ao longo do tempo.";
+"stats.intelligence_text" = "Aumenta a Experiência obtida ao completar tarefas. Também aumenta seu limite de mana e a rapidez com que a mana se regenera ao longo do tempo.";
 "stats.constitution_title" = "Constituição";
 "stats.perception_title" = "Percepção";
 "controls" = "Controlos";
@@ -123,11 +123,11 @@
 "tasks.form.medium" = "Médio";
 "tasks.form.hard" = "Difícil";
 "stats.strength_text" = "Aumenta o bônus de acertos críticos e os torna mais prováveis ao pontuar uma tarefa. Também aumenta o dano causado aos chefões de Missões.";
-"stats.constitution_text" = "Diminui a quantidade de dano recebido de suas tarefas. Não diminui o dano recebido dos chefes.";
+"stats.constitution_text" = "Diminui a quantidade de dano recebido de suas tarefas diárias e hábitos não executados. Não diminui o dano recebido dos chefes.";
 "tasks.reward" = "Recompensa";
 "tasks.form.habit_title_placeholder" = "Que hábitos deseja cultivar, ou cessar?";
 "tasks.form.accessibility.enable_positive" = "Activar acção positiva.";
-"stats.perception_text" = "Aumenta a probabilidade de encontrar itens ao completar Tarefas, o limite de itens diários, os bônus consecutivos e a quantidade de ouro concedida pelas Tarefas.";
+"stats.perception_text" = "Aumenta a probabilidade de encontrar itens ao completar Tarefas, Afazeres ou Hábitos, além de aumentar o limite de itens diários, os bônus consecutivos e a quantidade de ouro concedida pelas Tarefas executadas.";
 "tasks.form.dailies_title_placeholder" = "Que desejaria fazer com regularidade?";
 "tasks.form.reset_counter" = "Reiniciar contador";
 "tasks.form.new_reminder" = "Novo lembrete";
@@ -523,7 +523,7 @@
 "classes.healer" = "Curandeiro";
 "classes.mage_description" = "Magos aprendem rapidamente, ganhando Experiência e Níveis mais depressa do que as outras classes. Também recebem uma grande quantidade de Mana para usar habilidades especiais. Joga como Mago se gostas dos aspetos táticos do jogo Habitica, ou se estás fortemente motivado por subir de nível e desbloquear funcionalidades avançadas!";
 "classes.rogue" = "Ladino";
-"classes.warrior_description" = "Guerreiros conseguem mais e melhores 'golpes críticos', que oferecem aleatoriamente bónus de Ouro, Experiência e probabilidade de obter itens ao concluir uma tarefa. Também causam grande dano a monstros de missão. Joga como Guerreiro se encontras motivação em recompensas imprevisíveis ao estilo de jackpot, ou se queres causar estragos em Missões contra Chefes!";
+"classes.warrior_description" = "Guerreiros conseguem dar golpes críticos em maior quantidade, oferecendo maior dano nas Missões contra Chefes. Jogue como um Guerreiro se você quer derrotar monstros facilmente com golpes poderosos. Guerreiros se beneficiam de um atributo de Força elevado.";
 "classes.healer_description" = "Curandeiros permanecem imunes ao dano e estendem essa proteção aos outros. Tarefas Diárias falhadas e maus Hábitos não os afetam muito, e têm formas de recuperar Saúde após falhas. Joga como Curandeiro se gostas de ajudar os outros no teu Grupo, ou se a ideia de enganar a Morte através de trabalho árduo te inspira!";
 "classes.rogue_description" = "Ladinos adoram acumular riqueza, ganhando mais Ouro do que qualquer outra classe, e são peritos em encontrar itens aleatórios. A sua icónica habilidade de Furtividade permite-lhes escapar às consequências de Tarefas Diárias falhadas. Joga como Ladino se encontras forte motivação em Recompensas e Conquistas, lutando por saque e emblemas!";
 "party.quest_participant_count" = "%d Participantes";
