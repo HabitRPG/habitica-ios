@@ -2845,11 +2845,11 @@ public enum L10n {
     public static func purchasedAllGearTitle(_ p1: String) -> String {
       return L10n.tr("Mainstrings", "shops.purchased_all_gear_title", p1)
     }
-    /// You've begun a new adventure! This is Rebirth %d for you, and the highest Level you've attained is %d.
+    /// You've begun a new adventure! This is Rebirth %d for you, and the highest level you've attained is %d.
     public static func rebirthAchievementDescription(_ p1: Int, _ p2: Int) -> String {
       return L10n.tr("Mainstrings", "shops.rebirthAchievementDescription", p1, p2)
     }
-    /// You've begun a new adventure! This is Rebirth %d for you, and the highest Level you've attained is %d or higher.
+    /// You've begun a new adventure! This is Rebirth %d for you, and the highest level you've attained is %d or higher.
     public static func rebirthAchievementDescriptionMax(_ p1: Int, _ p2: Int) -> String {
       return L10n.tr("Mainstrings", "shops.rebirthAchievementDescriptionMax", p1, p2)
     }
