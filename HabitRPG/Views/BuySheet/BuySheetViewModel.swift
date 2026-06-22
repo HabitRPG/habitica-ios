@@ -448,23 +448,33 @@ extension BuySheetViewModel {
                 }
             }
         } else if userLevel >= 50 {
-            return L10n.Shops.freeRebirthAtLevel100
+            if let lastFreeRebirth = user?.flags?.lastFreeRebirth {
+                let daysSinceLastFree = Calendar.current.dateComponents([.day], from: lastFreeRebirth, to: Date()).day ?? 0
+                if daysSinceLastFree >= 45 {
+                    return L10n.Shops.freeRebirthAtLevel100
+                }
+            } else {
+                return L10n.Shops.freeRebirthAtLevel100
+            }
         }
         return nil
     }
 
     func displayRebirthConfirmationDialog() {
-        let sheet = RebirthConfirmationSheet(gemCost: Int(item.value)) { [weak self] in
+        let alert = HabiticaAlertController(title: L10n.Shops.rebirthConfirmTitle)
+        let hostingController = UIHostingController(rootView: RebirthConfirmationContent(gemCost: Int(item.value)))
+        hostingController.view.backgroundColor = .clear
+        alert.addChild(hostingController)
+        alert.contentView = hostingController.view
+        hostingController.didMove(toParent: alert)
+        alert.addAction(title: L10n.Shops.useOrbOfRebirth, style: .destructive, isMainAction: true) { [weak self] _ in
             guard let self = self else { return }
             withAnimation {
                 self.isPurchasing = true
             }
             self.buyItem(quantity: 1)
         }
-        let viewController = HostingBottomSheetController(rootView: sheet, prefersGrabberVisible: false)
-        dismiss()
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.25) {
-            viewController.show()
-        }
+        alert.addAction(title: L10n.Shops.goBack)
+        alert.show()
     }
 }
