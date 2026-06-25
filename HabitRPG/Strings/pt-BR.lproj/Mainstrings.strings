@@ -37,19 +37,19 @@
 /* (No Comment) */
 "classes.healer" = "Curandeiro(a)";
 /* (No Comment) */
-"classes.healer_description" = "Curandeiros(as) são impenetráveis contra danos, e extendem essa proteção aos outros. Diárias perdidas e maus Hábitos não incomodam muito, e eles(as) possuem maneiras de recuperar Vida do fracasso. Jogue com o(a) Curandeiro(a) se gostar de ajudar os outros em seu Grupo, ou se a ideia de enganar a morte com trabalho duro inspira você!";
+"classes.healer_description" = "Curandeiros aprendem habilidades que os protegem e protegem seu Grupo contra os danos. Jogue com um Curandeiro se gostar de ajudar os outros ou se perde pontos de vida com frequência. Curandeiros se beneficiam de um alto atributo de Constituição.";
 /* (No Comment) */
 "classes.mage" = "Mago(a)";
 /* (No Comment) */
-"classes.mage_description" = "Magos(as) aprendem rapidamente, ganhando Experiência e Níveis mais rápido que as outras classes. Eles(as) também conseguem uma boa quantidade de Mana para usar habilidades especiais. Jogue como Mago(a) se você adora os aspectos táticos do Habitica ou se você é fortemente motivado em subir de níveis e desbloquear funções avançadas!";
+"classes.mage_description" = "Magos aprendem habilidades que atacam chefes de Missões e aumentam Exp e Mana. Jogue como Mago se você for motivado a subir de nível rapidamente. Magos se beneficiam de um alto atributo de Inteligência.";
 /* (No Comment) */
 "classes.rogue" = "Ladino";
 /* (No Comment) */
-"classes.rogue_description" = "Ladinos e Ladinas amam acumular imensas fortunas, ganhando mais Ouro que qualquer um, e também são peritos em achar itens aleatórios. Sua habilidade icônica, Furtividade, os permite evitar as consequências de Diárias não realizadas. Jogue de Ladino se o que te motiva para valer é receber Recompensas e Conquistas - e se gostar de ganhar itens e medalhas!";
+"classes.rogue_description" = "Os Ladinos aprendem habilidades que aumentam as recompensas que você recebe ao completar tarefas. Jogue com um Ladino se você busca mais itens e Ouro. Ladinos se beneficiam de um alto atributo de Percepção.";
 /* (No Comment) */
 "classes.warrior" = "Guerreiro(a)";
 /* (No Comment) */
-"classes.warrior_description" = "Guerreiros(as) são especialistas nos \"acertos críticos\", que aleatoriamente concede bônus em Ouro, Experiência e maior chances de obter itens ao realizar uma tarefa. Eles(as) também causam muito dano em chefões. Seja um(a) Guerreiro(a) se você se motiva através de recompensas imprevisíveis, ou se deseja liderar o dano em missões de chefão!";
+"classes.warrior_description" = "Os Guerreiros causam mais acertos críticos e infligem mais dano a chefes de Missões. Jogue com um Guerreiro se quiser derrotar monstros facilmente com golpes poderosos. Os Guerreiros se beneficiam de um alto atributo de Força.";
 /* (No Comment) */
 "close" = "Fechar";
 /* (No Comment) */
@@ -507,9 +507,9 @@
 "stats.intelligence_title" = "Inteligência";
 "stats.intelligence_text" = "Aumenta a Experiência recebida das tarefas. Além disso, aumenta a quantidade total de Mana e acelera sua regeneração.";
 "stats.constitution_title" = "Constituição";
-"stats.constitution_text" = "Diminui o dano recebido pelas tarefas. Não diminui o dano causado por chefões.";
+"stats.constitution_text" = "Reduz o dano sofrido por tarefas diárias perdidas e Hábitos negativos. Não reduz o dano de chefes de Missões.";
 "stats.perception_title" = "Percepção";
-"stats.perception_text" = "Aumenta a possibilidade de drop de itens ao completar tarefas, o limite de drop diário, bônus de combo e a quantidade de Ouro obtido por tarefas.";
+"stats.perception_text" = "Aumenta a chance de drop de itens, o limite diário de drops, os bônus por sequência de tarefas e o Ouro ganho ao completar tarefas.";
 "tasks.habits" = "Hábitos";
 "tasks.dailies" = "Diárias";
 "tasks.rewards" = "Recompensas";
@@ -534,7 +534,7 @@
 "tasks.add_x" = "Adicionar %@";
 "tasks.repeats.daily" = "diariamente";
 "tasks.repeats.weekly" = "semanalmente";
-"tasks.repeats.monthly" = "mensalmente";
+"tasks.repeats.monthly" = "Mensalmente";
 "tasks.repeats.yearly" = "anualmente";
 "tasks.repeats.every_day" = "todos os dias";
 "tasks.repeats.weekdays" = "dias da semana";
@@ -620,8 +620,8 @@
 "party.join_party_title" = "Procurando um Grupo?";
 "party.party_challenges" = "Desafios do grupo";
 "party.start_quest" = "Começar missão";
-"groups.guild_invitation_no_invitername" = "Alguém convidou você para entrar na Guilda: **%@**";
-"groups.guild_invitation_invitername" = "**@%@** convidou você para entrar na Guilda: **%@**";
+"groups.guild_invitation_no_invitername" = "Alguém convidou você para entrar no Grupo: **%@**";
+"groups.guild_invitation_invitername" = "**@%@** convidou você para entrar no Grupo: **%@**";
 "size" = "Tamanho";
 "shirt" = "Camisa";
 "bangs" = "Franjas";
@@ -700,7 +700,7 @@
 "errors.request" = "Houve um erro com seu pedido: %@";
 "days" = "dias";
 "weeks" = "semanas";
-"months" = "meses";
+"months" = "Meses";
 "years" = "anos";
 "leave_challenge_title" = "Sair do Desafio?";
 "leave_challenge_prompt" = "Ao sair do Desafio, você deseja manter ou deletar as tarefas?";
@@ -1628,7 +1628,7 @@
 "class_change_success_title" = "Você é um %@!";
 "settings.daily_reminder_permission_needed" = "Por favor, ative as notificações nas Configurações para receber lembretes diários";
 "your_privacy_preferences" = "Suas Preferências de Privacidade";
-"privacy_preferences_sheet_description" = "Habitica usa dados do seu dispositivo para analisar performance, lidar com pedidos de suporte e garantir a você a melhor experiência gamificada possível. Para isso, nós precisamos pedir as seguintes permissões.\n\nVocê pode alterar isso a qualquer momento. Para saber mais, veja nossa [Política de Privacidade](https://habitica.com/static/privacy).";
+"privacy_preferences_sheet_description" = "A sua privacidade é importante para nós. Habitica usa dados do seu dispositivo para analisar performance, lidar com pedidos de suporte e garantir a você a melhor experiência gamificada possível. Para isso, nós precisamos pedir as seguintes permissões.\n\nVocê pode alterar isso a qualquer momento. Para saber mais, veja nossa [Política de Privacidade](https://habitica.com/static/privacy).";
 "performance_analytics" = "Desempenho e Análises";
 "performance_analytics_description" = "Isso é usado para melhorar a experiência do usuário, o desempenho e os serviços do Habitica. Nossa equipe de suporte também usará isso para lidar com solicitações e relatórios de bugs.";
 "strictly_necessary_description" = "Estes são dados necessários para o funcionamento do nosso aplicativo. Inclui dados como suas preferências salvas nas configurações, bem como informações sobre falhas.";
@@ -1708,3 +1708,7 @@
 "checkin_prize_set_description" = "Você ganhou um conjunto de %s por estar comprometido em melhorar sua vida";
 "next_prize_in_1_checkin" = "Próxima recompensa em 1 dia!";
 "gift_gems_alert_text" = "Para qual conta você gostaria de enviar seu presente?";
+"tasks.repeats.monthly_week_of" = "o %1$@ %2$@ do mês";
+"tasks.repeats.fifth_week_warning" = "Essa tarefa não aparecerá como pendente durante meses com menos %@s.";
+"boss" = "Chefe";
+"login.custom_url" = "URL personalizada";
