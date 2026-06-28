@@ -115,7 +115,7 @@ enum SoundTheme: String, EquatableStringEnumProtocol {
     }
 }
 
-class SoundManager {
+class SoundManager: NSObject {
     
     public static let shared = SoundManager()
     
@@ -126,6 +126,9 @@ class SoundManager {
             }
         }
     }
+
+    private let soundQueue: DispatchQueue
+    private var players: [URL: AVAudioPlayer]
     private var player: AVAudioPlayer?
     
     private var soundsDirectory: URL? {
@@ -142,37 +145,53 @@ class SoundManager {
         return nil
     }
     
-    private init() {
+    private override init() {
+        soundQueue = .init(label: "com.habitica.soundqueue")
+        players = [:]
+        super.init()
+
+        // Set current theme
         let defaults = UserDefaults.standard
         currentTheme = SoundTheme(rawValue: defaults.string(forKey: "soundTheme") ?? "") ?? SoundTheme.none
+
+        // Set up audio session
+        do {
+            try AVAudioSession.sharedInstance().setCategory(.ambient, mode: .default)
+        } catch {
+            logger.log(error.localizedDescription)
+        }
     }
     
     func play(effect: SoundEffect) {
         if currentTheme == SoundTheme.none {
             return
         }
-        let queue = DispatchQueue(label: "sound", attributes: .concurrent)
-        queue.async {[weak self] in
+        soundQueue.async(qos: .userInitiated) { [weak self] in
             do {
-                guard let theme = self?.currentTheme.rawValue else {
+                guard let self = self else {
                     return
                 }
-                guard let url = self?.soundsDirectory?.appendingPathComponent("\(theme)/\(effect.rawValue).mp3") else {
+
+                // Make sure sound file exists
+                let theme = self.currentTheme.rawValue
+                guard let url = self.soundsDirectory?.appendingPathComponent("\(theme)/\(effect.rawValue).mp3"),
+                      FileManager.default.fileExists(atPath: url.path) else {
                     return
                 }
-                
-                if !FileManager.default.fileExists(atPath: url.path) {
+
+                // Get an audio player
+                guard let player = try self.getPlayerWithURL(url) else {
                     return
                 }
-                
-                try AVAudioSession.sharedInstance().setCategory(.ambient, mode: .default)
-                try AVAudioSession.sharedInstance().setActive(true)
-                self?.player = try? AVAudioPlayer(contentsOf: url, fileTypeHint: AVFileType.mp3.rawValue)
-                
-                guard let player = self?.player else {
-                    return
+
+                // Reset player if already playing sound
+                if player.isPlaying {
+                    player.pause()
+                    player.currentTime = 0
                 }
-                
+
+                // Play sound
+                player.prepareToPlay()
                 player.play()
             } catch let error {
                 logger.log(error.localizedDescription)
@@ -180,6 +199,17 @@ class SoundManager {
         }
     }
     
+    private func getPlayerWithURL(_ url: URL) throws -> AVAudioPlayer? {
+        var player: AVAudioPlayer? = players[url]
+        if player == nil {
+            // Create new audio player
+            player = try AVAudioPlayer(contentsOf: url, fileTypeHint: AVFileType.mp3.rawValue)
+            player?.delegate = self
+            players[url] = player
+        }
+        return player
+    }
+
     private func loadAllFiles() {
         if currentTheme == SoundTheme.none {
             return
@@ -222,5 +252,23 @@ class SoundManager {
             }
         }
         task.resume()
+    }
+}
+
+extension SoundManager: AVAudioPlayerDelegate {
+
+    func audioPlayerDidFinishPlaying(_ player: AVAudioPlayer, successfully flag: Bool) {
+        removePlayerWithURL(player.url)
+    }
+
+    func audioPlayerDecodeErrorDidOccur(_ player: AVAudioPlayer, error: (any Error)?) {
+        logger.log("Failure: \(error?.localizedDescription ?? "")")
+        removePlayerWithURL(player.url)
+    }
+
+    private func removePlayerWithURL(_ url: URL?) {
+        if let url = url {
+            players[url] = nil
+        }
     }
 }
