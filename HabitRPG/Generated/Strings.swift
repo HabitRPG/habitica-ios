@@ -768,7 +768,7 @@ public enum L10n {
   public static var monthlyBackgrounds: String { return L10n.tr("Mainstrings", "monthly_backgrounds") }
   /// Monthly Gem Cap Reached
   public static var monthlyGemCapReached: String { return L10n.tr("Mainstrings", "monthly_gem_cap_reached") }
-  /// Months
+  /// months
   public static var months: String { return L10n.tr("Mainstrings", "months") }
   /// More Gem packs
   public static var moreGemPacks: String { return L10n.tr("Mainstrings", "more_gem_packs") }
@@ -3414,11 +3414,11 @@ public enum L10n {
       public static var daily: String { return L10n.tr("Mainstrings", "tasks.repeats.daily") }
       /// every day
       public static var everyDay: String { return L10n.tr("Mainstrings", "tasks.repeats.every_day") }
-      /// This task will not appear due during months with less %@s.
+      /// This task will not appear due during months with fewer %@s.
       public static func fifthWeekWarning(_ p1: String) -> String {
         return L10n.tr("Mainstrings", "tasks.repeats.fifth_week_warning", p1)
       }
-      /// every Month
+      /// every month
       public static var monthly: String { return L10n.tr("Mainstrings", "tasks.repeats.monthly") }
       /// the %@
       public static func monthlyThe(_ p1: String) -> String {
