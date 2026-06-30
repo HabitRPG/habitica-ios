@@ -1139,6 +1139,7 @@
 		29C38C8824A33E6600F219A1 /* NotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationManager.swift; sourceTree = "<group>"; };
 		29C5A72B22F08C010083749D /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = en; path = en.lproj/AppIntentVocabulary.plist; sourceTree = "<group>"; };
 		29C600A120F508D8005CC6C1 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Mainstrings.strings; sourceTree = "<group>"; };
+		2D736E72B3BE75DFC46328BE /* uk */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = uk; path = uk.lproj/Mainstrings.strings; sourceTree = "<group>"; };
 		29C9BDDC2E9EA21000FC4FCA /* HabiticaButtonUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabiticaButtonUI.swift; sourceTree = "<group>"; };
 		29C9BDDE2E9FE48400FC4FCA /* BulkStatsAllocationSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BulkStatsAllocationSheet.swift; sourceTree = "<group>"; };
 		29CAC3C82A3A11B5006DF74D /* LookingForPartyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LookingForPartyViewController.swift; sourceTree = "<group>"; };
@@ -3132,6 +3133,7 @@
 				ro,
 				it,
 				ja,
+				uk,
 				cmn,
 			);
 			mainGroup = D9EB4E8218CB4A9400BB2094;
@@ -4072,6 +4074,7 @@
 				29D5AD5F20F50B7A00D1B869 /* it */,
 				2913E3B420F50B9300FDF81D /* ja */,
 				2908E3502217245500D246CD /* nl */,
+				2D736E72B3BE75DFC46328BE /* uk */,
 			);
 			name = Mainstrings.strings;
 			sourceTree = "<group>";

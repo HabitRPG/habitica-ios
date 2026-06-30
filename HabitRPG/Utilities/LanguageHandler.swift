@@ -28,7 +28,8 @@ enum AppLanguage: Int {
     case romanian
     case italian
     case japanese
-    
+    case ukrainian
+
     var name: String {
         switch self {
         case .english:
@@ -69,6 +70,8 @@ enum AppLanguage: Int {
             return "日本語"
         case .hungaruan:
             return "Magyar"
+        case .ukrainian:
+            return "Українська"
         }
     }
     
@@ -112,6 +115,8 @@ enum AppLanguage: Int {
             return "ja"
         case .hungaruan:
             return "hu"
+        case .ukrainian:
+            return "uk"
         }
     }
     
@@ -143,7 +148,8 @@ enum AppLanguage: Int {
             .croatian,
             .romanian,
             .italian,
-            .japanese
+            .japanese,
+            .ukrainian
             ]
         return languages.sorted { $0.name < $1.name }
     }
