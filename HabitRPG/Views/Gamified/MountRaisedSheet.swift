@@ -18,7 +18,7 @@ struct MountRaisedSheet: View, Dismissable {
     var body: some View {
         GamifiedBottomSheet(upperBackground: StableBackgroundView(),
                             upperContent: MountView(mount: mount).padding(.top, 30),
-                            upperContentBottomPadding: 100,
+                            upperContentBottomPadding: 10,
                             title: Text(L10n.youRaisedPet(mount.text ?? ""))) {
             HabiticaButtonUI(label: Text(L10n.equip), color: Color(themeService.theme.fixedTintColor)) {
                 onEquip()
