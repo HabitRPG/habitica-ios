@@ -132,6 +132,9 @@ class AvatarGearDetailViewDataSource: BaseReactiveCollectionViewDataSource<GearP
         }
         sections[0].showIfEmpty = true
         if !sections[0].items.isEmpty {
+            sections[0].items.sort { first, second in
+                (first.text ?? "").localizedStandardCompare(second.text ?? "") == .orderedAscending
+            }
             let gear = BlankGear()
             gear.key = "\(gearType)_base_0"
             gear.type = gearType

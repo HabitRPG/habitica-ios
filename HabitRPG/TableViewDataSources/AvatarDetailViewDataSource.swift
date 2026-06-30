@@ -129,6 +129,33 @@ class AvatarDetailViewDataSource: BaseReactiveCollectionViewDataSource<Customiza
         })
     }
     
+    static func customizationSortsBefore(_ first: CustomizationProtocol, _ second: CustomizationProtocol) -> Bool {
+        let firstIsNone = isNoneCustomization(first)
+        let secondIsNone = isNoneCustomization(second)
+        if firstIsNone != secondIsNone {
+            return firstIsNone
+        }
+        let nameComparison = sortableName(of: first).localizedStandardCompare(sortableName(of: second))
+        if nameComparison != .orderedSame {
+            return nameComparison == .orderedAscending
+        }
+        return (first.key ?? "").localizedStandardCompare(second.key ?? "") == .orderedAscending
+    }
+
+    static func isNoneCustomization(_ customization: CustomizationProtocol) -> Bool {
+        guard let key = customization.key else {
+            return true
+        }
+        return key.isEmpty || key == "0" || key == "none"
+    }
+
+    private static func sortableName(of customization: CustomizationProtocol) -> String {
+        if let text = customization.text, !text.isEmpty {
+            return text
+        }
+        return customization.key ?? ""
+    }
+
     private func configureSections(_ customizations: [CustomizationProtocol]) {
         customizationSets.removeAll()
         sections.removeAll()
@@ -154,7 +181,7 @@ class AvatarDetailViewDataSource: BaseReactiveCollectionViewDataSource<Customiza
             }
         }
         
-        if sections[0].items.count == 1 && (sections[0].items[0].key?.isEmpty == true || sections[0].items[0].key == "0") {
+        if sections[0].items.count == 1 && AvatarDetailViewDataSource.isNoneCustomization(sections[0].items[0]) {
             sections[0].items.removeFirst()
             sections[0].showIfEmpty = true
         }
@@ -175,12 +202,10 @@ class AvatarDetailViewDataSource: BaseReactiveCollectionViewDataSource<Customiza
                 }
                 return firstSection.key ?? "" < secondSection.key ?? ""
             }
-        } else if customizationType == "chair" {
-            sections[0].items.sort { first, second in
-                let firstKey = first.key == "none" ? "" : first.key ?? ""
-                let secondKey = second.key == "none" ? "" : second.key ?? ""
-                return firstKey < secondKey
-            }
+        }
+
+        for index in sections.indices {
+            sections[index].items.sort(by: AvatarDetailViewDataSource.customizationSortsBefore)
         }
         self.collectionView?.reloadData()
     }
