@@ -129,6 +129,19 @@ struct ChallengeFilterView: View, Dismissable {
             .padding(.bottom, 16)
     }
     
+    private func categoryBinding(_ category: ChallengeCategory) -> Binding<Bool> {
+        Binding(
+            get: { filterState.selectedCategories.contains(category.rawValue) },
+            set: { isOn in
+                if isOn {
+                    filterState.selectedCategories.insert(category.rawValue)
+                } else {
+                    filterState.selectedCategories.remove(category.rawValue)
+                }
+            }
+        )
+    }
+
     var body: some View {
         BottomSheetView(dismisser: dismisser, content: VStack {
             let scrollView = ScrollView {
@@ -141,6 +154,12 @@ struct ChallengeFilterView: View, Dismissable {
                     FilterSection(label: Text(L10n.ownership), rows: {
                         CheckedRow(title: Text(L10n.Accessibility.owned), isChecked: $filterState.showOwned)
                         CheckedRow(title: Text(L10n.Accessibility.notOwned), isChecked: $filterState.showNotOwned)
+                    })
+                    Spacer().frame(height: 30)
+                    FilterSection(label: Text(L10n.categories), rows: {
+                        ForEach(ChallengeCategory.allCases) { category in
+                            CheckedRow(title: Text(category.localizedName), isChecked: categoryBinding(category))
+                        }
                     })
                 }
             }

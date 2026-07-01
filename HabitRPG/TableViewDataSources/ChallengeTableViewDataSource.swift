@@ -10,6 +10,7 @@ import Foundation
 import Habitica_Models
 import ReactiveSwift
 import RealmSwift
+import SwiftUI
 import SwiftUIX
 
 class ChallengeTableViewDataSource: BaseReactiveTableViewDataSource<ChallengeProtocol> {
@@ -103,19 +104,20 @@ class ChallengeTableViewDataSource: BaseReactiveTableViewDataSource<ChallengePro
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
-        if let challenge = item(at: indexPath), let challengeCell = cell as? ChallengeTableViewCell {
-            // Check if the challenge is a Realm object and if it's been invalidated
+        if let challenge = item(at: indexPath) {
             if let realmChallenge = challenge as? Object, realmChallenge.isInvalidated {
                 return cell
             }
-            
-            challengeCell.setChallenge(challenge, isParticipating: membershipIDs.contains(challenge.id ?? ""), isOwner: challenge.leaderID == socialRepository.currentUserId)
-            
-            if self.isShowingJoinedChallenges {
-                challengeCell.accessoryType = .disclosureIndicator
-            } else {
-                challengeCell.accessoryType = .none
+            let isOwner = challenge.leaderID == socialRepository.currentUserId
+            let isParticipating = membershipIDs.contains(challenge.id ?? "")
+            cell.contentConfiguration = UIHostingConfiguration {
+                ChallengeListCard(challenge: challenge, isParticipating: isParticipating, isOwner: isOwner)
             }
+            .margins(.horizontal, 16)
+            .margins(.vertical, 7)
+            cell.backgroundColor = .clear
+            cell.selectionStyle = .none
+            cell.accessoryType = .none
         }
         return cell
     }
@@ -160,7 +162,12 @@ class ChallengeTableViewDataSource: BaseReactiveTableViewDataSource<ChallengePro
             }
             searchComponents.append(component)
         }
-        
+
+        if filterState.selectedCategories.isEmpty == false {
+            let slugs = filterState.selectedCategories.map { "\'\($0)\'" }.joined(separator: ", ")
+            searchComponents.append("SUBQUERY(realmCategories, $category, $category.slug IN {\(slugs)}).@count > 0")
+        }
+
         if searchComponents.isEmpty == false {
             return NSPredicate(format: searchComponents.joined(separator: " && "))
         } else {
