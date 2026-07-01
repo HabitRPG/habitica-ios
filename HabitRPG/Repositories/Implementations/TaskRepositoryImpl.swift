@@ -333,4 +333,14 @@ class TaskRepository: BaseRepository<TaskLocalRepository> {
             return self?.retrieveTasks() ?? Signal.empty
         }
     }
+
+    func unlinkOneTask(task: TaskProtocol, keepOption: String) -> Signal<[TaskProtocol]?, Never> {
+        let call = UnlinkOneTaskCall(taskID: task.id ?? "", keepOption: keepOption)
+        return call.objectSignal.flatMap(.latest) {[weak self] _ -> Signal<[TaskProtocol]?, Never> in
+            if keepOption == "remove" {
+                self?.localRepository.deleteTask(task)
+            }
+            return self?.retrieveTasks() ?? Signal.empty
+        }
+    }
 }
