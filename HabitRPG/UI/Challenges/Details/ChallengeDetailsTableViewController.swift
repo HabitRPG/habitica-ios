@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SwiftUI
 import ReactiveSwift
 
 class ChallengeDetailsTableViewController: MultiModelTableViewController {
@@ -67,24 +68,74 @@ class ChallengeDetailsTableViewController: MultiModelTableViewController {
     
     private var overflowMenu: UIMenu {
         return UIMenu(children: [
-            UIMenu(options: .displayInline, children: [ UIDeferredMenuElement({ add in
-                if self.viewModel?.challengeMembershipProperty.value != nil {
-                    add([UIAction(title: L10n.leaveChallenge, image: UIImage(systemName: "person.badge.minus"), attributes: .destructive) { _ in
-                        self.leaveChallenge()
+            UIMenu(options: .displayInline, children: [ UIDeferredMenuElement({ [weak self] add in
+                if self?.viewModel?.challengeMembershipProperty.value != nil {
+                    add([UIAction(title: L10n.leaveChallenge, image: UIImage(systemName: "person.badge.minus"), attributes: .destructive) { [weak self] _ in
+                        self?.leaveChallenge()
                     }])
                 } else {
-                    add([UIAction(title: L10n.joinChallenge, image: UIImage(systemName: "person.badge.plus")) { _ in
-                            self.joinChallenge()
+                    add([UIAction(title: L10n.joinChallenge, image: UIImage(systemName: "person.badge.plus")) { [weak self] _ in
+                            self?.joinChallenge()
                     }])
                 }
             }) ]),
-            UIAction(title: L10n.reportX(L10n.challenge), image: UIImage(systemName: "flag"), attributes: .destructive) { _ in
-                if let challenge = self.viewModel?.challengeProperty.value {
-                    let controller = FlagViewController(type: .challenge, offendingItem: challenge)
-                    self.present(controller, animated: true)
+            UIAction(title: L10n.reportX(L10n.challenge), image: UIImage(systemName: "flag"), attributes: .destructive) { [weak self] _ in
+                self?.reportChallenge()
+            },
+            UIDeferredMenuElement({ [weak self] add in
+                guard self?.viewModel?.challengeProperty.value?.isOwner(AuthenticationManager.shared.currentUserId) == true else {
+                    add([])
+                    return
                 }
-            }
+                add([UIMenu(title: L10n.ownerActions, options: .displayInline, children: [
+                    UIAction(title: L10n.endChallenge, image: UIImage(systemName: "flag.checkered")) { [weak self] _ in self?.endChallengeAction() },
+                    UIAction(title: L10n.viewProgress, image: UIImage(systemName: "list.bullet.rectangle")) { [weak self] _ in self?.viewProgressAction() },
+                    UIAction(title: L10n.exportChallenge, image: UIImage(systemName: "square.and.arrow.up")) { [weak self] _ in self?.exportChallengeAction() },
+                    UIAction(title: L10n.cloneChallenge, image: UIImage(systemName: "square.on.square")) { [weak self] _ in self?.cloneChallengeAction() },
+                    UIAction(title: L10n.editChallenge, image: UIImage(systemName: "square.and.pencil")) { [weak self] _ in self?.editChallengeAction() }
+                ])])
+            })
         ])
+    }
+
+    private func reportChallenge() {
+        if let challenge = viewModel?.challengeProperty.value {
+            let controller = FlagViewController(type: .challenge, offendingItem: challenge)
+            present(controller, animated: true)
+        }
+    }
+
+    func viewProgressAction() {
+        guard let challenge = viewModel?.challengeProperty.value else { return }
+        let host = UIHostingController(rootView: CheckParticipationView(challenge: challenge, onClose: { [weak self] in
+            self?.dismiss(animated: true)
+        }))
+        host.modalPresentationStyle = .fullScreen
+        present(host, animated: true)
+    }
+
+    func exportChallengeAction() {
+        let challengeID = viewModel?.challengeID ?? ""
+        guard let url = URL(string: "https://habitica.com/challenges/\(challengeID)") else { return }
+        UIApplication.shared.open(url)
+    }
+
+    func editChallengeAction() {
+        guard let challenge = viewModel?.challengeProperty.value else { return }
+        let viewController = CreateChallengeViewController()
+        viewController.prepareForEditing(challenge: challenge)
+        viewController.modalPresentationStyle = .formSheet
+        viewController.isModalInPresentation = true
+        present(viewController, animated: true)
+    }
+
+    func cloneChallengeAction() {
+        guard let challenge = viewModel?.challengeProperty.value else { return }
+        let viewController = CreateChallengeViewController()
+        viewController.prepareForCloning(challenge: challenge)
+        viewController.modalPresentationStyle = .formSheet
+        viewController.isModalInPresentation = true
+        present(viewController, animated: true)
     }
     
     override func applyTheme(theme: Theme) {
@@ -95,12 +146,15 @@ class ChallengeDetailsTableViewController: MultiModelTableViewController {
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         if let dataSourceSection = dataSource.sections?[section] {
             if let sectionTitleString = dataSourceSection.title {
-                if let itemCount = dataSourceSection.items?.count {
+                if dataSourceSection.items?.isEmpty == false {
                     
                     let header: ChallengeTableViewHeaderView? = tableView.dequeueReusableHeaderFooterView(withIdentifier: "header") as? ChallengeTableViewHeaderView
                     
                     header?.titleLabel.text = sectionTitleString
-                    header?.countLabel.text = "\(itemCount)"
+                    header?.titleLabel.font = .systemFont(ofSize: 14, weight: .bold)
+                    header?.titleLabel.textColor = UIColor(red: 144 / 255, green: 141 / 255, blue: 152 / 255, alpha: 1)
+                    header?.countLabel.text = nil
+                    header?.countLabel.isHidden = true
 
                     return header
                 }
@@ -131,15 +185,18 @@ class ChallengeDetailsTableViewController: MultiModelTableViewController {
     }
     
     func endChallengeAction() {
-        let alert = HabiticaAlertController(title: L10n.endChallenge, message: L10n.endChallengeDescription)
-        alert.addAction(title: L10n.openWebsite, style: .default, isMainAction: true) { _ in
-            let challengeID = self.viewModel?.challengeID ?? ""
-            guard let url = URL(string: "https://habitica.com/challenges/\(challengeID)") else {
-                return
+        guard let challenge = viewModel?.challengeProperty.value else { return }
+        let host = UIHostingController(rootView: EndChallengeFlow(challenge: challenge, onClose: { [weak self] in
+            self?.dismiss(animated: true)
+        }))
+        if let sheet = host.sheetPresentationController {
+            let compact = UISheetPresentationController.Detent.custom(identifier: .init("endChallengeCompact")) { context in
+                min(640, context.maximumDetentValue)
             }
-            UIApplication.shared.open(url)
+            sheet.detents = [compact, .large()]
+            sheet.prefersGrabberVisible = true
+            sheet.preferredCornerRadius = 30
         }
-        alert.addCloseAction()
-        alert.show()
+        present(host, animated: true)
     }
 }
