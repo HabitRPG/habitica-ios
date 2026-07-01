@@ -18,14 +18,13 @@ struct ChallengeFormMetadataPage: View {
         ScrollView {
             VStack(alignment: .leading, spacing: 8) {
                 Text("What’s your Challenge about?")
-                    .font(.system(size: 20, weight: .semibold))
-                    .padding(.horizontal, 23)
+                    .font(.system(size: 24, weight: .bold))
                 Text("This information helps others know the topic, rules, and goals of your Challenge.")
-                    .font(.system(size: 17))
-                    .padding(.horizontal, 23)
+                    .font(.system(size: 16))
+                    .foregroundStyle(Color(ThemeService.shared.theme.secondaryTextColor))
                 ChallengeMetadataForm(viewModel: viewModel)
                     .padding(.top, 12)
-            }.padding(.horizontal, 12)
+            }.padding(.horizontal, 22)
                 .padding(.top, 16)
         }
     }

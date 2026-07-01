@@ -147,22 +147,92 @@ struct RewardListItem: View {
     }
 }
 
+struct ChallengeFormTaskSquare: View {
+    let fill: Color
+    let glyph: String
+
+    var body: some View {
+        ZStack {
+            fill
+            Image(systemName: glyph)
+                .font(.system(size: 18, weight: .semibold))
+                .foregroundStyle(.white)
+        }
+        .frame(width: 52)
+        .frame(maxHeight: .infinity)
+    }
+}
+
+struct ChallengeFormTaskRow: View {
+    @ObservedObject private var themeService = ThemeService.shared
+    let task: TaskProtocol
+
+    var body: some View {
+        Group {
+            if task.type == TaskType.reward {
+                rewardRow
+            } else {
+                standardRow
+            }
+        }
+        .frame(minHeight: 54)
+        .background(Color(themeService.theme.windowBackgroundColor))
+        .clipShape(RoundedRectangle(cornerRadius: 14, style: .continuous))
+    }
+
+    private var standardRow: some View {
+        HStack(spacing: 0) {
+            leadingSquare
+            Text(task.text ?? "")
+                .font(.system(size: 16, weight: .medium))
+                .foregroundStyle(Color(themeService.theme.primaryTextColor))
+                .padding(.horizontal, 15)
+                .frame(maxWidth: .infinity, alignment: .leading)
+            if task.type == TaskType.habit {
+                ChallengeFormTaskSquare(fill: ChallengeTheme.habitFill, glyph: "minus")
+            }
+        }
+    }
+
+    private var rewardRow: some View {
+        HStack(spacing: 0) {
+            Text(task.text ?? "")
+                .font(.system(size: 16, weight: .medium))
+                .foregroundStyle(Color(themeService.theme.primaryTextColor))
+                .padding(.leading, 18)
+                .frame(maxWidth: .infinity, alignment: .leading)
+            VStack(spacing: 1) {
+                Image(uiImage: HabiticaIcons.imageOfGold)
+                    .resizable().scaledToFit().frame(width: 17, height: 17)
+                Text("\(Int(task.value))")
+                    .font(.system(size: 13, weight: .semibold))
+                    .foregroundStyle(ChallengeTheme.username)
+            }
+            .padding(.vertical, 5)
+            .padding(.horizontal, 12)
+            .background(Color(red: 0xEC / 255, green: 0xEB / 255, blue: 0xED / 255))
+            .clipShape(RoundedRectangle(cornerRadius: 11, style: .continuous))
+            .padding(.trailing, 8)
+            .padding(.vertical, 6)
+        }
+    }
+
+    @ViewBuilder private var leadingSquare: some View {
+        if task.type == TaskType.habit {
+            ChallengeFormTaskSquare(fill: ChallengeTheme.habitFill, glyph: "plus")
+        } else if task.type == TaskType.daily {
+            ChallengeFormTaskSquare(fill: ChallengeTheme.dailyFill, glyph: "checkmark")
+        } else if task.type == TaskType.todo {
+            ChallengeFormTaskSquare(fill: ChallengeTheme.todoFill, glyph: "checkmark")
+        }
+    }
+}
+
 struct TaskListItem: View {
     let task: TaskProtocol
-    
+
     var body: some View {
-        switch task.type {
-        case "habit":
-            HabitListItem(habit: task)
-        case "daily":
-            DailyListItem(daily: task)
-        case "todo":
-            ToDoListItem(todo: task)
-        case "reward":
-            RewardListItem(reward: task)
-        default:
-            EmptyView()
-        }
+        ChallengeFormTaskRow(task: task)
     }
 }
 
@@ -174,14 +244,20 @@ struct ChallengeFormTaskList<Title: View>: View {
     let buttonText: String
     
     var body: some View {
-        VStack(alignment: .leading, spacing: 12) {
-            HStack {title
-                .font(.system(size: 15, weight: .semibold))
-                .padding(.horizontal, 23)
+        VStack(alignment: .leading, spacing: 10) {
+            HStack {
+                title
+                    .font(.system(size: 14, weight: .bold))
+                    .foregroundStyle(ChallengeTheme.sectionLabel)
                 Spacer()
                 if !tasks.isEmpty {
                     Text("\(tasks.count)")
-                        .font(.system(size: 15, weight: .semibold))
+                        .font(.system(size: 13, weight: .semibold))
+                        .foregroundStyle(ChallengeTheme.sectionLabel)
+                        .frame(minWidth: 22, minHeight: 22)
+                        .padding(.horizontal, 6)
+                        .background(Color(ThemeService.shared.theme.offsetBackgroundColor))
+                        .clipShape(Capsule())
                 }
             }
             ForEach(tasks, id: \.id) { task in
@@ -192,12 +268,20 @@ struct ChallengeFormTaskList<Title: View>: View {
                         }
                     }
             }
-            HabiticaButtonUI(label: Text(buttonText).foregroundStyle(Color(ThemeService.shared.theme.primaryTextColor)),
-                             color: Color(ThemeService.shared.theme.windowBackgroundColor)) {
+            Button {
                 if let action = viewModel.presentTaskForm {
                     action(taskType, nil)
                 }
+            } label: {
+                Text(buttonText)
+                    .font(.system(size: 16, weight: .semibold))
+                    .foregroundStyle(Color(ThemeService.shared.theme.primaryTextColor))
+                    .frame(maxWidth: .infinity)
+                    .frame(height: 50)
+                    .background(Color(ThemeService.shared.theme.windowBackgroundColor))
+                    .clipShape(RoundedRectangle(cornerRadius: 24, style: .continuous))
             }
-        }.padding(.top, 26)
+            .buttonStyle(.plain)
+        }.padding(.top, 24)
     }
 }

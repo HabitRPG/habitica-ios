@@ -11,6 +11,12 @@ import SwiftUI
 import Habitica_Models
 import ReactiveSwift
 
+private enum ChallengeTaskOp {
+    case create(TaskProtocol)
+    case update(TaskProtocol)
+    case delete(TaskProtocol)
+}
+
 class ChallengeFormViewModel: ViewModel {
     private let userRepository = UserRepository()
     private let socialRepository = SocialRepository()
@@ -19,6 +25,10 @@ class ChallengeFormViewModel: ViewModel {
     var presentTaskForm: ((TaskType, TaskProtocol?) -> Void)?
     
     var editedChallenge: ChallengeProtocol?
+    private var cloningChallengeID: String?
+    private var originalTasks: [TaskProtocol] = []
+    private var originalTaskIDs: Set<String> = []
+    var isEditing: Bool { editedChallenge != nil }
     
     @Published var userGemCount = 0
     
@@ -131,7 +141,7 @@ class ChallengeFormViewModel: ViewModel {
     
     func showNextStep() {
         if let index = currentStepIndex {
-            if index < 4 {
+            if index < 3 {
                 currentStepIndex = index + 1
             }
         }
@@ -192,6 +202,75 @@ class ChallengeFormViewModel: ViewModel {
         challenge.tasksOrder["rewards"] = rewards.map { $0.id ?? "" }
         return challenge
     }
+
+    func configureForEditing(_ challenge: ChallengeProtocol) {
+        editedChallenge = challenge
+        prefillMetadata(from: challenge)
+        loadChallengeTasks(challengeID: challenge.id ?? "")
+    }
+
+    func configureForCloning(_ challenge: ChallengeProtocol) {
+        cloningChallengeID = challenge.id
+        prefillMetadata(from: challenge)
+        loadChallengeTasks(challengeID: challenge.id ?? "")
+    }
+
+    private func prefillMetadata(from challenge: ChallengeProtocol) {
+        name = challenge.name ?? ""
+        summary = challenge.summary ?? ""
+        description = challenge.notes ?? ""
+        challengeTag = challenge.shortName ?? ""
+        prizeAmount = challenge.prize
+        if let groupID = challenge.groupID {
+            if let existing = challengeLocations.first(where: { $0.id == groupID }) {
+                challengeLocation = existing
+            } else {
+                let location = ChallengeLocation(id: groupID, name: challenge.groupName ?? "")
+                challengeLocations.append(location)
+                challengeLocation = location
+            }
+        }
+        challengeCategories = Set(challenge.categories.compactMap { ChallengeCategory(rawValue: $0.slug ?? "") })
+    }
+
+    private func loadChallengeTasks(challengeID: String) {
+        disposable.add(socialRepository.getChallengeTasks(challengeID: challengeID).take(first: 1).startWithResult { [weak self] result in
+            guard let self = self, case .success(let (tasks, _)) = result else { return }
+            self.habits = tasks.filter { $0.type == TaskType.habit }
+            self.dailies = tasks.filter { $0.type == TaskType.daily }
+            self.todos = tasks.filter { $0.type == TaskType.todo }
+            self.rewards = tasks.filter { $0.type == TaskType.reward }
+            self.originalTasks = tasks
+            self.originalTaskIDs = Set(tasks.compactMap { $0.id })
+        })
+    }
+
+    private func taskOps(allTasks: [TaskProtocol]) -> [ChallengeTaskOp] {
+        let currentIDs = Set(allTasks.compactMap { $0.id })
+        var ops: [ChallengeTaskOp] = []
+        for task in allTasks {
+            if let id = task.id, originalTaskIDs.contains(id) {
+                ops.append(.update(task))
+            } else {
+                ops.append(.create(task))
+            }
+        }
+        for task in originalTasks where !(task.id.map { currentIDs.contains($0) } ?? false) {
+            ops.append(.delete(task))
+        }
+        return ops
+    }
+
+    private func performTaskOp(_ op: ChallengeTaskOp, challengeID: String) -> Signal<TaskProtocol?, Never> {
+        switch op {
+        case .create(let task):
+            return taskRepository.createChallengeTask(challengeID: challengeID, task: task)
+        case .update(let task):
+            return taskRepository.updateTask(task)
+        case .delete(let task):
+            return taskRepository.deleteTask(task).map { (_) -> TaskProtocol? in nil }
+        }
+    }
     
     func save() {
         if isSaving {
@@ -204,12 +283,17 @@ class ChallengeFormViewModel: ViewModel {
         allTasks.append(contentsOf: rewards)
         let call: Signal<TaskProtocol?, Error>
         if editedChallenge != nil {
+            let challengeID = editedChallenge?.id ?? ""
+            let ops = taskOps(allTasks: allTasks)
             call = socialRepository.updateChallenge(challenge: getUpdatedChallenge())
                 .flatMap(.latest) { _ in
-                    return SignalProducer(allTasks)
-                }.flatMap(.latest, { task in
-                    self.taskRepository.updateTask(task)
+                    return SignalProducer(ops)
+                }.flatMap(.latest, { op in
+                    self.performTaskOp(op, challengeID: challengeID)
                 })
+        } else if let cloningChallengeID = cloningChallengeID {
+            call = socialRepository.cloneChallenge(challengeID: cloningChallengeID, challenge: getUpdatedChallenge())
+                .map { (_) -> TaskProtocol? in nil }
         } else {
             call = socialRepository.createChallenge(challenge: getUpdatedChallenge())
                 .flatMap(.latest) { challenge in
