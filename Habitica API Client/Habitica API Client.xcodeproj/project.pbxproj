@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		26AE90207A1D15C1679A73BC /* CloneChallengeCall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B09239F8BCEA4EAABA9CBF3 /* CloneChallengeCall.swift */; };
 		2902795E2057E858006DACB9 /* APIFAQEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2902795D2057E858006DACB9 /* APIFAQEntry.swift */; };
 		2902797920580EFD006DACB9 /* APIBuff.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2902797820580EFD006DACB9 /* APIBuff.swift */; };
 		2902797F20581CF0006DACB9 /* AllocateAttributePointCall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2902797E20581CF0006DACB9 /* AllocateAttributePointCall.swift */; };
@@ -170,7 +171,6 @@
 		295E9DCC20B2DFEB00D58D45 /* PurchaseQuestCall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 295E9DCB20B2DFEB00D58D45 /* PurchaseQuestCall.swift */; };
 		295E9DCE20B2E00300D58D45 /* PurchaseMysterySetCall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 295E9DCD20B2E00300D58D45 /* PurchaseMysterySetCall.swift */; };
 		295E9DD220B2E9EF00D58D45 /* RerollCall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 295E9DD120B2E9EF00D58D45 /* RerollCall.swift */; };
-		AB1234567890ABCD12345678 /* RebirthCall.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD9876543210DCBA98765432 /* RebirthCall.swift */; };
 		295E9DD420B2EA4100D58D45 /* TogglePinnedItemCall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 295E9DD320B2EA4100D58D45 /* TogglePinnedItemCall.swift */; };
 		295E9DD620B2ECB900D58D45 /* RetrieveShopInventoryCall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 295E9DD520B2ECB900D58D45 /* RetrieveShopInventoryCall.swift */; };
 		295E9DD820B2F6DE00D58D45 /* ClearCompletedTodosCall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 295E9DD720B2F6DE00D58D45 /* ClearCompletedTodosCall.swift */; };
@@ -257,7 +257,16 @@
 		29EBDA85232A8BE0006611E3 /* AppleLoginCall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29EBDA84232A8BE0006611E3 /* AppleLoginCall.swift */; };
 		29F272A82A40B14100F3B50F /* RetrieveGroupInvitesCall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29F272A72A40B14100F3B50F /* RetrieveGroupInvitesCall.swift */; };
 		32C6FFEF26ED5DEF00C8F682 /* MovePinnedItemCall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32C6FFEE26ED5DEF00C8F682 /* MovePinnedItemCall.swift */; };
+		32F8ABA8A57D1D46E74B3E49 /* SelectChallengeWinnerCall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A6940EE9B409356A25D11CE /* SelectChallengeWinnerCall.swift */; };
+		4427901C51AD834295EC967C /* RetrieveChallengeMemberProgressCall.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB695EE74DE6337AE137BBC9 /* RetrieveChallengeMemberProgressCall.swift */; };
+		AB1234567890ABCD12345678 /* RebirthCall.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD9876543210DCBA98765432 /* RebirthCall.swift */; };
+		C429FE5E798E4101FEC95F30 /* UnlinkOneTaskCall.swift in Sources */ = {isa = PBXBuildFile; fileRef = F417941C708E5BF5BC960B66 /* UnlinkOneTaskCall.swift */; };
+		CD1FA4D002F3ECAC33685615 /* RetrieveChallengeMembersCall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6544C35340CD9CB9D974562C /* RetrieveChallengeMembersCall.swift */; };
 		DC2C4A0476068E29973DB0CD /* RetrieveGroupMembersCall.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC2C420658EE5D517E37D97D /* RetrieveGroupMembersCall.swift */; };
+		DCE9F14B59D67CC3F91CAAD3 /* APIChallengeClone.swift in Sources */ = {isa = PBXBuildFile; fileRef = A795BD4AC70E759F01D8BF68 /* APIChallengeClone.swift */; };
+		E42C92D5018DDE6FDCC8AC78 /* ClearFlagsChallengeCall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42DBF5F2A8E661A1B9E2ADC3 /* ClearFlagsChallengeCall.swift */; };
+		E7896F8022FFEF8D5F278433 /* APIChallengeMemberProgress.swift in Sources */ = {isa = PBXBuildFile; fileRef = 971887CAF225020E471E840E /* APIChallengeMemberProgress.swift */; };
+		F76551479CE5367118632C17 /* DeleteChallengeCall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D0681DBD3F18B5871EAA41E /* DeleteChallengeCall.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -431,7 +440,6 @@
 		295E9DCB20B2DFEB00D58D45 /* PurchaseQuestCall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchaseQuestCall.swift; sourceTree = "<group>"; };
 		295E9DCD20B2E00300D58D45 /* PurchaseMysterySetCall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchaseMysterySetCall.swift; sourceTree = "<group>"; };
 		295E9DD120B2E9EF00D58D45 /* RerollCall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RerollCall.swift; sourceTree = "<group>"; };
-		CD9876543210DCBA98765432 /* RebirthCall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RebirthCall.swift; sourceTree = "<group>"; };
 		295E9DD320B2EA4100D58D45 /* TogglePinnedItemCall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TogglePinnedItemCall.swift; sourceTree = "<group>"; };
 		295E9DD520B2ECB900D58D45 /* RetrieveShopInventoryCall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RetrieveShopInventoryCall.swift; sourceTree = "<group>"; };
 		295E9DD720B2F6DE00D58D45 /* ClearCompletedTodosCall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClearCompletedTodosCall.swift; sourceTree = "<group>"; };
@@ -522,8 +530,18 @@
 		29EBDA84232A8BE0006611E3 /* AppleLoginCall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleLoginCall.swift; sourceTree = "<group>"; };
 		29F272A72A40B14100F3B50F /* RetrieveGroupInvitesCall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RetrieveGroupInvitesCall.swift; sourceTree = "<group>"; };
 		32C6FFEE26ED5DEF00C8F682 /* MovePinnedItemCall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovePinnedItemCall.swift; sourceTree = "<group>"; };
+		3B09239F8BCEA4EAABA9CBF3 /* CloneChallengeCall.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = CloneChallengeCall.swift; sourceTree = "<group>"; };
+		42DBF5F2A8E661A1B9E2ADC3 /* ClearFlagsChallengeCall.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ClearFlagsChallengeCall.swift; sourceTree = "<group>"; };
+		5D0681DBD3F18B5871EAA41E /* DeleteChallengeCall.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = DeleteChallengeCall.swift; sourceTree = "<group>"; };
+		6544C35340CD9CB9D974562C /* RetrieveChallengeMembersCall.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = RetrieveChallengeMembersCall.swift; sourceTree = "<group>"; };
+		6A6940EE9B409356A25D11CE /* SelectChallengeWinnerCall.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = SelectChallengeWinnerCall.swift; sourceTree = "<group>"; };
+		971887CAF225020E471E840E /* APIChallengeMemberProgress.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = APIChallengeMemberProgress.swift; sourceTree = "<group>"; };
+		A795BD4AC70E759F01D8BF68 /* APIChallengeClone.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = APIChallengeClone.swift; sourceTree = "<group>"; };
 		AA70F4C42EBC0BF100E4D993 /* project.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = project.xcconfig; sourceTree = "<group>"; };
+		CD9876543210DCBA98765432 /* RebirthCall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RebirthCall.swift; sourceTree = "<group>"; };
 		DC2C420658EE5D517E37D97D /* RetrieveGroupMembersCall.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RetrieveGroupMembersCall.swift; sourceTree = "<group>"; };
+		F417941C708E5BF5BC960B66 /* UnlinkOneTaskCall.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = UnlinkOneTaskCall.swift; sourceTree = "<group>"; };
+		FB695EE74DE6337AE137BBC9 /* RetrieveChallengeMemberProgressCall.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = RetrieveChallengeMemberProgressCall.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -681,6 +699,8 @@
 				292844EA20DD18380011DC43 /* APIGroupInvitation.swift */,
 				290A1D95223FEEEC004E32A2 /* APIMemberItems.swift */,
 				290A1D97223FEF16004E32A2 /* APIMemberGear.swift */,
+				971887CAF225020E471E840E /* APIChallengeMemberProgress.swift */,
+				A795BD4AC70E759F01D8BF68 /* APIChallengeClone.swift */,
 			);
 			path = Group;
 			sourceTree = "<group>";
@@ -775,6 +795,7 @@
 				290C3014206A80AE0066AF5B /* MoveTaskCall.swift */,
 				290C300E206A779E0066AF5B /* DeleteTaskCall.swift */,
 				295E9DE320B31C1300D58D45 /* DeleteTagCall.swift */,
+				F417941C708E5BF5BC960B66 /* UnlinkOneTaskCall.swift */,
 			);
 			path = Tasks;
 			sourceTree = "<group>";
@@ -915,6 +936,12 @@
 				292726A520B70290009DD08A /* RetrieveChallengeCall.swift */,
 				292726A720B702C4009DD08A /* RetrieveChallengesCall.swift */,
 				29DBFF0620D01EE000DF9CF2 /* RetrieveChallengeTasksCall.swift */,
+				5D0681DBD3F18B5871EAA41E /* DeleteChallengeCall.swift */,
+				6A6940EE9B409356A25D11CE /* SelectChallengeWinnerCall.swift */,
+				42DBF5F2A8E661A1B9E2ADC3 /* ClearFlagsChallengeCall.swift */,
+				6544C35340CD9CB9D974562C /* RetrieveChallengeMembersCall.swift */,
+				FB695EE74DE6337AE137BBC9 /* RetrieveChallengeMemberProgressCall.swift */,
+				3B09239F8BCEA4EAABA9CBF3 /* CloneChallengeCall.swift */,
 			);
 			path = Challenges;
 			sourceTree = "<group>";
@@ -1364,6 +1391,15 @@
 				29990DBC20E51FDD001ADD8B /* RegisterPushDeviceCall.swift in Sources */,
 				291E1A24209B702B00BA1FFB /* AbortQuestCall.swift in Sources */,
 				DC2C4A0476068E29973DB0CD /* RetrieveGroupMembersCall.swift in Sources */,
+				F76551479CE5367118632C17 /* DeleteChallengeCall.swift in Sources */,
+				32F8ABA8A57D1D46E74B3E49 /* SelectChallengeWinnerCall.swift in Sources */,
+				E42C92D5018DDE6FDCC8AC78 /* ClearFlagsChallengeCall.swift in Sources */,
+				CD1FA4D002F3ECAC33685615 /* RetrieveChallengeMembersCall.swift in Sources */,
+				4427901C51AD834295EC967C /* RetrieveChallengeMemberProgressCall.swift in Sources */,
+				26AE90207A1D15C1679A73BC /* CloneChallengeCall.swift in Sources */,
+				C429FE5E798E4101FEC95F30 /* UnlinkOneTaskCall.swift in Sources */,
+				E7896F8022FFEF8D5F278433 /* APIChallengeMemberProgress.swift in Sources */,
+				DCE9F14B59D67CC3F91CAAD3 /* APIChallengeClone.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
