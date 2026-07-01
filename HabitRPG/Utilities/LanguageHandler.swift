@@ -176,7 +176,13 @@ class LanguageHandler {
     
     static func setAppLanguage(_ language: AppLanguage) {
         let defaults = UserDefaults.standard
-        defaults.set([language.code, "en"], forKey: "AppleLanguages")
+        var languages = defaults.array(forKey: "AppleLanguages") as? [String] ?? Locale.preferredLanguages
+        languages.removeAll { $0 == language.code || $0.hasPrefix(language.code + "-") }
+        languages.insert(language.code, at: 0)
+        if !languages.contains(where: { $0 == "en" || $0.hasPrefix("en-") }) {
+            languages.append("en")
+        }
+        defaults.set(languages, forKey: "AppleLanguages")
         defaults.synchronize()
         if let path = Bundle.main.path(forResource: language.bundleCode, ofType: "lproj") {
             L10n.bundle = Bundle(path: path)
