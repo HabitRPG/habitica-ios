@@ -68,8 +68,10 @@ class EquipmentViewDataSource: BaseReactiveTableViewDataSource<GearProtocol> {
             })
                 .on(value: {[weak self](gear: [GearProtocol], changes: ReactiveChangeset?) in
                     self?.sections[0].items = gear.sorted(by: { first, second in
-                        if first.key == self?.initialEquippedKey {
-                            return true
+                        let firstIsEquipped = first.key == self?.initialEquippedKey
+                        let secondIsEquipped = second.key == self?.initialEquippedKey
+                        if firstIsEquipped != secondIsEquipped {
+                            return firstIsEquipped
                         }
                         return first.text ?? "" < second.text ?? ""
                     })
