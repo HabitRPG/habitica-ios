@@ -68,9 +68,10 @@ struct ChallengeListCard: View {
             if challenge.official {
                 pill(text: L10n.official, background: .purple300, foreground: .white)
             }
-            ForEach(categoryNames, id: \.self) { name in
+            if let name = categoryNames.first {
                 pill(text: name, background: .gray500, foreground: .gray200)
             }
+            Spacer(minLength: 0)
         }
     }
 
@@ -78,6 +79,8 @@ struct ChallengeListCard: View {
         Text(text)
             .font(.system(size: 12.5, weight: .semibold))
             .foregroundStyle(foreground)
+            .lineLimit(1)
+            .fixedSize()
             .padding(.vertical, 4)
             .padding(.horizontal, 11)
             .background(background)
