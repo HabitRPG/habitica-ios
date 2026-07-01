@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		066C5326277834A579626B59 /* RebirthEnabledSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFC4D0BB65279CB739EE01A1 /* RebirthEnabledSheet.swift */; };
+		11FBD29CC1529227B4C6DC96 /* ChallengeDetailCards.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B1FBA7F442B4D0851C436E7 /* ChallengeDetailCards.swift */; };
+		2526B556D5CCD0754DDFE843 /* CheckParticipationFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = B806BC76FA69844A4527B6D4 /* CheckParticipationFlow.swift */; };
 		290279632057EC03006DACB9 /* FAQTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 290279622057EC03006DACB9 /* FAQTableViewController.swift */; };
 		2902796C2057F2C5006DACB9 /* Assets-Images.swift in Sources */ = {isa = PBXBuildFile; fileRef = 290279692057F2C4006DACB9 /* Assets-Images.swift */; };
 		2902796D2057F2C5006DACB9 /* Strings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2902796A2057F2C5006DACB9 /* Strings.swift */; };
@@ -34,7 +36,7 @@
 		2907F99E1F694C4000328AEE /* GemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2907F99D1F694C4000328AEE /* GemViewController.swift */; };
 		29084B3326CF97F500AD9966 /* ShopViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29084B3226CF97F500AD9966 /* ShopViewController.swift */; };
 		2908D8742232D45D00DDECA1 /* BaseTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2908D8732232D45D00DDECA1 /* BaseTableViewController.swift */; };
-		2908E3512217255600D246CD /* (null) in Resources */ = {isa = PBXBuildFile; };
+		2908E3512217255600D246CD /* BuildFile in Resources */ = {isa = PBXBuildFile; };
 		290922F02242628600645D0E /* LanguageHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 290922EF2242628600645D0E /* LanguageHandler.swift */; };
 		2909D41F272199BE00FF2B29 /* MultiLineTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2909D41E272199BE00FF2B29 /* MultiLineTextField.swift */; };
 		2909D4222722C20A00FF2B29 /* Servers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2909D4212722C20A00FF2B29 /* Servers.swift */; };
@@ -560,6 +562,7 @@
 		49E6F57E1FF9A2AE0062C8B2 /* DoubleButtonTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 49E6F57C1FF9A2AE0062C8B2 /* DoubleButtonTableViewCell.xib */; };
 		49EE3FD8201908AB00CD7608 /* ChallengeButtonStyleProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49EE3FD7201908AB00CD7608 /* ChallengeButtonStyleProvider.swift */; };
 		49FA9FF720DC47AD0086C478 /* TaskTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49FA9FF620DC47AD0086C478 /* TaskTableViewController.swift */; };
+		6B2B86527D424DB6D2E8F6D8 /* ChallengeListCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4065B2D91CD565D8E39D5036 /* ChallengeListCard.swift */; };
 		7378D4502E3E439100CC03B9 /* CategoryNameHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7378D44F2E3E439100CC03B9 /* CategoryNameHelper.swift */; };
 		7A84E194228928AC0081E96F /* IntentHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A84E193228928AC0081E96F /* IntentHandler.swift */; };
 		7A84E19C228928AD0081E96F /* IntentsUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A84E19B228928AD0081E96F /* IntentsUI.framework */; };
@@ -570,8 +573,9 @@
 		7A84E1B222898E9F0081E96F /* TaskManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A84E1B122898E9F0081E96F /* TaskManager.swift */; };
 		7A84E1B32289963E0081E96F /* BaseRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29FC884D2010CCC2002B3D3F /* BaseRepository.swift */; };
 		7A84E1B42289968B0081E96F /* AuthenticationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 299BD6391F557FE700E22935 /* AuthenticationManager.swift */; };
-		A0B363012E73567D00F2E0CC /* (null) in Frameworks */ = {isa = PBXBuildFile; };
-		A0B363032E73567D00F2E0CC /* (null) in Frameworks */ = {isa = PBXBuildFile; };
+		87B69ED943E9C5CED8FC4CFF /* ChallengeDesignTokens.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45A03166535634BFDA9F2FFA /* ChallengeDesignTokens.swift */; };
+		A0B363012E73567D00F2E0CC /* BuildFile in Frameworks */ = {isa = PBXBuildFile; };
+		A0B363032E73567D00F2E0CC /* BuildFile in Frameworks */ = {isa = PBXBuildFile; };
 		A0B363052E73567D00F2E0CC /* FirebaseRemoteConfig in Frameworks */ = {isa = PBXBuildFile; productRef = A0B363042E73567D00F2E0CC /* FirebaseRemoteConfig */; };
 		AA835E822EBC15F400C6D779 /* project.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = AA835E812EBC15F400C6D779 /* project.xcconfig */; };
 		AA835E832EBC15F400C6D779 /* project.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = AA835E812EBC15F400C6D779 /* project.xcconfig */; };
@@ -581,6 +585,7 @@
 		C897F63C218CCF51002907C2 /* RouterHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = C897F63B218CCF51002907C2 /* RouterHandler.swift */; };
 		C897F63F218CE054002907C2 /* Storyboard Scenes.swift in Sources */ = {isa = PBXBuildFile; fileRef = C897F63D218CE052002907C2 /* Storyboard Scenes.swift */; };
 		C897F640218CE054002907C2 /* Storyboard Segues.swift in Sources */ = {isa = PBXBuildFile; fileRef = C897F63E218CE052002907C2 /* Storyboard Segues.swift */; };
+		D521896F3FF1F641B2C11B5B /* ChallengeParticipantComponents.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1A5560D21EEA121A70B5F89 /* ChallengeParticipantComponents.swift */; };
 		D902AD871B53E1B60098A1BD /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D902AD861B53E1B60098A1BD /* GoogleService-Info.plist */; };
 		D90576851BD83240009BB7BC /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = D90576871BD83240009BB7BC /* InfoPlist.strings */; };
 		D91CCAD01BCF11CC001C6A0C /* UserTopHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = D91CCACF1BCF11CC001C6A0C /* UserTopHeader.xib */; };
@@ -645,6 +650,7 @@
 		D9F1E3EC1E55E1DB0034D0F4 /* SubscriptionInformation.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9F1E3EB1E55E1DB0034D0F4 /* SubscriptionInformation.swift */; };
 		DC2C41815D97E02EF9D3BEF9 /* HRPGLabeledProgressBarTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC2C40206801F9FB5D6D6190 /* HRPGLabeledProgressBarTests.swift */; };
 		F922621EC9F65C3F7E546747 /* RebirthConfirmationSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF0201600C523E353B9ABCF2 /* RebirthConfirmationSheet.swift */; };
+		FC900D986CC601050C4F4584 /* EndChallengeFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8613CAFBCA8EB22E006EFB65 /* EndChallengeFlow.swift */; };
 		FED442C2846F244654A40CCD /* RebirthAchievementSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BF2BE8A390A17E6EE7EF36B /* RebirthAchievementSheet.swift */; };
 /* End PBXBuildFile section */
 
@@ -1242,6 +1248,8 @@
 		29FEB279202B4F0400EA245A /* AvatarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvatarView.swift; sourceTree = "<group>"; };
 		328C951D24A2C13100293E16 /* LinksOnlyTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinksOnlyTextView.swift; sourceTree = "<group>"; };
 		32C6FFF126ED896400C8F682 /* PathTraceable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PathTraceable.swift; sourceTree = "<group>"; };
+		4065B2D91CD565D8E39D5036 /* ChallengeListCard.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ChallengeListCard.swift; sourceTree = "<group>"; };
+		45A03166535634BFDA9F2FFA /* ChallengeDesignTokens.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ChallengeDesignTokens.swift; sourceTree = "<group>"; };
 		49005B711F180588004830D9 /* CurrencyCountView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurrencyCountView.swift; sourceTree = "<group>"; };
 		4904C73F1F1ED87400F80723 /* GradientImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GradientImageView.swift; sourceTree = "<group>"; };
 		491C6E5A2020FE64005030A2 /* Challenge-Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Challenge-Extensions.swift"; sourceTree = "<group>"; };
@@ -1293,7 +1301,11 @@
 		7A84E1B122898E9F0081E96F /* TaskManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskManager.swift; sourceTree = "<group>"; };
 		7A84E1B6228A5CB40081E96F /* Habitica Intents.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Habitica Intents.entitlements"; sourceTree = "<group>"; };
 		7BF2BE8A390A17E6EE7EF36B /* RebirthAchievementSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RebirthAchievementSheet.swift; sourceTree = "<group>"; };
+		8613CAFBCA8EB22E006EFB65 /* EndChallengeFlow.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = EndChallengeFlow.swift; sourceTree = "<group>"; };
+		8B1FBA7F442B4D0851C436E7 /* ChallengeDetailCards.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ChallengeDetailCards.swift; sourceTree = "<group>"; };
+		A1A5560D21EEA121A70B5F89 /* ChallengeParticipantComponents.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ChallengeParticipantComponents.swift; sourceTree = "<group>"; };
 		AA835E812EBC15F400C6D779 /* project.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = project.xcconfig; sourceTree = "<group>"; };
+		B806BC76FA69844A4527B6D4 /* CheckParticipationFlow.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = CheckParticipationFlow.swift; sourceTree = "<group>"; };
 		BF0201600C523E353B9ABCF2 /* RebirthConfirmationSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RebirthConfirmationSheet.swift; sourceTree = "<group>"; };
 		C8415991225F8B7800989FB8 /* Habitica Snapshots.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Habitica Snapshots.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C8415993225F8B7800989FB8 /* Habitica_Snapshots.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Habitica_Snapshots.swift; sourceTree = "<group>"; };
@@ -1490,10 +1502,10 @@
 				292BD8AB28B4EB42006447EF /* Eureka in Frameworks */,
 				D9CD2DBE1BC7FBB500B1304B /* CoreSpotlight.framework in Frameworks */,
 				29995A6126CBCB0B0063D4C9 /* AdServices.framework in Frameworks */,
-				A0B363012E73567D00F2E0CC /* (null) in Frameworks */,
+				A0B363012E73567D00F2E0CC /* BuildFile in Frameworks */,
 				D958E2B11915D41D00186A08 /* SystemConfiguration.framework in Frameworks */,
 				2953D84028B5215400DC456E /* ReactiveCocoa in Frameworks */,
-				A0B363032E73567D00F2E0CC /* (null) in Frameworks */,
+				A0B363032E73567D00F2E0CC /* BuildFile in Frameworks */,
 				D958E2B01915D41400186A08 /* Security.framework in Frameworks */,
 				292BD89C28B4EA4F006447EF /* KeychainAccess in Frameworks */,
 				292BD8A828B4EB10006447EF /* PinLayout in Frameworks */,
@@ -2713,6 +2725,12 @@
 				2956FA492F605E2700C36330 /* ChallengeLocation.swift */,
 				49A84FAF1F9FC945003E2956 /* Details */,
 				D9E02EC51E5E0458002CFCE2 /* ChallengeTableViewController.swift */,
+				45A03166535634BFDA9F2FFA /* ChallengeDesignTokens.swift */,
+				A1A5560D21EEA121A70B5F89 /* ChallengeParticipantComponents.swift */,
+				8613CAFBCA8EB22E006EFB65 /* EndChallengeFlow.swift */,
+				B806BC76FA69844A4527B6D4 /* CheckParticipationFlow.swift */,
+				4065B2D91CD565D8E39D5036 /* ChallengeListCard.swift */,
+				8B1FBA7F442B4D0851C436E7 /* ChallengeDetailCards.swift */,
 			);
 			path = Challenges;
 			sourceTree = "<group>";
@@ -3250,7 +3268,7 @@
 				49E378532009542C00E0DA3D /* ChallengeTableViewHeaderView.xib in Resources */,
 				498E4D001FA17C1A006933FF /* ChallengeCategoriesTableViewCell.xib in Resources */,
 				2914487A20864A3300F3A6B5 /* EquipmentOverviewView.xib in Resources */,
-				2908E3512217255600D246CD /* (null) in Resources */,
+				2908E3512217255600D246CD /* BuildFile in Resources */,
 				29028C442037132A00B7F704 /* SystemMessageTableViewCell.xib in Resources */,
 				29AAA1611F2B597400029737 /* SpeechbubbleView.xib in Resources */,
 				29FC885E2018D858002B3D3F /* WorldBossDescription.xib in Resources */,
@@ -3920,6 +3938,12 @@
 				29A984D32547294E00F04665 /* RemoteLogger.swift in Sources */,
 				D97ED0AE1E6DBB97006C2A26 /* JoinChallengeInteractor.swift in Sources */,
 				29DF93512ECDFDB90047801F /* LevelupSheet.swift in Sources */,
+				87B69ED943E9C5CED8FC4CFF /* ChallengeDesignTokens.swift in Sources */,
+				D521896F3FF1F641B2C11B5B /* ChallengeParticipantComponents.swift in Sources */,
+				FC900D986CC601050C4F4584 /* EndChallengeFlow.swift in Sources */,
+				2526B556D5CCD0754DDFE843 /* CheckParticipationFlow.swift in Sources */,
+				6B2B86527D424DB6D2E8F6D8 /* ChallengeListCard.swift in Sources */,
+				11FBD29CC1529227B4C6DC96 /* ChallengeDetailCards.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
