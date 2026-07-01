@@ -398,6 +398,19 @@ class TaskTableViewDataSource: BaseReactiveTableViewDataSource<TaskProtocol>, Ta
     }
     
     private func showBrokenChallengeDialog(task: TaskProtocol) {
+        let isSingleTask = task.challengeBroken == "TASK_DELETED" || task.challengeBroken == "CHALLENGE_TASK_NOT_FOUND"
+        if isSingleTask {
+            let alert = HabiticaAlertController(title: L10n.brokenChallenge, message: L10n.brokenChallengeDescription(1))
+            alert.addAction(title: L10n.keepXTasks(1), style: .default, isMainAction: true) { _ in
+                self.repository.unlinkOneTask(task: task, keepOption: "keep").observeCompleted {}
+            }
+            alert.addAction(title: L10n.deleteXTasks(1), style: .destructive) { _ in
+                self.repository.unlinkOneTask(task: task, keepOption: "remove").observeCompleted {}
+            }
+            alert.addCloseAction()
+            alert.show()
+            return
+        }
         repository.getChallengeTasks(id: task.challengeID ?? "").take(first: 1).on(value: { tasks in
             let taskCount = tasks.value.count
             let alert = HabiticaAlertController(title: L10n.brokenChallenge, message: L10n.brokenChallengeDescription(taskCount))
