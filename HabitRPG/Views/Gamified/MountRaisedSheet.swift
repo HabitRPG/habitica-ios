@@ -16,17 +16,19 @@ struct MountRaisedSheet: View, Dismissable {
     var onEquip: () -> Void = { }
     
     var body: some View {
-        GamifiedBottomSheet(upperBackground: StableBackgroundView(),
-                            upperContent: MountView(mount: mount).padding(.top, 30),
-                            upperContentBottomPadding: 100,
-                            title: Text(L10n.youRaisedPet(mount.text ?? ""))) {
-            HabiticaButtonUI(label: Text(L10n.equip), color: Color(themeService.theme.fixedTintColor)) {
-                onEquip()
-                dismisser.dismiss()
-            }
-            HabiticaButtonUI(label: Text(L10n.share).foregroundStyle(Color(themeService.theme.primaryTextColor)), color: Color(themeService.theme.offsetBackgroundColor)) {
-                SharingManager.share(mount: mount, shareIdentifier: "raisedPet")
-                dismisser.dismiss()
+        if mount.isValid {
+            GamifiedBottomSheet(upperBackground: StableBackgroundView(),
+                                upperContent: MountView(mount: mount).padding(.top, 30),
+                                upperContentBottomPadding: 10,
+                                title: Text(L10n.youRaisedPet(mount.text ?? ""))) {
+                HabiticaButtonUI(label: Text(L10n.equip), color: Color(themeService.theme.fixedTintColor)) {
+                    onEquip()
+                    dismisser.dismiss()
+                }
+                HabiticaButtonUI(label: Text(L10n.share).foregroundStyle(Color(themeService.theme.primaryTextColor)), color: Color(themeService.theme.offsetBackgroundColor)) {
+                    SharingManager.share(mount: mount, shareIdentifier: "raisedPet")
+                    dismisser.dismiss()
+                }
             }
         }
     }

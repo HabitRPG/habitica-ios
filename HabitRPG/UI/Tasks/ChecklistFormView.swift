@@ -107,6 +107,7 @@ struct TaskFormChecklistView: View {
     var body: some View {
         VStack(alignment: .leading, spacing: 12) {
             Text(L10n.Tasks.Form.checklist.uppercased()).font(.system(size: 13, weight: .semibold)).foregroundStyle(Color(themeService.theme.quadTextColor)).padding(.leading, 14)
+            if items.first?.isValid == true {
                 LazyVStack {
                     ForEach(items, id: \.id) { item in
                         TaskFormChecklistItemView(item: item, onDelete: {
@@ -137,6 +138,7 @@ struct TaskFormChecklistView: View {
                     }
                     addButton
                 }
+            }
         }
     }
 }

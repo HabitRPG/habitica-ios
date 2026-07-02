@@ -184,13 +184,15 @@ struct ChallengeFormTaskList<Title: View>: View {
                         .font(.system(size: 15, weight: .semibold))
                 }
             }
-            ForEach(tasks, id: \.id) { task in
-                TaskListItem(task: task)
-                    .onTapGesture {
-                        if let action = viewModel.presentTaskForm {
-                            action(taskType, task)
+            if tasks.first?.isValid == true {
+                ForEach(tasks, id: \.id) { task in
+                    TaskListItem(task: task)
+                        .onTapGesture {
+                            if let action = viewModel.presentTaskForm {
+                                action(taskType, task)
+                            }
                         }
-                    }
+                }
             }
             HabiticaButtonUI(label: Text(buttonText).foregroundStyle(Color(ThemeService.shared.theme.primaryTextColor)),
                              color: Color(ThemeService.shared.theme.windowBackgroundColor)) {

@@ -206,6 +206,9 @@ class TaskTableViewController: BaseTableViewController, UISearchBarDelegate, UIT
     }
     
     func scrollToTask(with taskId: String) {
+        if tableView.dataSource == nil {
+            return
+        }
         if let index = dataSource?.tasks.indices.first(where: { dataSource?.tasks[$0].id == taskId }) {
             let indexPath = IndexPath(item: index, section: 0)
             tableView.scrollToRow(at: indexPath, at: .middle, animated: true)

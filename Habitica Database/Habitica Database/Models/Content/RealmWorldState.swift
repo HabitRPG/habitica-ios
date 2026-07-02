@@ -107,7 +107,7 @@ class RealmWorldStateEvent: Object, WorldStateEventProtocol {
             if realmSpriteSubstitutions.isInvalidated {
                 return nil
             }
-            realmSpriteSubstitutions.forEach({ sub in
+            realmSpriteSubstitutions.forEach { sub in
                 if let key = sub.key {
                     var subMap = [String: String]()
                     sub.substitutions.forEach { entry in
@@ -115,7 +115,7 @@ class RealmWorldStateEvent: Object, WorldStateEventProtocol {
                     }
                     subs[key] = subMap
                 }
-            })
+            }
             return subs
         }
         
@@ -126,9 +126,9 @@ class RealmWorldStateEvent: Object, WorldStateEventProtocol {
             realmSpriteSubstitutions = List()
             newValue?.forEach { (key, entry) in
                 let subMap = Map<String, String>()
-                entry.keys.forEach({ subKey in
+                entry.keys.forEach { subKey in
                     subMap[subKey] = entry[subKey]
-                })
+                }
                 realmSpriteSubstitutions.append(ImageSubstitutionContext(key: key, substitutions: subMap))
             }
         }

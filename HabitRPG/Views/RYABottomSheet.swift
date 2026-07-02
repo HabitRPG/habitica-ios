@@ -273,11 +273,14 @@ struct RYABottomSheet: View, Dismissable {
                 .multilineTextAlignment(.center)
             
             let scrollView = ScrollView {
-                VStack(spacing: 8) {
-                    ForEach(viewModel.tasks, id: \.id) { task in
-                        RYATaskView(task: task, isChecked: viewModel.isChecked(task: task), viewModel: viewModel)
-                    }
-                }.fixedSize(horizontal: false, vertical: true)
+                let tasks = viewModel.tasks
+                if tasks.first?.isValid == true {
+                    VStack(spacing: 8) {
+                        ForEach(tasks, id: \.id) { task in
+                            RYATaskView(task: task, isChecked: viewModel.isChecked(task: task), viewModel: viewModel)
+                        }
+                    }.fixedSize(horizontal: false, vertical: true)
+                }
             }.scrollBounceBehavior(.basedOnSize)
                 .padding(.top, 16)
             

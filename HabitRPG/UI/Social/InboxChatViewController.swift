@@ -112,6 +112,9 @@ class InboxChatViewController: MessagesViewController {
                 inputBar.inputTextView.text = text
             case .success:
                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+                    if self.tableView.dataSource == nil {
+                        return
+                    }
                     if self.tableView.numberOfRows(inSection: 0) > 0 {
                         self.tableView.scrollToRow(at: IndexPath(row: 0, section: 0), at: .bottom, animated: true)
                     }

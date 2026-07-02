@@ -345,16 +345,18 @@ class TaskTableViewDataSource: BaseReactiveTableViewDataSource<TaskProtocol>, Ta
     }
     
     internal func scoreTask(task: TaskProtocol, direction: TaskScoringDirection, soundEffect: SoundEffect) {
+        let taskType = task.type
+        let taskId = task.id
         disposable.add(repository.score(task: task, direction: direction)
             .on(value: {[weak self] response in
                 if response?.temp?.drop?.key != nil {
                     self?.disposable.add(self?.userRepository.retrieveUser().observeCompleted {})
                 }
-                if task.type == TaskType.todo {
+                if taskType == TaskType.todo {
                     if direction == .up {
-                        UserManager.shared.cancelNotifications(for: task.id ?? "")
+                        UserManager.shared.cancelNotifications(for: taskId ?? "")
                     } else if direction == .down {
-                        UserManager.shared.rescheduleNotifications(for: task.id ?? "")
+                        UserManager.shared.rescheduleNotifications(for: taskId ?? "")
                     }
                 }
                 let defaults = UserDefaults.standard
