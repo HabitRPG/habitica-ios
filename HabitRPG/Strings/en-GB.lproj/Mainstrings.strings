@@ -1420,7 +1420,7 @@
 "challenge_category.self_improvement" = "Self-Improvement";
 "challenge_category.habitica_official" = "Habitica Official";
 "more_gem_packs" = "More Gem packs";
-"x_gems_for_y" = "%d Gems for %s";
+"x_gems_for_y" = "%1$d Gems for %2$s";
 "loading" = "Loading";
 "quest_mechanics_pausing_description" = "If you’re struggling to complete your Dailies, you can pause damage from Settings for a break. This will prevent the Boss from hurting you or others, but also pause your own damage. Other members’ missed Dailies will still cause damage, so be careful out there!";
 "quest_mechanics_rage_title" = "Rage meters";
