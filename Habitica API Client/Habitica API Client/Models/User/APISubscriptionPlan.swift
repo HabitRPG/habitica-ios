@@ -21,6 +21,7 @@ class APISubscriptionPlan: SubscriptionPlanProtocol, Decodable {
     var customerId: String?
     var paymentMethod: String?
     var consecutive: SubscriptionConsecutiveProtocol?
+    var cumulativeCount: Int
     var mysteryItems: [String]
     var hourglassPromoReceived: Date?
     var extraMonths: Int
@@ -40,6 +41,7 @@ class APISubscriptionPlan: SubscriptionPlanProtocol, Decodable {
         case mysteryItems
         case hourglassPromoReceived
         case extraMonths
+        case cumulativeCount
     }
     
     var isValid: Bool {
@@ -62,5 +64,6 @@ class APISubscriptionPlan: SubscriptionPlanProtocol, Decodable {
         mysteryItems = (try? values.decode([String].self, forKey: .mysteryItems)) ?? []
         hourglassPromoReceived = (try? values.decode(Date.self, forKey: .hourglassPromoReceived))
         extraMonths = (try? values.decode(Int.self, forKey: .extraMonths)) ?? 0
+        cumulativeCount = (try? values.decode(Int.self, forKey: .cumulativeCount)) ?? 0
     }
 }

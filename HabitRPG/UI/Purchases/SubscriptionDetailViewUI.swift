@@ -230,7 +230,7 @@ struct SubscriptionDetailViewUI: View {
                     VStack(spacing: 6) {
                         HStack(spacing: 4) {
                             Image(Asset.calendarLarge.name)
-                            Text("\(plan.consecutive?.count ?? 0)")
+                            Text("\(max(plan.cumulativeCount, plan.consecutive?.count ?? 0))")
                                 .font(.system(size: 22, weight: .bold))
                         }
                         Text(L10n.Subscription.monthsSubscribed)
