@@ -59,22 +59,25 @@ struct FeedSheetView: View {
                     }
             } else {
                 Section(content: {
-                    ForEach(viewModel.food, id: \.key) { foodItem in
-                        HStack {
-                            Group {
-                                PixelArtView(name: "Pet_Food_\(foodItem.key ?? "")").frame(width: 68, height: 68)
-                            }.frame(width: 50, height: 50)
-                            Text(foodItem.text ?? "")
-                                .font(.system(.headline))
-                            Spacer()
-                            Text("\(viewModel.ownedFoods[foodItem.key ?? ""] ?? 0)")
-                                .font(.system(.subheadline))
-                        }
-                        .listRowSpacing(0)
-                        .listRowInsets(.none)
-                        .onTapGesture {
-                            onFeed(foodItem)
-                            presentationMode.dismiss()
+                    let food = viewModel.food
+                    if food.first?.isValid == true {
+                        ForEach(food, id: \.key) { foodItem in
+                            HStack {
+                                Group {
+                                    PixelArtView(name: "Pet_Food_\(foodItem.key ?? "")").frame(width: 68, height: 68)
+                                }.frame(width: 50, height: 50)
+                                Text(foodItem.text ?? "")
+                                    .font(.system(.headline))
+                                Spacer()
+                                Text("\(viewModel.ownedFoods[foodItem.key ?? ""] ?? 0)")
+                                    .font(.system(.subheadline))
+                            }
+                            .listRowSpacing(0)
+                            .listRowInsets(.none)
+                            .onTapGesture {
+                                onFeed(foodItem)
+                                presentationMode.dismiss()
+                            }
                         }
                     }
                 }, footer: {

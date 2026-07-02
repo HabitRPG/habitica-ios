@@ -16,20 +16,22 @@ struct PetHatchedSheet: View, Dismissable {
     var onEquip: () -> Void = { }
     
     var body: some View {
-        GamifiedBottomSheet(upperBackground: StableBackgroundView(),
-                            upperContent: PetView(pet: pet).padding(.top, 40),
-                            upperContentBottomPadding: 10,
-                            title: Text(L10n.Inventory.hatched(pet.text ?? "")),
-                            buttons: {
-            HabiticaButtonUI(label: Text(L10n.equip), color: Color(themeService.theme.fixedTintColor)) {
-                onEquip()
-                dismisser.dismiss()
-            }
-            HabiticaButtonUI(label: Text(L10n.share).foregroundStyle(Color(themeService.theme.primaryTextColor)), color: Color(themeService.theme.offsetBackgroundColor)) {
-                SharingManager.share(pet: pet, shareIdentifier: "hatchedPet")
-                dismisser.dismiss()
-            }
-        }, xButtonBackground: .gray600.opacity(0.7))
+        if pet.isValid {
+            GamifiedBottomSheet(upperBackground: StableBackgroundView(),
+                                upperContent: PetView(pet: pet).padding(.top, 40),
+                                upperContentBottomPadding: 10,
+                                title: Text(L10n.Inventory.hatched(pet.text ?? "")),
+                                buttons: {
+                HabiticaButtonUI(label: Text(L10n.equip), color: Color(themeService.theme.fixedTintColor)) {
+                    onEquip()
+                    dismisser.dismiss()
+                }
+                HabiticaButtonUI(label: Text(L10n.share).foregroundStyle(Color(themeService.theme.primaryTextColor)), color: Color(themeService.theme.offsetBackgroundColor)) {
+                    SharingManager.share(pet: pet, shareIdentifier: "hatchedPet")
+                    dismisser.dismiss()
+                }
+            }, xButtonBackground: .gray600.opacity(0.7))
+        }
     }
 }
 

@@ -1731,7 +1731,7 @@
 "hatch_pet_new_title" = "Chocar um novo animal de estimação";
 "fcv_streak_explanation" = "Você pode restaurar sequências em tarefas individuais tocando nelas para abrir a visualização de edição";
 "more_gem_packs" = "Mais pacotes de gemas";
-"x_gems_for_y" = "%d Gemas por %s";
+"x_gems_for_y" = "%1$d Gemas por %2$s";
 "loading" = "Carregando";
 "task_health" = "Vida da missão";
 "task_status" = "Status da missão";

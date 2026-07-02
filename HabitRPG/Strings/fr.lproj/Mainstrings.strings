@@ -1660,7 +1660,7 @@
 "fcv_streak_explanation" = "Vous pouvez restaurer vos combos sur des tâches individuelles en cliquant dessus pour les éditer";
 "checkin_prize_set_description" = "Vous avez obtenu un ensemble de %s grâce à vos efforts pour rendre votre vie meilleur";
 "next_prize_in_1_checkin" = "Prochaine récompense dans 1 jour !";
-"x_gems_for_y" = "%d Gemmes pour %s";
+"x_gems_for_y" = "%1$d Gemmes pour %2$s";
 "loading" = "Chargement";
 "more_gem_packs" = "Plus de packs de Gemmes";
 "task_health" = "Santé de la Tâche";

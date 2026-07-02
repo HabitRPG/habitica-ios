@@ -40,16 +40,16 @@ struct SubscriptionOptionStack: View {
         VStack(spacing: 0) {
                 SubscriptionOptionViewUI(price: Text(viewModel.priceFor(PurchaseHandler.subscriptionIdentifiers[0])),
                                          recurring: Text(L10n.subscriptionDuration(L10n.month)),
-                                         instantGems: "\(viewModel.subscriptionPlan?.gemCapTotal ?? 24)",
+                                         instantGems: "\(viewModel.gemCapTotal)",
                                          isSelected: PurchaseHandler.subscriptionIdentifiers[0] == viewModel.selectedSubscription)
             if viewModel.presentationPoint == nil {
                 SubscriptionOptionViewUI(price: Text(viewModel.priceFor(PurchaseHandler.subscriptionIdentifiers[1])),
                                          recurring: Text(L10n.subscriptionDuration(L10n.xMonths(3))),
-                                         instantGems: "\(viewModel.subscriptionPlan?.gemCapTotal ?? 24)",
+                                         instantGems: "\(viewModel.gemCapTotal)",
                                          isSelected: PurchaseHandler.subscriptionIdentifiers[1] == viewModel.selectedSubscription)
                 SubscriptionOptionViewUI(price: Text(viewModel.priceFor(PurchaseHandler.subscriptionIdentifiers[2])),
                                          recurring: Text(L10n.subscriptionDuration(L10n.xMonths(6))),
-                                         instantGems: "\(viewModel.subscriptionPlan?.gemCapTotal ?? 24)",
+                                         instantGems: "\(viewModel.gemCapTotal)",
                                          isSelected: PurchaseHandler.subscriptionIdentifiers[2] == viewModel.selectedSubscription)
             }
             SubscriptionOptionViewUI(price: Text(viewModel.priceFor(PurchaseHandler.subscriptionIdentifiers[3])), recurring: Text(L10n.subscriptionDuration(L10n.xMonths(12))),
@@ -96,6 +96,15 @@ class SubscriptionViewModel: BaseSubscriptionViewModel {
     @Published var isRestoringPurchase = false
     
     @Published var scrollToTop: Date?
+    
+    var gemCapTotal: Int {
+        get {
+            if subscriptionPlan?.isValid == true {
+                return subscriptionPlan?.gemCapTotal ?? 24
+            }
+            return 24
+        }
+    }
 
     init(presentationPoint: PresentationPoint?) {
         #if DEBUG
@@ -301,6 +310,7 @@ struct SubscriptionPage: View {
     var textColor: Color = .white
     
     var body: some View {
+        let subscriptionPlan = viewModel.subscriptionPlan
             VStack(spacing: 0) {
                 if let endDate = viewModel.activePromo?.endDate, viewModel.activePromo?.identifier == "g1g1" {
                     G1G1Banner(endDate: endDate)
@@ -345,11 +355,11 @@ struct SubscriptionPage: View {
                     }
                     SubscriptionSeparator()
                         .padding(.horizontal, 24)
-                    if viewModel.subscriptionPlan?.isValid == true && (viewModel.subscriptionPlan?.consecutive?.gemCapExtra ?? 0) > 0 {
+                    if subscriptionPlan?.isValid == true && (subscriptionPlan?.consecutive?.gemCapExtra ?? 0) > 0 {
                         VStack(spacing: 1) {
                             HStack(spacing: 10) {
                                 Image(Asset.gemcapLeft.name)
-                                Text(L10n.xxGemCap(viewModel.subscriptionPlan?.gemCapTotal ?? 0, 50))
+                                Text(L10n.xxGemCap(viewModel.gemCapTotal, 50))
                                     .font(.system(size: 20, weight: .bold))
                                 Image(Asset.gemcapRight.name)
                             }
@@ -366,7 +376,7 @@ struct SubscriptionPage: View {
                                         .foregroundStyle(.green100)
                                         .fill()
                                         .cornerRadius(UIConstants.mediumCornerRadius)
-                                        .frame(width: reader.size.width * (CGFloat(viewModel.subscriptionPlan?.gemCapTotal ?? 0) / 50.0), height: 8)
+                                        .frame(width: reader.size.width * (CGFloat(subscriptionPlan?.gemCapTotal ?? 0) / 50.0), height: 8)
                                 }
                             }
                             .frame(height: 8)
@@ -437,7 +447,7 @@ struct SubscriptionPage: View {
                         .font(.system(size: 17, weight: .semibold))
                         .multilineTextAlignment(.center)
                         .padding(.horizontal, 24)
-                    if let plan = viewModel.subscriptionPlan {
+                    if let plan = subscriptionPlan {
                         SubscriptionDetailViewUI(plan: plan)
                             .padding(.vertical, 10)
                             .padding(.horizontal, 24)

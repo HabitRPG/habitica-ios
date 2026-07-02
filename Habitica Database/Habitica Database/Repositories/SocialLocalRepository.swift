@@ -143,13 +143,13 @@ public class SocialLocalRepository: BaseLocalRepository {
         })
         let oldGroupMemberships = getRealm()?.objects(RealmGroupMembership.self).filter("userID == '\(userID ?? "")'")
         var membershipsToRemove = [Object]()
-        oldGroupMemberships?.forEach({ (membership) in
+        oldGroupMemberships?.forEach { membership in
             if !newMemberships.contains(where: { (newMembership) -> Bool in
                 return newMembership.groupID == membership.groupID
             }) {
                 membershipsToRemove.append(membership)
             }
-        })
+        }
         updateCall { realm in
             if membershipsToRemove.isEmpty == false {
                 realm.delete(membershipsToRemove)
@@ -268,13 +268,13 @@ public class SocialLocalRepository: BaseLocalRepository {
     private func removeOldChatMessages(groupID: String?, newChatMessages: [ChatMessageProtocol]) {
         let oldChatMessages = getRealm()?.objects(RealmChatMessage.self).filter("groupID == %@", groupID ?? "")
         var messagesToRemove = [RealmChatMessage]()
-        oldChatMessages?.forEach({ (message) in
+        oldChatMessages?.forEach { message in
             if !newChatMessages.contains(where: { (newMessage) -> Bool in
                 return newMessage.id == message.id
             }) {
                 messagesToRemove.append(message)
             }
-        })
+        }
         if messagesToRemove.isEmpty == false {
             updateCall { realm in
                 realm.delete(messagesToRemove)
@@ -285,13 +285,13 @@ public class SocialLocalRepository: BaseLocalRepository {
     private func removeOldPartyMembers(groupID: String?, newMembers: [MemberProtocol]) {
         let oldMembers = getRealm()?.objects(RealmMember.self).filter("realmParty.id == %@", groupID ?? "")
         var membersToRemove = [RealmMember]()
-        oldMembers?.forEach({ (member) in
+        oldMembers?.forEach { member in
             if !newMembers.contains(where: { (newMember) -> Bool in
                 return newMember.id == member.id
             }) {
                 membersToRemove.append(member)
             }
-        })
+        }
         if membersToRemove.isEmpty == false {
             updateCall { realm in
                 realm.delete(membersToRemove)
@@ -302,13 +302,13 @@ public class SocialLocalRepository: BaseLocalRepository {
     private func removeOldQuestParticipants(groupID: String?, participants: [QuestParticipantProtocol]) {
         let oldParticipants = getRealm()?.objects(RealmQuestParticipant.self).filter("groupID == %@", groupID ?? "")
         var participantsToRemove = [RealmQuestParticipant]()
-        oldParticipants?.forEach({ (member) in
+        oldParticipants?.forEach { member in
             if !participants.contains(where: { (participant) -> Bool in
                 return participant.userID == member.userID
             }) {
                 participantsToRemove.append(member)
             }
-        })
+        }
         if participantsToRemove.isEmpty == false {
             updateCall { realm in
                 realm.delete(participantsToRemove)

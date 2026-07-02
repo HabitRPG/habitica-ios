@@ -100,26 +100,30 @@ struct MemberList: View {
     
     var body: some View {
         VStack(alignment: .leading, spacing: 4) {
-            ForEach(members, id: \.id) { member in
-                MemberListItem(member: member, onTap: onTap, onMoreTap: onMoreTap, isCurrentUser: member.id == socialRepository.currentUserId)
+            if members.first?.isValid == true {
+                ForEach(members, id: \.id) { member in
+                    MemberListItem(member: member, onTap: onTap, onMoreTap: onMoreTap, isCurrentUser: member.id == socialRepository.currentUserId)
+                }
             }
-            ForEach(invites, id: \.id) { invite in
-                if let id = invite.id {
-                    PartyInviteView(member: invite, inviteButtonState: inviteStates[id] ?? .content, isInvited: inviteStates[id] != .success, onInvite: {
-                        inviteStates[id] = .loading
-                        socialRepository.removeMember(groupID: "party", userID: id).observeCompleted {
-                            ToastManager.show(text: L10n.Groups.removed(invite.profile?.name ?? "player"), color: .red)
-                            inviteStates[id] = .failed
-                            DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-                                invites.removeAll { check in
-                                    return check.id == invite.id
+            if invites.first?.isValid == true {
+                ForEach(invites, id: \.id) { invite in
+                    if let id = invite.id {
+                        PartyInviteView(member: invite, inviteButtonState: inviteStates[id] ?? .content, isInvited: inviteStates[id] != .success, onInvite: {
+                            inviteStates[id] = .loading
+                            socialRepository.removeMember(groupID: "party", userID: id).observeCompleted {
+                                ToastManager.show(text: L10n.Groups.removed(invite.profile?.name ?? "player"), color: .red)
+                                inviteStates[id] = .failed
+                                DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                                    invites.removeAll { check in
+                                        return check.id == invite.id
+                                    }
                                 }
                             }
-                        }
-                    }, canInvite: isLeader, isPending: true)
-                    .padding(16)
-                    .background(Color(themeService.theme.windowBackgroundColor))
-                    .cornerRadius(UIConstants.largeCornerRadius)
+                        }, canInvite: isLeader, isPending: true)
+                        .padding(16)
+                        .background(Color(themeService.theme.windowBackgroundColor))
+                        .cornerRadius(UIConstants.largeCornerRadius)
+                    }
                 }
             }
         }

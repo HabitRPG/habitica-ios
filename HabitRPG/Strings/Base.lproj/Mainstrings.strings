@@ -1539,7 +1539,7 @@
 
 "fcv_streak_explanation" = "You can restore streaks on individual tasks by tapping them to open the edit view";
 "more_gem_packs" = "More Gem packs";
-"x_gems_for_y" = "%d Gems for %s";
+"x_gems_for_y" = "%1$d Gems for %2$s";
 "loading" = "Loading";
 "task_health" = "Task Health";
 "task_status" = "Task Status";

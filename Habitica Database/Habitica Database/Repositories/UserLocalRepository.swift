@@ -126,13 +126,13 @@ public class UserLocalRepository: BaseLocalRepository {
     private func removeOldInAppRewards(userID: String?, newInAppRewards: [InAppRewardProtocol]) {
         let oldRewards = getRealm()?.objects(RealmInAppReward.self).filter("userID == '\(userID ?? "")'")
         var rewardsToRemove = [RealmInAppReward]()
-        oldRewards?.forEach({ (reward) in
+        oldRewards?.forEach { reward in
             if !newInAppRewards.contains(where: { (newReward) -> Bool in
                 return newReward.key == reward.key
             }) {
                 rewardsToRemove.append(reward)
             }
-        })
+        }
         if rewardsToRemove.isEmpty == false {
             updateCall { realm in
                 realm.delete(rewardsToRemove)

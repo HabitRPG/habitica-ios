@@ -15,42 +15,42 @@ public class ContentLocalRepository: BaseLocalRepository {
     
     public func save(_ content: ContentProtocol) {
         var newObjects = [Object]()
-        content.skills?.forEach({ (skill) in
+        content.skills?.forEach { skill in
             newObjects.append(RealmSkill(skill))
-        })
-        content.food?.forEach({ (food) in
+        }
+        content.food?.forEach { food in
             newObjects.append(RealmFood(food))
-        })
-        content.eggs?.forEach({ (egg) in
+        }
+        content.eggs?.forEach { egg in
             newObjects.append(RealmEgg(egg))
-        })
-        content.hatchingPotions?.forEach({ (hatchingPotion) in
+        }
+        content.hatchingPotions?.forEach { hatchingPotion in
             newObjects.append(RealmHatchingPotion(hatchingPotion))
-        })
-        content.special?.forEach({ (specialItem) in
+        }
+        content.special?.forEach { specialItem in
             newObjects.append(RealmSpecialItem(specialItem))
-        })
-        content.quests?.forEach({ (quest) in
+        }
+        content.quests?.forEach { quest in
             newObjects.append(RealmQuest(quest))
-        })
-        content.gear?.forEach({ (gear) in
+        }
+        content.gear?.forEach { gear in
             newObjects.append(RealmGear(gear))
-        })
-        content.faq?.forEach({ (entries) in
+        }
+        content.faq?.forEach { entries in
             newObjects.append(RealmFAQEntry(entries))
-        })
-        content.pets?.forEach({ (pet) in
+        }
+        content.pets?.forEach { pet in
             newObjects.append(RealmPet(pet))
-        })
-        content.mounts?.forEach({ (mount) in
+        }
+        content.mounts?.forEach { mount in
             newObjects.append(RealmMount(mount))
-        })
-        content.customizations.forEach({ (customization) in
+        }
+        content.customizations.forEach { customization in
             newObjects.append(RealmCustomization(customization))
-        })
-        content.mystery.forEach({ mysterySet in
+        }
+        content.mystery.forEach { mysterySet in
             newObjects.append(RealmGearSet(mysterySet))
-        })
+        }
         
         saveMysteryItem()
         

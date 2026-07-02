@@ -44,9 +44,9 @@ public class TaskLocalRepository: BaseLocalRepository {
         if let order = order {
             taskOrder = order
         } else {
-            getRealm()?.objects(RealmTask.self).sorted(byKeyPath: "order", ascending: true).forEach({ (task) in
+            getRealm()?.objects(RealmTask.self).sorted(byKeyPath: "order", ascending: true).forEach { task in
                 taskOrder[(task.type ?? "")+"s"]?.append(task.id ?? "")
-            })
+            }
         }
         save(objects: tasks.map { (task) in
             task.order = taskOrder[(task.type ?? "")+"s"]?.firstIndex(of: task.id ?? "") ?? 0
@@ -76,13 +76,13 @@ public class TaskLocalRepository: BaseLocalRepository {
         }
         let oldTasks = getRealm()?.objects(RealmTask.self).filter(predicate)
         var tasksToRemove = [RealmTask]()
-        oldTasks?.forEach({ (task) in
+        oldTasks?.forEach { task in
             if !newTasks.contains(where: { (newTask) -> Bool in
                 return newTask.id == task.id
             }) {
                 tasksToRemove.append(task)
             }
-        })
+        }
         if tasksToRemove.isEmpty == false {
             updateCall { realm in
                 realm.delete(tasksToRemove)

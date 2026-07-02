@@ -1510,7 +1510,7 @@ public enum L10n {
   public static func xGems(_ p1: Int) -> String {
     return L10n.tr("Mainstrings", "x_gems", p1)
   }
-  /// %d Gems for %s
+  /// %1$d Gems for %2$s
   public static func xGemsForY(_ p1: Int, _ p2: UnsafePointer<CChar>) -> String {
     return L10n.tr("Mainstrings", "x_gems_for_y", p1, p2)
   }
@@ -2331,8 +2331,6 @@ public enum L10n {
     public static var usernameDescription: String { return L10n.tr("Mainstrings", "login.username_description") }
     /// What should we call you?
     public static var whatCallYou: String { return L10n.tr("Mainstrings", "login.what_call_you") }
-    // Custom URL
-    public static var customUrl: String { return L10n.tr("Mainstrings", "login.custom_url") }
   }
 
   public enum Member {

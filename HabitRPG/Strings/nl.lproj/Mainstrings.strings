@@ -1347,7 +1347,7 @@
 "view_stats" = "Eigenschappen bekijken";
 "undo" = "Ongedaan maken";
 "not_now" = "Niet nu";
-"x_gems_for_y" = "%d Edelstenen voor %s";
+"x_gems_for_y" = "%1$d Edelstenen voor %2$s";
 "more_gem_packs" = "Meer Edelsteenpakketten";
 "loading" = "Bezig met laden";
 "task_status" = "Taak Status";

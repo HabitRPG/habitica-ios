@@ -1609,7 +1609,7 @@
 "more_gem_packs" = "更多宝石礼包";
 "boss" = "首领";
 "logins" = "登入次数";
-"x_gems_for_y" = "给%s %d颗宝石";
+"x_gems_for_y" = "给%2$s %1$d颗宝石";
 "task_health" = "任务血量";
 "habitica_helpers" = "Habitica 贡献者";
 "shops.rebirthShop" = "重生之球";

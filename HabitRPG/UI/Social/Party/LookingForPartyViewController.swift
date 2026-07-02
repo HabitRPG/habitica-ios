@@ -234,20 +234,23 @@ struct LookingForPartyView: View {
                     if viewModel.members.isEmpty {
                         Image(uiImage: Asset.partySeekingEmpty.image).padding(.top, 24)
                     } else {
-                        ForEach(viewModel.members, id: \.id) { member in
-                            if let id = member.id {
-                                PartyInviteView(member: member, inviteButtonState: viewModel.inviteStates[id] ?? .content, isInvited: viewModel.invitedMembers.contains(id)) {
-                                    if viewModel.invitedMembers.contains(id) {
-                                        viewModel.cancelInvite(uuid: id)
-                                    } else {
-                                        viewModel.invite(uuid: id, username: member.username ?? "")
+                        let members = viewModel.members
+                        if members.first?.isValid == true {
+                            ForEach(members, id: \.id) { member in
+                                if let id = member.id {
+                                    PartyInviteView(member: member, inviteButtonState: viewModel.inviteStates[id] ?? .content, isInvited: viewModel.invitedMembers.contains(id)) {
+                                        if viewModel.invitedMembers.contains(id) {
+                                            viewModel.cancelInvite(uuid: id)
+                                        } else {
+                                            viewModel.invite(uuid: id, username: member.username ?? "")
+                                        }
                                     }
+                                    .padding(.top, 8)
+                                    .padding(.horizontal, 12)
+                                    .padding(.bottom, 12)
+                                    .background(Color(themeService.theme.windowBackgroundColor))
+                                    .cornerRadius(UIConstants.mediumCornerRadius)
                                 }
-                                .padding(.top, 8)
-                                .padding(.horizontal, 12)
-                                .padding(.bottom, 12)
-                                .background(Color(themeService.theme.windowBackgroundColor))
-                                .cornerRadius(UIConstants.mediumCornerRadius)
                             }
                         }
                     }

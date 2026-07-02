@@ -152,6 +152,9 @@ class BuySheetViewModel: ViewModel {
     }
     
     func pinItem() {
+        if !item.isValid {
+            return
+        }
         guard let pinType = item.pinType, let path = item.path else {
             return
         }
