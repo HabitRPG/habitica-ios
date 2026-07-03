@@ -632,7 +632,7 @@
 "never" = "从不";
 "days" = "天";
 "weeks" = "周";
-"months" = "月";
+"months" = "个月";
 "years" = "年";
 "leave_challenge_title" = "放弃挑战？";
 "leave_challenge_prompt" = "放弃挑战后，保留任务还是删除任务？";
@@ -1637,7 +1637,7 @@
 "shops.rebirthConfirmKeepItem4" = "队伍和挑战";
 "shops.rebirthConfirmMessage" = "确定要使用重生之球吗？\n\n你将：\n• 重生为1级战士\n• 重置所有属性和技能点\n• 失去所有的金币和法力值\n• 重置所有任务值与连击次数\n\n以下内容将被保留：\n• 所有的装备、宠物和坐骑\n• 所有的成就\n• 你的工会、队伍和挑战";
 "tasks.repeats.monthly_week_of" = "本月的第 %1$@ %2$@ 周";
-"tasks.repeats.fifth_week_warning" = "这个任务不会在少于%@天的月份中出现。";
+"tasks.repeats.fifth_week_warning" = "这个任务不会在少于%@s天的月份中出现。";
 "shops.rebirthConfirmFree" = "重新开始（免费）";
 "shops.rebirthConfirmGems" = "重新开始 (%d 颗宝石)";
 "shops.dayUntilFreeRebirth" = "%d 天后可获得免费的重生之球";
