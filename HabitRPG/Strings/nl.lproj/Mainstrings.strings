@@ -1549,3 +1549,7 @@
 "unlock_x_gear_and_skills" = "Ontgrendel %@ uitrusting en vaardigheden";
 "challenge_category.habitica_official" = "Officieel van Habitica";
 "quest_mechanics_collecting_title" = "Queestevoorwerpen Verzamelen";
+"x_hourglasses" = "%d Zandlopers";
+"x_gems_month" = "%d edelstenen per maand";
+"hourglass_in_x_months" = "Zandloper in %d maanden";
+"items.footer_quests_title" = "Wilt je nog meer Queesten?";
