@@ -16,10 +16,12 @@ import SwiftUIX
 struct ChallengeFilterState {
     var showOwned: Bool = true
     var showNotOwned: Bool = true
-    
+
     var showParticipating: Bool = true
     var showNotParticipating: Bool = true
-    
+
+    var selectedCategories: Set<String> = []
+
     func cleared() -> ChallengeFilterState {
         return ChallengeFilterState()
     }
@@ -91,8 +93,10 @@ class ChallengeTableViewController: BaseTableViewController, UISearchBarDelegate
         #endif
         
         tableView.rowHeight = UITableView.automaticDimension
-        tableView.estimatedRowHeight = 100
+        tableView.estimatedRowHeight = 140
         tableView.separatorInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+        tableView.separatorStyle = .none
+        tableView.backgroundColor = ThemeService.shared.theme.contentBackgroundColor
         tableView.keyboardDismissMode = .interactive
         
         dataSource.initialDataLoad()

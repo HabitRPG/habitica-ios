@@ -58,6 +58,10 @@ public enum L10n {
   public static var apiTokenTitle: String { return L10n.tr("Mainstrings", "api_token_title") }
   /// Assigned Stat
   public static var assignedStat: String { return L10n.tr("Mainstrings", "assigned_stat") }
+  /// Award Winner
+  public static var awardWinner: String { return L10n.tr("Mainstrings", "award_winner") }
+  /// Award this player the Gem prize and end the Challenge?
+  public static var awardWinnerConfirm: String { return L10n.tr("Mainstrings", "award_winner_confirm") }
   /// Back
   public static var back: String { return L10n.tr("Mainstrings", "back") }
   /// Backer Tier: %d
@@ -140,8 +144,28 @@ public enum L10n {
   public static var cancelSubscriptionGroupPlan: String { return L10n.tr("Mainstrings", "cancel_subscription_group_plan") }
   /// Cancelled
   public static var cancelled: String { return L10n.tr("Mainstrings", "cancelled") }
+  /// Categories
+  public static var categories: String { return L10n.tr("Mainstrings", "categories") }
   /// Challenge
   public static var challenge: String { return L10n.tr("Mainstrings", "challenge") }
+  /// Challenge Categories
+  public static var challengeCategories: String { return L10n.tr("Mainstrings", "challenge_categories") }
+  /// Challenge Creator
+  public static var challengeCreator: String { return L10n.tr("Mainstrings", "challenge_creator") }
+  /// Challenge Dailies
+  public static var challengeDailies: String { return L10n.tr("Mainstrings", "challenge_dailies") }
+  /// Challenge deleted
+  public static var challengeDeleted: String { return L10n.tr("Mainstrings", "challenge_deleted") }
+  /// Challenge Description
+  public static var challengeDescription: String { return L10n.tr("Mainstrings", "challenge_description") }
+  /// Challenge ended
+  public static var challengeEnded: String { return L10n.tr("Mainstrings", "challenge_ended") }
+  /// Challenge Habits
+  public static var challengeHabits: String { return L10n.tr("Mainstrings", "challenge_habits") }
+  /// Challenge Rewards
+  public static var challengeRewards: String { return L10n.tr("Mainstrings", "challenge_rewards") }
+  /// Challenge To Do’s
+  public static var challengeTodos: String { return L10n.tr("Mainstrings", "challenge_todos") }
   /// You put themselves to the test by joining a Challenge!
   public static var challengeJoinedDescription: String { return L10n.tr("Mainstrings", "challengeJoinedDescription") }
   /// Joined a Challenge
@@ -162,6 +186,10 @@ public enum L10n {
   public static var chat: String { return L10n.tr("Mainstrings", "chat") }
   /// Who would you like to chat with?
   public static var chatWithQuestion: String { return L10n.tr("Mainstrings", "chat_with_question") }
+  /// Check on participation
+  public static var checkOnParticipation: String { return L10n.tr("Mainstrings", "check_on_participation") }
+  /// Select a player to see how they’re doing on their Challenge tasks. You can use this information to help decide on a winner.
+  public static var checkParticipationBody: String { return L10n.tr("Mainstrings", "check_participation_body") }
   /// You earned a %s for being committed to improving your life
   public static func checkinPrizeDescription(_ p1: UnsafePointer<CChar>) -> String {
     return L10n.tr("Mainstrings", "checkin_prize_description", p1)
@@ -210,6 +238,8 @@ public enum L10n {
   public static var clearCacheDescription: String { return L10n.tr("Mainstrings", "clear_cache_description") }
   /// Clear Cache & Reload Content
   public static var clearCacheTitle: String { return L10n.tr("Mainstrings", "clear_cache_title") }
+  /// Clone Challenge
+  public static var cloneChallenge: String { return L10n.tr("Mainstrings", "clone_challenge") }
   /// Close
   public static var close: String { return L10n.tr("Mainstrings", "close") }
   /// Collect
@@ -274,6 +304,8 @@ public enum L10n {
   public static var createGuild: String { return L10n.tr("Mainstrings", "create_guild") }
   /// To create a Guild, log in to the Habitica website then tap the “Create” button on the “My Guilds” screen.
   public static var createGuildDescription: String { return L10n.tr("Mainstrings", "create_guild_description") }
+  /// Create my Challenge!
+  public static var createMyChallenge: String { return L10n.tr("Mainstrings", "create_my_challenge") }
   /// Create Tag
   public static var createTag: String { return L10n.tr("Mainstrings", "create_tag") }
   /// Add a task for something you would like to accomplish this week
@@ -332,12 +364,18 @@ public enum L10n {
   public static var defeat: String { return L10n.tr("Mainstrings", "defeat") }
   /// Delete
   public static var delete: String { return L10n.tr("Mainstrings", "delete") }
+  /// If you delete this Challenge, you will be refunded the Gem prize and the Challenge tasks will remain on the participants’ task boards.
+  public static var deleteChallengeBody: String { return L10n.tr("Mainstrings", "delete_challenge_body") }
+  /// Delete Challenge
+  public static var deleteChallengeButton: String { return L10n.tr("Mainstrings", "delete_challenge_button") }
   /// Delete Challenge Task?
   public static var deleteChallengeTask: String { return L10n.tr("Mainstrings", "delete_challenge_task") }
   /// This is one of %d tasks that are part of the “%@” Challenge. You must leave the Challenge to delete this task.
   public static func deleteChallengeTaskDescription(_ p1: Int, _ p2: String) -> String {
     return L10n.tr("Mainstrings", "delete_challenge_task_description", p1, p2)
   }
+  /// Do you want to delete this Challenge?
+  public static var deleteChallengeTitle: String { return L10n.tr("Mainstrings", "delete_challenge_title") }
   /// Are you sure you want to delete this Task?
   public static var deleteTaskConfirmation: String { return L10n.tr("Mainstrings", "delete_task_confirmation") }
   /// Delete Tasks
@@ -378,6 +416,8 @@ public enum L10n {
   public static var edit: String { return L10n.tr("Mainstrings", "edit") }
   /// Edit or cancel subscription
   public static var editCancelSubscription: String { return L10n.tr("Mainstrings", "edit_cancel_subscription") }
+  /// Edit Challenge
+  public static var editChallenge: String { return L10n.tr("Mainstrings", "edit_challenge") }
   /// Challenge tasks only offer limited editing.
   public static var editChallengeTasks: String { return L10n.tr("Mainstrings", "edit_challenge_tasks") }
   /// Edit Tag
@@ -394,6 +434,12 @@ public enum L10n {
   public static var endChallenge: String { return L10n.tr("Mainstrings", "end_challenge") }
   /// To end a Challenge, log in to the Habitica website then tap the “End Challenge” button on the right of the Challenge screen.
   public static var endChallengeDescription: String { return L10n.tr("Mainstrings", "end_challenge_description") }
+  /// End the Challenge by selecting a winner from Challenge participants and awarding the Gem prize!
+  public static var endChallengeSelectWinnerBody: String { return L10n.tr("Mainstrings", "end_challenge_select_winner_body") }
+  /// Select a winner
+  public static var endChallengeSelectWinnerButton: String { return L10n.tr("Mainstrings", "end_challenge_select_winner_button") }
+  /// Select a Winner
+  public static var endChallengeSelectWinnerTitle: String { return L10n.tr("Mainstrings", "end_challenge_select_winner_title") }
   /// Benefits end %@
   public static func endingOn(_ p1: String) -> String {
     return L10n.tr("Mainstrings", "ending_on", p1)
@@ -430,6 +476,8 @@ public enum L10n {
   public static var experienceDescription: String { return L10n.tr("Mainstrings", "experience_description") }
   /// Experience Points
   public static var experiencePoints: String { return L10n.tr("Mainstrings", "experience_points") }
+  /// Export Challenge
+  public static var exportChallenge: String { return L10n.tr("Mainstrings", "export_challenge") }
   /// Failed
   public static var failed: String { return L10n.tr("Mainstrings", "failed") }
   /// Fall
@@ -884,6 +932,8 @@ public enum L10n {
   public static var notes: String { return L10n.tr("Mainstrings", "notes") }
   /// New Year's
   public static var nye: String { return L10n.tr("Mainstrings", "nye") }
+  /// Official
+  public static var official: String { return L10n.tr("Mainstrings", "official") }
   /// OK
   public static var ok: String { return L10n.tr("Mainstrings", "ok") }
   /// Onboarding Tasks
@@ -924,14 +974,20 @@ public enum L10n {
   public static var openStats: String { return L10n.tr("Mainstrings", "open_stats") }
   /// Open Website
   public static var openWebsite: String { return L10n.tr("Mainstrings", "open_website") }
+  /// OR
+  public static var or: String { return L10n.tr("Mainstrings", "or") }
   /// Organize By
   public static var organizeBy: String { return L10n.tr("Mainstrings", "organize_by") }
   /// Own it today for %s or %d Gems
   public static func ownTodayFor(_ p1: UnsafePointer<CChar>, _ p2: Int) -> String {
     return L10n.tr("Mainstrings", "own_today_for", p1, p2)
   }
+  /// Owner Actions
+  public static var ownerActions: String { return L10n.tr("Mainstrings", "owner_actions") }
   /// Ownership
   public static var ownership: String { return L10n.tr("Mainstrings", "ownership") }
+  /// Participants
+  public static var participants: String { return L10n.tr("Mainstrings", "participants") }
   /// Participating
   public static var participating: String { return L10n.tr("Mainstrings", "participating") }
   /// A Party Robe
@@ -986,6 +1042,18 @@ public enum L10n {
   public static var playerNotCompletedQuests: String { return L10n.tr("Mainstrings", "player_not_completed_quests") }
   /// Player has not won any challenges.
   public static var playerNotWonChallenges: String { return L10n.tr("Mainstrings", "player_not_won_challenges") }
+  /// %@’s Dailies
+  public static func playersDailies(_ p1: String) -> String {
+    return L10n.tr("Mainstrings", "players_dailies", p1)
+  }
+  /// %@’s Habits
+  public static func playersHabits(_ p1: String) -> String {
+    return L10n.tr("Mainstrings", "players_habits", p1)
+  }
+  /// %@’s To Do’s
+  public static func playersTodos(_ p1: String) -> String {
+    return L10n.tr("Mainstrings", "players_todos", p1)
+  }
   /// Plenty of Potions
   public static var plentyOfPotions: String { return L10n.tr("Mainstrings", "plenty_of_potions") }
   /// We’re bringing back 10 of the community’s favorite Magic Hatching Potions. Head over to the Market to fill out your collection!
@@ -1000,6 +1068,8 @@ public enum L10n {
   public static var privacyPreferencesFullDescription: String { return L10n.tr("Mainstrings", "privacy_preferences_full_description") }
   /// Your privacy is important to us. Habitica uses data from your device to analyze performance, handle support requests, and provide you with the best possible gamified experience. To do that, we need to request the following permissions.\n\nYou can change this at any time. To learn more, review our [Privacy Policy](https://habitica.com/static/privacy).
   public static var privacyPreferencesSheetDescription: String { return L10n.tr("Mainstrings", "privacy_preferences_sheet_description") }
+  /// Prize
+  public static var prize: String { return L10n.tr("Mainstrings", "prize") }
   /// How it works
   public static var promoInfoInstructionsTitle: String { return L10n.tr("Mainstrings", "promo_info_instructions_title") }
   /// Limitations
@@ -1162,6 +1232,8 @@ public enum L10n {
   public static var seeMoreSubOptions: String { return L10n.tr("Mainstrings", "see_more_sub_options") }
   /// See you tomorrow
   public static var seeYouTomorrow: String { return L10n.tr("Mainstrings", "see_you_tomorrow") }
+  /// Select a winner from Challenge participants
+  public static var selectWinnerFromParticipants: String { return L10n.tr("Mainstrings", "select_winner_from_participants") }
   /// Sell for %d Gold
   public static func sell(_ p1: Int) -> String {
     return L10n.tr("Mainstrings", "sell", p1)
@@ -1334,6 +1406,10 @@ public enum L10n {
   public static var taskReminder: String { return L10n.tr("Mainstrings", "task_reminder") }
   /// Task Status
   public static var taskStatus: String { return L10n.tr("Mainstrings", "task_status") }
+  /// Task tag: %@
+  public static func taskTag(_ p1: String) -> String {
+    return L10n.tr("Mainstrings", "task_tag", p1)
+  }
   /// Teleporting to Habitica
   public static var teleportingHabitica: String { return L10n.tr("Mainstrings", "teleporting_habitica") }
   /// Terms of Service
@@ -1438,6 +1514,8 @@ public enum L10n {
   public static var username: String { return L10n.tr("Mainstrings", "username") }
   /// Your username was confirmed
   public static var usernameConfirmedToast: String { return L10n.tr("Mainstrings", "username_confirmed_toast") }
+  /// Username or display name
+  public static var usernameOrDisplayName: String { return L10n.tr("Mainstrings", "username_or_display_name") }
   /// Your display name hasn’t changed but your old login name will now be your username used for invitations, chat @mentions, and messaging.
   public static var usernamePromptBody: String { return L10n.tr("Mainstrings", "username_prompt_body") }
   /// Usernames should conform to our #<ts>Terms of Service# and #<cg>Community Guidelines#. If you didn’t previously set a login name, your username was auto-generated.
@@ -1462,6 +1540,10 @@ public enum L10n {
   public static var viewOnboardingTasks: String { return L10n.tr("Mainstrings", "view_onboarding_tasks") }
   /// View Participant Progress
   public static var viewParticipantProgress: String { return L10n.tr("Mainstrings", "view_participant_progress") }
+  /// View Progress
+  public static var viewProgress: String { return L10n.tr("Mainstrings", "view_progress") }
+  /// View Progress of...
+  public static var viewProgressOf: String { return L10n.tr("Mainstrings", "view_progress_of") }
   /// View Stats
   public static var viewStats: String { return L10n.tr("Mainstrings", "view_stats") }
   /// Visit the Market
@@ -1556,6 +1638,8 @@ public enum L10n {
   public static var yes: String { return L10n.tr("Mainstrings", "yes") }
   /// You got an Achievement!
   public static var youGotAchievement: String { return L10n.tr("Mainstrings", "you_got_achievement") }
+  /// You own this Challenge
+  public static var youOwnThisChallenge: String { return L10n.tr("Mainstrings", "you_own_this_challenge") }
   /// You raised your %@ Pet into a Mount!
   public static func youRaisedPet(_ p1: String) -> String {
     return L10n.tr("Mainstrings", "you_raised_pet", p1)

@@ -9,6 +9,21 @@
 import SwiftUI
 import Habitica_Models
 
+private final class ChecklistDragSession {
+    var generation: Int = 0
+}
+
+private final class ChecklistItemProvider: NSItemProvider {
+    var onCleanup: (() -> Void)?
+
+    deinit {
+        let cleanup = onCleanup
+        DispatchQueue.main.async {
+            cleanup?()
+        }
+    }
+}
+
 struct TaskFormChecklistItemView: View {
     @ObservedObject var themeService = ThemeService.shared
     var item: ChecklistItemProtocol {
@@ -102,8 +117,8 @@ struct TaskFormChecklistView: View {
     @State var draggedItem: ChecklistItemProtocol?
     @State var isDragging: Bool = false
 
-    @State private var lastOnDrag = Date()
-    
+    @State private var dragSession = ChecklistDragSession()
+
     var body: some View {
         VStack(alignment: .leading, spacing: 12) {
             Text(L10n.Tasks.Form.checklist.uppercased()).font(.system(size: 13, weight: .semibold)).foregroundStyle(Color(themeService.theme.quadTextColor)).padding(.leading, 14)
@@ -119,17 +134,20 @@ struct TaskFormChecklistView: View {
                         }, onNewItem: {
                             addNewItem()
                         }, focusItemId: focusItemId).onDrag({
-                            if lastOnDrag.timeIntervalSinceNow > -0.2 {
-                                return NSItemProvider(item: nil, typeIdentifier: "checklistitem")
+                            let session = dragSession
+                            session.generation += 1
+                            let myGeneration = session.generation
+                            let itemBinding = $draggedItem
+                            let draggingBinding = $isDragging
+                            itemBinding.wrappedValue = item
+                            draggingBinding.wrappedValue = true
+                            let provider = ChecklistItemProvider(item: nil, typeIdentifier: "checklistitem")
+                            provider.onCleanup = {
+                                guard session.generation == myGeneration else { return }
+                                itemBinding.wrappedValue = nil
+                                draggingBinding.wrappedValue = false
                             }
-                            lastOnDrag = .now
-                            if self.draggedItem == nil {
-                                self.draggedItem = item
-                                isDragging = true
-                            } else {
-                                self.draggedItem = nil
-                            }
-                            return NSItemProvider(item: nil, typeIdentifier: "checklistitem")
+                            return provider
                         }).opacity(item.id == draggedItem?.id && isDragging ? 0 : 1)
                             .onDrop(of: ["checklistitem"], delegate: ChecklistDropDelegate(item: item, items: $items, draggedItem: $draggedItem, isDragging: $isDragging))
                     }
@@ -151,6 +169,7 @@ struct ChecklistDropDelegate: DropDelegate {
 
     func performDrop(info: DropInfo) -> Bool {
         isDragging = false
+        draggedItem = nil
         return true
     }
 

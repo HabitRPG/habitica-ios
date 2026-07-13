@@ -732,8 +732,8 @@
 "quests.reward_experience" = "%d tapasztalati pont";
 "quests.unlock_previous" = "Oldd fel a %d. küldetés befejezésével";
 "groups.assign_new_leader" = "Új vezető kijelölése";
-"groups.guild_invitation_no_invitername" = "Meghívást kaptál a céhbe: **%@**";
-"groups.guild_invitation_invitername" = "**@%@** meghívott a céhbe: **%@**";
+"groups.guild_invitation_no_invitername" = "Meghívást kaptál a **%@** csoportba";
+"groups.guild_invitation_invitername" = "**@%@** meghívott a **%@** csoportba";
 "groups.groups" = "Csoportok";
 "groups.group" = "Csoport";
 "groups.group_plan_settings" = "Csoportos csomag beállításai";
@@ -1490,3 +1490,5 @@
 "pets_found" = "Talált kisállatok";
 "undo" = "Visszavonás";
 "assigned_stat" = "Hozzárendelt tulajdonság";
+"item_only_available_for" = "Ez a tárgy csak %s számára elérhető";
+"boss" = "Ellenség";

@@ -501,7 +501,6 @@ struct LoginScreen: View {
                             let appDelegate = UIApplication.shared.delegate as? HabiticaAppDelegate
                             appDelegate?.updateServer()
                         }
-                        .alignmentGuide(.trailing)
                 } else if customUrlEnabled {
                     Picker(selection: $chosenServer) {
                         Text(Servers.production.niceName).tag(Servers.production.rawValue)

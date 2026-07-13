@@ -145,7 +145,7 @@
 /* (No Comment) */
 "settings.change_class" = "更改职业";
 /* (No Comment) */
-"settings.change_class_disclaimer" = "这将重置您当前的职业并退还所有属性点数，然后让您选择一个新职业。";
+"settings.change_class_disclaimer" = "这将重置您当前的职业并退还所有属性点数，然后让您选择一个新职业";
 /* (No Comment) */
 "settings.clear_cache" = "清空缓存";
 /* (No Comment) */
@@ -511,7 +511,7 @@
 "groups.leader_challenges" = "只有队长才能创建挑战";
 "groups.assign_new_leader" = "选出新会长";
 "groups.guild_invitation_no_invitername" = "有人邀请你加入团队：**%@**";
-"groups.guild_invitation_invitername" = "**@%@**邀请你加入公会：**%@**";
+"groups.guild_invitation_invitername" = "**@%@**邀请你加入团队：**%@**";
 "confirm" = "确认";
 "inventory.no_gems_left" = "你已购买了本月的所有宝石。更多宝石将在每月的前三天上架。感谢你的订阅！";
 "inventory.number_gems_left" = "每月宝石：剩余%d/%d";
@@ -519,7 +519,7 @@
 "inventory.available_until" = "%@前可购买";
 "one_month" = "一个月";
 "x_months" = "%d个月";
-"unsubscribe_itunes" = "想要更改或取消订阅？你可以从手机设置中进入Apple ID订阅页面，找到编辑或取消订阅的选项。";
+"unsubscribe_itunes" = "想要更改或取消订阅？你可以通过手机设置的Apple ID订阅页面，编辑或取消订阅的选项。剩下的月份将会被加到截止日期后。";
 "open_itunes" = "打开Apple ID Subscriptions";
 "open_app_store" = "打开App Store";
 "unsubscribe_website" = "不想继续订阅了？由于你的支付方式，你只能通过网页版取消订阅。为此，请点击下方按钮，登录你的账号，点击右上方的用户头像，进入订阅部分。取消后，任何剩余的订阅月份将会计入你的结束日期。欢迎下次光临！";
@@ -649,7 +649,7 @@
 "titles.about" = "关于";
 "titles.news" = "新闻";
 "titles.avatar" = "头像";
-"titles.choose_user" = "选择成员";
+"titles.choose_user" = "选择用户";
 "titles.choose_recipient" = "选择收信人";
 "titles.guidelines" = "规范";
 "titles.invite_members" = "邀请成员";
@@ -780,7 +780,7 @@
 "subscription_benefits_title" = "订阅以获得更多激励奖品";
 "subscription_gift_explanation" = "想要向他人赠送订阅？";
 "subscription_gift_button" = "赠送订阅";
-"subscription_support_developers" = "购买订阅支持我们的小团队以及帮助维持Habitica运作";
+"subscription_support_developers" = "成为订阅者以支持我们的小团队并帮助维持Habitica的运作";
 "subscribe" = "订阅";
 "send_gift" = "赠送礼物";
 "gift_one_get_one_title" = "赠一得一";
@@ -813,7 +813,7 @@
 "shops.other_class_disclaimer" = "你只能购买当前职业的装备";
 "shops.purchased_all_gear" = "新装备会魔法宝箱在季节性晚会上发布。在那之前，魔法宝箱里还有%d件装备需要找到!";
 "purchased" = "你已购买%@";
-"buy_reward" = "你花费%@个金币购入了“%@”";
+"buy_reward" = "你购入“%@”，并花费了%@个金币";
 "accessibility.score_habit_up" = "习惯得分提升";
 "accessibility.score_habit_down" = "习惯得分下降";
 "titles.messages" = "信息";
@@ -963,7 +963,7 @@
 "hatching_potion" = "孵化药水";
 "egg" = "蛋";
 "settings.added_local_auth" = "成功添加邮箱和密码";
-"onwards" = "继续前进";
+"onwards" = "继续前进！";
 "unpin" = "取消钉选";
 "pin" = "钉选";
 "learn_more" = "了解更多";
@@ -1125,7 +1125,7 @@
 "create_guild" = "创建公会";
 "gift_confirmation_body_g1_g1" = "你向%@赠送了一份为期%@个月的Habitica订阅，由于我们的赠一得一促销活动，相同的订阅也已添加至你的账号！";
 "gift_one_get_one_data.purchase_banner_title" = "赠一得一活动持续至%@";
-"gift_one_get_one_data.info_limitations" = "本次限时活动将于%@开始，%@结束。此促销仅适用于向其他Habitica用户赠送订阅的情况。若您或受赠方已有订阅，赠送的订阅将以月数额度形式存入账户，仅在当前订阅取消或到期后生效使用。";
+"gift_one_get_one_data.info_limitations" = "本次限时促销活动将从%@ (%@ UTC)开始并于%@ (%@ UTC)结束。本促销仅适用于你向另一位Habitica居民赠送订阅。如果你或你的礼物接收人已经拥有了一份订阅，那么赠送的订阅将被留存，并在当前订阅被取消或过期后生效。";
 "gift_one_get_one_data.info_instructions" = "点击“赠送订阅”，输入你想要赠送的账号的用户名。然后选择要赠送的订阅长度并付款。你的账号将自动获得与你刚刚赠送的订阅相同的订阅。";
 "gift_one_get_one_data.infoPrompt" = "为了庆祝这个送礼的节日，我们再次推出了特别促销活动。现在，当你向他人赠送一份订阅后，自己也将免费获得相同的订阅！";
 "suggest_pet_hatch_again_missing_both" = "你需要一枚%@和一瓶%@药水来再次孵化此宠物";
@@ -1457,7 +1457,7 @@
 "shops.own_all_items" = "你已拥有全部此类物品";
 "shops.try_on_customize_avatar_return_next_season" = "你可以通过自定义头像来试穿它们。记得下个季节回来看看新商品！";
 "shops.try_on_customize_avatar" = "你可以通过自定义头像来试穿它们。";
-"shops.try_on_equipment" = "您可以通过[装备]界面试穿它们。每月初将更新库存！";
+"shops.try_on_equipment" = "你可以在装备中试穿它们。新商品将于每月月初更新！";
 "insufficient_level_equipment_dialog_new" = "此物品只有%s可用。\n你可以在10级后选择一个职业。";
 "shops.try_on_customize_avatar_return_next_month" = "你可以通过自定义头像来试穿它们。记得下个月回来看看新商品！";
 "class_equipment_shop_dialog" = "此物品只有%s可用。\n打开设置来更改职业。";
@@ -1479,27 +1479,27 @@
 "two_gems_per_month" = "每月宝石获取数量+2";
 "max_gem_cap" = "最大宝石持有数";
 "subscription.stay_motivated_with_more_rewards" = "订阅以获得更多激励奖品";
-"gift_one_get_one_description_date" = "赠一得一活动持续至%@";
-"class_change_confirm_description" = "此操作将切换商店中已解锁的装备、变更可用技能，并重置属性点数。";
-"class_change_success_description" = "每升一级即可获得一个属性点，用于强化技能，提升你在Habitica的游戏体验";
+"gift_one_get_one_description_date" = "在%@之前赠予订阅可以获得一份免费订阅";
+"class_change_confirm_description" = "商店中允许购买的装备会随职业变更，你习得的技能也随之更改，并且属性点数的分配会被重置。";
+"class_change_success_description" = "每次等级提升都可以获得属性点，你可以使用属性点来增强你的技能并提高你在Habitica的游戏体验";
 "subscription.thanks_for_subscribing" = "感谢订阅";
 "subscription.enjoy_these_benefits" = "享受你的订阅者专属奖励";
 "subscription.subscribers_receive" = "订阅者特权：每月前两日将获得一个神秘沙漏，一组神秘装备套装，并且商店中可兑换的宝石也将更新";
 "subscription.gifted" = "赠予";
 "subscription.payment_method" = "支付方式";
 "subscription.months_subscribed" = "订阅月数";
-"subscription.subscribe_again_hourglasses" = "重新订阅即可继续获取神秘沙漏";
+"subscription.subscribe_again_hourglasses" = "重新订阅以继续获取神秘沙漏";
 "subscription.monthly_gems" = "月度宝石";
 "subscription.next_hourglass_delivery" = "下次神秘沙漏交付";
 "x_x_gem_cap" = "宝石数量上限为%d / %d";
 "resubscribe_to_pick_up" = "重新订阅以继续旅程！";
-"restore_purchase" = "恢复购买";
-"unlock_x_gear_and_skills" = "解锁%@装备与技能";
+"restore_purchase" = "恢复已有的订阅";
+"unlock_x_gear_and_skills" = "解锁%@职业的装备与技能";
 "class_change_success_title" = "你成为了一位%@！";
 "got_it" = "明白！";
 "buy_gems_with_gold" = "使用金币兑换宝石";
-"subscriber_benefit" = "订阅者额外奖励";
-"no_active_subscription_to_restore" = "未找到可恢复的有效订阅";
+"subscriber_benefit" = "订阅奖励";
+"no_active_subscription_to_restore" = "未找到激活中的订阅记录以同步";
 "see_more_sub_options" = "查看更多订阅选项";
 "subscription_info_3_description_gear" = "始终保持穿着最新专属装备。立即订阅以获取%@’s %@！";
 "nye" = "新年的";
@@ -1514,7 +1514,7 @@
 "next_payment_x" = "下一笔付款 %@";
 "gift_one_get_one_screen_banner" = "在这项促销活动期间，您赠送礼物后将自动获得相应的订阅。";
 "next_switch_in_x" = "下次切换在%@后";
-"party.quest_participant_one" = "1位参与者";
+"party.quest_participant_one" = "1位参加者";
 "change_password_helper" = "密码必须为 8 个字符或以上。更改密码后，您将无法使用任何其他设备以及第三方工具。";
 "api_token_title" = "API Token";
 "api_token_password_description" = "切勿公开泄露。您可能偶尔需提供用户ID，但 绝对禁止在GitHub等公开平台泄露API Token。";
@@ -1550,7 +1550,7 @@
 "quest_items_found" = "你找到了%d副本物品";
 "save_preferences" = "保存偏好设置";
 "login.username_description" = "此为专属名称，支持随时修改！";
-"take_effect_immediately" = "购买后即刻生效！";
+"take_effect_immediately" = "购买后立即有效！";
 "settings.change_class_title" = "使用3颗宝石以更改职业？";
 "chat_with_question" = "你想和谁聊天？";
 "stats" = "属性";
@@ -1605,3 +1605,40 @@
 "delete_task_confirmation" = "确定要删除这项任务吗？";
 "task" = "任务";
 "item_only_available_for" = "此物品仅限%s使用";
+"login.custom_url" = "自定义URL";
+"more_gem_packs" = "更多宝石礼包";
+"boss" = "首领";
+"logins" = "登入次数";
+"x_gems_for_y" = "给%s %d颗宝石";
+"task_health" = "任务血量";
+"habitica_helpers" = "Habitica 贡献者";
+"shops.rebirthShop" = "重生之球";
+"shops.rebirthShopDescription" = "你将立即作为一名1级战士重新开始冒险，但会保留所有的成就、物品与装备。你的任务会重置为黄色，但历史记录不会被重置。所有个人任务的连击次数也将清零。同时，你的金币、经验值、法力值及所有技能效果均会被移除。";
+"shops.rebirthConfirmTitle" = "确定要使用重生之球吗？";
+"shops.rebirthEnabledTitle" = "已解锁重生之球";
+"shops.rebirthEnabledSubtitle" = "全新冒险现已开启！";
+"shops.rebirthEnabledDescription" = "当你感觉已征服Habitica的全部内容时，不妨使用重生之球为你的冒险注入新活力！通过在商店获取的这个特殊道具，你将重启旅程回到1级，同时保留所有任务、成就和宠物。";
+"shops.rebirthAchievementTitle" = "你已经重生了！";
+"shops.rebirthAchievementDescription" = "你已开启全新冒险！这是你的第%d次重生，你当前达到的最高等级为%d。";
+"shops.rebirthAchievementDescriptionMax" = "你已开启全新冒险！这是你的第%d次重生，你当前达到的最高等级为%d或更高。";
+"shops.freeRebirthAtLevel100" = "到达100级时可免费获取重生之球";
+"shops.goToMarket" = "前往商店";
+"shops.useOrbOfRebirth" = "使用重生之球";
+"shops.goBack" = "返回";
+"shops.rebirthConfirmResetHeader" = "以下内容将被重置：";
+"shops.rebirthConfirmResetItem1" = "等级与职业";
+"shops.rebirthConfirmResetItem2" = "全部的属性点数";
+"shops.rebirthConfirmResetItem3" = "全部的金币与法力值";
+"shops.rebirthConfirmResetItem4" = "所有任务的连击次数";
+"shops.rebirthConfirmKeepHeader" = "以下内容将被保留：";
+"shops.rebirthConfirmKeepItem1" = "任务列表";
+"shops.rebirthConfirmKeepItem2" = "所有的装备、宠物、坐骑";
+"shops.rebirthConfirmKeepItem3" = "成就";
+"shops.rebirthConfirmKeepItem4" = "队伍和挑战";
+"shops.rebirthConfirmMessage" = "确定要使用重生之球吗？\n\n你将：\n• 重生为1级战士\n• 重置所有属性和技能点\n• 失去所有的金币和法力值\n• 重置所有任务值与连击次数\n\n以下内容将被保留：\n• 所有的装备、宠物和坐骑\n• 所有的成就\n• 你的工会、队伍和挑战";
+"tasks.repeats.monthly_week_of" = "本月的第 %1$@ %2$@ 周";
+"tasks.repeats.fifth_week_warning" = "这个任务不会在少于%@天的月份中出现。";
+"shops.rebirthConfirmFree" = "重新开始（免费）";
+"shops.rebirthConfirmGems" = "重新开始 (%d 颗宝石)";
+"shops.dayUntilFreeRebirth" = "%d 天后可获得免费的重生之球";
+"shops.daysUntilFreeRebirth" = "%d 天后可获得免费的重生之球";

@@ -10,6 +10,7 @@ import Foundation
 import Habitica_Models
 import ReactiveSwift
 import RealmSwift
+import SwiftUI
 import SwiftUIX
 
 class ChallengeTableViewDataSource: BaseReactiveTableViewDataSource<ChallengeProtocol> {
@@ -22,8 +23,11 @@ class ChallengeTableViewDataSource: BaseReactiveTableViewDataSource<ChallengePro
     var isShowingJoinedChallenges: Bool = true {
         didSet {
             updatePredicate()
+            loadTabIfNeeded()
         }
     }
+    private var loadedTabs = Set<Bool>()
+    private var discoverIDs = [String]()
     
     var filterState = ChallengeFilterState()
     @objc var shownGuilds: [String]?
@@ -73,11 +77,20 @@ class ChallengeTableViewDataSource: BaseReactiveTableViewDataSource<ChallengePro
     }
     
     func initialDataLoad() {
-        socialRepository.retrieveChallenges(page: nextPage, memberOnly: true).observeCompleted {}
-        socialRepository.retrieveChallenges(page: nextPage, memberOnly: false).observeCompleted {}
+        loadTabIfNeeded(clearsCache: true)
     }
-    
-    func retrieveData(forced: Bool, completed: (() -> Void)?) {
+
+    private func loadTabIfNeeded(clearsCache: Bool = false) {
+        if loadedTabs.contains(isShowingJoinedChallenges) {
+            return
+        }
+        let tab = isShowingJoinedChallenges
+        retrieveData(forced: true, clearsCache: clearsCache) { [weak self] in
+            self?.loadedTabs.insert(tab)
+        }
+    }
+
+    func retrieveData(forced: Bool, clearsCache: Bool = true, completed: (() -> Void)?) {
         if forced {
             nextPage = 0
             loadedAllData = false
@@ -86,15 +99,32 @@ class ChallengeTableViewDataSource: BaseReactiveTableViewDataSource<ChallengePro
             return
         }
         isLoading = true
-        socialRepository.retrieveChallenges(page: nextPage, memberOnly: isShowingJoinedChallenges)
-            .on(value: { challenges in
+        let page = nextPage
+        let memberOnly = isShowingJoinedChallenges
+        let shouldClear = clearsCache && page == 0
+        if shouldClear {
+            loadedTabs = loadedTabs.filter { $0 == memberOnly }
+        }
+        socialRepository.retrieveChallenges(page: page, memberOnly: memberOnly, clearCache: shouldClear)
+            .on(value: { [weak self] challenges in
+                guard let self = self else { return }
+                if !memberOnly {
+                    let ids = (challenges ?? []).compactMap { $0.id }
+                    DispatchQueue.main.async {
+                        if page == 0 {
+                            self.discoverIDs.removeAll()
+                        }
+                        self.discoverIDs.append(contentsOf: ids)
+                        self.updatePredicate()
+                    }
+                }
                 if challenges?.count ?? 0 < 10 {
                     self.loadedAllData = true
                 }
                 self.nextPage += 1
             })
-            .observeCompleted {
-                self.isLoading = false
+            .observeCompleted { [weak self] in
+                self?.isLoading = false
                 if let action = completed {
                     action()
                 }
@@ -103,19 +133,20 @@ class ChallengeTableViewDataSource: BaseReactiveTableViewDataSource<ChallengePro
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
-        if let challenge = item(at: indexPath), let challengeCell = cell as? ChallengeTableViewCell {
-            // Check if the challenge is a Realm object and if it's been invalidated
+        if let challenge = item(at: indexPath) {
             if let realmChallenge = challenge as? Object, realmChallenge.isInvalidated {
                 return cell
             }
-            
-            challengeCell.setChallenge(challenge, isParticipating: membershipIDs.contains(challenge.id ?? ""), isOwner: challenge.leaderID == socialRepository.currentUserId)
-            
-            if self.isShowingJoinedChallenges {
-                challengeCell.accessoryType = .disclosureIndicator
-            } else {
-                challengeCell.accessoryType = .none
+            let isOwner = challenge.leaderID == socialRepository.currentUserId
+            let isParticipating = membershipIDs.contains(challenge.id ?? "")
+            cell.contentConfiguration = UIHostingConfiguration {
+                ChallengeListCard(challenge: challenge, isParticipating: isParticipating, isOwner: isOwner)
             }
+            .margins(.horizontal, 16)
+            .margins(.vertical, 7)
+            cell.backgroundColor = .clear
+            cell.selectionStyle = .none
+            cell.accessoryType = .none
         }
         return cell
     }
@@ -160,7 +191,18 @@ class ChallengeTableViewDataSource: BaseReactiveTableViewDataSource<ChallengePro
             }
             searchComponents.append(component)
         }
-        
+
+        if !isShowingJoinedChallenges {
+            let ids = discoverIDs.isEmpty ? ["-"] : discoverIDs
+            let idList = ids.map { "\'\($0)\'" }.joined(separator: ", ")
+            searchComponents.append("id IN {\(idList)}")
+        }
+
+        if filterState.selectedCategories.isEmpty == false {
+            let slugs = filterState.selectedCategories.map { "\'\($0)\'" }.joined(separator: ", ")
+            searchComponents.append("SUBQUERY(realmCategories, $category, $category.slug IN {\(slugs)}).@count > 0")
+        }
+
         if searchComponents.isEmpty == false {
             return NSPredicate(format: searchComponents.joined(separator: " && "))
         } else {

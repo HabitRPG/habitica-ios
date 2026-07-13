@@ -15,7 +15,7 @@ struct ChallengeMetadataForm: View {
     @ObservedObject var viewModel: ChallengeFormViewModel
 
     var body: some View {
-        VStack(alignment: .leading, spacing: 20) {
+        VStack(alignment: .leading, spacing: 22) {
             ChallengeFormField(label: Text(L10n.name),
                                text: $viewModel.name,
                                multiline: false,
@@ -27,7 +27,8 @@ struct ChallengeMetadataForm: View {
             ChallengeFormField(label: Text(L10n.description),
                                text: $viewModel.description,
                                multiline: true,
-                               placeholder: "What details do participants need to know about your Challenge?")
+                               placeholder: "What details do participants need to know about your Challenge?",
+                               minHeight: 104)
         }
     }
 }
