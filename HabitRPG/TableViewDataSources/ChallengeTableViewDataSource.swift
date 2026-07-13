@@ -23,8 +23,10 @@ class ChallengeTableViewDataSource: BaseReactiveTableViewDataSource<ChallengePro
     var isShowingJoinedChallenges: Bool = true {
         didSet {
             updatePredicate()
+            loadTabIfNeeded()
         }
     }
+    private var loadedTabs = Set<Bool>()
     
     var filterState = ChallengeFilterState()
     @objc var shownGuilds: [String]?
@@ -74,8 +76,17 @@ class ChallengeTableViewDataSource: BaseReactiveTableViewDataSource<ChallengePro
     }
     
     func initialDataLoad() {
-        socialRepository.retrieveChallenges(page: nextPage, memberOnly: true).observeCompleted {}
-        socialRepository.retrieveChallenges(page: nextPage, memberOnly: false).observeCompleted {}
+        loadTabIfNeeded()
+    }
+
+    private func loadTabIfNeeded() {
+        if loadedTabs.contains(isShowingJoinedChallenges) {
+            return
+        }
+        let tab = isShowingJoinedChallenges
+        retrieveData(forced: true) { [weak self] in
+            self?.loadedTabs.insert(tab)
+        }
     }
     
     func retrieveData(forced: Bool, completed: (() -> Void)?) {
