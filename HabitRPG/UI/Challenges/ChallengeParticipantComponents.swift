@@ -165,7 +165,7 @@ struct ChallengeParticipantSearch: View {
 
     var body: some View {
         VStack(spacing: 14) {
-            TextField("", text: $searchText, prompt: Text(L10n.usernameOrDisplayName))
+            TextField("", text: $searchText, prompt: Text(L10n.usernameOrDisplayName).foregroundColor(ChallengeTheme.counter))
                 .font(.system(size: 16))
                 .padding(16)
                 .background(Color(themeService.theme.windowBackgroundColor))

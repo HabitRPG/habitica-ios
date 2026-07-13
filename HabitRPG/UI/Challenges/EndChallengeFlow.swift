@@ -78,6 +78,7 @@ struct EndChallengeSheet: View {
             Text(L10n.deleteChallengeBody)
         }
         .background(Color(themeService.theme.contentBackgroundColor).ignoresSafeArea())
+        .toolbar(.hidden, for: .navigationBar)
     }
 
     private var orDivider: some View {
@@ -85,6 +86,8 @@ struct EndChallengeSheet: View {
             Rectangle().fill(Color(themeService.theme.offsetBackgroundColor)).frame(height: 1)
             Text(L10n.or)
                 .font(.system(size: 13, weight: .semibold))
+                .textCase(.uppercase)
+                .tracking(0.4)
                 .foregroundStyle(ChallengeTheme.username)
             Rectangle().fill(Color(themeService.theme.offsetBackgroundColor)).frame(height: 1)
         }
@@ -139,6 +142,7 @@ struct AwardWinnerSearchView: View {
             AwardWinnerPlayerView(challenge: challenge, member: box.member, onClose: onClose)
         }
         .background(Color(themeService.theme.contentBackgroundColor).ignoresSafeArea())
+        .toolbar(.hidden, for: .navigationBar)
     }
 }
 
@@ -175,5 +179,6 @@ struct AwardWinnerPlayerView: View {
             ChallengeAwardWinnerBar(challenge: challenge, member: member, onAwarded: onClose)
         }
         .background(Color(themeService.theme.contentBackgroundColor).ignoresSafeArea())
+        .toolbar(.hidden, for: .navigationBar)
     }
 }
