@@ -149,8 +149,6 @@ struct AwardWinnerPlayerView: View {
     let onClose: () -> Void
 
     @StateObject private var progressVM: ChallengeMemberProgressViewModel
-    @State private var showConfirm = false
-    private let socialRepository = SocialRepository()
 
     init(challenge: ChallengeProtocol, member: MemberProtocol, onClose: @escaping () -> Void) {
         self.challenge = challenge
@@ -174,34 +172,8 @@ struct AwardWinnerPlayerView: View {
                     Spacer(minLength: 90)
                 }
             }
-            awardBar
+            ChallengeAwardWinnerBar(challenge: challenge, member: member, onAwarded: onClose)
         }
         .background(Color(themeService.theme.contentBackgroundColor).ignoresSafeArea())
-        .alert(L10n.awardWinnerConfirm, isPresented: $showConfirm) {
-            Button(L10n.cancel, role: .cancel) {}
-            Button(L10n.awardWinner) { awardWinner() }
-        }
-    }
-
-    private var awardBar: some View {
-        ChallengePillButton(fill: ChallengeTheme.purple, weight: .bold, action: { showConfirm = true }) {
-            HStack(spacing: 9) {
-                Text(L10n.awardWinner)
-                Image(uiImage: Asset.gem.image)
-                    .resizable()
-                    .scaledToFit()
-                    .frame(width: 22, height: 18)
-                Text("\(challenge.prize)")
-            }
-        }
-        .padding(.horizontal, 18)
-        .padding(.top, 14)
-        .padding(.bottom, 22)
-        .background(Color(themeService.theme.contentBackgroundColor))
-    }
-
-    private func awardWinner() {
-        socialRepository.selectChallengeWinner(challengeID: challenge.id ?? "", winnerID: member.id ?? "").observeValues { _ in }
-        onClose()
     }
 }

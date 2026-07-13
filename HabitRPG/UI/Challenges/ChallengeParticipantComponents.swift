@@ -50,6 +50,42 @@ extension ChallengePillButton where Label == Text {
     }
 }
 
+struct ChallengeAwardWinnerBar: View {
+    @ObservedObject private var themeService = ThemeService.shared
+    let challenge: ChallengeProtocol
+    let member: MemberProtocol
+    let onAwarded: () -> Void
+
+    @State private var showConfirm = false
+    private let socialRepository = SocialRepository()
+
+    var body: some View {
+        ChallengePillButton(fill: ChallengeTheme.purple, weight: .bold, action: { showConfirm = true }) {
+            HStack(spacing: 9) {
+                Text(L10n.awardWinner)
+                Image(uiImage: Asset.gem.image)
+                    .resizable()
+                    .scaledToFit()
+                    .frame(width: 22, height: 18)
+                Text("\(challenge.prize)")
+            }
+        }
+        .padding(.horizontal, 18)
+        .padding(.top, 14)
+        .padding(.bottom, 22)
+        .background(Color(themeService.theme.contentBackgroundColor))
+        .alert(L10n.awardWinnerConfirm, isPresented: $showConfirm) {
+            Button(L10n.cancel, role: .cancel) {}
+            Button(L10n.awardWinner) { awardWinner() }
+        }
+    }
+
+    private func awardWinner() {
+        socialRepository.selectChallengeWinner(challengeID: challenge.id ?? "", winnerID: member.id ?? "").observeValues { _ in }
+        onAwarded()
+    }
+}
+
 struct ChallengeCircleButton: View {
     @ObservedObject private var themeService = ThemeService.shared
     let systemName: String

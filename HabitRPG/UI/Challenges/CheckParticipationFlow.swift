@@ -47,7 +47,7 @@ struct CheckParticipationView: View {
         }
         .background(Color(themeService.theme.contentBackgroundColor).ignoresSafeArea())
         .sheet(item: $selectedMember) { box in
-            ParticipantProgressSheet(challenge: challenge, member: box.member, onClose: { selectedMember = nil })
+            ParticipantProgressSheet(challenge: challenge, member: box.member, onClose: { selectedMember = nil }, onAwarded: onClose)
                 .presentationDetents([.large])
                 .presentationCornerRadius(30)
                 .presentationDragIndicator(.visible)
@@ -60,29 +60,34 @@ struct ParticipantProgressSheet: View {
     let challenge: ChallengeProtocol
     let member: MemberProtocol
     let onClose: () -> Void
+    let onAwarded: () -> Void
 
     @StateObject private var progressVM: ChallengeMemberProgressViewModel
 
-    init(challenge: ChallengeProtocol, member: MemberProtocol, onClose: @escaping () -> Void) {
+    init(challenge: ChallengeProtocol, member: MemberProtocol, onClose: @escaping () -> Void, onAwarded: @escaping () -> Void) {
         self.challenge = challenge
         self.member = member
         self.onClose = onClose
+        self.onAwarded = onAwarded
         _progressVM = StateObject(wrappedValue: ChallengeMemberProgressViewModel(challengeID: challenge.id ?? "", memberID: member.id ?? ""))
     }
 
     var body: some View {
-        ScrollView {
-            VStack(spacing: 0) {
-                ChallengeSheetHeader(title: member.profile?.name ?? "", subtitle: "@\(member.username ?? "")", onClose: onClose)
-                    .padding(.top, 6)
-                AvatarViewUI(avatar: AvatarViewModel(avatar: member))
-                    .frame(width: 142, height: 142)
-                    .clipShape(RoundedRectangle(cornerRadius: 22, style: .continuous))
-                    .padding(.top, 10)
-                ChallengeParticipantTaskList(memberName: member.profile?.name ?? "", tasks: progressVM.tasks)
-                    .padding(.horizontal, 18)
-                Spacer(minLength: 24)
+        VStack(spacing: 0) {
+            ScrollView {
+                VStack(spacing: 0) {
+                    ChallengeSheetHeader(title: member.profile?.name ?? "", subtitle: "@\(member.username ?? "")", onClose: onClose)
+                        .padding(.top, 6)
+                    AvatarViewUI(avatar: AvatarViewModel(avatar: member))
+                        .frame(width: 142, height: 142)
+                        .clipShape(RoundedRectangle(cornerRadius: 22, style: .continuous))
+                        .padding(.top, 10)
+                    ChallengeParticipantTaskList(memberName: member.profile?.name ?? "", tasks: progressVM.tasks)
+                        .padding(.horizontal, 18)
+                    Spacer(minLength: 90)
+                }
             }
+            ChallengeAwardWinnerBar(challenge: challenge, member: member, onAwarded: onAwarded)
         }
         .background(Color(themeService.theme.contentBackgroundColor).ignoresSafeArea())
     }
