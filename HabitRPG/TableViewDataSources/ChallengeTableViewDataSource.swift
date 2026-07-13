@@ -27,6 +27,7 @@ class ChallengeTableViewDataSource: BaseReactiveTableViewDataSource<ChallengePro
         }
     }
     private var loadedTabs = Set<Bool>()
+    private var discoverIDs = [String]()
     
     var filterState = ChallengeFilterState()
     @objc var shownGuilds: [String]?
@@ -98,19 +99,32 @@ class ChallengeTableViewDataSource: BaseReactiveTableViewDataSource<ChallengePro
             return
         }
         isLoading = true
-        let shouldClear = clearsCache && nextPage == 0
+        let page = nextPage
+        let memberOnly = isShowingJoinedChallenges
+        let shouldClear = clearsCache && page == 0
         if shouldClear {
-            loadedTabs = loadedTabs.filter { $0 == isShowingJoinedChallenges }
+            loadedTabs = loadedTabs.filter { $0 == memberOnly }
         }
-        socialRepository.retrieveChallenges(page: nextPage, memberOnly: isShowingJoinedChallenges, clearCache: shouldClear)
-            .on(value: { challenges in
+        socialRepository.retrieveChallenges(page: page, memberOnly: memberOnly, clearCache: shouldClear)
+            .on(value: { [weak self] challenges in
+                guard let self = self else { return }
+                if !memberOnly {
+                    let ids = (challenges ?? []).compactMap { $0.id }
+                    DispatchQueue.main.async {
+                        if page == 0 {
+                            self.discoverIDs.removeAll()
+                        }
+                        self.discoverIDs.append(contentsOf: ids)
+                        self.updatePredicate()
+                    }
+                }
                 if challenges?.count ?? 0 < 10 {
                     self.loadedAllData = true
                 }
                 self.nextPage += 1
             })
-            .observeCompleted {
-                self.isLoading = false
+            .observeCompleted { [weak self] in
+                self?.isLoading = false
                 if let action = completed {
                     action()
                 }
@@ -176,6 +190,12 @@ class ChallengeTableViewDataSource: BaseReactiveTableViewDataSource<ChallengePro
                 component.append(")")
             }
             searchComponents.append(component)
+        }
+
+        if !isShowingJoinedChallenges {
+            let ids = discoverIDs.isEmpty ? ["-"] : discoverIDs
+            let idList = ids.map { "\'\($0)\'" }.joined(separator: ", ")
+            searchComponents.append("id IN {\(idList)}")
         }
 
         if filterState.selectedCategories.isEmpty == false {
