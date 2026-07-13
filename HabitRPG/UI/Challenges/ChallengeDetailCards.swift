@@ -24,7 +24,8 @@ struct ChallengeDetailHeaderCard: View {
                 statCard(image: Asset.participantsList.image,
                          value: "\(challenge.memberCount)",
                          label: L10n.participants,
-                         tint: Color(red: 0x81 / 255, green: 0x58 / 255, blue: 0xD0 / 255))
+                         tint: Color(red: 0x81 / 255, green: 0x58 / 255, blue: 0xD0 / 255),
+                         iconSize: CGSize(width: 30, height: 30))
                 statCard(image: Asset.gem.image,
                          value: "\(challenge.prize)",
                          label: L10n.prize,
@@ -34,7 +35,7 @@ struct ChallengeDetailHeaderCard: View {
         }
     }
 
-    private func statCard(image: UIImage, value: String, label: String, tint: Color?) -> some View {
+    private func statCard(image: UIImage, value: String, label: String, tint: Color?, iconSize: CGSize = CGSize(width: 24, height: 20)) -> some View {
         VStack(spacing: 5) {
             HStack(spacing: 7) {
                 Group {
@@ -44,7 +45,7 @@ struct ChallengeDetailHeaderCard: View {
                         Image(uiImage: image).resizable().scaledToFit()
                     }
                 }
-                .frame(width: 24, height: 20)
+                .frame(width: iconSize.width, height: iconSize.height)
                 Text(value)
                     .font(.system(size: 22, weight: .bold))
                     .foregroundStyle(Color(themeService.theme.primaryTextColor))

@@ -59,7 +59,7 @@ struct ChallengeListCard: View {
             HStack(spacing: 5) {
                 Image(uiImage: Asset.participantsList.image)
                     .renderingMode(.template)
-                    .resizable().scaledToFit().frame(width: 19, height: 14)
+                    .resizable().scaledToFit().frame(width: 24, height: 24)
                     .foregroundStyle(countColor)
                 Text("\(challenge.memberCount)")
                     .font(.system(size: 13.5, weight: isParticipating ? .bold : .semibold))
