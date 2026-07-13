@@ -58,8 +58,8 @@ class SocialRepository: BaseRepository<SocialLocalRepository> {
         })
     }
     
-    func retrieveChallenges(page: Int, memberOnly: Bool) -> Signal<[ChallengeProtocol]?, Never> {
-        if page == 0 {
+    func retrieveChallenges(page: Int, memberOnly: Bool, clearCache: Bool = true) -> Signal<[ChallengeProtocol]?, Never> {
+        if page == 0 && clearCache {
             localRepository.deleteAllChallenges()
         }
         

@@ -76,20 +76,20 @@ class ChallengeTableViewDataSource: BaseReactiveTableViewDataSource<ChallengePro
     }
     
     func initialDataLoad() {
-        loadTabIfNeeded()
+        loadTabIfNeeded(clearsCache: true)
     }
 
-    private func loadTabIfNeeded() {
+    private func loadTabIfNeeded(clearsCache: Bool = false) {
         if loadedTabs.contains(isShowingJoinedChallenges) {
             return
         }
         let tab = isShowingJoinedChallenges
-        retrieveData(forced: true) { [weak self] in
+        retrieveData(forced: true, clearsCache: clearsCache) { [weak self] in
             self?.loadedTabs.insert(tab)
         }
     }
-    
-    func retrieveData(forced: Bool, completed: (() -> Void)?) {
+
+    func retrieveData(forced: Bool, clearsCache: Bool = true, completed: (() -> Void)?) {
         if forced {
             nextPage = 0
             loadedAllData = false
@@ -98,7 +98,11 @@ class ChallengeTableViewDataSource: BaseReactiveTableViewDataSource<ChallengePro
             return
         }
         isLoading = true
-        socialRepository.retrieveChallenges(page: nextPage, memberOnly: isShowingJoinedChallenges)
+        let shouldClear = clearsCache && nextPage == 0
+        if shouldClear {
+            loadedTabs = loadedTabs.filter { $0 == isShowingJoinedChallenges }
+        }
+        socialRepository.retrieveChallenges(page: nextPage, memberOnly: isShowingJoinedChallenges, clearCache: shouldClear)
             .on(value: { challenges in
                 if challenges?.count ?? 0 < 10 {
                     self.loadedAllData = true
