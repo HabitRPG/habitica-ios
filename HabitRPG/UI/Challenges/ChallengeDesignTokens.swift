@@ -9,6 +9,10 @@ enum ChallengeTheme {
         )
     }
 
+    private static func adaptive(light: UInt, dark: UInt) -> Color {
+        hex(ThemeService.shared.theme.isDark ? dark : light)
+    }
+
     static let habitFill = hex(0x24CC8E)
     static let habitGlyph = hex(0x0A5638)
     static let dailyFill = hex(0xFFBE5D)
@@ -31,9 +35,13 @@ enum ChallengeTheme {
     static let leaveRedText = hex(0x5E1216)
 
     static let sectionLabel = hex(0x908D98)
-    static let formSectionLabel = hex(0x6B6873)
+    static var formSectionLabel: Color { adaptive(light: 0x6B6873, dark: 0x918E99) }
     static let username = hex(0x908D98)
     static let counter = hex(0xA4A1AB)
     static let completedText = hex(0xA8A5AE)
     static let cardFillLight = hex(0xF4F4F5)
+
+    static var chipFill: Color { adaptive(light: 0xE1E0E3, dark: 0x4A474F) }
+    static var chipText: Color { adaptive(light: 0x878190, dark: 0xC3C0C7) }
+    static var joinedCount: Color { adaptive(light: 0x24A574, dark: 0x2ED49A) }
 }

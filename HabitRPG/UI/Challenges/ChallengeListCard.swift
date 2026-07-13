@@ -8,7 +8,7 @@ struct ChallengeListCard: View {
     let isOwner: Bool
 
     private var countColor: Color {
-        isParticipating ? Color(red: 0x24 / 255, green: 0xA5 / 255, blue: 0x74 / 255) : Color(themeService.theme.secondaryTextColor)
+        isParticipating ? ChallengeTheme.joinedCount : Color(themeService.theme.secondaryTextColor)
     }
 
     private var categoryNames: [String] {
@@ -69,7 +69,7 @@ struct ChallengeListCard: View {
                 pill(text: L10n.official, background: .purple300, foreground: .white)
             }
             if let name = categoryNames.first {
-                pill(text: name, background: .gray500, foreground: .gray200)
+                pill(text: name, background: ChallengeTheme.chipFill, foreground: ChallengeTheme.chipText)
             }
             Spacer(minLength: 0)
         }

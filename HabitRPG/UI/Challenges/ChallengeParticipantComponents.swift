@@ -247,7 +247,7 @@ struct ChallengePlayerTaskRow: View {
         }
         .padding(.vertical, 5)
         .padding(.horizontal, 12)
-        .background(Color(red: 0xEC / 255, green: 0xEB / 255, blue: 0xED / 255))
+        .background(ChallengeTheme.chipFill)
         .clipShape(RoundedRectangle(cornerRadius: 11, style: .continuous))
     }
 

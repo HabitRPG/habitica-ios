@@ -187,10 +187,10 @@ struct ChallengeDetailCategoriesCard: View {
     private func chipView(_ name: String, official: Bool) -> some View {
         Text(name)
             .font(.system(size: 14, weight: .semibold))
-            .foregroundStyle(official ? Color.white : Color.gray200)
+            .foregroundStyle(official ? Color.white : ChallengeTheme.chipText)
             .padding(.vertical, 6)
             .padding(.horizontal, 14)
-            .background(official ? Color.purple300 : Color.gray500)
+            .background(official ? Color.purple300 : ChallengeTheme.chipFill)
             .clipShape(Capsule())
     }
 }
