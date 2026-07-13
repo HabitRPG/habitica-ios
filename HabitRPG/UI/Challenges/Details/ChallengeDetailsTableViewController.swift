@@ -88,11 +88,11 @@ class ChallengeDetailsTableViewController: MultiModelTableViewController {
                     return
                 }
                 add([UIMenu(title: L10n.ownerActions, options: .displayInline, children: [
-                    UIAction(title: L10n.endChallenge, image: UIImage(systemName: "flag.checkered")) { [weak self] _ in self?.endChallengeAction() },
-                    UIAction(title: L10n.viewProgress, image: UIImage(systemName: "list.bullet.rectangle")) { [weak self] _ in self?.viewProgressAction() },
+                    UIAction(title: L10n.endChallenge, image: UIImage(systemName: "trophy")) { [weak self] _ in self?.endChallengeAction() },
+                    UIAction(title: L10n.viewProgress, image: UIImage(systemName: "doc.text")) { [weak self] _ in self?.viewProgressAction() },
                     UIAction(title: L10n.exportChallenge, image: UIImage(systemName: "square.and.arrow.up")) { [weak self] _ in self?.exportChallengeAction() },
-                    UIAction(title: L10n.cloneChallenge, image: UIImage(systemName: "square.on.square")) { [weak self] _ in self?.cloneChallengeAction() },
-                    UIAction(title: L10n.editChallenge, image: UIImage(systemName: "square.and.pencil")) { [weak self] _ in self?.editChallengeAction() }
+                    UIAction(title: L10n.cloneChallenge, image: UIImage(systemName: "plus.square.on.square")) { [weak self] _ in self?.cloneChallengeAction() },
+                    UIAction(title: L10n.editChallenge, image: UIImage(systemName: "pencil")) { [weak self] _ in self?.editChallengeAction() }
                 ])])
             })
         ])
