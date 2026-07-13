@@ -57,7 +57,7 @@ struct ChallengeListCard: View {
     private var metaRow: some View {
         HStack(spacing: 8) {
             HStack(spacing: 5) {
-                Image(uiImage: Asset.memberCountIcon.image)
+                Image(uiImage: Asset.participantsList.image)
                     .renderingMode(.template)
                     .resizable().scaledToFit().frame(width: 19, height: 14)
                     .foregroundStyle(countColor)

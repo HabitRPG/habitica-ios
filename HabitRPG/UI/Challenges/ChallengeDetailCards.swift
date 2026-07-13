@@ -21,7 +21,7 @@ struct ChallengeDetailHeaderCard: View {
                     .padding(.top, 7)
             }
             HStack(spacing: 13) {
-                statCard(image: Asset.memberCountIcon.image,
+                statCard(image: Asset.participantsList.image,
                          value: "\(challenge.memberCount)",
                          label: L10n.participants,
                          tint: Color(red: 0x81 / 255, green: 0x58 / 255, blue: 0xD0 / 255))
