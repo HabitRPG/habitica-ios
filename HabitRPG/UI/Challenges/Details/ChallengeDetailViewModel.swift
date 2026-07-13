@@ -470,6 +470,7 @@ class ChallengeDetailCTAItem: ConcreteMultiModelDataSourceItem<UITableViewCell> 
             ChallengePillButton(isParticipating ? L10n.leaveChallenge : L10n.joinChallenge,
                                 fill: isParticipating ? ChallengeTheme.leaveRed : ChallengeTheme.joinGreen,
                                 textColor: isParticipating ? ChallengeTheme.leaveRedText : ChallengeTheme.joinGreenText,
+                                weight: .bold,
                                 action: onTap)
         }
         .margins(.horizontal, 20)

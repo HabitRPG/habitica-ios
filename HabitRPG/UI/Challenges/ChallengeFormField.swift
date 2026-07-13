@@ -17,6 +17,7 @@ struct ChallengeFormField<Label: View>: View {
     @Binding var text: String
     let multiline: Bool
     let placeholder: String
+    var minHeight: CGFloat?
 
     var body: some View {
         VStack(alignment: .leading, spacing: 9) {
@@ -27,7 +28,7 @@ struct ChallengeFormField<Label: View>: View {
                 .lineLimit(multiline ? 3...8 : 1...1)
                 .padding(.vertical, 15)
                 .padding(.horizontal, 16)
-                .frame(minHeight: multiline ? 78 : nil, alignment: .top)
+                .frame(minHeight: multiline ? (minHeight ?? 78) : nil, alignment: .top)
                 .background(Color(themeService.theme.windowBackgroundColor))
                 .clipShape(RoundedRectangle(cornerRadius: 14, style: .continuous))
         }

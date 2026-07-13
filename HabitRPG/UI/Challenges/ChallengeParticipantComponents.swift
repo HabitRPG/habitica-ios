@@ -18,12 +18,14 @@ struct ChallengeMemberBox: Identifiable, Hashable {
 struct ChallengePillButton<Label: View>: View {
     let fill: Color
     let textColor: Color
+    let weight: Font.Weight
     let action: () -> Void
     let label: Label
 
-    init(fill: Color, textColor: Color = .white, action: @escaping () -> Void, @ViewBuilder label: () -> Label) {
+    init(fill: Color, textColor: Color = .white, weight: Font.Weight = .semibold, action: @escaping () -> Void, @ViewBuilder label: () -> Label) {
         self.fill = fill
         self.textColor = textColor
+        self.weight = weight
         self.action = action
         self.label = label()
     }
@@ -31,7 +33,7 @@ struct ChallengePillButton<Label: View>: View {
     var body: some View {
         Button(action: action) {
             label
-                .font(.system(size: 17, weight: .semibold))
+                .font(.system(size: 17, weight: weight))
                 .foregroundStyle(textColor)
                 .frame(maxWidth: .infinity)
                 .frame(height: 54)
@@ -43,8 +45,8 @@ struct ChallengePillButton<Label: View>: View {
 }
 
 extension ChallengePillButton where Label == Text {
-    init(_ title: String, fill: Color, textColor: Color = .white, action: @escaping () -> Void) {
-        self.init(fill: fill, textColor: textColor, action: action, label: { Text(title) })
+    init(_ title: String, fill: Color, textColor: Color = .white, weight: Font.Weight = .semibold, action: @escaping () -> Void) {
+        self.init(fill: fill, textColor: textColor, weight: weight, action: action, label: { Text(title) })
     }
 }
 
@@ -57,7 +59,7 @@ struct ChallengeCircleButton: View {
     var body: some View {
         Button(action: action) {
             Image(systemName: systemName)
-                .font(.system(size: 15, weight: .semibold))
+                .font(.system(size: 17, weight: .semibold))
                 .foregroundStyle(Color(themeService.theme.primaryTextColor))
                 .frame(width: diameter, height: diameter)
                 .background(Color(themeService.theme.offsetBackgroundColor))

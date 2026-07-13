@@ -29,7 +29,7 @@ struct EndChallengeSheet: View {
                 Image(uiImage: Asset._42Gems.image)
                     .resizable()
                     .scaledToFit()
-                    .frame(width: 150)
+                    .frame(width: 210)
                     .padding(.top, 14)
                 Text(L10n.endChallengeSelectWinnerTitle)
                     .font(.system(size: 17, weight: .bold))
@@ -119,7 +119,7 @@ struct AwardWinnerSearchView: View {
                 Image(uiImage: Asset._42Gems.image)
                     .resizable()
                     .scaledToFit()
-                    .frame(width: 150)
+                    .frame(width: 210)
                     .padding(.top, 14)
                 Text(L10n.selectWinnerFromParticipants)
                     .font(.system(size: 16, weight: .bold))
@@ -184,7 +184,7 @@ struct AwardWinnerPlayerView: View {
     }
 
     private var awardBar: some View {
-        ChallengePillButton(fill: ChallengeTheme.purple, action: { showConfirm = true }) {
+        ChallengePillButton(fill: ChallengeTheme.purple, weight: .bold, action: { showConfirm = true }) {
             HStack(spacing: 9) {
                 Text(L10n.awardWinner)
                 Image(uiImage: Asset.gem.image)

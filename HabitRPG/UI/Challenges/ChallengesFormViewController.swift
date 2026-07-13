@@ -111,7 +111,7 @@ struct CreateChallengeForm: View {
     }
 
     @ViewBuilder private var bottomDock: some View {
-        VStack(spacing: 16) {
+        VStack(spacing: 20) {
             PagerIndicator(currentIndex: viewModel.currentStepIndex ?? 0, total: 4)
             if viewModel.isSaving {
                 HabiticaProgressView()
@@ -122,7 +122,8 @@ struct CreateChallengeForm: View {
                     (viewModel.hasNextStep && !viewModel.isComplete(page: viewModel.currentStepIndex ?? 0))
                 ChallengePillButton(viewModel.hasNextStep ? L10n.next : L10n.createMyChallenge,
                                     fill: disableButton ? Color(themeService.theme.offsetBackgroundColor) : Color(themeService.theme.fixedTintColor),
-                                    textColor: disableButton ? Color(themeService.theme.quadTextColor) : .white) {
+                                    textColor: disableButton ? Color(themeService.theme.quadTextColor) : .white,
+                                    weight: viewModel.hasNextStep ? .semibold : .bold) {
                     withAnimation(.bouncy) {
                         if viewModel.hasNextStep {
                             viewModel.showNextStep()
@@ -134,7 +135,8 @@ struct CreateChallengeForm: View {
                 .disabled(disableButton)
             }
         }
-        .padding(16)
+        .padding(.horizontal, 20)
+        .padding(.vertical, 16)
     }
 }
 

@@ -103,7 +103,7 @@ struct ChallengeDetailCreatorCard: View {
                             .foregroundStyle(Color(red: 0x16 / 255, green: 0x7E / 255, blue: 0x87 / 255))
                         if showsDiamond {
                             Image(uiImage: HabiticaIcons.imageOfContributorBadge(tier: creator?.contributor?.level ?? 1, isNPC: false))
-                                .resizable().scaledToFit().frame(width: 16, height: 16)
+                                .resizable().scaledToFit().frame(width: 14, height: 13)
                         }
                     }
                     if isOwner {

@@ -27,7 +27,8 @@ struct ChallengeMetadataForm: View {
             ChallengeFormField(label: Text(L10n.description),
                                text: $viewModel.description,
                                multiline: true,
-                               placeholder: "What details do participants need to know about your Challenge?")
+                               placeholder: "What details do participants need to know about your Challenge?",
+                               minHeight: 104)
         }
     }
 }

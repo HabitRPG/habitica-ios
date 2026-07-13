@@ -49,6 +49,7 @@ struct CheckParticipationView: View {
         .sheet(item: $selectedMember) { box in
             ParticipantProgressSheet(challenge: challenge, member: box.member, onClose: { selectedMember = nil })
                 .presentationDetents([.large])
+                .presentationCornerRadius(30)
                 .presentationDragIndicator(.visible)
         }
     }
