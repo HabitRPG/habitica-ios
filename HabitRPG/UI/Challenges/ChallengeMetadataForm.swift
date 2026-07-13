@@ -15,7 +15,7 @@ struct ChallengeMetadataForm: View {
     @ObservedObject var viewModel: ChallengeFormViewModel
 
     var body: some View {
-        VStack(alignment: .leading, spacing: 20) {
+        VStack(alignment: .leading, spacing: 22) {
             ChallengeFormField(label: Text(L10n.name),
                                text: $viewModel.name,
                                multiline: false,

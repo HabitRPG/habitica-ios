@@ -155,7 +155,7 @@ struct ChallengeFormTaskSquare: View {
         ZStack {
             fill
             Image(systemName: glyph)
-                .font(.system(size: 18, weight: .semibold))
+                .font(.system(size: 20, weight: .semibold))
                 .foregroundStyle(.white)
         }
         .frame(width: 52)
@@ -248,12 +248,12 @@ struct ChallengeFormTaskList<Title: View>: View {
             HStack {
                 title
                     .font(.system(size: 14, weight: .bold))
-                    .foregroundStyle(ChallengeTheme.sectionLabel)
+                    .foregroundStyle(ChallengeTheme.formSectionLabel)
                 Spacer()
                 if !tasks.isEmpty {
                     Text("\(tasks.count)")
                         .font(.system(size: 13, weight: .semibold))
-                        .foregroundStyle(ChallengeTheme.sectionLabel)
+                        .foregroundStyle(ChallengeTheme.formSectionLabel)
                         .frame(minWidth: 22, minHeight: 22)
                         .padding(.horizontal, 6)
                         .background(Color(ThemeService.shared.theme.offsetBackgroundColor))

@@ -31,6 +31,7 @@ enum ChallengeTheme {
     static let leaveRedText = hex(0x5E1216)
 
     static let sectionLabel = hex(0x908D98)
+    static let formSectionLabel = hex(0x6B6873)
     static let username = hex(0x908D98)
     static let counter = hex(0xA4A1AB)
     static let completedText = hex(0xA8A5AE)

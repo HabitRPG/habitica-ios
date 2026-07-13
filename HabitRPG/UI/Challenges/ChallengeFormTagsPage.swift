@@ -27,7 +27,7 @@ struct ChallengeFormTagsPage: View {
                     Text(L10n.categories)
                         .font(.system(size: 17, weight: .bold))
                         .padding(.top, 26)
-                    VStack(alignment: .leading, spacing: 15) {
+                    VStack(alignment: .leading, spacing: 0) {
                         ForEach(ChallengeCategory.allCases) { challengeCategory in
                             if challengeCategory != .official {
                                 let isSelected = viewModel.challengeCategories.contains(challengeCategory)
@@ -40,6 +40,8 @@ struct ChallengeFormTagsPage: View {
                                                          : (isSelected ? ChallengeTheme.deepPurple : Color(ThemeService.shared.theme.primaryTextColor)))
                                     Spacer()
                                 }
+                                    .padding(.vertical, 16)
+                                    .padding(.horizontal, 18)
                                     .contentShape(.rect)
                                     .onTapGesture {
                                         if !isDisabled {
@@ -52,7 +54,6 @@ struct ChallengeFormTagsPage: View {
                             }
                         }
                     }
-                    .padding(15)
                     .background(Color(ThemeService.shared.theme.windowBackgroundColor))
                     .cornerRadius(16)
                 }
