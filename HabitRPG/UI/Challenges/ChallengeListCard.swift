@@ -22,7 +22,7 @@ struct ChallengeListCard: View {
         HStack(alignment: .top, spacing: 14) {
             VStack(spacing: 5) {
                 if isOwner {
-                    Image(uiImage: Asset.crown.image)
+                    Image(uiImage: Asset.challengeCrown.image)
                         .resizable().scaledToFit().frame(width: 20)
                 }
                 Image(uiImage: Asset.bigGem.image)
