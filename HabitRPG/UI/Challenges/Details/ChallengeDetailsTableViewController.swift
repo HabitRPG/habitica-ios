@@ -191,7 +191,7 @@ class ChallengeDetailsTableViewController: MultiModelTableViewController {
         }))
         if let sheet = host.sheetPresentationController {
             let compact = UISheetPresentationController.Detent.custom(identifier: .init("endChallengeCompact")) { context in
-                min(640, context.maximumDetentValue)
+                min(760, context.maximumDetentValue)
             }
             sheet.detents = [compact, .large()]
             sheet.prefersGrabberVisible = true

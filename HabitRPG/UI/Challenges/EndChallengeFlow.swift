@@ -26,7 +26,7 @@ struct EndChallengeSheet: View {
             VStack(spacing: 0) {
                 ChallengeSheetHeader(title: L10n.endChallenge, onClose: onClose)
                     .padding(.top, 6)
-                Image(uiImage: Asset._42Gems.image)
+                Image(uiImage: Asset.challengeGemPrize.image)
                     .resizable()
                     .scaledToFit()
                     .frame(width: 210)
@@ -119,7 +119,7 @@ struct AwardWinnerSearchView: View {
             VStack(spacing: 0) {
                 ChallengeSheetHeader(title: L10n.awardWinner, onClose: onClose)
                     .padding(.top, 6)
-                Image(uiImage: Asset._42Gems.image)
+                Image(uiImage: Asset.challengeGemPrize.image)
                     .resizable()
                     .scaledToFit()
                     .frame(width: 210)
