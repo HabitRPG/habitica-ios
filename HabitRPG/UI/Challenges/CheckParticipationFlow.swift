@@ -5,14 +5,16 @@ struct CheckParticipationView: View {
     @ObservedObject private var themeService = ThemeService.shared
     let challenge: ChallengeProtocol
     let onClose: () -> Void
+    let onFinished: () -> Void
 
     @StateObject private var membersVM: ChallengeMembersViewModel
     @State private var searchText = ""
     @State private var selectedMember: ChallengeMemberBox?
 
-    init(challenge: ChallengeProtocol, onClose: @escaping () -> Void) {
+    init(challenge: ChallengeProtocol, onClose: @escaping () -> Void, onFinished: @escaping () -> Void) {
         self.challenge = challenge
         self.onClose = onClose
+        self.onFinished = onFinished
         _membersVM = StateObject(wrappedValue: ChallengeMembersViewModel(challengeID: challenge.id ?? ""))
     }
 
@@ -47,7 +49,7 @@ struct CheckParticipationView: View {
         }
         .background(Color(themeService.theme.contentBackgroundColor).ignoresSafeArea())
         .sheet(item: $selectedMember) { box in
-            ParticipantProgressSheet(challenge: challenge, member: box.member, onClose: { selectedMember = nil }, onAwarded: onClose)
+            ParticipantProgressSheet(challenge: challenge, member: box.member, onClose: { selectedMember = nil }, onAwarded: onFinished)
                 .presentationDetents([.large])
                 .presentationCornerRadius(30)
                 .presentationDragIndicator(.visible)

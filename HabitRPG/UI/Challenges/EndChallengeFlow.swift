@@ -4,10 +4,11 @@ import Habitica_Models
 struct EndChallengeFlow: View {
     let challenge: ChallengeProtocol
     let onClose: () -> Void
+    let onFinished: () -> Void
 
     var body: some View {
         NavigationStack {
-            EndChallengeSheet(challenge: challenge, onClose: onClose)
+            EndChallengeSheet(challenge: challenge, onClose: onClose, onFinished: onFinished)
         }
     }
 }
@@ -16,6 +17,7 @@ struct EndChallengeSheet: View {
     @ObservedObject private var themeService = ThemeService.shared
     let challenge: ChallengeProtocol
     let onClose: () -> Void
+    let onFinished: () -> Void
 
     @State private var showSearch = false
     @State private var showDeleteConfirm = false
@@ -69,7 +71,7 @@ struct EndChallengeSheet: View {
             }
         }
         .navigationDestination(isPresented: $showSearch) {
-            AwardWinnerSearchView(challenge: challenge, onClose: onClose)
+            AwardWinnerSearchView(challenge: challenge, onClose: onClose, onFinished: onFinished)
         }
         .alert(L10n.deleteChallengeTitle, isPresented: $showDeleteConfirm) {
             Button(L10n.cancel, role: .cancel) {}
@@ -95,7 +97,7 @@ struct EndChallengeSheet: View {
 
     private func deleteChallenge() {
         socialRepository.deleteChallenge(challengeID: challenge.id ?? "").observeValues { _ in }
-        onClose()
+        onFinished()
     }
 }
 
@@ -103,14 +105,16 @@ struct AwardWinnerSearchView: View {
     @ObservedObject private var themeService = ThemeService.shared
     let challenge: ChallengeProtocol
     let onClose: () -> Void
+    let onFinished: () -> Void
 
     @StateObject private var membersVM: ChallengeMembersViewModel
     @State private var searchText = ""
     @State private var selectedMember: ChallengeMemberBox?
 
-    init(challenge: ChallengeProtocol, onClose: @escaping () -> Void) {
+    init(challenge: ChallengeProtocol, onClose: @escaping () -> Void, onFinished: @escaping () -> Void) {
         self.challenge = challenge
         self.onClose = onClose
+        self.onFinished = onFinished
         _membersVM = StateObject(wrappedValue: ChallengeMembersViewModel(challengeID: challenge.id ?? ""))
     }
 
@@ -139,7 +143,7 @@ struct AwardWinnerSearchView: View {
             }
         }
         .navigationDestination(item: $selectedMember) { box in
-            AwardWinnerPlayerView(challenge: challenge, member: box.member, onClose: onClose)
+            AwardWinnerPlayerView(challenge: challenge, member: box.member, onClose: onClose, onFinished: onFinished)
         }
         .background(Color(themeService.theme.contentBackgroundColor).ignoresSafeArea())
         .toolbar(.hidden, for: .navigationBar)
@@ -151,13 +155,15 @@ struct AwardWinnerPlayerView: View {
     let challenge: ChallengeProtocol
     let member: MemberProtocol
     let onClose: () -> Void
+    let onFinished: () -> Void
 
     @StateObject private var progressVM: ChallengeMemberProgressViewModel
 
-    init(challenge: ChallengeProtocol, member: MemberProtocol, onClose: @escaping () -> Void) {
+    init(challenge: ChallengeProtocol, member: MemberProtocol, onClose: @escaping () -> Void, onFinished: @escaping () -> Void) {
         self.challenge = challenge
         self.member = member
         self.onClose = onClose
+        self.onFinished = onFinished
         _progressVM = StateObject(wrappedValue: ChallengeMemberProgressViewModel(challengeID: challenge.id ?? "", memberID: member.id ?? ""))
     }
 
@@ -176,7 +182,7 @@ struct AwardWinnerPlayerView: View {
                     Spacer(minLength: 90)
                 }
             }
-            ChallengeAwardWinnerBar(challenge: challenge, member: member, onAwarded: onClose)
+            ChallengeAwardWinnerBar(challenge: challenge, member: member, onAwarded: onFinished)
         }
         .background(Color(themeService.theme.contentBackgroundColor).ignoresSafeArea())
         .toolbar(.hidden, for: .navigationBar)

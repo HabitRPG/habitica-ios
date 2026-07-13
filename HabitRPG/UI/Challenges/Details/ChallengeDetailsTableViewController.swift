@@ -109,6 +109,10 @@ class ChallengeDetailsTableViewController: MultiModelTableViewController {
         guard let challenge = viewModel?.challengeProperty.value else { return }
         let host = UIHostingController(rootView: CheckParticipationView(challenge: challenge, onClose: { [weak self] in
             self?.dismiss(animated: true)
+        }, onFinished: { [weak self] in
+            self?.dismiss(animated: true) {
+                self?.navigationController?.popViewController(animated: true)
+            }
         }))
         host.modalPresentationStyle = .fullScreen
         present(host, animated: true)
@@ -188,6 +192,10 @@ class ChallengeDetailsTableViewController: MultiModelTableViewController {
         guard let challenge = viewModel?.challengeProperty.value else { return }
         let host = UIHostingController(rootView: EndChallengeFlow(challenge: challenge, onClose: { [weak self] in
             self?.dismiss(animated: true)
+        }, onFinished: { [weak self] in
+            self?.dismiss(animated: true) {
+                self?.navigationController?.popViewController(animated: true)
+            }
         }))
         if let sheet = host.sheetPresentationController {
             let compact = UISheetPresentationController.Detent.custom(identifier: .init("endChallengeCompact")) { context in
