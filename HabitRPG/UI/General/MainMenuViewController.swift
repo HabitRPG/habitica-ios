@@ -663,7 +663,14 @@ class MainMenuViewController: BaseTableViewController {
     }
     
     override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        if (sectionAt(index: section)?.visibleItems.count ?? 0) == 0 {
+            return CGFloat.leastNormalMagnitude
+        }
         return section == 0 ? 16 : 26
+    }
+
+    override func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        return CGFloat.leastNormalMagnitude
     }
     
     private var currentSecondaryIndexPath: IndexPath = IndexPath(item: 0, section: 0)
