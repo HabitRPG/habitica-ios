@@ -122,40 +122,38 @@ struct TaskFormChecklistView: View {
     var body: some View {
         VStack(alignment: .leading, spacing: 12) {
             Text(L10n.Tasks.Form.checklist.localizedCapitalized).font(.system(size: 13, weight: .semibold)).foregroundStyle(Color(themeService.theme.quadTextColor)).padding(.leading, 14)
-            if items.first?.isValid == true {
-                LazyVStack {
-                    ForEach(items, id: \.id) { item in
-                        TaskFormChecklistItemView(item: item, onDelete: {
-                            withAnimation {
-                                if let index = items.firstIndex(where: { $0.id == item.id }) {
-                                    items.remove(at: index)
-                                }
+            LazyVStack {
+                ForEach(items.filter { $0.isValid }, id: \.id) { item in
+                    TaskFormChecklistItemView(item: item, onDelete: {
+                        withAnimation {
+                            if let index = items.firstIndex(where: { $0.id == item.id }) {
+                                items.remove(at: index)
                             }
-                        }, onNewItem: {
-                            addNewItem()
-                        }, focusItemId: focusItemId).onDrag({
-                            let session = dragSession
-                            session.generation += 1
-                            let myGeneration = session.generation
-                            let itemBinding = $draggedItem
-                            let draggingBinding = $isDragging
-                            itemBinding.wrappedValue = item
-                            draggingBinding.wrappedValue = true
-                            let provider = ChecklistItemProvider(item: nil, typeIdentifier: "checklistitem")
-                            provider.onCleanup = {
-                                guard session.generation == myGeneration else { return }
-                                itemBinding.wrappedValue = nil
-                                draggingBinding.wrappedValue = false
-                            }
-                            return provider
-                        }).opacity(item.id == draggedItem?.id && isDragging ? 0 : 1)
-                            .onDrop(of: ["checklistitem"], delegate: ChecklistDropDelegate(item: item, items: $items, draggedItem: $draggedItem, isDragging: $isDragging))
-                    }
-                    .onMove { source, destination in
-                        items.move(fromOffsets: source, toOffset: destination)
-                    }
-                    addButton
+                        }
+                    }, onNewItem: {
+                        addNewItem()
+                    }, focusItemId: focusItemId).onDrag({
+                        let session = dragSession
+                        session.generation += 1
+                        let myGeneration = session.generation
+                        let itemBinding = $draggedItem
+                        let draggingBinding = $isDragging
+                        itemBinding.wrappedValue = item
+                        draggingBinding.wrappedValue = true
+                        let provider = ChecklistItemProvider(item: nil, typeIdentifier: "checklistitem")
+                        provider.onCleanup = {
+                            guard session.generation == myGeneration else { return }
+                            itemBinding.wrappedValue = nil
+                            draggingBinding.wrappedValue = false
+                        }
+                        return provider
+                    }).opacity(item.id == draggedItem?.id && isDragging ? 0 : 1)
+                        .onDrop(of: ["checklistitem"], delegate: ChecklistDropDelegate(item: item, items: $items, draggedItem: $draggedItem, isDragging: $isDragging))
                 }
+                .onMove { source, destination in
+                    items.move(fromOffsets: source, toOffset: destination)
+                }
+                addButton
             }
         }
     }
