@@ -751,17 +751,26 @@ class MainMenuViewController: BaseTableViewController {
 
         let iconView = cell.viewWithTag(5) as? UIImageView
         let iconMap: [MenuItem.Key: String] = [
-            .skills: "skills", .stats: "stats", .achievements: "achievements",
-            .market: "market", .questShop: "quest_shop", .seasonalShop: "seasonal_shop",
-            .timeTravelersShop: "time_travelers", .customizationShop: "customization_shop",
-            .customizeAvatar: "avatar_customization", .equipment: "equipment", .items: "items",
-            .stable: "pets_mounts", .gems: "purchase_gems", .subscription: "subscription",
-            .party: "party", .challenges: "challenges", .news: "news",
-            .support: "help_about", .about: "help_about"
+            .skills: "menu_skills", .stats: "menu_stats", .achievements: "menu_achievements",
+            .market: "menu_market", .questShop: "menu_questShop", .customizationShop: "menu_customizationShop",
+            .timeTravelersShop: "menu_timeTravelersShop", .customizeAvatar: "menu_avatarCustomization",
+            .equipment: "menu_equipment", .items: "menu_items", .stable: "menu_petsMounts",
+            .gems: "menu_gems", .subscription: "menu_subscription", .party: "menu_party",
+            .challenges: "menu_challenges", .news: "menu_news", .support: "menu_help", .about: "menu_help"
         ]
-        if let key = item?.key, let base = iconMap[key] {
-            let variant = ThemeService.shared.theme.isDark ? "dark" : "light"
-            iconView?.image = UIImage(named: "icon_\(variant)_\(base)")
+        var iconName: String?
+        if item?.key == .seasonalShop {
+            switch Calendar.current.component(.month, from: Date()) {
+            case 3, 4, 5: iconName = "menu_SeasonalShopSpring"
+            case 6, 7, 8: iconName = "menu_SeasonalShopSummer"
+            case 9, 10, 11: iconName = "menu_SeasonalShopFall"
+            default: iconName = "menu_SeasonalShopWinter"
+            }
+        } else if let key = item?.key {
+            iconName = iconMap[key]
+        }
+        if let iconName = iconName {
+            iconView?.image = UIImage(named: iconName)
             iconView?.isHidden = false
             iconView?.alpha = item?.isDisabled == true ? 0.45 : 1.0
         } else {
