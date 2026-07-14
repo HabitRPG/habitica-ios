@@ -224,7 +224,9 @@ class NotificationManager {
         userRepository.retrieveUser(forced: true).observeCompleted {}
         userRepository.readNotification(notification: notification).observeCompleted {}
         let viewC = HostingBottomSheetController(rootView: RebirthEnabledSheet(), prefersGrabberVisible: false)
-        viewC.show()
+        DispatchQueue.main.async {
+            viewC.show()
+        }
         return true
     }
 
