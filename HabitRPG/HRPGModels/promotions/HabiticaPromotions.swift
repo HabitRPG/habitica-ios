@@ -119,11 +119,13 @@ class FallExtraGemsPromotion: HabiticaPromotion {
     }
     
     func configurePromoMenuView(view: PromoMenuView) {
+        view.setCardBackground(color: backgroundColor)
         view.leftImageView.image = Asset.fallPromoMenuLeft.image
         view.rightImageView.image = Asset.fallPromoMenuRight.image
         view.setTitleImage(Asset.fallPromoTitle.image)
         view.setDescriptionImage(Asset.fallPromoMenuDescription.image)
-        view.actionButton.backgroundColor = UIColor.gray50
+        view.actionButton.backgroundColor = UIColor.white.withAlphaComponent(0.22)
+        view.actionButton.setTitleColor(.white, for: .normal)
         view.actionButton.setTitle(L10n.learnMore, for: .normal)
     }
     
@@ -248,12 +250,13 @@ class SpookyExtraGemsPromotion: HabiticaPromotion {
     }
     
     func configurePromoMenuView(view: PromoMenuView) {
-        view.backgroundColor = backgroundColor
+        view.setCardBackground(color: backgroundColor)
         view.leftImageView.image = Asset.spookyPromoMenuLeft.image
         view.rightImageView.image = Asset.spookyPromoMenuRight.image
         view.setTitleImage(Asset.spookyPromoTitle.image)
         view.setDescriptionImage(Asset.spookyPromoMenuDescription.image)
-        view.actionButton.backgroundColor = UIColor.gray10
+        view.actionButton.backgroundColor = UIColor.white.withAlphaComponent(0.22)
+        view.actionButton.setTitleColor(.white, for: .normal)
         view.actionButton.setTitle(L10n.learnMore, for: .normal)
     }
     
@@ -378,21 +381,16 @@ class GiftOneGetOnePromotion: HabiticaPromotion {
     }
     
     func configurePromoMenuView(view: PromoMenuView) {
+        view.setCardGradient(startColor: gradientStart ?? backgroundColor, endColor: gradientEnd ?? backgroundColor)
         view.leftImageView.image = Asset.promoGiftLeftLarge.image
         view.rightImageView.image = Asset.promoGiftRightLarge.image
-        view.setTitle(L10n.giftOneGetOneEvent)
+        view.setTitle(L10n.giftOneGetOneTitle)
         view.setDescription(L10n.giftOneGetOneDescription)
-        view.actionButton.backgroundColor = buttonBackground
+        view.actionButton.backgroundColor = UIColor.white.withAlphaComponent(0.22)
+        view.actionButton.setTitleColor(.white, for: .normal)
         view.actionButton.setTitle(L10n.learnMore, for: .normal)
-        if ThemeService.shared.theme.isDark {
-            view.actionButton.setTitleColor(UIColor.teal100, for: .normal)
-            view.titleView.textColor = .white
-            view.descriptionView.textColor = .white
-        } else {
-            view.actionButton.setTitleColor(UIColor.teal10, for: .normal)
-            view.titleView.textColor = .blue1
-            view.descriptionView.textColor = .blue1
-        }
+        view.titleView.textColor = .white
+        view.descriptionView.textColor = .white
     }
     
     func configurePurchaseBanner(view: PromoBannerView) {
@@ -474,16 +472,17 @@ class Survey2021Promotion: HabiticaWebPromotion {
     
     func configurePromoMenuView(view: PromoMenuView) {
         view.canClose = true
+        view.setCardBackground(color: UIColor("#0E3A5B"))
         view.leftImageView.image = Asset.surveyArtLeft.image
         view.rightImageView.image = Asset.surveyArtRight.image
         view.setTitle(L10n.Survey.title)
         view.titleView.textColor = .white
         view.setDescription(L10n.Survey.description)
         view.descriptionView.textColor = .white
-        view.actionButton.backgroundColor = .white
+        view.actionButton.backgroundColor = UIColor("#2C5470")
         view.actionButton.setTitle(L10n.Survey.button, for: .normal)
-        view.actionButton.setTitleColor(.blue10, for: .normal)
-        view.closeButton.tintColor = .blue100
+        view.actionButton.setTitleColor(.white, for: .normal)
+        view.closeButton.tintColor = .white
     }
     
     func configurePurchaseBanner(view: PromoBannerView) {
