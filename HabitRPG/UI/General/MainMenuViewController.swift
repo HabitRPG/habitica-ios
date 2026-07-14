@@ -507,7 +507,8 @@ class MainMenuViewController: BaseTableViewController {
             topHeaderCoordinator?.navbarVisibleColor = navbarColor
             navbarView.backgroundColor = navbarColor
         }
-        tableView.backgroundColor = theme.contentBackgroundColor
+        tableView.backgroundColor = ThemeService.shared.theme.isDark ? UIColor("#1A181D") : UIColor("#F6F4FC")
+        tableView.separatorStyle = .none
         tableView.reloadData()
     }
     
@@ -656,32 +657,12 @@ class MainMenuViewController: BaseTableViewController {
         }
         
         let view = UIView()
-        let label = UILabel()
-        label.font = UIFontMetrics.default.scaledSystemFont(ofSize: 14)
-        label.textColor = ThemeService.shared.theme.primaryTextColor
-        label.text = self.tableView(tableView, titleForHeaderInSection: section)
-        view.addSubview(label)
-        let iconView = UIImageView()
-        iconView.tintColor = ThemeService.shared.theme.primaryTextColor
-        view.addSubview(iconView)
-        iconView.pin.start(4).size(16)
-        label.pin.after(of: iconView).top(14).marginStart(6).sizeToFit(.heightFlexible)
-        view.pin.width(view.frame.size.width).height(label.frame.size.height + 14)
-        iconView.pin.vCenter(to: label.edge.vCenter)
-        
-        if let iconAsset = visibleSections[section].iconAsset {
-            iconView.image = UIImage(asset: iconAsset)
-        }
+        view.backgroundColor = .clear
         return view
     }
     
     override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        if section == 0 {
-            return 20
-        } else {
-            let font = UIFontMetrics.default.scaledSystemFont(ofSize: 14)
-            return 20 + font.lineHeight
-        }
+        return section == 0 ? 16 : 26
     }
     
     private var currentSecondaryIndexPath: IndexPath = IndexPath(item: 0, section: 0)
@@ -729,7 +710,7 @@ class MainMenuViewController: BaseTableViewController {
             cell.backgroundColor = ThemeService.shared.theme.offsetBackgroundColor
             label?.textColor = ThemeService.shared.theme.tintColor
         } else {
-            cell.backgroundColor = ThemeService.shared.theme.windowBackgroundColor
+            cell.backgroundColor = ThemeService.shared.theme.isDark ? UIColor("#1A181D") : UIColor("#F6F4FC")
             if item?.isDisabled == true {
                 label?.textColor = ThemeService.shared.theme.dimmedTextColor
             } else {
