@@ -706,16 +706,16 @@ class MainMenuViewController: BaseTableViewController {
         
         let label = cell.viewWithTag(1) as? UILabel
         label?.text = item?.title
-        label?.font = UIFontMetrics.default.scaledSystemFont(ofSize: 17)
+        label?.font = UIFontMetrics.default.scaledSystemFont(ofSize: 17, ofWeight: .semibold)
         if indexPath == tableView.indexPathForSelectedRow || (indexPath == currentSecondaryIndexPath && splitViewController != nil) {
             cell.backgroundColor = ThemeService.shared.theme.offsetBackgroundColor
             label?.textColor = ThemeService.shared.theme.tintColor
         } else {
             cell.backgroundColor = ThemeService.shared.theme.isDark ? UIColor("#1A181D") : UIColor("#F6F4FC")
             if item?.isDisabled == true {
-                label?.textColor = ThemeService.shared.theme.dimmedTextColor
+                label?.textColor = ThemeService.shared.theme.isDark ? UIColor("#7A7387") : UIColor("#A89BC7")
             } else {
-                label?.textColor = ThemeService.shared.theme.primaryTextColor
+                label?.textColor = ThemeService.shared.theme.isDark ? UIColor.white : UIColor("#432874")
             }
         }
         label?.backgroundColor = .clear
@@ -737,8 +737,8 @@ class MainMenuViewController: BaseTableViewController {
         let subtitleLabel = cell.viewWithTag(4) as? UILabel
         subtitleLabel?.text = item?.subtitle
         subtitleLabel?.isHidden = item?.subtitle == nil
-        subtitleLabel?.font = UIFontMetrics.default.scaledSystemFont(ofSize: 11)
-        subtitleLabel?.textColor = item?.subtitleColor ?? ThemeService.shared.theme.secondaryTextColor
+        subtitleLabel?.font = UIFontMetrics.default.scaledSystemFont(ofSize: 13)
+        subtitleLabel?.textColor = item?.subtitleColor ?? (ThemeService.shared.theme.isDark ? UIColor("#B7ADCD") : UIColor("#79659D"))
         
         cell.selectionStyle = item?.isDisabled == true ? .default : .none
         return cell
