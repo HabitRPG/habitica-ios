@@ -365,6 +365,11 @@ class ShopCollectionViewDataSource: BaseReactiveCollectionViewDataSource<InAppRe
                 if let notes = section.notes, !notes.isEmpty {
                     headerView.notesLabel.isHidden = false
                     headerView.notesLabel.text = notes
+                    if notes == L10n.Shops.freeRebirthAtLevel100 {
+                        headerView.notesLabel.textColor = ThemeService.shared.theme.isDark ? UIColor.gray400 : UIColor.gray200
+                    } else {
+                        headerView.notesLabel.textColor = .yellow1
+                    }
                 } else {
                     headerView.notesLabel.isHidden = true
                     headerView.notesLabel.text = nil
