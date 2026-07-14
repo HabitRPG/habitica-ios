@@ -496,6 +496,7 @@ class MainMenuViewController: BaseTableViewController {
             seasonText = L10n.isOpen
         }
         menuItem(withKey: .seasonalShop).pillText = seasonText
+        menuItem(withKey: .seasonalShop).pillColor = UIColor.purple400
         tableView.reloadData()
     }
     

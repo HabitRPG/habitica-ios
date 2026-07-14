@@ -100,21 +100,22 @@ class FallExtraGemsPromotion: HabiticaPromotion {
     private func makeGradient(view: UIView) -> CAGradientLayer {
         let gradient: CAGradientLayer = CAGradientLayer()
 
-        gradient.colors = [UIColor("#FFB445").cgColor, UIColor("#FA8537").cgColor, UIColor("#FF6165").cgColor]
-        gradient.locations = [0.0, 0.5, 1.0]
-        gradient.startPoint = CGPoint(x: 0.0, y: 0.0)
-        gradient.endPoint = CGPoint(x: 1.0, y: 1.0)
+        gradient.colors = [UIColor("#FDA240").cgColor, UIColor("#FA823B").cgColor]
+        gradient.locations = [0.0, 1.0]
+        gradient.startPoint = CGPoint(x: 0.0, y: 0.5)
+        gradient.endPoint = CGPoint(x: 1.0, y: 0.5)
         gradient.frame = CGRect(x: 0.0, y: 0.0, width: view.frame.size.width, height: view.frame.size.height)
         return gradient
     }
-    
+
     func configurePill(_ pillView: PillView) {
         pillView.backgroundColor = nil
         pillView.layer.sublayers?.filter { $0 is CAGradientLayer }.forEach { $0.removeFromSuperlayer() }
         let gradientLayer = makeGradient(view: pillView)
         gradientLayer.cornerRadius = pillView.frame.size.height / 2
         pillView.layer.insertSublayer(gradientLayer, at: 0)
-        pillView.textColor = .white
+        pillView.automaticTextColor = false
+        pillView.textColor = UIColor("#48210A")
     }
     
     func configurePromoMenuView(view: PromoMenuView) {
@@ -232,7 +233,18 @@ class SpookyExtraGemsPromotion: HabiticaPromotion {
     }
     
     func configurePill(_ pillView: PillView) {
-        pillView.pillColor = .orange50
+        pillView.backgroundColor = nil
+        pillView.layer.sublayers?.filter { $0 is CAGradientLayer }.forEach { $0.removeFromSuperlayer() }
+        let gradient = CAGradientLayer()
+        gradient.colors = [UIColor("#FB9A44").cgColor, UIColor("#FB616B").cgColor]
+        gradient.locations = [0.0, 1.0]
+        gradient.startPoint = CGPoint(x: 0.0, y: 0.5)
+        gradient.endPoint = CGPoint(x: 1.0, y: 0.5)
+        gradient.frame = CGRect(x: 0.0, y: 0.0, width: pillView.frame.size.width, height: pillView.frame.size.height)
+        gradient.cornerRadius = pillView.frame.size.height / 2
+        pillView.layer.insertSublayer(gradient, at: 0)
+        pillView.automaticTextColor = false
+        pillView.textColor = UIColor("#4A140E")
     }
     
     func configurePromoMenuView(view: PromoMenuView) {
@@ -339,10 +351,10 @@ class GiftOneGetOnePromotion: HabiticaPromotion {
     }
     
     var gradientStart: UIColor? {
-        return UIColor("#3BCAD7")
+        return UIColor("#45B7E9")
     }
     var gradientEnd: UIColor? {
-        return UIColor("#925CF3")
+        return UIColor("#7384E9")
     }
     
     private func makeGradient(view: UIView) -> CAGradientLayer {
@@ -350,8 +362,8 @@ class GiftOneGetOnePromotion: HabiticaPromotion {
 
         gradient.colors = [gradientStart?.cgColor ?? CGColor(gray: 0, alpha: 1), gradientEnd?.cgColor ?? CGColor(gray: 0, alpha: 1)]
         gradient.locations = [0.0, 1.0]
-        gradient.startPoint = CGPoint(x: 0.0, y: 0.0)
-        gradient.endPoint = CGPoint(x: 1.0, y: 1.0)
+        gradient.startPoint = CGPoint(x: 0.0, y: 0.5)
+        gradient.endPoint = CGPoint(x: 1.0, y: 0.5)
         gradient.frame = CGRect(x: 0.0, y: 0.0, width: view.frame.size.width, height: view.frame.size.height)
         return gradient
     }
