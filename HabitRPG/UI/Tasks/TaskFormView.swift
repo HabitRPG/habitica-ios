@@ -384,7 +384,7 @@ class TaskFormController: UIHostingController<TaskFormView> {
         task.up = viewModel.up
         task.down = viewModel.down
         task.everyX = viewModel.everyX
-        task.startDate = viewModel.startDate
+        task.startDate = viewModel.startDate.map { Calendar.current.startOfDay(for: $0) }
         task.duedate = viewModel.dueDate
         task.tags = viewModel.selectedTags
         task.attribute = viewModel.stat
