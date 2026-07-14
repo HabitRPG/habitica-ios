@@ -90,10 +90,10 @@ struct TaskFormView: View {
     
     @ViewBuilder private var graphs: some View {
         if viewModel.taskType == .daily && viewModel.showTaskGraphs, let task = viewModel.task {
-            TaskFormSection(header: Text(L10n.Tasks.Form.completion.uppercased()),
+            TaskFormSection(header: Text(L10n.Tasks.Form.completion.localizedCapitalized),
                             content: DailyProgressView(history: task.history), backgroundColor: .clear)
         } else if viewModel.taskType == .habit && viewModel.showTaskGraphs, let task = viewModel.task {
-            TaskFormSection(header: Text(L10n.Tasks.Form.completion.uppercased()),
+            TaskFormSection(header: Text(L10n.Tasks.Form.completion.localizedCapitalized),
                             content: HabitProgressView(history: task.history, up: viewModel.up, down: viewModel.down), backgroundColor: .clear)
         }
     }
