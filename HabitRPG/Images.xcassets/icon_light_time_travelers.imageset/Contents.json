@@ -1,0 +1,12 @@
+{
+  "images" : [
+    {
+      "filename" : "icon_light_time_travelers.png",
+      "idiom" : "universal"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}

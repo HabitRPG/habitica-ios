@@ -1,0 +1,12 @@
+{
+  "images" : [
+    {
+      "filename" : "icon_dark_help_about.png",
+      "idiom" : "universal"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}

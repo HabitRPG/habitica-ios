@@ -41,11 +41,11 @@
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                             </view>
                             <view clipsSubviews="YES" tag="2" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JTb-Mg-pcc">
-                                <rect key="frame" x="296" y="10" width="16" height="16"/>
+                                <rect key="frame" x="303" y="14" width="9" height="9"/>
                                 <color key="backgroundColor" red="0.3816543818" green="0.200278759" blue="0.7049210668" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="16" id="Kt5-co-jnj"/>
-                                    <constraint firstAttribute="width" constant="16" id="Wzm-H7-5pJ"/>
+                                    <constraint firstAttribute="height" constant="9" id="Kt5-co-jnj"/>
+                                    <constraint firstAttribute="width" constant="9" id="Wzm-H7-5pJ"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -53,9 +53,18 @@
                             <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="36" id="KwL-Dp-mWX"/>
                         </constraints>
                     </stackView>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" tag="5" translatesAutoresizingMaskIntoConstraints="NO" id="ic1-nv-aaa">
+                        <rect key="frame" x="29" y="10" width="42" height="40"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="42" id="ic1-wd-aaa"/>
+                            <constraint firstAttribute="height" constant="40" id="ic1-ht-aaa"/>
+                        </constraints>
+                    </imageView>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="hAl-6e-OT2" firstAttribute="leading" secondItem="7ZN-tE-vNu" secondAttribute="leading" constant="20" id="2Ik-ze-zxI"/>
+                    <constraint firstItem="ic1-nv-aaa" firstAttribute="leading" secondItem="7ZN-tE-vNu" secondAttribute="leading" constant="29" id="ic1-ld-aaa"/>
+                    <constraint firstItem="ic1-nv-aaa" firstAttribute="centerY" secondItem="7ZN-tE-vNu" secondAttribute="centerY" id="ic1-cy-aaa"/>
+                    <constraint firstItem="hAl-6e-OT2" firstAttribute="leading" secondItem="7ZN-tE-vNu" secondAttribute="leading" constant="88" id="2Ik-ze-zxI"/>
                     <constraint firstAttribute="trailing" secondItem="hAl-6e-OT2" secondAttribute="trailing" constant="12" id="YTL-wV-WbL"/>
                     <constraint firstAttribute="bottom" secondItem="hAl-6e-OT2" secondAttribute="bottom" constant="4" id="b2g-Bn-7iv"/>
                     <constraint firstItem="hAl-6e-OT2" firstAttribute="top" secondItem="7ZN-tE-vNu" secondAttribute="top" constant="4" id="kj4-On-Jgg"/>

@@ -1,0 +1,12 @@
+{
+  "images" : [
+    {
+      "filename" : "icon_dark_equipment.png",
+      "idiom" : "universal"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}

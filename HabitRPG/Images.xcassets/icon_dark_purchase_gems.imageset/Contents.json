@@ -1,0 +1,12 @@
+{
+  "images" : [
+    {
+      "filename" : "icon_dark_purchase_gems.png",
+      "idiom" : "universal"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}

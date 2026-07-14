@@ -330,7 +330,7 @@ class MainMenuViewController: BaseTableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.register(UINib(nibName: "MainTableviewCell", bundle: nil), forCellReuseIdentifier: "Cell")
-        tableView.rowHeight = UITableView.automaticDimension
+        tableView.rowHeight = 60
         setupHeader()
         
         #if !targetEnvironment(macCatalyst)
@@ -496,7 +496,7 @@ class MainMenuViewController: BaseTableViewController {
             seasonText = L10n.isOpen
         }
         menuItem(withKey: .seasonalShop).pillText = seasonText
-        menuItem(withKey: .seasonalShop).pillColor = UIColor.purple400
+        menuItem(withKey: .seasonalShop).pillColor = MainMenuTheme.seasonalBadge
         tableView.reloadData()
     }
     
@@ -508,7 +508,7 @@ class MainMenuViewController: BaseTableViewController {
             topHeaderCoordinator?.navbarVisibleColor = navbarColor
             navbarView.backgroundColor = navbarColor
         }
-        tableView.backgroundColor = ThemeService.shared.theme.isDark ? UIColor("#1A181D") : UIColor("#F6F4FC")
+        tableView.backgroundColor = MainMenuTheme.sheetBackground
         tableView.separatorStyle = .none
         tableView.reloadData()
     }
@@ -718,11 +718,11 @@ class MainMenuViewController: BaseTableViewController {
             cell.backgroundColor = ThemeService.shared.theme.offsetBackgroundColor
             label?.textColor = ThemeService.shared.theme.tintColor
         } else {
-            cell.backgroundColor = ThemeService.shared.theme.isDark ? UIColor("#1A181D") : UIColor("#F6F4FC")
+            cell.backgroundColor = MainMenuTheme.sheetBackground
             if item?.isDisabled == true {
-                label?.textColor = ThemeService.shared.theme.isDark ? UIColor("#7A7387") : UIColor("#A89BC7")
+                label?.textColor = MainMenuTheme.lockedRowTitle
             } else {
-                label?.textColor = ThemeService.shared.theme.isDark ? UIColor.white : UIColor("#432874")
+                label?.textColor = MainMenuTheme.rowTitle
             }
         }
         label?.backgroundColor = .clear
@@ -730,7 +730,9 @@ class MainMenuViewController: BaseTableViewController {
         let indicatorView = cell.viewWithTag(2)
         indicatorView?.isHidden = item?.showIndicator == false
         indicatorView?.layer.cornerRadius = (indicatorView?.frame.size.height ?? 0) / 2
-        indicatorView?.backgroundColor = ThemeService.shared.theme.backgroundTintColor
+        indicatorView?.backgroundColor = MainMenuTheme.notificationDot
+        indicatorView?.layer.borderWidth = 2
+        indicatorView?.layer.borderColor = MainMenuTheme.notificationDotRing.cgColor
         
         let pillView = cell.viewWithTag(3) as? PillView
         pillView?.text = item?.pillText
@@ -745,8 +747,28 @@ class MainMenuViewController: BaseTableViewController {
         subtitleLabel?.text = item?.subtitle
         subtitleLabel?.isHidden = item?.subtitle == nil
         subtitleLabel?.font = UIFontMetrics.default.scaledSystemFont(ofSize: 13)
-        subtitleLabel?.textColor = item?.subtitleColor ?? (ThemeService.shared.theme.isDark ? UIColor("#B7ADCD") : UIColor("#79659D"))
-        
+        subtitleLabel?.textColor = item?.subtitleColor ?? MainMenuTheme.rowSubtitle
+
+        let iconView = cell.viewWithTag(5) as? UIImageView
+        let iconMap: [MenuItem.Key: String] = [
+            .skills: "skills", .stats: "stats", .achievements: "achievements",
+            .market: "market", .questShop: "quest_shop", .seasonalShop: "seasonal_shop",
+            .timeTravelersShop: "time_travelers", .customizationShop: "customization_shop",
+            .customizeAvatar: "avatar_customization", .equipment: "equipment", .items: "items",
+            .stable: "pets_mounts", .gems: "purchase_gems", .subscription: "subscription",
+            .party: "party", .challenges: "challenges", .news: "news",
+            .support: "help_about", .about: "help_about"
+        ]
+        if let key = item?.key, let base = iconMap[key] {
+            let variant = ThemeService.shared.theme.isDark ? "dark" : "light"
+            iconView?.image = UIImage(named: "icon_\(variant)_\(base)")
+            iconView?.isHidden = false
+            iconView?.alpha = item?.isDisabled == true ? 0.45 : 1.0
+        } else {
+            iconView?.image = nil
+            iconView?.isHidden = true
+        }
+
         cell.selectionStyle = item?.isDisabled == true ? .default : .none
         return cell
     }
@@ -792,4 +814,18 @@ class MainMenuViewController: BaseTableViewController {
             (segue.destination as? UserProfileViewController)?.userID = user?.id
         }
     }
+}
+
+enum MainMenuTheme {
+    private static func color(_ light: String, _ dark: String) -> UIColor {
+        ThemeService.shared.theme.isDark ? UIColor(dark) : UIColor(light)
+    }
+
+    static var sheetBackground: UIColor { color("#F6F4FC", "#1A181D") }
+    static var rowTitle: UIColor { color("#432874", "#FFFFFF") }
+    static var rowSubtitle: UIColor { color("#79659D", "#B7ADCD") }
+    static var lockedRowTitle: UIColor { color("#A89BC7", "#7A7387") }
+    static var notificationDot: UIColor { UIColor("#FE6165") }
+    static var notificationDotRing: UIColor { sheetBackground }
+    static var seasonalBadge: UIColor { UIColor.purple400 }
 }
