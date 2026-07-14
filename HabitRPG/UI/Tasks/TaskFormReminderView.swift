@@ -18,7 +18,7 @@ struct TaskFormReminderView: View {
 
     var body: some View {
         VStack(alignment: .leading, spacing: 12) {
-            Text(L10n.Tasks.Form.reminders.uppercased()).font(.system(size: 13, weight: .semibold)).foregroundStyle(Color(themeService.theme.quadTextColor)).padding(.leading, 14)
+            Text(L10n.Tasks.Form.reminders.localizedCapitalized).font(.system(size: 13, weight: .semibold)).foregroundStyle(Color(themeService.theme.quadTextColor)).padding(.leading, 14)
             VStack(spacing: 8) {
                 ForEach(items, id: \.id) { item in
                     TaskFormReminderItemView(item: item, showDate: showDate) {
