@@ -501,7 +501,12 @@ class MainMenuViewController: BaseTableViewController {
     
     override func applyTheme(theme: Theme) {
         super.applyTheme(theme: theme)
-        navbarColor = theme.navbarHiddenColor
+        let isDefaultTheme = (ThemeName(rawValue: UserDefaults.standard.string(forKey: "theme") ?? "") ?? .defaultTheme) == .defaultTheme
+        navbarColor = isDefaultTheme ? UIColor.purple300 : theme.navbarHiddenColor
+        if !configRepository.enableIPadUI() {
+            topHeaderCoordinator?.navbarVisibleColor = navbarColor
+            navbarView.backgroundColor = navbarColor
+        }
         tableView.backgroundColor = theme.contentBackgroundColor
         tableView.reloadData()
     }

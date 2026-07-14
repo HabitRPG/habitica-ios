@@ -18,7 +18,7 @@ class MenuNavigationBarView: UIView, Themeable {
     
     private lazy var avatarWrapper: UIView = {
         let view = UIView()
-        view.cornerRadius = 20
+        view.cornerRadius = 0
         view.clipsToBounds = true
         view.isUserInteractionEnabled = true
         view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(profileAreaTapped)))
@@ -34,7 +34,7 @@ class MenuNavigationBarView: UIView, Themeable {
     }()
     private lazy var displayNameLabel: UILabel = {
         let label = UILabel()
-        label.font = UIFontMetrics.default.scaledSystemFont(ofSize: 17, ofWeight: .semibold)
+        label.font = UIFontMetrics.default.scaledSystemFont(ofSize: 22, ofWeight: .bold)
         label.adjustsFontForContentSizeCategory = true
         label.isUserInteractionEnabled = true
         label.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(profileAreaTapped)))
@@ -125,11 +125,13 @@ class MenuNavigationBarView: UIView, Themeable {
     }
     
     func applyTheme(theme: Theme) {
-        let textColor = theme.navbarHiddenColor.isLight() ? UIColor.gray50 : theme.lightTextColor
+        let isDefaultTheme = (ThemeName(rawValue: UserDefaults.standard.string(forKey: "theme") ?? "") ?? .defaultTheme) == .defaultTheme
+        let headerColor = isDefaultTheme ? UIColor.purple300 : theme.navbarHiddenColor
+        let textColor = isDefaultTheme ? UIColor.white : (theme.navbarHiddenColor.isLight() ? UIColor.gray50 : theme.lightTextColor)
         let badgeTextColor = theme.badgeColor.isLight() ? UIColor.gray50 : theme.lightTextColor
-        backgroundColor = theme.navbarHiddenColor
+        backgroundColor = headerColor
         displayNameLabel.textColor = textColor
-        usernameLabel.textColor = textColor
+        usernameLabel.textColor = textColor.withAlphaComponent(0.66)
         settingsBadge.backgroundColor = theme.badgeColor
         settingsBadge.textColor = badgeTextColor
         settingsButton.tintColor = textColor
@@ -225,9 +227,9 @@ class MenuNavigationBarView: UIView, Themeable {
     
     private func layout() {
         let parentWidth = bounds.size.width
-        avatarWrapper.pin.size(40).start(pin.safeArea.left + 16).top(16)
-        displayNameLabel.pin.after(of: avatarWrapper).marginStart(16).sizeToFit(.heightFlexible).maxWidth(parentWidth - 40 - 32)
-        usernameLabel.pin.after(of: avatarWrapper).marginStart(16).sizeToFit(.heightFlexible)
+        avatarWrapper.pin.size(40).start(pin.safeArea.left + 30).top(16)
+        displayNameLabel.pin.after(of: avatarWrapper).marginStart(18).sizeToFit(.heightFlexible).maxWidth(parentWidth - 40 - 32)
+        usernameLabel.pin.after(of: avatarWrapper).marginStart(18).sizeToFit(.heightFlexible)
         let labelsHeight = displayNameLabel.frame.size.height + usernameLabel.frame.size.height
         displayNameLabel.pin.top((72 - labelsHeight) / 2)
         usernameLabel.pin.below(of: displayNameLabel)
