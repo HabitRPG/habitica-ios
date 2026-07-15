@@ -15,7 +15,7 @@ class SubscriptionPromoView: UIView, Themeable {
     private let horizontalInset: CGFloat = 17
     private let cardHeight: CGFloat = 130
     private let cardCornerRadius: CGFloat = 20
-    private let buttonHeight: CGFloat = 40
+    private let buttonHeight: CGFloat = 44
 
     let cardView: UIView = {
         let view = UIView()
@@ -117,7 +117,8 @@ class SubscriptionPromoView: UIView, Themeable {
         cardView.backgroundColor = theme.contentBackgroundColor
         titleView.textColor = theme.primaryTextColor
         descriptionView.textColor = theme.secondaryTextColor
-        subscribeButton.backgroundColor = theme.backgroundTintColor
+        subscribeButton.backgroundColor = UIColor("#925CF3")
+        backgroundColor = theme.isDark ? UIColor("#1A181D") : UIColor("#F6F4FC")
     }
 
     @objc

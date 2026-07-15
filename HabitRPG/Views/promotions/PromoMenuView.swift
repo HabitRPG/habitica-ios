@@ -22,7 +22,7 @@ class PromoMenuView: UIView, Themeable {
     private let horizontalInset: CGFloat = 17
     private let cardHeight: CGFloat = 130
     private let cardCornerRadius: CGFloat = 20
-    private let buttonHeight: CGFloat = 40
+    private let buttonHeight: CGFloat = 44
 
     let cardView: UIView = {
         let view = UIView()
