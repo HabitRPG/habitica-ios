@@ -661,12 +661,14 @@ class MainMenuViewController: BaseTableViewController {
     }
     
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        if section == 0 {
-            return nil
-        }
-        
         let view = UIView()
-        view.backgroundColor = .clear
+        view.backgroundColor = MainMenuTheme.sheetBackground
+        return view
+    }
+
+    override func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+        let view = UIView()
+        view.backgroundColor = MainMenuTheme.sheetBackground
         return view
     }
     
