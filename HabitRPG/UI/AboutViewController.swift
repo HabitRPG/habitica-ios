@@ -208,30 +208,30 @@ class AboutViewController: BaseTableViewController, MFMailComposeViewControllerD
         }
 
         let lastCardBottom = 120 + CGFloat(cardContainers.count - 1) * 172 + 158
-        let linksTop = lastCardBottom + 22
+        let linksTop = lastCardBottom + 32
         for index in 0..<linkButtons.count {
             linkButtons[index].frame = CGRect(x: 0, y: linksTop + CGFloat(index) * 43, width: width, height: 43)
         }
-        let linksBottom = linksTop + CGFloat(linkButtons.count) * 43
+        let linksBottom = linksTop + CGFloat(linkButtons.count - 1) * 43
 
-        let waveTop = linksBottom + 24
+        let waveTop = linksBottom + 30
         let waveHeight = (64 * width / 393).rounded()
         waveImageView.frame = CGRect(x: 0, y: waveTop, width: width, height: waveHeight)
 
         let purpleTop = waveTop + waveHeight - 1
-        versionLabel.frame = CGRect(x: 24, y: purpleTop + 24, width: width - 48, height: 20)
-        subtitleLabel.frame = CGRect(x: 24, y: versionLabel.frame.maxY + 8, width: width - 48, height: 34)
+        versionLabel.frame = CGRect(x: 24, y: purpleTop + 10, width: width - 48, height: 20)
+        subtitleLabel.frame = CGRect(x: (width - 261) / 2, y: versionLabel.frame.maxY + 4, width: 261, height: 34)
 
         let socialW: CGFloat = 214
         let socialH: CGFloat = 50
-        socialImageView.frame = CGRect(x: (width - socialW) / 2, y: subtitleLabel.frame.maxY + 16, width: socialW, height: socialH)
+        socialImageView.frame = CGRect(x: (width - socialW) / 2, y: subtitleLabel.frame.maxY + 10, width: socialW, height: socialH)
         let iconCenters: [CGFloat] = [0.14, 0.5, 0.86]
         for index in 0..<socialButtons.count {
             let centerX = socialImageView.frame.minX + socialW * iconCenters[index]
             socialButtons[index].frame = CGRect(x: centerX - 25, y: socialImageView.frame.minY, width: 50, height: 50)
         }
 
-        let policyY = socialImageView.frame.maxY + 20
+        let policyY = socialImageView.frame.maxY + 26
         privacyButton.sizeToFit()
         termsButton.sizeToFit()
         let gap: CGFloat = 56
@@ -289,7 +289,7 @@ class AboutViewController: BaseTableViewController, MFMailComposeViewControllerD
     private func bodyAttributed(_ text: String, color: UIColor) -> NSAttributedString {
         let paragraph = NSMutableParagraphStyle()
         paragraph.alignment = .center
-        paragraph.lineSpacing = 5
+        paragraph.lineSpacing = 3
         return NSAttributedString(string: text, attributes: [
             .font: UIFont.systemFont(ofSize: 15),
             .foregroundColor: color,
