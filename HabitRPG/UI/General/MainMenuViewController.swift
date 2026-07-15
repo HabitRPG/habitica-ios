@@ -243,7 +243,13 @@ class MainMenuViewController: BaseTableViewController {
                 tableView.tableFooterView = nil
             }
             if user?.isSubscribed == true {
-                menuItem(withKey: .subscription).subtitle = nil
+                if let endDate = user?.purchased?.subscriptionPlan?.dateTerminated {
+                    let formatter = DateFormatter()
+                    formatter.dateStyle = .long
+                    menuItem(withKey: .subscription).subtitle = L10n.subscriptionEndsOn(formatter.string(from: endDate))
+                } else {
+                    menuItem(withKey: .subscription).subtitle = nil
+                }
             } else if menuItem(withKey: .subscription).pillText != L10n.sale {
                 menuItem(withKey: .subscription).subtitle = L10n.getMoreHabitica
             }

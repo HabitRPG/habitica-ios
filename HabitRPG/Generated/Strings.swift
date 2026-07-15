@@ -1248,6 +1248,10 @@ public enum L10n {
   public static func subscriptionDuration(_ p1: String) -> String {
     return L10n.tr("Mainstrings", "subscription_duration", p1)
   }
+  /// Ends on %@
+  public static func subscriptionEndsOn(_ p1: String) -> String {
+    return L10n.tr("Mainstrings", "subscription_ends_on", p1)
+  }
   /// Gift a Subscription
   public static var subscriptionGiftButton: String { return L10n.tr("Mainstrings", "subscription_gift_button") }
   /// Want to give the benefits of a subscription to someone else?
@@ -1458,6 +1462,8 @@ public enum L10n {
   public static var viewAchievements: String { return L10n.tr("Mainstrings", "view_achievements") }
   /// View Gem Bundles
   public static var viewGemBundles: String { return L10n.tr("Mainstrings", "view_gem_bundles") }
+  /// View Offer
+  public static var viewOffer: String { return L10n.tr("Mainstrings", "view_offer") }
   /// View Onboarding Tasks
   public static var viewOnboardingTasks: String { return L10n.tr("Mainstrings", "view_onboarding_tasks") }
   /// View Participant Progress
@@ -3121,9 +3127,9 @@ public enum L10n {
   public enum Survey {
     /// Go to Survey
     public static var button: String { return L10n.tr("Mainstrings", "survey.button") }
-    /// Fill out this 5 minute survey to help us grow and receive an achievement!
+    /// Fill out this 5 minute survey to help us grow and receive an Achievement!
     public static var description: String { return L10n.tr("Mainstrings", "survey.description") }
-    /// Habitica player survey
+    /// Player Survey
     public static var title: String { return L10n.tr("Mainstrings", "survey.title") }
   }
 

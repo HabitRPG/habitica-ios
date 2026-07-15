@@ -1038,6 +1038,8 @@
 "sale" = "Sale";
 "sale_ends_in" = "Sale ends in %@";
 "get_more_habitica" = "Get more out of Habitica";
+"subscription_ends_on" = "Ends on %@";
+"view_offer" = "View Offer";
 "report_x_violation" = "Report @%@ for violation?";
 "report_x" = "Report %@";
 "report_x_question" = "Why are you reporting this %@?";
@@ -1305,8 +1307,8 @@
 "spooky_promo.info_prompt" = "The Gem Sale is back to haunt the very end of this year’s Fall Gala! This is one last chance to get more Gems than ever, so stock up while it lasts!";
 "spooky_promo.info_instructions" = "Between %@ and %@, simply purchase any Gem bundle like usual and your account will be credited with the promotional amount of Gems. More Gems to spend, share, or save for any future releases!";
 "gems_promo.info_limitations" = "This promotion only applies during the limited time event. This event starts on %@ (12:00 UTC) and will end %@ (00:00 UTC). The promo offer is only available when buying Gems for yourself.";
-"survey.title" = "Habitica player survey";
-"survey.description" = "Fill out this 5 minute survey to help us grow and receive an achievement!";
+"survey.title" = "Player Survey";
+"survey.description" = "Fill out this 5 minute survey to help us grow and receive an Achievement!";
 "survey.button" = "Go to Survey";
 "suggest_pet_hatch_missing_egg" = "You still need a %@ Egg to hatch this pet";
 "suggest_pet_hatch_missing_potion" = "You still need a %@ Potion to hatch this pet";

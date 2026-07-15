@@ -126,7 +126,7 @@ class FallExtraGemsPromotion: HabiticaPromotion {
         view.setDescriptionImage(Asset.fallPromoMenuDescription.image)
         view.actionButton.backgroundColor = UIColor.white.withAlphaComponent(0.22)
         view.actionButton.setTitleColor(.white, for: .normal)
-        view.actionButton.setTitle(L10n.learnMore, for: .normal)
+        view.actionButton.setTitle(L10n.viewOffer, for: .normal)
     }
     
     func configurePurchaseBanner(view: PromoBannerView) {
@@ -257,7 +257,7 @@ class SpookyExtraGemsPromotion: HabiticaPromotion {
         view.setDescriptionImage(Asset.spookyPromoMenuDescription.image)
         view.actionButton.backgroundColor = UIColor.white.withAlphaComponent(0.22)
         view.actionButton.setTitleColor(.white, for: .normal)
-        view.actionButton.setTitle(L10n.learnMore, for: .normal)
+        view.actionButton.setTitle(L10n.viewOffer, for: .normal)
     }
     
     func configurePurchaseBanner(view: PromoBannerView) {
@@ -388,7 +388,7 @@ class GiftOneGetOnePromotion: HabiticaPromotion {
         view.setDescription(L10n.giftOneGetOneDescription)
         view.actionButton.backgroundColor = UIColor.white.withAlphaComponent(0.22)
         view.actionButton.setTitleColor(.white, for: .normal)
-        view.actionButton.setTitle(L10n.learnMore, for: .normal)
+        view.actionButton.setTitle(L10n.viewOffer, for: .normal)
         view.titleView.textColor = .white
         view.descriptionView.textColor = .white
     }
