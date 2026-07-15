@@ -55,6 +55,10 @@ class AboutViewController: BaseTableViewController, MFMailComposeViewControllerD
     private var cardBodyLabels: [UILabel] = []
     private var cardButtons: [UIButton] = []
     private var linkButtons: [UIButton] = []
+    private var sparkleViews: [UIView] = []
+    private let sparkleSpecs: [(x: CGFloat, yOffset: CGFloat, size: CGFloat)] = [
+        (36, 28, 11), (345, 36, 9), (357, 66, 7), (55, 101, 12), (18, 133, 9), (338, 161, 11)
+    ]
 
     private let waveImageView = UIImageView(image: UIImage(named: "menuWave"))
     private let purpleBand = UIView()
@@ -148,6 +152,12 @@ class AboutViewController: BaseTableViewController, MFMailComposeViewControllerD
             linkButtons.append(button)
         }
 
+        for spec in sparkleSpecs {
+            let sparkle = makeSparkle(size: spec.size)
+            scrollView.addSubview(sparkle)
+            sparkleViews.append(sparkle)
+        }
+
         purpleBand.backgroundColor = UIColor("#925CF3")
         scrollView.addSubview(purpleBand)
 
@@ -203,7 +213,9 @@ class AboutViewController: BaseTableViewController, MFMailComposeViewControllerD
             let top = 120 + CGFloat(index) * 172
             cardContainers[index].frame = CGRect(x: margin, y: top, width: cardW, height: 158)
             cardTitleLabels[index].frame = CGRect(x: 0, y: 16, width: cardW, height: 24)
-            cardBodyLabels[index].frame = CGRect(x: 20, y: 44, width: cardW - 40, height: 56)
+            let bodyWidth = cardW - 40
+            let bodyHeight = cardBodyLabels[index].sizeThatFits(CGSize(width: bodyWidth, height: .greatestFiniteMagnitude)).height
+            cardBodyLabels[index].frame = CGRect(x: 20, y: 44, width: bodyWidth, height: bodyHeight)
             cardButtons[index].frame = CGRect(x: 16, y: 102, width: cardW - 32, height: 44)
         }
 
@@ -214,7 +226,12 @@ class AboutViewController: BaseTableViewController, MFMailComposeViewControllerD
         }
         let linksBottom = linksTop + CGFloat(linkButtons.count - 1) * 43
 
-        let waveTop = linksBottom + 30
+        for index in 0..<sparkleViews.count {
+            let spec = sparkleSpecs[index]
+            sparkleViews[index].frame = CGRect(x: spec.x, y: linksTop + spec.yOffset, width: spec.size, height: spec.size)
+        }
+
+        let waveTop = linksBottom + 42
         let waveHeight = (64 * width / 393).rounded()
         waveImageView.frame = CGRect(x: 0, y: waveTop, width: width, height: waveHeight)
 
@@ -273,7 +290,7 @@ class AboutViewController: BaseTableViewController, MFMailComposeViewControllerD
 
         purpleBand.backgroundColor = UIColor("#925CF3")
         versionLabel.textColor = .white
-        subtitleLabel.textColor = UIColor(white: 1, alpha: 0.9)
+        subtitleLabel.attributedText = subtitleAttributed(subtitleLabel.text ?? "", color: UIColor(white: 1, alpha: 0.9))
         privacyButton.setTitleColor(UIColor(white: 1, alpha: 0.8), for: .normal)
         termsButton.setTitleColor(UIColor(white: 1, alpha: 0.8), for: .normal)
     }
@@ -295,6 +312,36 @@ class AboutViewController: BaseTableViewController, MFMailComposeViewControllerD
             .foregroundColor: color,
             .paragraphStyle: paragraph
         ])
+    }
+
+    private func subtitleAttributed(_ text: String, color: UIColor) -> NSAttributedString {
+        let paragraph = NSMutableParagraphStyle()
+        paragraph.alignment = .center
+        paragraph.lineSpacing = 2
+        return NSAttributedString(string: text, attributes: [
+            .font: UIFont.systemFont(ofSize: 12, weight: .semibold),
+            .foregroundColor: color,
+            .paragraphStyle: paragraph
+        ])
+    }
+
+    private func makeSparkle(size: CGFloat) -> UIView {
+        let container = UIView(frame: CGRect(x: 0, y: 0, width: size, height: size))
+        container.backgroundColor = .clear
+        container.isUserInteractionEnabled = false
+        let mid = size / 2
+        let path = UIBezierPath()
+        path.move(to: CGPoint(x: mid, y: 0))
+        path.addQuadCurve(to: CGPoint(x: size, y: mid), controlPoint: CGPoint(x: mid, y: mid))
+        path.addQuadCurve(to: CGPoint(x: mid, y: size), controlPoint: CGPoint(x: mid, y: mid))
+        path.addQuadCurve(to: CGPoint(x: 0, y: mid), controlPoint: CGPoint(x: mid, y: mid))
+        path.addQuadCurve(to: CGPoint(x: mid, y: 0), controlPoint: CGPoint(x: mid, y: mid))
+        path.close()
+        let shape = CAShapeLayer()
+        shape.path = path.cgPath
+        shape.fillColor = UIColor("#C4ADF6").cgColor
+        container.layer.addSublayer(shape)
+        return container
     }
 
     @objc
