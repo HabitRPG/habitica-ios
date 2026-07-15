@@ -227,12 +227,12 @@ class MenuNavigationBarView: UIView, Themeable {
     
     private func layout() {
         let parentWidth = bounds.size.width
-        avatarWrapper.pin.size(40).start(pin.safeArea.left + 30).top(16)
+        avatarWrapper.pin.width(40).height(42).start(pin.safeArea.left + 30).top(16)
         displayNameLabel.pin.after(of: avatarWrapper).marginStart(18).sizeToFit(.heightFlexible).maxWidth(parentWidth - 40 - 32)
         usernameLabel.pin.after(of: avatarWrapper).marginStart(18).sizeToFit(.heightFlexible)
         let labelsHeight = displayNameLabel.frame.size.height + usernameLabel.frame.size.height
         displayNameLabel.pin.top((72 - labelsHeight) / 2)
-        usernameLabel.pin.below(of: displayNameLabel)
+        usernameLabel.pin.below(of: displayNameLabel).marginTop(4)
         settingsButton.pin.size(50)
         messagesButton.pin.size(50)
         notificationsButton.pin.size(50)

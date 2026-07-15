@@ -510,9 +510,17 @@ class MainMenuViewController: BaseTableViewController {
         }
         tableView.backgroundColor = MainMenuTheme.sheetBackground
         tableView.separatorStyle = .none
+        tableView.layer.cornerRadius = 24
+        tableView.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
+        tableView.clipsToBounds = true
+        view.backgroundColor = navbarColor
         tableView.reloadData()
     }
-    
+
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent
+    }
+
     private func setupHeader() {
         topHeaderCoordinator?.hideNavBar = !configRepository.enableIPadUI()
         if !configRepository.enableIPadUI() {
@@ -711,20 +719,21 @@ class MainMenuViewController: BaseTableViewController {
             cell.accessibilityLabel = title
         }
         
+        cell.accessoryType = .none
         let label = cell.viewWithTag(1) as? UILabel
-        label?.text = item?.title
-        label?.font = UIFontMetrics.default.scaledSystemFont(ofSize: 17, ofWeight: .semibold)
+        let titleColor: UIColor
         if indexPath == tableView.indexPathForSelectedRow || (indexPath == currentSecondaryIndexPath && splitViewController != nil) {
             cell.backgroundColor = ThemeService.shared.theme.offsetBackgroundColor
-            label?.textColor = ThemeService.shared.theme.tintColor
+            titleColor = ThemeService.shared.theme.tintColor
         } else {
             cell.backgroundColor = MainMenuTheme.sheetBackground
-            if item?.isDisabled == true {
-                label?.textColor = MainMenuTheme.lockedRowTitle
-            } else {
-                label?.textColor = MainMenuTheme.rowTitle
-            }
+            titleColor = item?.isDisabled == true ? MainMenuTheme.lockedRowTitle : MainMenuTheme.rowTitle
         }
+        label?.attributedText = NSAttributedString(string: item?.title ?? "", attributes: [
+            .font: UIFontMetrics.default.scaledSystemFont(ofSize: 17, ofWeight: .semibold),
+            .kern: -0.2,
+            .foregroundColor: titleColor
+        ])
         label?.backgroundColor = .clear
 
         let indicatorView = cell.viewWithTag(2)
@@ -740,7 +749,7 @@ class MainMenuViewController: BaseTableViewController {
         if let builder = item?.pillBuilder, let pill = pillView {
             builder(pill)
         } else {
-            pillView?.pillColor = item?.pillColor ?? UIColor.purple300
+            pillView?.pillColor = item?.pillColor ?? UIColor.purple400
         }
         
         let subtitleLabel = cell.viewWithTag(4) as? UILabel

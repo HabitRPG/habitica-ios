@@ -154,7 +154,7 @@ class PillView: UIView {
                 return CGSize(width: 0, height: 0)
             }
             let originalSize = label.intrinsicContentSize
-            var width = originalSize.width+16
+            var width = originalSize.width+24
             let height = originalSize.height+12
             if icon != nil {
                 width += 15+4
