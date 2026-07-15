@@ -160,7 +160,6 @@ struct MenuSection {
     }
     let key: Key
     let title: String?
-    let iconAsset: ImageAsset?
     var isHidden: Bool = false
     var items: [MenuItem]
     
@@ -571,23 +570,23 @@ class MainMenuViewController: BaseTableViewController {
     private func setupMenu() {
         updateMenuTitles()
         menuSections = [
-            MenuSection(key: .user, title: L10n.Settings.user, iconAsset: nil, items: [
+            MenuSection(key: .user, title: L10n.Settings.user, items: [
                 menuItem(withKey: .tasks),
                 menuItem(withKey: .notifications),
                 menuItem(withKey: .skills),
                 menuItem(withKey: .stats),
                 menuItem(withKey: .achievements)
                 ]),
-            MenuSection(key: .groupPlans, title: L10n.Menu.groupPlans, iconAsset: Asset.iconSocial, items: [
+            MenuSection(key: .groupPlans, title: L10n.Menu.groupPlans, items: [
             ]),
-            MenuSection(key: .shops, title: L10n.Menu.shops, iconAsset: Asset.iconInventory, items: [
+            MenuSection(key: .shops, title: L10n.Menu.shops, items: [
                 menuItem(withKey: .market),
                 menuItem(withKey: .questShop),
                 menuItem(withKey: .customizationShop),
                 menuItem(withKey: .seasonalShop),
                 menuItem(withKey: .timeTravelersShop)
             ]),
-            MenuSection(key: .inventory, title: L10n.Menu.inventory, iconAsset: Asset.iconInventory, items: [
+            MenuSection(key: .inventory, title: L10n.Menu.inventory, items: [
                 menuItem(withKey: .customizeAvatar),
                 menuItem(withKey: .equipment),
                 menuItem(withKey: .items),
@@ -595,12 +594,12 @@ class MainMenuViewController: BaseTableViewController {
                 menuItem(withKey: .gems),
                 menuItem(withKey: .subscription)
                 ]),
-            MenuSection(key: .social, title: L10n.Menu.social, iconAsset: Asset.iconSocial, items: [
+            MenuSection(key: .social, title: L10n.Menu.social, items: [
                 menuItem(withKey: .party),
                 menuItem(withKey: .messages),
                 menuItem(withKey: .challenges)
                 ]),
-            MenuSection(key: .about, title: L10n.Titles.about, iconAsset: Asset.iconHelp, items: [
+            MenuSection(key: .about, title: L10n.Titles.about, items: [
                 menuItem(withKey: .settings),
                 menuItem(withKey: .news),
                 menuItem(withKey: .support),
