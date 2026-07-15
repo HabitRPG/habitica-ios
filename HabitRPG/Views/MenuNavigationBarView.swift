@@ -180,7 +180,7 @@ class MenuNavigationBarView: UIView, Themeable {
         }
         displayNameLabel.pin.sizeToFit(.height)
         let labelWidth = displayNameLabel.frame.size.width
-        displayInTwoRows = bounds.size.width - 32 - 40 - 16 - 150 < labelWidth
+        displayInTwoRows = bounds.size.width - 88 - 168 < labelWidth
         setNeedsLayout()
     }
     

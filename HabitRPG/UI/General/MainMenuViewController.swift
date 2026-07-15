@@ -510,15 +510,7 @@ class MainMenuViewController: BaseTableViewController {
         }
         tableView.backgroundColor = MainMenuTheme.sheetBackground
         tableView.separatorStyle = .none
-        tableView.layer.cornerRadius = 24
-        tableView.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
-        tableView.clipsToBounds = true
-        view.backgroundColor = navbarColor
         tableView.reloadData()
-    }
-
-    override var preferredStatusBarStyle: UIStatusBarStyle {
-        return .lightContent
     }
 
     private func setupHeader() {
@@ -787,6 +779,13 @@ class MainMenuViewController: BaseTableViewController {
         } else {
             iconView?.image = nil
             iconView?.isHidden = true
+        }
+        let lockView = cell.viewWithTag(6) as? UIImageView
+        if item?.isDisabled == true {
+            lockView?.image = UIImage(named: ThemeService.shared.theme.isDark ? "lock_dark" : "lock_light")
+            lockView?.isHidden = false
+        } else {
+            lockView?.isHidden = true
         }
 
         cell.selectionStyle = item?.isDisabled == true ? .default : .none
