@@ -104,6 +104,14 @@ public class TaskLocalRepository: BaseLocalRepository {
         return res?.map({ (task) -> TaskProtocol in return task }).compactMap(\.self)
     }
     
+    public func markTaskCompleted(taskId: String) {
+        updateCall { realm in
+            if let task = realm.object(ofType: RealmTask.self, forPrimaryKey: taskId) {
+                task.completed = true
+            }
+        }
+    }
+
     public func getTask(id: String) -> SignalProducer<TaskProtocol, ReactiveSwiftRealmError> {
         return RealmTask.findBy(key: id).skipNil().map({ task -> TaskProtocol in
             return task
