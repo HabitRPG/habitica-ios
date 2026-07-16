@@ -30,6 +30,10 @@ class KeyboardManager: NSObject {
         shared.viewsToUpdate.append(ObservingView(value: view))
     }
 
+    static func removeObservingView(_ view: UIView) {
+        shared.viewsToUpdate.removeAll { $0.value == nil || $0.value === view }
+    }
+
     private var isObserving = false
     func observeKeyboardNotifications() {
         if isObserving {
@@ -53,6 +57,7 @@ class KeyboardManager: NSObject {
         
         UIView.animate(withDuration: duration, delay: 0.0, options: UIView.AnimationOptions(rawValue: curve)) { [weak self] in
             for view in self?.viewsToUpdate ?? [] {
+                guard view.value?.window != nil else { continue }
                 view.value?.setNeedsLayout()
                 view.value?.layoutIfNeeded()
             }
@@ -69,6 +74,7 @@ class KeyboardManager: NSObject {
         
         UIView.animate(withDuration: duration, delay: 0.0, options: UIView.AnimationOptions(rawValue: curve)) { [weak self] in
             for view in self?.viewsToUpdate ?? [] {
+                guard view.value?.window != nil else { continue }
                 view.value?.setNeedsLayout()
                 view.value?.layoutIfNeeded()
             }
