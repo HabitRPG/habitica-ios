@@ -80,9 +80,13 @@ struct FocusableTextField: UIViewRepresentable {
         uiView.textColor = context.environment.tintColor?.uiColor()
         configuration(uiView)
         if isFirstResponder && !uiView.isFirstResponder {
-            uiView.becomeFirstResponder()
+            DispatchQueue.main.async {
+                uiView.becomeFirstResponder()
+            }
         } else if !isFirstResponder && uiView.isFirstResponder {
-            uiView.resignFirstResponder()
+            DispatchQueue.main.async {
+                uiView.resignFirstResponder()
+            }
         }
     }
 

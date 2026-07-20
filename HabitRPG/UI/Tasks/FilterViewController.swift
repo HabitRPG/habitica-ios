@@ -26,6 +26,8 @@ class TaskFilterViewModel: ViewModel {
     
     @Published var isEditing = false
     @Published var isSaving = false
+
+    private var originalTags = [TagProtocol]()
     
     var onDismiss: (() -> Void)?
     
@@ -83,11 +85,15 @@ class TaskFilterViewModel: ViewModel {
     
     func beginEditing() {
         var newEditedTags = [TagProtocol]()
+        var newOriginalTags = [TagProtocol]()
         tags.forEach { tag in
-            if let editable = taskRepository.getEditableTag(id: tag.id ?? "") {
+            if let editable = taskRepository.getEditableTag(id: tag.id ?? ""),
+               let original = taskRepository.getEditableTag(id: tag.id ?? "") {
                 newEditedTags.append(editable)
+                newOriginalTags.append(original)
             }
         }
+        originalTags = newOriginalTags
         withAnimation(.bouncy) {
             editedTags = newEditedTags
             isEditing = true
@@ -107,7 +113,7 @@ class TaskFilterViewModel: ViewModel {
         }
         isSaving = true
         deletedTags = []
-        let tagsToDelete = tags.filter { tag in
+        let tagsToDelete = originalTags.filter { tag in
             return !editedTags.contains { editedTag in
                 return editedTag.id == tag.id
             }
@@ -116,22 +122,28 @@ class TaskFilterViewModel: ViewModel {
             if editedTag.id?.isEmpty != false {
                 return true
             }
-            return !tags.contains { tag in
+            return !originalTags.contains { tag in
                 return editedTag.id == tag.id
             }
         }
         let tagsToUpdate = editedTags.filter { editedTag in
-            let original = tags.first { tag in
+            guard editedTag.text?.isEmpty == false,
+                  let original = originalTags.first(where: { tag in
                 return editedTag.id == tag.id
+            }) else {
+                return false
             }
-            return original?.text != editedTag.text
+            return original.text != editedTag.text
         }
         for tag in tagsToDelete {
             deleteTag(tag: tag)
         }
+        var nextOrder = (tags.map { $0.order }.max() ?? -1) + 1
         for tag in tagsToCreate {
-            if let text = tag.text {
-                createTag(text: text)
+            if let text = tag.text, !text.isEmpty {
+                tag.order = nextOrder
+                nextOrder += 1
+                createTag(tag: tag)
             }
         }
         for tag in tagsToUpdate {
@@ -140,6 +152,12 @@ class TaskFilterViewModel: ViewModel {
             }
         }
         withAnimation {
+            tags = editedTags.compactMap { tag in
+                if tag.text?.isEmpty == false {
+                    return tag
+                }
+                return originalTags.first { $0.id == tag.id }
+            }
             isEditing = false
             isSaving = false
         }
@@ -180,9 +198,10 @@ class TaskFilterViewModel: ViewModel {
         }
     }
     
-    func createTag(text: String) {
-        let tag = taskRepository.getNewTag()
-        tag.text = text
+    func createTag(tag editedTag: TagProtocol) {
+        let tag = taskRepository.getNewTag(id: editedTag.id)
+        tag.text = editedTag.text
+        tag.order = editedTag.order
         taskRepository.createTag(tag).observeCompleted {}
     }
     
@@ -316,6 +335,7 @@ struct TaskFilterPage: View {
                     HabiticaProgressView().frame(height: 60)
                 } else if viewModel.isEditing {
                     Button {
+                        focusItemId = nil
                         viewModel.save()
                     } label: {
                         Text(L10n.save)
@@ -346,10 +366,12 @@ struct TaskFilterPage: View {
                 ToolbarItem(placement: .topBarLeading) {
                     if #available(iOS 26.0, *) {
                         Button(role: .cancel) {
+                            focusItemId = nil
                             viewModel.cancelEditing()
                         }.disabled(viewModel.isSaving)
                     } else {
                         Button {
+                            focusItemId = nil
                             viewModel.cancelEditing()
                         } label: {
                             Text(L10n.cancel)
