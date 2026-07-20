@@ -464,20 +464,74 @@ extension BuySheetViewModel {
     }
 
     func displayRebirthConfirmationDialog() {
-        let alert = HabiticaAlertController(title: L10n.Shops.rebirthConfirmTitle)
-        let hostingController = UIHostingController(rootView: RebirthConfirmationContent(gemCost: Int(item.value)))
-        hostingController.view.backgroundColor = .clear
-        alert.addChild(hostingController)
-        alert.contentView = hostingController.view
-        hostingController.didMove(toParent: alert)
-        alert.addAction(title: L10n.Shops.useOrbOfRebirth, style: .destructive, isMainAction: true) { [weak self] _ in
+        let gemCost = Int(item.value)
+        let title = gemCost > 0 ? L10n.Shops.rebirthConfirmTitleGems(gemCost) : L10n.Shops.rebirthConfirmTitle
+        let message = [
+            L10n.Shops.rebirthConfirmResetHeader,
+            L10n.Shops.rebirthConfirmResetItem1,
+            L10n.Shops.rebirthConfirmResetItem2,
+            L10n.Shops.rebirthConfirmResetItem3,
+            L10n.Shops.rebirthConfirmResetItem4,
+            "",
+            L10n.Shops.rebirthConfirmKeepHeader,
+            L10n.Shops.rebirthConfirmKeepItem1,
+            L10n.Shops.rebirthConfirmKeepItem2,
+            L10n.Shops.rebirthConfirmKeepItem3,
+            L10n.Shops.rebirthConfirmKeepItem4
+        ].joined(separator: "\n")
+        let titleParagraphStyle = NSMutableParagraphStyle()
+        titleParagraphStyle.alignment = .natural
+        titleParagraphStyle.minimumLineHeight = 22
+        titleParagraphStyle.maximumLineHeight = 22
+        let titleColor = ThemeService.shared.theme.isDark ? ThemeService.shared.theme.primaryTextColor : UIColor.black
+        let titleFont = UIFont.systemFont(ofSize: 17, weight: .semibold)
+        let attributedTitle = NSAttributedString(string: title, attributes: [
+            .font: titleFont,
+            .foregroundColor: titleColor,
+            .kern: -0.43,
+            .baselineOffset: (22 - titleFont.lineHeight) / 2,
+            .paragraphStyle: titleParagraphStyle
+        ])
+        let paragraphStyle = NSMutableParagraphStyle()
+        paragraphStyle.alignment = .natural
+        paragraphStyle.minimumLineHeight = 22
+        paragraphStyle.maximumLineHeight = 22
+        let attributedMessage = NSMutableAttributedString(string: message, attributes: [
+            .font: UIFont.systemFont(ofSize: 17, weight: .regular),
+            .kern: -0.43,
+            .paragraphStyle: paragraphStyle
+        ])
+        for header in [L10n.Shops.rebirthConfirmResetHeader, L10n.Shops.rebirthConfirmKeepHeader] {
+            if let range = message.range(of: header) {
+                attributedMessage.addAttribute(.font, value: UIFont.systemFont(ofSize: 17, weight: .semibold), range: NSRange(range, in: message))
+            }
+        }
+        let alert = HabiticaAlertController(attributedTitle: attributedTitle, attributedMessage: attributedMessage)
+        alert.containerViewSpacing = 28
+        let confirmButton = alert.addAction(title: L10n.Shops.useOrbOfRebirth, style: .destructive, isMainAction: true) { [weak self] _ in
             guard let self = self else { return }
             withAnimation {
                 self.isPurchasing = true
             }
             self.buyItem(quantity: 1)
         }
-        alert.addAction(title: L10n.Shops.goBack)
+        confirmButton.tintColor = UIColor.alertRed.withAlphaComponent(0.2)
+        var confirmConfig = confirmButton.configuration
+        confirmConfig?.baseBackgroundColor = UIColor.alertRed.withAlphaComponent(0.2)
+        var titleContainer = AttributeContainer()
+        titleContainer.font = UIFont.systemFont(ofSize: 17, weight: .medium)
+        titleContainer.foregroundColor = UIColor.alertRed
+        titleContainer.kern = -0.43
+        confirmConfig?.attributedTitle = AttributedString(L10n.Shops.useOrbOfRebirth, attributes: titleContainer)
+        confirmButton.configuration = confirmConfig
+        let cancelButton = alert.addAction(title: L10n.cancel)
+        var cancelConfig = cancelButton.configuration
+        var cancelContainer = AttributeContainer()
+        cancelContainer.font = UIFont.systemFont(ofSize: 17, weight: .medium)
+        cancelContainer.foregroundColor = titleColor
+        cancelContainer.kern = -0.43
+        cancelConfig?.attributedTitle = AttributedString(L10n.cancel, attributes: cancelContainer)
+        cancelButton.configuration = cancelConfig
         alert.show()
     }
 }

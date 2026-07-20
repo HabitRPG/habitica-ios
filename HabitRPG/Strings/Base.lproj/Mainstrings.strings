@@ -1082,6 +1082,7 @@
 "shops.rebirthShop" = "Orb of Rebirth";
 "shops.rebirthShopDescription" = "Instantly restart your adventure as a level 1 Warrior while retaining Achievements, Items, and Equipment. Your tasks will reset to yellow but will retain their history. All personal task streaks will reset. Your Gold, Experience, Mana, and the effects of all Skills will be removed.";
 "shops.rebirthConfirmTitle" = "Are you sure you want to use the Orb of Rebirth?";
+"shops.rebirthConfirmTitleGems" = "Are you sure you want to use the Orb of Rebirth for %d Gems?";
 "shops.rebirthConfirmMessage" = "Are you sure you want to use the Orb of Rebirth?\n\nYou will:\n• Return to Level 1 as a Warrior\n• Reset all your stats and skill points\n• Lose all your gold and mana\n• Reset all task values and streaks\n\nYou will keep:\n• All your equipment, pets, and mounts\n• All your achievements\n• Your guild, party, and challenge memberships";
 "shops.rebirthConfirmFree" = "Restart (FREE)";
 "shops.rebirthConfirmGems" = "Restart (%d Gems)";

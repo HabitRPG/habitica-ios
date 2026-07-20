@@ -343,7 +343,7 @@ class HabiticaAlertController: UIViewController, Themeable {
         }
         checkTextStackHidden()
         subtitleLabel.textColor = messageColor ?? ThemeService.shared.theme.primaryTextColor
-        if let fontDescriptor = UIFontDescriptor
+        if message != nil, let fontDescriptor = UIFontDescriptor
             .preferredFontDescriptor(withTextStyle: UIFont.TextStyle.body)
             .withSymbolicTraits(UIFontDescriptor.SymbolicTraits.traitLooseLeading) {
                     let looseLeadingFont = UIFont(descriptor: fontDescriptor, size: 15)

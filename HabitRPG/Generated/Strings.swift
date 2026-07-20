@@ -2887,6 +2887,10 @@ public enum L10n {
     public static var rebirthConfirmResetItem4: String { return L10n.tr("Mainstrings", "shops.rebirthConfirmResetItem4") }
     /// Are you sure you want to use the Orb of Rebirth?
     public static var rebirthConfirmTitle: String { return L10n.tr("Mainstrings", "shops.rebirthConfirmTitle") }
+    /// Are you sure you want to use the Orb of Rebirth for %d Gems?
+    public static func rebirthConfirmTitleGems(_ p1: Int) -> String {
+      return L10n.tr("Mainstrings", "shops.rebirthConfirmTitleGems", p1)
+    }
     /// Use the Orb of Rebirth to breathe new life into your Habitica adventure once you feel you've achieved it all! Begin again at level 1 while keeping your tasks, Achievements, and Pets with this special item found in the Market.
     public static var rebirthEnabledDescription: String { return L10n.tr("Mainstrings", "shops.rebirthEnabledDescription") }
     /// A new adventure is available!
