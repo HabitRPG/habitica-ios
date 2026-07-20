@@ -103,6 +103,8 @@ public extension SubscriptionPlanProtocol {
 }
 
 public class PreviewSubscriptionPlan: SubscriptionPlanProtocol {
+    public var cumulativeCount: Int = 0
+    
     public init() {}
     public var quantity: Int = 0
     public var gemsBought: Int = 0
