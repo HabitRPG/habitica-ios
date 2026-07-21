@@ -243,10 +243,12 @@ class TaskFilterViewModel: ViewModel {
 
 struct TagFormItemView: View {
     let tag: TagProtocol
+    let onReturnPressed: () -> Void
     @State var isFirstResponder = false
-        
-    init(tag: TagProtocol, focusItemId: String?) {
+
+    init(tag: TagProtocol, focusItemId: String?, onReturnPressed: @escaping () -> Void) {
         self.tag = tag
+        self.onReturnPressed = onReturnPressed
         _isFirstResponder = State(initialValue: (tag.id == focusItemId))
     }
 
@@ -258,7 +260,11 @@ struct TagFormItemView: View {
         })
     }
     var body: some View {
-        FocusableTextField(placeholder: "", text: text, isFirstResponder: $isFirstResponder)
+        FocusableTextField(placeholder: "", text: text, isFirstResponder: $isFirstResponder, onReturnPressed: {
+            if tag.text?.isEmpty == false {
+                onReturnPressed()
+            }
+        })
     }
 }
 
@@ -266,6 +272,19 @@ struct TaskFilterPage: View {
     @ObservedObject var themeService = ThemeService.shared
     @ObservedObject var viewModel: TaskFilterViewModel
     @State var focusItemId: String?
+
+    private func addNewTag(after afterId: String? = nil) {
+        let tag = viewModel.getNewTag()
+        tag.id = UUID().uuidString
+        withAnimation {
+            if let afterId = afterId, let index = viewModel.editedTags.firstIndex(where: { $0.id == afterId }) {
+                viewModel.editedTags.insert(tag, at: index + 1)
+            } else {
+                viewModel.editedTags.append(tag)
+            }
+        }
+        focusItemId = tag.id
+    }
 
     var body: some View {
         VStack {
@@ -311,7 +330,9 @@ struct TaskFilterPage: View {
                                 .contentShape(Rectangle())
                                 .frame(width: 24, height: 22)
                                 .transition(.asymmetric(insertion: .push(from: .leading), removal: .push(from: .trailing)))
-                                TagFormItemView(tag: tag, focusItemId: focusItemId)
+                                TagFormItemView(tag: tag, focusItemId: focusItemId, onReturnPressed: {
+                                    addNewTag(after: tag.id)
+                                })
                             } else {
                                 Text(tag.text ?? "")
                                     .scaledFont(size: 17, weight: isSelected ? .semibold : .regular)
@@ -341,12 +362,7 @@ struct TaskFilterPage: View {
                                 .scaledFont(size: 20)
                                 .foregroundStyle(Color(themeService.theme.errorColor))
                             Button(action: {
-                                let tag = viewModel.getNewTag()
-                                tag.id = UUID().uuidString
-                                withAnimation {
-                                    viewModel.editedTags.append(tag)
-                                }
-                                focusItemId = tag.id
+                                addNewTag()
                             }, label: {
                                 Text(L10n.addTag).underline(UIAccessibility.buttonShapesEnabled)
                                     .foregroundStyle(Color(themeService.theme.ternaryTextColor))
@@ -451,6 +467,7 @@ struct TaskFilterPage: View {
 
 class FilterViewController: BaseHostingViewController<TaskFilterPage> {
     let viewModel = TaskFilterViewModel()
+    private var keyboardOverlap: CGFloat = 0
 
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder, rootView: TaskFilterPage(viewModel: viewModel))
@@ -466,17 +483,15 @@ class FilterViewController: BaseHostingViewController<TaskFilterPage> {
             return
         }
         let keyboardFrame = view.convert(value.cgRectValue, from: nil)
-        let overlap = max(0, view.bounds.intersection(keyboardFrame).height)
-        let extra = max(0, overlap - view.safeAreaInsets.bottom)
-        scrollView.contentInset.bottom = extra
-        scrollView.verticalScrollIndicatorInsets.bottom = extra
+        keyboardOverlap = max(0, view.bounds.intersection(keyboardFrame).height)
+        scrollView.contentInset.top = 44
     }
 
     @objc
     private func keyboardHidden(_ notification: Notification) {
+        keyboardOverlap = 0
         if let scrollView = findListScrollView(in: view) {
-            scrollView.contentInset.bottom = 0
-            scrollView.verticalScrollIndicatorInsets.bottom = 0
+            scrollView.contentInset.top = 0
         }
     }
 
@@ -485,7 +500,20 @@ class FilterViewController: BaseHostingViewController<TaskFilterPage> {
         guard let field = notification.object as? UITextField, field.isDescendant(of: view) else {
             return
         }
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.75) { [weak self] in
+        for delay in [0.15, 0.75] {
+            DispatchQueue.main.asyncAfter(deadline: .now() + delay) { [weak self] in
+                self?.scrollToActionsIfNearEnd(field)
+            }
+        }
+    }
+
+    @objc
+    private func textFieldChanged(_ notification: Notification) {
+        guard let field = notification.object as? UITextField, field.isDescendant(of: view) else {
+            return
+        }
+        scrollToActionsIfNearEnd(field)
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) { [weak self] in
             self?.scrollToActionsIfNearEnd(field)
         }
     }
@@ -494,13 +522,22 @@ class FilterViewController: BaseHostingViewController<TaskFilterPage> {
         guard field.isFirstResponder, let scrollView = findListScrollView(in: view) else {
             return
         }
-        let fieldFrame = field.convert(field.bounds, to: scrollView)
-        guard scrollView.contentSize.height - fieldFrame.maxY < 220 else {
+        guard !scrollView.isTracking, !scrollView.isDragging, !scrollView.isDecelerating else {
             return
         }
-        let bottomY = scrollView.contentSize.height - scrollView.bounds.height + scrollView.adjustedContentInset.bottom
-        let offset = CGPoint(x: 0, y: max(-scrollView.adjustedContentInset.top, bottomY))
-        scrollView.setContentOffset(offset, animated: false)
+        let fieldFrame = field.convert(field.bounds, to: scrollView)
+        let frameInView = scrollView.convert(scrollView.bounds, to: view)
+        let visibleBottom = min(frameInView.maxY, view.bounds.height - keyboardOverlap) - frameInView.minY
+        var targetY = scrollView.contentOffset.y
+        if scrollView.contentSize.height - fieldFrame.maxY < 220 {
+            targetY = scrollView.contentSize.height - visibleBottom + 8
+        }
+        targetY = min(targetY, fieldFrame.minY - 80)
+        targetY = max(targetY, fieldFrame.maxY + 12 - visibleBottom)
+        targetY = max(targetY, -scrollView.adjustedContentInset.top)
+        if abs(targetY - scrollView.contentOffset.y) > 0.5 {
+            scrollView.setContentOffset(CGPoint(x: 0, y: targetY), animated: false)
+        }
     }
 
     private func findListScrollView(in root: UIView) -> UIScrollView? {
@@ -520,6 +557,7 @@ class FilterViewController: BaseHostingViewController<TaskFilterPage> {
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardChanged(_:)), name: UIResponder.keyboardWillChangeFrameNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardHidden(_:)), name: UIResponder.keyboardWillHideNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(textFieldFocused(_:)), name: UITextField.textDidBeginEditingNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(textFieldChanged(_:)), name: UITextField.textDidChangeNotification, object: nil)
         self.navigationItem.title = L10n.filter
     }
 }
