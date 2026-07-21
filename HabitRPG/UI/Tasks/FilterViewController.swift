@@ -267,36 +267,6 @@ struct TaskFilterPage: View {
     @ObservedObject var viewModel: TaskFilterViewModel
     @State var focusItemId: String?
 
-    @ViewBuilder private var bottomActionBar: some View {
-        VStack(spacing: 0) {
-            Divider()
-            Group {
-                if viewModel.isSaving {
-                    HabiticaProgressView()
-                } else if viewModel.isEditing {
-                    Button {
-                        focusItemId = nil
-                        viewModel.save()
-                    } label: {
-                        Text(L10n.save)
-                            .frame(maxWidth: .infinity)
-                    }
-                } else {
-                    Button {
-                        viewModel.beginEditing()
-                    } label: {
-                        Text(L10n.editTags)
-                            .frame(maxWidth: .infinity)
-                    }
-                }
-            }
-            .frame(maxWidth: .infinity, minHeight: 44)
-            .padding(.horizontal, 16)
-            .padding(.vertical, 10)
-        }
-        .background(Color(themeService.theme.windowBackgroundColor).ignoresSafeArea(edges: .bottom))
-    }
-
     var body: some View {
         VStack {
             VStack(alignment: .leading, spacing: 10) {
@@ -388,13 +358,31 @@ struct TaskFilterPage: View {
                     Text(L10n.tags).foregroundStyle(Color(themeService.theme.secondaryTextColor))
                         .scaledFont(size: 15, weight: .semibold)
                 })
+
+                Group {
+                    if viewModel.isSaving {
+                        HabiticaProgressView().frame(height: 60)
+                    } else if viewModel.isEditing {
+                        Button {
+                            focusItemId = nil
+                            viewModel.save()
+                        } label: {
+                            Text(L10n.save)
+                                .frame(maxWidth: .infinity)
+                        }.listRowBackground(Color(themeService.theme.windowBackgroundColor))
+                    } else {
+                        Button {
+                            viewModel.beginEditing()
+                        } label: {
+                            Text(L10n.editTags)
+                                .frame(maxWidth: .infinity)
+                        }.listRowBackground(Color(themeService.theme.windowBackgroundColor))
+                    }
+                }
             }.listStyle(.insetGrouped)
                 .scrollContentBackground(.hidden)
                 .scrollDismissesKeyboard(.immediately)
                 .disabled(viewModel.isSaving)
-                .safeAreaInset(edge: .bottom, spacing: 0) {
-                    bottomActionBar
-                }
         }
         .toolbar {
             if !viewModel.deletedTags.isEmpty {
@@ -463,16 +451,75 @@ struct TaskFilterPage: View {
 
 class FilterViewController: BaseHostingViewController<TaskFilterPage> {
     let viewModel = TaskFilterViewModel()
-    
+
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder, rootView: TaskFilterPage(viewModel: viewModel))
         viewModel.onDismiss = {
             self.perform(segue: StoryboardSegue.Main.filterChangedSegue)
         }
     }
-    
+
+    @objc
+    private func keyboardChanged(_ notification: Notification) {
+        guard let value = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue,
+              let scrollView = findListScrollView(in: view) else {
+            return
+        }
+        let keyboardFrame = view.convert(value.cgRectValue, from: nil)
+        let overlap = max(0, view.bounds.intersection(keyboardFrame).height)
+        let extra = max(0, overlap - view.safeAreaInsets.bottom)
+        scrollView.contentInset.bottom = extra
+        scrollView.verticalScrollIndicatorInsets.bottom = extra
+    }
+
+    @objc
+    private func keyboardHidden(_ notification: Notification) {
+        if let scrollView = findListScrollView(in: view) {
+            scrollView.contentInset.bottom = 0
+            scrollView.verticalScrollIndicatorInsets.bottom = 0
+        }
+    }
+
+    @objc
+    private func textFieldFocused(_ notification: Notification) {
+        guard let field = notification.object as? UITextField, field.isDescendant(of: view) else {
+            return
+        }
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.75) { [weak self] in
+            self?.scrollToActionsIfNearEnd(field)
+        }
+    }
+
+    private func scrollToActionsIfNearEnd(_ field: UITextField) {
+        guard field.isFirstResponder, let scrollView = findListScrollView(in: view) else {
+            return
+        }
+        let fieldFrame = field.convert(field.bounds, to: scrollView)
+        guard scrollView.contentSize.height - fieldFrame.maxY < 220 else {
+            return
+        }
+        let bottomY = scrollView.contentSize.height - scrollView.bounds.height + scrollView.adjustedContentInset.bottom
+        let offset = CGPoint(x: 0, y: max(-scrollView.adjustedContentInset.top, bottomY))
+        scrollView.setContentOffset(offset, animated: false)
+    }
+
+    private func findListScrollView(in root: UIView) -> UIScrollView? {
+        for subview in root.subviews {
+            if let scroll = subview as? UIScrollView {
+                return scroll
+            }
+            if let found = findListScrollView(in: subview) {
+                return found
+            }
+        }
+        return nil
+    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardChanged(_:)), name: UIResponder.keyboardWillChangeFrameNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardHidden(_:)), name: UIResponder.keyboardWillHideNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(textFieldFocused(_:)), name: UITextField.textDidBeginEditingNotification, object: nil)
         self.navigationItem.title = L10n.filter
     }
 }
