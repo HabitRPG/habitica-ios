@@ -243,10 +243,12 @@ class TaskFilterViewModel: ViewModel {
 
 struct TagFormItemView: View {
     let tag: TagProtocol
+    let onReturnPressed: () -> Void
     @State var isFirstResponder = false
-        
-    init(tag: TagProtocol, focusItemId: String?) {
+
+    init(tag: TagProtocol, focusItemId: String?, onReturnPressed: @escaping () -> Void) {
         self.tag = tag
+        self.onReturnPressed = onReturnPressed
         _isFirstResponder = State(initialValue: (tag.id == focusItemId))
     }
 
@@ -258,7 +260,11 @@ struct TagFormItemView: View {
         })
     }
     var body: some View {
-        FocusableTextField(placeholder: "", text: text, isFirstResponder: $isFirstResponder)
+        FocusableTextField(placeholder: "", text: text, isFirstResponder: $isFirstResponder, onReturnPressed: {
+            if tag.text?.isEmpty == false {
+                onReturnPressed()
+            }
+        })
     }
 }
 
@@ -267,34 +273,17 @@ struct TaskFilterPage: View {
     @ObservedObject var viewModel: TaskFilterViewModel
     @State var focusItemId: String?
 
-    @ViewBuilder private var bottomActionBar: some View {
-        VStack(spacing: 0) {
-            Divider()
-            Group {
-                if viewModel.isSaving {
-                    HabiticaProgressView()
-                } else if viewModel.isEditing {
-                    Button {
-                        focusItemId = nil
-                        viewModel.save()
-                    } label: {
-                        Text(L10n.save)
-                            .frame(maxWidth: .infinity)
-                    }
-                } else {
-                    Button {
-                        viewModel.beginEditing()
-                    } label: {
-                        Text(L10n.editTags)
-                            .frame(maxWidth: .infinity)
-                    }
-                }
+    private func addNewTag(after afterId: String? = nil) {
+        let tag = viewModel.getNewTag()
+        tag.id = UUID().uuidString
+        withAnimation {
+            if let afterId = afterId, let index = viewModel.editedTags.firstIndex(where: { $0.id == afterId }) {
+                viewModel.editedTags.insert(tag, at: index + 1)
+            } else {
+                viewModel.editedTags.append(tag)
             }
-            .frame(maxWidth: .infinity, minHeight: 44)
-            .padding(.horizontal, 16)
-            .padding(.vertical, 10)
         }
-        .background(Color(themeService.theme.windowBackgroundColor).ignoresSafeArea(edges: .bottom))
+        focusItemId = tag.id
     }
 
     var body: some View {
@@ -341,7 +330,9 @@ struct TaskFilterPage: View {
                                 .contentShape(Rectangle())
                                 .frame(width: 24, height: 22)
                                 .transition(.asymmetric(insertion: .push(from: .leading), removal: .push(from: .trailing)))
-                                TagFormItemView(tag: tag, focusItemId: focusItemId)
+                                TagFormItemView(tag: tag, focusItemId: focusItemId, onReturnPressed: {
+                                    addNewTag(after: tag.id)
+                                })
                             } else {
                                 Text(tag.text ?? "")
                                     .scaledFont(size: 17, weight: isSelected ? .semibold : .regular)
@@ -371,12 +362,7 @@ struct TaskFilterPage: View {
                                 .scaledFont(size: 20)
                                 .foregroundStyle(Color(themeService.theme.errorColor))
                             Button(action: {
-                                let tag = viewModel.getNewTag()
-                                tag.id = UUID().uuidString
-                                withAnimation {
-                                    viewModel.editedTags.append(tag)
-                                }
-                                focusItemId = tag.id
+                                addNewTag()
                             }, label: {
                                 Text(L10n.addTag).underline(UIAccessibility.buttonShapesEnabled)
                                     .foregroundStyle(Color(themeService.theme.ternaryTextColor))
@@ -388,13 +374,31 @@ struct TaskFilterPage: View {
                     Text(L10n.tags).foregroundStyle(Color(themeService.theme.secondaryTextColor))
                         .scaledFont(size: 15, weight: .semibold)
                 })
+
+                Group {
+                    if viewModel.isSaving {
+                        HabiticaProgressView().frame(height: 60)
+                    } else if viewModel.isEditing {
+                        Button {
+                            focusItemId = nil
+                            viewModel.save()
+                        } label: {
+                            Text(L10n.save)
+                                .frame(maxWidth: .infinity)
+                        }.listRowBackground(Color(themeService.theme.windowBackgroundColor))
+                    } else {
+                        Button {
+                            viewModel.beginEditing()
+                        } label: {
+                            Text(L10n.editTags)
+                                .frame(maxWidth: .infinity)
+                        }.listRowBackground(Color(themeService.theme.windowBackgroundColor))
+                    }
+                }
             }.listStyle(.insetGrouped)
                 .scrollContentBackground(.hidden)
                 .scrollDismissesKeyboard(.immediately)
                 .disabled(viewModel.isSaving)
-                .safeAreaInset(edge: .bottom, spacing: 0) {
-                    bottomActionBar
-                }
         }
         .toolbar {
             if !viewModel.deletedTags.isEmpty {
@@ -463,16 +467,97 @@ struct TaskFilterPage: View {
 
 class FilterViewController: BaseHostingViewController<TaskFilterPage> {
     let viewModel = TaskFilterViewModel()
-    
+    private var keyboardOverlap: CGFloat = 0
+
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder, rootView: TaskFilterPage(viewModel: viewModel))
         viewModel.onDismiss = {
             self.perform(segue: StoryboardSegue.Main.filterChangedSegue)
         }
     }
-    
+
+    @objc
+    private func keyboardChanged(_ notification: Notification) {
+        guard let value = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue,
+              let scrollView = findListScrollView(in: view) else {
+            return
+        }
+        let keyboardFrame = view.convert(value.cgRectValue, from: nil)
+        keyboardOverlap = max(0, view.bounds.intersection(keyboardFrame).height)
+        scrollView.contentInset.top = 44
+    }
+
+    @objc
+    private func keyboardHidden(_ notification: Notification) {
+        keyboardOverlap = 0
+        if let scrollView = findListScrollView(in: view) {
+            scrollView.contentInset.top = 0
+        }
+    }
+
+    @objc
+    private func textFieldFocused(_ notification: Notification) {
+        guard let field = notification.object as? UITextField, field.isDescendant(of: view) else {
+            return
+        }
+        for delay in [0.15, 0.75] {
+            DispatchQueue.main.asyncAfter(deadline: .now() + delay) { [weak self] in
+                self?.scrollToActionsIfNearEnd(field)
+            }
+        }
+    }
+
+    @objc
+    private func textFieldChanged(_ notification: Notification) {
+        guard let field = notification.object as? UITextField, field.isDescendant(of: view) else {
+            return
+        }
+        scrollToActionsIfNearEnd(field)
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) { [weak self] in
+            self?.scrollToActionsIfNearEnd(field)
+        }
+    }
+
+    private func scrollToActionsIfNearEnd(_ field: UITextField) {
+        guard field.isFirstResponder, let scrollView = findListScrollView(in: view) else {
+            return
+        }
+        guard !scrollView.isTracking, !scrollView.isDragging, !scrollView.isDecelerating else {
+            return
+        }
+        let fieldFrame = field.convert(field.bounds, to: scrollView)
+        let frameInView = scrollView.convert(scrollView.bounds, to: view)
+        let visibleBottom = min(frameInView.maxY, view.bounds.height - keyboardOverlap) - frameInView.minY
+        var targetY = scrollView.contentOffset.y
+        if scrollView.contentSize.height - fieldFrame.maxY < 220 {
+            targetY = scrollView.contentSize.height - visibleBottom + 8
+        }
+        targetY = min(targetY, fieldFrame.minY - 80)
+        targetY = max(targetY, fieldFrame.maxY + 12 - visibleBottom)
+        targetY = max(targetY, -scrollView.adjustedContentInset.top)
+        if abs(targetY - scrollView.contentOffset.y) > 0.5 {
+            scrollView.setContentOffset(CGPoint(x: 0, y: targetY), animated: false)
+        }
+    }
+
+    private func findListScrollView(in root: UIView) -> UIScrollView? {
+        for subview in root.subviews {
+            if let scroll = subview as? UIScrollView {
+                return scroll
+            }
+            if let found = findListScrollView(in: subview) {
+                return found
+            }
+        }
+        return nil
+    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardChanged(_:)), name: UIResponder.keyboardWillChangeFrameNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardHidden(_:)), name: UIResponder.keyboardWillHideNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(textFieldFocused(_:)), name: UITextField.textDidBeginEditingNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(textFieldChanged(_:)), name: UITextField.textDidChangeNotification, object: nil)
         self.navigationItem.title = L10n.filter
     }
 }
