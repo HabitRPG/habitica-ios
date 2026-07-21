@@ -8,6 +8,7 @@
 
 import UIKit
 import SwiftUI
+import ReactiveSwift
 import Habitica_Models
 
 class TaskFilterViewModel: ViewModel {
@@ -135,31 +136,72 @@ class TaskFilterViewModel: ViewModel {
             }
             return original.text != editedTag.text
         }
+        var operations = [SignalProducer<Void, Never>]()
         for tag in tagsToDelete {
-            deleteTag(tag: tag)
+            operations.append(serialTagOperation { [weak self] in
+                self?.taskRepository.deleteTag(tag).map { _ in () }
+            })
         }
         var nextOrder = (tags.map { $0.order }.max() ?? -1) + 1
-        for tag in tagsToCreate {
-            if let text = tag.text, !text.isEmpty {
-                tag.order = nextOrder
-                nextOrder += 1
-                createTag(tag: tag)
-            }
+        for tag in tagsToCreate where tag.text?.isEmpty == false {
+            tag.order = nextOrder
+            nextOrder += 1
+            operations.append(serialTagOperation { [weak self] in
+                guard let self = self else { return nil }
+                let newTag = self.taskRepository.getNewTag(id: tag.id)
+                newTag.text = tag.text
+                newTag.order = tag.order
+                return self.taskRepository.createTag(newTag).map { _ in () }
+            })
         }
         for tag in tagsToUpdate {
             if let id = tag.id, let text = tag.text {
-                updateTag(id: id, text: text)
+                operations.append(serialTagOperation { [weak self] in
+                    guard let self = self, let updated = self.taskRepository.getEditableTag(id: id) else {
+                        return nil
+                    }
+                    updated.text = text
+                    return self.taskRepository.updateTag(updated).map { _ in () }
+                })
             }
         }
-        withAnimation {
-            tags = editedTags.compactMap { tag in
-                if tag.text?.isEmpty == false {
-                    return tag
+        let finish = { [weak self] in
+            guard let self = self else { return }
+            withAnimation {
+                self.tags = self.editedTags.compactMap { tag in
+                    if tag.text?.isEmpty == false {
+                        return tag
+                    }
+                    return self.originalTags.first { $0.id == tag.id }
                 }
-                return originalTags.first { $0.id == tag.id }
+                self.isEditing = false
+                self.isSaving = false
             }
-            isEditing = false
-            isSaving = false
+        }
+        if operations.isEmpty {
+            finish()
+            return
+        }
+        disposable.add(SignalProducer(operations)
+            .flatten(.concat)
+            .observe(on: QueueScheduler.main)
+            .startWithCompleted {
+                finish()
+            })
+    }
+
+    private func serialTagOperation(_ makeSignal: @escaping () -> Signal<Void, Never>?) -> SignalProducer<Void, Never> {
+        return SignalProducer { observer, lifetime in
+            guard let signal = makeSignal() else {
+                observer.sendCompleted()
+                return
+            }
+            let operationDisposable = signal.observeCompleted {
+                observer.sendCompleted()
+            }
+            lifetime.observeEnded {
+                operationDisposable?.dispose()
+            }
         }
     }
     
@@ -197,20 +239,6 @@ class TaskFilterViewModel: ViewModel {
             deleteTag(tag: tags[index])
         }
     }
-    
-    func createTag(tag editedTag: TagProtocol) {
-        let tag = taskRepository.getNewTag(id: editedTag.id)
-        tag.text = editedTag.text
-        tag.order = editedTag.order
-        taskRepository.createTag(tag).observeCompleted {}
-    }
-    
-    func updateTag(id: String, text: String) {
-        if let tag = taskRepository.getEditableTag(id: id) {
-            tag.text = text
-            taskRepository.updateTag(tag).observeCompleted {}
-        }
-    }
 }
 
 struct TagFormItemView: View {
@@ -238,6 +266,36 @@ struct TaskFilterPage: View {
     @ObservedObject var themeService = ThemeService.shared
     @ObservedObject var viewModel: TaskFilterViewModel
     @State var focusItemId: String?
+
+    @ViewBuilder private var bottomActionBar: some View {
+        VStack(spacing: 0) {
+            Divider()
+            Group {
+                if viewModel.isSaving {
+                    HabiticaProgressView()
+                } else if viewModel.isEditing {
+                    Button {
+                        focusItemId = nil
+                        viewModel.save()
+                    } label: {
+                        Text(L10n.save)
+                            .frame(maxWidth: .infinity)
+                    }
+                } else {
+                    Button {
+                        viewModel.beginEditing()
+                    } label: {
+                        Text(L10n.editTags)
+                            .frame(maxWidth: .infinity)
+                    }
+                }
+            }
+            .frame(maxWidth: .infinity, minHeight: 44)
+            .padding(.horizontal, 16)
+            .padding(.vertical, 10)
+        }
+        .background(Color(themeService.theme.windowBackgroundColor).ignoresSafeArea(edges: .bottom))
+    }
 
     var body: some View {
         VStack {
@@ -330,27 +388,13 @@ struct TaskFilterPage: View {
                     Text(L10n.tags).foregroundStyle(Color(themeService.theme.secondaryTextColor))
                         .scaledFont(size: 15, weight: .semibold)
                 })
-                
-                if viewModel.isSaving {
-                    HabiticaProgressView().frame(height: 60)
-                } else if viewModel.isEditing {
-                    Button {
-                        focusItemId = nil
-                        viewModel.save()
-                    } label: {
-                        Text(L10n.save)
-                            .frame(maxWidth: .infinity)
-                    }.listRowBackground(Color(themeService.theme.windowBackgroundColor))
-                } else {
-                    Button {
-                        viewModel.beginEditing()
-                    } label: {
-                        Text(L10n.editTags)
-                            .frame(maxWidth: .infinity)
-                    }.listRowBackground(Color(themeService.theme.windowBackgroundColor))
-                }
             }.listStyle(.insetGrouped)
                 .scrollContentBackground(.hidden)
+                .scrollDismissesKeyboard(.immediately)
+                .disabled(viewModel.isSaving)
+                .safeAreaInset(edge: .bottom, spacing: 0) {
+                    bottomActionBar
+                }
         }
         .toolbar {
             if !viewModel.deletedTags.isEmpty {
