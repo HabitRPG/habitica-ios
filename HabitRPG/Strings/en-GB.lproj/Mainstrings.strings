@@ -1523,3 +1523,4 @@
 "shops.rebirthConfirmKeepItem2" = "All Equipment, Pets, and Mounts";
 "shops.rebirthConfirmKeepItem3" = "Your Achievements";
 "shops.rebirthConfirmKeepItem4" = "Your Party and Challenges";
+"shops.rebirthConfirmTitleGems" = "Are you sure you want to use the Orb of Rebirth for %d Gems?";
