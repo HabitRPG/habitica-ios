@@ -1642,3 +1642,4 @@
 "shops.rebirthConfirmGems" = "重新开始 (%d 颗宝石)";
 "shops.dayUntilFreeRebirth" = "%d 天后可获得免费的重生之球";
 "shops.daysUntilFreeRebirth" = "%d 天后可获得免费的重生之球";
+"shops.rebirthConfirmTitleGems" = "确定要用%d颗宝石来购买并使用重生之球吗？";
