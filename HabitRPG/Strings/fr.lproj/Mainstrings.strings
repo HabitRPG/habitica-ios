@@ -1704,3 +1704,4 @@
 "shops.rebirthAchievementDescription" = "Vous avez commencé une nouvelle aventure ! C'est votre Renaissance n° %d. Le plus haut niveau qui vous avez atteint est %d.";
 "shops.rebirthAchievementDescriptionMax" = "Vous avez commencé une nouvelle aventure ! C'est votre %1$d Renaissance n°%d. Le plus haut niveau qui vous avez atteint est %d ou plus.";
 "shops.rebirthShopDescription" = "Recommencez instantanément votre aventure en tant qu'un Guerri·er·ère niveau 1, tout en gardant vos Succès, vos Objets et votre Équipement. Vos tâches seront réinitialisées en jaune mais conserveront leur historique. Tous vos combos de tâches seront réinitialisées. Votre Or, votre Expérience, votre Mana et tous effets de Compétences seront retirés.";
+"shops.rebirthConfirmTitleGems" = "Vous-vous vraiment utiliser l'Orbe de Renaissance pour %d Gemmes ?";
