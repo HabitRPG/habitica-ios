@@ -10,15 +10,15 @@ import UIKit
 import Habitica_Models
 
 class MenuNavigationBarView: UIView, Themeable {
-    
+
     @objc public var profileAction: (() -> Void)?
     @objc public var messagesAction: (() -> Void)?
     @objc public var settingsAction: (() -> Void)?
     @objc public var notificationsAction: (() -> Void)?
-    
+
     private lazy var avatarWrapper: UIView = {
         let view = UIView()
-        view.cornerRadius = 0
+        view.cornerRadius = 10
         view.clipsToBounds = true
         view.isUserInteractionEnabled = true
         view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(profileAreaTapped)))
@@ -34,21 +34,22 @@ class MenuNavigationBarView: UIView, Themeable {
     }()
     private lazy var displayNameLabel: UILabel = {
         let label = UILabel()
-        label.font = UIFontMetrics.default.scaledSystemFont(ofSize: 22, ofWeight: .bold)
-        label.adjustsFontForContentSizeCategory = true
+        label.font = .systemFont(ofSize: 20, weight: .medium)
+        label.numberOfLines = 1
+        label.adjustsFontSizeToFitWidth = true
+        label.minimumScaleFactor = 0.5
         label.isUserInteractionEnabled = true
         label.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(profileAreaTapped)))
         return label
     }()
     private lazy var usernameLabel: UILabel = {
         let label = UILabel()
-        label.font = UIFontMetrics.default.scaledSystemFont(ofSize: 15)
-        label.adjustsFontForContentSizeCategory = true
+        label.font = .systemFont(ofSize: 14, weight: .regular)
         label.isUserInteractionEnabled = true
         label.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(profileAreaTapped)))
         return label
     }()
-    
+
     private lazy var messagesButton: UIButton = {
         let button = UIButton()
         button.accessibilityLabel = L10n.Titles.messages
@@ -76,30 +77,21 @@ class MenuNavigationBarView: UIView, Themeable {
     var messagesBadge = BadgeView()
     var settingsBadge = BadgeView()
     var notificationsBadge = BadgeView()
-    
-    private var displayInTwoRows: Bool = false {
-        didSet {
-            if oldValue != displayInTwoRows {
-                invalidateIntrinsicContentSize()
-                superview?.superview?.setNeedsLayout()
-            }
-        }
-    }
-    
+
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupView()
     }
-    
+
     required init?(coder: NSCoder) {
         super.init(coder: coder)
         setupView()
     }
-    
+
     private func setupView() {
         addSubview(avatarWrapper)
         avatarWrapper.addSubview(avatarView)
-        avatarView.pin.size(50).start(-9).top()
+        avatarView.pin.size(50).start(-9).top(-2)
         addSubview(displayNameLabel)
         addSubview(usernameLabel)
         addSubview(notificationsButton)
@@ -112,18 +104,8 @@ class MenuNavigationBarView: UIView, Themeable {
         messagesBadge.isHidden = true
         settingsBadge.isHidden = true
         ThemeService.shared.addThemeable(themable: self, applyImmediately: true)
-        
-        #if DEBUG
-            usernameLabel.isUserInteractionEnabled = true
-            usernameLabel.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(toggleRow)))
-        #endif
     }
 
-    @objc
-    private func toggleRow() {
-        displayInTwoRows = !displayInTwoRows
-    }
-    
     func applyTheme(theme: Theme) {
         let isDefaultTheme = (ThemeName(rawValue: UserDefaults.standard.string(forKey: "theme") ?? "") ?? .defaultTheme) == .defaultTheme
         let headerColor = isDefaultTheme ? UIColor.purple300 : theme.navbarHiddenColor
@@ -141,11 +123,11 @@ class MenuNavigationBarView: UIView, Themeable {
         notificationsBadge.textColor = .white
         notificationsButton.tintColor = textColor
     }
-    
+
     override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
         setNeedsLayout()
     }
-    
+
     @objc
     public func configure(user: UserProtocol) {
         guard user.isValid else {
@@ -165,90 +147,68 @@ class MenuNavigationBarView: UIView, Themeable {
         } else {
             messagesBadge.isHidden = true
         }
-        
+
         if user.flags?.verifiedUsername != true {
             settingsBadge.text = "1"
             settingsBadge.isHidden = false
         } else {
             settingsBadge.isHidden = true
         }
-        
-        if bounds.size.width <= 320 {
-            displayInTwoRows = true
-            return
-        }
-        displayNameLabel.pin.sizeToFit(.height)
-        let labelWidth = displayNameLabel.frame.size.width
-        displayInTwoRows = bounds.size.width - 88 - 168 < labelWidth
         setNeedsLayout()
     }
-    
+
     @objc
     func messageButtonTapped() {
-        if let action = messagesAction {
-            action()
-        }
+        messagesAction?()
     }
-    
+
     @objc
     func settingsButtonTapped() {
-        if let action = settingsAction {
-            action()
-        }
+        settingsAction?()
     }
-    
+
     @objc
     func notificationsButtonTapped() {
-        if let action = notificationsAction {
-            action()
-        }
+        notificationsAction?()
     }
-    
+
     @objc
     func profileAreaTapped() {
-        if let action = profileAction {
-            action()
-        }
+        profileAction?()
     }
-    
+
     override var intrinsicContentSize: CGSize {
-        if displayInTwoRows {
-            return CGSize(width: UIScreen.main.bounds.size.width, height: 110)
-        } else {
-            return CGSize(width: UIScreen.main.bounds.size.width, height: 72)
-        }
+        return CGSize(width: UIScreen.main.bounds.size.width, height: 72)
     }
-    
+
     override func layoutSubviews() {
         super.layoutSubviews()
         layout()
     }
-    
+
     private func layout() {
-        let parentWidth = bounds.size.width
-        avatarWrapper.pin.width(40).height(42).start(pin.safeArea.left + 30).top(16)
-        displayNameLabel.pin.after(of: avatarWrapper).marginStart(18).sizeToFit(.heightFlexible).maxWidth(parentWidth - 40 - 32)
-        usernameLabel.pin.after(of: avatarWrapper).marginStart(18).sizeToFit(.heightFlexible)
-        let labelsHeight = displayNameLabel.frame.size.height + usernameLabel.frame.size.height
-        displayNameLabel.pin.top((72 - labelsHeight) / 2)
-        usernameLabel.pin.below(of: displayNameLabel).marginTop(4)
-        settingsButton.pin.size(50)
-        messagesButton.pin.size(50)
-        notificationsButton.pin.size(50)
-        var topOffset: CGFloat = 11
-        var buttonSpacing: CGFloat = 0
-        var endSpacing: CGFloat = 10
-        if displayInTwoRows {
-            topOffset = 62
-            endSpacing = 58
-            // take the full width, subtract spacing on the side and subtract the width of all 3 buttons. Remaining width is the divided evenly among the buttons
-            buttonSpacing = (parentWidth - (endSpacing * 2) - 150) / 2
-        }
-        settingsButton.pin.top(topOffset).end(endSpacing)
-        messagesButton.pin.top(to: settingsButton.edge.top).before(of: settingsButton).marginEnd(buttonSpacing)
-        notificationsButton.pin.top(to: settingsButton.edge.top).before(of: messagesButton).marginEnd(buttonSpacing)
-        settingsBadge.pin.top(to: settingsButton.edge.top).start(to: settingsButton.edge.start).marginStart(30).sizeToFit(.heightFlexible)
-        messagesBadge.pin.top(to: messagesButton.edge.top).start(to: messagesButton.edge.start).marginStart(30).sizeToFit(.heightFlexible)
-        notificationsBadge.pin.top(to: notificationsButton.edge.top).start(to: notificationsButton.edge.start).marginStart(30).sizeToFit(.heightFlexible)
+        let centerY: CGFloat = 36
+        let avatarSize: CGFloat = 40
+        avatarWrapper.pin.width(avatarSize).height(avatarSize).start(pin.safeArea.left + 20).top(centerY - avatarSize / 2)
+
+        let iconSize: CGFloat = 32
+        let iconSpacing: CGFloat = 12
+        settingsButton.pin.size(iconSize).end(pin.safeArea.right + 16).top(centerY - iconSize / 2)
+        messagesButton.pin.size(iconSize).before(of: settingsButton).marginEnd(iconSpacing).top(centerY - iconSize / 2)
+        notificationsButton.pin.size(iconSize).before(of: messagesButton).marginEnd(iconSpacing).top(centerY - iconSize / 2)
+
+        let labelX = avatarWrapper.frame.maxX + 12
+        let stackHeight = usernameLabel.isHidden ? 20 : 36
+        let stackTop = centerY - CGFloat(stackHeight) / 2
+        displayNameLabel.pin.start(labelX).width(100).height(20).top(stackTop)
+        usernameLabel.pin.start(labelX).below(of: displayNameLabel).marginTop(0).width(100).height(16)
+
+        positionBadge(notificationsBadge, on: notificationsButton)
+        positionBadge(messagesBadge, on: messagesButton)
+        positionBadge(settingsBadge, on: settingsButton)
+    }
+
+    private func positionBadge(_ badge: BadgeView, on button: UIButton) {
+        badge.pin.top(to: button.edge.top).marginTop(-4).start(to: button.edge.start).marginStart(18).sizeToFit(.heightFlexible)
     }
 }
