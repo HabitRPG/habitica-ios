@@ -192,7 +192,7 @@ class MenuNavigationBarView: UIView, Themeable {
         avatarWrapper.pin.width(avatarSize).height(avatarSize).start(pin.safeArea.left + 20).top(centerY - avatarSize / 2)
 
         let iconSize: CGFloat = 32
-        let iconSpacing: CGFloat = 12
+        let iconSpacing: CGFloat = 16
         settingsButton.pin.size(iconSize).end(pin.safeArea.right + 16).top(centerY - iconSize / 2)
         messagesButton.pin.size(iconSize).before(of: settingsButton).marginEnd(iconSpacing).top(centerY - iconSize / 2)
         notificationsButton.pin.size(iconSize).before(of: messagesButton).marginEnd(iconSpacing).top(centerY - iconSize / 2)

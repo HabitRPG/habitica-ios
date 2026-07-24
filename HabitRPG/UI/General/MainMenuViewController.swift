@@ -342,7 +342,7 @@ class MainMenuViewController: BaseTableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.register(UINib(nibName: "MainTableviewCell", bundle: nil), forCellReuseIdentifier: "Cell")
-        tableView.rowHeight = 60
+        tableView.rowHeight = 56
         if #available(iOS 15.0, *) {
             tableView.sectionHeaderTopPadding = 0
         }
@@ -453,7 +453,7 @@ class MainMenuViewController: BaseTableViewController {
             return
         }
         sheetCornerView.isHidden = false
-        let radius: CGFloat = 24
+        let radius: CGFloat = 40
         let junctionY = navbarView.convert(CGPoint(x: 0, y: navbarView.bounds.maxY), to: tableView).y
         sheetCornerView.frame = CGRect(x: 0, y: junctionY, width: tableView.frame.size.width, height: radius)
         sheetCornerView.backgroundColor = navbarColor
@@ -716,7 +716,7 @@ class MainMenuViewController: BaseTableViewController {
         if (sectionAt(index: section)?.visibleItems.count ?? 0) == 0 {
             return CGFloat.leastNormalMagnitude
         }
-        return section == 0 ? 8 : 20
+        return section == 0 ? 9 : 20
     }
 
     override func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
