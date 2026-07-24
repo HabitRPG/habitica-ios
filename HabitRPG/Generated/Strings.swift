@@ -2379,6 +2379,8 @@ public enum L10n {
     public static var subscription: String { return L10n.tr("Mainstrings", "menu.subscription") }
     /// Support
     public static var support: String { return L10n.tr("Mainstrings", "menu.support") }
+    /// Time Travelers Shop
+    public static var timeTravelersShop: String { return L10n.tr("Mainstrings", "menu.time_travelers_shop") }
   }
 
   public enum Notifications {

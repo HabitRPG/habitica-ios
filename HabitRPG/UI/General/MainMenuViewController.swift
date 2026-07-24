@@ -124,7 +124,7 @@ class MenuItem {
             .questShop: L10n.Locations.questShop,
             .seasonalShop: L10n.Locations.seasonalShop,
             .customizationShop: L10n.customizationShop,
-            .timeTravelersShop: L10n.Locations.timeTravelersShop,
+            .timeTravelersShop: L10n.Menu.timeTravelersShop,
             .customizeAvatar: L10n.Menu.avatarCustomization,
             .equipment: L10n.Titles.equipment,
             .items: L10n.Titles.items,
