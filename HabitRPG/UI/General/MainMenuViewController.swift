@@ -295,7 +295,75 @@ class MainMenuViewController: BaseTableViewController {
     }
     
     private static let subscriptionFooterTag = 11111
-    
+
+    private func setupPinnedPill() {
+        guard !configRepository.enableIPadUI(), let promo = activePromo, promo.hasPinnedPill else {
+            tableView.tableHeaderView = nil
+            return
+        }
+        let width = tableView.frame.size.width
+        let pillWidth = width - 34
+        let pill = UIView(frame: CGRect(x: 17, y: 8, width: pillWidth, height: 40))
+        pill.cornerRadius = 20
+        pill.clipsToBounds = true
+        if let start = promo.gradientStart, let end = promo.gradientEnd {
+            let gradient = CAGradientLayer()
+            gradient.colors = [start.cgColor, end.cgColor]
+            gradient.startPoint = CGPoint(x: 0, y: 0.5)
+            gradient.endPoint = CGPoint(x: 1, y: 0.5)
+            gradient.frame = CGRect(x: 0, y: 0, width: pillWidth, height: 40)
+            pill.layer.insertSublayer(gradient, at: 0)
+        } else {
+            pill.backgroundColor = promo.backgroundColor
+        }
+        if let leftArt = promo.pinnedPillLeftArt {
+            let artHeight: CGFloat = 120
+            let artWidth = artHeight * (leftArt.size.width / max(leftArt.size.height, 1))
+            let artView = UIImageView(image: leftArt)
+            artView.contentMode = .scaleAspectFit
+            artView.frame = CGRect(x: -22, y: 46 - artHeight, width: artWidth, height: artHeight)
+            pill.addSubview(artView)
+        }
+        if let title = promo.pinnedPillTitle {
+            let label = UILabel()
+            label.text = title
+            label.textColor = .white
+            label.font = .systemFont(ofSize: 16, weight: .bold)
+            label.textAlignment = .center
+            label.frame = CGRect(x: 44, y: 0, width: pillWidth - 88, height: 40)
+            pill.addSubview(label)
+        } else if let image = promo.pinnedPillTitleImage {
+            let maxW = pillWidth - 108
+            let maxH: CGFloat = 18
+            let scale = min(maxW / image.size.width, maxH / image.size.height)
+            let scaledWidth = image.size.width * scale
+            let scaledHeight = image.size.height * scale
+            let imageView = UIImageView(image: image)
+            imageView.contentMode = .scaleAspectFit
+            imageView.frame = CGRect(x: (pillWidth - scaledWidth) / 2, y: (40 - scaledHeight) / 2, width: scaledWidth, height: scaledHeight)
+            pill.addSubview(imageView)
+        }
+        let chevron = UIImageView(image: UIImage(systemName: "chevron.right"))
+        chevron.tintColor = .white
+        chevron.contentMode = .scaleAspectFit
+        chevron.frame = CGRect(x: pillWidth - 32, y: 12, width: 16, height: 16)
+        pill.addSubview(chevron)
+        pill.isUserInteractionEnabled = true
+        pill.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(pinnedPillTapped)))
+        let container = UIView(frame: CGRect(x: 0, y: 0, width: width, height: 64))
+        container.addSubview(pill)
+        tableView.tableHeaderView = container
+    }
+
+    @objc
+    private func pinnedPillTapped() {
+        if activePromo?.isWebPromo == true {
+            perform(segue: StoryboardSegue.Main.showWebPromoSegue)
+        } else {
+            perform(segue: StoryboardSegue.Main.showPromoInfoSegue)
+        }
+    }
+
     fileprivate func setupFooter() {
         stretchView.isHidden = true
         if configRepository.bool(variable: .showSubscriptionBanner) {
@@ -314,10 +382,7 @@ class MainMenuViewController: BaseTableViewController {
                 }
                 let view = PromoMenuView(frame: CGRect(x: 0, y: 0, width: tableView.frame.size.width, height: 168))
                 promo.configurePromoMenuView(view: view)
-                stretchView.isHidden = false
-                stretchView.startColor = promo.gradientStart ?? promo.backgroundColor
-                stretchView.endColor = promo.gradientEnd ?? promo.backgroundColor
-                stretchView.diagonalMode = true
+                view.frame.size.height = view.fittingHeight(forWidth: tableView.frame.size.width)
                 view.onButtonTapped = { [weak self] in
                     if self?.activePromo?.isWebPromo == true {
                         self?.perform(segue: StoryboardSegue.Main.showWebPromoSegue)
@@ -471,7 +536,8 @@ class MainMenuViewController: BaseTableViewController {
         activePromo = configRepository.activePromotion()
         updatePromoCells()
         setupFooter()
-        
+        setupPinnedPill()
+
         if activePromo != nil {
                 promoTimer?.invalidate()
                 promoTimer = Timer.scheduledTimer(withTimeInterval: 60.0, repeats: true, block: {[weak self] _ in
@@ -716,7 +782,7 @@ class MainMenuViewController: BaseTableViewController {
         if (sectionAt(index: section)?.visibleItems.count ?? 0) == 0 {
             return CGFloat.leastNormalMagnitude
         }
-        return section == 0 ? 9 : 20
+        return section == 0 ? 5 : 20
     }
 
     override func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
