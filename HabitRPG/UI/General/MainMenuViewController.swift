@@ -194,6 +194,8 @@ class MainMenuViewController: BaseTableViewController {
     private var seasonalShopTimer: Timer?
     private var promoTimer: Timer?
     private let stretchView = GradientView()
+    private let sheetCornerView = UIView()
+    private let sheetCornerMask = CAShapeLayer()
 
     private var menuSections = [MenuSection]()
     var visibleSections: [MenuSection] {
@@ -431,6 +433,37 @@ class MainMenuViewController: BaseTableViewController {
         splitViewController?.displayModeButtonVisibility = .always
         splitViewController?.showsSecondaryOnlyButton = true
         tableView.addSubview(stretchView)
+        sheetCornerView.isUserInteractionEnabled = false
+        sheetCornerView.layer.mask = sheetCornerMask
+        tableView.addSubview(sheetCornerView)
+    }
+
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        updateSheetCorner()
+    }
+
+    private func updateSheetCorner() {
+        if configRepository.enableIPadUI() {
+            sheetCornerView.isHidden = true
+            return
+        }
+        guard navbarView.window != nil else {
+            sheetCornerView.isHidden = true
+            return
+        }
+        sheetCornerView.isHidden = false
+        let radius: CGFloat = 24
+        let junctionY = navbarView.convert(CGPoint(x: 0, y: navbarView.bounds.maxY), to: tableView).y
+        sheetCornerView.frame = CGRect(x: 0, y: junctionY, width: tableView.frame.size.width, height: radius)
+        sheetCornerView.backgroundColor = navbarColor
+        let rect = sheetCornerView.bounds
+        let path = UIBezierPath(rect: rect)
+        path.append(UIBezierPath(roundedRect: rect, byRoundingCorners: [.topLeft, .topRight], cornerRadii: CGSize(width: radius, height: radius)))
+        sheetCornerMask.frame = rect
+        sheetCornerMask.fillRule = .evenOdd
+        sheetCornerMask.path = path.cgPath
+        tableView.bringSubviewToFront(sheetCornerView)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -454,6 +487,7 @@ class MainMenuViewController: BaseTableViewController {
             let bottomSize = max(0, scrollView.contentOffset.y - (contentHeight - scrollView.frame.size.height)) + footerSize
             stretchView.frame = CGRect(x: 0, y: contentHeight - footerSize, width: scrollView.frame.size.width, height: bottomSize)
         }
+        updateSheetCorner()
         super.scrollViewDidScroll(scrollView)
     }
     

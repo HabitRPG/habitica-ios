@@ -128,18 +128,17 @@ class MenuNavigationBarView: UIView, Themeable {
         let isDefaultTheme = (ThemeName(rawValue: UserDefaults.standard.string(forKey: "theme") ?? "") ?? .defaultTheme) == .defaultTheme
         let headerColor = isDefaultTheme ? UIColor.purple300 : theme.navbarHiddenColor
         let textColor = isDefaultTheme ? UIColor.white : (theme.navbarHiddenColor.isLight() ? UIColor.gray50 : theme.lightTextColor)
-        let badgeTextColor = theme.badgeColor.isLight() ? UIColor.gray50 : theme.lightTextColor
         backgroundColor = headerColor
         displayNameLabel.textColor = textColor
         usernameLabel.textColor = textColor.withAlphaComponent(0.66)
-        settingsBadge.backgroundColor = theme.badgeColor
-        settingsBadge.textColor = badgeTextColor
+        settingsBadge.backgroundColor = UIColor.purple100
+        settingsBadge.textColor = .white
         settingsButton.tintColor = textColor
-        messagesBadge.backgroundColor = theme.badgeColor
-        messagesBadge.textColor = badgeTextColor
+        messagesBadge.backgroundColor = UIColor.purple100
+        messagesBadge.textColor = .white
         messagesButton.tintColor = textColor
-        notificationsBadge.backgroundColor = theme.badgeColor
-        notificationsBadge.textColor = badgeTextColor
+        notificationsBadge.backgroundColor = UIColor.purple100
+        notificationsBadge.textColor = .white
         notificationsButton.tintColor = textColor
     }
     
