@@ -48,8 +48,8 @@
                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" tag="5" translatesAutoresizingMaskIntoConstraints="NO" id="ic1-nv-aaa">
                         <rect key="frame" x="29" y="10" width="42" height="40"/>
                         <constraints>
-                            <constraint firstAttribute="width" constant="26.24" id="ic1-wd-aaa"/>
-                            <constraint firstAttribute="height" constant="31.88" id="ic1-ht-aaa"/>
+                            <constraint firstAttribute="width" constant="30" id="ic1-wd-aaa"/>
+                            <constraint firstAttribute="height" constant="36.5" id="ic1-ht-aaa"/>
                         </constraints>
                     </imageView>
                     <view clipsSubviews="YES" tag="2" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JTb-Mg-pcc">
@@ -75,7 +75,7 @@
                     <constraint firstItem="lk1-nv-aaa" firstAttribute="centerY" secondItem="7ZN-tE-vNu" secondAttribute="centerY" id="lk1-cy-aaa"/>
                     <constraint firstItem="ic1-nv-aaa" firstAttribute="leading" secondItem="7ZN-tE-vNu" secondAttribute="leading" constant="29" id="ic1-ld-aaa"/>
                     <constraint firstItem="ic1-nv-aaa" firstAttribute="centerY" secondItem="7ZN-tE-vNu" secondAttribute="centerY" id="ic1-cy-aaa"/>
-                    <constraint firstItem="hAl-6e-OT2" firstAttribute="leading" secondItem="7ZN-tE-vNu" secondAttribute="leading" constant="88" id="2Ik-ze-zxI"/>
+                    <constraint firstItem="hAl-6e-OT2" firstAttribute="leading" secondItem="7ZN-tE-vNu" secondAttribute="leading" constant="80" id="2Ik-ze-zxI"/>
                     <constraint firstAttribute="trailing" secondItem="hAl-6e-OT2" secondAttribute="trailing" constant="20" id="YTL-wV-WbL"/>
                     <constraint firstAttribute="bottom" secondItem="hAl-6e-OT2" secondAttribute="bottom" constant="4" id="b2g-Bn-7iv"/>
                     <constraint firstItem="hAl-6e-OT2" firstAttribute="top" secondItem="7ZN-tE-vNu" secondAttribute="top" constant="4" id="kj4-On-Jgg"/>
