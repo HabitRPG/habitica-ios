@@ -43,12 +43,25 @@ protocol HabiticaPromotion {
     var gradientStart: UIColor? { get }
     var gradientEnd: UIColor? { get }
     var buttonBackground: UIColor { get }
-    
+    var pinnedPillTitle: String? { get }
+    var pinnedPillTitleImage: UIImage? { get }
+    var pinnedPillLeftArt: UIImage? { get }
+    var pinnedPillRightArt: UIImage? { get }
+    var hasPinnedPill: Bool { get }
+
     func configurePill(_ pillView: PillView)
     func configurePromoMenuView(view: PromoMenuView)
     func configurePurchaseBanner(view: PromoBannerView)
     func configureGemView(view: GemPurchaseCell, regularAmount: Int)
     func configureInfoView(_ viewController: PromotionInfoViewController)
+}
+
+extension HabiticaPromotion {
+    var pinnedPillTitle: String? { return nil }
+    var pinnedPillTitleImage: UIImage? { return nil }
+    var pinnedPillLeftArt: UIImage? { return nil }
+    var pinnedPillRightArt: UIImage? { return nil }
+    var hasPinnedPill: Bool { return pinnedPillTitle != nil || pinnedPillTitleImage != nil }
 }
 
 protocol HabiticaWebPromotion: HabiticaPromotion {
@@ -58,6 +71,9 @@ protocol HabiticaWebPromotion: HabiticaPromotion {
 class FallExtraGemsPromotion: HabiticaPromotion {
 
     var identifier = "fall_extra_gems"
+    var pinnedPillTitleImage: UIImage? { return Asset.fallPromoTitle.image }
+    var pinnedPillLeftArt: UIImage? { return Asset.fallPromoMenuLeft.image }
+    var pinnedPillRightArt: UIImage? { return Asset.fallPromoMenuRight.image }
     var promoType: HabiticaPromotionType = .gemsAmount
     var isWebPromo: Bool = false
     var startDate: Date
@@ -125,8 +141,7 @@ class FallExtraGemsPromotion: HabiticaPromotion {
         view.setTitleImage(Asset.fallPromoTitle.image)
         view.setDescriptionImage(Asset.fallPromoMenuDescription.image)
         view.actionButton.backgroundColor = UIColor.white.withAlphaComponent(0.22)
-        view.actionButton.setTitleColor(.white, for: .normal)
-        view.actionButton.setTitle(L10n.viewOffer, for: .normal)
+        view.setActionTitle(L10n.viewOffer)
     }
     
     func configurePurchaseBanner(view: PromoBannerView) {
@@ -195,6 +210,9 @@ class FallExtraGemsPromotion: HabiticaPromotion {
 class SpookyExtraGemsPromotion: HabiticaPromotion {
 
     var identifier = "spooky_extra_gems"
+    var pinnedPillTitleImage: UIImage? { return Asset.spookyPromoTitle.image }
+    var pinnedPillLeftArt: UIImage? { return Asset.spookyPromoMenuLeft.image }
+    var pinnedPillRightArt: UIImage? { return Asset.spookyPromoMenuRight.image }
     var promoType: HabiticaPromotionType = .gemsAmount
     var isWebPromo: Bool = false
     var startDate: Date
@@ -256,8 +274,7 @@ class SpookyExtraGemsPromotion: HabiticaPromotion {
         view.setTitleImage(Asset.spookyPromoTitle.image)
         view.setDescriptionImage(Asset.spookyPromoMenuDescription.image)
         view.actionButton.backgroundColor = UIColor.white.withAlphaComponent(0.22)
-        view.actionButton.setTitleColor(.white, for: .normal)
-        view.actionButton.setTitle(L10n.viewOffer, for: .normal)
+        view.setActionTitle(L10n.viewOffer)
     }
     
     func configurePurchaseBanner(view: PromoBannerView) {
@@ -359,6 +376,12 @@ class GiftOneGetOnePromotion: HabiticaPromotion {
     var gradientEnd: UIColor? {
         return UIColor("#7384E9")
     }
+
+    var pinnedPillTitle: String? {
+        return L10n.giftOneGetOneTitle
+    }
+    var pinnedPillLeftArt: UIImage? { return Asset.promoGiftLeftLarge.image }
+    var pinnedPillRightArt: UIImage? { return Asset.promoGiftRightLarge.image }
     
     private func makeGradient(view: UIView) -> CAGradientLayer {
         let gradient: CAGradientLayer = CAGradientLayer()
@@ -387,8 +410,7 @@ class GiftOneGetOnePromotion: HabiticaPromotion {
         view.setTitle(L10n.giftOneGetOneTitle)
         view.setDescription(L10n.giftOneGetOneDescription)
         view.actionButton.backgroundColor = UIColor.white.withAlphaComponent(0.22)
-        view.actionButton.setTitleColor(.white, for: .normal)
-        view.actionButton.setTitle(L10n.viewOffer, for: .normal)
+        view.setActionTitle(L10n.viewOffer)
         view.titleView.textColor = .white
         view.descriptionView.textColor = .white
     }
@@ -480,8 +502,7 @@ class Survey2021Promotion: HabiticaWebPromotion {
         view.setDescription(L10n.Survey.description)
         view.descriptionView.textColor = .white
         view.actionButton.backgroundColor = UIColor("#2C5470")
-        view.actionButton.setTitle(L10n.Survey.button, for: .normal)
-        view.actionButton.setTitleColor(.white, for: .normal)
+        view.setActionTitle(L10n.Survey.button)
         view.closeButton.tintColor = .white
     }
     

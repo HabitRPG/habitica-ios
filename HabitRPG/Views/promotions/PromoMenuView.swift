@@ -20,9 +20,11 @@ class PromoMenuView: UIView, Themeable {
     }
 
     private let horizontalInset: CGFloat = 17
-    private let cardHeight: CGFloat = 130
     private let cardCornerRadius: CGFloat = 20
-    private let buttonHeight: CGFloat = 44
+    private let buttonHeight: CGFloat = 32
+    private let cardVerticalPadding: CGFloat = 20
+    private let outerVerticalMargin: CGFloat = 8
+    private var computedTotalHeight: CGFloat = 168
 
     let cardView: UIView = {
         let view = UIView()
@@ -50,19 +52,19 @@ class PromoMenuView: UIView, Themeable {
     let actionButton: UIButton = {
         let button = UIButton()
         button.setTitleColor(.white, for: .normal)
-        button.titleLabel?.font = .boldSystemFont(ofSize: 14)
-        button.contentEdgeInsets = UIEdgeInsets(top: 0, left: 28, bottom: 0, right: 28)
+        button.titleLabel?.font = .systemFont(ofSize: 15, weight: .semibold)
+        button.contentEdgeInsets = UIEdgeInsets(top: 0, left: 14, bottom: 0, right: 14)
         button.isPointerInteractionEnabled = true
         return button
     }()
     let leftImageView = {
         let view = UIImageView()
-        view.contentMode = .topLeft
+        view.contentMode = .bottomLeft
         return view
     }()
     let rightImageView = {
         let view = UIImageView()
-        view.contentMode = .topRight
+        view.contentMode = .bottomRight
         return view
     }()
 
@@ -70,6 +72,10 @@ class PromoMenuView: UIView, Themeable {
         let view = UIButton()
         view.setImage(Asset.close.image, for: .normal)
         view.tintColor = .white
+        view.backgroundColor = UIColor.black.withAlphaComponent(0.22)
+        view.cornerRadius = 16
+        view.clipsToBounds = true
+        view.imageEdgeInsets = UIEdgeInsets(top: 8, left: 8, bottom: 8, right: 8)
         view.isHidden = true
         return view
     }()
@@ -92,6 +98,19 @@ class PromoMenuView: UIView, Themeable {
     func setDescriptionImage(_ image: UIImage) {
         descriptionImageView.isHidden = false
         descriptionImageView.image = image
+    }
+
+    func setActionTitle(_ title: String, color: UIColor = .white) {
+        let paragraph = NSMutableParagraphStyle()
+        paragraph.alignment = .center
+        paragraph.minimumLineHeight = 20
+        paragraph.maximumLineHeight = 20
+        actionButton.setAttributedTitle(NSAttributedString(string: title, attributes: [
+            .font: UIFont.systemFont(ofSize: 15, weight: .semibold),
+            .kern: -0.23,
+            .foregroundColor: color,
+            .paragraphStyle: paragraph
+        ]), for: .normal)
     }
 
     func setCardBackground(color: UIColor) {
@@ -153,25 +172,24 @@ class PromoMenuView: UIView, Themeable {
         layout()
     }
 
+    func fittingHeight(forWidth width: CGFloat) -> CGFloat {
+        frame = CGRect(x: 0, y: 0, width: width, height: computedTotalHeight)
+        layout()
+        return computedTotalHeight
+    }
+
     private func layout() {
-        let verticalInset = max(0, (bounds.height - cardHeight) / 2)
-        cardView.pin.top(verticalInset).bottom(verticalInset).horizontally(horizontalInset)
-        cardGradientLayer?.frame = cardView.bounds
-
         let contentMaxWidth: CGFloat = 205
-
-        leftImageView.pin.start().bottom().top(24).sizeToFit(.height)
-        rightImageView.pin.end().bottom().top(24).sizeToFit(.height)
-
-        let buttonWidth = min(cardView.frame.width - 32, max(170, actionButton.intrinsicContentSize.width))
-        actionButton.pin.width(buttonWidth).height(buttonHeight)
-        actionButton.cornerRadius = buttonHeight / 2
 
         if !titleView.isHidden {
             titleView.pin.width(contentMaxWidth).sizeToFit(.width)
         }
-        if !titleImageView.isHidden {
-            titleImageView.pin.sizeToFit()
+        if !titleImageView.isHidden, let titleImage = titleImageView.image {
+            titleImageView.contentMode = .scaleAspectFit
+            let maxWidth: CGFloat = 220
+            let maxHeight: CGFloat = 34
+            let scale = min(maxWidth / titleImage.size.width, maxHeight / titleImage.size.height)
+            titleImageView.pin.width(titleImage.size.width * scale).height(titleImage.size.height * scale)
         }
         if !descriptionView.isHidden {
             descriptionView.pin.width(contentMaxWidth).sizeToFit(.width)
@@ -195,8 +213,21 @@ class PromoMenuView: UIView, Themeable {
                 textHeight += textGap
             }
         }
-        let totalHeight = textHeight + (stack.isEmpty ? 0 : buttonGap) + buttonHeight
-        var currentY = max(8, (cardView.frame.height - totalHeight) / 2)
+        let innerHeight = textHeight + (stack.isEmpty ? 0 : buttonGap) + buttonHeight
+        let cardHeight = innerHeight + 2 * cardVerticalPadding
+        computedTotalHeight = cardHeight + 2 * outerVerticalMargin
+
+        cardView.pin.top(outerVerticalMargin).horizontally(horizontalInset).height(cardHeight)
+        cardGradientLayer?.frame = cardView.bounds
+
+        leftImageView.pin.start().bottom().top(24).sizeToFit(.height)
+        rightImageView.pin.end().bottom().top(24).sizeToFit(.height)
+
+        let buttonWidth = min(cardView.frame.width - 32, max(110, actionButton.intrinsicContentSize.width))
+        actionButton.pin.width(buttonWidth).height(buttonHeight)
+        actionButton.cornerRadius = min(26, buttonHeight / 2)
+
+        var currentY = cardVerticalPadding
         for view in stack {
             view.pin.top(currentY).hCenter()
             currentY += view.frame.height + textGap
@@ -208,14 +239,13 @@ class PromoMenuView: UIView, Themeable {
     }
 
     override var intrinsicContentSize: CGSize {
-        return CGSize(width: 300, height: 168)
+        return CGSize(width: 300, height: computedTotalHeight)
     }
 
     override func sizeThatFits(_ size: CGSize) -> CGSize {
-        let size = CGSize(width: size.width, height: 168)
-        frame = CGRect(x: frame.origin.x, y: frame.origin.y, width: size.width, height: size.height)
+        frame = CGRect(x: frame.origin.x, y: frame.origin.y, width: size.width, height: computedTotalHeight)
         layout()
-        return size
+        return CGSize(width: size.width, height: computedTotalHeight)
     }
 
     @objc
