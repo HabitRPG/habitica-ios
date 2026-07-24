@@ -1553,3 +1553,7 @@
 "delete_task_confirmation" = "Are you sure you want to delete this Task?";
 "task" = "Task";
 "item_only_available_for" = "This item is only available to %s";
+"menu.avatar_customization" = "Avatar Customization";
+"menu.help_about" = "Help & About";
+"menu.new_message" = "New message";
+"menu.new_announcement" = "New announcement";

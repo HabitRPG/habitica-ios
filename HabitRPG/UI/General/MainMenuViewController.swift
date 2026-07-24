@@ -121,11 +121,11 @@ class MenuItem {
             .stats: L10n.Titles.stats,
             .achievements: L10n.Titles.achievements,
             .market: L10n.Locations.market,
-            .questShop: L10n.Menu.questShop,
+            .questShop: L10n.Locations.questShop,
             .seasonalShop: L10n.Locations.seasonalShop,
-            .customizationShop: L10n.Locations.customizations,
+            .customizationShop: L10n.customizationShop,
             .timeTravelersShop: L10n.Locations.timeTravelersShop,
-            .customizeAvatar: L10n.Menu.customizeAvatar,
+            .customizeAvatar: L10n.Menu.avatarCustomization,
             .equipment: L10n.Titles.equipment,
             .items: L10n.Titles.items,
             .stable: L10n.Titles.petsAndMounts,
@@ -136,7 +136,7 @@ class MenuItem {
             .challenges: L10n.Titles.challenges,
             .news: L10n.Titles.news,
             .support: L10n.Menu.helpFaq,
-            .about: L10n.Titles.about,
+            .about: L10n.Menu.helpAbout,
             .settings: L10n.Titles.settings,
             .messages: L10n.Titles.messages,
             .notifications: L10n.Titles.notifications,
@@ -155,6 +155,7 @@ struct MenuSection {
         case groupPlans
         case inventory
         case shops
+        case purchases
         case social
         case about
     }
@@ -225,15 +226,19 @@ class MainMenuViewController: BaseTableViewController {
                     statsItem.isDisabled = false
                 }
             }
-            menuItem(withKey: .news).showIndicator = user?.flags?.hasNewStuff == true
-            
+            let hasNewStuff = user?.flags?.hasNewStuff == true
+            menuItem(withKey: .news).showIndicator = hasNewStuff
+            menuItem(withKey: .news).subtitle = hasNewStuff ? L10n.Menu.newAnnouncement : nil
+
             if let partyID = user?.party?.id {
-                let hasPartActivity = user?.hasNewMessages.first(where: { (newMessages) -> Bool in
+                let hasPartyActivity = user?.hasNewMessages.first(where: { (newMessages) -> Bool in
                     return newMessages.id == partyID
-                })
-                menuItem(withKey: .party).showIndicator = hasPartActivity?.hasNewMessages ?? false
+                })?.hasNewMessages ?? false
+                menuItem(withKey: .party).showIndicator = hasPartyActivity
+                menuItem(withKey: .party).subtitle = hasPartyActivity ? L10n.Menu.newMessage : nil
             } else {
                 menuItem(withKey: .party).showIndicator = false
+                menuItem(withKey: .party).subtitle = nil
             }
                         
             tableView.reloadData()
@@ -336,6 +341,9 @@ class MainMenuViewController: BaseTableViewController {
         super.viewDidLoad()
         tableView.register(UINib(nibName: "MainTableviewCell", bundle: nil), forCellReuseIdentifier: "Cell")
         tableView.rowHeight = 60
+        if #available(iOS 15.0, *) {
+            tableView.sectionHeaderTopPadding = 0
+        }
         setupHeader()
         
         #if !targetEnvironment(macCatalyst)
@@ -587,22 +595,23 @@ class MainMenuViewController: BaseTableViewController {
                 menuItem(withKey: .timeTravelersShop)
             ]),
             MenuSection(key: .inventory, title: L10n.Menu.inventory, items: [
-                menuItem(withKey: .customizeAvatar),
-                menuItem(withKey: .equipment),
                 menuItem(withKey: .items),
-                menuItem(withKey: .stable),
-                menuItem(withKey: .gems),
-                menuItem(withKey: .subscription)
+                menuItem(withKey: .equipment),
+                menuItem(withKey: .customizeAvatar),
+                menuItem(withKey: .stable)
                 ]),
             MenuSection(key: .social, title: L10n.Menu.social, items: [
                 menuItem(withKey: .party),
                 menuItem(withKey: .messages),
                 menuItem(withKey: .challenges)
                 ]),
+            MenuSection(key: .purchases, title: nil, items: [
+                menuItem(withKey: .gems),
+                menuItem(withKey: .subscription)
+                ]),
             MenuSection(key: .about, title: L10n.Titles.about, items: [
                 menuItem(withKey: .settings),
                 menuItem(withKey: .news),
-                menuItem(withKey: .support),
                 menuItem(withKey: .about)
                 ])
         ]
@@ -673,7 +682,7 @@ class MainMenuViewController: BaseTableViewController {
         if (sectionAt(index: section)?.visibleItems.count ?? 0) == 0 {
             return CGFloat.leastNormalMagnitude
         }
-        return section == 0 ? 16 : 26
+        return section == 0 ? 8 : 20
     }
 
     override func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
@@ -778,7 +787,8 @@ class MainMenuViewController: BaseTableViewController {
             iconName = iconMap[key]
         }
         if let iconName = iconName {
-            iconView?.image = UIImage(named: iconName)
+            iconView?.image = UIImage(named: iconName)?.withRenderingMode(.alwaysTemplate)
+            iconView?.tintColor = MainMenuTheme.iconTint
             iconView?.isHidden = false
             iconView?.alpha = item?.isDisabled == true ? 0.45 : 1.0
         } else {
@@ -846,7 +856,8 @@ enum MainMenuTheme {
     }
 
     static var sheetBackground: UIColor { color("#F6F4FC", "#1A181D") }
-    static var rowTitle: UIColor { color("#432874", "#FFFFFF") }
+    static var rowTitle: UIColor { ThemeService.shared.theme.isDark ? UIColor.purpleWhite : UIColor.purple100 }
+    static var iconTint: UIColor { ThemeService.shared.theme.isDark ? UIColor.purple500 : UIColor.purple400 }
     static var rowSubtitle: UIColor { color("#79659D", "#B7ADCD") }
     static var lockedRowTitle: UIColor { color("#A89BC7", "#7A7387") }
     static var notificationDot: UIColor { UIColor("#FE6165") }

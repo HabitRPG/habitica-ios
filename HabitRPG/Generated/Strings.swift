@@ -2347,16 +2347,24 @@ public enum L10n {
   }
 
   public enum Menu {
+    /// Avatar Customization
+    public static var avatarCustomization: String { return L10n.tr("Mainstrings", "menu.avatar_customization") }
     /// Customize Avatar
     public static var customizeAvatar: String { return L10n.tr("Mainstrings", "menu.customize_avatar") }
     /// Purchase Gems
     public static var gems: String { return L10n.tr("Mainstrings", "menu.gems") }
     /// Groups
     public static var groupPlans: String { return L10n.tr("Mainstrings", "menu.group_plans") }
+    /// Help & About
+    public static var helpAbout: String { return L10n.tr("Mainstrings", "menu.help_about") }
     /// Help & FAQ
     public static var helpFaq: String { return L10n.tr("Mainstrings", "menu.help_faq") }
     /// Inventory
     public static var inventory: String { return L10n.tr("Mainstrings", "menu.inventory") }
+    /// New announcement
+    public static var newAnnouncement: String { return L10n.tr("Mainstrings", "menu.new_announcement") }
+    /// New message
+    public static var newMessage: String { return L10n.tr("Mainstrings", "menu.new_message") }
     /// Quests
     public static var questShop: String { return L10n.tr("Mainstrings", "menu.quest_shop") }
     /// Select Class
