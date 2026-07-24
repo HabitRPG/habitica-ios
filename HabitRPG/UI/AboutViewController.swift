@@ -32,7 +32,7 @@ class AboutViewController: BaseTableViewController, MFMailComposeViewControllerD
 
     private let cardTitles = ["Common Questions", "Bugs & Fixes", "Suggestions & Feedback"]
     private let cardBodies = [
-        "We'll explain the basics and answer common questions to get you up to speed",
+        "We’ll explain the basics and answer common questions to get you up to speed",
         "Did something go wrong? Check for answers here or reach out to us for help",
         "Have input on how features could work better or an idea for something new? Tell us!"
     ]
@@ -235,7 +235,7 @@ class AboutViewController: BaseTableViewController, MFMailComposeViewControllerD
         let waveHeight = (64 * width / 393).rounded()
         waveImageView.frame = CGRect(x: 0, y: waveTop, width: width, height: waveHeight)
 
-        let purpleTop = waveTop + waveHeight - 1
+        let purpleTop = waveTop + waveHeight - 4
         versionLabel.frame = CGRect(x: 24, y: purpleTop + 10, width: width - 48, height: 20)
         subtitleLabel.frame = CGRect(x: (width - 261) / 2, y: versionLabel.frame.maxY + 4, width: 261, height: 34)
 
@@ -332,10 +332,13 @@ class AboutViewController: BaseTableViewController, MFMailComposeViewControllerD
         let mid = size / 2
         let path = UIBezierPath()
         path.move(to: CGPoint(x: mid, y: 0))
-        path.addQuadCurve(to: CGPoint(x: size, y: mid), controlPoint: CGPoint(x: mid, y: mid))
-        path.addQuadCurve(to: CGPoint(x: mid, y: size), controlPoint: CGPoint(x: mid, y: mid))
-        path.addQuadCurve(to: CGPoint(x: 0, y: mid), controlPoint: CGPoint(x: mid, y: mid))
-        path.addQuadCurve(to: CGPoint(x: mid, y: 0), controlPoint: CGPoint(x: mid, y: mid))
+        path.addLine(to: CGPoint(x: size * 0.6, y: size * 0.4))
+        path.addLine(to: CGPoint(x: size, y: mid))
+        path.addLine(to: CGPoint(x: size * 0.6, y: size * 0.6))
+        path.addLine(to: CGPoint(x: mid, y: size))
+        path.addLine(to: CGPoint(x: size * 0.4, y: size * 0.6))
+        path.addLine(to: CGPoint(x: 0, y: mid))
+        path.addLine(to: CGPoint(x: size * 0.4, y: size * 0.4))
         path.close()
         let shape = CAShapeLayer()
         shape.path = path.cgPath
