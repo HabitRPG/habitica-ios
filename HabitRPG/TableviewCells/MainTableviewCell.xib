@@ -69,7 +69,7 @@
                     </imageView>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="JTb-Mg-pcc" firstAttribute="leading" secondItem="7ZN-tE-vNu" secondAttribute="leading" constant="56" id="dot-ld-aaa"/>
+                    <constraint firstItem="JTb-Mg-pcc" firstAttribute="leading" secondItem="7ZN-tE-vNu" secondAttribute="leading" constant="50" id="dot-ld-aaa"/>
                     <constraint firstItem="JTb-Mg-pcc" firstAttribute="top" secondItem="7ZN-tE-vNu" secondAttribute="top" constant="9" id="dot-tp-aaa"/>
                     <constraint firstAttribute="trailing" secondItem="lk1-nv-aaa" secondAttribute="trailing" constant="23" id="lk1-tr-aaa"/>
                     <constraint firstItem="lk1-nv-aaa" firstAttribute="centerY" secondItem="7ZN-tE-vNu" secondAttribute="centerY" id="lk1-cy-aaa"/>
