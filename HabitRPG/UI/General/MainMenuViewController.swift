@@ -51,6 +51,7 @@ class MenuItem {
     }
     
     var key: MenuItem.Key
+    var iconKey: MenuItem.Key?
     var title: String
     var subtitle: String?
     var subtitleColor: UIColor?
@@ -197,6 +198,7 @@ class MainMenuViewController: BaseTableViewController {
     private let sheetCornerView = UIView()
     private let sheetCornerMask = CAShapeLayer()
     private var lastKnownSeason = ""
+    private var groupPlanItems = [MenuItem]()
     private var lastWorldState: WorldStateProtocol?
     private var lastSeasonalItems = [ItemProtocol]()
 
@@ -289,6 +291,9 @@ class MainMenuViewController: BaseTableViewController {
                             }
                         }
                         existingSection.items = items
+                        if key == .social {
+                            existingSection.items.append(contentsOf: groupPlanItems)
+                        }
                     }
                     newOrder.append(existingSection)
                 }
@@ -464,23 +469,21 @@ class MainMenuViewController: BaseTableViewController {
             }
         })
         .start())
-        disposable.inner.add(userRepository.getGroupPlans().on(value: { value in
-            let plans = value.value
-            let index = self.menuSections.firstIndex { searched in
-                searched.key == .groupPlans
+        disposable.inner.add(userRepository.getGroupPlans().on(value: {[weak self] value in
+            guard let self = self else {
+                return
             }
-            var section = self.menuSections[index ?? 1]
-            section.isHidden = plans.isEmpty
-            section.items.removeAll()
-            for plan in plans {
-                section.items.append(MenuItem(key: MenuItem.Key(rawValue: plan.id ?? "") ?? .about, title: plan.name ?? plan.summary ?? "", vcInstantiator: {
+            self.groupPlanItems = value.value.map { plan in
+                let item = MenuItem(key: MenuItem.Key(rawValue: plan.id ?? "") ?? .about, title: plan.name ?? plan.summary ?? "", vcInstantiator: {
                     let viewController = StoryboardScene.Social.groupTableViewController.instantiate()
                     viewController.groupID = plan.id
                     return viewController
-                }))
+                })
+                item.iconKey = .party
+                return item
             }
-            if let index = index {
-                self.menuSections[index] = section
+            if let index = self.menuSections.firstIndex(where: { $0.key == .social }) {
+                self.menuSections[index].items = self.socialItems()
                 self.tableView.reloadData()
             }
         }).start())
@@ -686,6 +689,10 @@ class MainMenuViewController: BaseTableViewController {
         }
     }
     
+    private func socialItems() -> [MenuItem] {
+        return [menuItem(withKey: .party)] + groupPlanItems + [menuItem(withKey: .messages), menuItem(withKey: .challenges)]
+    }
+
     private func setupMenu() {
         updateMenuTitles()
         menuSections = [
@@ -696,8 +703,6 @@ class MainMenuViewController: BaseTableViewController {
                 menuItem(withKey: .stats),
                 menuItem(withKey: .achievements)
                 ]),
-            MenuSection(key: .groupPlans, title: L10n.Menu.groupPlans, items: [
-            ]),
             MenuSection(key: .shops, title: L10n.Menu.shops, items: [
                 menuItem(withKey: .market),
                 menuItem(withKey: .questShop),
@@ -711,11 +716,7 @@ class MainMenuViewController: BaseTableViewController {
                 menuItem(withKey: .customizeAvatar),
                 menuItem(withKey: .stable)
                 ]),
-            MenuSection(key: .social, title: L10n.Menu.social, items: [
-                menuItem(withKey: .party),
-                menuItem(withKey: .messages),
-                menuItem(withKey: .challenges)
-                ]),
+            MenuSection(key: .social, title: L10n.Menu.social, items: socialItems()),
             MenuSection(key: .purchases, title: nil, items: [
                 menuItem(withKey: .gems),
                 menuItem(withKey: .subscription)
@@ -987,8 +988,7 @@ class MainMenuViewController: BaseTableViewController {
         subtitleLabel?.textColor = item?.subtitleColor ?? MainMenuTheme.rowSubtitle
 
         let iconView = cell.viewWithTag(5) as? UIImageView
-        let isGroupPlan = sectionAt(index: indexPath.section)?.key == .groupPlans
-        if let image = iconImage(for: isGroupPlan ? .party : item?.key) {
+        if let image = iconImage(for: item?.iconKey ?? item?.key) {
             iconView?.image = image
             iconView?.tintColor = MainMenuTheme.iconTint
             iconView?.isHidden = false
