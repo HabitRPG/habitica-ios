@@ -539,6 +539,9 @@ class MainMenuViewController: BaseTableViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        if !configRepository.enableIPadUI() {
+            topHeaderCoordinator?.contentInsetModifier = UIEdgeInsets(top: headerInsetCorrection, left: 0, bottom: 0, right: 0)
+        }
         super.viewWillAppear(animated)
         refreshPromoState()
 
@@ -790,13 +793,20 @@ class MainMenuViewController: BaseTableViewController {
         if (sectionAt(index: section)?.visibleItems.count ?? 0) == 0 {
             return CGFloat.leastNormalMagnitude
         }
-        return section == 0 ? 5 : 20
+        return section == 0 ? 9 : 20
     }
 
     override func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
         return CGFloat.leastNormalMagnitude
     }
     
+    private var headerInsetCorrection: CGFloat {
+        guard let navController = navigationController as? TopHeaderViewController else {
+            return 0
+        }
+        return navController.topHeaderHeight - navController.contentInset
+    }
+
     private func refreshPromoState() {
         activePromo = configRepository.developerOverridePromotion() ?? configRepository.activePromotion()
         updatePromoCells()
@@ -978,7 +988,7 @@ class MainMenuViewController: BaseTableViewController {
 
         let iconView = cell.viewWithTag(5) as? UIImageView
         let isGroupPlan = sectionAt(index: indexPath.section)?.key == .groupPlans
-        if let image = isGroupPlan ? nil : iconImage(for: item?.key) {
+        if let image = iconImage(for: isGroupPlan ? .party : item?.key) {
             iconView?.image = image
             iconView?.tintColor = MainMenuTheme.iconTint
             iconView?.isHidden = false
