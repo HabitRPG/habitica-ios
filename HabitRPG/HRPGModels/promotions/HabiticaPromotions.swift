@@ -14,6 +14,13 @@ public enum HabiticaPromotionType {
     case subscription
     case survey
     
+    static let selectableKeys: [(key: String, title: String)] = [
+        ("fall_extra_gems", "Fall Gem Sale"),
+        ("spooky_extra_gems", "Spooky Gem Sale"),
+        ("g1g1", "Gift One, Get One"),
+        ("survey2021", "Player Survey")
+    ]
+
     static func getPromoFromKey(key: String, startDate: Date?, endDate: Date?) -> HabiticaPromotion? {
         switch key {
         case "fall_extra_gems", "fall2020", "testfall2020":

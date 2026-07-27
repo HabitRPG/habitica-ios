@@ -196,6 +196,7 @@ class MainMenuViewController: BaseTableViewController {
     private let stretchView = GradientView()
     private let sheetCornerView = UIView()
     private let sheetCornerMask = CAShapeLayer()
+    private var lastKnownSeason = ""
 
     private var menuSections = [MenuSection]()
     var visibleSections: [MenuSection] {
@@ -242,7 +243,8 @@ class MainMenuViewController: BaseTableViewController {
                 menuItem(withKey: .party).showIndicator = false
                 menuItem(withKey: .party).subtitle = nil
             }
-                        
+
+            applyDeveloperOverrides()
             tableView.reloadData()
             
             if user?.isSubscribed == true && activePromo == nil {
@@ -366,7 +368,7 @@ class MainMenuViewController: BaseTableViewController {
 
     fileprivate func setupFooter() {
         stretchView.isHidden = true
-        if configRepository.bool(variable: .showSubscriptionBanner) {
+        if configRepository.bool(variable: .showSubscriptionBanner) && configRepository.developerPromoOverride?.isEmpty != false {
             if tableView.tableFooterView?.tag == MainMenuViewController.subscriptionFooterTag {
                 return
             }
@@ -401,6 +403,8 @@ class MainMenuViewController: BaseTableViewController {
                 tableView.tableFooterView = nil
                 stretchView.isHidden = false
             }
+        } else {
+            tableView.tableFooterView = nil
         }
     }
     
@@ -537,6 +541,8 @@ class MainMenuViewController: BaseTableViewController {
         updatePromoCells()
         setupFooter()
         setupPinnedPill()
+        applyDeveloperOverrides()
+        tableView.reloadData()
 
         if activePromo != nil {
                 promoTimer?.invalidate()
@@ -585,8 +591,9 @@ class MainMenuViewController: BaseTableViewController {
             market.pillText = nil
             market.subtitle = nil
         }
+        lastKnownSeason = worldState.currentSeason ?? ""
         let seasonText: String
-        switch worldState.currentSeason {
+        switch currentSeason {
         case "winter":
             seasonText = L10n.winter
         case "spring":
@@ -610,6 +617,7 @@ class MainMenuViewController: BaseTableViewController {
         }
         menuItem(withKey: .seasonalShop).pillText = seasonText
         menuItem(withKey: .seasonalShop).pillColor = MainMenuTheme.seasonalBadge
+        applyDeveloperOverrides()
         tableView.reloadData()
     }
     
@@ -789,6 +797,86 @@ class MainMenuViewController: BaseTableViewController {
         return CGFloat.leastNormalMagnitude
     }
     
+    private func applyDeveloperOverrides() {
+        guard configRepository.isDeveloperOptionsEnabled else {
+            return
+        }
+        if configRepository.developerFlag(DeveloperOverride.notificationDots) {
+            let party = menuItem(withKey: .party)
+            party.showIndicator = true
+            party.subtitle = L10n.Menu.newMessage
+            let news = menuItem(withKey: .news)
+            news.showIndicator = true
+            news.subtitle = L10n.Menu.newAnnouncement
+        }
+        if configRepository.developerFlag(DeveloperOverride.rowBadges) {
+            menuItem(withKey: .gems).pillText = L10n.sale
+            let subscription = menuItem(withKey: .subscription)
+            subscription.pillText = L10n.sale
+            subscription.subtitle = L10n.getMoreHabitica
+            let market = menuItem(withKey: .market)
+            market.pillText = L10n.new
+            market.subtitle = L10n.seasonalPotionsAvailable
+        }
+        if configRepository.developerFlag(DeveloperOverride.lockedRows) {
+            let stats = menuItem(withKey: .stats)
+            stats.isHidden = false
+            stats.isDisabled = true
+            stats.subtitle = L10n.unlocksLevelTen
+        }
+    }
+
+    private static let rowIcons: [MenuItem.Key: String] = [
+        .skills: "menu_skills", .stats: "menu_stats", .achievements: "menu_achievements",
+        .market: "menu_market", .questShop: "menu_questShop", .customizationShop: "menu_customizationShop",
+        .timeTravelersShop: "menu_timeTravelersShop", .customizeAvatar: "menu_avatarCustomization",
+        .equipment: "menu_equipment", .items: "menu_items", .stable: "menu_petsMounts",
+        .gems: "menu_gems", .subscription: "menu_subscription", .party: "menu_party",
+        .challenges: "menu_challenges", .news: "menu_news", .support: "menu_help", .about: "menu_help"
+    ]
+
+    private var currentSeason: String {
+        if let override = configRepository.developerSeasonOverride, override.isEmpty == false {
+            return override
+        }
+        return lastKnownSeason
+    }
+
+    private func seasonalIconName() -> String {
+        switch currentSeason {
+        case "spring":
+            return "menu_SeasonalShopSpring"
+        case "summer":
+            return "menu_SeasonalShopSummer"
+        case "fall", "habitoween", "thanksgiving":
+            return "menu_SeasonalShopFall"
+        case "winter", "nye", "birthday", "valentines":
+            return "menu_SeasonalShopWinter"
+        default:
+            switch Calendar.current.component(.month, from: Date()) {
+            case 3, 4, 5:
+                return "menu_SeasonalShopSpring"
+            case 6, 7, 8:
+                return "menu_SeasonalShopSummer"
+            case 9, 10, 11:
+                return "menu_SeasonalShopFall"
+            default:
+                return "menu_SeasonalShopWinter"
+            }
+        }
+    }
+
+    private func iconImage(for key: MenuItem.Key?) -> UIImage? {
+        guard let key = key else {
+            return nil
+        }
+        let name = key == .seasonalShop ? seasonalIconName() : MainMenuViewController.rowIcons[key]
+        guard let name = name else {
+            return nil
+        }
+        return UIImage(named: name)?.withRenderingMode(.alwaysTemplate)
+    }
+
     private var currentSecondaryIndexPath: IndexPath = IndexPath(item: 0, section: 0)
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -867,27 +955,8 @@ class MainMenuViewController: BaseTableViewController {
         subtitleLabel?.textColor = item?.subtitleColor ?? MainMenuTheme.rowSubtitle
 
         let iconView = cell.viewWithTag(5) as? UIImageView
-        let iconMap: [MenuItem.Key: String] = [
-            .skills: "menu_skills", .stats: "menu_stats", .achievements: "menu_achievements",
-            .market: "menu_market", .questShop: "menu_questShop", .customizationShop: "menu_customizationShop",
-            .timeTravelersShop: "menu_timeTravelersShop", .customizeAvatar: "menu_avatarCustomization",
-            .equipment: "menu_equipment", .items: "menu_items", .stable: "menu_petsMounts",
-            .gems: "menu_gems", .subscription: "menu_subscription", .party: "menu_party",
-            .challenges: "menu_challenges", .news: "menu_news", .support: "menu_help", .about: "menu_help"
-        ]
-        var iconName: String?
-        if item?.key == .seasonalShop {
-            switch Calendar.current.component(.month, from: Date()) {
-            case 3, 4, 5: iconName = "menu_SeasonalShopSpring"
-            case 6, 7, 8: iconName = "menu_SeasonalShopSummer"
-            case 9, 10, 11: iconName = "menu_SeasonalShopFall"
-            default: iconName = "menu_SeasonalShopWinter"
-            }
-        } else if let key = item?.key {
-            iconName = iconMap[key]
-        }
-        if let iconName = iconName {
-            iconView?.image = UIImage(named: iconName)?.withRenderingMode(.alwaysTemplate)
+        if let image = iconImage(for: item?.key) {
+            iconView?.image = image
             iconView?.tintColor = MainMenuTheme.iconTint
             iconView?.isHidden = false
             iconView?.alpha = item?.isDisabled == true ? 0.45 : 1.0

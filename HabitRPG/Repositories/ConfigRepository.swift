@@ -186,6 +186,14 @@ enum ConfigVariable: Int {
     // swiftlint:enable cyclomatic_complexity
 }
 
+enum DeveloperOverride {
+    static let promo = "developerPromoOverride"
+    static let season = "developerSeasonOverride"
+    static let notificationDots = "developerForceNotificationDots"
+    static let rowBadges = "developerForceRowBadges"
+    static let lockedRows = "developerForceLockedRows"
+}
+
 enum TestingLevel: String {
     case production
     case beta
@@ -274,7 +282,42 @@ class ConfigRepository: NSObject {
         }
 #endif
     }
-    
+
+    var isDeveloperOptionsEnabled: Bool {
+        return testingLevel != .production
+    }
+
+    var developerPromoOverride: String? {
+        get {
+            guard isDeveloperOptionsEnabled else {
+                return nil
+            }
+            return UserDefaults.standard.string(forKey: DeveloperOverride.promo)
+        }
+        set { UserDefaults.standard.set(newValue, forKey: DeveloperOverride.promo) }
+    }
+
+    var developerSeasonOverride: String? {
+        get {
+            guard isDeveloperOptionsEnabled else {
+                return nil
+            }
+            return UserDefaults.standard.string(forKey: DeveloperOverride.season)
+        }
+        set { UserDefaults.standard.set(newValue, forKey: DeveloperOverride.season) }
+    }
+
+    func developerFlag(_ key: String) -> Bool {
+        guard isDeveloperOptionsEnabled else {
+            return false
+        }
+        return UserDefaults.standard.bool(forKey: key)
+    }
+
+    func setDeveloperFlag(_ isEnabled: Bool, forKey key: String) {
+        UserDefaults.standard.set(isEnabled, forKey: key)
+    }
+
     @objc
     func bool(variable: ConfigVariable) -> Bool {
         #if DEBUG
@@ -338,6 +381,9 @@ class ConfigRepository: NSObject {
     }
     
     func activePromotion() -> HabiticaPromotion? {
+        if let overrideKey = developerPromoOverride, overrideKey.isEmpty == false {
+            return HabiticaPromotionType.getPromoFromKey(key: overrideKey, startDate: Date(), endDate: Date().addingTimeInterval(60 * 60 * 24 * 30))
+        }
         var promo: HabiticaPromotion?
         for event in worldState?.events ?? [] where HabiticaPromotionType.getPromoFromKey(key: event.promo ?? event.eventKey ?? "", startDate: event.start, endDate: event.end) != nil {
             promo = HabiticaPromotionType.getPromoFromKey(key: event.promo ?? event.eventKey ?? "", startDate: event.start, endDate: event.end)
