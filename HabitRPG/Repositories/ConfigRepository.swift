@@ -186,6 +186,10 @@ enum ConfigVariable: Int {
     // swiftlint:enable cyclomatic_complexity
 }
 
+extension Notification.Name {
+    static let developerOverridesChanged = Notification.Name("DeveloperOverridesChangedNotification")
+}
+
 enum DeveloperOverride {
     static let promo = "developerPromoOverride"
     static let season = "developerSeasonOverride"
@@ -380,10 +384,14 @@ class ConfigRepository: NSObject {
         return NSArray()
     }
     
-    func activePromotion() -> HabiticaPromotion? {
-        if let overrideKey = developerPromoOverride, overrideKey.isEmpty == false {
-            return HabiticaPromotionType.getPromoFromKey(key: overrideKey, startDate: Date(), endDate: Date().addingTimeInterval(60 * 60 * 24 * 30))
+    func developerOverridePromotion() -> HabiticaPromotion? {
+        guard let overrideKey = developerPromoOverride, overrideKey.isEmpty == false else {
+            return nil
         }
+        return HabiticaPromotionType.getPromoFromKey(key: overrideKey, startDate: Date(), endDate: Date().addingTimeInterval(60 * 60 * 24 * 30))
+    }
+
+    func activePromotion() -> HabiticaPromotion? {
         var promo: HabiticaPromotion?
         for event in worldState?.events ?? [] where HabiticaPromotionType.getPromoFromKey(key: event.promo ?? event.eventKey ?? "", startDate: event.start, endDate: event.end) != nil {
             promo = HabiticaPromotionType.getPromoFromKey(key: event.promo ?? event.eventKey ?? "", startDate: event.start, endDate: event.end)

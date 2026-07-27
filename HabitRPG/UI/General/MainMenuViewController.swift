@@ -197,6 +197,8 @@ class MainMenuViewController: BaseTableViewController {
     private let sheetCornerView = UIView()
     private let sheetCornerMask = CAShapeLayer()
     private var lastKnownSeason = ""
+    private var lastWorldState: WorldStateProtocol?
+    private var lastSeasonalItems = [ItemProtocol]()
 
     private var menuSections = [MenuSection]()
     var visibleSections: [MenuSection] {
@@ -426,6 +428,7 @@ class MainMenuViewController: BaseTableViewController {
         setupMenu()
         
         NotificationCenter.default.addObserver(self, selector: #selector(languageChanged), name: .languageChanged, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(developerOverridesChanged), name: .developerOverridesChanged, object: nil)
                 
         disposable.inner.add(userRepository.getUser().on(value: {[weak self] user in
             self?.user = user
@@ -537,12 +540,7 @@ class MainMenuViewController: BaseTableViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        activePromo = configRepository.activePromotion()
-        updatePromoCells()
-        setupFooter()
-        setupPinnedPill()
-        applyDeveloperOverrides()
-        tableView.reloadData()
+        refreshPromoState()
 
         if activePromo != nil {
                 promoTimer?.invalidate()
@@ -592,6 +590,8 @@ class MainMenuViewController: BaseTableViewController {
             market.subtitle = nil
         }
         lastKnownSeason = worldState.currentSeason ?? ""
+        lastWorldState = worldState
+        lastSeasonalItems = items
         let seasonText: String
         switch currentSeason {
         case "winter":
@@ -797,6 +797,26 @@ class MainMenuViewController: BaseTableViewController {
         return CGFloat.leastNormalMagnitude
     }
     
+    private func refreshPromoState() {
+        activePromo = configRepository.developerOverridePromotion() ?? configRepository.activePromotion()
+        updatePromoCells()
+        setupFooter()
+        setupPinnedPill()
+        applyDeveloperOverrides()
+        tableView.reloadData()
+    }
+
+    @objc
+    private func developerOverridesChanged() {
+        if let user = user {
+            self.user = user
+        }
+        if let worldState = lastWorldState {
+            updateSeasonalEntries(worldState: worldState, items: lastSeasonalItems)
+        }
+        refreshPromoState()
+    }
+
     private func applyDeveloperOverrides() {
         guard configRepository.isDeveloperOptionsEnabled else {
             return

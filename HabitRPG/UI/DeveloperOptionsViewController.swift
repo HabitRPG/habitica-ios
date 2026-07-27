@@ -9,6 +9,50 @@ import UIKit
 
 class DeveloperOptionsViewController: BaseTableViewController {
 
+    init() {
+        super.init(style: .insetGrouped)
+    }
+
+    required init?(coder: NSCoder) {
+        super.init(coder: coder)
+    }
+
+    override func populateText() {
+        navigationItem.title = "Developer Options"
+    }
+
+    override func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
+
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 1
+    }
+
+    override func tableView(_ tableView: UITableView, titleForFooterInSection section: Int) -> String? {
+        return "QA tools for previewing UI states. Nothing here changes your account data."
+    }
+
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = UITableViewCell(style: .subtitle, reuseIdentifier: "Cell")
+        let theme = ThemeService.shared.theme
+        cell.backgroundColor = theme.windowBackgroundColor
+        cell.textLabel?.text = "Main Menu Testing"
+        cell.textLabel?.textColor = theme.primaryTextColor
+        cell.detailTextLabel?.text = "Promos, seasons and row states"
+        cell.detailTextLabel?.textColor = theme.ternaryTextColor
+        cell.accessoryType = .disclosureIndicator
+        return cell
+    }
+
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        navigationController?.pushViewController(MenuTestingViewController(), animated: true)
+    }
+}
+
+class MenuTestingViewController: BaseTableViewController {
+
     private enum OptionRow {
         case promo(key: String, title: String)
         case season(key: String, title: String)
@@ -58,7 +102,7 @@ class DeveloperOptionsViewController: BaseTableViewController {
     }
 
     override func populateText() {
-        navigationItem.title = "Developer Options"
+        navigationItem.title = "Main Menu Testing"
     }
 
     private func buildSections() {
@@ -70,13 +114,13 @@ class DeveloperOptionsViewController: BaseTableViewController {
 
         sections = [
             Section(title: "Promotion",
-                    footer: "Drives the pinned pill at the top of the menu and the banner card at the bottom.",
+                    footer: "Shows the pinned pill at the top of the main menu and the banner card at the bottom. Promo banners elsewhere in the app are not affected.",
                     rows: promoRows),
             Section(title: "Seasonal Shop",
-                    footer: "Drives the Seasonal Shop row icon and its badge text.",
+                    footer: "Changes the Seasonal Shop row icon and badge text in the main menu only. The Seasonal Shop itself still shows the live season.",
                     rows: seasonRows),
-            Section(title: "Cosmetic States (QA)",
-                    footer: "Display only. These change how rows are drawn and never create parties, messages or purchases.",
+            Section(title: "Row States",
+                    footer: "Display only, and main menu only. These change how rows are drawn and never create parties, messages, sales or purchases.",
                     rows: flags.indices.map { OptionRow.flag(index: $0) })
         ]
     }
@@ -137,10 +181,16 @@ class DeveloperOptionsViewController: BaseTableViewController {
             return
         }
         tableView.reloadSections(IndexSet(integer: indexPath.section), with: .none)
+        notifyChange()
     }
 
     @objc
     private func flagToggled(_ sender: UISwitch) {
         configRepository.setDeveloperFlag(sender.isOn, forKey: flags[sender.tag].key)
+        notifyChange()
+    }
+
+    private func notifyChange() {
+        NotificationCenter.default.post(name: .developerOverridesChanged, object: nil)
     }
 }
