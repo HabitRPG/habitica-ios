@@ -114,12 +114,12 @@ class FallExtraGemsPromotion: HabiticaPromotion {
     }
     
     var gradientStart: UIColor? {
-        return nil
+        return UIColor("#FDA240")
     }
     var gradientEnd: UIColor? {
-        return nil
+        return UIColor("#FA823B")
     }
-    
+
     private func makeGradient(view: UIView) -> CAGradientLayer {
         let gradient: CAGradientLayer = CAGradientLayer()
 
@@ -253,12 +253,12 @@ class SpookyExtraGemsPromotion: HabiticaPromotion {
     }
     
     var gradientStart: UIColor? {
-        return nil
+        return UIColor("#FB9A44")
     }
     var gradientEnd: UIColor? {
-        return nil
+        return UIColor("#FB616B")
     }
-    
+
     func configurePill(_ pillView: PillView) {
         pillView.backgroundColor = nil
         pillView.layer.sublayers?.filter { $0 is CAGradientLayer }.forEach { $0.removeFromSuperlayer() }

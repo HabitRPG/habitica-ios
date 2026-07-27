@@ -965,6 +965,8 @@ class MainMenuViewController: BaseTableViewController {
         if let builder = item?.pillBuilder, let pill = pillView {
             builder(pill)
         } else {
+            pillView?.layer.sublayers?.filter { $0 is CAGradientLayer }.forEach { $0.removeFromSuperlayer() }
+            pillView?.automaticTextColor = true
             pillView?.pillColor = item?.pillColor ?? UIColor.purple400
         }
         
@@ -975,7 +977,8 @@ class MainMenuViewController: BaseTableViewController {
         subtitleLabel?.textColor = item?.subtitleColor ?? MainMenuTheme.rowSubtitle
 
         let iconView = cell.viewWithTag(5) as? UIImageView
-        if let image = iconImage(for: item?.key) {
+        let isGroupPlan = sectionAt(index: indexPath.section)?.key == .groupPlans
+        if let image = isGroupPlan ? nil : iconImage(for: item?.key) {
             iconView?.image = image
             iconView?.tintColor = MainMenuTheme.iconTint
             iconView?.isHidden = false
