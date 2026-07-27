@@ -317,11 +317,11 @@ class MainMenuViewController: BaseTableViewController {
             pill.backgroundColor = promo.backgroundColor
         }
         if let leftArt = promo.pinnedPillLeftArt {
-            let artHeight: CGFloat = 120
+            let artHeight: CGFloat = 62
             let artWidth = artHeight * (leftArt.size.width / max(leftArt.size.height, 1))
             let artView = UIImageView(image: leftArt)
             artView.contentMode = .scaleAspectFit
-            artView.frame = CGRect(x: -22, y: 46 - artHeight, width: artWidth, height: artHeight)
+            artView.frame = CGRect(x: -12, y: 42 - artHeight, width: artWidth, height: artHeight)
             pill.addSubview(artView)
         }
         if let title = promo.pinnedPillTitle {
