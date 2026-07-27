@@ -36,8 +36,7 @@ class MenuNavigationBarView: UIView, Themeable {
         let label = UILabel()
         label.font = .systemFont(ofSize: 20, weight: .medium)
         label.numberOfLines = 1
-        label.adjustsFontSizeToFitWidth = true
-        label.minimumScaleFactor = 0.5
+        label.lineBreakMode = .byTruncatingTail
         label.isUserInteractionEnabled = true
         label.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(profileAreaTapped)))
         return label
@@ -45,6 +44,8 @@ class MenuNavigationBarView: UIView, Themeable {
     private lazy var usernameLabel: UILabel = {
         let label = UILabel()
         label.font = .systemFont(ofSize: 14, weight: .regular)
+        label.numberOfLines = 1
+        label.lineBreakMode = .byTruncatingTail
         label.isUserInteractionEnabled = true
         label.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(profileAreaTapped)))
         return label
@@ -112,7 +113,7 @@ class MenuNavigationBarView: UIView, Themeable {
         let textColor = isDefaultTheme ? UIColor.white : (theme.navbarHiddenColor.isLight() ? UIColor.gray50 : theme.lightTextColor)
         backgroundColor = headerColor
         displayNameLabel.textColor = textColor
-        usernameLabel.textColor = textColor.withAlphaComponent(0.66)
+        usernameLabel.textColor = textColor
         settingsBadge.backgroundColor = UIColor.purple100
         settingsBadge.textColor = .white
         settingsButton.tintColor = textColor
@@ -198,10 +199,13 @@ class MenuNavigationBarView: UIView, Themeable {
         notificationsButton.pin.size(iconSize).before(of: messagesButton).marginEnd(iconSpacing).top(centerY - iconSize / 2)
 
         let labelX = avatarWrapper.frame.maxX + 12
-        let stackHeight = usernameLabel.isHidden ? 20 : 36
-        let stackTop = centerY - CGFloat(stackHeight) / 2
-        displayNameLabel.pin.start(labelX).width(100).height(20).top(stackTop)
-        usernameLabel.pin.start(labelX).below(of: displayNameLabel).marginTop(0).width(100).height(16)
+        let labelWidth = max(0, notificationsButton.frame.minX - 12 - labelX)
+        let lineHeight: CGFloat = 14
+        let lineSpacing: CGFloat = 6
+        let stackHeight = usernameLabel.isHidden ? lineHeight : lineHeight * 2 + lineSpacing
+        let stackTop = centerY - stackHeight / 2
+        displayNameLabel.pin.start(labelX).width(labelWidth).height(lineHeight).top(stackTop)
+        usernameLabel.pin.start(labelX).below(of: displayNameLabel).marginTop(lineSpacing).width(labelWidth).height(lineHeight)
 
         positionBadge(notificationsBadge, on: notificationsButton)
         positionBadge(messagesBadge, on: messagesButton)
