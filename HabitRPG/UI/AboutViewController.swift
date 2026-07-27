@@ -30,21 +30,25 @@ class AboutViewController: BaseTableViewController, MFMailComposeViewControllerD
         }
     }()
 
-    private let cardTitles = ["Common Questions", "Bugs & Fixes", "Suggestions & Feedback"]
-    private let cardBodies = [
-        "We’ll explain the basics and answer common questions to get you up to speed",
-        "Did something go wrong? Check for answers here or reach out to us for help",
-        "Have input on how features could work better or an idea for something new? Tell us!"
-    ]
-    private let cardButtonTitles = ["See Topics", "Get Help", "Submit Feedback"]
+    private var cardTitles: [String] {
+        return [L10n.About.commonQuestionsTitle, L10n.About.bugsTitle, L10n.About.feedbackTitle]
+    }
+    private var cardBodies: [String] {
+        return [L10n.About.commonQuestionsBody, L10n.About.bugsBody, L10n.About.feedbackBody]
+    }
+    private var cardButtonTitles: [String] {
+        return [L10n.About.commonQuestionsButton, L10n.About.bugsButton, L10n.About.feedbackButton]
+    }
 
-    private lazy var linkTitles = [
-        L10n.resetTips,
-        "Habitica on Web",
-        "Rate our App",
-        L10n.Titles.hallOfContributors,
-        L10n.Titles.hallOfPatrons
-    ]
+    private var linkTitles: [String] {
+        return [
+            L10n.resetTips,
+            L10n.About.habiticaOnWeb,
+            L10n.About.rateOurApp,
+            L10n.Titles.hallOfContributors,
+            L10n.Titles.hallOfPatrons
+        ]
+    }
 
     private let scrollView = UIScrollView()
     private let backButton = UIButton(type: .custom)
@@ -103,7 +107,7 @@ class AboutViewController: BaseTableViewController, MFMailComposeViewControllerD
         backButton.addTarget(self, action: #selector(backTapped), for: .touchUpInside)
         scrollView.addSubview(backButton)
 
-        titleLabel.text = "Help & About"
+        titleLabel.text = L10n.Menu.helpAbout
         titleLabel.font = UIFont.systemFont(ofSize: 17, weight: .semibold)
         titleLabel.textAlignment = .left
         scrollView.addSubview(titleLabel)
@@ -169,7 +173,7 @@ class AboutViewController: BaseTableViewController, MFMailComposeViewControllerD
         versionLabel.textColor = .white
         scrollView.addSubview(versionLabel)
 
-        subtitleLabel.text = "Habitica is available as open source software on GitHub"
+        subtitleLabel.text = L10n.About.openSourceNote
         subtitleLabel.font = UIFont.systemFont(ofSize: 12, weight: .semibold)
         subtitleLabel.textAlignment = .center
         subtitleLabel.numberOfLines = 0
@@ -186,17 +190,17 @@ class AboutViewController: BaseTableViewController, MFMailComposeViewControllerD
             socialButtons.append(button)
         }
 
-        privacyButton.setTitle("Privacy Policy", for: .normal)
+        privacyButton.setTitle(L10n.privacyPolicy, for: .normal)
         privacyButton.titleLabel?.font = UIFont.systemFont(ofSize: 13, weight: .regular)
         privacyButton.addTarget(self, action: #selector(privacyTapped), for: .touchUpInside)
         scrollView.addSubview(privacyButton)
 
-        termsButton.setTitle("Terms of Service", for: .normal)
+        termsButton.setTitle(L10n.termsOfService, for: .normal)
         termsButton.titleLabel?.font = UIFont.systemFont(ofSize: 13, weight: .regular)
         termsButton.addTarget(self, action: #selector(termsTapped), for: .touchUpInside)
         scrollView.addSubview(termsButton)
 
-        versionLabel.text = "Version \(appVersionString)"
+        versionLabel.text = L10n.About.versionNumber(appVersionString)
     }
 
     override func viewDidLayoutSubviews() {

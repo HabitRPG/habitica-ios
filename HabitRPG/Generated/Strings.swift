@@ -1587,8 +1587,28 @@ public enum L10n {
   public enum About {
     /// Acknowledgements
     public static var acknowledgements: String { return L10n.tr("Mainstrings", "about.acknowledgements") }
+    /// Did something go wrong? Check for answers here or reach out to us for help
+    public static var bugsBody: String { return L10n.tr("Mainstrings", "about.bugs_body") }
+    /// Get Help
+    public static var bugsButton: String { return L10n.tr("Mainstrings", "about.bugs_button") }
+    /// Bugs & Fixes
+    public static var bugsTitle: String { return L10n.tr("Mainstrings", "about.bugs_title") }
+    /// We’ll explain the basics and answer common questions to get you up to speed
+    public static var commonQuestionsBody: String { return L10n.tr("Mainstrings", "about.common_questions_body") }
+    /// See Topics
+    public static var commonQuestionsButton: String { return L10n.tr("Mainstrings", "about.common_questions_button") }
+    /// Common Questions
+    public static var commonQuestionsTitle: String { return L10n.tr("Mainstrings", "about.common_questions_title") }
     /// Export Database
     public static var exportDatabase: String { return L10n.tr("Mainstrings", "about.export_database") }
+    /// Have input on how features could work better or an idea for something new? Tell us!
+    public static var feedbackBody: String { return L10n.tr("Mainstrings", "about.feedback_body") }
+    /// Submit Feedback
+    public static var feedbackButton: String { return L10n.tr("Mainstrings", "about.feedback_button") }
+    /// Suggestions & Feedback
+    public static var feedbackTitle: String { return L10n.tr("Mainstrings", "about.feedback_title") }
+    /// Habitica on Web
+    public static var habiticaOnWeb: String { return L10n.tr("Mainstrings", "about.habitica_on_web") }
     /// Leave Review
     public static var leaveReview: String { return L10n.tr("Mainstrings", "about.leave_review") }
     /// Web love open source software.
@@ -1603,12 +1623,20 @@ public enum L10n {
     }
     /// Your email isn't set up yet
     public static var noEmailTitle: String { return L10n.tr("Mainstrings", "about.no_email_title") }
+    /// Habitica is available as open source software on GitHub
+    public static var openSourceNote: String { return L10n.tr("Mainstrings", "about.open_source_note") }
+    /// Rate our App
+    public static var rateOurApp: String { return L10n.tr("Mainstrings", "about.rate_our_app") }
     /// Report a Bug
     public static var reportBug: String { return L10n.tr("Mainstrings", "about.report_bug") }
     /// Send Feedback
     public static var sendFeedback: String { return L10n.tr("Mainstrings", "about.send_feedback") }
     /// Version
     public static var version: String { return L10n.tr("Mainstrings", "about.version") }
+    /// Version %@
+    public static func versionNumber(_ p1: String) -> String {
+      return L10n.tr("Mainstrings", "about.version_number", p1)
+    }
     /// View Source Code
     public static var viewSourceCode: String { return L10n.tr("Mainstrings", "about.view_source_code") }
     /// Website
