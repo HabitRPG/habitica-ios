@@ -67,6 +67,7 @@ class AboutViewController: BaseTableViewController, MFMailComposeViewControllerD
     private let waveImageView = UIImageView(image: UIImage(named: "menuWave"))
     private let purpleBand = UIView()
     private let versionLabel = UILabel()
+    private let updateButton = UIButton(type: .custom)
     private let subtitleLabel = UILabel()
     private let socialImageView = UIImageView(image: UIImage(named: "menuSocialIcons"))
     private var socialButtons: [UIButton] = []
@@ -105,7 +106,8 @@ class AboutViewController: BaseTableViewController, MFMailComposeViewControllerD
         let chevronConfig = UIImage.SymbolConfiguration(pointSize: 16, weight: .semibold)
         backButton.setImage(UIImage(systemName: "chevron.left", withConfiguration: chevronConfig)?.withRenderingMode(.alwaysTemplate), for: .normal)
         backButton.addTarget(self, action: #selector(backTapped), for: .touchUpInside)
-        scrollView.addSubview(backButton)
+        backButton.accessibilityLabel = L10n.back
+        tableView.addSubview(backButton)
 
         titleLabel.text = L10n.Menu.helpAbout
         titleLabel.font = UIFont.systemFont(ofSize: 17, weight: .semibold)
@@ -201,6 +203,7 @@ class AboutViewController: BaseTableViewController, MFMailComposeViewControllerD
         scrollView.addSubview(termsButton)
 
         versionLabel.text = L10n.About.versionNumber(appVersionString)
+        setupUpdatePrompt()
     }
 
     override func viewDidLayoutSubviews() {
@@ -210,8 +213,10 @@ class AboutViewController: BaseTableViewController, MFMailComposeViewControllerD
         let margin: CGFloat = 16
         let cardW = width - margin * 2
 
-        backButton.frame = CGRect(x: 16, y: 58, width: 38, height: 38)
-        titleLabel.frame = CGRect(x: 66, y: 58, width: width - 66 - 16, height: 38)
+        let headerLeft = view.safeAreaInsets.left + 16
+        let headerTop = max(view.safeAreaInsets.top, 20)
+        backButton.frame = CGRect(x: headerLeft, y: headerTop, width: 38, height: 38)
+        titleLabel.frame = CGRect(x: headerLeft + 50, y: headerTop, width: max(0, width - headerLeft - 50 - view.safeAreaInsets.right - 16), height: 38)
 
         for index in 0..<cardContainers.count {
             let top = 120 + CGFloat(index) * 172
@@ -241,7 +246,13 @@ class AboutViewController: BaseTableViewController, MFMailComposeViewControllerD
 
         let purpleTop = waveTop + waveHeight - 4
         versionLabel.frame = CGRect(x: 24, y: purpleTop + 10, width: width - 48, height: 20)
-        subtitleLabel.frame = CGRect(x: (width - 261) / 2, y: versionLabel.frame.maxY + 4, width: 261, height: 34)
+        var footerY = versionLabel.frame.maxY + 4
+        if !updateButton.isHidden {
+            let updateHeight = updateButton.sizeThatFits(CGSize(width: width - 48, height: .greatestFiniteMagnitude)).height
+            updateButton.frame = CGRect(x: 24, y: footerY, width: width - 48, height: max(updateHeight, 36))
+            footerY = updateButton.frame.maxY + 8
+        }
+        subtitleLabel.frame = CGRect(x: (width - 261) / 2, y: footerY, width: 261, height: 34)
 
         let socialW: CGFloat = 214
         let socialH: CGFloat = 50
@@ -294,6 +305,7 @@ class AboutViewController: BaseTableViewController, MFMailComposeViewControllerD
 
         purpleBand.backgroundColor = UIColor("#925CF3")
         versionLabel.textColor = .white
+        updateButton.setTitleColor(.white, for: .normal)
         subtitleLabel.attributedText = subtitleAttributed(subtitleLabel.text ?? "", color: UIColor(white: 1, alpha: 0.9))
         privacyButton.setTitleColor(UIColor(white: 1, alpha: 0.8), for: .normal)
         termsButton.setTitleColor(UIColor(white: 1, alpha: 0.8), for: .normal)
@@ -389,12 +401,34 @@ class AboutViewController: BaseTableViewController, MFMailComposeViewControllerD
     private func socialTapped(_ sender: UIButton) {
         switch sender.tag {
         case 0:
-            open(url: "https://github.com/HabitRPG/habitica")
+            open(url: "https://github.com/HabitRPG/habitica-ios")
         case 1:
             open(url: "https://bsky.app/profile/habitica.com")
         default:
             open(url: "https://instagram.com/\(configRepository.string(variable: .instagramUsername) ?? "")")
         }
+    }
+
+    private func setupUpdatePrompt() {
+        updateButton.titleLabel?.numberOfLines = 0
+        updateButton.titleLabel?.textAlignment = .center
+        updateButton.titleLabel?.font = UIFont.systemFont(ofSize: 13, weight: .semibold)
+        updateButton.addTarget(self, action: #selector(updateTapped), for: .touchUpInside)
+        updateButton.isHidden = !needsUpdate()
+        if needsUpdate() {
+            let newVersion = configRepository.string(variable: .lastVersionNumber) ?? ""
+            updateButton.setTitle("\(L10n.About.newVersion(newVersion))\n\(L10n.About.whatsNew)", for: .normal)
+        }
+        scrollView.addSubview(updateButton)
+    }
+
+    private func needsUpdate() -> Bool {
+        return (buildNumber as? NSString)?.intValue ?? 0 < configRepository.integer(variable: .lastVersionCode)
+    }
+
+    @objc
+    private func updateTapped() {
+        open(url: configRepository.string(variable: .appstoreUrl) ?? "")
     }
 
     @objc
