@@ -53,7 +53,7 @@ public struct UsernameScreen: View {
                                 .padding(.bottom, 16)
                             LoginTextInput(placeholder: L10n.username, prefix: "@", icon: EmptyView(), isValid: viewModel.usernameValid, text: $viewModel.username)
                                 .focused($isFocused)
-                                .onChange(of: viewModel.username) {
+                                .onChange(of: viewModel.debouncedUsername) {
                                     viewModel.verifyUsername()
                                 }
                             VStack(spacing: 4) {
