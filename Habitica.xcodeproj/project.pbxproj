@@ -570,7 +570,6 @@
 		7A84E1B222898E9F0081E96F /* TaskManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A84E1B122898E9F0081E96F /* TaskManager.swift */; };
 		7A84E1B32289963E0081E96F /* BaseRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29FC884D2010CCC2002B3D3F /* BaseRepository.swift */; };
 		7A84E1B42289968B0081E96F /* AuthenticationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 299BD6391F557FE700E22935 /* AuthenticationManager.swift */; };
-		95F1528285B14E64A581009E /* ScoreTaskIntent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ED7C6C98BC047ADAD0F9D60 /* ScoreTaskIntent.swift */; };
 		A0B363012E73567D00F2E0CC /* (null) in Frameworks */ = {isa = PBXBuildFile; };
 		A0B363032E73567D00F2E0CC /* (null) in Frameworks */ = {isa = PBXBuildFile; };
 		A0B363052E73567D00F2E0CC /* FirebaseRemoteConfig in Frameworks */ = {isa = PBXBuildFile; productRef = A0B363042E73567D00F2E0CC /* FirebaseRemoteConfig */; };
@@ -1243,7 +1242,6 @@
 		2D736E72B3BE75DFC46328BE /* uk */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = uk; path = uk.lproj/Mainstrings.strings; sourceTree = "<group>"; };
 		328C951D24A2C13100293E16 /* LinksOnlyTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinksOnlyTextView.swift; sourceTree = "<group>"; };
 		32C6FFF126ED896400C8F682 /* PathTraceable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PathTraceable.swift; sourceTree = "<group>"; };
-		3ED7C6C98BC047ADAD0F9D60 /* ScoreTaskIntent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreTaskIntent.swift; sourceTree = "<group>"; };
 		49005B711F180588004830D9 /* CurrencyCountView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurrencyCountView.swift; sourceTree = "<group>"; };
 		4904C73F1F1ED87400F80723 /* GradientImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GradientImageView.swift; sourceTree = "<group>"; };
 		491C6E5A2020FE64005030A2 /* Challenge-Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Challenge-Extensions.swift"; sourceTree = "<group>"; };
@@ -1952,7 +1950,6 @@
 				29BEE75F252E367600D456F8 /* URLImage.swift */,
 				29BEE7B4252EE92D00D456F8 /* AddTaskWidget.swift */,
 				29BEE81D252F101600D456F8 /* TaskListWidget.swift */,
-				3ED7C6C98BC047ADAD0F9D60 /* ScoreTaskIntent.swift */,
 				2979D5F22EE1CEFB00BB2F54 /* TaskManager.swift */,
 			);
 			path = "Habitica Widgets";
@@ -3431,7 +3428,6 @@
 				29BEE75A252E33AB00D456F8 /* Avatar.swift in Sources */,
 				29ED62DF2DA540CA0060A60A /* Secrets.swift in Sources */,
 				29BEE81E252F101600D456F8 /* TaskListWidget.swift in Sources */,
-				95F1528285B14E64A581009E /* ScoreTaskIntent.swift in Sources */,
 				29BEE7B5252EE92D00D456F8 /* AddTaskWidget.swift in Sources */,
 				29BEE6DC252E14F300D456F8 /* RemainingDailiesWidget.swift in Sources */,
 				2942FAF1267783F8003F6500 /* HabiticaLogger.swift in Sources */,
