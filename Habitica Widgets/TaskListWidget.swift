@@ -6,7 +6,6 @@
 //  Copyright © 2020 HabitRPG Inc. All rights reserved.
 //
 
-import AppIntents
 import WidgetKit
 import SwiftUI
 import Habitica_Models
@@ -130,11 +129,7 @@ struct TaskListView: View {
             VStack(alignment: .leading, spacing: 0) {
                 ForEach((0...last), id: \.self) { index in
                     let task = tasks[index]
-                    Button(intent: ScoreTaskIntent(taskId: task.id ?? "", taskType: task.type ?? "")) {
-                        TaskListItem(task: task, showChecklistCount: isLarge, font: font)
-                    }
-                    .buttonStyle(.plain)
-                    .padding(.vertical, 6)
+                    TaskListItem(task: task, showChecklistCount: isLarge, font: font).padding(.vertical, 6)
                     if index != last || (tasks.count > maxCount && isLarge) {
                         Rectangle().fill(Color.separator.opacity(0.3)).frame(maxWidth: .infinity, minHeight: 1, maxHeight: 1).padding(.leading, 12)
                     }
