@@ -185,6 +185,7 @@ internal enum Asset {
   }
   internal static let faintGhost = ImageAsset(name: "faint_ghost")
   internal static let faintHeart = ImageAsset(name: "faint_heart")
+  internal static let fallGemSaleArtMini = ImageAsset(name: "fall_gem_sale_art_mini")
   internal static let fallPromoBannerLeft = ImageAsset(name: "fall_promo_banner_left")
   internal static let fallPromoBannerRight = ImageAsset(name: "fall_promo_banner_right")
   internal static let fallPromoInfoLeft = ImageAsset(name: "fall_promo_info_left")

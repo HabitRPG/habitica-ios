@@ -19,9 +19,15 @@ class PromoMenuView: UIView, Themeable {
         }
     }
 
+    var titleImageMaxHeight: CGFloat = 34 {
+        didSet {
+            setNeedsLayout()
+        }
+    }
+
     private let horizontalInset: CGFloat = 17
     private let cardCornerRadius: CGFloat = 20
-    private let buttonHeight: CGFloat = 32
+    private let buttonHeight: CGFloat = 34
     private let cardVerticalPadding: CGFloat = 20
     private let outerVerticalMargin: CGFloat = 8
     private var computedTotalHeight: CGFloat = 168
@@ -95,22 +101,44 @@ class PromoMenuView: UIView, Themeable {
         descriptionView.text = description
     }
 
+    func setDescription(_ description: String, font: UIFont, color: UIColor, lineHeight: CGFloat, kern: CGFloat = 0) {
+        let paragraph = NSMutableParagraphStyle()
+        paragraph.alignment = .center
+        paragraph.minimumLineHeight = lineHeight
+        paragraph.maximumLineHeight = lineHeight
+        descriptionView.isHidden = false
+        descriptionView.font = font
+        descriptionView.attributedText = NSAttributedString(string: description, attributes: [
+            .font: font,
+            .kern: kern,
+            .foregroundColor: color,
+            .paragraphStyle: paragraph
+        ])
+    }
+
     func setDescriptionImage(_ image: UIImage) {
         descriptionImageView.isHidden = false
         descriptionImageView.image = image
     }
 
     func setActionTitle(_ title: String, color: UIColor = .white) {
+        let lineHeight: CGFloat = 20
+        let font = UIFont.systemFont(ofSize: 15, weight: .semibold)
         let paragraph = NSMutableParagraphStyle()
         paragraph.alignment = .center
-        paragraph.minimumLineHeight = 20
-        paragraph.maximumLineHeight = 20
+        paragraph.minimumLineHeight = lineHeight
+        paragraph.maximumLineHeight = lineHeight
         actionButton.setAttributedTitle(NSAttributedString(string: title, attributes: [
-            .font: UIFont.systemFont(ofSize: 15, weight: .semibold),
+            .font: font,
             .kern: -0.23,
             .foregroundColor: color,
+            // counteracts the leading that the fixed line height adds above the text
+            .baselineOffset: (lineHeight - font.lineHeight) / 4,
             .paragraphStyle: paragraph
         ]), for: .normal)
+        actionButton.titleLabel?.textAlignment = .center
+        actionButton.contentVerticalAlignment = .center
+        actionButton.contentHorizontalAlignment = .center
     }
 
     func setCardBackground(color: UIColor) {
@@ -187,8 +215,7 @@ class PromoMenuView: UIView, Themeable {
         if !titleImageView.isHidden, let titleImage = titleImageView.image {
             titleImageView.contentMode = .scaleAspectFit
             let maxWidth: CGFloat = 220
-            let maxHeight: CGFloat = 34
-            let scale = min(maxWidth / titleImage.size.width, maxHeight / titleImage.size.height)
+            let scale = min(maxWidth / titleImage.size.width, titleImageMaxHeight / titleImage.size.height)
             titleImageView.pin.width(titleImage.size.width * scale).height(titleImage.size.height * scale)
         }
         if !descriptionView.isHidden {

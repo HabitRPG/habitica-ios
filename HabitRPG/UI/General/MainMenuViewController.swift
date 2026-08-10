@@ -315,7 +315,9 @@ class MainMenuViewController: BaseTableViewController {
         let pill = UIView(frame: CGRect(x: 17, y: 8, width: pillWidth, height: 40))
         pill.cornerRadius = 20
         pill.clipsToBounds = true
-        if let start = promo.gradientStart, let end = promo.gradientEnd {
+        if let pillBackground = promo.pinnedPillBackground {
+            pill.backgroundColor = pillBackground
+        } else if let start = promo.gradientStart, let end = promo.gradientEnd {
             let gradient = CAGradientLayer()
             gradient.colors = [start.cgColor, end.cgColor]
             gradient.startPoint = CGPoint(x: 0, y: 0.5)
@@ -326,11 +328,12 @@ class MainMenuViewController: BaseTableViewController {
             pill.backgroundColor = promo.backgroundColor
         }
         if let leftArt = promo.pinnedPillLeftArt {
-            let artHeight: CGFloat = 62
+            let artHeight = promo.pinnedPillArtHeight
             let artWidth = artHeight * (leftArt.size.width / max(leftArt.size.height, 1))
             let artView = UIImageView(image: leftArt)
             artView.contentMode = .scaleAspectFit
-            artView.frame = CGRect(x: -12, y: 42 - artHeight, width: artWidth, height: artHeight)
+            let fitsInPill = artHeight <= 40
+            artView.frame = CGRect(x: fitsInPill ? 0 : -12, y: fitsInPill ? 0 : 42 - artHeight, width: artWidth, height: artHeight)
             pill.addSubview(artView)
         }
         if let title = promo.pinnedPillTitle {
@@ -352,8 +355,9 @@ class MainMenuViewController: BaseTableViewController {
             imageView.frame = CGRect(x: (pillWidth - scaledWidth) / 2, y: (40 - scaledHeight) / 2, width: scaledWidth, height: scaledHeight)
             pill.addSubview(imageView)
         }
-        let chevron = UIImageView(image: UIImage(systemName: "chevron.right"))
-        chevron.tintColor = .white
+        let chevronConfig = UIImage.SymbolConfiguration(pointSize: 16, weight: .semibold)
+        let chevron = UIImageView(image: UIImage(systemName: "chevron.right", withConfiguration: chevronConfig))
+        chevron.tintColor = promo.pinnedPillArrowColor
         chevron.contentMode = .scaleAspectFit
         chevron.frame = CGRect(x: pillWidth - 32, y: 12, width: 16, height: 16)
         pill.addSubview(chevron)
@@ -999,7 +1003,7 @@ class MainMenuViewController: BaseTableViewController {
         }
         let lockView = cell.viewWithTag(6) as? UIImageView
         if item?.isDisabled == true {
-            lockView?.image = UIImage(named: ThemeService.shared.theme.isDark ? "lock_dark" : "lock_light")
+            lockView?.image = MainMenuTheme.lockBadgeImage
             lockView?.isHidden = false
         } else {
             lockView?.isHidden = true
@@ -1057,12 +1061,42 @@ enum MainMenuTheme {
         ThemeService.shared.theme.isDark ? UIColor(dark) : UIColor(light)
     }
 
-    static var sheetBackground: UIColor { color("#F6F4FC", "#1A181D") }
-    static var rowTitle: UIColor { ThemeService.shared.theme.isDark ? UIColor.purpleWhite : UIColor.purple100 }
-    static var iconTint: UIColor { ThemeService.shared.theme.isDark ? UIColor.purple500 : UIColor.purple400 }
+    private static func color(_ light: UIColor, _ dark: UIColor) -> UIColor {
+        ThemeService.shared.theme.isDark ? dark : light
+    }
+
+    static var sheetBackground: UIColor { color(.purpleWhite, .black) }
+    static var rowTitle: UIColor { color(.purple100, .purpleWhite) }
+    static var iconTint: UIColor { color(.purple400, .purple500) }
     static var rowSubtitle: UIColor { color("#79659D", "#B7ADCD") }
     static var lockedRowTitle: UIColor { color("#A89BC7", "#7A7387") }
-    static var notificationDot: UIColor { UIColor("#FE6165") }
+    static var notificationDot: UIColor { .red100 }
     static var notificationDotRing: UIColor { sheetBackground }
     static var seasonalBadge: UIColor { UIColor.purple400 }
+    static var lockBadge: UIColor { color(.purple600, .purple100) }
+    static var lockBadgeGlyph: UIColor { color(.purple50, .purple500) }
+
+    private static var lockBadgeCache: [Bool: UIImage] = [:]
+
+    static var lockBadgeImage: UIImage {
+        let isDark = ThemeService.shared.theme.isDark
+        if let cached = lockBadgeCache[isDark] {
+            return cached
+        }
+        let size = CGSize(width: 28, height: 28)
+        let image = UIGraphicsImageRenderer(size: size).image { context in
+            lockBadge.setFill()
+            context.cgContext.fillEllipse(in: CGRect(origin: .zero, size: size))
+            let config = UIImage.SymbolConfiguration(pointSize: 11, weight: .bold)
+            if let glyph = UIImage(systemName: "lock.fill", withConfiguration: config)?
+                .withTintColor(lockBadgeGlyph, renderingMode: .alwaysOriginal) {
+                glyph.draw(in: CGRect(x: (size.width - glyph.size.width) / 2,
+                                      y: (size.height - glyph.size.height) / 2,
+                                      width: glyph.size.width,
+                                      height: glyph.size.height))
+            }
+        }
+        lockBadgeCache[isDark] = image
+        return image
+    }
 }

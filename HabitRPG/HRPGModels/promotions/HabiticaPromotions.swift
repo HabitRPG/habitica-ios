@@ -54,6 +54,9 @@ protocol HabiticaPromotion {
     var pinnedPillTitleImage: UIImage? { get }
     var pinnedPillLeftArt: UIImage? { get }
     var pinnedPillRightArt: UIImage? { get }
+    var pinnedPillBackground: UIColor? { get }
+    var pinnedPillArrowColor: UIColor { get }
+    var pinnedPillArtHeight: CGFloat { get }
     var hasPinnedPill: Bool { get }
 
     func configurePill(_ pillView: PillView)
@@ -68,6 +71,9 @@ extension HabiticaPromotion {
     var pinnedPillTitleImage: UIImage? { return nil }
     var pinnedPillLeftArt: UIImage? { return nil }
     var pinnedPillRightArt: UIImage? { return nil }
+    var pinnedPillBackground: UIColor? { return nil }
+    var pinnedPillArrowColor: UIColor { return .white }
+    var pinnedPillArtHeight: CGFloat { return 62 }
     var hasPinnedPill: Bool { return pinnedPillTitle != nil || pinnedPillTitleImage != nil }
 }
 
@@ -79,8 +85,11 @@ class FallExtraGemsPromotion: HabiticaPromotion {
 
     var identifier = "fall_extra_gems"
     var pinnedPillTitleImage: UIImage? { return Asset.fallPromoTitle.image }
-    var pinnedPillLeftArt: UIImage? { return Asset.fallPromoMenuLeft.image }
+    var pinnedPillLeftArt: UIImage? { return Asset.fallGemSaleArtMini.image }
     var pinnedPillRightArt: UIImage? { return Asset.fallPromoMenuRight.image }
+    var pinnedPillBackground: UIColor? { return backgroundColor }
+    var pinnedPillArrowColor: UIColor { return .yellow500 }
+    var pinnedPillArtHeight: CGFloat { return 40 }
     var promoType: HabiticaPromotionType = .gemsAmount
     var isWebPromo: Bool = false
     var startDate: Date
@@ -145,9 +154,13 @@ class FallExtraGemsPromotion: HabiticaPromotion {
         view.setCardBackground(color: backgroundColor)
         view.leftImageView.image = Asset.fallPromoMenuLeft.image
         view.rightImageView.image = Asset.fallPromoMenuRight.image
+        view.titleImageMaxHeight = 18
         view.setTitleImage(Asset.fallPromoTitle.image)
-        view.setDescriptionImage(Asset.fallPromoMenuDescription.image)
-        view.actionButton.backgroundColor = UIColor.white.withAlphaComponent(0.22)
+        view.setDescription(L10n.FallPromo.menuDescription,
+                            font: .systemFont(ofSize: 12, weight: .medium),
+                            color: .yellow500,
+                            lineHeight: 16)
+        view.actionButton.backgroundColor = .black
         view.setActionTitle(L10n.viewOffer)
     }
     
