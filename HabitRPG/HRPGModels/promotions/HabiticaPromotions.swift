@@ -154,7 +154,7 @@ class FallExtraGemsPromotion: HabiticaPromotion {
         view.setCardBackground(color: backgroundColor)
         view.leftImageView.image = Asset.fallPromoMenuLeft.image
         view.rightImageView.image = Asset.fallPromoMenuRight.image
-        view.titleImageMaxHeight = 18
+        view.titleImageMaxHeight = 14
         view.setTitleImage(Asset.fallPromoTitle.image)
         view.setDescription(L10n.FallPromo.menuDescription,
                             font: .systemFont(ofSize: 12, weight: .medium),

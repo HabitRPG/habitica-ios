@@ -327,14 +327,17 @@ class MainMenuViewController: BaseTableViewController {
         } else {
             pill.backgroundColor = promo.backgroundColor
         }
+        var artTrailing: CGFloat = 0
         if let leftArt = promo.pinnedPillLeftArt {
             let artHeight = promo.pinnedPillArtHeight
             let artWidth = artHeight * (leftArt.size.width / max(leftArt.size.height, 1))
             let artView = UIImageView(image: leftArt)
             artView.contentMode = .scaleAspectFit
             let fitsInPill = artHeight <= 40
-            artView.frame = CGRect(x: fitsInPill ? 0 : -12, y: fitsInPill ? 0 : 42 - artHeight, width: artWidth, height: artHeight)
+            let artX: CGFloat = fitsInPill ? 0 : -12
+            artView.frame = CGRect(x: artX, y: fitsInPill ? 0 : 42 - artHeight, width: artWidth, height: artHeight)
             pill.addSubview(artView)
+            artTrailing = artX + artWidth
         }
         if let title = promo.pinnedPillTitle {
             let label = UILabel()
@@ -346,16 +349,18 @@ class MainMenuViewController: BaseTableViewController {
             pill.addSubview(label)
         } else if let image = promo.pinnedPillTitleImage {
             let maxW = pillWidth - 108
-            let maxH: CGFloat = 18
+            let maxH: CGFloat = 14
             let scale = min(maxW / image.size.width, maxH / image.size.height)
             let scaledWidth = image.size.width * scale
             let scaledHeight = image.size.height * scale
             let imageView = UIImageView(image: image)
             imageView.contentMode = .scaleAspectFit
-            imageView.frame = CGRect(x: (pillWidth - scaledWidth) / 2, y: (40 - scaledHeight) / 2, width: scaledWidth, height: scaledHeight)
+            let centeredX = (pillWidth - scaledWidth) / 2
+            let titleX = artTrailing > 0 ? min(artTrailing + 16, centeredX) : centeredX
+            imageView.frame = CGRect(x: titleX, y: (40 - scaledHeight) / 2, width: scaledWidth, height: scaledHeight)
             pill.addSubview(imageView)
         }
-        let chevronConfig = UIImage.SymbolConfiguration(pointSize: 16, weight: .semibold)
+        let chevronConfig = UIImage.SymbolConfiguration(pointSize: 16, weight: .bold)
         let chevron = UIImageView(image: UIImage(systemName: "chevron.right", withConfiguration: chevronConfig))
         chevron.tintColor = promo.pinnedPillArrowColor
         chevron.contentMode = .scaleAspectFit
@@ -1004,6 +1009,7 @@ class MainMenuViewController: BaseTableViewController {
         let lockView = cell.viewWithTag(6) as? UIImageView
         if item?.isDisabled == true {
             lockView?.image = MainMenuTheme.lockBadgeImage
+            lockView?.contentMode = .center
             lockView?.isHidden = false
         } else {
             lockView?.isHidden = true
@@ -1083,18 +1089,18 @@ enum MainMenuTheme {
         if let cached = lockBadgeCache[isDark] {
             return cached
         }
-        let size = CGSize(width: 28, height: 28)
+        let size = CGSize(width: 24, height: 24)
+        let glyphHeight: CGFloat = 10
         let image = UIGraphicsImageRenderer(size: size).image { context in
             lockBadge.setFill()
             context.cgContext.fillEllipse(in: CGRect(origin: .zero, size: size))
-            let config = UIImage.SymbolConfiguration(pointSize: 11, weight: .bold)
-            if let glyph = UIImage(systemName: "lock.fill", withConfiguration: config)?
-                .withTintColor(lockBadgeGlyph, renderingMode: .alwaysOriginal) {
-                glyph.draw(in: CGRect(x: (size.width - glyph.size.width) / 2,
-                                      y: (size.height - glyph.size.height) / 2,
-                                      width: glyph.size.width,
-                                      height: glyph.size.height))
-            }
+            let source = Asset.menuLockIcon.image
+            let glyph = source.withRenderingMode(.alwaysTemplate).withTintColor(lockBadgeGlyph, renderingMode: .alwaysOriginal)
+            let glyphWidth = glyphHeight * (source.size.width / max(source.size.height, 1))
+            glyph.draw(in: CGRect(x: (size.width - glyphWidth) / 2,
+                                  y: (size.height - glyphHeight) / 2,
+                                  width: glyphWidth,
+                                  height: glyphHeight))
         }
         lockBadgeCache[isDark] = image
         return image

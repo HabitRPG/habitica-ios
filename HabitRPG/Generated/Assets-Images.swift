@@ -267,6 +267,7 @@ internal enum Asset {
   internal static let menuGems = ImageAsset(name: "menu_gems")
   internal static let menuHelp = ImageAsset(name: "menu_help")
   internal static let menuItems = ImageAsset(name: "menu_items")
+  internal static let menuLockIcon = ImageAsset(name: "menu_lock_icon")
   internal static let menuMarket = ImageAsset(name: "menu_market")
   internal static let menuNews = ImageAsset(name: "menu_news")
   internal static let menuParty = ImageAsset(name: "menu_party")
