@@ -2096,6 +2096,17 @@ public enum L10n {
     public static var usernameAlreadyTaken: String { return L10n.tr("Mainstrings", "errors.username_already_taken") }
   }
 
+  public enum ExtraGems {
+    /// Between %@ and %@, simply purchase any Gem bundle like usual and your account will be credited with the promotional amount of Gems. More Gems to spend, share, or save for any future releases!
+    public static func infoInstructions(_ p1: String, _ p2: String) -> String {
+      return L10n.tr("Mainstrings", "extra_gems.info_instructions", p1, p2)
+    }
+    /// This promotion only applies during the limited time event. This event starts on %@ (12:00 UTC) and will end %@ (00:00 UTC). The promo offer is only available when buying Gems for yourself.
+    public static func infoLimitations(_ p1: String, _ p2: String) -> String {
+      return L10n.tr("Mainstrings", "extra_gems.info_limitations", p1, p2)
+    }
+  }
+
   public enum Faint {
     /// Refill Health & Try Again
     public static var button: String { return L10n.tr("Mainstrings", "faint.button") }
@@ -2128,19 +2139,13 @@ public enum L10n {
   }
 
   public enum FallPromo {
-    /// Between %@ and %@, simply purchase any Gem bundle like usual and your account will be credited with the promotional amount of Gems. More Gems to spend, share, or save for any future releases!
-    public static func infoInstructions(_ p1: String, _ p2: String) -> String {
-      return L10n.tr("Mainstrings", "fall_promo.info_instructions", p1, p2)
-    }
-    /// The Fall Gala is in full swing so we thought it was the perfect time to have a Gem Sale! Now you will get more Gems with each purchase than ever before.
+    /// Get more Gems with each purchase for a limited time! Fall into one of our best deals on Gems before it’s gone.
     public static var infoPrompt: String { return L10n.tr("Mainstrings", "fall_promo.info_prompt") }
   }
 
-  public enum GemsPromo {
-    /// This promotion only applies during the limited time event. This event starts on %@ (12:00 UTC) and will end %@ (00:00 UTC). The promo offer is only available when buying Gems for yourself.
-    public static func infoLimitations(_ p1: String, _ p2: String) -> String {
-      return L10n.tr("Mainstrings", "gems_promo.info_limitations", p1, p2)
-    }
+  public enum FlashPromo {
+    /// Get more Gems with each purchase for a limited time. Take advantage of our best deal on Gems before it’s gone!
+    public static var infoPrompt: String { return L10n.tr("Mainstrings", "flash_promo.info_prompt") }
   }
 
   public enum GiftOneGetOneData {
@@ -2675,6 +2680,8 @@ public enum L10n {
   public enum Settings {
     /// Account Info
     public static var accountInfo: String { return L10n.tr("Mainstrings", "settings.account_info") }
+    /// Active Promotion
+    public static var activePromotion: String { return L10n.tr("Mainstrings", "settings.active_promotion") }
     /// Add Email
     public static var addEmail: String { return L10n.tr("Mainstrings", "settings.add_email") }
     /// Add Email and Password authentication
@@ -3082,12 +3089,13 @@ public enum L10n {
   }
 
   public enum SpookyPromo {
-    /// Between %@ and %@, simply purchase any Gem bundle like usual and your account will be credited with the promotional amount of Gems. More Gems to spend, share, or save for any future releases!
-    public static func infoInstructions(_ p1: String, _ p2: String) -> String {
-      return L10n.tr("Mainstrings", "spooky_promo.info_instructions", p1, p2)
-    }
-    /// The Gem Sale is back to haunt the very end of this year’s Fall Gala! This is one last chance to get more Gems than ever, so stock up while it lasts!
+    /// Get more Gems with each purchase for a limited time! Put on your best costume and claim one of our best deals on Gems before it’s gone!
     public static var infoPrompt: String { return L10n.tr("Mainstrings", "spooky_promo.info_prompt") }
+  }
+
+  public enum SpringPromo {
+    /// Get more Gems with each purchase for a limited time. Spring onto of our best deals on Gems before it’s gone!
+    public static var infoPrompt: String { return L10n.tr("Mainstrings", "spring_promo.info_prompt") }
   }
 
   public enum Stable {
@@ -3223,6 +3231,11 @@ public enum L10n {
     public static var subscribersReceive: String { return L10n.tr("Mainstrings", "subscription.subscribers_receive") }
     /// Thanks for subscribing
     public static var thanksForSubscribing: String { return L10n.tr("Mainstrings", "subscription.thanks_for_subscribing") }
+  }
+
+  public enum SummerPromo {
+    /// Get more Gems with each purchase for a limited time. Spend some time in the sun and enjoy one of our best deals on Gems before it’s gone!
+    public static var infoPrompt: String { return L10n.tr("Mainstrings", "summer_promo.info_prompt") }
   }
 
   public enum Support {
@@ -3716,6 +3729,11 @@ public enum L10n {
     public static var todos1: String { return L10n.tr("Mainstrings", "tutorials.todos_1") }
     /// If your To Do has to be done by a certain time, set a due date. Looks like you can check one off — go ahead!
     public static var todos2: String { return L10n.tr("Mainstrings", "tutorials.todos_2") }
+  }
+
+  public enum WinterPromo {
+    /// Get more Gems with each purchase for a limited time! Bundle up and snatch one of our best deals on Gems before it’s gone.
+    public static var infoPrompt: String { return L10n.tr("Mainstrings", "winter_promo.info_prompt") }
   }
 
   public enum WorldBoss {

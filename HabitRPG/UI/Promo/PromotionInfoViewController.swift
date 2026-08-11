@@ -96,6 +96,8 @@ class PromotionInfoViewController: BaseUIViewController {
         limitationsTitleLabel.textColor = theme.secondaryTextColor
         instructionsDescriptionLabel.textColor = theme.quadTextColor
         limitationsDescriptionLabel.textColor = theme.quadTextColor
+        view.backgroundColor = .gray5
+        promptButton.cornerRadius = promptButton.frame.height / 2
     }
     
     @IBAction func promptButtonTapped(_ sender: Any) {

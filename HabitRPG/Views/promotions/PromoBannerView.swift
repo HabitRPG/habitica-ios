@@ -23,7 +23,7 @@ class PromoBannerView: UIView {
     let descriptionImageView = UIImageView()
     let descriptionLabel: UILabel = {
         let label = UILabel()
-        label.font = UIFontMetrics.default.scaledSystemFont(ofSize: 10, ofWeight: .semibold)
+        label.font = UIFontMetrics.default.scaledSystemFont(ofSize: 14, ofWeight: .semibold)
         label.numberOfLines = 0
         label.textAlignment = .center
         return label
@@ -113,7 +113,7 @@ class PromoBannerView: UIView {
             upperEdge = titleImageView.edge.bottom
         }
         if !descriptionLabel.isHidden {
-            descriptionLabel.pin.top(to: upperEdge).marginTop(12).start(60).end(60).sizeToFit(.width)
+            descriptionLabel.pin.top(to: upperEdge).marginTop(8).start(60).end(60).sizeToFit(.width)
             upperEdge = descriptionLabel.edge.bottom
         }
         if !descriptionImageView.isHidden {

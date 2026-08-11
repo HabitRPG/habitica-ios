@@ -1,17 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "42_gems.png",
+      "filename" : "42 Gem - Gems.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "42_gems@2x.png",
+      "filename" : "42 Gem - Gems@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "42_gems@3x.png",
+      "filename" : "42 Gem - Gems@3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }

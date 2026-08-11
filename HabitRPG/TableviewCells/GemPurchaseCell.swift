@@ -10,7 +10,9 @@ import UIKit
 
 class GemPurchaseCell: UICollectionViewCell {
     
+    @IBOutlet weak var circleView: UIView!
     @IBOutlet weak var imageView: UIImageView!
+    @IBOutlet weak var sparkleView: UIImageView!
     @IBOutlet weak var amountLabel: UILabel!
     @IBOutlet weak var leftDecorationImageView: UIImageView!
     @IBOutlet weak var rightDecorationImageView: UIImageView!
@@ -18,6 +20,12 @@ class GemPurchaseCell: UICollectionViewCell {
     @IBOutlet weak var priceLabel: UILabel!
     @IBOutlet weak var priceLabelBackground: UIView!
     @IBOutlet weak var loadingIndicator: UIActivityIndicatorView!
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        circleView.backgroundColor = .purple200
+        circleView.cornerRadius = circleView.frame.size.height / 2
+    }
     
     func setGemAmount(_ amount: Int) {
         let attributedString = NSMutableAttributedString(string: "\(amount) GEMS")

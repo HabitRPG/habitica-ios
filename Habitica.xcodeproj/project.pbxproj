@@ -406,6 +406,17 @@
 		29C1360424EBD66900DBC6B3 /* UIWindow+VisibleController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29C1360324EBD66900DBC6B3 /* UIWindow+VisibleController.swift */; };
 		29C1360624EBD7E000DBC6B3 /* FeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29C1360524EBD7E000DBC6B3 /* FeedViewController.swift */; };
 		29C1360824EE917F00DBC6B3 /* UITableView-Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29C1360724EE917F00DBC6B3 /* UITableView-Extensions.swift */; };
+		29C14465302B424A007B2EB3 /* GiftOneGetOnePromotion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29C14464302B424A007B2EB3 /* GiftOneGetOnePromotion.swift */; };
+		29C14467302B424F007B2EB3 /* Survey2021Promotion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29C14466302B424F007B2EB3 /* Survey2021Promotion.swift */; };
+		29C14469302B4258007B2EB3 /* SpookyExtraGemsPromotion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29C14468302B4258007B2EB3 /* SpookyExtraGemsPromotion.swift */; };
+		29C1446B302B4260007B2EB3 /* ExtraGemsPromotion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29C1446A302B4260007B2EB3 /* ExtraGemsPromotion.swift */; };
+		29C1446D302B426A007B2EB3 /* HabiticaPromotionType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29C1446C302B426A007B2EB3 /* HabiticaPromotionType.swift */; };
+		29C1446F302B4273007B2EB3 /* HabiticaWebPromotion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29C1446E302B4273007B2EB3 /* HabiticaWebPromotion.swift */; };
+		29C14471302B443A007B2EB3 /* SpringExtraGemsPromotion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29C14470302B443A007B2EB3 /* SpringExtraGemsPromotion.swift */; };
+		29C14473302B444D007B2EB3 /* SummerExtraGemsPromotion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29C14472302B444D007B2EB3 /* SummerExtraGemsPromotion.swift */; };
+		29C14475302B44C3007B2EB3 /* WinterExtraGemsPromotion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29C14474302B44C3007B2EB3 /* WinterExtraGemsPromotion.swift */; };
+		29C14477302B44D9007B2EB3 /* FlashExtraGemsPromotion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29C14476302B44D9007B2EB3 /* FlashExtraGemsPromotion.swift */; };
+		29C14479302B45A1007B2EB3 /* FallExtraGemsPromotion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29C14478302B45A1007B2EB3 /* FallExtraGemsPromotion.swift */; };
 		29C1B6AE205952E40001D3EF /* Tasks.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 29C1B6B0205952E40001D3EF /* Tasks.storyboard */; };
 		29C38C8524A2466400F219A1 /* AdventureGuidePromoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29C38C8424A2466400F219A1 /* AdventureGuidePromoView.swift */; };
 		29C38C8724A256F800F219A1 /* AdventureGuideViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29C38C8624A256F800F219A1 /* AdventureGuideViewController.swift */; };
@@ -1137,6 +1148,17 @@
 		29C1360324EBD66900DBC6B3 /* UIWindow+VisibleController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIWindow+VisibleController.swift"; sourceTree = "<group>"; };
 		29C1360524EBD7E000DBC6B3 /* FeedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewController.swift; sourceTree = "<group>"; };
 		29C1360724EE917F00DBC6B3 /* UITableView-Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView-Extensions.swift"; sourceTree = "<group>"; };
+		29C14464302B424A007B2EB3 /* GiftOneGetOnePromotion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GiftOneGetOnePromotion.swift; sourceTree = "<group>"; };
+		29C14466302B424F007B2EB3 /* Survey2021Promotion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Survey2021Promotion.swift; sourceTree = "<group>"; };
+		29C14468302B4258007B2EB3 /* SpookyExtraGemsPromotion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpookyExtraGemsPromotion.swift; sourceTree = "<group>"; };
+		29C1446A302B4260007B2EB3 /* ExtraGemsPromotion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtraGemsPromotion.swift; sourceTree = "<group>"; };
+		29C1446C302B426A007B2EB3 /* HabiticaPromotionType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabiticaPromotionType.swift; sourceTree = "<group>"; };
+		29C1446E302B4273007B2EB3 /* HabiticaWebPromotion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabiticaWebPromotion.swift; sourceTree = "<group>"; };
+		29C14470302B443A007B2EB3 /* SpringExtraGemsPromotion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpringExtraGemsPromotion.swift; sourceTree = "<group>"; };
+		29C14472302B444D007B2EB3 /* SummerExtraGemsPromotion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SummerExtraGemsPromotion.swift; sourceTree = "<group>"; };
+		29C14474302B44C3007B2EB3 /* WinterExtraGemsPromotion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WinterExtraGemsPromotion.swift; sourceTree = "<group>"; };
+		29C14476302B44D9007B2EB3 /* FlashExtraGemsPromotion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlashExtraGemsPromotion.swift; sourceTree = "<group>"; };
+		29C14478302B45A1007B2EB3 /* FallExtraGemsPromotion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FallExtraGemsPromotion.swift; sourceTree = "<group>"; };
 		29C1B6AF205952E40001D3EF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Tasks.storyboard; sourceTree = "<group>"; };
 		29C38C8424A2466400F219A1 /* AdventureGuidePromoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdventureGuidePromoView.swift; sourceTree = "<group>"; };
 		29C38C8624A256F800F219A1 /* AdventureGuideViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdventureGuideViewController.swift; sourceTree = "<group>"; };
@@ -1568,6 +1590,17 @@
 			isa = PBXGroup;
 			children = (
 				29066CF324FE62E700A266EE /* HabiticaPromotions.swift */,
+				29C1446E302B4273007B2EB3 /* HabiticaWebPromotion.swift */,
+				29C1446C302B426A007B2EB3 /* HabiticaPromotionType.swift */,
+				29C1446A302B4260007B2EB3 /* ExtraGemsPromotion.swift */,
+				29C14478302B45A1007B2EB3 /* FallExtraGemsPromotion.swift */,
+				29C14470302B443A007B2EB3 /* SpringExtraGemsPromotion.swift */,
+				29C14472302B444D007B2EB3 /* SummerExtraGemsPromotion.swift */,
+				29C14468302B4258007B2EB3 /* SpookyExtraGemsPromotion.swift */,
+				29C14476302B44D9007B2EB3 /* FlashExtraGemsPromotion.swift */,
+				29C14474302B44C3007B2EB3 /* WinterExtraGemsPromotion.swift */,
+				29C14466302B424F007B2EB3 /* Survey2021Promotion.swift */,
+				29C14464302B424A007B2EB3 /* GiftOneGetOnePromotion.swift */,
 			);
 			path = promotions;
 			sourceTree = "<group>";
@@ -3514,6 +3547,7 @@
 				29D50AD125F769520009CF55 /* Alignment-Extensions.swift in Sources */,
 				29084B3326CF97F500AD9966 /* ShopViewController.swift in Sources */,
 				498E4CFF1FA17C1A006933FF /* ChallengeCategoriesTableViewCell.swift in Sources */,
+				29C1446D302B426A007B2EB3 /* HabiticaPromotionType.swift in Sources */,
 				2909D4242722C22500FF2B29 /* InitialScreens.swift in Sources */,
 				29F4671C2E8A9DC1009643C5 /* ViewModel.swift in Sources */,
 				297517B61F30EBFC00B5BCB9 /* TaskSetupViewController.swift in Sources */,
@@ -3576,6 +3610,7 @@
 				299BD63A1F557FE700E22935 /* AuthenticationManager.swift in Sources */,
 				29BD3EB527591FBE003AD251 /* EditingFormViewController.swift in Sources */,
 				291448622084ED6F00F3A6B5 /* StableDetailViewController.swift in Sources */,
+				29C1446F302B4273007B2EB3 /* HabiticaWebPromotion.swift in Sources */,
 				295611162056ED8000D9711A /* ContentRepository.swift in Sources */,
 				29ED1AFB1F338E5D005A3895 /* SetupCustomizationRepository.swift in Sources */,
 				29E1631F200F62CB00685640 /* GroupChatViewController.swift in Sources */,
@@ -3629,6 +3664,7 @@
 				2973E2662ED5F566000C2E0F /* FormRow.swift in Sources */,
 				29FC5A6920403011008E88C8 /* ThemeService.swift in Sources */,
 				29255E491F3E1B0F0094A3E3 /* ToastView.swift in Sources */,
+				29C14469302B4258007B2EB3 /* SpookyExtraGemsPromotion.swift in Sources */,
 				290C3017206A963D0066AF5B /* MainMenuViewController.swift in Sources */,
 				2973E25C2ED5F52C000C2E0F /* DailySchedulingView.swift in Sources */,
 				D9BB45611E71CD850002AE2E /* DailyTableViewCell.swift in Sources */,
@@ -3642,6 +3678,7 @@
 				29DF933D2EC640860047801F /* GamifiedBottomSheet.swift in Sources */,
 				49E6F57D1FF9A2AE0062C8B2 /* DoubleButtonTableViewCell.swift in Sources */,
 				D9BB45631E71CE910002AE2E /* HabitTableViewCell.swift in Sources */,
+				29C14471302B443A007B2EB3 /* SpringExtraGemsPromotion.swift in Sources */,
 				2914488E2089EC5C00F3A6B5 /* AvatarOverviewViewController.swift in Sources */,
 				29CAC3CD2A3C7C61006DF74D /* PartyInviteViewController.swift in Sources */,
 				29C1360224EBD12E00DBC6B3 /* AbbreviatedNumberLabel.swift in Sources */,
@@ -3711,6 +3748,7 @@
 				2953D84228B6564A00DC456E /* ArmoireViewController.swift in Sources */,
 				29FC88602018DB64002B3D3F /* WorldBossDescriptionView.swift in Sources */,
 				29DBDE4A274BE745008F6777 /* AccountSettingsViewController.swift in Sources */,
+				29C1446B302B4260007B2EB3 /* ExtraGemsPromotion.swift in Sources */,
 				49391ED120C9C898002B2BB5 /* HabitTableViewController.swift in Sources */,
 				29028C3E203701B900B7F704 /* ChatTableViewCell.swift in Sources */,
 				29066CF424FE62E700A266EE /* HabiticaPromotions.swift in Sources */,
@@ -3742,9 +3780,11 @@
 				2909D4222722C20A00FF2B29 /* Servers.swift in Sources */,
 				49FA9FF720DC47AD0086C478 /* TaskTableViewController.swift in Sources */,
 				299F93F1246D9C49008DB702 /* PaddedTextField.swift in Sources */,
+				29C14479302B45A1007B2EB3 /* FallExtraGemsPromotion.swift in Sources */,
 				C897F63C218CCF51002907C2 /* RouterHandler.swift in Sources */,
 				2910EFCA2C16EC8700D6D1E8 /* OldAvatarDetailViewDataSource.swift in Sources */,
 				29C9BDDD2E9EA21000FC4FCA /* HabiticaButtonUI.swift in Sources */,
+				29C14473302B444D007B2EB3 /* SummerExtraGemsPromotion.swift in Sources */,
 				2956FA4E2F605E3800C36330 /* ChallengeFormPrizePage.swift in Sources */,
 				D9525F9D1E64739900C529B8 /* PaddedView.swift in Sources */,
 				2914488C2089E2D300F3A6B5 /* AvatarOverviewItemView.swift in Sources */,
@@ -3762,10 +3802,12 @@
 				29BEEB2F253EFA7300D456F8 /* MaintenanceViewController.swift in Sources */,
 				2942FAEF26777E00003F6500 /* HabiticaLogger.swift in Sources */,
 				D9BB45DA1E79A02C0002AE2E /* LabeledCheckboxView.swift in Sources */,
+				29C14465302B424A007B2EB3 /* GiftOneGetOnePromotion.swift in Sources */,
 				29A1B9B91F6ACC2F0055CF57 /* UIAlertAction-Extensions.swift in Sources */,
 				C85A68AF2527812400EED0D6 /* SpellTabBarController.swift in Sources */,
 				29FC884C2010CC8A002B3D3F /* SocialRepository.swift in Sources */,
 				498E4D031FA17C31006933FF /* ChallengeDescriptionTableViewCell.swift in Sources */,
+				29C14467302B424F007B2EB3 /* Survey2021Promotion.swift in Sources */,
 				D9BB455B1E71C52F0002AE2E /* TaskTableViewCell.swift in Sources */,
 				291E95B720988B85006EE585 /* PartyDetailViewController.swift in Sources */,
 				2956FA562F605E5200C36330 /* ChallengeFormTagsPage.swift in Sources */,
@@ -3783,6 +3825,7 @@
 				2956FA502F605E3F00C36330 /* ChallengeFormField.swift in Sources */,
 				29DE29E42F58421C0063A2CF /* ChallengesFormViewController.swift in Sources */,
 				29706C9627D64547006EC139 /* HabiticaApplication.swift in Sources */,
+				29C14475302B44C3007B2EB3 /* WinterExtraGemsPromotion.swift in Sources */,
 				29B3FEB11F9A37E3000B12CF /* BaseSettingsViewController.swift in Sources */,
 				290B62A4207F818E007287C4 /* ItemsViewDataSource.swift in Sources */,
 				D9CE90451E4CDD6200702578 /* PillView.swift in Sources */,
@@ -3854,6 +3897,7 @@
 				299CE6312CC28D4400ABA85C /* AppDelege+Maintenance.swift in Sources */,
 				29F89F1A1F47882A004E5B84 /* String-Extensions.swift in Sources */,
 				29A0318828D9F5EC00F3A1EF /* ChecklistFormView.swift in Sources */,
+				29C14477302B44D9007B2EB3 /* FlashExtraGemsPromotion.swift in Sources */,
 				298119AF1F5040DA00F9FB39 /* QuestDetailView.swift in Sources */,
 				29DC5ACB20A20A6C00993400 /* QuestTitleView.swift in Sources */,
 				299FB2AA2084BA6200422522 /* StableOverviewCell.swift in Sources */,

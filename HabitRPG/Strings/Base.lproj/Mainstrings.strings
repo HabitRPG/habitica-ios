@@ -305,6 +305,7 @@
 "settings.select_class" = "Select Class";
 "settings.app_icon" = "App Icon";
 "settings.server" = "Server";
+"settings.active_promotion" = "Active Promotion";
 "settings.fix_values_description" = "If you’ve encountered a bug or made a mistake that unfairly changed your character, you can manually correct those values here.";
 "settings.change_display_name" = "Change Display Name";
 "settings.change_photo_url" = "Change Photo URL";
@@ -1300,15 +1301,18 @@
 "view_gem_bundles" = "View Gem Bundles";
 "promo_info_instructions_title" = "How it works";
 "promo_info_limitations_title" = "Limitations";
+"spring_promo.info_prompt" = "Get more Gems with each purchase for a limited time. Spring onto of our best deals on Gems before it’s gone!";
+"summer_promo.info_prompt" = "Get more Gems with each purchase for a limited time. Spend some time in the sun and enjoy one of our best deals on Gems before it’s gone!";
+"fall_promo.info_prompt" = "Get more Gems with each purchase for a limited time! Fall into one of our best deals on Gems before it’s gone.";
+"spooky_promo.info_prompt" = "Get more Gems with each purchase for a limited time! Put on your best costume and claim one of our best deals on Gems before it’s gone!";
+"winter_promo.info_prompt" = "Get more Gems with each purchase for a limited time! Bundle up and snatch one of our best deals on Gems before it’s gone.";
+"flash_promo.info_prompt" = "Get more Gems with each purchase for a limited time. Take advantage of our best deal on Gems before it’s gone!";
 
-"fall_promo.info_prompt" = "The Fall Gala is in full swing so we thought it was the perfect time to have a Gem Sale! Now you will get more Gems with each purchase than ever before.";
-"fall_promo.info_instructions" = "Between %@ and %@, simply purchase any Gem bundle like usual and your account will be credited with the promotional amount of Gems. More Gems to spend, share, or save for any future releases!";
+"extra_gems.info_instructions" = "Between %@ and %@, simply purchase any Gem bundle like usual and your account will be credited with the promotional amount of Gems. More Gems to spend, share, or save for any future releases!";
 
-"spooky_promo.info_prompt" = "The Gem Sale is back to haunt the very end of this year’s Fall Gala! This is one last chance to get more Gems than ever, so stock up while it lasts!";
-"spooky_promo.info_instructions" = "Between %@ and %@, simply purchase any Gem bundle like usual and your account will be credited with the promotional amount of Gems. More Gems to spend, share, or save for any future releases!";
-"gems_promo.info_limitations" = "This promotion only applies during the limited time event. This event starts on %@ (12:00 UTC) and will end %@ (00:00 UTC). The promo offer is only available when buying Gems for yourself.";
-"survey.title" = "Player Survey";
-"survey.description" = "Fill out this 5 minute survey to help us grow and receive an Achievement!";
+"extra_gems.info_limitations" = "This promotion only applies during the limited time event. This event starts on %@ (12:00 UTC) and will end %@ (00:00 UTC). The promo offer is only available when buying Gems for yourself.";
+"survey.title" = "Player survey";
+"survey.description" = "Fill out this 5 minute survey to help us grow and receive an achievement!";
 "survey.button" = "Go to Survey";
 "suggest_pet_hatch_missing_egg" = "You still need a %@ Egg to hatch this pet";
 "suggest_pet_hatch_missing_potion" = "You still need a %@ Potion to hatch this pet";

@@ -28,6 +28,7 @@ class GemViewController: BaseCollectionViewController, UICollectionViewDelegateF
     private var activePromo: HabiticaPromotion?
     
     private let stretchView = UIView()
+    private let stretchImageView = UIImageView(image: Asset.gemPurchaseFooterBottom.image)
     
     var isSubscribed = false
     
@@ -49,9 +50,14 @@ class GemViewController: BaseCollectionViewController, UICollectionViewDelegateF
         HabiticaAnalytics.shared.logNavigationEvent("navigated gem screen")
         
         activePromo = configRepository.activePromotion()
+        if activePromo != nil {
+            collectionView.backgroundColor = .gray5
+        }
         
         collectionView.insertSubview(stretchView, at: 0)
-        stretchView.backgroundColor = .purple400
+        stretchView.backgroundColor = .yellow100
+        stretchView.addSubview(stretchImageView)
+        stretchImageView.isHidden = true
     }
 
     override func viewDidLayoutSubviews() {
@@ -102,6 +108,10 @@ class GemViewController: BaseCollectionViewController, UICollectionViewDelegateF
         if contentHeight > 0 {
             let bottomSize = max(0, scrollView.contentOffset.y - (contentHeight - scrollView.frame.size.height))
             stretchView.frame = CGRect(x: 0, y: contentHeight, width: scrollView.frame.size.width, height: bottomSize)
+            let scaleFactor = stretchView.frame.width / (stretchImageView.image?.size.width ?? stretchView.frame.width)
+            let imageHeight = (stretchImageView.image?.size.height ?? 0) * scaleFactor
+            stretchImageView.frame = CGRect(x: 0, y: stretchView.frame.height - imageHeight, width: stretchView.frame.width, height: imageHeight)
+            stretchImageView.isHidden = false
         }
         super.scrollViewDidScroll(scrollView)
     }
@@ -164,43 +174,19 @@ class GemViewController: BaseCollectionViewController, UICollectionViewDelegateF
         if kind == UICollectionView.elementKindSectionFooter {
             if let label = view.viewWithTag(2) as? UILabel {
                 label.text = L10n.giftGemsPrompt
-                label.textColor = ThemeService.shared.theme.quadTextColor
             }
             if let promoView = view.viewWithTag(3) as? SubscriptionPromoView {
                 promoView.onButtonTapped = { [weak self] in self?.performSegue(withIdentifier: StoryboardSegue.Main.subscriptionSegue.rawValue, sender: self) }
             }
             if let label = view.viewWithTag(4) as? UILabel {
                 label.text = L10n.gemsSupportDevelopers
-                label.textColor = .white
             }
             if let view = view.viewWithTag(5) {
-                view.backgroundColor = .clear
+                if activePromo != nil {
+                    view.backgroundColor = .gray10
+                }
             }
         } else if kind == UICollectionView.elementKindSectionHeader {
-            if let headerImage = view.viewWithTag(1) as? UIImageView {
-                if ThemeService.shared.theme.isDark {
-                    headerImage.image = Asset.gemPurchaseHeaderDark.image
-                } else {
-                    headerImage.image = Asset.gemPurchaseHeader.image
-                }
-            }
-            
-            if let headerLabel = view.viewWithTag(3) as? UILabel {
-                if ThemeService.shared.theme.isDark {
-                    headerLabel.textColor = ThemeService.shared.theme.ternaryTextColor
-                } else {
-                    headerLabel.textColor = ThemeService.shared.theme.backgroundTintColor
-                }
-            }
-            
-            if let listLabel = view.viewWithTag(4) as? UILabel {
-                if ThemeService.shared.theme.isDark {
-                    listLabel.textColor = ThemeService.shared.theme.ternaryTextColor
-                } else {
-                    listLabel.textColor = ThemeService.shared.theme.backgroundTintColor
-                }
-            }
-            
             if let stackView = view.viewWithTag(6) as? UIStackView {
                 stackView.layoutMargins = UIEdgeInsets(top: 0, left: 20, bottom: 0, right: 20)
                 stackView.isLayoutMarginsRelativeArrangement = true
@@ -253,6 +239,9 @@ class GemViewController: BaseCollectionViewController, UICollectionViewDelegateF
             self?.perform(segue: StoryboardSegue.Main.giftGemsSegue)
         }
         alertController.show()
+    }
+    @IBAction func viewSubscriptionsTapped(_ sender: Any) {
+        perform(segue: StoryboardSegue.Main.subscriptionSegue)
     }
     
     @IBAction func unwindToList(_ segue: UIStoryboardSegue) {
