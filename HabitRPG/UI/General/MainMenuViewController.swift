@@ -351,7 +351,6 @@ class MainMenuViewController: BaseTableViewController {
                 .font: titleFont,
                 .kern: -0.43,
                 .foregroundColor: UIColor.white,
-                // counteracts the leading that the fixed line height adds above the text
                 .baselineOffset: (titleLineHeight - titleFont.lineHeight) / 4,
                 .paragraphStyle: paragraph
             ])
@@ -379,7 +378,6 @@ class MainMenuViewController: BaseTableViewController {
         pill.addSubview(chevron)
         pill.isUserInteractionEnabled = true
         pill.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(pinnedPillTapped)))
-        // 12pt above the pill; the 3pt below plus section 0's 9pt header match it
         let container = UIView(frame: CGRect(x: 0, y: 0, width: width, height: 55))
         container.addSubview(pill)
         tableView.tableHeaderView = container

@@ -103,7 +103,6 @@ class PromoMenuView: UIView, Themeable {
             .font: font,
             .kern: kern,
             .foregroundColor: color,
-            // counteracts the leading that the fixed line height adds above the text
             .baselineOffset: (lineHeight - font.lineHeight) / 4,
             .paragraphStyle: paragraph
         ])
@@ -151,7 +150,6 @@ class PromoMenuView: UIView, Themeable {
             .font: font,
             .kern: -0.23,
             .foregroundColor: color,
-            // counteracts the leading that the fixed line height adds above the text
             .baselineOffset: (lineHeight - font.lineHeight) / 4,
             .paragraphStyle: paragraph
         ]), for: .normal)
