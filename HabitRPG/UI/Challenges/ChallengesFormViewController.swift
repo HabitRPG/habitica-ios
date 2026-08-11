@@ -68,10 +68,14 @@ struct CreateChallengeForm: View {
                     .toolbar {
                         if viewModel.hasPreviousStep {
                             ToolbarItem(placement: .topBarLeading) {
-                                ChallengeCircleButton(systemName: "chevron.left") {
+                                Button {
                                     withAnimation(.bouncy) {
                                         viewModel.showPreviousStep()
                                     }
+                                } label: {
+                                    Image(systemName: "chevron.left")
+                                        .font(.system(size: 17, weight: .semibold))
+                                        .foregroundStyle(Color(themeService.theme.primaryTextColor))
                                 }
                             }
                         } else {
@@ -85,16 +89,15 @@ struct CreateChallengeForm: View {
                                         .foregroundStyle(Color(themeService.theme.primaryTextColor))
                                 }
                                 .fixedSize()
-                                .padding(.leading, 10)
-                                .padding(.trailing, 12)
-                                .padding(.vertical, 6)
-                                .background(Color(themeService.theme.offsetBackgroundColor))
-                                .clipShape(Capsule())
                             }
                         }
                         ToolbarItem(placement: .topBarTrailing) {
-                            ChallengeCircleButton(systemName: "xmark") {
+                            Button {
                                 viewModel.dismiss()
+                            } label: {
+                                Image(systemName: "xmark")
+                                    .font(.system(size: 17, weight: .semibold))
+                                    .foregroundStyle(Color(themeService.theme.primaryTextColor))
                             }
                         }
                 }
