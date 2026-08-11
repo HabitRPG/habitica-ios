@@ -102,6 +102,7 @@ class MenuNavigationBarView: UIView, Themeable {
         addSubview(settingsButton)
         addSubview(settingsBadge)
         isUserInteractionEnabled = true
+        notificationsBadge.isHidden = true
         messagesBadge.isHidden = true
         settingsBadge.isHidden = true
         ThemeService.shared.addThemeable(themable: self, applyImmediately: true)
