@@ -78,6 +78,12 @@ struct ChallengeMarkdownView: UIViewRepresentable {
     func updateUIView(_ uiView: MarkdownTextView, context: Context) {
         uiView.setMarkdownString(markdown.unicodeEmoji)
     }
+
+    func sizeThatFits(_ proposal: ProposedViewSize, uiView: MarkdownTextView, context: Context) -> CGSize? {
+        guard let width = proposal.width, width > 0, width < .infinity else { return nil }
+        let height = uiView.sizeThatFits(CGSize(width: width, height: .greatestFiniteMagnitude)).height
+        return CGSize(width: width, height: height)
+    }
 }
 
 struct ChallengeDetailCreatorCard: View {
@@ -100,11 +106,13 @@ struct ChallengeDetailCreatorCard: View {
                 VStack(alignment: .leading, spacing: 3) {
                     HStack(spacing: 7) {
                         Text(creator?.profile?.name ?? challenge.leaderName ?? "")
-                            .font(.system(size: 17, weight: .bold))
-                            .foregroundStyle(Color(red: 0x16 / 255, green: 0x7E / 255, blue: 0x87 / 255))
+                            .font(.system(size: 17, weight: .semibold))
+                            .tracking(-0.43)
+                            .lineSpacing(2)
+                            .foregroundStyle(ChallengeTheme.creatorName)
                         if showsDiamond {
-                            Image(uiImage: HabiticaIcons.imageOfContributorBadge(tier: creator?.contributor?.level ?? 1, isNPC: false))
-                                .resizable().scaledToFit().frame(width: 14, height: 13)
+                            Image(uiImage: Asset.challengeOwnerIcon.image)
+                                .resizable().scaledToFit().frame(width: 14, height: 14)
                         }
                     }
                     if isOwner {
@@ -123,11 +131,11 @@ struct ChallengeDetailCreatorCard: View {
                     .buttonStyle(.plain)
                 }
             }
-            .padding(.vertical, 13)
             .padding(.horizontal, 16)
             .frame(maxWidth: .infinity, alignment: .leading)
+            .frame(height: 80)
             .background(Color(themeService.theme.windowBackgroundColor))
-            .clipShape(RoundedRectangle(cornerRadius: 18, style: .continuous))
+            .clipShape(RoundedRectangle(cornerRadius: 26, style: .continuous))
             .contentShape(Rectangle())
             .onTapGesture { onUserTap() }
         }
@@ -137,19 +145,20 @@ struct ChallengeDetailCreatorCard: View {
         ZStack {
             if let creator = creator {
                 AvatarViewUI(avatar: AvatarViewModel(avatar: creator))
-                    .frame(width: 44, height: 44)
+                    .frame(width: 40, height: 40)
+                    .clipShape(Circle())
             } else {
                 Circle()
                     .fill(Color(themeService.theme.offsetBackgroundColor))
-                    .frame(width: 44, height: 44)
+                    .frame(width: 40, height: 40)
             }
             if isOwner {
                 Image(uiImage: Asset.challengeCrown.image)
-                    .resizable().scaledToFit().frame(width: 21)
-                    .offset(y: -28)
+                    .resizable().scaledToFit().frame(width: 28)
+                    .offset(y: -27)
             }
         }
-        .frame(width: 44, height: 44)
+        .frame(width: 40, height: 40)
     }
 }
 
@@ -178,6 +187,7 @@ struct ChallengeDetailCategoriesCard: View {
                 }
                 .padding(14)
                 .frame(maxWidth: .infinity, alignment: .leading)
+                .frame(minHeight: 66)
                 .background(Color(themeService.theme.windowBackgroundColor))
                 .clipShape(RoundedRectangle(cornerRadius: 18, style: .continuous))
             }
