@@ -111,8 +111,8 @@ struct ChallengeDetailCreatorCard: View {
                             .lineSpacing(2)
                             .foregroundStyle(ChallengeTheme.creatorName)
                         if showsDiamond {
-                            Image(uiImage: Asset.challengeOwnerIcon.image)
-                                .resizable().scaledToFit().frame(width: 14, height: 14)
+                            Image(uiImage: HabiticaIcons.imageOfContributorBadge(tier: creator?.contributor?.level ?? 1, isNPC: false))
+                                .resizable().scaledToFit().frame(width: 14, height: 13)
                         }
                     }
                     if isOwner {
