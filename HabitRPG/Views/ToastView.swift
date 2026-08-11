@@ -118,7 +118,8 @@ struct ToastView: View {
     
     private static func addStatsView(_ icon: UIImage, diff: Float, label: String, options: ToastOptions) {
         if diff != 0 {
-            options.statsChanges.append(StatsChange(text: diff > 0 ? String(format: "+%.2f", diff) : String(format: "%.2f", diff), icon: icon))
+            let magnitude = diff == diff.rounded() ? String(format: "%.0f", diff) : String(format: "%.2f", diff)
+            options.statsChanges.append(StatsChange(text: diff > 0 ? "+\(magnitude)" : magnitude, icon: icon))
         }
     }
 

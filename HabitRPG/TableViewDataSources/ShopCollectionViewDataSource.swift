@@ -187,7 +187,14 @@ class ShopCollectionViewDataSource: BaseReactiveCollectionViewDataSource<InAppRe
                 sections[specialSectionIndex].items.append(rebirthItem)
                 let userLevel = user?.stats?.level ?? 0
                 if userLevel >= 50 && userLevel < 100 {
-                    sections[specialSectionIndex].notes = L10n.Shops.freeRebirthAtLevel100
+                    if let lastFreeRebirth = user?.flags?.lastFreeRebirth {
+                        let daysSinceLastFree = Calendar.current.dateComponents([.day], from: lastFreeRebirth, to: Date()).day ?? 0
+                        if daysSinceLastFree >= 45 {
+                            sections[specialSectionIndex].notes = L10n.Shops.freeRebirthAtLevel100
+                        }
+                    } else {
+                        sections[specialSectionIndex].notes = L10n.Shops.freeRebirthAtLevel100
+                    }
                 }
             }
         }
@@ -358,6 +365,11 @@ class ShopCollectionViewDataSource: BaseReactiveCollectionViewDataSource<InAppRe
                 if let notes = section.notes, !notes.isEmpty {
                     headerView.notesLabel.isHidden = false
                     headerView.notesLabel.text = notes
+                    if notes == L10n.Shops.freeRebirthAtLevel100 {
+                        headerView.notesLabel.textColor = ThemeService.shared.theme.isDark ? UIColor.gray400 : UIColor.gray200
+                    } else {
+                        headerView.notesLabel.textColor = .yellow1
+                    }
                 } else {
                     headerView.notesLabel.isHidden = true
                     headerView.notesLabel.text = nil

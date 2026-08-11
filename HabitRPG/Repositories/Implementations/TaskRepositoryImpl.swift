@@ -268,21 +268,44 @@ class TaskRepository: BaseRepository<TaskLocalRepository> {
     }
     
     func createTag(_ tag: TagProtocol) -> Signal<TagProtocol?, Never> {
+        let localID = tag.id
+        let order = tag.order
+        if localID?.isEmpty == false {
+            localRepository.save(userID: currentUserId, tag: tag)
+        }
         let call = CreateTagCall(tag: tag)
-        
+
+        call.errorSignal.observeValues {[weak self] _ in
+            if let self = self, let localID = localID, !localID.isEmpty {
+                self.localRepository.deleteTag(self.localRepository.getNewTag(id: localID))
+            }
+        }
         return call.objectSignal.on(value: {[weak self]returnedTag in
-            if let returnedTag = returnedTag {
-                self?.localRepository.save(userID: self?.currentUserId, tag: returnedTag)
+            if let returnedTag = returnedTag, let self = self {
+                returnedTag.order = order
+                if let localID = localID, !localID.isEmpty {
+                    if self.localRepository.getEditableTag(id: localID) == nil {
+                        return
+                    }
+                    if returnedTag.id != localID {
+                        self.localRepository.deleteTag(self.localRepository.getNewTag(id: localID))
+                    }
+                }
+                self.localRepository.save(userID: self.currentUserId, tag: returnedTag)
             }
         })
     }
     
     func updateTag(_ tag: TagProtocol) -> Signal<TagProtocol?, Never> {
+        let order = tag.order
+        if !tag.isManaged {
+            localRepository.save(userID: currentUserId, tag: tag)
+        }
         let call = UpdateTagCall(tag: tag)
-        
+
         return call.objectSignal.on(value: {[weak self]returnedTag in
             if let returnedTag = returnedTag {
-                returnedTag.order = tag.order
+                returnedTag.order = order
                 self?.localRepository.save(userID: self?.currentUserId, tag: returnedTag)
             }
         })
@@ -290,12 +313,7 @@ class TaskRepository: BaseRepository<TaskLocalRepository> {
     
     func deleteTag(_ tag: TagProtocol) -> Signal<EmptyResponseProtocol?, Never> {
         let call = DeleteTagCall(tag: tag)
-        
-        call.httpResponseSignal.observeValues {[weak self] (response) in
-            if response.statusCode == 200 {
-                self?.localRepository.deleteTag(tag)
-            }
-        }
+        localRepository.deleteTag(tag)
         return call.objectSignal
     }
     

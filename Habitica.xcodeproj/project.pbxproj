@@ -344,6 +344,7 @@
 		29A4FE6326A9B3DB00F0FE30 /* HabitProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29A4FE6226A9B3DB00F0FE30 /* HabitProgressView.swift */; };
 		29A62B012167D55200D4BD90 /* VerifyUsernameModalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29A62B002167D55200D4BD90 /* VerifyUsernameModalViewController.swift */; };
 		29A62B09216CE5D700D4BD90 /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29A62B08216CE5D700D4BD90 /* AboutViewController.swift */; };
+		29DE0DE01A2B3C4D5E6F0002 /* DeveloperOptionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29DE0DE01A2B3C4D5E6F0001 /* DeveloperOptionsViewController.swift */; };
 		29A62B0B216CF4E200D4BD90 /* UIDevice-Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29A62B0A216CF4E200D4BD90 /* UIDevice-Extensions.swift */; };
 		29A9038826EA33A400442B93 /* FlagInformationOverlayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29A9038726EA33A400442B93 /* FlagInformationOverlayView.swift */; };
 		29A92C302E03050F00B2321A /* ApiTokenSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29A92C2F2E03050F00B2321A /* ApiTokenSheetView.swift */; };
@@ -574,6 +575,7 @@
 		7A84E1B32289963E0081E96F /* BaseRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29FC884D2010CCC2002B3D3F /* BaseRepository.swift */; };
 		7A84E1B42289968B0081E96F /* AuthenticationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 299BD6391F557FE700E22935 /* AuthenticationManager.swift */; };
 		87B69ED943E9C5CED8FC4CFF /* ChallengeDesignTokens.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45A03166535634BFDA9F2FFA /* ChallengeDesignTokens.swift */; };
+		95F1528285B14E64A581009E /* ScoreTaskIntent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ED7C6C98BC047ADAD0F9D60 /* ScoreTaskIntent.swift */; };
 		A0B363012E73567D00F2E0CC /* BuildFile in Frameworks */ = {isa = PBXBuildFile; };
 		A0B363032E73567D00F2E0CC /* BuildFile in Frameworks */ = {isa = PBXBuildFile; };
 		A0B363052E73567D00F2E0CC /* FirebaseRemoteConfig in Frameworks */ = {isa = PBXBuildFile; productRef = A0B363042E73567D00F2E0CC /* FirebaseRemoteConfig */; };
@@ -649,7 +651,6 @@
 		D9EB4EAD18CB4A9400BB2094 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D9EB4EAC18CB4A9400BB2094 /* Images.xcassets */; };
 		D9F1E3EC1E55E1DB0034D0F4 /* SubscriptionInformation.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9F1E3EB1E55E1DB0034D0F4 /* SubscriptionInformation.swift */; };
 		DC2C41815D97E02EF9D3BEF9 /* HRPGLabeledProgressBarTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC2C40206801F9FB5D6D6190 /* HRPGLabeledProgressBarTests.swift */; };
-		F922621EC9F65C3F7E546747 /* RebirthConfirmationSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF0201600C523E353B9ABCF2 /* RebirthConfirmationSheet.swift */; };
 		FC900D986CC601050C4F4584 /* EndChallengeFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8613CAFBCA8EB22E006EFB65 /* EndChallengeFlow.swift */; };
 		FED442C2846F244654A40CCD /* RebirthAchievementSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BF2BE8A390A17E6EE7EF36B /* RebirthAchievementSheet.swift */; };
 /* End PBXBuildFile section */
@@ -1073,6 +1074,7 @@
 		29A4FE6226A9B3DB00F0FE30 /* HabitProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitProgressView.swift; sourceTree = "<group>"; };
 		29A62B002167D55200D4BD90 /* VerifyUsernameModalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerifyUsernameModalViewController.swift; sourceTree = "<group>"; };
 		29A62B08216CE5D700D4BD90 /* AboutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
+		29DE0DE01A2B3C4D5E6F0001 /* DeveloperOptionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeveloperOptionsViewController.swift; sourceTree = "<group>"; };
 		29A62B0A216CF4E200D4BD90 /* UIDevice-Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIDevice-Extensions.swift"; sourceTree = "<group>"; };
 		29A9038726EA33A400442B93 /* FlagInformationOverlayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlagInformationOverlayView.swift; sourceTree = "<group>"; };
 		29A92C2F2E03050F00B2321A /* ApiTokenSheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiTokenSheetView.swift; sourceTree = "<group>"; };
@@ -1249,6 +1251,7 @@
 		2D736E72B3BE75DFC46328BE /* uk */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = uk; path = uk.lproj/Mainstrings.strings; sourceTree = "<group>"; };
 		328C951D24A2C13100293E16 /* LinksOnlyTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinksOnlyTextView.swift; sourceTree = "<group>"; };
 		32C6FFF126ED896400C8F682 /* PathTraceable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PathTraceable.swift; sourceTree = "<group>"; };
+		3ED7C6C98BC047ADAD0F9D60 /* ScoreTaskIntent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreTaskIntent.swift; sourceTree = "<group>"; };
 		4065B2D91CD565D8E39D5036 /* ChallengeListCard.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ChallengeListCard.swift; sourceTree = "<group>"; };
 		45A03166535634BFDA9F2FFA /* ChallengeDesignTokens.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ChallengeDesignTokens.swift; sourceTree = "<group>"; };
 		49005B711F180588004830D9 /* CurrencyCountView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurrencyCountView.swift; sourceTree = "<group>"; };
@@ -1307,7 +1310,6 @@
 		A1A5560D21EEA121A70B5F89 /* ChallengeParticipantComponents.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ChallengeParticipantComponents.swift; sourceTree = "<group>"; };
 		AA835E812EBC15F400C6D779 /* project.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = project.xcconfig; sourceTree = "<group>"; };
 		B806BC76FA69844A4527B6D4 /* CheckParticipationFlow.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = CheckParticipationFlow.swift; sourceTree = "<group>"; };
-		BF0201600C523E353B9ABCF2 /* RebirthConfirmationSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RebirthConfirmationSheet.swift; sourceTree = "<group>"; };
 		C8415991225F8B7800989FB8 /* Habitica Snapshots.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Habitica Snapshots.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C8415993225F8B7800989FB8 /* Habitica_Snapshots.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Habitica_Snapshots.swift; sourceTree = "<group>"; };
 		C8415995225F8B7800989FB8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -1964,6 +1966,7 @@
 				29BEE75F252E367600D456F8 /* URLImage.swift */,
 				29BEE7B4252EE92D00D456F8 /* AddTaskWidget.swift */,
 				29BEE81D252F101600D456F8 /* TaskListWidget.swift */,
+				3ED7C6C98BC047ADAD0F9D60 /* ScoreTaskIntent.swift */,
 				2979D5F22EE1CEFB00BB2F54 /* TaskManager.swift */,
 			);
 			path = "Habitica Widgets";
@@ -2034,7 +2037,6 @@
 				29DF93522ECE1B9E0047801F /* InsufficientCurrencySheet.swift */,
 				FFC4D0BB65279CB739EE01A1 /* RebirthEnabledSheet.swift */,
 				7BF2BE8A390A17E6EE7EF36B /* RebirthAchievementSheet.swift */,
-				BF0201600C523E353B9ABCF2 /* RebirthConfirmationSheet.swift */,
 				29DF93502ECDFDB90047801F /* LevelupSheet.swift */,
 				29DF934E2ECDFAB60047801F /* LoginIncentiveSheet.swift */,
 				29DF93442ECCC3370047801F /* MountRaisedSheet.swift */,
@@ -2511,6 +2513,7 @@
 			isa = PBXGroup;
 			children = (
 				29A62B08216CE5D700D4BD90 /* AboutViewController.swift */,
+				29DE0DE01A2B3C4D5E6F0001 /* DeveloperOptionsViewController.swift */,
 				D9E02EC41E5E02E7002CFCE2 /* Challenges */,
 				290B62A0207F814D007287C4 /* General */,
 				D96BFC4D1E181B5500266EEF /* Intro */,
@@ -3151,6 +3154,7 @@
 				ro,
 				it,
 				ja,
+				uk,
 				cmn,
 			);
 			mainGroup = D9EB4E8218CB4A9400BB2094;
@@ -3448,6 +3452,7 @@
 				29BEE75A252E33AB00D456F8 /* Avatar.swift in Sources */,
 				29ED62DF2DA540CA0060A60A /* Secrets.swift in Sources */,
 				29BEE81E252F101600D456F8 /* TaskListWidget.swift in Sources */,
+				95F1528285B14E64A581009E /* ScoreTaskIntent.swift in Sources */,
 				29BEE7B5252EE92D00D456F8 /* AddTaskWidget.swift in Sources */,
 				29BEE6DC252E14F300D456F8 /* RemainingDailiesWidget.swift in Sources */,
 				2942FAF1267783F8003F6500 /* HabiticaLogger.swift in Sources */,
@@ -3791,12 +3796,12 @@
 				29ED1AFD1F338ECC005A3895 /* SetupCustomization.swift in Sources */,
 				29D853F62F30C60B00D4762D /* ImageSubstitutionManager.swift in Sources */,
 				29A62B09216CE5D700D4BD90 /* AboutViewController.swift in Sources */,
+				29DE0DE01A2B3C4D5E6F0002 /* DeveloperOptionsViewController.swift in Sources */,
 				2914486E2085EAD300F3A6B5 /* MountDetailDataSource.swift in Sources */,
 				29CEA822264150CA00101C0A /* UIColor-Contributor.swift in Sources */,
 				29DF934B2ECDE5150047801F /* AchievementReceivedSheet.swift in Sources */,
 				066C5326277834A579626B59 /* RebirthEnabledSheet.swift in Sources */,
 				FED442C2846F244654A40CCD /* RebirthAchievementSheet.swift in Sources */,
-				F922621EC9F65C3F7E546747 /* RebirthConfirmationSheet.swift in Sources */,
 				D9D17CDE1E6AFFD900AD9232 /* ChallengeDetailAlert.swift in Sources */,
 				2914485D2084E6ED00F3A6B5 /* MountOverviewViewController.swift in Sources */,
 				49DCB7C21F40D7F10079FDD0 /* NPCBannerView.swift in Sources */,
@@ -4097,6 +4102,7 @@
 				29D5AD5F20F50B7A00D1B869 /* it */,
 				2913E3B420F50B9300FDF81D /* ja */,
 				2908E3502217245500D246CD /* nl */,
+				2D736E72B3BE75DFC46328BE /* uk */,
 			);
 			name = Mainstrings.strings;
 			sourceTree = "<group>";

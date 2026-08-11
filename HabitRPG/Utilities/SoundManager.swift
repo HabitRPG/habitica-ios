@@ -122,12 +122,16 @@ class SoundManager {
     var currentTheme = SoundTheme.none {
         didSet {
             if currentTheme != oldValue {
+                queue.async { [weak self] in
+                    self?.players.removeAll()
+                }
                 loadAllFiles()
             }
         }
     }
-    private var player: AVAudioPlayer?
-    
+    private var players: [SoundEffect: AVAudioPlayer] = [:]
+    private let queue = DispatchQueue(label: "sound")
+
     private var soundsDirectory: URL? {
         let documentDirectory = FileManager.SearchPathDirectory.documentDirectory
         let userDomainMask = FileManager.SearchPathDomainMask.userDomainMask
@@ -151,32 +155,37 @@ class SoundManager {
         if currentTheme == SoundTheme.none {
             return
         }
-        let queue = DispatchQueue(label: "sound", attributes: .concurrent)
         queue.async {[weak self] in
+            guard let self = self else {
+                return
+            }
             do {
-                guard let theme = self?.currentTheme.rawValue else {
-                    return
-                }
-                guard let url = self?.soundsDirectory?.appendingPathComponent("\(theme)/\(effect.rawValue).mp3") else {
-                    return
-                }
-                
-                if !FileManager.default.fileExists(atPath: url.path) {
-                    return
-                }
-                
                 try AVAudioSession.sharedInstance().setCategory(.ambient, mode: .default)
                 try AVAudioSession.sharedInstance().setActive(true)
-                self?.player = try? AVAudioPlayer(contentsOf: url, fileTypeHint: AVFileType.mp3.rawValue)
-                
-                guard let player = self?.player else {
-                    return
-                }
-                
-                player.play()
             } catch let error {
                 logger.log(error.localizedDescription)
+                return
             }
+
+            if let cached = self.players[effect] {
+                cached.currentTime = 0
+                cached.play()
+                return
+            }
+
+            let theme = self.currentTheme.rawValue
+            guard let url = self.soundsDirectory?.appendingPathComponent("\(theme)/\(effect.rawValue).mp3") else {
+                return
+            }
+            if !FileManager.default.fileExists(atPath: url.path) {
+                return
+            }
+            guard let player = try? AVAudioPlayer(contentsOf: url, fileTypeHint: AVFileType.mp3.rawValue) else {
+                return
+            }
+            player.prepareToPlay()
+            self.players[effect] = player
+            player.play()
         }
     }
     

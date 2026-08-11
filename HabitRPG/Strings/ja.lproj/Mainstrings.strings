@@ -419,9 +419,9 @@
 "stats.stat_guide" = "ステータス概要";
 "stats.strength_title" = "力";
 "stats.intelligence_title" = "知能";
-"stats.intelligence_text" = "タスクの完了によって得られる経験値が増加します。また、マナの上限と時間回復の早さが増加します。";
+"stats.intelligence_text" = "タスクによって得られる経験値が増加します。また、マナの上限値と時間回復の早さが増加します。";
 "stats.constitution_title" = "体質";
-"stats.constitution_text" = "タスクの失敗によって受けるダメージが減少します。ボスからのダメージは減少しません。";
+"stats.constitution_text" = "日課やタスクの失敗によって受けるダメージが減少します。クエストボスからのダメージは減少しません。";
 "stats.perception_title" = "知覚";
 "stats.perception_text" = "タスクを完了した時に落とし物を見つける確率、１日ごとの落とし物上限、連続実行ボーナス、タスクから獲得するゴールドの量などが増加します。";
 "controls" = "コントロール";

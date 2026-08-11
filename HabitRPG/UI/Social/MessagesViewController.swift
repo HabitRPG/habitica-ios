@@ -94,9 +94,19 @@ class MessagesViewController: BaseUIViewController, UITableViewDelegate, UIScrol
         inputBar.inputPlugins = [autocompleteManager]
     }
     
+    private var isDisappearing = false
+
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        isDisappearing = false
         KeyboardManager.addObservingView(view)
+    }
+
+    override func viewWillDisappear(_ animated: Bool) {
+        isDisappearing = true
+        KeyboardManager.removeObservingView(view)
+        view.endEditing(true)
+        super.viewWillDisappear(animated)
     }
     
     override func applyTheme(theme: Theme) {
@@ -128,6 +138,10 @@ class MessagesViewController: BaseUIViewController, UITableViewDelegate, UIScrol
     }
 
     override func viewDidLayoutSubviews() {
+        if isDisappearing {
+            super.viewDidLayoutSubviews()
+            return
+        }
         if view.frame.height > (parent?.view.frame.height ?? 0) {
             super.viewDidLayoutSubviews()
             return
@@ -234,6 +248,9 @@ extension MessagesViewController: InputBarAccessoryViewDelegate {
     }
     
     func inputBar(_ inputBar: InputBarAccessoryView, didChangeIntrinsicContentTo size: CGSize) {
+        if isDisappearing {
+            return
+        }
         view.setNeedsLayout()
     }
 }

@@ -161,7 +161,7 @@
 "tasks.health" = "Health";
 "tasks.school" = "School";
 "tasks.team" = "Team";
-"tasks.repeats.monthly" = "every Month";
+"tasks.repeats.monthly" = "every month";
 "tasks.repeats.yearly" = "yearly";
 "tasks.repeats.repeats_every" = "Repeats %@";
 "tasks.repeats.repeats_every_on" = "Repeats %@ on %@";
@@ -1205,7 +1205,7 @@
 "leave_challenge_title" = "Leave Challenge?";
 "delete_tasks" = "Delete Tasks";
 "errors.quest_invite_accept" = "There was an error accepting the quest invitation";
-"months" = "Months";
+"months" = "months";
 "years" = "years";
 "locations.market" = "Market";
 "locations.seasonal_shop" = "Seasonal Shop";
@@ -1420,7 +1420,7 @@
 "challenge_category.self_improvement" = "Self-Improvement";
 "challenge_category.habitica_official" = "Habitica Official";
 "more_gem_packs" = "More Gem packs";
-"x_gems_for_y" = "%d Gems for %s";
+"x_gems_for_y" = "%1$d Gems for %2$s";
 "loading" = "Loading";
 "quest_mechanics_pausing_description" = "If you’re struggling to complete your Dailies, you can pause damage from Settings for a break. This will prevent the Boss from hurting you or others, but also pause your own damage. Other members’ missed Dailies will still cause damage, so be careful out there!";
 "quest_mechanics_rage_title" = "Rage meters";
@@ -1505,8 +1505,8 @@
 "shops.rebirthEnabledSubtitle" = "A new adventure is available!";
 "shops.rebirthEnabledDescription" = "Use the Orb of Rebirth to breathe new life into your Habitica adventure once you feel you’ve achieved it all! Begin again at level 1 while keeping your tasks, Achievements, and Pets with this special item found in the Market.";
 "shops.rebirthAchievementTitle" = "You’ve Been Reborn!";
-"shops.rebirthAchievementDescription" = "You’ve begun a new adventure! This is Rebirth %d for you, and the highest Level you’ve attained is %d.";
-"shops.rebirthAchievementDescriptionMax" = "You’ve begun a new adventure! This is Rebirth %d for you, and the highest Level you’ve attained is %d or higher.";
+"shops.rebirthAchievementDescription" = "You’ve begun a new adventure! This is Rebirth %d for you, and the highest level you’ve attained is %d.";
+"shops.rebirthAchievementDescriptionMax" = "You’ve begun a new adventure! This is Rebirth %d for you, and the highest level you’ve attained is %d or higher.";
 "shops.freeRebirthAtLevel100" = "FREE Orb of Rebirth at level 100";
 "shops.dayUntilFreeRebirth" = "%d day until FREE Orb of Rebirth";
 "shops.daysUntilFreeRebirth" = "%d days until FREE Orb of Rebirth";
@@ -1523,3 +1523,4 @@
 "shops.rebirthConfirmKeepItem2" = "All Equipment, Pets, and Mounts";
 "shops.rebirthConfirmKeepItem3" = "Your Achievements";
 "shops.rebirthConfirmKeepItem4" = "Your Party and Challenges";
+"shops.rebirthConfirmTitleGems" = "Are you sure you want to use the Orb of Rebirth for %d Gems?";

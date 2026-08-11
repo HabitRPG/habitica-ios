@@ -1443,7 +1443,7 @@
 "player_not_completed_quests" = "Гравець не виконав жодного квеста.";
 "standard_pets" = "Стандартні Улюбленці";
 "more_gem_packs" = "Більше наборів самоцвітів";
-"x_gems_for_y" = "%d Самоцвітів за %s";
+"x_gems_for_y" = "%1$d Самоцвітів за %2$s";
 "no_active_subscription_to_restore" = "Не вдалося знайти активну підписку для відновлення";
 "subscriber_benefit" = "Переваги Підписника";
 "buy_gems_with_gold" = "Купити Самоцвіти за Золото";

@@ -60,11 +60,14 @@ public class TaskLocalRepository: BaseLocalRepository {
     
     public func save(userID: String?, tag: TagProtocol) {
         if let realmTag = tag as? RealmTag {
+            if realmTag.realm == nil && realmTag.userID == nil {
+                realmTag.userID = userID
+            }
             save(object: realmTag)
             return
         }
         save(object: RealmTag(userID: userID, tagProtocol: tag))
-        
+
     }
     
     private func removeOldTasks(userID: String?, newTasks: [TaskProtocol], removeCompletedTodos: Bool = false) {
@@ -104,6 +107,14 @@ public class TaskLocalRepository: BaseLocalRepository {
         return res?.map({ (task) -> TaskProtocol in return task }).compactMap(\.self)
     }
     
+    public func markTaskCompleted(taskId: String) {
+        updateCall { realm in
+            if let task = realm.object(ofType: RealmTask.self, forPrimaryKey: taskId) {
+                task.completed = true
+            }
+        }
+    }
+
     public func getTask(id: String) -> SignalProducer<TaskProtocol, ReactiveSwiftRealmError> {
         return RealmTask.findBy(key: id).skipNil().map({ task -> TaskProtocol in
             return task

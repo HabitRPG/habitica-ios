@@ -14,6 +14,13 @@ public enum HabiticaPromotionType {
     case subscription
     case survey
     
+    static let selectableKeys: [(key: String, title: String)] = [
+        ("fall_extra_gems", "Fall Gem Sale"),
+        ("spooky_extra_gems", "Spooky Gem Sale"),
+        ("g1g1", "Gift One, Get One"),
+        ("survey2021", "Player Survey")
+    ]
+
     static func getPromoFromKey(key: String, startDate: Date?, endDate: Date?) -> HabiticaPromotion? {
         switch key {
         case "fall_extra_gems", "fall2020", "testfall2020":
@@ -43,12 +50,29 @@ protocol HabiticaPromotion {
     var gradientStart: UIColor? { get }
     var gradientEnd: UIColor? { get }
     var buttonBackground: UIColor { get }
-    
+    var pinnedPillTitle: String? { get }
+    var pinnedPillTitleImage: UIImage? { get }
+    var pinnedPillLeftArt: UIImage? { get }
+    var pinnedPillBackground: UIColor? { get }
+    var pinnedPillArrowColor: UIColor { get }
+    var pinnedPillArtHeight: CGFloat { get }
+    var hasPinnedPill: Bool { get }
+
     func configurePill(_ pillView: PillView)
     func configurePromoMenuView(view: PromoMenuView)
     func configurePurchaseBanner(view: PromoBannerView)
     func configureGemView(view: GemPurchaseCell, regularAmount: Int)
     func configureInfoView(_ viewController: PromotionInfoViewController)
+}
+
+extension HabiticaPromotion {
+    var pinnedPillTitle: String? { return nil }
+    var pinnedPillTitleImage: UIImage? { return nil }
+    var pinnedPillLeftArt: UIImage? { return nil }
+    var pinnedPillBackground: UIColor? { return nil }
+    var pinnedPillArrowColor: UIColor { return .white }
+    var pinnedPillArtHeight: CGFloat { return 62 }
+    var hasPinnedPill: Bool { return pinnedPillTitle != nil || pinnedPillTitleImage != nil }
 }
 
 protocol HabiticaWebPromotion: HabiticaPromotion {
@@ -58,6 +82,11 @@ protocol HabiticaWebPromotion: HabiticaPromotion {
 class FallExtraGemsPromotion: HabiticaPromotion {
 
     var identifier = "fall_extra_gems"
+    var pinnedPillTitleImage: UIImage? { return Asset.fallPromoTitle.image }
+    var pinnedPillLeftArt: UIImage? { return Asset.fallGemSaleArtMini.image }
+    var pinnedPillBackground: UIColor? { return backgroundColor }
+    var pinnedPillArrowColor: UIColor { return .yellow500 }
+    var pinnedPillArtHeight: CGFloat { return 40 }
     var promoType: HabiticaPromotionType = .gemsAmount
     var isWebPromo: Bool = false
     var startDate: Date
@@ -91,39 +120,45 @@ class FallExtraGemsPromotion: HabiticaPromotion {
     }
     
     var gradientStart: UIColor? {
-        return nil
+        return UIColor("#FDA240")
     }
     var gradientEnd: UIColor? {
-        return nil
+        return UIColor("#FA823B")
     }
-    
+
     private func makeGradient(view: UIView) -> CAGradientLayer {
         let gradient: CAGradientLayer = CAGradientLayer()
 
-        gradient.colors = [UIColor("#FFB445").cgColor, UIColor("#FA8537").cgColor, UIColor("#FF6165").cgColor]
-        gradient.locations = [0.0, 0.5, 1.0]
-        gradient.startPoint = CGPoint(x: 0.0, y: 0.0)
-        gradient.endPoint = CGPoint(x: 1.0, y: 1.0)
+        gradient.colors = [UIColor("#FDA240").cgColor, UIColor("#FA823B").cgColor]
+        gradient.locations = [0.0, 1.0]
+        gradient.startPoint = CGPoint(x: 0.0, y: 0.5)
+        gradient.endPoint = CGPoint(x: 1.0, y: 0.5)
         gradient.frame = CGRect(x: 0.0, y: 0.0, width: view.frame.size.width, height: view.frame.size.height)
         return gradient
     }
-    
+
     func configurePill(_ pillView: PillView) {
         pillView.backgroundColor = nil
         pillView.layer.sublayers?.filter { $0 is CAGradientLayer }.forEach { $0.removeFromSuperlayer() }
         let gradientLayer = makeGradient(view: pillView)
         gradientLayer.cornerRadius = pillView.frame.size.height / 2
         pillView.layer.insertSublayer(gradientLayer, at: 0)
-        pillView.textColor = .white
+        pillView.automaticTextColor = false
+        pillView.textColor = UIColor("#48210A")
     }
     
     func configurePromoMenuView(view: PromoMenuView) {
+        view.setCardBackground(color: backgroundColor)
         view.leftImageView.image = Asset.fallPromoMenuLeft.image
         view.rightImageView.image = Asset.fallPromoMenuRight.image
+        view.titleImageMaxHeight = 15
         view.setTitleImage(Asset.fallPromoTitle.image)
-        view.setDescriptionImage(Asset.fallPromoMenuDescription.image)
-        view.actionButton.backgroundColor = UIColor.gray50
-        view.actionButton.setTitle(L10n.learnMore, for: .normal)
+        view.setDescription(L10n.FallPromo.menuDescription,
+                            font: .systemFont(ofSize: 12, weight: .medium),
+                            color: .yellow500,
+                            lineHeight: 16)
+        view.actionButton.backgroundColor = .black
+        view.setActionTitle(L10n.viewOffer)
     }
     
     func configurePurchaseBanner(view: PromoBannerView) {
@@ -192,6 +227,11 @@ class FallExtraGemsPromotion: HabiticaPromotion {
 class SpookyExtraGemsPromotion: HabiticaPromotion {
 
     var identifier = "spooky_extra_gems"
+    var pinnedPillTitleImage: UIImage? { return Asset.spookyPromoTitle.image }
+    var pinnedPillLeftArt: UIImage? { return Asset.spookyGemSaleIconMini.image }
+    var pinnedPillBackground: UIColor? { return bannerBackground }
+    var pinnedPillArrowColor: UIColor { return .gray400 }
+    var pinnedPillArtHeight: CGFloat { return 40 }
     var promoType: HabiticaPromotionType = .gemsAmount
     var isWebPromo: Bool = false
     var startDate: Date
@@ -220,29 +260,48 @@ class SpookyExtraGemsPromotion: HabiticaPromotion {
         return .gray10
     }
 
+    var bannerBackground: UIColor {
+        return .gray5
+    }
+
     var buttonBackground: UIColor {
         return .orange50
     }
     
     var gradientStart: UIColor? {
-        return nil
+        return UIColor("#FB9A44")
     }
     var gradientEnd: UIColor? {
-        return nil
+        return UIColor("#FB616B")
     }
-    
+
     func configurePill(_ pillView: PillView) {
-        pillView.pillColor = .orange50
+        pillView.backgroundColor = nil
+        pillView.layer.sublayers?.filter { $0 is CAGradientLayer }.forEach { $0.removeFromSuperlayer() }
+        let gradient = CAGradientLayer()
+        gradient.colors = [UIColor("#FB9A44").cgColor, UIColor("#FB616B").cgColor]
+        gradient.locations = [0.0, 1.0]
+        gradient.startPoint = CGPoint(x: 0.0, y: 0.5)
+        gradient.endPoint = CGPoint(x: 1.0, y: 0.5)
+        gradient.frame = CGRect(x: 0.0, y: 0.0, width: pillView.frame.size.width, height: pillView.frame.size.height)
+        gradient.cornerRadius = pillView.frame.size.height / 2
+        pillView.layer.insertSublayer(gradient, at: 0)
+        pillView.automaticTextColor = false
+        pillView.textColor = UIColor("#4A140E")
     }
     
     func configurePromoMenuView(view: PromoMenuView) {
-        view.backgroundColor = backgroundColor
-        view.leftImageView.image = Asset.spookyPromoMenuLeft.image
-        view.rightImageView.image = Asset.spookyPromoMenuRight.image
+        view.setCardBackground(color: bannerBackground)
+        view.leftImageView.image = Asset.spookyGemSaleArtStart.image
+        view.rightImageView.image = Asset.spookyGemSaleArtEnd.image
+        view.titleImageMaxHeight = 15
         view.setTitleImage(Asset.spookyPromoTitle.image)
-        view.setDescriptionImage(Asset.spookyPromoMenuDescription.image)
-        view.actionButton.backgroundColor = UIColor.gray10
-        view.actionButton.setTitle(L10n.learnMore, for: .normal)
+        view.setDescription(L10n.SpookyPromo.menuDescription,
+                            font: .systemFont(ofSize: 12, weight: .medium),
+                            color: .gray400,
+                            lineHeight: 16)
+        view.actionButton.backgroundColor = .gray10
+        view.setActionTitle(L10n.viewOffer)
     }
     
     func configurePurchaseBanner(view: PromoBannerView) {
@@ -339,19 +398,25 @@ class GiftOneGetOnePromotion: HabiticaPromotion {
     }
     
     var gradientStart: UIColor? {
-        return UIColor("#3BCAD7")
+        return UIColor("#45B7E9")
     }
     var gradientEnd: UIColor? {
-        return UIColor("#925CF3")
+        return UIColor("#7384E9")
     }
+
+    var pinnedPillTitle: String? {
+        return L10n.giftOneGetOneTitle
+    }
+    var pinnedPillLeftArt: UIImage? { return Asset.g1g1PromoMini.image }
+    var pinnedPillArtHeight: CGFloat { return 40 }
     
     private func makeGradient(view: UIView) -> CAGradientLayer {
         let gradient: CAGradientLayer = CAGradientLayer()
 
         gradient.colors = [gradientStart?.cgColor ?? CGColor(gray: 0, alpha: 1), gradientEnd?.cgColor ?? CGColor(gray: 0, alpha: 1)]
         gradient.locations = [0.0, 1.0]
-        gradient.startPoint = CGPoint(x: 0.0, y: 0.0)
-        gradient.endPoint = CGPoint(x: 1.0, y: 1.0)
+        gradient.startPoint = CGPoint(x: 0.0, y: 0.5)
+        gradient.endPoint = CGPoint(x: 1.0, y: 0.5)
         gradient.frame = CGRect(x: 0.0, y: 0.0, width: view.frame.size.width, height: view.frame.size.height)
         return gradient
     }
@@ -366,23 +431,23 @@ class GiftOneGetOnePromotion: HabiticaPromotion {
     }
     
     func configurePromoMenuView(view: PromoMenuView) {
+        view.setCardGradient(startColor: gradientStart ?? backgroundColor, endColor: gradientEnd ?? backgroundColor)
         view.leftImageView.image = Asset.promoGiftLeftLarge.image
         view.rightImageView.image = Asset.promoGiftRightLarge.image
-        view.setTitle(L10n.giftOneGetOneEvent)
-        view.setDescription(L10n.giftOneGetOneDescription)
-        view.actionButton.backgroundColor = buttonBackground
-        view.actionButton.setTitle(L10n.learnMore, for: .normal)
-        if ThemeService.shared.theme.isDark {
-            view.actionButton.setTitleColor(UIColor.teal100, for: .normal)
-            view.titleView.textColor = .white
-            view.descriptionView.textColor = .white
-        } else {
-            view.actionButton.setTitleColor(UIColor.teal10, for: .normal)
-            view.titleView.textColor = .blue1
-            view.descriptionView.textColor = .blue1
-        }
+        view.setTitle(L10n.giftOneGetOneTitle,
+                      font: .systemFont(ofSize: 20, weight: .semibold),
+                      color: .white,
+                      lineHeight: 25,
+                      kern: -0.45)
+        view.setDescription(L10n.giftOneGetOneDescription,
+                            font: .systemFont(ofSize: 12, weight: .medium),
+                            color: .white,
+                            lineHeight: 16,
+                            maxLines: 2)
+        view.actionButton.backgroundColor = UIColor.white.withAlphaComponent(0.3)
+        view.setActionTitle(L10n.viewOffer)
     }
-    
+
     func configurePurchaseBanner(view: PromoBannerView) {
         view.backgroundColor = nil
         view.layer.sublayers?.filter { $0 is CAGradientLayer }.forEach { $0.removeFromSuperlayer() }
@@ -462,16 +527,16 @@ class Survey2021Promotion: HabiticaWebPromotion {
     
     func configurePromoMenuView(view: PromoMenuView) {
         view.canClose = true
+        view.setCardBackground(color: UIColor("#0E3A5B"))
         view.leftImageView.image = Asset.surveyArtLeft.image
         view.rightImageView.image = Asset.surveyArtRight.image
         view.setTitle(L10n.Survey.title)
         view.titleView.textColor = .white
         view.setDescription(L10n.Survey.description)
         view.descriptionView.textColor = .white
-        view.actionButton.backgroundColor = .white
-        view.actionButton.setTitle(L10n.Survey.button, for: .normal)
-        view.actionButton.setTitleColor(.blue10, for: .normal)
-        view.closeButton.tintColor = .blue100
+        view.actionButton.backgroundColor = UIColor("#2C5470")
+        view.setActionTitle(L10n.Survey.button)
+        view.closeButton.tintColor = .white
     }
     
     func configurePurchaseBanner(view: PromoBannerView) {

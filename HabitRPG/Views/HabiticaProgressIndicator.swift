@@ -101,7 +101,7 @@ class HabiticaRefresControl: UIRefreshControl {
     
     override func layoutSubviews() {
         super.layoutSubviews()
-        subviews.last?.frame = CGRect(x: 0, y: 0, width: bounds.width, height: 44)
+        subviews.last?.frame = CGRect(x: 0, y: 8, width: bounds.width, height: 44)
         let estimatedRefreshHeight = (superview?.bounds.height ?? 1) * 0.19
         if isRefreshing || refreshState.hasRefreshed {
             refreshState.fraction = nil

@@ -171,14 +171,14 @@
 "tasks.repeats.repeats_every" = "Repeats %@";
 "tasks.repeats.daily" = "daily";
 "tasks.repeats.weekly" = "weekly";
-"tasks.repeats.monthly" = "every Month";
+"tasks.repeats.monthly" = "every month";
 "tasks.repeats.yearly" = "yearly";
 "tasks.repeats.every_day" = "every day";
 "tasks.repeats.weekdays" = "weekdays";
 "tasks.repeats.weekends" = "weekends";
 "tasks.repeats.monthly_the" = "the %@";
 "tasks.repeats.monthly_week_of" = "the %1$@ %2$@ of the month";
-"tasks.repeats.fifth_week_warning" = "This task will not appear due during months with less %@s.";
+"tasks.repeats.fifth_week_warning" = "This task will not appear due during months with fewer %@s.";
 "tasks.quality.worst" = "Worst";
 "tasks.quality.worse" = "Worse";
 "tasks.quality.bad" = "Bad";
@@ -818,7 +818,7 @@
 "year" = "year";
 "days" = "days";
 "weeks" = "weeks";
-"months" = "Months";
+"months" = "months";
 "years" = "years";
 "leave_challenge_title" = "Leave Challenge?";
 "leave_challenge_prompt" = "Do you want to leave the Challenge and keep or delete the tasks?";
@@ -1038,6 +1038,8 @@
 "sale" = "Sale";
 "sale_ends_in" = "Sale ends in %@";
 "get_more_habitica" = "Get more out of Habitica";
+"subscription_ends_on" = "Ends on %@";
+"view_offer" = "View Offer";
 "report_x_violation" = "Report @%@ for violation?";
 "report_x" = "Report %@";
 "report_x_question" = "Why are you reporting this %@?";
@@ -1082,6 +1084,7 @@
 "shops.rebirthShop" = "Orb of Rebirth";
 "shops.rebirthShopDescription" = "Instantly restart your adventure as a level 1 Warrior while retaining Achievements, Items, and Equipment. Your tasks will reset to yellow but will retain their history. All personal task streaks will reset. Your Gold, Experience, Mana, and the effects of all Skills will be removed.";
 "shops.rebirthConfirmTitle" = "Are you sure you want to use the Orb of Rebirth?";
+"shops.rebirthConfirmTitleGems" = "Are you sure you want to use the Orb of Rebirth for %d Gems?";
 "shops.rebirthConfirmMessage" = "Are you sure you want to use the Orb of Rebirth?\n\nYou will:\n• Return to Level 1 as a Warrior\n• Reset all your stats and skill points\n• Lose all your gold and mana\n• Reset all task values and streaks\n\nYou will keep:\n• All your equipment, pets, and mounts\n• All your achievements\n• Your guild, party, and challenge memberships";
 "shops.rebirthConfirmFree" = "Restart (FREE)";
 "shops.rebirthConfirmGems" = "Restart (%d Gems)";
@@ -1089,8 +1092,8 @@
 "shops.rebirthEnabledSubtitle" = "A new adventure is available!";
 "shops.rebirthEnabledDescription" = "Use the Orb of Rebirth to breathe new life into your Habitica adventure once you feel you've achieved it all! Begin again at level 1 while keeping your tasks, Achievements, and Pets with this special item found in the Market.";
 "shops.rebirthAchievementTitle" = "You've Been Reborn!";
-"shops.rebirthAchievementDescription" = "You've begun a new adventure! This is Rebirth %d for you, and the highest Level you've attained is %d.";
-"shops.rebirthAchievementDescriptionMax" = "You've begun a new adventure! This is Rebirth %d for you, and the highest Level you've attained is %d or higher.";
+"shops.rebirthAchievementDescription" = "You've begun a new adventure! This is Rebirth %d for you, and the highest level you've attained is %d.";
+"shops.rebirthAchievementDescriptionMax" = "You've begun a new adventure! This is Rebirth %d for you, and the highest level you've attained is %d or higher.";
 "shops.freeRebirthAtLevel100" = "FREE Orb of Rebirth at level 100";
 "shops.dayUntilFreeRebirth" = "%d day until FREE Orb of Rebirth";
 "shops.daysUntilFreeRebirth" = "%d days until FREE Orb of Rebirth";
@@ -1298,14 +1301,16 @@
 "promo_info_instructions_title" = "How it works";
 "promo_info_limitations_title" = "Limitations";
 
+"fall_promo.menu_description" = "Get extra Gems with each purchase!";
 "fall_promo.info_prompt" = "The Fall Gala is in full swing so we thought it was the perfect time to have a Gem Sale! Now you will get more Gems with each purchase than ever before.";
 "fall_promo.info_instructions" = "Between %@ and %@, simply purchase any Gem bundle like usual and your account will be credited with the promotional amount of Gems. More Gems to spend, share, or save for any future releases!";
 
+"spooky_promo.menu_description" = "Get extra Gems with each purchase!";
 "spooky_promo.info_prompt" = "The Gem Sale is back to haunt the very end of this year’s Fall Gala! This is one last chance to get more Gems than ever, so stock up while it lasts!";
 "spooky_promo.info_instructions" = "Between %@ and %@, simply purchase any Gem bundle like usual and your account will be credited with the promotional amount of Gems. More Gems to spend, share, or save for any future releases!";
 "gems_promo.info_limitations" = "This promotion only applies during the limited time event. This event starts on %@ (12:00 UTC) and will end %@ (00:00 UTC). The promo offer is only available when buying Gems for yourself.";
-"survey.title" = "Habitica player survey";
-"survey.description" = "Fill out this 5 minute survey to help us grow and receive an achievement!";
+"survey.title" = "Player Survey";
+"survey.description" = "Fill out this 5 minute survey to help us grow and receive an Achievement!";
 "survey.button" = "Go to Survey";
 "suggest_pet_hatch_missing_egg" = "You still need a %@ Egg to hatch this pet";
 "suggest_pet_hatch_missing_potion" = "You still need a %@ Potion to hatch this pet";
@@ -1590,3 +1595,21 @@
 "prize" = "Prize";
 "official" = "Official";
 "categories" = "Categories";
+"about.version_number" = "Version %@";
+"about.common_questions_title" = "Common Questions";
+"about.common_questions_body" = "We’ll explain the basics and answer common questions to get you up to speed";
+"about.common_questions_button" = "See Topics";
+"about.bugs_title" = "Bugs & Fixes";
+"about.bugs_body" = "Did something go wrong? Check for answers here or reach out to us for help";
+"about.bugs_button" = "Get Help";
+"about.feedback_title" = "Suggestions & Feedback";
+"about.feedback_body" = "Have input on how features could work better or an idea for something new? Tell us!";
+"about.feedback_button" = "Submit Feedback";
+"about.habitica_on_web" = "Habitica on Web";
+"about.rate_our_app" = "Rate our App";
+"about.open_source_note" = "Habitica is available as open source software on GitHub";
+"menu.avatar_customization" = "Avatar Customization";
+"menu.help_about" = "Help & About";
+"menu.new_message" = "New message";
+"menu.new_announcement" = "New announcement";
+"menu.time_travelers_shop" = "Time Travelers Shop";

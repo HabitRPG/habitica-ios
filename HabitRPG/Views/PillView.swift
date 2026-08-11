@@ -114,7 +114,7 @@ class PillView: UIView {
         addSubview(label)
         addSubview(iconView)
         label.textAlignment = .center
-        label.font = UIFont.preferredFont(forTextStyle: .caption1)
+        label.font = UIFontMetrics.default.scaledSystemFont(ofSize: 13, ofWeight: .semibold)
         iconView.contentMode = .center
         
         if borderColor == nil {
@@ -154,7 +154,7 @@ class PillView: UIView {
                 return CGSize(width: 0, height: 0)
             }
             let originalSize = label.intrinsicContentSize
-            var width = originalSize.width+16
+            var width = originalSize.width+24
             let height = originalSize.height+12
             if icon != nil {
                 width += 15+4

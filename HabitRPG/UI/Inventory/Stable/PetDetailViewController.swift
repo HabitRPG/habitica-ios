@@ -12,7 +12,8 @@ import SwiftUI
 
 class PetDetailViewController: StableDetailViewController<PetProtocol, PetStableItem, PetDetailDataSource> {
     private let userRepository = UserRepository()
-    
+    private let headerView = AvatarHeaderView()
+
     private var user: UserProtocol?
     
     private var selectedPet: PetProtocol?
@@ -25,10 +26,24 @@ class PetDetailViewController: StableDetailViewController<PetProtocol, PetStable
             datasource?.types = [animalType]
         }
         datasource?.collectionView = collectionView
+        topHeaderCoordinator?.hideNavBar = false
         super.viewDidLoad()
-        
+
+        if let topHeaderNavigationController = navigationController as? TopHeaderViewController {
+            if let header = topHeaderNavigationController.currentHeaderCoordinator?.alternativeHeader as? AvatarHeaderView {
+                topHeaderCoordinator?.alternativeHeader = header
+            }
+        }
+        if topHeaderCoordinator?.alternativeHeader == nil {
+            topHeaderCoordinator?.alternativeHeader = headerView
+        }
+        topHeaderCoordinator?.navbarVisibleColor = ThemeService.shared.theme.windowBackgroundColor
+        topHeaderCoordinator?.followScrollView = false
+        topHeaderCoordinator?.contentInsetModifier.top = -30
+
         disposable.inner.add(userRepository.getUser().on(value: {[weak self]user in
             self?.user = user
+            self?.headerView.setAvatar(avatar: user)
         }).start())
     }
     

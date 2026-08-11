@@ -162,7 +162,7 @@ class FixCharacterViewController: BaseTableViewController {
             valueField.text = String(intValue)
             valueField.keyboardType = .numberPad
         } else if let floatValue = value as? Float {
-            valueField.text = "\(floatValue)"
+            valueField.text = floatValue == floatValue.rounded() ? String(format: "%.0f", floatValue) : "\(floatValue)"
             valueField.keyboardType = .decimalPad
         }
         let isDark = ThemeService.shared.theme.isDark

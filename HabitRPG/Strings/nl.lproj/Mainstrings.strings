@@ -115,9 +115,9 @@
 /* (No Comment) */
 "groups.assign_new_leader" = "Nieuwe leider toewijzen";
 /* (No Comment) */
-"groups.guild_invitation_invitername" = "%@ heeft je uitgenodigd om deel te nemen aan Gilde: %@";
+"groups.guild_invitation_invitername" = "**%@** heeft je uitgenodigd om deel te nemen aan Groep **%@**";
 /* (No Comment) */
-"groups.guild_invitation_no_invitername" = "Iemand heeft je uitgenodigd om deel te nemen aan Gilde: %@";
+"groups.guild_invitation_no_invitername" = "Iemand heeft je uitgenodigd om deel te nemen aan Groep **%@**";
 /* (No Comment) */
 "groups.leader_challenges" = "Alleen de leider kan uitdagingen maken";
 /* (No Comment) */
@@ -143,7 +143,7 @@
 /* (No Comment) */
 "inventory.available_until" = "Beschikbaar tot %@";
 /* (No Comment) */
-"inventory.hatched" = "Je hebt een nieuw huisdier uitgebroed!";
+"inventory.hatched" = "Je hebt een nieuw Huisdier uitgebroed!";
 /* (No Comment) */
 "inventory.no_gems_left" = "Je hebt deze maand alle edelstenen gekocht die je kunt kopen. Binnen de eerste drie dagen van elke maand komen er meer beschikbaar. Bedankt voor het abonneren!";
 /* (No Comment) */
@@ -207,9 +207,9 @@
 /* (No Comment) */
 "open_website" = "Open Habitica Website";
 /* (No Comment) */
-"party.invitation_invitername" = "%@ heeft je uitgenodigd om deel te nemen aan hun gezelschap";
+"party.invitation_invitername" = "**%@** heeft je uitgenodigd om deel te nemen aan Gezelschap **%@**";
 /* (No Comment) */
-"party.invitation_no_invitername" = "Iemand heeft je uitgenodigd om deel te nemen aan hun gezelschap";
+"party.invitation_no_invitername" = "Iemand heeft je uitgenodigd om deel te nemen aan Gezelschap **%@**";
 /* (No Comment) */
 "party.invited_to_quest" = "%@ heeft je uitgenodigd om deel te nemen aan een queeste";
 /* (No Comment) */
@@ -221,7 +221,7 @@
 /* (No Comment) */
 "pets" = "Huisdieren";
 /* (No Comment) */
-"plain_backgrounds" = "Eenvoudige Achtergronden";
+"plain_backgrounds" = "Standaard Achtergronden";
 /* (No Comment) */
 "purchase_for_gems" = "Koop voor %d Edelstenen";
 /* (No Comment) */
@@ -555,7 +555,7 @@
 "tasks.add_x" = "Voeg %@ toe";
 "tasks.repeats.daily" = "dagelijks";
 "tasks.repeats.weekly" = "wekelijks";
-"tasks.repeats.monthly" = "maandelijks";
+"tasks.repeats.monthly" = "elke maand";
 "tasks.repeats.yearly" = "jaarlijks";
 "tasks.repeats.every_day" = "iedere dag";
 "tasks.repeats.weekdays" = "doordeweeks";
@@ -635,7 +635,7 @@
 "level" = "Niveau";
 "party.create_party_title" = "Speel Habitica met een gezelschap";
 "party.create_party_button" = "Maak een nieuwe gezelschap aan";
-"party.join_party_title" = "Wil je jezelf bij een gezelschap aansluiten?";
+"party.join_party_title" = "Zoekt je een Gezelschap?";
 "party.party_challenges" = "gezelschapsuitdagingen";
 "party.start_quest" = "Start een queeste";
 "size" = "Grootte";
@@ -788,7 +788,7 @@
 "create_tag" = "Label maken";
 "unlockDropsTitle" = "Je hebt het drop-systeem vrijgespeeld!";
 "unlockDropsDescription" = "Je hebt het Drop-systeem vrijgespeeld! Als je nu een taak voltooid, heb je een kleine kans om een voorwerp te vinden, zoals eieren, drankjes en voedsel!";
-"subscription_info_1_title" = "Goud voor edelstenen";
+"subscription_info_1_title" = "Gratis Maandelijkse Edelstenen";
 "subscription_info_2_title" = "Mystieke zandlopers";
 "subscription_info_3_title" = "Maandelijkse mysterie voorwerpen";
 "subscription_info_3_description" = "Schrijf je nu in om nu een exclusieve set te krijgen en elke maand nieuwe voorwerpen te ontvangen!";
@@ -835,12 +835,12 @@
 "gift_confirmation_title" = "Je cadeautje is verstuurd!";
 "continue" = "Verder";
 "gift_recipient_subtitle" = "Vul de @ gebruikersnaam van de ontvanger in";
-"gift_recipient_title" = "Aan wie wil je het geven?";
+"gift_recipient_title" = "Stuur cadeau";
 "groups.error_name_required" = "Je naam mag niet leeg zijn.";
 "login.forgot_password" = "Wachtwoord vergeten";
 "login.email_username" = "Email / Gebruikersnaam";
 "login.authentication_error" = "Er ging iets mis met de verificatie. Probeer het later nog eens";
-"login.password_confirm_error" = "Het wachtwoord en de bevestiging van het wachtwoord moeten hetzelfde zijn en moeten langer dan 8 tekens zijn.";
+"login.password_confirm_error" = "Het wachtwoord en de bevestiging van het wachtwoord moeten hetzelfde zijn.";
 "damage_paused" = "Schade gepauzeerd";
 "about.love_open_source" = "We houden van open source software.";
 "about.leave_review" = "Laat een recensie achter";
@@ -1012,7 +1012,7 @@
 "login.email_invalid" = "Kies a.u.b. een geldig e-mail adres.";
 "copied_x_to_clipboard" = "%@ naar klembord gekopieerd";
 "quest_completed_title" = "Queeste volbracht!";
-"time_travel_backgrounds" = "Tijdreizigersachtergronden";
+"time_travel_backgrounds" = "Steampunk Achtergronden";
 "member_group_plan" = "Lid van een groepsaanbieding";
 "group_plan" = "Groepsaanbieding";
 "quests.unlock_previous_short" = "Maak queeste %d af";
@@ -1026,7 +1026,7 @@
 "transfer" = "Overdragen";
 "transfer_ownership" = "Het leiderschap overdragen";
 "party.quest_not_participating" = "Je neemt niet deel";
-"party.remove_member_title" = "Ben je zeker dat je %@ uit de groep wilt verwijderen?";
+"party.remove_member_title" = "Ben je zeker dat je %@ uit de Gezelschap wilt verwijderen?";
 "party.transfer_ownership_description" = "Dit zal van %@ de nieuwe groepsleider maken";
 "party.transfer_ownership_title" = "Draag leiderschap over?";
 "more_options" = "Meer instellingen";
@@ -1115,7 +1115,7 @@
 "learn_more" = "Meer informatie";
 "insufficient_hourglasses_message_subscriber" = "Je hebt meer mystieke zandlopers nodig om dit voorwerp te kopen! Blijf geabonneerd om je zandlopers te blijven ontvangen.";
 "insufficient_hourglasses_message" = "Je hebt meer mystieke zandlopers nodig om dit voorwerp te kopen! Zandlopers worden beloond voor het geabonneerd zijn van opeenvolgende maanden.";
-"more_gems_message" = "Je hebt meer edelstenen nodig om dit voorwerp te kopen!";
+"more_gems_message" = "Je hebt meer Edelstenen nodig om dit te kopen!";
 "complete_more_tasks" = "Je moet meer taken voltooien voordat je dit voorwerp kunt aanschaffen!";
 "gift_sent_to" = "Jij verzond %@:";
 "gift_sent_confirmation" = "Je geschenk is verzonden!";
@@ -1152,12 +1152,12 @@
 "partyUpTitle" = "Vorm een groep";
 "onboardingComplete_achievement_title" = "Je hebt je onboarding taken afgerond!";
 "onboardingCompleteDescription" = "Als je nog meer wilt, bekijk dan prestaties en begin met verzamelen!";
-"onboardingCompleteTitle" = "Je hebt 5 prestaties en 100 goud voor je moeite verdiend.";
+"onboardingCompleteTitle" = "Je hebt **5 Prestaties** en **[100 Goud](/nep)** voor je moeite verdiend.";
 "view_onboarding_tasks" = "Bekijk onboarding taken";
 "first_drop_title" = "Je hebt nieuwe voorwerpen gevonden!";
 "completedTaskTitle" = "Je hebt een taak afgevinkt";
 "go_to_items" = "Ga naar voorwerpen";
-"first_drop_explanation2" = "Ga naar je voorwerpen en probeer je nieuwe ei en uitbroeddrank te combineren!";
+"first_drop_explanation2" = "Probeer je nieuwe ei en uitbroeddrank te combineren!";
 "first_drop_explanation1" = "Taken afvinken geeft je een kans om eieren, uitbroeddranken, en voer voor je huisdieren te vinden.";
 "view_achievements" = "Bekijk prestaties";
 "you_got_achievement" = "Je hebt een prestatie!";
@@ -1536,3 +1536,22 @@
 "strictly_necessary" = "Strikt noodzakelijk";
 "settings.manage_privacy_preferences" = "Privacytoestemmingen aanpassen";
 "performance_analytics" = "Prestaties en analyse";
+"subscription.info_armoire_title" = "Dubbele Kabinet Beloningen";
+"quest_items_found" = "Je heeft %d queestevoorwerpen gevonden";
+"one_quest_item_found" = "Je heeft 1 queestevoorwerp gevonden";
+"delete_task_confirmation" = "Bent je zeker dat je dit Taak wilt verwijderen?";
+"standard_mounts" = "Standaard Rijdieren";
+"standard_pets" = "Standaard Huisdieren";
+"player_not_won_challenges" = "De speler heeft geen uitdagingen gewonnen.";
+"contributor_tiers" = "Bijdragersrangen";
+"participating" = "Aan het deelnemen";
+"x_x_gem_cap" = "%d / %d Edelstenenlimiet";
+"unlock_x_gear_and_skills" = "Ontgrendel %@ uitrusting en vaardigheden";
+"challenge_category.habitica_official" = "Officieel van Habitica";
+"quest_mechanics_collecting_title" = "Queestevoorwerpen Verzamelen";
+"x_hourglasses" = "%d Zandlopers";
+"x_gems_month" = "%d edelstenen per maand";
+"hourglass_in_x_months" = "Zandloper in %d maanden";
+"items.footer_quests_title" = "Wilt je nog meer Queesten?";
+"four_for_free" = "Vier voor Gratis";
+"limitations" = "Beperkingen";

@@ -15,7 +15,8 @@ extension UIColor {
     @nonobjc static let red50 = UIColor(red: 248.0 / 255.0, green: 78.0 / 255.0, blue: 82.0 / 255.0, alpha: 1.0)
     @nonobjc static let red100 = UIColor(red: 1.0, green: 97.0 / 255.0, blue: 101.0 / 255.0, alpha: 1.0)
     @nonobjc static let red500 = UIColor(red: 1.0, green: 182.0 / 255.0, blue: 184.0 / 255.0, alpha: 1.0)
-    
+    @nonobjc static let alertRed = UIColor(red: 1.0, green: 56.0 / 255.0, blue: 60.0 / 255.0, alpha: 1.0)
+
     @nonobjc static let yellow1 = UIColor(red: 121.0 / 255.0, green: 75.0 / 255.0, blue: 0.0, alpha: 1.0)
     @nonobjc static let yellow5 = UIColor(red: 238.0 / 255.0, green: 145.0 / 255.0, blue: 9.0 / 255.0, alpha: 1.0)
     @nonobjc static let yellow10 = UIColor(red: 1.0, green: 166.0 / 255.0, blue: 36.0 / 255.0, alpha: 1.0)
@@ -71,6 +72,7 @@ extension UIColor {
     @nonobjc static let purple400 = UIColor(red: 146.0 / 255.0, green: 92.0 / 255.0, blue: 243.0 / 255.0, alpha: 1.0)
     @nonobjc static let purple500 = UIColor(red: 0.74, green: 0.66, blue: 1.00, alpha: 1.00)
     @nonobjc static let purple600 = UIColor(red: 0.84, green: 0.78, blue: 1.00, alpha: 1.00)
+    @nonobjc static let purpleWhite = UIColor(red: 246.0 / 255.0, green: 244.0 / 255.0, blue: 252.0 / 255.0, alpha: 1.0)
     @nonobjc static let purple5060 = UIColor(red: 54.0 / 255.0, green: 32.0 / 255.0, blue: 93.0 / 255.0, alpha: 0.6)
     @nonobjc static let blackPurple50 = UIColor(red: 0.1, green: 0.09, blue: 0.11, alpha: 1.0)
     @nonobjc static let blackPurple100 = UIColor(red: 0.2, green: 0.19, blue: 0.23, alpha: 1.0)
@@ -109,7 +111,8 @@ extension Color {
     @nonobjc static let red50 = Color(red: 248.0 / 255.0, green: 78.0 / 255.0, blue: 82.0 / 255.0, opacity: 1.0)
     @nonobjc static let red100 = Color(red: 1.0, green: 97.0 / 255.0, blue: 101.0 / 255.0, opacity: 1.0)
     @nonobjc static let red500 = Color(red: 1.0, green: 182.0 / 255.0, blue: 184.0 / 255.0, opacity: 1.0)
-    
+    @nonobjc static let alertRed = Color(red: 1.0, green: 56.0 / 255.0, blue: 60.0 / 255.0, opacity: 1.0)
+
     @nonobjc static let yellow1 = Color(red: 121.0 / 255.0, green: 75.0 / 255.0, blue: 0.0, opacity: 1.0)
     @nonobjc static let yellow5 = Color(red: 238.0 / 255.0, green: 145.0 / 255.0, blue: 9.0 / 255.0, opacity: 1.0)
     @nonobjc static let yellow10 = Color(red: 1.0, green: 166.0 / 255.0, blue: 36.0 / 255.0, opacity: 1.0)

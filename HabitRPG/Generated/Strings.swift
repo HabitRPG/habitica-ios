@@ -816,7 +816,7 @@ public enum L10n {
   public static var monthlyBackgrounds: String { return L10n.tr("Mainstrings", "monthly_backgrounds") }
   /// Monthly Gem Cap Reached
   public static var monthlyGemCapReached: String { return L10n.tr("Mainstrings", "monthly_gem_cap_reached") }
-  /// Months
+  /// months
   public static var months: String { return L10n.tr("Mainstrings", "months") }
   /// More Gem packs
   public static var moreGemPacks: String { return L10n.tr("Mainstrings", "more_gem_packs") }
@@ -1320,6 +1320,10 @@ public enum L10n {
   public static func subscriptionDuration(_ p1: String) -> String {
     return L10n.tr("Mainstrings", "subscription_duration", p1)
   }
+  /// Ends on %@
+  public static func subscriptionEndsOn(_ p1: String) -> String {
+    return L10n.tr("Mainstrings", "subscription_ends_on", p1)
+  }
   /// Gift a Subscription
   public static var subscriptionGiftButton: String { return L10n.tr("Mainstrings", "subscription_gift_button") }
   /// Want to give the benefits of a subscription to someone else?
@@ -1536,6 +1540,8 @@ public enum L10n {
   public static var viewAchievements: String { return L10n.tr("Mainstrings", "view_achievements") }
   /// View Gem Bundles
   public static var viewGemBundles: String { return L10n.tr("Mainstrings", "view_gem_bundles") }
+  /// View Offer
+  public static var viewOffer: String { return L10n.tr("Mainstrings", "view_offer") }
   /// View Onboarding Tasks
   public static var viewOnboardingTasks: String { return L10n.tr("Mainstrings", "view_onboarding_tasks") }
   /// View Participant Progress
@@ -1665,8 +1671,28 @@ public enum L10n {
   public enum About {
     /// Acknowledgements
     public static var acknowledgements: String { return L10n.tr("Mainstrings", "about.acknowledgements") }
+    /// Did something go wrong? Check for answers here or reach out to us for help
+    public static var bugsBody: String { return L10n.tr("Mainstrings", "about.bugs_body") }
+    /// Get Help
+    public static var bugsButton: String { return L10n.tr("Mainstrings", "about.bugs_button") }
+    /// Bugs & Fixes
+    public static var bugsTitle: String { return L10n.tr("Mainstrings", "about.bugs_title") }
+    /// We’ll explain the basics and answer common questions to get you up to speed
+    public static var commonQuestionsBody: String { return L10n.tr("Mainstrings", "about.common_questions_body") }
+    /// See Topics
+    public static var commonQuestionsButton: String { return L10n.tr("Mainstrings", "about.common_questions_button") }
+    /// Common Questions
+    public static var commonQuestionsTitle: String { return L10n.tr("Mainstrings", "about.common_questions_title") }
     /// Export Database
     public static var exportDatabase: String { return L10n.tr("Mainstrings", "about.export_database") }
+    /// Have input on how features could work better or an idea for something new? Tell us!
+    public static var feedbackBody: String { return L10n.tr("Mainstrings", "about.feedback_body") }
+    /// Submit Feedback
+    public static var feedbackButton: String { return L10n.tr("Mainstrings", "about.feedback_button") }
+    /// Suggestions & Feedback
+    public static var feedbackTitle: String { return L10n.tr("Mainstrings", "about.feedback_title") }
+    /// Habitica on Web
+    public static var habiticaOnWeb: String { return L10n.tr("Mainstrings", "about.habitica_on_web") }
     /// Leave Review
     public static var leaveReview: String { return L10n.tr("Mainstrings", "about.leave_review") }
     /// Web love open source software.
@@ -1681,12 +1707,20 @@ public enum L10n {
     }
     /// Your email isn't set up yet
     public static var noEmailTitle: String { return L10n.tr("Mainstrings", "about.no_email_title") }
+    /// Habitica is available as open source software on GitHub
+    public static var openSourceNote: String { return L10n.tr("Mainstrings", "about.open_source_note") }
+    /// Rate our App
+    public static var rateOurApp: String { return L10n.tr("Mainstrings", "about.rate_our_app") }
     /// Report a Bug
     public static var reportBug: String { return L10n.tr("Mainstrings", "about.report_bug") }
     /// Send Feedback
     public static var sendFeedback: String { return L10n.tr("Mainstrings", "about.send_feedback") }
     /// Version
     public static var version: String { return L10n.tr("Mainstrings", "about.version") }
+    /// Version %@
+    public static func versionNumber(_ p1: String) -> String {
+      return L10n.tr("Mainstrings", "about.version_number", p1)
+    }
     /// View Source Code
     public static var viewSourceCode: String { return L10n.tr("Mainstrings", "about.view_source_code") }
     /// Website
@@ -2100,6 +2134,8 @@ public enum L10n {
     }
     /// The Fall Gala is in full swing so we thought it was the perfect time to have a Gem Sale! Now you will get more Gems with each purchase than ever before.
     public static var infoPrompt: String { return L10n.tr("Mainstrings", "fall_promo.info_prompt") }
+    /// Get extra Gems with each purchase!
+    public static var menuDescription: String { return L10n.tr("Mainstrings", "fall_promo.menu_description") }
   }
 
   public enum GemsPromo {
@@ -2425,16 +2461,24 @@ public enum L10n {
   }
 
   public enum Menu {
+    /// Avatar Customization
+    public static var avatarCustomization: String { return L10n.tr("Mainstrings", "menu.avatar_customization") }
     /// Customize Avatar
     public static var customizeAvatar: String { return L10n.tr("Mainstrings", "menu.customize_avatar") }
     /// Purchase Gems
     public static var gems: String { return L10n.tr("Mainstrings", "menu.gems") }
     /// Groups
     public static var groupPlans: String { return L10n.tr("Mainstrings", "menu.group_plans") }
+    /// Help & About
+    public static var helpAbout: String { return L10n.tr("Mainstrings", "menu.help_about") }
     /// Help & FAQ
     public static var helpFaq: String { return L10n.tr("Mainstrings", "menu.help_faq") }
     /// Inventory
     public static var inventory: String { return L10n.tr("Mainstrings", "menu.inventory") }
+    /// New announcement
+    public static var newAnnouncement: String { return L10n.tr("Mainstrings", "menu.new_announcement") }
+    /// New message
+    public static var newMessage: String { return L10n.tr("Mainstrings", "menu.new_message") }
     /// Quests
     public static var questShop: String { return L10n.tr("Mainstrings", "menu.quest_shop") }
     /// Select Class
@@ -2449,6 +2493,8 @@ public enum L10n {
     public static var subscription: String { return L10n.tr("Mainstrings", "menu.subscription") }
     /// Support
     public static var support: String { return L10n.tr("Mainstrings", "menu.support") }
+    /// Time Travelers Shop
+    public static var timeTravelersShop: String { return L10n.tr("Mainstrings", "menu.time_travelers_shop") }
   }
 
   public enum Notifications {
@@ -2931,11 +2977,11 @@ public enum L10n {
     public static func purchasedAllGearTitle(_ p1: String) -> String {
       return L10n.tr("Mainstrings", "shops.purchased_all_gear_title", p1)
     }
-    /// You've begun a new adventure! This is Rebirth %d for you, and the highest Level you've attained is %d.
+    /// You've begun a new adventure! This is Rebirth %d for you, and the highest level you've attained is %d.
     public static func rebirthAchievementDescription(_ p1: Int, _ p2: Int) -> String {
       return L10n.tr("Mainstrings", "shops.rebirthAchievementDescription", p1, p2)
     }
-    /// You've begun a new adventure! This is Rebirth %d for you, and the highest Level you've attained is %d or higher.
+    /// You've begun a new adventure! This is Rebirth %d for you, and the highest level you've attained is %d or higher.
     public static func rebirthAchievementDescriptionMax(_ p1: Int, _ p2: Int) -> String {
       return L10n.tr("Mainstrings", "shops.rebirthAchievementDescriptionMax", p1, p2)
     }
@@ -2971,6 +3017,10 @@ public enum L10n {
     public static var rebirthConfirmResetItem4: String { return L10n.tr("Mainstrings", "shops.rebirthConfirmResetItem4") }
     /// Are you sure you want to use the Orb of Rebirth?
     public static var rebirthConfirmTitle: String { return L10n.tr("Mainstrings", "shops.rebirthConfirmTitle") }
+    /// Are you sure you want to use the Orb of Rebirth for %d Gems?
+    public static func rebirthConfirmTitleGems(_ p1: Int) -> String {
+      return L10n.tr("Mainstrings", "shops.rebirthConfirmTitleGems", p1)
+    }
     /// Use the Orb of Rebirth to breathe new life into your Habitica adventure once you feel you've achieved it all! Begin again at level 1 while keeping your tasks, Achievements, and Pets with this special item found in the Market.
     public static var rebirthEnabledDescription: String { return L10n.tr("Mainstrings", "shops.rebirthEnabledDescription") }
     /// A new adventure is available!
@@ -3040,6 +3090,8 @@ public enum L10n {
     }
     /// The Gem Sale is back to haunt the very end of this year’s Fall Gala! This is one last chance to get more Gems than ever, so stock up while it lasts!
     public static var infoPrompt: String { return L10n.tr("Mainstrings", "spooky_promo.info_prompt") }
+    /// Get extra Gems with each purchase!
+    public static var menuDescription: String { return L10n.tr("Mainstrings", "spooky_promo.menu_description") }
   }
 
   public enum Stable {
@@ -3201,9 +3253,9 @@ public enum L10n {
   public enum Survey {
     /// Go to Survey
     public static var button: String { return L10n.tr("Mainstrings", "survey.button") }
-    /// Fill out this 5 minute survey to help us grow and receive an achievement!
+    /// Fill out this 5 minute survey to help us grow and receive an Achievement!
     public static var description: String { return L10n.tr("Mainstrings", "survey.description") }
-    /// Habitica player survey
+    /// Player Survey
     public static var title: String { return L10n.tr("Mainstrings", "survey.title") }
   }
 
@@ -3496,11 +3548,11 @@ public enum L10n {
       public static var daily: String { return L10n.tr("Mainstrings", "tasks.repeats.daily") }
       /// every day
       public static var everyDay: String { return L10n.tr("Mainstrings", "tasks.repeats.every_day") }
-      /// This task will not appear due during months with less %@s.
+      /// This task will not appear due during months with fewer %@s.
       public static func fifthWeekWarning(_ p1: String) -> String {
         return L10n.tr("Mainstrings", "tasks.repeats.fifth_week_warning", p1)
       }
-      /// every Month
+      /// every month
       public static var monthly: String { return L10n.tr("Mainstrings", "tasks.repeats.monthly") }
       /// the %@
       public static func monthlyThe(_ p1: String) -> String {

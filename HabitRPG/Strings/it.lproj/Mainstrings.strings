@@ -1568,7 +1568,7 @@
 "glossary" = "Glossario";
 "player" = "Giocatore";
 "class_equipment_shop_dialog" = "Questo oggetto è disponibile solo per la classe %s.\nVai nelle Impostazioni per cambiare la tua classe.";
-"x_gems_for_y" = "%d Gemme per %s";
+"x_gems_for_y" = "%1$d Gemme per %2$s";
 "loading" = "Caricamento";
 "more_gem_packs" = "Altri pacchetti di Gemme";
 "quest_mechanics_rage_description" = "Alcuni Boss difficili hanno un indicatore di Furia arancione sotto la loro Salute. Questo indicatore si riempie quando i partecipanti non portano al termine le Attività Giornaliere. Quando è completamente pieno, il Boss scatenerà un attacco temibile che infligge danni aggiuntivi!";

@@ -28,7 +28,8 @@ enum AppLanguage: Int {
     case romanian
     case italian
     case japanese
-    
+    case ukrainian
+
     var name: String {
         switch self {
         case .english:
@@ -69,6 +70,8 @@ enum AppLanguage: Int {
             return "日本語"
         case .hungaruan:
             return "Magyar"
+        case .ukrainian:
+            return "Українська"
         }
     }
     
@@ -112,6 +115,8 @@ enum AppLanguage: Int {
             return "ja"
         case .hungaruan:
             return "hu"
+        case .ukrainian:
+            return "uk"
         }
     }
     
@@ -143,7 +148,8 @@ enum AppLanguage: Int {
             .croatian,
             .romanian,
             .italian,
-            .japanese
+            .japanese,
+            .ukrainian
             ]
         return languages.sorted { $0.name < $1.name }
     }
@@ -170,7 +176,13 @@ class LanguageHandler {
     
     static func setAppLanguage(_ language: AppLanguage) {
         let defaults = UserDefaults.standard
-        defaults.set([language.code, "en"], forKey: "AppleLanguages")
+        var languages = defaults.array(forKey: "AppleLanguages") as? [String] ?? Locale.preferredLanguages
+        languages.removeAll { $0 == language.code || $0.hasPrefix(language.code + "-") }
+        languages.insert(language.code, at: 0)
+        if !languages.contains(where: { $0 == "en" || $0.hasPrefix("en-") }) {
+            languages.append("en")
+        }
+        defaults.set(languages, forKey: "AppleLanguages")
         defaults.synchronize()
         if let path = Bundle.main.path(forResource: language.bundleCode, ofType: "lproj") {
             L10n.bundle = Bundle(path: path)

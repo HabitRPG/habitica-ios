@@ -21,13 +21,14 @@ protocol QueueableViewController {
 }
 
 private class QueueManager {
-    static var displayQueue: [(viewController: QueueableViewController, retryCount: Int)] = []
+    static var displayQueue: [(viewController: QueueableViewController, retryCount: Int, didAttempt: Bool)] = []
     static var showingSheet: Bool {
         return displayQueue.isEmpty == false
     }
     private static var isQueueStuck: Bool {
-        if let vc = displayQueue.first?.viewController {
-            // There is a viewcontroller in the queue but it's not showing.
+        if let head = displayQueue.first, head.didAttempt {
+            // The head was already attempted but isn't showing.
+            let vc = head.viewController
             return !vc.isBeingPresented && !vc.isMovingToParent && !vc.isCurrentlyPresented
         }
         return false
@@ -53,6 +54,8 @@ private class QueueManager {
             return
         }
 
+        current.didAttempt = true
+        displayQueue[0] = current
         let presented = current.viewController.showVC()
         if !presented {
             current.retryCount += 1
@@ -80,10 +83,10 @@ private class QueueManager {
             unstick()
         }
         if !showingSheet {
-            displayQueue.append((viewController: viewController, retryCount: 0))
+            displayQueue.append((viewController: viewController, retryCount: 0, didAttempt: false))
             showCurrent()
         } else {
-            displayQueue.append((viewController: viewController, retryCount: 0))
+            displayQueue.append((viewController: viewController, retryCount: 0, didAttempt: false))
         }
     }
 }
