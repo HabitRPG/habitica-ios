@@ -51,8 +51,6 @@ class AboutViewController: BaseTableViewController, MFMailComposeViewControllerD
     }
 
     private let scrollView = UIScrollView()
-    private let backButton = UIButton(type: .custom)
-    private let titleLabel = UILabel()
 
     private var cardContainers: [UIView] = []
     private var cardTitleLabels: [UILabel] = []
@@ -73,11 +71,11 @@ class AboutViewController: BaseTableViewController, MFMailComposeViewControllerD
     private var socialButtons: [UIButton] = []
     private let privacyButton = UIButton(type: .custom)
     private let termsButton = UIButton(type: .custom)
+    private let stretchView = UIView()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         topHeaderCoordinator?.hideHeader = true
-        topHeaderCoordinator?.hideNavBar = true
         topHeaderCoordinator?.followScrollView = false
 
         tableView.separatorStyle = .none
@@ -100,19 +98,12 @@ class AboutViewController: BaseTableViewController, MFMailComposeViewControllerD
             scrollView.topAnchor.constraint(equalTo: tableView.frameLayoutGuide.topAnchor),
             scrollView.bottomAnchor.constraint(equalTo: tableView.frameLayoutGuide.bottomAnchor)
         ])
+        scrollView.insertSubview(stretchView, at: 0)
+        stretchView.backgroundColor = .purple400
+        stretchView.isHidden = true
+        scrollView.delegate = self
 
-        backButton.layer.cornerRadius = 19
-        backButton.clipsToBounds = true
-        let chevronConfig = UIImage.SymbolConfiguration(pointSize: 16, weight: .semibold)
-        backButton.setImage(UIImage(systemName: "chevron.left", withConfiguration: chevronConfig)?.withRenderingMode(.alwaysTemplate), for: .normal)
-        backButton.addTarget(self, action: #selector(backTapped), for: .touchUpInside)
-        backButton.accessibilityLabel = L10n.back
-        tableView.addSubview(backButton)
-
-        titleLabel.text = L10n.Menu.helpAbout
-        titleLabel.font = UIFont.systemFont(ofSize: 17, weight: .semibold)
-        titleLabel.textAlignment = .left
-        scrollView.addSubview(titleLabel)
+        navigationItem.title = L10n.Menu.helpAbout
 
         for index in 0..<cardTitles.count {
             let container = UIView()
@@ -205,6 +196,16 @@ class AboutViewController: BaseTableViewController, MFMailComposeViewControllerD
         versionLabel.text = L10n.About.versionNumber(appVersionString)
         setupUpdatePrompt()
     }
+    
+    override func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        let contentHeight = scrollView.contentSize.height
+        if contentHeight > 0 {
+            let bottomSize = max(0, scrollView.contentOffset.y - (contentHeight - scrollView.frame.size.height))
+            stretchView.frame = CGRect(x: 0, y: contentHeight, width: scrollView.frame.size.width, height: bottomSize)
+            stretchView.isHidden = false
+        }
+        super.scrollViewDidScroll(scrollView)
+    }
 
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
@@ -212,11 +213,6 @@ class AboutViewController: BaseTableViewController, MFMailComposeViewControllerD
         guard width > 0 else { return }
         let margin: CGFloat = 16
         let cardW = width - margin * 2
-
-        let headerLeft = view.safeAreaInsets.left + 16
-        let headerTop = max(view.safeAreaInsets.top, 20)
-        backButton.frame = CGRect(x: headerLeft, y: headerTop, width: 38, height: 38)
-        titleLabel.frame = CGRect(x: headerLeft + 50, y: headerTop, width: max(0, width - headerLeft - 50 - view.safeAreaInsets.right - 16), height: 38)
 
         for index in 0..<cardContainers.count {
             let top = 120 + CGFloat(index) * 172
@@ -285,10 +281,6 @@ class AboutViewController: BaseTableViewController, MFMailComposeViewControllerD
         view.backgroundColor = screenBg
         tableView.backgroundColor = screenBg
         scrollView.backgroundColor = screenBg
-
-        backButton.backgroundColor = themed("#EFEDF4", "#37343E", theme: theme)
-        backButton.tintColor = themed("#4E4A57", "#FFFFFF", theme: theme)
-        titleLabel.textColor = themed("#25242A", "#FFFFFF", theme: theme)
 
         let cardBg = themed("#F9F9F9", "#23202A", theme: theme)
         let cardTitleColor = themed("#25242A", "#FFFFFF", theme: theme)
