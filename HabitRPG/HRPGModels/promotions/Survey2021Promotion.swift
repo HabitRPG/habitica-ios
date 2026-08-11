@@ -5,17 +5,21 @@
 //  Created by Phillip Thelen on 11.08.26.
 //  Copyright © 2026 HabitRPG Inc. All rights reserved.
 //
-
-
 import UIKit
 
 class Survey2021Promotion: HabiticaWebPromotion {
-
     var identifier = "survey2021"
     var promoType: HabiticaPromotionType = .survey
     var isWebPromo: Bool = true
     var startDate: Date = Date()
     var endDate: Date = Date().addingTimeInterval(1000)
+    
+    var pinnedPillTitle: String? { return nil }
+    var pinnedPillTitleImage: UIImage? { return nil }
+    var pinnedPillLeftArt: UIImage? { return nil }
+    var pinnedPillBackground: UIColor? { return backgroundColor }
+    var pinnedPillArrowColor: UIColor { return .yellow500 }
+    var pinnedPillArtHeight: CGFloat { return 40 }
     
     var url: URL?
     

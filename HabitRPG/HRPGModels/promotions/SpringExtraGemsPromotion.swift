@@ -13,6 +13,8 @@ class SpringExtraGemsPromotion: ExtraGemsPromotion {
         super.init(identifier: "spring_extra_gems", startDate: startDate, endDate: endDate)
     }
     
+    override var pinnedPillTitleImage: UIImage? { return Asset.springPromoTitle.image }
+    
     override func makeGradient(view: UIView) -> CAGradientLayer {
         let gradient = CAGradientLayer()
 
@@ -43,6 +45,7 @@ class SpringExtraGemsPromotion: ExtraGemsPromotion {
     override func configurePromoMenuView(view: PromoMenuView) {
         super.configurePromoMenuView(view: view)
         view.setTitleImage(Asset.springPromoTitle.image)
+        view.durationView.textColor = UIColor("#D5C8FF")
     }
     
     override func configurePurchaseBanner(view: PromoBannerView) {

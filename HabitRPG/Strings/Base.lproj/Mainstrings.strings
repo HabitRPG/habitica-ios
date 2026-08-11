@@ -1309,8 +1309,8 @@
 "flash_promo.info_prompt" = "Get more Gems with each purchase for a limited time. Take advantage of our best deal on Gems before it’s gone!";
 
 "gems_promo.info_instructions" = "Between %@ and %@, simply purchase any Gem bundle like usual and your account will be credited with the promotional amount of Gems. More Gems to spend, share, or save for any future releases!";
-
 "gems_promo.info_limitations" = "This promotion only applies during the limited time event. This event starts on %@ (12:00 UTC) and will end %@ (00:00 UTC). The promo offer is only available when buying Gems for yourself.";
+"gems_promo.menu_prompt" = "Get extra Gems with each purchase!";
 "survey.title" = "Player survey";
 "survey.description" = "Fill out this 5 minute survey to help us grow and receive an achievement!";
 "survey.button" = "Go to Survey";
@@ -1402,6 +1402,7 @@
 "thanks_for_your_support" = "Thanks for your support!";
 "visit_the_market" = "Visit the Market";
 "ends_in_x" = "ends in %s";
+"ends_x" = "Ends %s";
 "exclusive_items_await" = "Exclusive items and gifts await";
 "purchase_gryphatrice_confirmation" = "Purchase the Jubilant Gryphatrice for %d Gems?";
 "day_x" = "Day %d";

@@ -393,7 +393,7 @@ class MainMenuViewController: BaseTableViewController {
 
     fileprivate func setupFooter() {
         stretchView.isHidden = true
-        if configRepository.bool(variable: .showSubscriptionBanner) && configRepository.developerPromoOverride?.isEmpty != false {
+        if configRepository.bool(variable: .showSubscriptionBanner) {
             if tableView.tableFooterView?.tag == MainMenuViewController.subscriptionFooterTag {
                 return
             }
@@ -407,7 +407,7 @@ class MainMenuViewController: BaseTableViewController {
                 if tableView.tableFooterView?.tag == promoTag {
                     return
                 }
-                let view = PromoMenuView(frame: CGRect(x: 0, y: 0, width: tableView.frame.size.width, height: 168))
+                let view = PromoMenuView(frame: CGRect(x: 0, y: 0, width: tableView.frame.size.width, height: 157))
                 promo.configurePromoMenuView(view: view)
                 view.frame.size.height = view.fittingHeight(forWidth: tableView.frame.size.width)
                 view.onButtonTapped = { [weak self] in
@@ -815,11 +815,10 @@ class MainMenuViewController: BaseTableViewController {
     }
 
     private func refreshPromoState() {
-        activePromo = configRepository.developerOverridePromotion() ?? configRepository.activePromotion()
+        activePromo = configRepository.activePromotion()
         updatePromoCells()
         setupFooter()
         setupPinnedPill()
-        applyDeveloperOverrides()
         tableView.reloadData()
     }
 

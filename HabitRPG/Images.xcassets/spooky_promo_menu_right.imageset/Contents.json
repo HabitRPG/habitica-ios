@@ -1,15 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "social_icons.png",
+      "filename" : "Group 6.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
+      "filename" : "Group 6@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
+      "filename" : "Group 6@3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }

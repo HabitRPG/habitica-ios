@@ -13,6 +13,8 @@ class SummerExtraGemsPromotion: ExtraGemsPromotion {
         super.init(identifier: "summer_extra_gems", startDate: startDate, endDate: endDate)
     }
     
+    override var pinnedPillTitleImage: UIImage? { return Asset.summerPromoTitle.image }
+    
     override func makeGradient(view: UIView) -> CAGradientLayer {
         let gradient = CAGradientLayer()
 
@@ -43,6 +45,7 @@ class SummerExtraGemsPromotion: ExtraGemsPromotion {
     override func configurePromoMenuView(view: PromoMenuView) {
         super.configurePromoMenuView(view: view)
         view.setTitleImage(Asset.summerPromoTitle.image)
+        view.durationView.textColor = UIColor("#8EEDF6")
     }
     
     override func configurePurchaseBanner(view: PromoBannerView) {

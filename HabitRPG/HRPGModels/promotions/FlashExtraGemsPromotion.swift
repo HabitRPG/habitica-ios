@@ -13,6 +13,8 @@ class FlashExtraGemsPromotion: ExtraGemsPromotion {
         super.init(identifier: "flash_extra_gems", startDate: startDate, endDate: endDate)
     }
     
+    override var pinnedPillTitleImage: UIImage? { return Asset.flashPromoTitle.image }
+    
     override func makeGradient(view: UIView) -> CAGradientLayer {
         let gradient = CAGradientLayer()
 
@@ -43,6 +45,7 @@ class FlashExtraGemsPromotion: ExtraGemsPromotion {
     override func configurePromoMenuView(view: PromoMenuView) {
         super.configurePromoMenuView(view: view)
         view.setTitleImage(Asset.flashPromoTitle.image)
+        view.durationView.textColor = UIColor("#FEDEAD")
     }
     
     override func configurePurchaseBanner(view: PromoBannerView) {

@@ -5,8 +5,6 @@
 //  Created by Phillip Thelen on 11.08.26.
 //  Copyright © 2026 HabitRPG Inc. All rights reserved.
 //
-
-
 import UIKit
 
 class GiftOneGetOnePromotion: HabiticaPromotion {
@@ -16,6 +14,13 @@ class GiftOneGetOnePromotion: HabiticaPromotion {
     var isWebPromo: Bool = false
     var startDate: Date
     var endDate: Date
+    
+    var pinnedPillTitle: String? { return nil }
+    var pinnedPillTitleImage: UIImage? { return nil }
+    var pinnedPillLeftArt: UIImage? { return nil }
+    var pinnedPillBackground: UIColor? { return backgroundColor }
+    var pinnedPillArrowColor: UIColor { return .yellow500 }
+    var pinnedPillArtHeight: CGFloat { return 40 }
     
     // Optimize: Reuse DateFormatter instance to avoid expensive creation
     private lazy var shortDateFormatter: DateFormatter = {

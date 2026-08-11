@@ -448,6 +448,10 @@ public enum L10n {
   public static func endsInX(_ p1: UnsafePointer<CChar>) -> String {
     return L10n.tr("Mainstrings", "ends_in_x", p1)
   }
+  /// Ends %s
+  public static func endsX(_ p1: UnsafePointer<CChar>) -> String {
+    return L10n.tr("Mainstrings", "ends_x", p1)
+  }
   /// Equip
   public static var equip: String { return L10n.tr("Mainstrings", "equip") }
   /// Equipped Gear
@@ -2130,8 +2134,6 @@ public enum L10n {
   public enum FallPromo {
     /// Get more Gems with each purchase for a limited time! Fall into one of our best deals on Gems before it’s gone.
     public static var infoPrompt: String { return L10n.tr("Mainstrings", "fall_promo.info_prompt") }
-    /// Get extra Gems with each purchase!
-    public static var menuDescription: String { return L10n.tr("Mainstrings", "fall_promo.menu_description") }
   }
 
   public enum FlashPromo {
@@ -2148,6 +2150,8 @@ public enum L10n {
     public static func infoLimitations(_ p1: String, _ p2: String) -> String {
       return L10n.tr("Mainstrings", "gems_promo.info_limitations", p1, p2)
     }
+    /// Get extra Gems with each purchase!
+    public static var menuPrompt: String { return L10n.tr("Mainstrings", "gems_promo.menu_prompt") }
   }
 
   public enum GiftOneGetOneData {
@@ -3093,8 +3097,6 @@ public enum L10n {
   public enum SpookyPromo {
     /// Get more Gems with each purchase for a limited time! Put on your best costume and claim one of our best deals on Gems before it’s gone!
     public static var infoPrompt: String { return L10n.tr("Mainstrings", "spooky_promo.info_prompt") }
-    /// Get extra Gems with each purchase!
-    public static var menuDescription: String { return L10n.tr("Mainstrings", "spooky_promo.menu_description") }
   }
 
   public enum SpringPromo {

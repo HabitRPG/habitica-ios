@@ -5,8 +5,6 @@
 //  Created by Phillip Thelen on 11.08.26.
 //  Copyright © 2026 HabitRPG Inc. All rights reserved.
 //
-
-
 import UIKit
 
 class ExtraGemsPromotion: HabiticaPromotion {
@@ -16,6 +14,13 @@ class ExtraGemsPromotion: HabiticaPromotion {
     var isWebPromo: Bool = false
     var startDate: Date
     var endDate: Date
+    
+    var pinnedPillTitle: String? { return nil }
+    var pinnedPillTitleImage: UIImage? { return nil }
+    var pinnedPillBackground: UIColor? { return backgroundColor }
+    var pinnedPillArrowColor: UIColor { return .yellow500 }
+    var pinnedPillArtHeight: CGFloat { return 40 }
+    var pinnedPillLeftArt: UIImage? { return Asset.extraGemsPromoMenuSmall.image }
     
     // Optimize: Reuse DateFormatter instance to avoid expensive creation
     private lazy var shortDateFormatter: DateFormatter = {
@@ -34,7 +39,7 @@ class ExtraGemsPromotion: HabiticaPromotion {
     init(identifier: String, startDate: Date?, endDate: Date?) {
         self.identifier = identifier
         self.startDate = startDate ?? Date.with(year: 2020, month: 9, day: 22, timezone: TimeZone(abbreviation: "UTC"))
-        self.endDate = endDate ?? Date.with(year: 2020, month: 9, day: 30, timezone: TimeZone(abbreviation: "UTC"))
+        self.endDate = endDate ?? Date.with(year: 2020, month: 9, day: 28, timezone: TimeZone(abbreviation: "UTC"))
     }
     
     var backgroundColor: UIColor {
@@ -44,7 +49,7 @@ class ExtraGemsPromotion: HabiticaPromotion {
     var buttonBackground: UIColor {
         return UIColor.orange50
     }
-    
+
     var gradientStart: UIColor? {
         return nil
     }
@@ -69,10 +74,13 @@ class ExtraGemsPromotion: HabiticaPromotion {
     func configurePromoMenuView(view: PromoMenuView) {
         view.leftImageView.image = Asset.extraGemsPromoMenuLeft.image
         view.rightImageView.image = Asset.extraGemsPromoMenuRight.image
-        view.setTitleImage(Asset.fallPromoTitle.image)
-        view.descriptionView.text = L10n.xToY(shortDateFormatter.string(from: startDate), shortDateFormatter.string(from: endDate)).uppercased()
-        view.actionButton.backgroundColor = UIColor.gray50
-        view.actionButton.setTitle(L10n.learnMore, for: .normal)
+        view.titleImageMaxHeight = 15
+        view.setDuration(L10n.endsX(shortDateFormatter.string(from: endDate)).uppercased())
+        view.setDescription(L10n.GemsPromo.menuPrompt)
+        view.descriptionView.textColor = .gray700
+        view.actionButton.backgroundColor = UIColor.gray5
+        view.actionButton.setTitle(L10n.viewOffer, for: .normal)
+        view.setCardBackground(color: backgroundColor)
     }
     
     func configurePurchaseBanner(view: PromoBannerView) {

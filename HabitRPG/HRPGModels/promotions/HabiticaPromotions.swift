@@ -68,4 +68,16 @@ protocol HabiticaPromotion {
     func configurePurchaseBanner(view: PromoBannerView)
     func configureGemView(view: GemPurchaseCell, regularAmount: Int)
     func configureInfoView(_ viewController: PromotionInfoViewController)
+    
+    var pinnedPillTitle: String? { get }
+    var pinnedPillTitleImage: UIImage? { get }
+    var pinnedPillLeftArt: UIImage? { get }
+    var pinnedPillBackground: UIColor? { get }
+    var pinnedPillArrowColor: UIColor { get }
+    var pinnedPillArtHeight: CGFloat { get }
+    var hasPinnedPill: Bool { get }
+}
+
+extension HabiticaPromotion {
+    var hasPinnedPill: Bool { return pinnedPillTitle != nil || pinnedPillTitleImage != nil }
 }
