@@ -68,7 +68,7 @@ class PromotionInfoViewController: BaseUIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        promotion = configRepository.activePromotion()
+        promotion = configRepository.developerOverridePromotion() ?? configRepository.activePromotion()
         
         instructionsTitleLabel.text = L10n.promoInfoInstructionsTitle
         limitationsTitleLabel.text = L10n.promoInfoLimitationsTitle
