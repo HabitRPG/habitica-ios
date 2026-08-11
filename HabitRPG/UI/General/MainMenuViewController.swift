@@ -503,23 +503,13 @@ class MainMenuViewController: BaseTableViewController {
         lastSeasonalItems = items
         let seasonText: String
         switch currentSeason {
-        case "winter":
+        case "winter", "nye", "birthday", "valentines":
             seasonText = L10n.winter
         case "spring":
             seasonText = L10n.spring
         case "summer":
             seasonText = L10n.summer
-        case "fall":
-            seasonText = L10n.fall
-        case "nye":
-            seasonText = L10n.winter
-        case "birthday":
-            seasonText = L10n.winter
-        case "valentines":
-            seasonText = L10n.winter
-        case "habitoween":
-            seasonText = L10n.fall
-        case "thanksgiving":
+        case "fall", "habitoween", "thanksgiving":
             seasonText = L10n.fall
         default:
             seasonText = L10n.isOpen
