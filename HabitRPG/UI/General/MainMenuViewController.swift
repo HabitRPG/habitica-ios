@@ -349,7 +349,7 @@ class MainMenuViewController: BaseTableViewController {
             pill.addSubview(label)
         } else if let image = promo.pinnedPillTitleImage {
             let maxW = pillWidth - 108
-            let maxH: CGFloat = 14
+            let maxH: CGFloat = 15
             let scale = min(maxW / image.size.width, maxH / image.size.height)
             let scaledWidth = image.size.width * scale
             let scaledHeight = image.size.height * scale
