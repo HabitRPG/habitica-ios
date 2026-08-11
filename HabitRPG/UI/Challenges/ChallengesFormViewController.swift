@@ -78,17 +78,14 @@ struct CreateChallengeForm: View {
                                         .foregroundStyle(Color(themeService.theme.primaryTextColor))
                                 }
                             }
+                        } else if #available(iOS 26.0, *) {
+                            ToolbarItem(placement: .topBarLeading) {
+                                gemBalance
+                            }
+                            .sharedBackgroundVisibility(.hidden)
                         } else {
                             ToolbarItem(placement: .topBarLeading) {
-                                HStack(spacing: 5) {
-                                    Image(uiImage: Asset.gem.image)
-                                        .resizable().scaledToFit().frame(width: 18, height: 15)
-                                    Text("\(viewModel.userGemCount)")
-                                        .font(.system(size: 15, weight: .bold))
-                                        .lineLimit(1)
-                                        .foregroundStyle(Color(themeService.theme.primaryTextColor))
-                                }
-                                .fixedSize()
+                                gemBalance
                             }
                         }
                         ToolbarItem(placement: .topBarTrailing) {
@@ -112,6 +109,28 @@ struct CreateChallengeForm: View {
                     }
                 }
             }
+        }
+    }
+
+    @ViewBuilder private var gemBalance: some View {
+        let content = HStack(spacing: 5) {
+            Image(uiImage: Asset.gem.image)
+                .resizable().scaledToFit().frame(width: 18, height: 15)
+            Text("\(viewModel.userGemCount)")
+                .font(.system(size: 14, weight: .medium))
+                .tracking(0.47)
+                .lineLimit(1)
+                .foregroundStyle(Color.green1)
+        }
+        .fixedSize()
+        .padding(.horizontal, 14)
+        .padding(.vertical, 8)
+        if #available(iOS 26.0, *) {
+            content.glassEffect(.regular, in: Capsule())
+        } else {
+            content
+                .background(Color(themeService.theme.offsetBackgroundColor))
+                .clipShape(Capsule())
         }
     }
 
