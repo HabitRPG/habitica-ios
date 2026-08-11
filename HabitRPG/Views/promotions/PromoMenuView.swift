@@ -28,7 +28,8 @@ class PromoMenuView: UIView, Themeable {
     private let horizontalInset: CGFloat = 17
     private let cardCornerRadius: CGFloat = 20
     private let buttonHeight: CGFloat = 34
-    private let cardVerticalPadding: CGFloat = 20
+    private let cardVerticalPadding: CGFloat = 16
+    private let minimumCardHeight: CGFloat = 130
     private let outerVerticalMargin: CGFloat = 8
     private var computedTotalHeight: CGFloat = 168
 
@@ -101,12 +102,13 @@ class PromoMenuView: UIView, Themeable {
         descriptionView.text = description
     }
 
-    func setDescription(_ description: String, font: UIFont, color: UIColor, lineHeight: CGFloat, kern: CGFloat = 0) {
+    func setDescription(_ description: String, font: UIFont, color: UIColor, lineHeight: CGFloat, kern: CGFloat = 0, maxLines: Int = 0) {
         let paragraph = NSMutableParagraphStyle()
         paragraph.alignment = .center
         paragraph.minimumLineHeight = lineHeight
         paragraph.maximumLineHeight = lineHeight
         descriptionView.isHidden = false
+        descriptionView.numberOfLines = maxLines
         descriptionView.font = font
         descriptionView.attributedText = NSAttributedString(string: description, attributes: [
             .font: font,
@@ -241,7 +243,7 @@ class PromoMenuView: UIView, Themeable {
             }
         }
         let innerHeight = textHeight + (stack.isEmpty ? 0 : buttonGap) + buttonHeight
-        let cardHeight = innerHeight + 2 * cardVerticalPadding
+        let cardHeight = max(minimumCardHeight, innerHeight + 2 * cardVerticalPadding)
         computedTotalHeight = cardHeight + 2 * outerVerticalMargin
 
         cardView.pin.top(outerVerticalMargin).horizontally(horizontalInset).height(cardHeight)
@@ -254,7 +256,7 @@ class PromoMenuView: UIView, Themeable {
         actionButton.pin.width(buttonWidth).height(buttonHeight)
         actionButton.cornerRadius = min(26, buttonHeight / 2)
 
-        var currentY = cardVerticalPadding
+        var currentY = (cardHeight - innerHeight) / 2
         for view in stack {
             view.pin.top(currentY).hCenter()
             currentY += view.frame.height + textGap

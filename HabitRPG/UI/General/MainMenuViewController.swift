@@ -312,7 +312,7 @@ class MainMenuViewController: BaseTableViewController {
         }
         let width = tableView.frame.size.width
         let pillWidth = width - 34
-        let pill = UIView(frame: CGRect(x: 17, y: 8, width: pillWidth, height: 40))
+        let pill = UIView(frame: CGRect(x: 17, y: 12, width: pillWidth, height: 40))
         pill.cornerRadius = 20
         pill.clipsToBounds = true
         if let pillBackground = promo.pinnedPillBackground {
@@ -344,8 +344,9 @@ class MainMenuViewController: BaseTableViewController {
             label.text = title
             label.textColor = .white
             label.font = .systemFont(ofSize: 16, weight: .bold)
-            label.textAlignment = .center
-            label.frame = CGRect(x: 44, y: 0, width: pillWidth - 88, height: 40)
+            let labelX = artTrailing > 0 ? artTrailing + 16 : 44
+            label.textAlignment = artTrailing > 0 ? .natural : .center
+            label.frame = CGRect(x: labelX, y: 0, width: pillWidth - 32 - labelX, height: 40)
             pill.addSubview(label)
         } else if let image = promo.pinnedPillTitleImage {
             let maxW = pillWidth - 108

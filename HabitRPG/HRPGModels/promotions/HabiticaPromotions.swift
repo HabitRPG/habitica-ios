@@ -53,7 +53,6 @@ protocol HabiticaPromotion {
     var pinnedPillTitle: String? { get }
     var pinnedPillTitleImage: UIImage? { get }
     var pinnedPillLeftArt: UIImage? { get }
-    var pinnedPillRightArt: UIImage? { get }
     var pinnedPillBackground: UIColor? { get }
     var pinnedPillArrowColor: UIColor { get }
     var pinnedPillArtHeight: CGFloat { get }
@@ -70,7 +69,6 @@ extension HabiticaPromotion {
     var pinnedPillTitle: String? { return nil }
     var pinnedPillTitleImage: UIImage? { return nil }
     var pinnedPillLeftArt: UIImage? { return nil }
-    var pinnedPillRightArt: UIImage? { return nil }
     var pinnedPillBackground: UIColor? { return nil }
     var pinnedPillArrowColor: UIColor { return .white }
     var pinnedPillArtHeight: CGFloat { return 62 }
@@ -86,7 +84,6 @@ class FallExtraGemsPromotion: HabiticaPromotion {
     var identifier = "fall_extra_gems"
     var pinnedPillTitleImage: UIImage? { return Asset.fallPromoTitle.image }
     var pinnedPillLeftArt: UIImage? { return Asset.fallGemSaleArtMini.image }
-    var pinnedPillRightArt: UIImage? { return Asset.fallPromoMenuRight.image }
     var pinnedPillBackground: UIColor? { return backgroundColor }
     var pinnedPillArrowColor: UIColor { return .yellow500 }
     var pinnedPillArtHeight: CGFloat { return 40 }
@@ -231,8 +228,10 @@ class SpookyExtraGemsPromotion: HabiticaPromotion {
 
     var identifier = "spooky_extra_gems"
     var pinnedPillTitleImage: UIImage? { return Asset.spookyPromoTitle.image }
-    var pinnedPillLeftArt: UIImage? { return Asset.spookyPromoMenuLeft.image }
-    var pinnedPillRightArt: UIImage? { return Asset.spookyPromoMenuRight.image }
+    var pinnedPillLeftArt: UIImage? { return Asset.spookyGemSaleIconMini.image }
+    var pinnedPillBackground: UIColor? { return bannerBackground }
+    var pinnedPillArrowColor: UIColor { return .gray400 }
+    var pinnedPillArtHeight: CGFloat { return 40 }
     var promoType: HabiticaPromotionType = .gemsAmount
     var isWebPromo: Bool = false
     var startDate: Date
@@ -259,6 +258,10 @@ class SpookyExtraGemsPromotion: HabiticaPromotion {
     
     var backgroundColor: UIColor {
         return .gray10
+    }
+
+    var bannerBackground: UIColor {
+        return .gray5
     }
 
     var buttonBackground: UIColor {
@@ -288,12 +291,16 @@ class SpookyExtraGemsPromotion: HabiticaPromotion {
     }
     
     func configurePromoMenuView(view: PromoMenuView) {
-        view.setCardBackground(color: backgroundColor)
-        view.leftImageView.image = Asset.spookyPromoMenuLeft.image
-        view.rightImageView.image = Asset.spookyPromoMenuRight.image
+        view.setCardBackground(color: bannerBackground)
+        view.leftImageView.image = Asset.spookyGemSaleArtStart.image
+        view.rightImageView.image = Asset.spookyGemSaleArtEnd.image
+        view.titleImageMaxHeight = 15
         view.setTitleImage(Asset.spookyPromoTitle.image)
-        view.setDescriptionImage(Asset.spookyPromoMenuDescription.image)
-        view.actionButton.backgroundColor = UIColor.white.withAlphaComponent(0.22)
+        view.setDescription(L10n.SpookyPromo.menuDescription,
+                            font: .systemFont(ofSize: 12, weight: .medium),
+                            color: .gray400,
+                            lineHeight: 16)
+        view.actionButton.backgroundColor = .gray10
         view.setActionTitle(L10n.viewOffer)
     }
     
@@ -400,8 +407,8 @@ class GiftOneGetOnePromotion: HabiticaPromotion {
     var pinnedPillTitle: String? {
         return L10n.giftOneGetOneTitle
     }
-    var pinnedPillLeftArt: UIImage? { return Asset.promoGiftLeftLarge.image }
-    var pinnedPillRightArt: UIImage? { return Asset.promoGiftRightLarge.image }
+    var pinnedPillLeftArt: UIImage? { return Asset.g1g1PromoMini.image }
+    var pinnedPillArtHeight: CGFloat { return 40 }
     
     private func makeGradient(view: UIView) -> CAGradientLayer {
         let gradient: CAGradientLayer = CAGradientLayer()
@@ -428,11 +435,14 @@ class GiftOneGetOnePromotion: HabiticaPromotion {
         view.leftImageView.image = Asset.promoGiftLeftLarge.image
         view.rightImageView.image = Asset.promoGiftRightLarge.image
         view.setTitle(L10n.giftOneGetOneTitle)
-        view.setDescription(L10n.giftOneGetOneDescription)
-        view.actionButton.backgroundColor = UIColor.white.withAlphaComponent(0.22)
+        view.setDescription(L10n.giftOneGetOneDescription,
+                            font: .systemFont(ofSize: 12, weight: .medium),
+                            color: .white,
+                            lineHeight: 16,
+                            maxLines: 2)
+        view.actionButton.backgroundColor = UIColor.white.withAlphaComponent(0.3)
         view.setActionTitle(L10n.viewOffer)
         view.titleView.textColor = .white
-        view.descriptionView.textColor = .white
     }
     
     func configurePurchaseBanner(view: PromoBannerView) {
