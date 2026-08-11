@@ -78,7 +78,7 @@ class ChallengeTableViewController: BaseTableViewController, UISearchBarDelegate
         filterButton.addTarget(self, action: #selector(filterTapped(_:)), for: .touchUpInside)
         let addButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addChallengeAction))
         let searchButton = UIBarButtonItem(barButtonSystemItem: .search, target: self, action: #selector(searchButtonTapped(_:)))
-        navigationItem.rightBarButtonItems = [UIBarButtonItem(customView: filterButton), searchButton, addButton]
+        navigationItem.rightBarButtonItems = [searchButton, UIBarButtonItem(customView: filterButton), addButton]
 
         self.segmentedFilterControl.addTarget(self, action: #selector(ChallengeTableViewController.switchFilter(_:)), for: .valueChanged)
         segmentedWrapper.contentView.addSubview(self.segmentedFilterControl)

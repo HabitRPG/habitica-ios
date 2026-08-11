@@ -89,17 +89,25 @@ struct ChallengeAwardWinnerBar: View {
 struct ChallengeCircleButton: View {
     @ObservedObject private var themeService = ThemeService.shared
     let systemName: String
-    var diameter: CGFloat = 36
+    var diameter: CGFloat = 44
     let action: () -> Void
+
+    private var icon: some View {
+        Image(systemName: systemName)
+            .font(.system(size: 19, weight: .semibold))
+            .foregroundStyle(Color(themeService.theme.primaryTextColor))
+            .frame(width: diameter, height: diameter)
+    }
 
     var body: some View {
         Button(action: action) {
-            Image(systemName: systemName)
-                .font(.system(size: 17, weight: .semibold))
-                .foregroundStyle(Color(themeService.theme.primaryTextColor))
-                .frame(width: diameter, height: diameter)
-                .background(Color(themeService.theme.offsetBackgroundColor))
-                .clipShape(Circle())
+            if #available(iOS 26.0, *) {
+                icon.glassEffect(.regular.interactive(), in: Circle())
+            } else {
+                icon
+                    .background(Color(themeService.theme.offsetBackgroundColor))
+                    .clipShape(Circle())
+            }
         }
         .buttonStyle(.plain)
     }
@@ -124,7 +132,7 @@ struct ChallengeSheetHeader: View {
                 }
             }
             HStack {
-                ChallengeCircleButton(systemName: "xmark", diameter: 34, action: onClose)
+                ChallengeCircleButton(systemName: "xmark", action: onClose)
                 Spacer()
             }
         }

@@ -68,7 +68,7 @@ struct CreateChallengeForm: View {
                     .toolbar {
                         if viewModel.hasPreviousStep {
                             ToolbarItem(placement: .topBarLeading) {
-                                ChallengeCircleButton(systemName: "chevron.left", diameter: 36) {
+                                ChallengeCircleButton(systemName: "chevron.left") {
                                     withAnimation(.bouncy) {
                                         viewModel.showPreviousStep()
                                     }
@@ -91,7 +91,7 @@ struct CreateChallengeForm: View {
                             }
                         }
                         ToolbarItem(placement: .topBarTrailing) {
-                            ChallengeCircleButton(systemName: "xmark", diameter: 36) {
+                            ChallengeCircleButton(systemName: "xmark") {
                                 viewModel.dismiss()
                             }
                         }

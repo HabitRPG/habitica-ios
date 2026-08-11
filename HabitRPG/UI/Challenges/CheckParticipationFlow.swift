@@ -23,9 +23,9 @@ struct CheckParticipationView: View {
             VStack(alignment: .leading, spacing: 0) {
                 HStack {
                     Spacer()
-                    ChallengeCircleButton(systemName: "xmark", diameter: 36, action: onClose)
+                    ChallengeCircleButton(systemName: "xmark", action: onClose)
                 }
-                .padding(.top, 6)
+                .padding(.top, 20)
                 Text(L10n.checkOnParticipation)
                     .font(.system(size: 23, weight: .bold))
                     .foregroundStyle(Color(themeService.theme.primaryTextColor))
@@ -79,7 +79,7 @@ struct ParticipantProgressSheet: View {
             ScrollView {
                 VStack(spacing: 0) {
                     ChallengeSheetHeader(title: member.profile?.name ?? "", subtitle: "@\(member.username ?? "")", onClose: onClose)
-                        .padding(.top, 6)
+                        .padding(.top, 20)
                     AvatarViewUI(avatar: AvatarViewModel(avatar: member))
                         .frame(width: 142, height: 142)
                         .clipShape(RoundedRectangle(cornerRadius: 22, style: .continuous))

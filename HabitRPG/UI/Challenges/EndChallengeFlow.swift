@@ -27,11 +27,11 @@ struct EndChallengeSheet: View {
         ScrollView {
             VStack(spacing: 0) {
                 ChallengeSheetHeader(title: L10n.endChallenge, onClose: onClose)
-                    .padding(.top, 6)
+                    .padding(.top, 20)
                 Image(uiImage: Asset.challengeGemPrize.image)
                     .resizable()
                     .scaledToFit()
-                    .frame(width: 210)
+                    .frame(width: 270)
                     .padding(.top, 14)
                 Text(L10n.endChallengeSelectWinnerTitle)
                     .font(.system(size: 17, weight: .bold))
@@ -122,11 +122,11 @@ struct AwardWinnerSearchView: View {
         ScrollView {
             VStack(spacing: 0) {
                 ChallengeSheetHeader(title: L10n.awardWinner, onClose: onClose)
-                    .padding(.top, 6)
+                    .padding(.top, 20)
                 Image(uiImage: Asset.challengeGemPrize.image)
                     .resizable()
                     .scaledToFit()
-                    .frame(width: 210)
+                    .frame(width: 270)
                     .padding(.top, 14)
                 Text(L10n.selectWinnerFromParticipants)
                     .font(.system(size: 16, weight: .bold))
@@ -172,7 +172,7 @@ struct AwardWinnerPlayerView: View {
             ScrollView {
                 VStack(spacing: 0) {
                     ChallengeSheetHeader(title: member.profile?.name ?? "", subtitle: "@\(member.username ?? "")", onClose: onClose)
-                        .padding(.top, 6)
+                        .padding(.top, 20)
                     AvatarViewUI(avatar: AvatarViewModel(avatar: member))
                         .frame(width: 142, height: 142)
                         .clipShape(RoundedRectangle(cornerRadius: 22, style: .continuous))
