@@ -2096,17 +2096,6 @@ public enum L10n {
     public static var usernameAlreadyTaken: String { return L10n.tr("Mainstrings", "errors.username_already_taken") }
   }
 
-  public enum ExtraGems {
-    /// Between %@ and %@, simply purchase any Gem bundle like usual and your account will be credited with the promotional amount of Gems. More Gems to spend, share, or save for any future releases!
-    public static func infoInstructions(_ p1: String, _ p2: String) -> String {
-      return L10n.tr("Mainstrings", "extra_gems.info_instructions", p1, p2)
-    }
-    /// This promotion only applies during the limited time event. This event starts on %@ (12:00 UTC) and will end %@ (00:00 UTC). The promo offer is only available when buying Gems for yourself.
-    public static func infoLimitations(_ p1: String, _ p2: String) -> String {
-      return L10n.tr("Mainstrings", "extra_gems.info_limitations", p1, p2)
-    }
-  }
-
   public enum Faint {
     /// Refill Health & Try Again
     public static var button: String { return L10n.tr("Mainstrings", "faint.button") }
@@ -2146,6 +2135,17 @@ public enum L10n {
   public enum FlashPromo {
     /// Get more Gems with each purchase for a limited time. Take advantage of our best deal on Gems before it’s gone!
     public static var infoPrompt: String { return L10n.tr("Mainstrings", "flash_promo.info_prompt") }
+  }
+
+  public enum GemsPromo {
+    /// Between %@ and %@, simply purchase any Gem bundle like usual and your account will be credited with the promotional amount of Gems. More Gems to spend, share, or save for any future releases!
+    public static func infoInstructions(_ p1: String, _ p2: String) -> String {
+      return L10n.tr("Mainstrings", "gems_promo.info_instructions", p1, p2)
+    }
+    /// This promotion only applies during the limited time event. This event starts on %@ (12:00 UTC) and will end %@ (00:00 UTC). The promo offer is only available when buying Gems for yourself.
+    public static func infoLimitations(_ p1: String, _ p2: String) -> String {
+      return L10n.tr("Mainstrings", "gems_promo.info_limitations", p1, p2)
+    }
   }
 
   public enum GiftOneGetOneData {
@@ -3262,9 +3262,9 @@ public enum L10n {
   public enum Survey {
     /// Go to Survey
     public static var button: String { return L10n.tr("Mainstrings", "survey.button") }
-    /// Fill out this 5 minute survey to help us grow and receive an Achievement!
+    /// Fill out this 5 minute survey to help us grow and receive an achievement!
     public static var description: String { return L10n.tr("Mainstrings", "survey.description") }
-    /// Player Survey
+    /// Player survey
     public static var title: String { return L10n.tr("Mainstrings", "survey.title") }
   }
 

@@ -1308,9 +1308,9 @@
 "winter_promo.info_prompt" = "Get more Gems with each purchase for a limited time! Bundle up and snatch one of our best deals on Gems before it’s gone.";
 "flash_promo.info_prompt" = "Get more Gems with each purchase for a limited time. Take advantage of our best deal on Gems before it’s gone!";
 
-"extra_gems.info_instructions" = "Between %@ and %@, simply purchase any Gem bundle like usual and your account will be credited with the promotional amount of Gems. More Gems to spend, share, or save for any future releases!";
+"gems_promo.info_instructions" = "Between %@ and %@, simply purchase any Gem bundle like usual and your account will be credited with the promotional amount of Gems. More Gems to spend, share, or save for any future releases!";
 
-"extra_gems.info_limitations" = "This promotion only applies during the limited time event. This event starts on %@ (12:00 UTC) and will end %@ (00:00 UTC). The promo offer is only available when buying Gems for yourself.";
+"gems_promo.info_limitations" = "This promotion only applies during the limited time event. This event starts on %@ (12:00 UTC) and will end %@ (00:00 UTC). The promo offer is only available when buying Gems for yourself.";
 "survey.title" = "Player survey";
 "survey.description" = "Fill out this 5 minute survey to help us grow and receive an achievement!";
 "survey.button" = "Go to Survey";
