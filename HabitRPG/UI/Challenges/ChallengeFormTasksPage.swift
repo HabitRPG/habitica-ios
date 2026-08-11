@@ -18,9 +18,13 @@ struct ChallengeFormTasksPage: View {
         ScrollView {
             VStack(alignment: .leading, spacing: 8) {
                 Text("Add some tasks")
-                    .font(.system(size: 24, weight: .bold))
+                    .font(.system(size: 20, weight: .semibold))
+                    .tracking(-0.45)
+                    .lineSpacing(1)
                 Text("Finally, it’s time to create the tasks you’d like all Challenge participants to complete.")
-                    .font(.system(size: 16))
+                    .font(.system(size: 17))
+                    .tracking(-0.43)
+                    .lineSpacing(2)
                     .foregroundStyle(Color(ThemeService.shared.theme.secondaryTextColor))
                 ChallengeFormTaskList(viewModel: viewModel,
                                       title: Text("Challenge Habits"),

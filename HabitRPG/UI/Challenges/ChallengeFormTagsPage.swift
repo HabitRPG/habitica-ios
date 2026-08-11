@@ -18,12 +18,17 @@ struct ChallengeFormTagsPage: View {
         ScrollView {
             VStack(alignment: .leading, spacing: 8) {
                 Text("Identify your Challenge")
-                    .font(.system(size: 24, weight: .bold))
+                    .font(.system(size: 20, weight: .semibold))
+                    .tracking(-0.45)
+                    .lineSpacing(1)
                 Text("Pick a short tag that will be added to all your Challenge’s tasks and up to 3 categories to help players find you!")
-                    .font(.system(size: 16))
+                    .font(.system(size: 17))
+                    .tracking(-0.43)
+                    .lineSpacing(2)
                     .foregroundStyle(Color(ThemeService.shared.theme.secondaryTextColor))
                 VStack(alignment: .leading, spacing: 10) {
                     ChallengeFormField(label: Text("Challenge Tag"), text: $viewModel.challengeTag, multiline: false, placeholder: "What tag will identify your Challenge?")
+                        .padding(.top, 18)
                     Text(L10n.categories)
                         .font(.system(size: 17, weight: .bold))
                         .padding(.top, 26)

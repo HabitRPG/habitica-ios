@@ -81,8 +81,10 @@ struct CreateChallengeForm: View {
                                         .resizable().scaledToFit().frame(width: 18, height: 15)
                                     Text("\(viewModel.userGemCount)")
                                         .font(.system(size: 15, weight: .bold))
+                                        .lineLimit(1)
                                         .foregroundStyle(Color(themeService.theme.primaryTextColor))
                                 }
+                                .fixedSize()
                                 .padding(.leading, 10)
                                 .padding(.trailing, 12)
                                 .padding(.vertical, 6)
