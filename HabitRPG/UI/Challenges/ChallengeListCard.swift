@@ -23,8 +23,9 @@ struct ChallengeListCard: View {
             VStack(spacing: 5) {
                 if isOwner {
                     Image(uiImage: Asset.challengeCrown.image)
-                        .resizable().scaledToFit().frame(width: 28)
-                        .padding(.bottom, -3)
+                        .resizable().scaledToFit().frame(width: 30)
+                        .offset(x: 2)
+                        .padding(.bottom, -5)
                 }
                 Image(uiImage: Asset.bigGem.image)
                     .resizable().scaledToFit().frame(width: 31, height: 26)
