@@ -187,14 +187,6 @@ enum ConfigVariable: Int {
 }
 
 extension Notification.Name {
-    static let developerOverridesChanged = Notification.Name("DeveloperOverridesChangedNotification")
-}
-
-enum DeveloperOverride {
-    static let season = "developerSeasonOverride"
-    static let notificationDots = "developerForceNotificationDots"
-    static let rowBadges = "developerForceRowBadges"
-    static let lockedRows = "developerForceLockedRows"
 }
 
 enum TestingLevel: String {
@@ -284,27 +276,6 @@ class ConfigRepository: NSObject {
             return .production
         }
 #endif
-    }
-
-    var isDeveloperOptionsEnabled: Bool {
-        return testingLevel != .production
-    }
-
-    var developerSeasonOverride: String? {
-        get {
-            guard isDeveloperOptionsEnabled else {
-                return nil
-            }
-            return UserDefaults.standard.string(forKey: DeveloperOverride.season)
-        }
-        set { UserDefaults.standard.set(newValue, forKey: DeveloperOverride.season) }
-    }
-
-    func developerFlag(_ key: String) -> Bool {
-        guard isDeveloperOptionsEnabled else {
-            return false
-        }
-        return UserDefaults.standard.bool(forKey: key)
     }
 
     func setDeveloperFlag(_ isEnabled: Bool, forKey key: String) {

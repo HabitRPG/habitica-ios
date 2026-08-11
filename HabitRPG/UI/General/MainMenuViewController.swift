@@ -248,7 +248,6 @@ class MainMenuViewController: BaseTableViewController {
                 menuItem(withKey: .party).subtitle = nil
             }
 
-            applyDeveloperOverrides()
             tableView.reloadData()
             
             if user?.isSubscribed == true && activePromo == nil {
@@ -338,7 +337,6 @@ class MainMenuViewController: BaseTableViewController {
         setupMenu()
         
         NotificationCenter.default.addObserver(self, selector: #selector(languageChanged), name: .languageChanged, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(developerOverridesChanged), name: .developerOverridesChanged, object: nil)
                 
         disposable.inner.add(userRepository.getUser().on(value: {[weak self] user in
             self?.user = user
@@ -528,7 +526,6 @@ class MainMenuViewController: BaseTableViewController {
         }
         menuItem(withKey: .seasonalShop).pillText = seasonText
         menuItem(withKey: .seasonalShop).pillColor = MainMenuTheme.seasonalBadge
-        applyDeveloperOverrides()
         tableView.reloadData()
     }
     
@@ -717,48 +714,7 @@ class MainMenuViewController: BaseTableViewController {
         activePromo = configRepository.activePromotion()
         updatePromoCells()
         setupFooter()
-        applyDeveloperOverrides()
         tableView.reloadData()
-    }
-
-    @objc
-    private func developerOverridesChanged() {
-        if let user = user {
-            self.user = user
-        }
-        if let worldState = lastWorldState {
-            updateSeasonalEntries(worldState: worldState, items: lastSeasonalItems)
-        }
-        refreshPromoState()
-    }
-
-    private func applyDeveloperOverrides() {
-        guard configRepository.isDeveloperOptionsEnabled else {
-            return
-        }
-        if configRepository.developerFlag(DeveloperOverride.notificationDots) {
-            let party = menuItem(withKey: .party)
-            party.showIndicator = true
-            party.subtitle = L10n.Menu.newMessage
-            let news = menuItem(withKey: .news)
-            news.showIndicator = true
-            news.subtitle = L10n.Menu.newAnnouncement
-        }
-        if configRepository.developerFlag(DeveloperOverride.rowBadges) {
-            menuItem(withKey: .gems).pillText = L10n.sale
-            let subscription = menuItem(withKey: .subscription)
-            subscription.pillText = L10n.sale
-            subscription.subtitle = L10n.getMoreHabitica
-            let market = menuItem(withKey: .market)
-            market.pillText = L10n.new
-            market.subtitle = L10n.seasonalPotionsAvailable
-        }
-        if configRepository.developerFlag(DeveloperOverride.lockedRows) {
-            let stats = menuItem(withKey: .stats)
-            stats.isHidden = false
-            stats.isDisabled = true
-            stats.subtitle = L10n.unlocksLevelTen
-        }
     }
 
     private static let rowIcons: [MenuItem.Key: String] = [
@@ -771,9 +727,6 @@ class MainMenuViewController: BaseTableViewController {
     ]
 
     private var currentSeason: String {
-        if let override = configRepository.developerSeasonOverride, override.isEmpty == false {
-            return override
-        }
         return lastKnownSeason
     }
 

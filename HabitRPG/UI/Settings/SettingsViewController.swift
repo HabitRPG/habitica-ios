@@ -245,27 +245,8 @@ class SettingsViewController: FormViewController, Themeable {
             }.onCellSelection({[weak self] (_, _) in
                 self?.userRepository.cancelSubscription()
             })
-        setupDeveloperSection()
     }
 
-    private func setupDeveloperSection() {
-        guard configRepository.isDeveloperOptionsEnabled else {
-            return
-        }
-        form +++ Section("Developer")
-            <<< ButtonRow { row in
-                row.title = "Developer Options"
-                row.cellUpdate({ (cell, _) in
-                    cell.textLabel?.textAlignment = .natural
-                    cell.textLabel?.textColor = ThemeService.shared.theme.primaryTextColor
-                    cell.accessoryType = .disclosureIndicator
-                    cell.backgroundColor = ThemeService.shared.theme.windowBackgroundColor
-                })
-                }.onCellSelection({[weak self] (_, _) in
-                    self?.navigationController?.pushViewController(DeveloperOptionsViewController(), animated: true)
-                })
-    }
-    
     private func setupUserSection() {
         form +++ Section(L10n.Settings.user)
             <<< ButtonRow(SettingsTags.myAccount) { row in

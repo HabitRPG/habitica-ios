@@ -343,7 +343,6 @@
 		29A4FE6326A9B3DB00F0FE30 /* HabitProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29A4FE6226A9B3DB00F0FE30 /* HabitProgressView.swift */; };
 		29A62B012167D55200D4BD90 /* VerifyUsernameModalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29A62B002167D55200D4BD90 /* VerifyUsernameModalViewController.swift */; };
 		29A62B09216CE5D700D4BD90 /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29A62B08216CE5D700D4BD90 /* AboutViewController.swift */; };
-		29DE0DE01A2B3C4D5E6F0002 /* DeveloperOptionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29DE0DE01A2B3C4D5E6F0001 /* DeveloperOptionsViewController.swift */; };
 		29A62B0B216CF4E200D4BD90 /* UIDevice-Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29A62B0A216CF4E200D4BD90 /* UIDevice-Extensions.swift */; };
 		29A9038826EA33A400442B93 /* FlagInformationOverlayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29A9038726EA33A400442B93 /* FlagInformationOverlayView.swift */; };
 		29A92C302E03050F00B2321A /* ApiTokenSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29A92C2F2E03050F00B2321A /* ApiTokenSheetView.swift */; };
@@ -1072,7 +1071,6 @@
 		29A4FE6226A9B3DB00F0FE30 /* HabitProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitProgressView.swift; sourceTree = "<group>"; };
 		29A62B002167D55200D4BD90 /* VerifyUsernameModalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerifyUsernameModalViewController.swift; sourceTree = "<group>"; };
 		29A62B08216CE5D700D4BD90 /* AboutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
-		29DE0DE01A2B3C4D5E6F0001 /* DeveloperOptionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeveloperOptionsViewController.swift; sourceTree = "<group>"; };
 		29A62B0A216CF4E200D4BD90 /* UIDevice-Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIDevice-Extensions.swift"; sourceTree = "<group>"; };
 		29A9038726EA33A400442B93 /* FlagInformationOverlayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlagInformationOverlayView.swift; sourceTree = "<group>"; };
 		29A92C2F2E03050F00B2321A /* ApiTokenSheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiTokenSheetView.swift; sourceTree = "<group>"; };
@@ -2510,7 +2508,6 @@
 			isa = PBXGroup;
 			children = (
 				29A62B08216CE5D700D4BD90 /* AboutViewController.swift */,
-				29DE0DE01A2B3C4D5E6F0001 /* DeveloperOptionsViewController.swift */,
 				D9E02EC41E5E02E7002CFCE2 /* Challenges */,
 				290B62A0207F814D007287C4 /* General */,
 				D96BFC4D1E181B5500266EEF /* Intro */,
@@ -3793,7 +3790,6 @@
 				29ED1AFD1F338ECC005A3895 /* SetupCustomization.swift in Sources */,
 				29D853F62F30C60B00D4762D /* ImageSubstitutionManager.swift in Sources */,
 				29A62B09216CE5D700D4BD90 /* AboutViewController.swift in Sources */,
-				29DE0DE01A2B3C4D5E6F0002 /* DeveloperOptionsViewController.swift in Sources */,
 				2914486E2085EAD300F3A6B5 /* MountDetailDataSource.swift in Sources */,
 				29CEA822264150CA00101C0A /* UIColor-Contributor.swift in Sources */,
 				29DF934B2ECDE5150047801F /* AchievementReceivedSheet.swift in Sources */,
