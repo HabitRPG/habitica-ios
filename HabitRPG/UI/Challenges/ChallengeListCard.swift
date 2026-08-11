@@ -23,7 +23,8 @@ struct ChallengeListCard: View {
             VStack(spacing: 5) {
                 if isOwner {
                     Image(uiImage: Asset.challengeCrown.image)
-                        .resizable().scaledToFit().frame(width: 20)
+                        .resizable().scaledToFit().frame(width: 28)
+                        .padding(.bottom, -3)
                 }
                 Image(uiImage: Asset.bigGem.image)
                     .resizable().scaledToFit().frame(width: 31, height: 26)
@@ -34,12 +35,16 @@ struct ChallengeListCard: View {
             .frame(width: 36)
             VStack(alignment: .leading, spacing: 0) {
                 Text(challenge.name?.unicodeEmoji ?? "")
-                    .font(.system(size: 16, weight: .semibold))
-                    .foregroundStyle(Color(themeService.theme.primaryTextColor))
+                    .font(.system(size: 15, weight: .semibold))
+                    .tracking(-0.23)
+                    .lineSpacing(2)
+                    .foregroundStyle(ChallengeTheme.cardTitle)
                     .fixedSize(horizontal: false, vertical: true)
                 if let summary = challenge.summary?.unicodeEmoji, !summary.isEmpty {
                     Text(summary)
-                        .font(.system(size: 13.5))
+                        .font(.system(size: 13))
+                        .tracking(-0.08)
+                        .lineSpacing(2.5)
                         .foregroundStyle(Color(themeService.theme.secondaryTextColor))
                         .lineLimit(3)
                         .fixedSize(horizontal: false, vertical: true)
@@ -81,8 +86,8 @@ struct ChallengeListCard: View {
             .foregroundStyle(foreground)
             .lineLimit(1)
             .fixedSize()
-            .padding(.vertical, 4)
             .padding(.horizontal, 11)
+            .frame(height: 26)
             .background(background)
             .clipShape(Capsule())
     }

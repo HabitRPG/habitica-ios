@@ -41,6 +41,7 @@ enum ChallengeTheme {
     static let completedText = hex(0xA8A5AE)
     static let cardFillLight = hex(0xF4F4F5)
 
+    static var cardTitle: Color { adaptive(light: 0x4E4A57, dark: 0xE1E0E3) }
     static var chipFill: Color { adaptive(light: 0xE1E0E3, dark: 0x4A474F) }
     static var chipText: Color { adaptive(light: 0x878190, dark: 0xC3C0C7) }
     static var joinedCount: Color { adaptive(light: 0x24A574, dark: 0x2ED49A) }
