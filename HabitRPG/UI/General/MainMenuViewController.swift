@@ -379,7 +379,8 @@ class MainMenuViewController: BaseTableViewController {
         pill.addSubview(chevron)
         pill.isUserInteractionEnabled = true
         pill.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(pinnedPillTapped)))
-        let container = UIView(frame: CGRect(x: 0, y: 0, width: width, height: 64))
+        // 12pt above the pill; the 3pt below plus section 0's 9pt header match it
+        let container = UIView(frame: CGRect(x: 0, y: 0, width: width, height: 55))
         container.addSubview(pill)
         tableView.tableHeaderView = container
     }

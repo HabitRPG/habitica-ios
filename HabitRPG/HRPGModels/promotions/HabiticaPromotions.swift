@@ -434,7 +434,11 @@ class GiftOneGetOnePromotion: HabiticaPromotion {
         view.setCardGradient(startColor: gradientStart ?? backgroundColor, endColor: gradientEnd ?? backgroundColor)
         view.leftImageView.image = Asset.promoGiftLeftLarge.image
         view.rightImageView.image = Asset.promoGiftRightLarge.image
-        view.setTitle(L10n.giftOneGetOneTitle)
+        view.setTitle(L10n.giftOneGetOneTitle,
+                      font: .systemFont(ofSize: 20, weight: .semibold),
+                      color: .white,
+                      lineHeight: 25,
+                      kern: -0.45)
         view.setDescription(L10n.giftOneGetOneDescription,
                             font: .systemFont(ofSize: 12, weight: .medium),
                             color: .white,
@@ -442,9 +446,8 @@ class GiftOneGetOnePromotion: HabiticaPromotion {
                             maxLines: 2)
         view.actionButton.backgroundColor = UIColor.white.withAlphaComponent(0.3)
         view.setActionTitle(L10n.viewOffer)
-        view.titleView.textColor = .white
     }
-    
+
     func configurePurchaseBanner(view: PromoBannerView) {
         view.backgroundColor = nil
         view.layer.sublayers?.filter { $0 is CAGradientLayer }.forEach { $0.removeFromSuperlayer() }

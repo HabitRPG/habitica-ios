@@ -92,6 +92,23 @@ class PromoMenuView: UIView, Themeable {
         titleView.text = title
     }
 
+    func setTitle(_ title: String, font: UIFont, color: UIColor, lineHeight: CGFloat, kern: CGFloat = 0) {
+        let paragraph = NSMutableParagraphStyle()
+        paragraph.alignment = .center
+        paragraph.minimumLineHeight = lineHeight
+        paragraph.maximumLineHeight = lineHeight
+        titleView.isHidden = false
+        titleView.font = font
+        titleView.attributedText = NSAttributedString(string: title, attributes: [
+            .font: font,
+            .kern: kern,
+            .foregroundColor: color,
+            // counteracts the leading that the fixed line height adds above the text
+            .baselineOffset: (lineHeight - font.lineHeight) / 4,
+            .paragraphStyle: paragraph
+        ])
+    }
+
     func setTitleImage(_ image: UIImage) {
         titleImageView.isHidden = false
         titleImageView.image = image
