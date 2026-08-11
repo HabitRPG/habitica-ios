@@ -2130,6 +2130,8 @@ public enum L10n {
   public enum FallPromo {
     /// Get more Gems with each purchase for a limited time! Fall into one of our best deals on Gems before it’s gone.
     public static var infoPrompt: String { return L10n.tr("Mainstrings", "fall_promo.info_prompt") }
+    /// Get extra Gems with each purchase!
+    public static var menuDescription: String { return L10n.tr("Mainstrings", "fall_promo.menu_description") }
   }
 
   public enum FlashPromo {
@@ -3091,6 +3093,8 @@ public enum L10n {
   public enum SpookyPromo {
     /// Get more Gems with each purchase for a limited time! Put on your best costume and claim one of our best deals on Gems before it’s gone!
     public static var infoPrompt: String { return L10n.tr("Mainstrings", "spooky_promo.info_prompt") }
+    /// Get extra Gems with each purchase!
+    public static var menuDescription: String { return L10n.tr("Mainstrings", "spooky_promo.menu_description") }
   }
 
   public enum SpringPromo {
