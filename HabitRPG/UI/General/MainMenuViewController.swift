@@ -341,11 +341,21 @@ class MainMenuViewController: BaseTableViewController {
         }
         if let title = promo.pinnedPillTitle {
             let label = UILabel()
-            label.text = title
-            label.textColor = .white
-            label.font = .systemFont(ofSize: 16, weight: .bold)
+            let titleFont = UIFont.systemFont(ofSize: 17, weight: .semibold)
+            let titleLineHeight: CGFloat = 22
+            let paragraph = NSMutableParagraphStyle()
+            paragraph.minimumLineHeight = titleLineHeight
+            paragraph.maximumLineHeight = titleLineHeight
+            paragraph.alignment = artTrailing > 0 ? .natural : .center
+            label.attributedText = NSAttributedString(string: title, attributes: [
+                .font: titleFont,
+                .kern: -0.43,
+                .foregroundColor: UIColor.white,
+                // counteracts the leading that the fixed line height adds above the text
+                .baselineOffset: (titleLineHeight - titleFont.lineHeight) / 4,
+                .paragraphStyle: paragraph
+            ])
             let labelX = artTrailing > 0 ? artTrailing + 16 : 44
-            label.textAlignment = artTrailing > 0 ? .natural : .center
             label.frame = CGRect(x: labelX, y: 0, width: pillWidth - 32 - labelX, height: 40)
             pill.addSubview(label)
         } else if let image = promo.pinnedPillTitleImage {
