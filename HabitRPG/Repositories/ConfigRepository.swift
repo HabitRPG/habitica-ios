@@ -191,7 +191,6 @@ extension Notification.Name {
 }
 
 enum DeveloperOverride {
-    static let promo = "developerPromoOverride"
     static let season = "developerSeasonOverride"
     static let notificationDots = "developerForceNotificationDots"
     static let rowBadges = "developerForceRowBadges"
@@ -291,16 +290,6 @@ class ConfigRepository: NSObject {
         return testingLevel != .production
     }
 
-    var developerPromoOverride: String? {
-        get {
-            guard isDeveloperOptionsEnabled else {
-                return nil
-            }
-            return UserDefaults.standard.string(forKey: DeveloperOverride.promo)
-        }
-        set { UserDefaults.standard.set(newValue, forKey: DeveloperOverride.promo) }
-    }
-
     var developerSeasonOverride: String? {
         get {
             guard isDeveloperOptionsEnabled else {
@@ -384,13 +373,6 @@ class ConfigRepository: NSObject {
         return NSArray()
     }
     
-    func developerOverridePromotion() -> HabiticaPromotion? {
-        guard let overrideKey = developerPromoOverride, overrideKey.isEmpty == false else {
-            return nil
-        }
-        return HabiticaPromotionType.getPromoFromKey(key: overrideKey, startDate: Date(), endDate: Date().addingTimeInterval(60 * 60 * 24 * 30))
-    }
-
     func activePromotion() -> HabiticaPromotion? {
         var promo: HabiticaPromotion?
         for event in worldState?.events ?? [] where HabiticaPromotionType.getPromoFromKey(key: event.promo ?? event.eventKey ?? "", startDate: event.start, endDate: event.end) != nil {

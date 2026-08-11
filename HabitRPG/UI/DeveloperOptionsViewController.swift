@@ -39,7 +39,7 @@ class DeveloperOptionsViewController: BaseTableViewController {
         cell.backgroundColor = theme.windowBackgroundColor
         cell.textLabel?.text = "Main Menu Testing"
         cell.textLabel?.textColor = theme.primaryTextColor
-        cell.detailTextLabel?.text = "Promos, seasons and row states"
+        cell.detailTextLabel?.text = "Seasons and row states"
         cell.detailTextLabel?.textColor = theme.ternaryTextColor
         cell.accessoryType = .disclosureIndicator
         return cell
@@ -54,7 +54,6 @@ class DeveloperOptionsViewController: BaseTableViewController {
 class MenuTestingViewController: BaseTableViewController {
 
     private enum OptionRow {
-        case promo(key: String, title: String)
         case season(key: String, title: String)
         case flag(index: Int)
     }
@@ -106,16 +105,10 @@ class MenuTestingViewController: BaseTableViewController {
     }
 
     private func buildSections() {
-        var promoRows: [OptionRow] = [.promo(key: "", title: "Off (use live config)")]
-        promoRows.append(contentsOf: HabiticaPromotionType.selectableKeys.map { OptionRow.promo(key: $0.key, title: $0.title) })
-
         var seasonRows: [OptionRow] = [.season(key: "", title: "Off (use live config)")]
         seasonRows.append(contentsOf: seasons.map { OptionRow.season(key: $0.key, title: $0.title) })
 
         sections = [
-            Section(title: "Promotion",
-                    footer: "Shows the pinned pill at the top of the main menu and the banner card at the bottom. Promo banners elsewhere in the app are not affected.",
-                    rows: promoRows),
             Section(title: "Seasonal Shop",
                     footer: "Changes the Seasonal Shop row icon and badge text in the main menu only. The Seasonal Shop itself still shows the live season.",
                     rows: seasonRows),
@@ -151,9 +144,6 @@ class MenuTestingViewController: BaseTableViewController {
         cell.accessoryView = nil
 
         switch sections[indexPath.section].rows[indexPath.row] {
-        case .promo(let key, let title):
-            cell.textLabel?.text = title
-            cell.accessoryType = (configRepository.developerPromoOverride ?? "") == key ? .checkmark : .none
         case .season(let key, let title):
             cell.textLabel?.text = title
             cell.accessoryType = (configRepository.developerSeasonOverride ?? "") == key ? .checkmark : .none
@@ -173,8 +163,6 @@ class MenuTestingViewController: BaseTableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         switch sections[indexPath.section].rows[indexPath.row] {
-        case .promo(let key, _):
-            configRepository.developerPromoOverride = key
         case .season(let key, _):
             configRepository.developerSeasonOverride = key
         case .flag:

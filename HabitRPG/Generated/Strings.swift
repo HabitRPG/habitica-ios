@@ -2134,8 +2134,6 @@ public enum L10n {
     }
     /// The Fall Gala is in full swing so we thought it was the perfect time to have a Gem Sale! Now you will get more Gems with each purchase than ever before.
     public static var infoPrompt: String { return L10n.tr("Mainstrings", "fall_promo.info_prompt") }
-    /// Get extra Gems with each purchase!
-    public static var menuDescription: String { return L10n.tr("Mainstrings", "fall_promo.menu_description") }
   }
 
   public enum GemsPromo {
@@ -3090,8 +3088,6 @@ public enum L10n {
     }
     /// The Gem Sale is back to haunt the very end of this year’s Fall Gala! This is one last chance to get more Gems than ever, so stock up while it lasts!
     public static var infoPrompt: String { return L10n.tr("Mainstrings", "spooky_promo.info_prompt") }
-    /// Get extra Gems with each purchase!
-    public static var menuDescription: String { return L10n.tr("Mainstrings", "spooky_promo.menu_description") }
   }
 
   public enum Stable {

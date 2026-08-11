@@ -27,7 +27,6 @@
 		29038F2126F33CDB005CA2D3 /* DueDateFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29038F2026F33CDB005CA2D3 /* DueDateFormView.swift */; };
 		290458D02021D6C60032BC5E /* TopHeaderCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 290458CF2021D6C60032BC5E /* TopHeaderCoordinator.swift */; };
 		29066CF424FE62E700A266EE /* HabiticaPromotions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29066CF324FE62E700A266EE /* HabiticaPromotions.swift */; };
-		29066CF724FE6A6900A266EE /* PromoMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29066CF624FE6A6900A266EE /* PromoMenuView.swift */; };
 		29066CF924FE7C9200A266EE /* GemPurchaseCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29066CF824FE7C9200A266EE /* GemPurchaseCell.swift */; };
 		29066CFB24FE83D300A266EE /* PromoBannerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29066CFA24FE83D300A266EE /* PromoBannerView.swift */; };
 		29066CFD24FF8CC200A266EE /* PromotionInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29066CFC24FF8CC200A266EE /* PromotionInfoViewController.swift */; };
@@ -768,7 +767,6 @@
 		29038F2026F33CDB005CA2D3 /* DueDateFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DueDateFormView.swift; sourceTree = "<group>"; };
 		290458CF2021D6C60032BC5E /* TopHeaderCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopHeaderCoordinator.swift; sourceTree = "<group>"; };
 		29066CF324FE62E700A266EE /* HabiticaPromotions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabiticaPromotions.swift; sourceTree = "<group>"; };
-		29066CF624FE6A6900A266EE /* PromoMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromoMenuView.swift; sourceTree = "<group>"; };
 		29066CF824FE7C9200A266EE /* GemPurchaseCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GemPurchaseCell.swift; sourceTree = "<group>"; };
 		29066CFA24FE83D300A266EE /* PromoBannerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromoBannerView.swift; sourceTree = "<group>"; };
 		29066CFC24FF8CC200A266EE /* PromotionInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromotionInfoViewController.swift; sourceTree = "<group>"; };
@@ -1579,7 +1577,6 @@
 		29066CF524FE6A5F00A266EE /* promotions */ = {
 			isa = PBXGroup;
 			children = (
-				29066CF624FE6A6900A266EE /* PromoMenuView.swift */,
 				29066CFA24FE83D300A266EE /* PromoBannerView.swift */,
 			);
 			path = promotions;
@@ -3857,7 +3854,6 @@
 				292DEE8D204F458B0086D5F7 /* HabitTableViewDataSource.swift in Sources */,
 				29E48F0D22E89DB3005C4B45 /* BadgeView.swift in Sources */,
 				2942F8CF266DF9CB003F6500 /* TaskFormView.swift in Sources */,
-				29066CF724FE6A6900A266EE /* PromoMenuView.swift in Sources */,
 				D9CE90471E4CDF3F00702578 /* Designable-Extensions.swift in Sources */,
 				299CE6312CC28D4400ABA85C /* AppDelege+Maintenance.swift in Sources */,
 				29F89F1A1F47882A004E5B84 /* String-Extensions.swift in Sources */,
