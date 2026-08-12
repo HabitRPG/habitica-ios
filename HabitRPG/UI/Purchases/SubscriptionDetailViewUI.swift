@@ -42,6 +42,7 @@ private struct StatusPill: View {
 
 struct SubscriptionDetailViewUI: View {
     var plan: SubscriptionPlanProtocol
+    var renewalDate: Date?
     
     var typeText: String {
         var duration: String?
@@ -81,9 +82,12 @@ struct SubscriptionDetailViewUI: View {
         } else if plan.dateTerminated != nil || PurchaseHandler.shared.wasSubscriptionCancelled == true {
             return L10n.cancelled
         } else if plan.paymentMethod == "Apple" {
+            let format = DateFormatter()
+            format.dateFormat = "MMM YYYY"
+            if let renewalDate = renewalDate {
+                return L10n.nextPaymentX(format.string(from: renewalDate))
+            }
             if let nextEstimatedPayment = plan.nextEstimatedPayment {
-                let format = DateFormatter()
-                format.dateFormat = "MMM YYYY"
                 return L10n.nextPaymentX(format.string(from: nextEstimatedPayment))
             }
             return "Apple Pay"
