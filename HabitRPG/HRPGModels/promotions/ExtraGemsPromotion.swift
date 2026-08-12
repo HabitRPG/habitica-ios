@@ -38,8 +38,8 @@ class ExtraGemsPromotion: HabiticaPromotion {
     
     init(identifier: String, startDate: Date?, endDate: Date?) {
         self.identifier = identifier
-        self.startDate = startDate ?? Date.with(year: 2020, month: 9, day: 22, timezone: TimeZone(abbreviation: "UTC"))
-        self.endDate = endDate ?? Date.with(year: 2020, month: 9, day: 28, timezone: TimeZone(abbreviation: "UTC"))
+        self.startDate = startDate ?? Date.with(year: 2026, month: 9, day: 22, timezone: TimeZone(abbreviation: "UTC"))
+        self.endDate = endDate ?? Date.with(year: 2026, month: 9, day: 28, timezone: TimeZone(abbreviation: "UTC"))
     }
     
     var backgroundColor: UIColor {
@@ -68,7 +68,7 @@ class ExtraGemsPromotion: HabiticaPromotion {
         let gradientLayer = makeGradient(view: pillView)
         gradientLayer.cornerRadius = pillView.frame.size.height / 2
         pillView.layer.insertSublayer(gradientLayer, at: 0)
-        pillView.textColor = .white
+        pillView.textColor = .black
     }
     
     func configurePromoMenuView(view: PromoMenuView) {
