@@ -715,7 +715,7 @@
 "errors.request" = "Er was een fout met je verzoek: %@";
 "days" = "dagen";
 "weeks" = "weken";
-"months" = "Maanden";
+"months" = "maanden";
 "years" = "jaren";
 "leave_challenge_title" = "Uitdaging verlaten?";
 "leave_challenge_prompt" = "Wil je de uitdaging verlaten en de taken behouden of verwijderen?";
@@ -864,7 +864,7 @@
 "groups.invite_member" = "Nodig een lid uit";
 "groups.members" = "Leden";
 "party.leave_party_description" = "Wil je de groep verlaten en de uitdagingen behouden of verlaten?";
-"party.leave_party_title" = "Groep verlaten?";
+"party.leave_party_title" = "Weet je zeker dat je het Gezelschap wil verlaten?";
 "party.party_description" = "Groepsbeschrijving";
 "party.join_party_description" = "Wil je in een groep spelen met andere mensen maar ken je geen spelers? Laat de groepsleiders weten dat je op zoek bent naar een uitnodiging!";
 "party.create_party_description" = "Start een queeste met vrienden of in je eentje. Versla monsters, begin uitdagingen en blijf verantwoordelijk - allemaal met je groep.";
@@ -1555,3 +1555,10 @@
 "items.footer_quests_title" = "Wilt je nog meer Queesten?";
 "four_for_free" = "Vier voor Gratis";
 "limitations" = "Beperkingen";
+"tasks.repeats.fifth_week_warning" = "Deze taak verschijnt niet in maanden met minder %@en.";
+"guilds.left_party" = "Je hebt het Gezelschap verlaten";
+"errors.enter_valid_email" = "Voer een geldig E-mailadres in";
+"errors.password_length" = "Wachtwoord moet %d of meer karakters zijn";
+"errors.password_not_matching" = "Wachtwoorden moeten hetzelfde zijn";
+"errors.username_already_taken" = "Gebruikersnaam al in gebruik.";
+"locations.customizations" = "Aanpassingen";
