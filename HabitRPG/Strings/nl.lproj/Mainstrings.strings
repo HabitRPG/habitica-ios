@@ -119,7 +119,7 @@
 /* (No Comment) */
 "groups.guild_invitation_no_invitername" = "Iemand heeft je uitgenodigd om deel te nemen aan Groep **%@**";
 /* (No Comment) */
-"groups.leader_challenges" = "Alleen de leider kan uitdagingen maken";
+"groups.leader_challenges" = "Alleen de leider kan Uitdagingen maken";
 /* (No Comment) */
 "guilds.keep_challenges" = "Hou uitdagingen bij";
 /* (No Comment) */
@@ -1477,7 +1477,7 @@
 "avatar.animal_tails" = "Dierenstaarten";
 "login.continue_with_google" = "Doorgaan met Google";
 "login.need_account" = "Account nodig?";
-"login.already_have_account" = "Heeft je al een account?";
+"login.already_have_account" = "Heb je al een account?";
 "social.x_leader" = "%s Leider";
 "groups.rescinded" = "Ingetrokken";
 "groups.find_more_members" = "Nog meer leden zoeken";
@@ -1562,3 +1562,11 @@
 "errors.password_not_matching" = "Wachtwoorden moeten hetzelfde zijn";
 "errors.username_already_taken" = "Gebruikersnaam al in gebruik.";
 "locations.customizations" = "Aanpassingen";
+"groups.send_invite" = "Stuur Uitnodiging";
+"guilds.joined_party" = "Je hebt je aangesloten bij het Gezelschap";
+"social.x_description" = "%s Beschrijving";
+"groups.cancel_invite" = "Annuleer Uitnodiging";
+"groups.removed" = "%@ verwijderd";
+"login.what_call_you" = "Hoe zullen we je noemen?";
+"login.username_description" = "Dit is een unieke naam die je later op ieder moment kan aanpassen!";
+"login.custom_url" = "Aangepaste URL";
