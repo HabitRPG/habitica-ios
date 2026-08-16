@@ -66,36 +66,43 @@ struct CreateChallengeForm: View {
                     .navigationTitle(viewModel.isEditing ? L10n.editChallenge : L10n.createChallenge)
                     .navigationBarTitleDisplayMode(.inline)
                     .toolbar {
-                        if viewModel.hasPreviousStep {
-                            ToolbarItem(placement: .topBarLeading) {
-                                Button {
+                        ToolbarItem(placement: .topBarLeading) {
+                            Button {
+                                if viewModel.hasPreviousStep {
                                     withAnimation(.bouncy) {
                                         viewModel.showPreviousStep()
                                     }
-                                } label: {
-                                    Image(systemName: "chevron.left")
-                                        .font(.system(size: 17, weight: .semibold))
-                                        .foregroundStyle(Color(themeService.theme.primaryTextColor))
+                                } else {
+                                    viewModel.dismiss()
                                 }
-                            }
-                        } else if #available(iOS 26.0, *) {
-                            ToolbarItem(placement: .topBarLeading) {
-                                gemBalance
-                            }
-                            .sharedBackgroundVisibility(.hidden)
-                        } else {
-                            ToolbarItem(placement: .topBarLeading) {
-                                gemBalance
-                            }
-                        }
-                        ToolbarItem(placement: .topBarTrailing) {
-                            Button {
-                                viewModel.dismiss()
                             } label: {
-                                Image(systemName: "xmark")
+                                Image(systemName: viewModel.hasPreviousStep ? "chevron.left" : "xmark")
                                     .font(.system(size: 17, weight: .semibold))
                                     .foregroundStyle(Color(themeService.theme.primaryTextColor))
                             }
+                        }
+                        if !viewModel.hasPreviousStep {
+                            if #available(iOS 26.0, *) {
+                                ToolbarItem(placement: .topBarLeading) {
+                                    gemBalance
+                                }
+                                .sharedBackgroundVisibility(.hidden)
+                            } else {
+                                ToolbarItem(placement: .topBarLeading) {
+                                    gemBalance
+                                }
+                            }
+                        }
+                        ToolbarItem(placement: .topBarTrailing) {
+                            let canConfirm = !viewModel.hasNextStep && viewModel.canSave
+                            Button {
+                                viewModel.save()
+                            } label: {
+                                Image(systemName: "checkmark")
+                                    .font(.system(size: 17, weight: .semibold))
+                                    .foregroundStyle(Color(canConfirm ? themeService.theme.primaryTextColor : themeService.theme.quadTextColor))
+                            }
+                            .disabled(!canConfirm)
                         }
                 }
                 if #available(iOS 26.0, *) {

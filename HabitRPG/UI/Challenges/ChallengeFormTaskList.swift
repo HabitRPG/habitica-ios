@@ -175,16 +175,16 @@ struct ChallengeFormTaskRow: View {
                 standardRow
             }
         }
-        .frame(minHeight: 54)
+        .frame(minHeight: 56)
         .background(Color(themeService.theme.windowBackgroundColor))
-        .clipShape(RoundedRectangle(cornerRadius: 14, style: .continuous))
+        .clipShape(RoundedRectangle(cornerRadius: ChallengeTheme.containerRadius, style: .continuous))
     }
 
     private var standardRow: some View {
         HStack(spacing: 0) {
             leadingSquare
             Text(task.text ?? "")
-                .font(.system(size: 16, weight: .medium))
+                .font(.system(size: 17))
                 .foregroundStyle(Color(themeService.theme.primaryTextColor))
                 .padding(.horizontal, 15)
                 .frame(maxWidth: .infinity, alignment: .leading)
@@ -197,9 +197,9 @@ struct ChallengeFormTaskRow: View {
     private var rewardRow: some View {
         HStack(spacing: 0) {
             Text(task.text ?? "")
-                .font(.system(size: 16, weight: .medium))
+                .font(.system(size: 17))
                 .foregroundStyle(Color(themeService.theme.primaryTextColor))
-                .padding(.leading, 18)
+                .padding(.leading, 20)
                 .frame(maxWidth: .infinity, alignment: .leading)
             VStack(spacing: 1) {
                 Image(uiImage: HabiticaIcons.imageOfGold)
@@ -247,8 +247,8 @@ struct ChallengeFormTaskList<Title: View>: View {
         VStack(alignment: .leading, spacing: 10) {
             HStack {
                 title
-                    .font(.system(size: 14, weight: .bold))
-                    .foregroundStyle(ChallengeTheme.formSectionLabel)
+                    .font(.system(size: 17, weight: .semibold))
+                    .foregroundStyle(Color(ThemeService.shared.theme.primaryTextColor))
                 Spacer()
                 if !tasks.isEmpty {
                     Text("\(tasks.count)")
@@ -260,6 +260,7 @@ struct ChallengeFormTaskList<Title: View>: View {
                         .clipShape(Capsule())
                 }
             }
+            .padding(.horizontal, 8)
             if tasks.first?.isValid == true {
                 ForEach(tasks, id: \.id) { task in
                     TaskListItem(task: task)
@@ -276,12 +277,12 @@ struct ChallengeFormTaskList<Title: View>: View {
                 }
             } label: {
                 Text(buttonText)
-                    .font(.system(size: 16, weight: .semibold))
+                    .font(.system(size: 17, weight: .semibold))
                     .foregroundStyle(Color(ThemeService.shared.theme.primaryTextColor))
                     .frame(maxWidth: .infinity)
-                    .frame(height: 50)
+                    .frame(height: 54)
                     .background(Color(ThemeService.shared.theme.windowBackgroundColor))
-                    .clipShape(RoundedRectangle(cornerRadius: 24, style: .continuous))
+                    .clipShape(RoundedRectangle(cornerRadius: ChallengeTheme.containerRadius, style: .continuous))
             }
             .buttonStyle(.plain)
         }.padding(.top, 24)

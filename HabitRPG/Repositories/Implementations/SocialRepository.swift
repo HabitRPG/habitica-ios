@@ -360,18 +360,32 @@ class SocialRepository: BaseRepository<SocialLocalRepository> {
     }
     
     public func createChallenge(challenge: ChallengeProtocol) -> Signal<ChallengeProtocol?, Error> {
-        localRepository.save(challenge)
         let call = CreateChallengeCall(challenge: challenge)
-        
+
         return call.httpResponseSignal.promoteError().flatMap(.latest, { response in
             if response.statusCode == 201 {
                 return SignalProducer(value: response)
             } else {
                 return SignalProducer(error: NSError(domain: "", code: -1))
             }
-        }).flatMap(.latest, { _ in
-            return call.objectSignal
+        }).flatMap(.latest, {[weak self] _ in
+            return call.objectSignal.on(value: {[weak self] returnedChallenge in
+                self?.saveOwnedChallenge(returnedChallenge, sentChallenge: challenge)
+            })
         })
+    }
+
+    private func saveOwnedChallenge(_ returnedChallenge: ChallengeProtocol?, sentChallenge: ChallengeProtocol) {
+        guard let returnedChallenge = returnedChallenge, returnedChallenge.id != nil else {
+            return
+        }
+        if returnedChallenge.leaderID == nil {
+            returnedChallenge.leaderID = currentUserId
+        }
+        if returnedChallenge.groupID == nil {
+            returnedChallenge.groupID = sentChallenge.groupID
+        }
+        localRepository.save(returnedChallenge)
     }
     
     public func updateChallenge(challenge: ChallengeProtocol) -> Signal<ChallengeProtocol?, Never> {
@@ -451,10 +465,8 @@ class SocialRepository: BaseRepository<SocialLocalRepository> {
                 return SignalProducer(error: NSError(domain: "", code: -1))
             }
         }).flatMap(.latest, {[weak self] _ in
-            return call.objectSignal.on(value: {[weak self] challenge in
-                if let challenge = challenge {
-                    self?.localRepository.save(challenge)
-                }
+            return call.objectSignal.on(value: {[weak self] clonedChallenge in
+                self?.saveOwnedChallenge(clonedChallenge, sentChallenge: challenge)
             })
         })
     }

@@ -247,13 +247,13 @@ class ChallengeTableViewController: BaseTableViewController, UISearchBarDelegate
     
     @objc
     func filterTapped(_ sender: UIButton!) {
-        let sheet = HostingBottomSheetController(rootView: ChallengeFilterView(filterState: dataSource.filterState, updateFilterState: {[weak self] newState in
+        let filterController = ChallengeFilterViewController(filterState: dataSource.filterState, updateFilterState: {[weak self] newState in
             self?.dataSource.filterState = newState
             self?.dataSource.updatePredicate()
-        }))
-        sheet.modalPresentationStyle = .popover
-        sheet.popoverPresentationController?.sourceView = sender
-        sheet.show()
+        })
+        let navigationController = ThemedNavigationController(rootViewController: filterController)
+        navigationController.modalPresentationStyle = .pageSheet
+        present(navigationController, animated: true)
     }
     
     @IBAction func addChallengeAction(_ sender: Any) {

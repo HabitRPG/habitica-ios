@@ -9,14 +9,14 @@ struct ChallengeDetailHeaderCard: View {
     var body: some View {
         VStack(spacing: 0) {
             Text(challenge.name?.unicodeEmoji ?? "")
-                .font(.system(size: 21, weight: .bold))
+                .font(.system(size: 22, weight: .bold))
                 .foregroundStyle(Color(themeService.theme.primaryTextColor))
                 .multilineTextAlignment(.center)
                 .fixedSize(horizontal: false, vertical: true)
             if let shortName = challenge.shortName, !shortName.isEmpty {
                 Text(L10n.taskTag(shortName))
-                    .font(.system(size: 16))
-                    .foregroundStyle(ChallengeTheme.counter)
+                    .font(.system(size: 17))
+                    .foregroundStyle(ChallengeTheme.handle)
                     .multilineTextAlignment(.center)
                     .padding(.top, 7)
             }
@@ -51,13 +51,13 @@ struct ChallengeDetailHeaderCard: View {
                     .foregroundStyle(Color(themeService.theme.primaryTextColor))
             }
             Text(label)
-                .font(.system(size: 14))
-                .foregroundStyle(ChallengeTheme.sectionLabel)
+                .font(.system(size: 15))
+                .foregroundStyle(ChallengeTheme.handle)
         }
         .frame(maxWidth: .infinity)
         .padding(.vertical, 16)
         .background(Color(themeService.theme.windowBackgroundColor))
-        .clipShape(RoundedRectangle(cornerRadius: 18, style: .continuous))
+        .clipShape(RoundedRectangle(cornerRadius: ChallengeTheme.containerRadius, style: .continuous))
     }
 }
 
@@ -99,8 +99,9 @@ struct ChallengeDetailCreatorCard: View {
     var body: some View {
         VStack(alignment: .leading, spacing: 9) {
             Text(L10n.challengeCreator)
-                .font(.system(size: 14, weight: .bold))
+                .font(.system(size: 17, weight: .semibold))
                 .foregroundStyle(ChallengeTheme.sectionLabel)
+                .padding(.leading, 8)
             HStack(spacing: 13) {
                 avatar
                 VStack(alignment: .leading, spacing: 3) {
@@ -178,8 +179,9 @@ struct ChallengeDetailCategoriesCard: View {
         if !chips.isEmpty {
             VStack(alignment: .leading, spacing: 9) {
                 Text(L10n.challengeCategories)
-                    .font(.system(size: 14, weight: .bold))
+                    .font(.system(size: 17, weight: .semibold))
                     .foregroundStyle(ChallengeTheme.sectionLabel)
+                    .padding(.leading, 8)
                 ChallengeChipFlow(spacing: 9) {
                     ForEach(Array(chips.enumerated()), id: \.offset) { _, chip in
                         chipView(chip.name, official: chip.official)
@@ -189,7 +191,7 @@ struct ChallengeDetailCategoriesCard: View {
                 .frame(maxWidth: .infinity, alignment: .leading)
                 .frame(minHeight: 66)
                 .background(Color(themeService.theme.windowBackgroundColor))
-                .clipShape(RoundedRectangle(cornerRadius: 18, style: .continuous))
+                .clipShape(RoundedRectangle(cornerRadius: ChallengeTheme.containerRadius, style: .continuous))
             }
         }
     }
@@ -213,14 +215,15 @@ struct ChallengeDetailDescriptionCard: View {
         if let notes = challenge.notes, !notes.isEmpty {
             VStack(alignment: .leading, spacing: 9) {
                 Text(L10n.challengeDescription)
-                    .font(.system(size: 14, weight: .bold))
+                    .font(.system(size: 17, weight: .semibold))
                     .foregroundStyle(ChallengeTheme.sectionLabel)
+                    .padding(.leading, 8)
                 ChallengeMarkdownView(markdown: notes)
                     .fixedSize(horizontal: false, vertical: true)
                     .padding(18)
                     .frame(maxWidth: .infinity, alignment: .leading)
                     .background(Color(themeService.theme.windowBackgroundColor))
-                    .clipShape(RoundedRectangle(cornerRadius: 18, style: .continuous))
+                    .clipShape(RoundedRectangle(cornerRadius: ChallengeTheme.containerRadius, style: .continuous))
             }
         }
     }

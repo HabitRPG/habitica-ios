@@ -17,6 +17,17 @@ private enum ChallengeTaskOp {
     case delete(TaskProtocol)
 }
 
+private class FormChallengeCategory: NSObject, ChallengeCategoryProtocol {
+    var id: String?
+    var slug: String?
+    var name: String?
+
+    init(slug: String) {
+        self.slug = slug
+        name = slug
+    }
+}
+
 class ChallengeFormViewModel: ViewModel {
     private let userRepository = UserRepository()
     private let socialRepository = SocialRepository()
@@ -200,6 +211,7 @@ class ChallengeFormViewModel: ViewModel {
         challenge.tasksOrder["dailies"] = dailies.map { $0.id ?? "" }
         challenge.tasksOrder["todos"] = todos.map { $0.id ?? "" }
         challenge.tasksOrder["rewards"] = rewards.map { $0.id ?? "" }
+        challenge.categories = challengeCategories.map { FormChallengeCategory(slug: $0.rawValue) }
         return challenge
     }
 

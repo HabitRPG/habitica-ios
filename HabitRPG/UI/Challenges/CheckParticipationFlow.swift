@@ -27,32 +27,32 @@ struct CheckParticipationView: View {
                 }
                 .padding(.top, 20)
                 Text(L10n.checkOnParticipation)
-                    .font(.system(size: 23, weight: .bold))
+                    .font(.system(size: 20, weight: .semibold))
                     .foregroundStyle(Color(themeService.theme.primaryTextColor))
                     .padding(.top, 8)
+                    .padding(.horizontal, 8)
                 Text(L10n.checkParticipationBody)
-                    .font(.system(size: 16))
-                    .foregroundStyle(Color(themeService.theme.secondaryTextColor))
+                    .font(.system(size: 17))
+                    .foregroundStyle(ChallengeTheme.handle)
                     .fixedSize(horizontal: false, vertical: true)
                     .padding(.top, 8)
+                    .padding(.horizontal, 8)
                 Text(L10n.viewProgressOf)
-                    .font(.system(size: 17, weight: .bold))
+                    .font(.system(size: 17, weight: .semibold))
                     .foregroundStyle(Color(themeService.theme.primaryTextColor))
                     .padding(.top, 24)
                     .padding(.bottom, 10)
+                    .padding(.horizontal, 8)
                 ChallengeParticipantSearch(searchText: $searchText, members: membersVM.filtered(searchText)) { member in
                     selectedMember = ChallengeMemberBox(member: member)
                 }
                 Spacer(minLength: 24)
             }
-            .padding(.horizontal, 22)
+            .padding(.horizontal, 18)
         }
         .background(Color(themeService.theme.contentBackgroundColor).ignoresSafeArea())
         .sheet(item: $selectedMember) { box in
             ParticipantProgressSheet(challenge: challenge, member: box.member, onClose: { selectedMember = nil }, onAwarded: onFinished)
-                .presentationDetents([.large])
-                .presentationCornerRadius(30)
-                .presentationDragIndicator(.visible)
         }
     }
 }
@@ -79,13 +79,13 @@ struct ParticipantProgressSheet: View {
             ScrollView {
                 VStack(spacing: 0) {
                     ChallengeSheetHeader(title: member.profile?.name ?? "", subtitle: "@\(member.username ?? "")", onClose: onClose)
-                        .padding(.top, 20)
+                        .padding(.top, 32)
                     AvatarViewUI(avatar: AvatarViewModel(avatar: member))
                         .frame(width: 142, height: 142)
-                        .clipShape(RoundedRectangle(cornerRadius: 22, style: .continuous))
-                        .padding(.top, 10)
+                        .clipShape(RoundedRectangle(cornerRadius: ChallengeTheme.containerRadius, style: .continuous))
+                        .padding(.top, 22)
+                        .padding(.bottom, 10)
                     ChallengeParticipantTaskList(memberName: member.profile?.name ?? "", tasks: progressVM.tasks)
-                        .padding(.horizontal, 18)
                     Spacer(minLength: 90)
                 }
             }

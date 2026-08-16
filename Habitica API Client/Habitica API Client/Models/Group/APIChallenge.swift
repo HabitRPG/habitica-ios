@@ -10,14 +10,49 @@ import Foundation
 import Habitica_Models
 
 private struct LeaderHelper: Decodable {
-    let profile: [String: String]
+    let profile: [String: String]?
     let id: String
+
+    enum CodingKeys: String, CodingKey {
+        case profile
+        case id
+        case underscoreID = "_id"
+    }
+
+    init(from decoder: Decoder) throws {
+        let values = try decoder.container(keyedBy: CodingKeys.self)
+        profile = try? values.decode([String: String].self, forKey: .profile)
+        id = try values.decodeIdentifier(primary: .id, fallback: .underscoreID)
+    }
 }
 
 private struct GroupHelper: Decodable {
-    let name: String
+    let name: String?
     let id: String
-    let privacy: String
+    let privacy: String?
+
+    enum CodingKeys: String, CodingKey {
+        case name
+        case id
+        case underscoreID = "_id"
+        case privacy
+    }
+
+    init(from decoder: Decoder) throws {
+        let values = try decoder.container(keyedBy: CodingKeys.self)
+        name = try? values.decode(String.self, forKey: .name)
+        privacy = try? values.decode(String.self, forKey: .privacy)
+        id = try values.decodeIdentifier(primary: .id, fallback: .underscoreID)
+    }
+}
+
+private extension KeyedDecodingContainer {
+    func decodeIdentifier(primary: K, fallback: K) throws -> String {
+        if let value = try? decode(String.self, forKey: primary) {
+            return value
+        }
+        return try decode(String.self, forKey: fallback)
+    }
 }
 
 public class APIChallenge: ChallengeProtocol, Codable {
@@ -72,7 +107,7 @@ public class APIChallenge: ChallengeProtocol, Codable {
         updatedAt = try? values.decode(Date.self, forKey: .updatedAt)
         if let leader = try? values.decode(LeaderHelper.self, forKey: .leader) {
             leaderID = leader.id
-            leaderName = leader.profile["name"]
+            leaderName = leader.profile?["name"]
         }
         if let group = try? values.decode(GroupHelper.self, forKey: .group) {
             groupID = group.id
@@ -108,9 +143,10 @@ public class APIChallenge: ChallengeProtocol, Codable {
         try? container.encode(prize, forKey: .prize)
         try? container.encode(groupID, forKey: .group)
         try? container.encode(tasksOrder, forKey: .tasksOrder)
-        try? container.encode(categories.map({ challenge in
+        try? container.encode(categories.map({ category in
             let api = APIChallengeCategory()
-            api.id = challenge.id
+            api.slug = category.slug
+            api.name = category.name ?? category.slug
             return api
         }), forKey: .categories)
         if let leaderID = self.leaderID {

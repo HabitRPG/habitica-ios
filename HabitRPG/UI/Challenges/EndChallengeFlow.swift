@@ -31,41 +31,45 @@ struct EndChallengeSheet: View {
                 Image(uiImage: Asset.challengeGemPrize.image)
                     .resizable()
                     .scaledToFit()
-                    .frame(width: 270)
+                    .frame(width: 215)
                     .padding(.top, 14)
                 Text(L10n.endChallengeSelectWinnerTitle)
-                    .font(.system(size: 17, weight: .bold))
+                    .font(.system(size: 17, weight: .semibold))
                     .foregroundStyle(Color(themeService.theme.primaryTextColor))
                     .padding(.top, 18)
                 Text(L10n.endChallengeSelectWinnerBody)
-                    .font(.system(size: 15))
-                    .foregroundStyle(Color(themeService.theme.secondaryTextColor))
+                    .font(.system(size: 17))
+                    .foregroundStyle(ChallengeTheme.handle)
                     .multilineTextAlignment(.center)
-                    .frame(maxWidth: 320)
+                    .fixedSize(horizontal: false, vertical: true)
+                    .frame(maxWidth: 310)
                     .padding(.top, 8)
-                ChallengePillButton(L10n.endChallengeSelectWinnerButton, fill: ChallengeTheme.purple) {
+                HabiticaButtonUI(label: Text(L10n.endChallengeSelectWinnerButton), color: ChallengeTheme.purple) {
                     showSearch = true
                 }
-                .padding(.horizontal, 20)
+                .padding(.horizontal, 18)
                 .padding(.top, 22)
                 orDivider
-                    .padding(.horizontal, 24)
+                    .padding(.horizontal, 42)
                     .padding(.top, 24)
                 Text(L10n.deleteChallengeTitle)
-                    .font(.system(size: 16, weight: .bold))
+                    .font(.system(size: 17, weight: .semibold))
                     .foregroundStyle(ChallengeTheme.deleteRed)
                     .multilineTextAlignment(.center)
+                    .fixedSize(horizontal: false, vertical: true)
+                    .frame(maxWidth: 310)
                     .padding(.top, 20)
                 Text(L10n.deleteChallengeBody)
-                    .font(.system(size: 15))
-                    .foregroundStyle(Color(themeService.theme.secondaryTextColor))
+                    .font(.system(size: 17))
+                    .foregroundStyle(ChallengeTheme.handle)
                     .multilineTextAlignment(.center)
-                    .frame(maxWidth: 330)
+                    .fixedSize(horizontal: false, vertical: true)
+                    .frame(maxWidth: 310)
                     .padding(.top, 9)
-                ChallengePillButton(L10n.deleteChallengeButton, fill: ChallengeTheme.deleteRed) {
+                HabiticaButtonUI(label: Text(L10n.deleteChallengeButton), color: ChallengeTheme.deleteRed) {
                     showDeleteConfirm = true
                 }
-                .padding(.horizontal, 20)
+                .padding(.horizontal, 18)
                 .padding(.top, 22)
                 Spacer(minLength: 24)
             }
@@ -126,18 +130,18 @@ struct AwardWinnerSearchView: View {
                 Image(uiImage: Asset.challengeGemPrize.image)
                     .resizable()
                     .scaledToFit()
-                    .frame(width: 270)
+                    .frame(width: 215)
                     .padding(.top, 14)
                 Text(L10n.selectWinnerFromParticipants)
-                    .font(.system(size: 16, weight: .bold))
+                    .font(.system(size: 17, weight: .semibold))
                     .foregroundStyle(Color(themeService.theme.primaryTextColor))
                     .multilineTextAlignment(.center)
-                    .padding(.horizontal, 24)
+                    .padding(.horizontal, 26)
                     .padding(.top, 16)
                 ChallengeParticipantSearch(searchText: $searchText, members: membersVM.filtered(searchText)) { member in
                     selectedMember = ChallengeMemberBox(member: member)
                 }
-                .padding(.horizontal, 20)
+                .padding(.horizontal, 18)
                 .padding(.top, 16)
                 Spacer(minLength: 24)
             }
@@ -172,13 +176,13 @@ struct AwardWinnerPlayerView: View {
             ScrollView {
                 VStack(spacing: 0) {
                     ChallengeSheetHeader(title: member.profile?.name ?? "", subtitle: "@\(member.username ?? "")", onClose: onClose)
-                        .padding(.top, 20)
+                        .padding(.top, 32)
                     AvatarViewUI(avatar: AvatarViewModel(avatar: member))
                         .frame(width: 142, height: 142)
-                        .clipShape(RoundedRectangle(cornerRadius: 22, style: .continuous))
-                        .padding(.top, 10)
+                        .clipShape(RoundedRectangle(cornerRadius: ChallengeTheme.containerRadius, style: .continuous))
+                        .padding(.top, 22)
+                        .padding(.bottom, 10)
                     ChallengeParticipantTaskList(memberName: member.profile?.name ?? "", tasks: progressVM.tasks)
-                        .padding(.horizontal, 18)
                     Spacer(minLength: 90)
                 }
             }

@@ -21,31 +21,26 @@ struct ChallengeFormPrizePage: View {
                     .font(.system(size: 20, weight: .semibold))
                     .tracking(-0.45)
                     .lineSpacing(1)
+                    .padding(.horizontal, 8)
                 Text("First, set a prize and choose where to create the Challenge.")
                     .font(.system(size: 17))
                     .tracking(-0.43)
                     .lineSpacing(2)
-                    .foregroundStyle(Color(ThemeService.shared.theme.secondaryTextColor))
+                    .foregroundStyle(ChallengeTheme.handle)
+                    .padding(.horizontal, 8)
                 ChallengePrizeStepper(amount: $viewModel.prizeAmount,
                                       minAmount: viewModel.minGemAmount,
                                       maxAmount: viewModel.userGemCount)
                     .padding(.vertical, 26)
                     .frame(maxWidth: .infinity)
                 Text("Add this Challenge to...")
-                    .font(.system(size: 17, weight: .bold))
-                VStack(spacing: 0) {
+                    .font(.system(size: 17, weight: .semibold))
+                    .padding(.horizontal, 8)
+                ChallengeSelectionList {
                     ForEach(viewModel.challengeLocations, id: \.id) { location in
-                        let isSelected = viewModel.challengeLocation?.id == location.id
-                        HStack {
-                            Text(location.name)
-                                .font(.system(size: 16, weight: isSelected ? .semibold : .regular))
-                                .foregroundStyle(isSelected ? ChallengeTheme.deepPurple : Color(ThemeService.shared.theme.primaryTextColor))
-                            Spacer()
-                        }
-                        .padding(.vertical, 15)
-                        .padding(.horizontal, 18)
-                        .contentShape(.rect)
-                        .onTapGesture {
+                        ChallengeSelectionRow(title: location.name,
+                                              isSelected: viewModel.challengeLocation?.id == location.id,
+                                              showsDivider: location.id != viewModel.challengeLocations.last?.id) {
                             withAnimation {
                                 viewModel.challengeLocation = location
                             }
@@ -53,23 +48,18 @@ struct ChallengeFormPrizePage: View {
                                 viewModel.prizeAmount = 1
                             }
                         }
-                        if location.id != viewModel.challengeLocations.last?.id {
-                            Divider()
-                        }
                     }
                 }
-                .background(Color(ThemeService.shared.theme.windowBackgroundColor))
-                .cornerRadius(16)
                 if viewModel.isPublicChallenge {
                     Text("If you’re making a public Challenge, you have to offer at least 1 Gem as a prize")
-                        .font(.system(size: 14))
-                        .foregroundStyle(ChallengeTheme.counter)
+                        .font(.system(size: 15, weight: .semibold))
+                        .foregroundStyle(ChallengeTheme.handle)
                         .multilineTextAlignment(.center)
                         .frame(maxWidth: .infinity)
                         .padding(.horizontal, 14)
                 }
             }
-            .padding(.horizontal, 22)
+            .padding(.horizontal, 18)
             .padding(.top, 16)
         }
     }

@@ -60,19 +60,19 @@ struct ChallengeAwardWinnerBar: View {
     private let socialRepository = SocialRepository()
 
     var body: some View {
-        ChallengePillButton(fill: ChallengeTheme.purple, weight: .bold, action: { showConfirm = true }) {
-            HStack(spacing: 9) {
-                Text(L10n.awardWinner)
-                Image(uiImage: Asset.gem.image)
-                    .resizable()
-                    .scaledToFit()
-                    .frame(width: 22, height: 18)
-                Text("\(challenge.prize)")
-            }
+        HabiticaButtonUI(label: HStack(spacing: 9) {
+            Text(L10n.awardWinner)
+            Image(uiImage: Asset.gem.image)
+                .resizable()
+                .scaledToFit()
+                .frame(width: 22, height: 18)
+            Text("\(challenge.prize)")
+        }, color: ChallengeTheme.purple) {
+            showConfirm = true
         }
         .padding(.horizontal, 18)
         .padding(.top, 14)
-        .padding(.bottom, 22)
+        .padding(.bottom, 24)
         .background(Color(themeService.theme.contentBackgroundColor))
         .alert(L10n.awardWinnerConfirm, isPresented: $showConfirm) {
             Button(L10n.cancel, role: .cancel) {}
@@ -123,12 +123,12 @@ struct ChallengeSheetHeader: View {
         ZStack {
             VStack(spacing: 1) {
                 Text(title)
-                    .font(.system(size: 20, weight: .bold))
+                    .font(.system(size: 20, weight: .semibold))
                     .foregroundStyle(Color(themeService.theme.primaryTextColor))
                 if let subtitle = subtitle {
                     Text(subtitle)
-                        .font(.system(size: 15))
-                        .foregroundStyle(ChallengeTheme.username)
+                        .font(.system(size: 17))
+                        .foregroundStyle(ChallengeTheme.handle)
                 }
             }
             HStack {
@@ -150,14 +150,14 @@ struct ChallengeParticipantRow: View {
         Button(action: onTap) {
             VStack(alignment: .leading, spacing: 1) {
                 Text(member.profile?.name ?? "")
-                    .font(.system(size: 16, weight: .semibold))
+                    .font(.system(size: 17, weight: .semibold))
                     .foregroundStyle(Color(themeService.theme.primaryTextColor))
                 Text("@\(member.username ?? "")")
-                    .font(.system(size: 14))
-                    .foregroundStyle(ChallengeTheme.username)
+                    .font(.system(size: 17))
+                    .foregroundStyle(ChallengeTheme.handle)
             }
             .frame(maxWidth: .infinity, alignment: .leading)
-            .padding(.vertical, 9)
+            .padding(.vertical, 11)
             .padding(.horizontal, 18)
             .contentShape(Rectangle())
         }
@@ -174,10 +174,11 @@ struct ChallengeParticipantSearch: View {
     var body: some View {
         VStack(spacing: 14) {
             TextField("", text: $searchText, prompt: Text(L10n.usernameOrDisplayName).foregroundColor(ChallengeTheme.counter))
-                .font(.system(size: 16))
-                .padding(16)
+                .font(.system(size: 17))
+                .padding(.vertical, 17)
+                .padding(.horizontal, 18)
                 .background(Color(themeService.theme.windowBackgroundColor))
-                .clipShape(RoundedRectangle(cornerRadius: 14, style: .continuous))
+                .clipShape(RoundedRectangle(cornerRadius: ChallengeTheme.containerRadius, style: .continuous))
             if !members.isEmpty {
                 VStack(spacing: 0) {
                     ForEach(members, id: \.id) { member in
@@ -186,9 +187,70 @@ struct ChallengeParticipantSearch: View {
                 }
                 .padding(.vertical, 6)
                 .background(Color(themeService.theme.windowBackgroundColor))
-                .clipShape(RoundedRectangle(cornerRadius: 16, style: .continuous))
+                .clipShape(RoundedRectangle(cornerRadius: ChallengeTheme.containerRadius, style: .continuous))
             }
         }
+    }
+}
+
+struct ChallengeTaskControl: View {
+    enum Style {
+        case habit
+        case daily
+        case todo
+    }
+
+    @ObservedObject private var themeService = ThemeService.shared
+    let taskValue: Float
+    var style: Style = .todo
+    var isActive = true
+    var isCompleted = false
+
+    private var isDimmed: Bool { isCompleted || !isActive }
+
+    private var cornerRadius: CGFloat { style == .daily ? 6 : 12 }
+
+    private var columnFill: Color {
+        if isDimmed {
+            return Color(themeService.theme.windowBackgroundColor)
+        }
+        return Color(UIColor.forTaskValueLight(taskValue))
+    }
+
+    private var boxFill: Color {
+        let theme = themeService.theme
+        if isDimmed {
+            return Color(style == .habit ? theme.separatorColor : theme.offsetBackgroundColor)
+        }
+        if style == .habit {
+            return Color(UIColor.forTaskValue(taskValue))
+        }
+        return Color(UIColor(white: theme.isDark ? 0.0 : 1.0, alpha: theme.isDark ? 0.25 : 0.7))
+    }
+
+    private var glyphColor: Color {
+        let theme = themeService.theme
+        if isDimmed {
+            return Color(style == .habit ? theme.quadTextColor : theme.dimmedTextColor)
+        }
+        return style == .habit ? .white : Color(UIColor.forTaskValue(taskValue))
+    }
+
+    private var glyph: UIImage {
+        (isCompleted ? Asset.checkmarkSmall.image : Asset.taskLockLight.image).withRenderingMode(.alwaysTemplate)
+    }
+
+    var body: some View {
+        ZStack {
+            RoundedRectangle(cornerRadius: cornerRadius, style: .continuous)
+                .fill(boxFill)
+                .frame(width: 24, height: 24)
+            Image(uiImage: glyph)
+                .foregroundStyle(glyphColor)
+        }
+        .frame(width: 44)
+        .frame(maxHeight: .infinity)
+        .background(columnFill)
     }
 }
 
@@ -206,38 +268,38 @@ struct ChallengePlayerTaskRow: View {
 
     private var standardRow: some View {
         HStack(spacing: 0) {
-            leadingSquare
+            leadingControl
             content
-                .padding(.horizontal, 12)
+                .padding(.horizontal, 14)
                 .frame(maxWidth: .infinity, alignment: .leading)
             if let counter = counterValue {
                 TaskCounterBadge(value: counter, isCompleted: task.completed)
-                    .padding(.trailing, task.type == TaskType.habit ? 8 : 14)
+                    .padding(.trailing, task.type == TaskType.habit ? 8 : 18)
             }
             if task.type == TaskType.habit {
-                coloredSquare(active: task.down, fill: ChallengeTheme.habitFill, glyph: ChallengeTheme.habitGlyph)
+                ChallengeTaskControl(taskValue: task.value, style: .habit, isActive: task.down)
             }
         }
         .frame(minHeight: 56)
         .background(Color(themeService.theme.windowBackgroundColor))
-        .clipShape(RoundedRectangle(cornerRadius: 14, style: .continuous))
+        .clipShape(RoundedRectangle(cornerRadius: ChallengeTheme.containerRadius, style: .continuous))
     }
 
     private var rewardRow: some View {
         HStack(spacing: 0) {
             Text(task.text ?? "")
-                .font(.system(size: 16, weight: .medium))
+                .font(.system(size: 17))
                 .foregroundStyle(Color(themeService.theme.primaryTextColor))
-                .padding(.leading, 18)
+                .padding(.leading, 20)
                 .padding(.vertical, 8)
                 .frame(maxWidth: .infinity, alignment: .leading)
             rewardPriceChip
                 .padding(.trailing, 8)
                 .padding(.vertical, 6)
         }
-        .frame(minHeight: 54)
+        .frame(minHeight: 56)
         .background(Color(themeService.theme.windowBackgroundColor))
-        .clipShape(RoundedRectangle(cornerRadius: 14, style: .continuous))
+        .clipShape(RoundedRectangle(cornerRadius: ChallengeTheme.containerRadius, style: .continuous))
     }
 
     private var rewardPriceChip: some View {
@@ -245,8 +307,8 @@ struct ChallengePlayerTaskRow: View {
             Image(uiImage: HabiticaIcons.imageOfGold)
                 .resizable().scaledToFit().frame(width: 17, height: 17)
             HStack(spacing: 2) {
-                Image(systemName: "lock.fill")
-                    .font(.system(size: 9, weight: .semibold))
+                Image(uiImage: Asset.taskLockLight.image.withRenderingMode(.alwaysTemplate))
+                    .resizable().scaledToFit().frame(width: 11, height: 11)
                     .foregroundStyle(ChallengeTheme.username)
                 Text("\(Int(task.value))")
                     .font(.system(size: 13, weight: .semibold))
@@ -262,54 +324,25 @@ struct ChallengePlayerTaskRow: View {
     private var content: some View {
         VStack(alignment: .leading, spacing: 2) {
             Text(task.text ?? "")
-                .font(.system(size: 16, weight: .medium))
+                .font(.system(size: 17))
                 .foregroundStyle(task.completed ? ChallengeTheme.completedText : Color(themeService.theme.primaryTextColor))
             if let notes = task.notes, !notes.isEmpty {
                 Text(notes)
-                    .font(.system(size: 13))
-                    .foregroundStyle(ChallengeTheme.username)
+                    .font(.system(size: 15))
+                    .foregroundStyle(ChallengeTheme.handle)
             }
         }
-        .padding(.vertical, 8)
+        .padding(.vertical, 10)
     }
 
-    @ViewBuilder private var leadingSquare: some View {
-        if task.completed && (task.type == TaskType.daily || task.type == TaskType.todo) {
-            completedZone
-        } else if task.type == TaskType.habit {
-            coloredSquare(active: task.up, fill: ChallengeTheme.habitFill, glyph: ChallengeTheme.habitGlyph)
+    @ViewBuilder private var leadingControl: some View {
+        if task.type == TaskType.habit {
+            ChallengeTaskControl(taskValue: task.value, style: .habit, isActive: task.up)
         } else if task.type == TaskType.daily {
-            coloredSquare(active: true, fill: ChallengeTheme.dailyFill, glyph: ChallengeTheme.dailyGlyph)
+            ChallengeTaskControl(taskValue: task.value, style: .daily, isCompleted: task.completed)
         } else {
-            coloredSquare(active: true, fill: ChallengeTheme.todoFill, glyph: ChallengeTheme.todoGlyph)
+            ChallengeTaskControl(taskValue: task.value, style: .todo, isCompleted: task.completed)
         }
-    }
-
-    private func coloredSquare(active: Bool, fill: Color, glyph: Color) -> some View {
-        ZStack {
-            (active ? fill : ChallengeTheme.disabledFill)
-            Image(systemName: "lock.fill")
-                .font(.system(size: 13, weight: .semibold))
-                .foregroundStyle(active ? glyph : ChallengeTheme.disabledGlyph)
-        }
-        .frame(width: 50)
-        .frame(maxHeight: .infinity)
-    }
-
-    private var completedZone: some View {
-        ZStack {
-            Color.clear
-            RoundedRectangle(cornerRadius: 8)
-                .fill(ChallengeTheme.completedBox)
-                .frame(width: 27, height: 27)
-                .overlay(
-                    Image(systemName: "checkmark")
-                        .font(.system(size: 13, weight: .bold))
-                        .foregroundStyle(ChallengeTheme.completedCheck)
-                )
-        }
-        .frame(width: 50)
-        .frame(maxHeight: .infinity)
     }
 
     private var counterValue: Int? {
@@ -359,16 +392,18 @@ struct ChallengeParticipantTaskList: View {
     @ViewBuilder private func section(_ title: String, _ items: [TaskProtocol]) -> some View {
         if !items.isEmpty {
             Text(title)
-                .font(.system(size: 17, weight: .bold))
+                .font(.system(size: 17, weight: .semibold))
                 .foregroundStyle(Color(themeService.theme.primaryTextColor))
                 .frame(maxWidth: .infinity, alignment: .leading)
-                .padding(.top, 18)
-                .padding(.bottom, 9)
+                .padding(.horizontal, 26)
+                .padding(.top, 22)
+                .padding(.bottom, 10)
             VStack(spacing: 9) {
                 ForEach(items, id: \.id) { task in
                     ChallengePlayerTaskRow(task: task)
                 }
             }
+            .padding(.horizontal, 18)
         }
     }
 }

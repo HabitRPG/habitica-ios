@@ -21,11 +21,13 @@ struct ChallengeFormTasksPage: View {
                     .font(.system(size: 20, weight: .semibold))
                     .tracking(-0.45)
                     .lineSpacing(1)
+                    .padding(.horizontal, 8)
                 Text("Finally, it’s time to create the tasks you’d like all Challenge participants to complete.")
                     .font(.system(size: 17))
                     .tracking(-0.43)
                     .lineSpacing(2)
-                    .foregroundStyle(Color(ThemeService.shared.theme.secondaryTextColor))
+                    .foregroundStyle(ChallengeTheme.handle)
+                    .padding(.horizontal, 8)
                 ChallengeFormTaskList(viewModel: viewModel,
                                       title: Text("Challenge Habits"),
                                       taskType: .habit,
@@ -46,7 +48,7 @@ struct ChallengeFormTasksPage: View {
                                       taskType: .reward,
                                       tasks: $viewModel.rewards,
                                       buttonText: "New Reward")
-            }.padding(.horizontal, 22)
+            }.padding(.horizontal, 18)
                 .padding(.top, 16)
         }
     }

@@ -114,7 +114,7 @@ class ChallengeDetailsTableViewController: MultiModelTableViewController {
                 self?.navigationController?.popViewController(animated: true)
             }
         }))
-        host.modalPresentationStyle = .fullScreen
+        host.modalPresentationStyle = .pageSheet
         present(host, animated: true)
     }
 
@@ -155,8 +155,7 @@ class ChallengeDetailsTableViewController: MultiModelTableViewController {
                     let header: ChallengeTableViewHeaderView? = tableView.dequeueReusableHeaderFooterView(withIdentifier: "header") as? ChallengeTableViewHeaderView
                     
                     header?.titleLabel.text = sectionTitleString
-                    header?.titleLabel.font = .systemFont(ofSize: 14, weight: .bold)
-                    header?.titleLabel.textColor = UIColor(red: 144 / 255, green: 141 / 255, blue: 152 / 255, alpha: 1)
+                    header?.titleLabel.font = .systemFont(ofSize: 17, weight: .semibold)
                     header?.countLabel.text = nil
                     header?.countLabel.isHidden = true
 
@@ -197,14 +196,7 @@ class ChallengeDetailsTableViewController: MultiModelTableViewController {
                 self?.navigationController?.popViewController(animated: true)
             }
         }))
-        if let sheet = host.sheetPresentationController {
-            let compact = UISheetPresentationController.Detent.custom(identifier: .init("endChallengeCompact")) { context in
-                min(760, context.maximumDetentValue)
-            }
-            sheet.detents = [compact, .large()]
-            sheet.prefersGrabberVisible = true
-            sheet.preferredCornerRadius = 30
-        }
+        host.modalPresentationStyle = .pageSheet
         present(host, animated: true)
     }
 }

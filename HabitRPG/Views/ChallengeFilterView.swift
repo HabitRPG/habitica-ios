@@ -12,7 +12,7 @@ struct CheckedRow<Title: View>: View {
     @ObservedObject var themeService = ThemeService.shared
     let title: Title
     @Binding var isChecked: Bool
-    
+
     var body: some View {
         HStack {
             title.foregroundStyle(isChecked ? Color(themeService.theme.isDark ? UIColor.purple500 : UIColor.purple300) : Color(themeService.theme.primaryTextColor))
@@ -37,7 +37,7 @@ private struct FilterSection<Label: View, Rows: View>: View {
     @ObservedObject var themeService = ThemeService.shared
     let label: Label
     @ViewBuilder let rows: Rows
-    
+
     var body: some View {
         label.frame(maxWidth: .infinity, alignment: .leading)
             .padding(.bottom, 16)
@@ -45,9 +45,13 @@ private struct FilterSection<Label: View, Rows: View>: View {
             .scaledFont(size: 15, weight: .semibold)
         VStack(spacing: 4) {
             if #available(iOS 18.0, *) {
-                ForEach(subviews: rows) { row in
-                    row
-                    Divider()
+                Group(subviews: rows) { collection in
+                    ForEach(collection.indices, id: \.self) { index in
+                        collection[index]
+                        if index < collection.count - 1 {
+                            Divider()
+                        }
+                    }
                 }
             } else {
                 rows
@@ -62,73 +66,15 @@ private struct FilterSection<Label: View, Rows: View>: View {
 struct ChallengeFilterView: View, Dismissable {
     @ObservedObject var themeService = ThemeService.shared
     var dismisser = Dismisser()
-    
+
     @State var filterState: ChallengeFilterState
     let updateFilterState: (ChallengeFilterState) -> Void
-    
+
     init(filterState: ChallengeFilterState, updateFilterState: @escaping (ChallengeFilterState) -> Void) {
         self._filterState = State(initialValue: filterState)
         self.updateFilterState = updateFilterState
     }
-    
-    @available(iOS 26.0, *)
-    @ViewBuilder
-    private func headerGlass() -> some View {
-        HStack {
-            Button {
-                filterState = filterState.cleared()
-            } label: {
-                Text(L10n.clear).foregroundStyle(Color(themeService.theme.isDark ? Color.red500 : Color.maroon100))
-                    .font(.system(size: 15, weight: .regular))
-                    .padding(.horizontal, 3)
-                    .frame(height: 34)
-            }.buttonStyle(.glassProminent)
-                .tintColor(Color.red100.opacity(0.14))
-            Spacer()
-            Text(L10n.filter)
-                .foregroundStyle(Color(themeService.theme.primaryTextColor))
-                .scaledFont(size: 17, weight: .semibold)
-            Spacer()
-            Button {
-                dismisser.dismiss()
-            } label: {
-                Image(systemName: "checkmark").frame(width: 30, height: 36).foregroundStyle(.white)
-                    .font(.system(size: 26))
-            }.buttonStyle(.glassProminent)
-                .clipShape(.circle)
-                .tintColor(Color(themeService.theme.tintColor))
-        }.padding(.top, 16)
-            .padding(.bottom, 16)
-    }
-    
-    @ViewBuilder
-    private func header() -> some View {
-        HStack {
-            Button {
-                filterState = filterState.cleared()
-            } label: {
-                Text(L10n.clear).foregroundStyle(Color(themeService.theme.isDark ? UIColor.red500 : UIColor.maroon100))
-                    .font(.system(size: 15))
-                    .frame(height: 34)
-            }
-                .tintColor(Color.red100.opacity(0.4))
-            Spacer()
-            Text(L10n.filter)
-                .foregroundStyle(Color(themeService.theme.primaryTextColor))
-                .scaledFont(size: 17, weight: .semibold)
-            Spacer()
-            Button {
-                dismisser.dismiss()
-            } label: {
-                Image(systemName: "checkmark").frame(width: 30, height: 36).foregroundStyle(.white)
-                    .font(.system(size: 26))
-            }
-                .clipShape(.circle)
-                .tintColor(Color(themeService.theme.tintColor))
-        }.padding(.top, 16)
-            .padding(.bottom, 16)
-    }
-    
+
     private func categoryBinding(_ category: ChallengeCategory) -> Binding<Bool> {
         Binding(
             get: { filterState.selectedCategories.contains(category.rawValue) },
@@ -143,47 +89,96 @@ struct ChallengeFilterView: View, Dismissable {
     }
 
     var body: some View {
-        BottomSheetView(dismisser: dismisser, content: VStack {
-            let scrollView = ScrollView {
-                VStack(spacing: 0) {
-                    FilterSection(label: Text(L10n.membership), rows: {
-                        CheckedRow(title: Text(L10n.participating), isChecked: $filterState.showParticipating)
-                        CheckedRow(title: Text(L10n.notParticipating), isChecked: $filterState.showNotParticipating)
-                    })
-                    Spacer().frame(height: 30)
-                    FilterSection(label: Text(L10n.ownership), rows: {
-                        CheckedRow(title: Text(L10n.Accessibility.owned), isChecked: $filterState.showOwned)
-                        CheckedRow(title: Text(L10n.Accessibility.notOwned), isChecked: $filterState.showNotOwned)
-                    })
-                    Spacer().frame(height: 30)
-                    FilterSection(label: Text(L10n.categories), rows: {
-                        ForEach(ChallengeCategory.allCases) { category in
-                            CheckedRow(title: Text(category.localizedName), isChecked: categoryBinding(category))
-                        }
-                    })
+        ScrollView {
+            VStack(spacing: 0) {
+                FilterSection(label: Text(L10n.membership), rows: {
+                    CheckedRow(title: Text(L10n.participating), isChecked: $filterState.showParticipating)
+                    CheckedRow(title: Text(L10n.notParticipating), isChecked: $filterState.showNotParticipating)
+                })
+                Spacer().frame(height: 30)
+                FilterSection(label: Text(L10n.ownership), rows: {
+                    CheckedRow(title: Text(L10n.Accessibility.owned), isChecked: $filterState.showOwned)
+                    CheckedRow(title: Text(L10n.Accessibility.notOwned), isChecked: $filterState.showNotOwned)
+                })
+                Spacer().frame(height: 30)
+                FilterSection(label: Text(L10n.categories), rows: {
+                    ForEach(ChallengeCategory.allCases) { category in
+                        CheckedRow(title: Text(category.localizedName), isChecked: categoryBinding(category))
+                    }
+                })
+            }
+            .padding(.horizontal, 16)
+            .padding(.vertical, 20)
+        }
+        .background(Color(themeService.theme.contentBackgroundColor).ignoresSafeArea())
+        .toolbar {
+            ToolbarItem(placement: .topBarLeading) {
+                if #available(iOS 26.0, *) {
+                    Button {
+                        filterState = filterState.cleared()
+                    } label: {
+                        Text(L10n.clear).foregroundStyle(Color.red100)
+                    }.buttonStyle(.glassProminent)
+                        .tint(.red100.opacity(0.14))
+                } else {
+                    Button {
+                        filterState = filterState.cleared()
+                    } label: {
+                        Text(L10n.clear)
+                    }.tint(.red100)
                 }
             }
-                .scrollBounceBehavior(.basedOnSize)
-            if #available(iOS 26.0, *) {
-                scrollView
-                    .safeAreaBar(edge: .top,
-                                 alignment: .center,
-                                 spacing: 0,
-                                 content: headerGlass)
-                    .scrollEdgeEffectStyle(.soft, for: .all)
-                    .scrollEdgeEffectHidden(false)
-                    .scrollIndicators(.hidden)
-            } else {
-                header()
-                scrollView
+            ToolbarItem(placement: .topBarTrailing) {
+                if #available(iOS 26.0, *) {
+                    Button(role: .confirm) {
+                        dismisser.dismiss()
+                    }.buttonStyle(.glassProminent)
+                        .tint(Color(themeService.theme.fixedTintColor))
+                } else {
+                    Button {
+                        dismisser.dismiss()
+                    } label: {
+                        Text(L10n.done)
+                    }
+                }
             }
-            },
-                        topPadding: 0,
-                        bottomPadding: 0
-        ).onAppearOnce {
+        }.onAppearOnce {
             dismisser.onDismiss = {
                 updateFilterState(self.filterState)
             }
         }
+    }
+}
+
+class ChallengeFilterViewController: BaseHostingViewController<ChallengeFilterView> {
+    private let dismisser: Dismisser
+    private var didApplyFilters = false
+
+    init(filterState: ChallengeFilterState, updateFilterState: @escaping (ChallengeFilterState) -> Void) {
+        let rootView = ChallengeFilterView(filterState: filterState, updateFilterState: updateFilterState)
+        dismisser = rootView.dismisser
+        super.init(rootView: rootView)
+        dismisser.dismissAction = { [weak self] in
+            self?.didApplyFilters = true
+            self?.dismiss(animated: true)
+        }
+    }
+
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        navigationItem.title = L10n.filter
+    }
+
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        guard !didApplyFilters, isBeingDismissed || navigationController?.isBeingDismissed == true else {
+            return
+        }
+        didApplyFilters = true
+        dismisser.onDismiss?()
     }
 }

@@ -187,11 +187,16 @@ class ChallengeDetailViewModel: ChallengeDetailViewModelProtocol, ChallengeDetai
                 }
             }
             let creatorItem = ChallengeDetailCreatorItem(challenge: challenge, creator: creator, isOwner: challenge.isOwner(self.socialRepository.currentUserId), delegate: self)
-            let categoryItem = ChallengeDetailCategoriesItem(challenge)
-            let descriptionItem = ChallengeDetailDescriptionItem(challenge)
 
             let infoSection = MultiModelDataSourceSection()
-            infoSection.items = [infoItem, ctaItem, creatorItem, categoryItem, descriptionItem]
+            var items: [MultiModelDataSourceItem] = [infoItem, ctaItem, creatorItem]
+            if !challenge.categories.isEmpty {
+                items.append(ChallengeDetailCategoriesItem(challenge))
+            }
+            if challenge.notes?.isEmpty == false {
+                items.append(ChallengeDetailDescriptionItem(challenge))
+            }
+            infoSection.items = items
             self.infoSectionProperty.value = infoSection
         }
     }
@@ -427,7 +432,7 @@ class ChallengeDetailTaskRowItem: ConcreteMultiModelDataSourceItem<UITableViewCe
         cell.contentConfiguration = UIHostingConfiguration {
             ChallengePlayerTaskRow(task: task)
         }
-        .margins(.horizontal, 20)
+        .margins(.horizontal, 18)
         .margins(.vertical, 4)
         cell.backgroundColor = .clear
         cell.selectionStyle = .none
@@ -446,7 +451,7 @@ class ChallengeDetailHeaderItem: ConcreteMultiModelDataSourceItem<UITableViewCel
         cell.contentConfiguration = UIHostingConfiguration {
             ChallengeDetailHeaderCard(challenge: challenge)
         }
-        .margins(.horizontal, 20)
+        .margins(.horizontal, 18)
         .margins(.top, 6)
         cell.backgroundColor = .clear
         cell.selectionStyle = .none
@@ -467,14 +472,14 @@ class ChallengeDetailCTAItem: ConcreteMultiModelDataSourceItem<UITableViewCell> 
         let onTap = self.onTap
         let isParticipating = self.isParticipating
         cell.contentConfiguration = UIHostingConfiguration {
-            ChallengePillButton(isParticipating ? L10n.leaveChallenge : L10n.joinChallenge,
-                                fill: isParticipating ? ChallengeTheme.leaveRed : ChallengeTheme.joinGreen,
-                                textColor: isParticipating ? ChallengeTheme.leaveRedText : ChallengeTheme.joinGreenText,
-                                weight: .bold,
-                                action: onTap)
+            HabiticaButtonUI(label: Text(isParticipating ? L10n.leaveChallenge : L10n.joinChallenge)
+                .foregroundStyle(isParticipating ? ChallengeTheme.leaveRedText : ChallengeTheme.joinGreenText),
+                             color: isParticipating ? ChallengeTheme.leaveRed : ChallengeTheme.joinGreen,
+                             onTap: onTap)
         }
-        .margins(.horizontal, 20)
-        .margins(.vertical, 6)
+        .margins(.horizontal, 18)
+        .margins(.top, 6)
+        .margins(.bottom, 22)
         cell.backgroundColor = .clear
         cell.selectionStyle = .none
     }
@@ -506,7 +511,7 @@ class ChallengeDetailCreatorItem: ConcreteMultiModelDataSourceItem<UITableViewCe
                 onMessageTap: { if let creator = creator { delegate?.messagePressed(member: creator) } }
             )
         }
-        .margins(.horizontal, 20)
+        .margins(.horizontal, 18)
         .margins(.vertical, 4)
         cell.backgroundColor = .clear
         cell.selectionStyle = .none
@@ -525,7 +530,7 @@ class ChallengeDetailCategoriesItem: ConcreteMultiModelDataSourceItem<UITableVie
         cell.contentConfiguration = UIHostingConfiguration {
             ChallengeDetailCategoriesCard(challenge: challenge)
         }
-        .margins(.horizontal, 20)
+        .margins(.horizontal, 18)
         .margins(.vertical, 4)
         cell.backgroundColor = .clear
         cell.selectionStyle = .none
@@ -544,7 +549,7 @@ class ChallengeDetailDescriptionItem: ConcreteMultiModelDataSourceItem<UITableVi
         cell.contentConfiguration = UIHostingConfiguration {
             ChallengeDetailDescriptionCard(challenge: challenge)
         }
-        .margins(.horizontal, 20)
+        .margins(.horizontal, 18)
         .margins(.vertical, 4)
         cell.backgroundColor = .clear
         cell.selectionStyle = .none
