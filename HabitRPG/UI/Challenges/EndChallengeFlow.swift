@@ -32,18 +32,18 @@ struct EndChallengeSheet: View {
                     .resizable()
                     .scaledToFit()
                     .frame(width: 215)
-                    .padding(.top, 14)
+                    .padding(.top, 26)
                 Text(L10n.endChallengeSelectWinnerTitle)
                     .font(.system(size: 17, weight: .semibold))
                     .foregroundStyle(Color(themeService.theme.primaryTextColor))
-                    .padding(.top, 18)
+                    .padding(.top, 26)
                 Text(L10n.endChallengeSelectWinnerBody)
                     .font(.system(size: 17))
                     .foregroundStyle(ChallengeTheme.handle)
                     .multilineTextAlignment(.center)
                     .fixedSize(horizontal: false, vertical: true)
                     .frame(maxWidth: 310)
-                    .padding(.top, 8)
+                    .padding(.top, 13)
                 HabiticaButtonUI(label: Text(L10n.endChallengeSelectWinnerButton), color: ChallengeTheme.purple) {
                     showSearch = true
                 }
@@ -131,13 +131,13 @@ struct AwardWinnerSearchView: View {
                     .resizable()
                     .scaledToFit()
                     .frame(width: 215)
-                    .padding(.top, 14)
+                    .padding(.top, 26)
                 Text(L10n.selectWinnerFromParticipants)
                     .font(.system(size: 17, weight: .semibold))
                     .foregroundStyle(Color(themeService.theme.primaryTextColor))
                     .multilineTextAlignment(.center)
                     .padding(.horizontal, 26)
-                    .padding(.top, 16)
+                    .padding(.top, 26)
                 ChallengeParticipantSearch(searchText: $searchText, members: membersVM.filtered(searchText)) { member in
                     selectedMember = ChallengeMemberBox(member: member)
                 }
