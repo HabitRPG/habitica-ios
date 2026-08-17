@@ -167,7 +167,7 @@
 "tasks.repeats.repeats_every" = "Repete %@";
 "tasks.repeats.daily" = "diariamente";
 "tasks.repeats.weekly" = "semanalmente";
-"tasks.repeats.monthly" = "mensalmente";
+"tasks.repeats.monthly" = "todos os meses";
 "tasks.repeats.yearly" = "anualmente";
 "tasks.repeats.every_day" = "todos os dias";
 "tasks.repeats.weekends" = "fins-de-semana";
@@ -783,8 +783,8 @@
 "groups.find_members" = "Encontrar Membros";
 "groups.list" = "Lista";
 "groups.by_invite" = "Entrar por Convite";
-"groups.guild_invitation_no_invitername" = "Alguém convidou-te para te juntares à Guilda: **%@**";
-"groups.guild_invitation_invitername" = "**@%@** convidou-te para te juntares à Guilda: **%@**";
+"groups.guild_invitation_no_invitername" = "Alguém lhe convidou para entrar no time: **%@**";
+"groups.guild_invitation_invitername" = "**@%@** convidou você para participar do time **%@**";
 "groups.group" = "Grupo";
 "groups.group_plan_settings" = "Definições do Plano de Grupo";
 "groups.copy_shared_tasks" = "Copiar tarefas partilhadas";
@@ -936,8 +936,8 @@
 "duration_12month" = "12 meses";
 "next_checkin_prize_x_days" = "O seu próximo prémio desbloqueia-se após %d Registos";
 "next_checkin_prize_in_x_days" = "O seu próximo prémio desbloqueia-se em %d Registos";
-"next_prize_at_x_checkins" = "Próximo prémio em %d Registos";
-"next_prize_in_x_checkins" = "O próximo prémio será desbloqueado em %d Registos";
+"next_prize_at_x_checkins" = "Próximo prêmio em %d dias!";
+"next_prize_in_x_checkins" = "O próximo prémio será desbloqueado em %d dias!";
 "checkin_prize_earned" = "Ganhou um %@ como recompensa pela sua dedicação em melhorar a sua vida.";
 "subscription.enjoy_these_benefits" = "Desfruta de todos estes benefícios exclusivos com a tua subscrição";
 "subscription_duration" = "Recorrente a cada %@";
@@ -1000,7 +1000,7 @@
 "more_help_title" = "Precisas de mais ajuda?";
 "more_help_description" = "Envia-nos um relatório e nós entraremos em contacto contigo!";
 "tasks.repeats.monthly_week_of" = "O %1$@ %2$@ do mês";
-"tasks.repeats.fifth_week_warning" = "Esta tarefa não aparecerá como devida durante meses com menos %@s.";
+"tasks.repeats.fifth_week_warning" = "Esta tarefa não aparecerá como pendente durante meses com menos %@s.";
 "login.custom_url" = "URL personalizado";
 "world_boss.world_boss" = "Chefe Mundial";
 "boss" = "Chefe";
@@ -1332,3 +1332,4 @@
 "gift_one_get_one_data.infoPrompt" = "Em honra da temporada de generosidade, estamos trazendo de volta uma promoção muito especial. Agora, quando presenteias alguém com uma assinatura, recebes a mesma assinatura para ti, sem custo adicional!";
 "class_system_unlocked" = "Sistema de Classes desbloqueado";
 "class_system_unlocked_description" = "Escolhe uma classe que combine com o teu estilo de jogo e desbloqueia habilidades e armaduras especiais para te ajudar na tua jornada";
+"shops.rebirthConfirmTitleGems" = "Você tem certeza de que quer usar a Orbe do Renascimento por %d Gemas?";
