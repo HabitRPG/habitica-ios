@@ -58,6 +58,8 @@ public enum L10n {
   public static var apiTokenTitle: String { return L10n.tr("Mainstrings", "api_token_title") }
   /// Assigned Stat
   public static var assignedStat: String { return L10n.tr("Mainstrings", "assigned_stat") }
+  /// Avoid SPI
+  public static var avoidSPI: String { return L10n.tr("Mainstrings", "avoid_SPI") }
   /// Back
   public static var back: String { return L10n.tr("Mainstrings", "back") }
   /// Backer Tier: %d
@@ -564,7 +566,7 @@ public enum L10n {
   public static var gold: String { return L10n.tr("Mainstrings", "gold") }
   /// Gold is the main form of currency within Habitica and allows you to buy certain gear, quests, items, or even custom rewards you make for yourself.\n\nEarn Gold through completing tasks, quests, or through some Class skills.
   public static var goldDescription: String { return L10n.tr("Mainstrings", "gold_description") }
-  /// Got it!
+  /// Got it
   public static var gotIt: String { return L10n.tr("Mainstrings", "got_it") }
   /// Great
   public static var great: String { return L10n.tr("Mainstrings", "great") }
@@ -1140,6 +1142,8 @@ public enum L10n {
   public static var resyncAll: String { return L10n.tr("Mainstrings", "resync_all") }
   /// Resync this task
   public static var resyncTask: String { return L10n.tr("Mainstrings", "resync_task") }
+  /// Review Privacy Policy
+  public static var reviewPrivacyPolicy: String { return L10n.tr("Mainstrings", "review_privacy_policy") }
   /// Sale
   public static var sale: String { return L10n.tr("Mainstrings", "sale") }
   /// Sale ends in %@
@@ -1194,6 +1198,10 @@ public enum L10n {
   public static var slim: String { return L10n.tr("Mainstrings", "slim") }
   /// Special Items
   public static var specialItems: String { return L10n.tr("Mainstrings", "specialItems") }
+  /// For your privacy, avoid sharing sensitive personal information (SPI) when using Habitica. All account data, including tasks, is saved to our servers so you can access it from any device.
+  public static var spiDescription: String { return L10n.tr("Mainstrings", "spi_description") }
+  /// Sensitive Personal Information
+  public static var spiTitle: String { return L10n.tr("Mainstrings", "spi_title") }
   /// Spring
   public static var spring: String { return L10n.tr("Mainstrings", "spring") }
   /// Staff

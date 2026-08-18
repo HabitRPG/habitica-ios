@@ -1489,7 +1489,7 @@
 "class_change_success_title" = "You're a %@!";
 "class_change_success_subtitle" = "You can now allocate stats";
 "class_change_success_description" = "Every level you earn a Stat point that you can use to power up your Skills and affect the gameplay aspects of Habitica";
-"got_it" = "Got it!";
+"got_it" = "Got it";
 "open_stats" = "Open Stats";
 "stats" = "Stats";
 "continue_benefits" = "Continue Benefits";
@@ -1551,3 +1551,7 @@
 "delete_task_confirmation" = "Are you sure you want to delete this Task?";
 "task" = "Task";
 "item_only_available_for" = "This item is only available to %s";
+"avoid_SPI" = "Avoid SPI";
+"spi_title" = "Sensitive Personal Information";
+"spi_description" = "For your privacy, avoid sharing sensitive personal information (SPI) when using Habitica. All account data, including tasks, is saved to our servers so you can access it from any device.";
+"review_privacy_policy" = "Review Privacy Policy";

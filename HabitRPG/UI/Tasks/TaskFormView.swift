@@ -56,7 +56,27 @@ struct TaskFormView: View {
     private var textFields: some View {
         VStack(alignment: .leading, spacing: 4) {
             HStack {
-                Text(L10n.title).foregroundStyle(viewModel.darkestTaskTintColor).font(.system(size: 13, weight: isEditingText ? .semibold : .regular)).padding(.leading, 8)
+                HStack {
+                    Text(L10n.title).foregroundStyle(viewModel.darkestTaskTintColor).font(.system(size: 15, weight: isEditingText ? .semibold : .regular)).padding(.leading, 8)
+                    Spacer()
+                    if viewModel.isTaskEditable {
+                        HStack {
+                            Image(Asset.exclamationSquare.name)
+                            Text(L10n.avoidSPI)
+                                .underline()
+                                .scaledFont(size: 15, weight: .semibold)
+                        }.foregroundStyle(viewModel.darkestTaskTintColor)
+                            .onTapGesture {
+                                let alert = HabiticaAlertController(title: L10n.spiTitle, message: L10n.spiDescription)
+                                alert.addAction(title: L10n.gotIt, isMainAction: true)
+                                alert.addAction(title: L10n.reviewPrivacyPolicy) { _ in
+                                    RouterHandler.shared.handleOrOpen(urlString: "https://habitica.com/static/privacy")
+                                }
+                                alert.show()
+                            }
+                            .padding(.trailing, 8)
+                    }
+                }
                 if !viewModel.isTaskEditable {
                     Image(uiImage: HabiticaIcons.imageOfLocked().withRenderingMode(.alwaysTemplate)).foregroundStyle(viewModel.darkestTaskTintColor)
                 }
@@ -73,7 +93,7 @@ struct TaskFormView: View {
                 .cornerRadius(UIConstants.largeCornerRadius)
                 .disabled(!viewModel.isTaskEditable)
                 .opacity(viewModel.isTaskEditable ? 1.0 : 0.6)
-            Text(L10n.notes).foregroundStyle(viewModel.darkestTaskTintColor).font(.system(size: 13, weight: isEditingNotes ? .semibold : .regular)).padding(.leading, 8).padding(.top, 10)
+            Text(L10n.notes).foregroundStyle(viewModel.darkestTaskTintColor).font(.system(size: 15, weight: isEditingNotes ? .semibold : .regular)).padding(.leading, 8).padding(.top, 10)
             MultilineTextField("", text: $viewModel.notes, onEditingChanged: { isEditing in
                 isEditingNotes = isEditing
             },

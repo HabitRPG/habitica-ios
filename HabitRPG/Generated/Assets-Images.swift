@@ -183,6 +183,7 @@ internal enum Asset {
     internal static let quests = ImageAsset(name: "empty/Quests")
     internal static let special = ImageAsset(name: "empty/Special")
   }
+  internal static let exclamationSquare = ImageAsset(name: "exclamation_square")
   internal static let faintGhost = ImageAsset(name: "faint_ghost")
   internal static let faintHeart = ImageAsset(name: "faint_heart")
   internal static let fallPromoBannerLeft = ImageAsset(name: "fall_promo_banner_left")
