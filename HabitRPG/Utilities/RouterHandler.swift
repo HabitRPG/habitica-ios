@@ -409,6 +409,12 @@ class RouterHandler {
         }
     }
     
+    func handleOrOpen(urlString: String) {
+        if let url = URL(string: urlString) {
+            handle(url: url)
+        }
+    }
+    
     func handle(userActivity: NSUserActivity) -> Bool {
         if userActivity.activityType == NSUserActivityTypeBrowsingWeb, let url = userActivity.webpageURL {
             return handle(url: url)
