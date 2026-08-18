@@ -305,6 +305,9 @@ class LoginViewModel: ObservableObject {
     func prefillUsername() {
         if email.isValidEmail() {
             username = String(email.split(separator: "@").first ?? "").replacing(/[\s+]/, with: "")
+            if username.count > 20 {
+                username = String(username[..<username.index(username.startIndex, offsetBy: 20)])
+            }
             verifyUsername(initial: true)
         }
     }
