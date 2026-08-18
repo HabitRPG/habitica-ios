@@ -411,7 +411,7 @@ class RouterHandler {
     
     func handleOrOpen(urlString: String) {
         if let url = URL(string: urlString) {
-            handle(url: url)
+            handleOrOpen(url: url)
         }
     }
     
