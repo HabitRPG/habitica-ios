@@ -12,6 +12,8 @@ import Habitica_Models
 import Kingfisher
 
 class RemoteLogger: HabiticaLogger {
+    private var analyticsConsented: Bool = false
+
     override func record(error: Error) {
         if error is KingfisherError {
             return
@@ -53,6 +55,16 @@ class RemoteLogger: HabiticaLogger {
     }
     
     public func setUserID(_ userID: String?) {
+        if !analyticsConsented {
+            return
+        }
         Crashlytics.crashlytics().setUserID(userID ?? "")
+    }
+    
+    public func setAnalyticsConsent(_ consent: Bool) {
+        analyticsConsented = consent
+        if !consent {
+            Crashlytics.crashlytics().setUserID(nil)
+        }
     }
 }
