@@ -57,7 +57,7 @@ struct TaskFormView: View {
         VStack(alignment: .leading, spacing: 4) {
             HStack {
                 HStack {
-                    Text(L10n.title).foregroundStyle(viewModel.darkestTaskTintColor).font(.system(size: 15, weight: isEditingText ? .semibold : .regular)).padding(.leading, 8)
+                    Text(L10n.title).foregroundStyle(viewModel.darkestTaskTintColor).font(.system(size: 15, weight: isEditingText ? .bold : .semibold)).padding(.leading, 8)
                     Spacer()
                     if viewModel.isTaskEditable {
                         HStack {
@@ -93,7 +93,7 @@ struct TaskFormView: View {
                 .cornerRadius(UIConstants.largeCornerRadius)
                 .disabled(!viewModel.isTaskEditable)
                 .opacity(viewModel.isTaskEditable ? 1.0 : 0.6)
-            Text(L10n.notes).foregroundStyle(viewModel.darkestTaskTintColor).font(.system(size: 15, weight: isEditingNotes ? .semibold : .regular)).padding(.leading, 8).padding(.top, 10)
+            Text(L10n.notes).foregroundStyle(viewModel.darkestTaskTintColor).font(.system(size: 15, weight: isEditingNotes ? .bold : .semibold)).padding(.leading, 8).padding(.top, 10)
             MultilineTextField("", text: $viewModel.notes, onEditingChanged: { isEditing in
                 isEditingNotes = isEditing
             },
