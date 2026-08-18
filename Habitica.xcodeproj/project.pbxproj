@@ -241,9 +241,6 @@
 		29706CB727D911F5006EC139 /* XCUIApplication-Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29706CB627D911F5006EC139 /* XCUIApplication-Extensions.swift */; };
 		29706CB827D917CD006EC139 /* tasks.json in Resources */ = {isa = PBXBuildFile; fileRef = 29706CB427D9115C006EC139 /* tasks.json */; };
 		2970CB52227B1A8600FACCB7 /* MarkdownTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2970CB51227B1A8600FACCB7 /* MarkdownTests.swift */; };
-		2972A33A2EBB96CC00106850 /* AmplitudeSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 2972A3392EBB96CC00106850 /* AmplitudeSwift */; };
-		2972A33C2EBB9A1600106850 /* AmplitudeSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 2972A33B2EBB9A1600106850 /* AmplitudeSwift */; };
-		2972A33E2EBB9A1E00106850 /* AmplitudeSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 2972A33D2EBB9A1E00106850 /* AmplitudeSwift */; };
 		2972A3402EBBA87D00106850 /* AchievementDetailSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2972A33F2EBBA87D00106850 /* AchievementDetailSheet.swift */; };
 		2972A3422EC1FF5200106850 /* QuestDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2972A3412EC1FF5200106850 /* QuestDetails.swift */; };
 		29737EEF2D38055000480353 /* NSRange-Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29737EEE2D38054C00480353 /* NSRange-Extensions.swift */; };
@@ -1417,7 +1414,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2972A33E2EBB9A1E00106850 /* AmplitudeSwift in Frameworks */,
 				2953D83D28B51FA700DC456E /* ReactiveSwift in Frameworks */,
 				29D048C02E3A647F004A6AAA /* RealmSwift in Frameworks */,
 				2994A8B128FE946A00CEDED7 /* Habitica_Database.framework in Frameworks */,
@@ -1437,7 +1433,6 @@
 				2994A8B028FE946800CEDED7 /* Habitica_Database.framework in Frameworks */,
 				2938ED4028B4EEBC00E995A2 /* KeychainAccess in Frameworks */,
 				2994A8AE28FE945E00CEDED7 /* Habitica_Models.framework in Frameworks */,
-				2972A33C2EBB9A1600106850 /* AmplitudeSwift in Frameworks */,
 				2994A8B228FE947800CEDED7 /* Habitica_API_Client.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1483,7 +1478,6 @@
 				2945AE972B285D000022F3CC /* PanModal in Frameworks */,
 				294F5D6628CA1DCB00760F6C /* ConfettiSwiftUI in Frameworks */,
 				2938ED4328B4EF5D00E995A2 /* SwiftyStoreKit in Frameworks */,
-				2972A33A2EBB96CC00106850 /* AmplitudeSwift in Frameworks */,
 				D92D26161D58EF00001FD977 /* AVFoundation.framework in Frameworks */,
 				29D048BA2E3A641A004A6AAA /* RealmSwift in Frameworks */,
 				292BD8AB28B4EB42006447EF /* Eureka in Frameworks */,
@@ -2895,7 +2889,6 @@
 				2938ED3D28B4EEB200E995A2 /* KeychainAccess */,
 				2953D83C28B51FA700DC456E /* ReactiveSwift */,
 				29D048BF2E3A647F004A6AAA /* RealmSwift */,
-				2972A33D2EBB9A1E00106850 /* AmplitudeSwift */,
 			);
 			productName = "Habitica WidgetsExtension";
 			productReference = 29BEE62B252CCFE100D456F8 /* Habitica WidgetsExtension.appex */;
@@ -2919,7 +2912,6 @@
 				2938ED3F28B4EEBC00E995A2 /* KeychainAccess */,
 				2953D83A28B51F9E00DC456E /* ReactiveSwift */,
 				29D048BB2E3A6423004A6AAA /* RealmSwift */,
-				2972A33B2EBB9A1600106850 /* AmplitudeSwift */,
 			);
 			productName = "Habitica Intents";
 			productReference = 7A84E191228928AC0081E96F /* Habitica Intents.appex */;
@@ -3025,7 +3017,6 @@
 				299336F52E8C084E00ADB6BA /* FirebaseRemoteConfig */,
 				299336F72E8C08F300ADB6BA /* FirebaseCrashlytics */,
 				299336F92E8C0A0600ADB6BA /* FirebaseMessaging */,
-				2972A3392EBB96CC00106850 /* AmplitudeSwift */,
 			);
 			productName = HabitRPG;
 			productReference = D9EB4E8B18CB4A9400BB2094 /* Habitica.app */;
@@ -3155,7 +3146,6 @@
 				29C55B312C21A247008F553A /* XCRemoteSwiftPackageReference "CwlCatchException" */,
 				29D048B82E3A641A004A6AAA /* XCRemoteSwiftPackageReference "realm-swift" */,
 				299336F42E8C084E00ADB6BA /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
-				2972A3382EBB96CC00106850 /* XCRemoteSwiftPackageReference "Amplitude-Swift" */,
 			);
 			productRefGroup = D9EB4E8C18CB4A9400BB2094 /* Products */;
 			projectDirPath = "";
@@ -5884,14 +5874,6 @@
 				minimumVersion = 2.0.0;
 			};
 		};
-		2972A3382EBB96CC00106850 /* XCRemoteSwiftPackageReference "Amplitude-Swift" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/amplitude/Amplitude-Swift";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 1.0.0;
-			};
-		};
 		299336F42E8C084E00ADB6BA /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
@@ -6032,21 +6014,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 2953D84328B7772A00DC456E /* XCRemoteSwiftPackageReference "BottomSheet" */;
 			productName = BottomSheet;
-		};
-		2972A3392EBB96CC00106850 /* AmplitudeSwift */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 2972A3382EBB96CC00106850 /* XCRemoteSwiftPackageReference "Amplitude-Swift" */;
-			productName = AmplitudeSwift;
-		};
-		2972A33B2EBB9A1600106850 /* AmplitudeSwift */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 2972A3382EBB96CC00106850 /* XCRemoteSwiftPackageReference "Amplitude-Swift" */;
-			productName = AmplitudeSwift;
-		};
-		2972A33D2EBB9A1E00106850 /* AmplitudeSwift */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 2972A3382EBB96CC00106850 /* XCRemoteSwiftPackageReference "Amplitude-Swift" */;
-			productName = AmplitudeSwift;
 		};
 		299336F52E8C084E00ADB6BA /* FirebaseRemoteConfig */ = {
 			isa = XCSwiftPackageProductDependency;
