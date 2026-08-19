@@ -54,13 +54,13 @@ struct TaskFormView: View {
     }
     
     private var textFields: some View {
-        VStack(alignment: .leading, spacing: 4) {
+        VStack(alignment: .leading, spacing: 8) {
             HStack {
-                HStack {
+                HStack(alignment: .bottom) {
                     Text(L10n.title).foregroundStyle(viewModel.darkestTaskTintColor).font(.system(size: 15, weight: isEditingText ? .bold : .semibold)).padding(.leading, 8)
                     Spacer()
                     if viewModel.isTaskEditable {
-                        HStack {
+                        HStack(alignment: .bottom) {
                             Image(Asset.exclamationSquare.name)
                             Text(L10n.avoidSPI)
                                 .underline()
@@ -80,7 +80,7 @@ struct TaskFormView: View {
                 if !viewModel.isTaskEditable {
                     Image(uiImage: HabiticaIcons.imageOfLocked().withRenderingMode(.alwaysTemplate)).foregroundStyle(viewModel.darkestTaskTintColor)
                 }
-            }
+            }.padding(.top, 6)
             MultilineTextField("", text: $viewModel.text, onCommit: {
             }, onEditingChanged: { isEditing in
                 isEditingText = isEditing
