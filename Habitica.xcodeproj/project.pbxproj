@@ -365,6 +365,9 @@
 		29B30EB82E0AD511001B587B /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29B30EB72E0AD511001B587B /* LoginViewModel.swift */; };
 		29B30EBC2E0ADEA8001B587B /* PrivacyPreferencesSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29B30EBB2E0ADEA2001B587B /* PrivacyPreferencesSheetView.swift */; };
 		29B388E11EF2BB7600A72950 /* YesterdailyChecklistItem.xib in Resources */ = {isa = PBXBuildFile; fileRef = 29B388E01EF2BB7600A72950 /* YesterdailyChecklistItem.xib */; };
+		29B3EACB3035E5160015FBAD /* RegexRoute.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29B3EACA3035E5160015FBAD /* RegexRoute.swift */; };
+		29B3EACD3035E5220015FBAD /* RouteMatch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29B3EACC3035E5220015FBAD /* RouteMatch.swift */; };
+		29B3EACF3035E5280015FBAD /* Route.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29B3EACE3035E5280015FBAD /* Route.swift */; };
 		29B3FEB11F9A37E3000B12CF /* BaseSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29B3FEB01F9A37E3000B12CF /* BaseSettingsViewController.swift */; };
 		29B3FEBC1F9E3B17000B12CF /* HabiticaAlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29B3FEBB1F9E3B17000B12CF /* HabiticaAlertController.swift */; };
 		29B3FEBE1F9E3DC3000B12CF /* HabiticaAlertController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 29B3FEBD1F9E3DC3000B12CF /* HabiticaAlertController.xib */; };
@@ -1088,6 +1091,9 @@
 		29B30EB72E0AD511001B587B /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		29B30EBB2E0ADEA2001B587B /* PrivacyPreferencesSheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivacyPreferencesSheetView.swift; sourceTree = "<group>"; };
 		29B388E01EF2BB7600A72950 /* YesterdailyChecklistItem.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = YesterdailyChecklistItem.xib; sourceTree = "<group>"; };
+		29B3EACA3035E5160015FBAD /* RegexRoute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegexRoute.swift; sourceTree = "<group>"; };
+		29B3EACC3035E5220015FBAD /* RouteMatch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteMatch.swift; sourceTree = "<group>"; };
+		29B3EACE3035E5280015FBAD /* Route.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Route.swift; sourceTree = "<group>"; };
 		29B3FEB01F9A37E3000B12CF /* BaseSettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseSettingsViewController.swift; sourceTree = "<group>"; };
 		29B3FEBB1F9E3B17000B12CF /* HabiticaAlertController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabiticaAlertController.swift; sourceTree = "<group>"; };
 		29B3FEBD1F9E3DC3000B12CF /* HabiticaAlertController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HabiticaAlertController.xib; sourceTree = "<group>"; };
@@ -1907,6 +1913,17 @@
 			path = Settings;
 			sourceTree = "<group>";
 		};
+		29B3EAC93035E50C0015FBAD /* routing */ = {
+			isa = PBXGroup;
+			children = (
+				C897F63B218CCF51002907C2 /* RouterHandler.swift */,
+				29B3EACE3035E5280015FBAD /* Route.swift */,
+				29B3EACC3035E5220015FBAD /* RouteMatch.swift */,
+				29B3EACA3035E5160015FBAD /* RegexRoute.swift */,
+			);
+			path = routing;
+			sourceTree = "<group>";
+		};
 		29B3FEAD1F9A339B000B12CF /* Settings */ = {
 			isa = PBXGroup;
 			children = (
@@ -2472,7 +2489,7 @@
 				29C38C8824A33E6600F219A1 /* NotificationManager.swift */,
 				29FC885120134A8F002B3D3F /* PurchaseHandler.swift */,
 				29A984D12547294E00F04665 /* RemoteLogger.swift */,
-				C897F63B218CCF51002907C2 /* RouterHandler.swift */,
+				29B3EAC93035E50C0015FBAD /* routing */,
 				29C135FF24EAE07E00DBC6B3 /* SharingManager.swift */,
 				2988EFC428D3583E00D703BC /* Measurements.swift */,
 				29DBFF0020CE6FFF00DF9CF2 /* SoundManager.swift */,
@@ -3684,6 +3701,7 @@
 				29DBDE4A274BE745008F6777 /* AccountSettingsViewController.swift in Sources */,
 				49391ED120C9C898002B2BB5 /* HabitTableViewController.swift in Sources */,
 				29028C3E203701B900B7F704 /* ChatTableViewCell.swift in Sources */,
+				29B3EACF3035E5280015FBAD /* Route.swift in Sources */,
 				29066CF424FE62E700A266EE /* HabiticaPromotions.swift in Sources */,
 				2914486A2085126700F3A6B5 /* StableSectionHeader.swift in Sources */,
 				29FC885220134A8F002B3D3F /* PurchaseHandler.swift in Sources */,
@@ -3826,6 +3844,7 @@
 				299CE6312CC28D4400ABA85C /* AppDelege+Maintenance.swift in Sources */,
 				29F89F1A1F47882A004E5B84 /* String-Extensions.swift in Sources */,
 				29A0318828D9F5EC00F3A1EF /* ChecklistFormView.swift in Sources */,
+				29B3EACB3035E5160015FBAD /* RegexRoute.swift in Sources */,
 				298119AF1F5040DA00F9FB39 /* QuestDetailView.swift in Sources */,
 				29DC5ACB20A20A6C00993400 /* QuestTitleView.swift in Sources */,
 				299FB2AA2084BA6200422522 /* StableOverviewCell.swift in Sources */,
@@ -3901,6 +3920,7 @@
 				29DF934F2ECDFAB60047801F /* LoginIncentiveSheet.swift in Sources */,
 				2979D5F52EE1D1E000BB2F54 /* AuthenticationStorage.swift in Sources */,
 				29D50A6825F66F760009CF55 /* UIWindowScene-Extensions.swift in Sources */,
+				29B3EACD3035E5220015FBAD /* RouteMatch.swift in Sources */,
 				2927024C24E3040A00BCAA77 /* HallOfPatronsDataSource.swift in Sources */,
 				D9BB45D41E7849B40002AE2E /* ChallengeTaskListView.swift in Sources */,
 				2974BD91208DEFEA00EC1A25 /* CustomizationDetailCell.swift in Sources */,
