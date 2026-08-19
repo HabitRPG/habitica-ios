@@ -40,7 +40,7 @@ struct LoadingPage: View {
 
 class LoadingViewController: UIHostingController<LoadingPage> {
     
-    @objc var loadingFinishedAction: (() -> Void)?
+    var loadingFinishedAction: (() async -> Void)?
     
     @IBOutlet weak var logoView: UIImageView!
     
@@ -128,7 +128,9 @@ class LoadingViewController: UIHostingController<LoadingPage> {
     
     override func viewDidDisappear(_ animated: Bool) {
         if let action = loadingFinishedAction {
-            action()
+            Task.detached {
+                await action()
+            }
         }
         if let targetUrl = ProcessInfo.processInfo.environment["TARGET_URL"] {
             RouterHandler.shared.handle(urlString: targetUrl)
