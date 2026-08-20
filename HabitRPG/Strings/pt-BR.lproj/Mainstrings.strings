@@ -1742,3 +1742,6 @@
 "delete_task_confirmation" = "Você tem certeza que deseja excluir essa Tarefa?";
 "task" = "Tarefa";
 "item_only_available_for" = "Este item está disponível apenas para %s";
+"shops.rebirthShop" = "Orbe do Renascimento";
+"shops.rebirthConfirmTitle" = "Tem certeza de que deseja usar o Orbe do Renascimento?";
+"shops.rebirthConfirmTitleGems" = "Tem certeza de que deseja usar o Orbe do Renascimento por %d Gemas?";
