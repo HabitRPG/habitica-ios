@@ -1745,3 +1745,5 @@
 "shops.rebirthShop" = "Orbe do Renascimento";
 "shops.rebirthConfirmTitle" = "Tem certeza de que deseja usar o Orbe do Renascimento?";
 "shops.rebirthConfirmTitleGems" = "Tem certeza de que deseja usar o Orbe do Renascimento por %d Gemas?";
+"shops.rebirthEnabledTitle" = "Orbe do Renascimento desbloqueado";
+"shops.rebirthEnabledSubtitle" = "Uma nova aventura está disponível!";
