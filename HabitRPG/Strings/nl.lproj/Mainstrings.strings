@@ -936,7 +936,7 @@
 "world_boss.rage_strike_title" = "De %@ is aangevallen!";
 "world_boss.rage_strike_damaged" = "%@ heeft een gebroken hart!\nOnze geliefde %@ is er kapot van: %@ heeft de %@ gesloopt. Snel, doe je taken om het monster te verslaan en help mee om alles opnieuw op te bouwen!";
 "world_boss.rage_strike_explanation" = "Er zijn 3 mogelijke woedeaanvallen\nDeze meter vult zich doordat Habiticanen hun dagelijkse taken missen. Als hij helemaal vol is, valt de Onthartener een van de winkeliers van Habitica aan met zijn Vernietigende hartebreukaanval, dus doe je taken!";
-"checkin_yesterdays_dalies" = "Vink je dagelijkse taken van gisteren af:";
+"checkin_yesterdays_dalies" = "Vink de Dagelijkse Taken af die je gisteren nog hebt gedaan:";
 "start_my_day" = "Mijn dag begint";
 "decline" = "Afwijzen";
 "force_start" = "Forceer begin";
@@ -1570,3 +1570,13 @@
 "login.what_call_you" = "Hoe zullen we je noemen?";
 "login.username_description" = "Dit is een unieke naam die je later op ieder moment kan aanpassen!";
 "login.custom_url" = "Aangepaste URL";
+"faint.subbed_footer" = "Met jouw abonnement krijg je elke dag dat je HP opraakt een tweede kans";
+"faint.subbed_used" = "Je hebt je tweede kans vandaag al gebruikt. Die is weer beschikbaar in %s.";
+"faint.perk_success" = "Je hebt een tweede kans gekregen met 1 HP!";
+"unlocked_another_checkin_prize" = "Je hebt een nieuwe inlogprijs ontgrendeld!";
+"shops.rebirthConfirmTitleGems" = "Weet je zeker dat je de Bol der Hergeboorte voor %d Edelstenen wil gebruiken?";
+"open_profile" = "Profiel openen";
+"share_avatar" = "Personage delen";
+"no_x" = "Geen %@";
+"buy_gems_with_gold" = "Koop Edelstenen met Goud";
+"failed" = "Mislukt";
