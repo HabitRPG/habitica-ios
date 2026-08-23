@@ -586,7 +586,7 @@
 "choose_task" = "Wybierz Zadanie";
 "shops.purchased_all_gear" = "Już posiadasz wszystkie przedmioty dla swojej klasy. Więcej zostanie dodanych podczas Wielkich Gali zaczynających się w okolicach równonocy i przesileń.";
 "titles.skills" = "Umiejętności";
-"stats.intelligence_text" = "Zwiększa PD otrzymane za wykonanie zadania. Zwiększa również maksymalną ilość many i szybkość regeneracji many w czasie.";
+"stats.intelligence_text" = "Zwiększa Doświadczenie otrzymane za wykonanie zadania. Zwiększa również maksymalną ilość Many i szybkość jej regeneracji.";
 "titles.avatar" = "Awatar";
 "titles.gift_subscription" = "Subskrypcja w prezencie";
 "titles.messages" = "Wiadomości";
@@ -629,7 +629,7 @@
 "tasks.due_today" = "Dzisiaj";
 "renew_subscription" = "Odnów subskrypcję";
 "titles.pets_and_mounts" = "Chowańce i Wierzchowce";
-"stats.strength_text" = "Zwiększa premię za trafienia krytyczne i zwiększa ich prawdopodobieństwo wystąpienia przy zaliczaniu zadania. Zwiększa także obrażenia zadawane bossom.";
+"stats.strength_text" = "Zwiększa szansę na trafienia krytyczne oraz obrażenia przy zaliczaniu zadań. Zwiększa także obrażenia zadawane bossom Misji.";
 "titles.basics" = "Główne";
 "titles.hall_of_patrons" = "Sala chwały patronów";
 "titles.hall_of_contributors" = "Sala chwały wspierających";
@@ -640,7 +640,7 @@
 "tasks.form.habit_title_placeholder" = "Jakie nawyki chcesz kultywować albo z nimi zerwać?";
 "tasks.form.create" = "Nowy %@";
 "controls" = "Sterowanie";
-"stats.perception_text" = "Zwiększa szansę na drop podczas: wykonywania zadań, dziennego dropu, bonusy za ciągłość oraz ilość złota przyznawaną za zadania.";
+"stats.perception_text" = "Zwiększa: szansę na znalezienie przedmiotów, limit przedmiotów możliwych do zdobycia w ciągu dnia, bonusy za ciągłość wykonywania zadań i ilość Złota zdobywanego za zadania.";
 "tasks.form.due_date" = "Termin wykonania";
 "tasks.form.start_date" = "Data rozpoczęcia";
 "tasks.form.scheduling" = "Planowanie";
@@ -757,3 +757,4 @@
 "more_help_button" = "Zgłoś Błąd";
 "first_drop_title" = "Znalazłeś nowy przedmiot!";
 "complete_to_earn_gold" = "Ukończ, aby otrzymać 100 Złota!";
+"tasks.repeats.repeats_every_on" = "Powtórzenia %@ z %@";
