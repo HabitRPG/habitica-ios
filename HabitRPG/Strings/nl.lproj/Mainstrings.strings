@@ -863,7 +863,7 @@
 "quests.reward_experience" = "%d Ervaringspunten";
 "groups.invite_member" = "Nodig een lid uit";
 "groups.members" = "Leden";
-"party.leave_party_description" = "Wil je de groep verlaten en de uitdagingen behouden of verlaten?";
+"party.leave_party_description" = "Het verlaten van je Gezelschap verwijdert je niet van eventuele Gezelschapsuitdagingen waar je nu aan mee doet.";
 "party.leave_party_title" = "Weet je zeker dat je het Gezelschap wil verlaten?";
 "party.party_description" = "Groepsbeschrijving";
 "party.join_party_description" = "Wil je in een groep spelen met andere mensen maar ken je geen spelers? Laat de groepsleiders weten dat je op zoek bent naar een uitnodiging!";
@@ -1021,7 +1021,7 @@
 "quests.unlock_level" = "Ontgrendel door level %d te bereiken";
 "quests.unlock_invite_short" = "Nodig vrienden uit";
 "quests.unlock_invite" = "Ontgrendel door vrienden voor je groep uit te nodigen";
-"party.remove_from_party" = "Uit Groep verwijderen";
+"party.remove_from_party" = "Lid verwijderen";
 "remove" = "Verwijderen";
 "transfer" = "Overdragen";
 "transfer_ownership" = "Het leiderschap overdragen";
@@ -1580,3 +1580,5 @@
 "no_x" = "Geen %@";
 "buy_gems_with_gold" = "Koop Edelstenen met Goud";
 "failed" = "Mislukt";
+"settings.pauseDamage.pause_damage_title2" = "Je reeksen en tellers worden niet teruggezet";
+"groups.by_invite" = "Op Uitnodiging";
