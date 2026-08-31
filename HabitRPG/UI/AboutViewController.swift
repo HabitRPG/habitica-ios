@@ -51,6 +51,8 @@ class AboutViewController: BaseTableViewController, MFMailComposeViewControllerD
     }
 
     private let scrollView = UIScrollView()
+    private let backButton = UIButton(type: .custom)
+    private let titleLabel = UILabel()
 
     private var cardContainers: [UIView] = []
     private var cardTitleLabels: [UILabel] = []
@@ -76,6 +78,7 @@ class AboutViewController: BaseTableViewController, MFMailComposeViewControllerD
     override func viewDidLoad() {
         super.viewDidLoad()
         topHeaderCoordinator?.hideHeader = true
+        topHeaderCoordinator?.hideNavBar = true
         topHeaderCoordinator?.followScrollView = false
 
         tableView.separatorStyle = .none
@@ -84,6 +87,21 @@ class AboutViewController: BaseTableViewController, MFMailComposeViewControllerD
 
         setupUI()
         applyTheme(theme: ThemeService.shared.theme)
+    }
+
+    private func setupHeader() {
+        backButton.layer.cornerRadius = 19
+        backButton.clipsToBounds = true
+        let chevronConfig = UIImage.SymbolConfiguration(pointSize: 16, weight: .semibold)
+        backButton.setImage(UIImage(systemName: "chevron.left", withConfiguration: chevronConfig)?.withRenderingMode(.alwaysTemplate), for: .normal)
+        backButton.addTarget(self, action: #selector(backTapped), for: .touchUpInside)
+        backButton.accessibilityLabel = L10n.back
+        tableView.addSubview(backButton)
+
+        titleLabel.text = L10n.Menu.helpAbout
+        titleLabel.font = UIFont.systemFont(ofSize: 17, weight: .semibold)
+        titleLabel.textAlignment = .left
+        scrollView.addSubview(titleLabel)
     }
 
     private func setupUI() {
@@ -103,7 +121,7 @@ class AboutViewController: BaseTableViewController, MFMailComposeViewControllerD
         stretchView.isHidden = true
         scrollView.delegate = self
 
-        navigationItem.title = L10n.Menu.helpAbout
+        setupHeader()
 
         for index in 0..<cardTitles.count {
             let container = UIView()
@@ -214,6 +232,11 @@ class AboutViewController: BaseTableViewController, MFMailComposeViewControllerD
         let margin: CGFloat = 16
         let cardW = width - margin * 2
 
+        let headerLeft = view.safeAreaInsets.left + 16
+        let headerTop = max(view.safeAreaInsets.top, 20)
+        backButton.frame = CGRect(x: headerLeft, y: headerTop, width: 38, height: 38)
+        titleLabel.frame = CGRect(x: headerLeft + 50, y: headerTop, width: max(0, width - headerLeft - 50 - view.safeAreaInsets.right - 16), height: 38)
+
         for index in 0..<cardContainers.count {
             let top = 120 + CGFloat(index) * 172
             cardContainers[index].frame = CGRect(x: margin, y: top, width: cardW, height: 158)
@@ -281,6 +304,10 @@ class AboutViewController: BaseTableViewController, MFMailComposeViewControllerD
         view.backgroundColor = screenBg
         tableView.backgroundColor = screenBg
         scrollView.backgroundColor = screenBg
+
+        backButton.backgroundColor = themed("#EFEDF4", "#37343E", theme: theme)
+        backButton.tintColor = themed("#4E4A57", "#FFFFFF", theme: theme)
+        titleLabel.textColor = themed("#25242A", "#FFFFFF", theme: theme)
 
         let cardBg = themed("#F9F9F9", "#23202A", theme: theme)
         let cardTitleColor = themed("#25242A", "#FFFFFF", theme: theme)
