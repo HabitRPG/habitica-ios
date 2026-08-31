@@ -216,13 +216,19 @@ class AboutViewController: BaseTableViewController, MFMailComposeViewControllerD
     }
     
     override func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        let contentHeight = scrollView.contentSize.height
-        if contentHeight > 0 {
-            let bottomSize = max(0, scrollView.contentOffset.y - (contentHeight - scrollView.frame.size.height))
-            stretchView.frame = CGRect(x: 0, y: contentHeight, width: scrollView.frame.size.width, height: bottomSize)
-            stretchView.isHidden = false
+        if scrollView === self.scrollView {
+            updateStretchView()
         }
         super.scrollViewDidScroll(scrollView)
+    }
+
+    private func updateStretchView() {
+        let contentHeight = scrollView.contentSize.height
+        let visibleHeight = scrollView.frame.size.height
+        let overscroll = scrollView.contentOffset.y - (contentHeight - visibleHeight)
+        let bottomSize = contentHeight > visibleHeight ? max(0, overscroll) : 0
+        stretchView.frame = CGRect(x: 0, y: contentHeight, width: scrollView.frame.size.width, height: bottomSize)
+        stretchView.isHidden = bottomSize <= 0
     }
 
     override func viewDidLayoutSubviews() {
@@ -296,6 +302,7 @@ class AboutViewController: BaseTableViewController, MFMailComposeViewControllerD
         let contentBottom = privacyButton.frame.maxY + 24 + bottomInset
         purpleBand.frame = CGRect(x: 0, y: purpleTop, width: width, height: contentBottom - purpleTop)
         scrollView.contentSize = CGSize(width: width, height: contentBottom)
+        updateStretchView()
     }
 
     override func applyTheme(theme: Theme) {
