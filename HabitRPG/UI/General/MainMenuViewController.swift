@@ -560,6 +560,7 @@ class MainMenuViewController: BaseTableViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         if !configRepository.enableIPadUI() {
+            (navigationController as? TopHeaderViewController)?.shouldHideTopHeader = false
             topHeaderCoordinator?.contentInsetModifier = UIEdgeInsets(top: headerInsetCorrection, left: 0, bottom: 0, right: 0)
         }
         super.viewWillAppear(animated)
