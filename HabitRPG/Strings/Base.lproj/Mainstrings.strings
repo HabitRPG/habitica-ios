@@ -1593,6 +1593,24 @@
 "challenge_dailies" = "Challenge Dailies";
 "challenge_todos" = "Challenge To Do’s";
 "challenge_rewards" = "Challenge Rewards";
+
+"challenge_form.prize_title" = "Let’s make a new Challenge";
+"challenge_form.prize_description" = "First, set a prize and choose where to create the Challenge.";
+"challenge_form.select_up_to_gems" = "Select up to %d Gems";
+"challenge_form.needs_gems" = "You need Gems to set a prize";
+"challenge_form.location_title" = "Add this Challenge to...";
+"challenge_form.public_gem_note" = "If you’re making a public Challenge, you have to offer at least 1 Gem as a prize";
+"challenge_form.metadata_title" = "What’s your Challenge about?";
+"challenge_form.metadata_description" = "This information helps others know the topic, rules, and goals of your Challenge.";
+"challenge_form.name_placeholder" = "What is your Challenge called?";
+"challenge_form.summary_placeholder" = "What’s the main purpose of your Challenge? This short summary will show in the list of Challenges.";
+"challenge_form.description_placeholder" = "What details do participants need to know about your Challenge?";
+"challenge_form.tags_title" = "Identify your Challenge";
+"challenge_form.tags_description" = "Pick a short tag that will be added to all your Challenge’s tasks and up to 3 categories to help players find you!";
+"challenge_form.tag_label" = "Challenge Tag";
+"challenge_form.tag_placeholder" = "What tag will identify your Challenge?";
+"challenge_form.tasks_title" = "Add some tasks";
+"challenge_form.tasks_description" = "Finally, it’s time to create the tasks you’d like all Challenge participants to complete.";
 "task_tag" = "Task tag: %@";
 "participants" = "Participants";
 "prize" = "Prize";

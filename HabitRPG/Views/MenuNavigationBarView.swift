@@ -109,21 +109,21 @@ class MenuNavigationBarView: UIView, Themeable {
     }
 
     func applyTheme(theme: Theme) {
-        let isDefaultTheme = (ThemeName(rawValue: UserDefaults.standard.string(forKey: "theme") ?? "") ?? .defaultTheme) == .defaultTheme
-        let headerColor = isDefaultTheme ? UIColor.purple300 : theme.navbarHiddenColor
-        let textColor = isDefaultTheme ? UIColor.white : (theme.navbarHiddenColor.isLight() ? UIColor.gray50 : theme.lightTextColor)
-        backgroundColor = headerColor
-        displayNameLabel.textColor = textColor
-        usernameLabel.textColor = textColor
-        settingsBadge.backgroundColor = UIColor.purple100
-        settingsBadge.textColor = .white
-        settingsButton.tintColor = textColor
-        messagesBadge.backgroundColor = UIColor.purple100
-        messagesBadge.textColor = .white
-        messagesButton.tintColor = textColor
-        notificationsBadge.backgroundColor = UIColor.purple100
-        notificationsBadge.textColor = .white
-        notificationsButton.tintColor = textColor
+        let iconColor = MainMenuTheme.headerIcon
+        let bubbleColor = MainMenuTheme.headerBubble
+        let bubbleTextColor = MainMenuTheme.headerBubbleText
+        backgroundColor = MainMenuTheme.headerBackground
+        displayNameLabel.textColor = MainMenuTheme.headerText
+        usernameLabel.textColor = MainMenuTheme.headerText
+        settingsBadge.backgroundColor = bubbleColor
+        settingsBadge.textColor = bubbleTextColor
+        settingsButton.tintColor = iconColor
+        messagesBadge.backgroundColor = bubbleColor
+        messagesBadge.textColor = bubbleTextColor
+        messagesButton.tintColor = iconColor
+        notificationsBadge.backgroundColor = bubbleColor
+        notificationsBadge.textColor = bubbleTextColor
+        notificationsButton.tintColor = iconColor
     }
 
     override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {

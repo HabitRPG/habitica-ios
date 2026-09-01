@@ -38,6 +38,7 @@ class MenuItem {
         case customizationShop
         
         case party
+        case groupPlan
         case questDetail
         case challenges
         
@@ -496,7 +497,7 @@ class MainMenuViewController: BaseTableViewController {
                     viewController.groupID = plan.id
                     return viewController
                 })
-                item.iconKey = .party
+                item.iconKey = .groupPlan
                 return item
             }
             if let index = self.menuSections.firstIndex(where: { $0.key == .social }) {
@@ -636,8 +637,7 @@ class MainMenuViewController: BaseTableViewController {
     
     override func applyTheme(theme: Theme) {
         super.applyTheme(theme: theme)
-        let isDefaultTheme = (ThemeName(rawValue: UserDefaults.standard.string(forKey: "theme") ?? "") ?? .defaultTheme) == .defaultTheme
-        navbarColor = isDefaultTheme ? UIColor.purple300 : theme.navbarHiddenColor
+        navbarColor = MainMenuTheme.headerBackground
         if !configRepository.enableIPadUI() {
             topHeaderCoordinator?.navbarVisibleColor = navbarColor
             navbarView.backgroundColor = navbarColor
@@ -829,7 +829,8 @@ class MainMenuViewController: BaseTableViewController {
         .timeTravelersShop: "menu_timeTravelersShop", .customizeAvatar: "menu_avatarCustomization",
         .equipment: "menu_equipment", .items: "menu_items", .stable: "menu_petsMounts",
         .gems: "menu_gems", .subscription: "menu_subscription", .party: "menu_party",
-        .challenges: "menu_challenges", .news: "menu_news", .support: "menu_help", .about: "menu_help"
+        .challenges: "menu_challenges", .news: "menu_news", .support: "menu_help", .about: "menu_help",
+        .groupPlan: "menu_groupPlan"
     ]
 
     private var currentSeason: String {
@@ -940,8 +941,9 @@ class MainMenuViewController: BaseTableViewController {
             builder(pill)
         } else {
             pillView?.layer.sublayers?.filter { $0 is CAGradientLayer }.forEach { $0.removeFromSuperlayer() }
-            pillView?.automaticTextColor = true
-            pillView?.pillColor = item?.pillColor ?? UIColor.purple400
+            pillView?.automaticTextColor = false
+            pillView?.pillColor = item?.pillColor ?? MainMenuTheme.seasonalBadge
+            pillView?.textColor = MainMenuTheme.seasonalBadgeText
         }
         
         let subtitleLabel = cell.viewWithTag(4) as? UILabel
@@ -1021,26 +1023,34 @@ enum MainMenuTheme {
         ThemeService.shared.theme.isDark ? UIColor(dark) : UIColor(light)
     }
 
-    private static func color(_ light: UIColor, _ dark: UIColor) -> UIColor {
-        ThemeService.shared.theme.isDark ? dark : light
+    private static var theme: Theme { ThemeService.shared.theme }
+
+    private static var isDefaultTheme: Bool {
+        (ThemeName(rawValue: UserDefaults.standard.string(forKey: "theme") ?? "") ?? .defaultTheme) == .defaultTheme
     }
 
-    static var sheetBackground: UIColor { color(.purpleWhite, .black) }
-    static var rowTitle: UIColor { color(.purple100, .purpleWhite) }
-    static var iconTint: UIColor { color(.purple400, .purple500) }
+    static var headerBackground: UIColor { isDefaultTheme ? .purple300 : theme.menuHeaderBackground }
+    static var headerText: UIColor { isDefaultTheme ? .white : theme.menuHeaderText }
+    static var headerIcon: UIColor { isDefaultTheme ? .white : theme.menuHeaderIcon }
+    static var headerBubble: UIColor { theme.menuHeaderBubble }
+    static var headerBubbleText: UIColor { theme.menuHeaderBubbleText }
+    static var sheetBackground: UIColor { theme.menuBackground }
+    static var rowTitle: UIColor { theme.menuText }
+    static var iconTint: UIColor { theme.menuIcon }
     static var rowSubtitle: UIColor { color("#79659D", "#B7ADCD") }
     static var lockedRowTitle: UIColor { color("#A89BC7", "#7A7387") }
     static var notificationDot: UIColor { .red100 }
     static var notificationDotRing: UIColor { sheetBackground }
-    static var seasonalBadge: UIColor { UIColor.purple400 }
-    static var lockBadge: UIColor { color(.purple600, .purple100) }
-    static var lockBadgeGlyph: UIColor { color(.purple50, .purple500) }
+    static var seasonalBadge: UIColor { theme.menuPillBackground }
+    static var seasonalBadgeText: UIColor { theme.menuPillText }
+    static var lockBadge: UIColor { theme.menuLockBackground }
+    static var lockBadgeGlyph: UIColor { theme.menuLockIcon }
 
-    private static var lockBadgeCache: [Bool: UIImage] = [:]
+    private static var lockBadgeCache: [String: UIImage] = [:]
 
     static var lockBadgeImage: UIImage {
-        let isDark = ThemeService.shared.theme.isDark
-        if let cached = lockBadgeCache[isDark] {
+        let cacheKey = "\(lockBadge.hexString())-\(lockBadgeGlyph.hexString())"
+        if let cached = lockBadgeCache[cacheKey] {
             return cached
         }
         let size = CGSize(width: 24, height: 24)
@@ -1056,7 +1066,7 @@ enum MainMenuTheme {
                                   width: glyphWidth,
                                   height: glyphHeight))
         }
-        lockBadgeCache[isDark] = image
+        lockBadgeCache[cacheKey] = image
         return image
     }
 }

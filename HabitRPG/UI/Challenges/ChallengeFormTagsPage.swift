@@ -17,19 +17,19 @@ struct ChallengeFormTagsPage: View {
     var body: some View {
         ScrollView {
             VStack(alignment: .leading, spacing: 8) {
-                Text("Identify your Challenge")
+                Text(L10n.ChallengeForm.tagsTitle)
                     .font(.system(size: 20, weight: .semibold))
                     .tracking(-0.45)
                     .lineSpacing(1)
                     .padding(.horizontal, 8)
-                Text("Pick a short tag that will be added to all your Challenge’s tasks and up to 3 categories to help players find you!")
+                Text(L10n.ChallengeForm.tagsDescription)
                     .font(.system(size: 17))
                     .tracking(-0.43)
                     .lineSpacing(2)
                     .foregroundStyle(ChallengeTheme.handle)
                     .padding(.horizontal, 8)
                 VStack(alignment: .leading, spacing: 10) {
-                    ChallengeFormField(label: Text("Challenge Tag"), text: $viewModel.challengeTag, multiline: false, placeholder: "What tag will identify your Challenge?")
+                    ChallengeFormField(label: Text(L10n.ChallengeForm.tagLabel), text: $viewModel.challengeTag, multiline: false, placeholder: L10n.ChallengeForm.tagPlaceholder)
                         .padding(.top, 18)
                     Text(L10n.categories)
                         .font(.system(size: 17, weight: .semibold))

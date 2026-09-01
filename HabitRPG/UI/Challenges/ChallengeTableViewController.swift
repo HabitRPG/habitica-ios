@@ -14,11 +14,11 @@ import SwiftUI
 import SwiftUIX
 
 struct ChallengeFilterState {
-    var showOwned: Bool = true
-    var showNotOwned: Bool = true
+    var showOwned: Bool = false
+    var showNotOwned: Bool = false
 
-    var showParticipating: Bool = true
-    var showNotParticipating: Bool = true
+    var showParticipating: Bool = false
+    var showNotParticipating: Bool = false
 
     var selectedCategories: Set<String> = []
 
@@ -36,7 +36,6 @@ class ChallengeTableViewController: BaseTableViewController, UISearchBarDelegate
     var leaveInteractor: LeaveChallengeInteractor?
     private let (lifetime, token) = Lifetime.make()
     private var disposable: CompositeDisposable = CompositeDisposable()
-    private var filterButton = UIButton()
     var searchBar = UISearchBar()
     var searchBarWrapper = UIVisualEffectView()
     var searchBarCancelButton = UIButton()
@@ -74,11 +73,10 @@ class ChallengeTableViewController: BaseTableViewController, UISearchBarDelegate
             segmentedWrapper.cornerConfiguration = .capsule()
         }
         
-        filterButton.setImage(UIImage(systemName: "slider.horizontal.3"), for: .normal)
-        filterButton.addTarget(self, action: #selector(filterTapped(_:)), for: .touchUpInside)
+        let filterButton = UIBarButtonItem(image: UIImage(systemName: "slider.horizontal.3"), style: .plain, target: self, action: #selector(filterTapped(_:)))
         let addButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addChallengeAction))
         let searchButton = UIBarButtonItem(barButtonSystemItem: .search, target: self, action: #selector(searchButtonTapped(_:)))
-        navigationItem.rightBarButtonItems = [searchButton, UIBarButtonItem(customView: filterButton), addButton]
+        navigationItem.rightBarButtonItems = [searchButton, filterButton, addButton]
 
         self.segmentedFilterControl.addTarget(self, action: #selector(ChallengeTableViewController.switchFilter(_:)), for: .valueChanged)
         segmentedWrapper.contentView.addSubview(self.segmentedFilterControl)
@@ -246,7 +244,7 @@ class ChallengeTableViewController: BaseTableViewController, UISearchBarDelegate
     }
     
     @objc
-    func filterTapped(_ sender: UIButton!) {
+    func filterTapped(_ sender: Any) {
         let filterController = ChallengeFilterViewController(filterState: dataSource.filterState, updateFilterState: {[weak self] newState in
             self?.dataSource.filterState = newState
             self?.dataSource.updatePredicate()

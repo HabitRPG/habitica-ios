@@ -81,28 +81,8 @@ struct CreateChallengeForm: View {
                                     .foregroundStyle(Color(themeService.theme.primaryTextColor))
                             }
                         }
-                        if !viewModel.hasPreviousStep {
-                            if #available(iOS 26.0, *) {
-                                ToolbarItem(placement: .topBarLeading) {
-                                    gemBalance
-                                }
-                                .sharedBackgroundVisibility(.hidden)
-                            } else {
-                                ToolbarItem(placement: .topBarLeading) {
-                                    gemBalance
-                                }
-                            }
-                        }
                         ToolbarItem(placement: .topBarTrailing) {
-                            let canConfirm = !viewModel.hasNextStep && viewModel.canSave
-                            Button {
-                                viewModel.save()
-                            } label: {
-                                Image(systemName: "checkmark")
-                                    .font(.system(size: 17, weight: .semibold))
-                                    .foregroundStyle(Color(canConfirm ? themeService.theme.primaryTextColor : themeService.theme.quadTextColor))
-                            }
-                            .disabled(!canConfirm)
+                            confirmButton
                         }
                 }
                 if #available(iOS 26.0, *) {
@@ -119,25 +99,27 @@ struct CreateChallengeForm: View {
         }
     }
 
-    @ViewBuilder private var gemBalance: some View {
-        let content = HStack(spacing: 5) {
-            Image(uiImage: Asset.gem.image)
-                .resizable().scaledToFit().frame(width: 18, height: 15)
-            Text("\(viewModel.userGemCount)")
-                .font(.system(size: 14, weight: .medium))
-                .tracking(0.47)
-                .lineLimit(1)
-                .foregroundStyle(Color.green1)
-        }
-        .fixedSize()
-        .padding(.horizontal, 14)
-        .padding(.vertical, 8)
+    @ViewBuilder private var confirmButton: some View {
+        let canConfirm = !viewModel.hasNextStep && viewModel.canSave
         if #available(iOS 26.0, *) {
-            content.glassEffect(.regular, in: Capsule())
+            Button(role: .confirm) {
+                viewModel.save()
+            }
+            .buttonStyle(.glassProminent)
+            .tint(Color(themeService.theme.fixedTintColor))
+            .disabled(!canConfirm)
         } else {
-            content
-                .background(Color(themeService.theme.offsetBackgroundColor))
-                .clipShape(Capsule())
+            Button {
+                viewModel.save()
+            } label: {
+                Image(systemName: "checkmark")
+                    .font(.system(size: 15, weight: .bold))
+                    .foregroundStyle(canConfirm ? .white : Color(themeService.theme.quadTextColor))
+                    .frame(width: 30, height: 30)
+                    .background(canConfirm ? Color(themeService.theme.fixedTintColor) : Color(themeService.theme.offsetBackgroundColor))
+                    .clipShape(Circle())
+            }
+            .disabled(!canConfirm)
         }
     }
 
@@ -148,19 +130,14 @@ struct CreateChallengeForm: View {
                 HabiticaProgressView()
                     .frame(height: 40)
                     .padding(10)
-            } else {
-                let disableButton = (!viewModel.hasNextStep && !viewModel.canSave) ||
-                    (viewModel.hasNextStep && !viewModel.isComplete(page: viewModel.currentStepIndex ?? 0))
-                ChallengePillButton(viewModel.hasNextStep ? L10n.next : L10n.createMyChallenge,
+            } else if viewModel.hasNextStep {
+                let disableButton = !viewModel.isComplete(page: viewModel.currentStepIndex ?? 0)
+                ChallengePillButton(L10n.next,
                                     fill: disableButton ? Color(themeService.theme.offsetBackgroundColor) : Color(themeService.theme.fixedTintColor),
                                     textColor: disableButton ? Color(themeService.theme.quadTextColor) : .white,
-                                    weight: viewModel.hasNextStep ? .semibold : .bold) {
+                                    weight: .semibold) {
                     withAnimation(.bouncy) {
-                        if viewModel.hasNextStep {
-                            viewModel.showNextStep()
-                        } else {
-                            viewModel.save()
-                        }
+                        viewModel.showNextStep()
                     }
                 }
                 .disabled(disableButton)

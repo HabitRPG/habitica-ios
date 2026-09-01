@@ -17,37 +17,37 @@ struct ChallengeFormTasksPage: View {
     var body: some View {
         ScrollView {
             VStack(alignment: .leading, spacing: 8) {
-                Text("Add some tasks")
+                Text(L10n.ChallengeForm.tasksTitle)
                     .font(.system(size: 20, weight: .semibold))
                     .tracking(-0.45)
                     .lineSpacing(1)
                     .padding(.horizontal, 8)
-                Text("Finally, it’s time to create the tasks you’d like all Challenge participants to complete.")
+                Text(L10n.ChallengeForm.tasksDescription)
                     .font(.system(size: 17))
                     .tracking(-0.43)
                     .lineSpacing(2)
                     .foregroundStyle(ChallengeTheme.handle)
                     .padding(.horizontal, 8)
                 ChallengeFormTaskList(viewModel: viewModel,
-                                      title: Text("Challenge Habits"),
+                                      title: Text(L10n.challengeHabits),
                                       taskType: .habit,
                                       tasks: $viewModel.habits,
-                                      buttonText: "New Habit")
+                                      buttonText: L10n.Tasks.Form.create(L10n.Tasks.habit))
                 ChallengeFormTaskList(viewModel: viewModel,
-                                      title: Text("Challenge Dailies"),
+                                      title: Text(L10n.challengeDailies),
                                       taskType: .daily,
                                       tasks: $viewModel.dailies,
-                                      buttonText: "New Daily")
+                                      buttonText: L10n.Tasks.Form.create(L10n.Tasks.daily))
                 ChallengeFormTaskList(viewModel: viewModel,
-                                      title: Text("Challenge To Do's"),
+                                      title: Text(L10n.challengeTodos),
                                       taskType: .todo,
                                       tasks: $viewModel.todos,
-                                      buttonText: "New To Do")
+                                      buttonText: L10n.Tasks.Form.create(L10n.Tasks.todo))
                 ChallengeFormTaskList(viewModel: viewModel,
-                                      title: Text("Challenge Rewards"),
+                                      title: Text(L10n.challengeRewards),
                                       taskType: .reward,
                                       tasks: $viewModel.rewards,
-                                      buttonText: "New Reward")
+                                      buttonText: L10n.Tasks.Form.create(L10n.Tasks.reward))
             }.padding(.horizontal, 18)
                 .padding(.top, 16)
         }

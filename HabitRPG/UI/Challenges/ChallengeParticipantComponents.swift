@@ -233,7 +233,7 @@ struct ChallengeTaskControl: View {
         if isDimmed {
             return Color(style == .habit ? theme.quadTextColor : theme.dimmedTextColor)
         }
-        return style == .habit ? .white : Color(UIColor.forTaskValue(taskValue))
+        return Color(UIColor.forTaskValueDarkest(taskValue))
     }
 
     private var glyph: UIImage {
@@ -248,7 +248,7 @@ struct ChallengeTaskControl: View {
             Image(uiImage: glyph)
                 .foregroundStyle(glyphColor)
         }
-        .frame(width: 44)
+        .frame(width: 40)
         .frame(maxHeight: .infinity)
         .background(columnFill)
     }
@@ -282,13 +282,13 @@ struct ChallengePlayerTaskRow: View {
         }
         .frame(minHeight: 56)
         .background(Color(themeService.theme.windowBackgroundColor))
-        .clipShape(RoundedRectangle(cornerRadius: ChallengeTheme.containerRadius, style: .continuous))
+        .clipShape(RoundedRectangle(cornerRadius: ChallengeTheme.taskRadius, style: .continuous))
     }
 
     private var rewardRow: some View {
         HStack(spacing: 0) {
             Text(task.text ?? "")
-                .font(.system(size: 17))
+                .font(.system(size: 16, weight: .semibold))
                 .foregroundStyle(Color(themeService.theme.primaryTextColor))
                 .padding(.leading, 20)
                 .padding(.vertical, 8)
@@ -299,7 +299,7 @@ struct ChallengePlayerTaskRow: View {
         }
         .frame(minHeight: 56)
         .background(Color(themeService.theme.windowBackgroundColor))
-        .clipShape(RoundedRectangle(cornerRadius: ChallengeTheme.containerRadius, style: .continuous))
+        .clipShape(RoundedRectangle(cornerRadius: ChallengeTheme.taskRadius, style: .continuous))
     }
 
     private var rewardPriceChip: some View {
@@ -324,12 +324,12 @@ struct ChallengePlayerTaskRow: View {
     private var content: some View {
         VStack(alignment: .leading, spacing: 2) {
             Text(task.text ?? "")
-                .font(.system(size: 17))
+                .font(.system(size: 16, weight: .semibold))
                 .foregroundStyle(task.completed ? ChallengeTheme.completedText : Color(themeService.theme.primaryTextColor))
             if let notes = task.notes, !notes.isEmpty {
                 Text(notes)
                     .font(.system(size: 15))
-                    .foregroundStyle(ChallengeTheme.handle)
+                    .foregroundStyle(Color(themeService.theme.ternaryTextColor))
             }
         }
         .padding(.vertical, 10)

@@ -172,30 +172,22 @@ class ChallengeTableViewDataSource: BaseReactiveTableViewDataSource<ChallengePro
             }
         }
         
-        if isShowingJoinedChallenges || filterState.showParticipating != filterState.showNotParticipating {
-            var component = "(id IN {"
-            if !isShowingJoinedChallenges && filterState.showNotParticipating {
-                component = "!(id IN {"
-            }
-            if membershipIDs.isEmpty == false {
-                component.append("\'\(membershipIDs[0])\'")
-            }
-            for id in membershipIDs.dropFirst() {
-                component.append(", \'\(id)\'")
-            }
-            component.append("}")
-            if filterState.showOwned {
-                component.append(" || leaderID == \'\(userId)\')")
+        let ids = membershipIDs.isEmpty ? ["-"] : membershipIDs
+        let membershipList = ids.map { "\'\($0)\'" }.joined(separator: ", ")
+        if isShowingJoinedChallenges {
+            searchComponents.append("(id IN {\(membershipList)} || leaderID == \'\(userId)\')")
+        }
+        if filterState.showParticipating != filterState.showNotParticipating {
+            if filterState.showParticipating {
+                searchComponents.append("id IN {\(membershipList)}")
             } else {
-                component.append(")")
+                searchComponents.append("!(id IN {\(membershipList)})")
             }
-            searchComponents.append(component)
         }
 
         if !isShowingJoinedChallenges {
-            let ids = discoverIDs.isEmpty ? ["-"] : discoverIDs
-            let idList = ids.map { "\'\($0)\'" }.joined(separator: ", ")
-            searchComponents.append("id IN {\(idList)}")
+            let discoverList = (discoverIDs.isEmpty ? ["-"] : discoverIDs).map { "\'\($0)\'" }.joined(separator: ", ")
+            searchComponents.append("id IN {\(discoverList)}")
         }
 
         if filterState.selectedCategories.isEmpty == false {

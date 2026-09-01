@@ -17,12 +17,12 @@ struct ChallengeFormMetadataPage: View {
     var body: some View {
         ScrollView {
             VStack(alignment: .leading, spacing: 8) {
-                Text("What’s your Challenge about?")
+                Text(L10n.ChallengeForm.metadataTitle)
                     .font(.system(size: 20, weight: .semibold))
                     .tracking(-0.45)
                     .lineSpacing(1)
                     .padding(.horizontal, 8)
-                Text("This information helps others know the topic, rules, and goals of your Challenge.")
+                Text(L10n.ChallengeForm.metadataDescription)
                     .font(.system(size: 17))
                     .tracking(-0.43)
                     .lineSpacing(2)

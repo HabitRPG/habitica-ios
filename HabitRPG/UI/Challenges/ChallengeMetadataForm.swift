@@ -19,15 +19,15 @@ struct ChallengeMetadataForm: View {
             ChallengeFormField(label: Text(L10n.name),
                                text: $viewModel.name,
                                multiline: false,
-                               placeholder: "What is your Challenge called?")
+                               placeholder: L10n.ChallengeForm.namePlaceholder)
             ChallengeFormField(label: Text(L10n.summary),
                                text: $viewModel.summary,
                                multiline: true,
-                               placeholder: "What’s the main purpose of your Challenge? This short summary will show in the list of Challenges.")
+                               placeholder: L10n.ChallengeForm.summaryPlaceholder)
             ChallengeFormField(label: Text(L10n.description),
                                text: $viewModel.description,
                                multiline: true,
-                               placeholder: "What details do participants need to know about your Challenge?",
+                               placeholder: L10n.ChallengeForm.descriptionPlaceholder,
                                minHeight: 104)
         }
     }

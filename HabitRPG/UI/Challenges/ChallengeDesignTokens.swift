@@ -28,6 +28,7 @@ enum ChallengeTheme {
     static let leaveRedText = hex(0x5E1216)
 
     static let containerRadius: CGFloat = 26
+    static var taskRadius: CGFloat { UIConstants.mediumCornerRadius }
 
     static var sectionLabel: Color { ThemeService.shared.theme.isDark ? .gray500 : .gray10 }
     static var formSectionLabel: Color { adaptive(light: 0x6B6873, dark: 0x918E99) }

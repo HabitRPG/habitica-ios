@@ -50,7 +50,7 @@ struct ChallengeListCard: View {
                         .tracking(-0.08)
                         .lineSpacing(2.5)
                         .foregroundStyle(Color(themeService.theme.secondaryTextColor))
-                        .lineLimit(3)
+                        .lineLimit(5)
                         .fixedSize(horizontal: false, vertical: true)
                         .padding(.top, 6)
                 }

@@ -1940,6 +1940,45 @@ public enum L10n {
     public static var timeManagement: String { return L10n.tr("Mainstrings", "challenge_category.time_management") }
   }
 
+  public enum ChallengeForm {
+    /// What details do participants need to know about your Challenge?
+    public static var descriptionPlaceholder: String { return L10n.tr("Mainstrings", "challenge_form.description_placeholder") }
+    /// Add this Challenge to...
+    public static var locationTitle: String { return L10n.tr("Mainstrings", "challenge_form.location_title") }
+    /// This information helps others know the topic, rules, and goals of your Challenge.
+    public static var metadataDescription: String { return L10n.tr("Mainstrings", "challenge_form.metadata_description") }
+    /// What’s your Challenge about?
+    public static var metadataTitle: String { return L10n.tr("Mainstrings", "challenge_form.metadata_title") }
+    /// What is your Challenge called?
+    public static var namePlaceholder: String { return L10n.tr("Mainstrings", "challenge_form.name_placeholder") }
+    /// You need Gems to set a prize
+    public static var needsGems: String { return L10n.tr("Mainstrings", "challenge_form.needs_gems") }
+    /// First, set a prize and choose where to create the Challenge.
+    public static var prizeDescription: String { return L10n.tr("Mainstrings", "challenge_form.prize_description") }
+    /// Let’s make a new Challenge
+    public static var prizeTitle: String { return L10n.tr("Mainstrings", "challenge_form.prize_title") }
+    /// If you’re making a public Challenge, you have to offer at least 1 Gem as a prize
+    public static var publicGemNote: String { return L10n.tr("Mainstrings", "challenge_form.public_gem_note") }
+    /// Select up to %d Gems
+    public static func selectUpToGems(_ p1: Int) -> String {
+      return L10n.tr("Mainstrings", "challenge_form.select_up_to_gems", p1)
+    }
+    /// What’s the main purpose of your Challenge? This short summary will show in the list of Challenges.
+    public static var summaryPlaceholder: String { return L10n.tr("Mainstrings", "challenge_form.summary_placeholder") }
+    /// Challenge Tag
+    public static var tagLabel: String { return L10n.tr("Mainstrings", "challenge_form.tag_label") }
+    /// What tag will identify your Challenge?
+    public static var tagPlaceholder: String { return L10n.tr("Mainstrings", "challenge_form.tag_placeholder") }
+    /// Pick a short tag that will be added to all your Challenge’s tasks and up to 3 categories to help players find you!
+    public static var tagsDescription: String { return L10n.tr("Mainstrings", "challenge_form.tags_description") }
+    /// Identify your Challenge
+    public static var tagsTitle: String { return L10n.tr("Mainstrings", "challenge_form.tags_title") }
+    /// Finally, it’s time to create the tasks you’d like all Challenge participants to complete.
+    public static var tasksDescription: String { return L10n.tr("Mainstrings", "challenge_form.tasks_description") }
+    /// Add some tasks
+    public static var tasksTitle: String { return L10n.tr("Mainstrings", "challenge_form.tasks_title") }
+  }
+
   public enum Classes {
     /// Become a %@
     public static func becomeAClass(_ p1: String) -> String {
