@@ -12,6 +12,10 @@ public struct DefaultTheme: Theme {
     public var backgroundTintColor: UIColor { return UIColor.purple300 }
     public var tintColor: UIColor { return UIColor.purple400 }
     public var dimmBackgroundColor: UIColor { return UIColor.purple50 }
+
+    public var menuHeaderBackground: UIColor { return UIColor.purple300 }
+    public var menuHeaderText: UIColor { return UIColor.white }
+    public var menuHeaderIcon: UIColor { return UIColor.white }
 }
 
 public struct GreenTheme: Theme {
@@ -234,6 +238,10 @@ public struct DefaultDarkTheme: DarkTheme {
     public var dimmBackgroundColor: UIColor { return UIColor.purple10 }
     public var taskOverlayTint: UIColor { return UIColor.blackPurple50.withAlphaComponent(0.15) }
     public var segmentedTintColor: UIColor { return UIColor.purple500 }
+
+    public var menuHeaderBackground: UIColor { return UIColor.purple300 }
+    public var menuHeaderText: UIColor { return UIColor.white }
+    public var menuHeaderIcon: UIColor { return UIColor.white }
 }
 
 public struct GreenDarkTheme: DarkTheme {

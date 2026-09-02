@@ -1953,6 +1953,8 @@ public enum L10n {
     public static var namePlaceholder: String { return L10n.tr("Mainstrings", "challenge_form.name_placeholder") }
     /// You need Gems to set a prize
     public static var needsGems: String { return L10n.tr("Mainstrings", "challenge_form.needs_gems") }
+    /// Next Field
+    public static var nextField: String { return L10n.tr("Mainstrings", "challenge_form.next_field") }
     /// First, set a prize and choose where to create the Challenge.
     public static var prizeDescription: String { return L10n.tr("Mainstrings", "challenge_form.prize_description") }
     /// Let’s make a new Challenge

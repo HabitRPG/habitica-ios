@@ -27,14 +27,17 @@ struct TaskMainContent: View {
     let task: TaskProtocol
     
     var body: some View {
-        VStack(alignment: .leading) {
+        VStack(alignment: .leading, spacing: 3) {
             if let title = task.text, !title.isEmpty {
-                Text(title)
+                Text(title.unicodeEmoji)
                     .font(.system(size: 16, weight: .semibold))
+                    .lineSpacing(2)
             }
-            if let notes = task.notes, !notes.isEmpty {
-                Text(notes)
+            if let notes = task.notes?.trimmingCharacters(in: .whitespacesAndNewlines), !notes.isEmpty {
+                Text(notes.unicodeEmoji)
                     .font(.system(size: 15))
+                    .lineSpacing(3)
+                    .foregroundStyle(Color(ThemeService.shared.theme.ternaryTextColor))
             }
         }.foregroundStyle(Color(ThemeService.shared.theme.primaryTextColor))
             .frame(maxWidth: .infinity, alignment: .leading)

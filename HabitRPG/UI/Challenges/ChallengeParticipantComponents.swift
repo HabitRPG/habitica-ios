@@ -270,7 +270,8 @@ struct ChallengePlayerTaskRow: View {
         HStack(spacing: 0) {
             leadingControl
             content
-                .padding(.horizontal, 14)
+                .padding(.leading, 15)
+                .padding(.trailing, 16)
                 .frame(maxWidth: .infinity, alignment: .leading)
             if let counter = counterValue {
                 TaskCounterBadge(value: counter, isCompleted: task.completed)
@@ -280,7 +281,7 @@ struct ChallengePlayerTaskRow: View {
                 ChallengeTaskControl(taskValue: task.value, style: .habit, isActive: task.down)
             }
         }
-        .frame(minHeight: 56)
+        .frame(minHeight: 46)
         .background(Color(themeService.theme.windowBackgroundColor))
         .clipShape(RoundedRectangle(cornerRadius: ChallengeTheme.taskRadius, style: .continuous))
     }
@@ -297,7 +298,7 @@ struct ChallengePlayerTaskRow: View {
                 .padding(.trailing, 8)
                 .padding(.vertical, 6)
         }
-        .frame(minHeight: 56)
+        .frame(minHeight: 46)
         .background(Color(themeService.theme.windowBackgroundColor))
         .clipShape(RoundedRectangle(cornerRadius: ChallengeTheme.taskRadius, style: .continuous))
     }
@@ -321,18 +322,28 @@ struct ChallengePlayerTaskRow: View {
         .clipShape(RoundedRectangle(cornerRadius: 11, style: .continuous))
     }
 
+    private var trimmedNotes: String? {
+        guard let notes = task.notes?.trimmingCharacters(in: .whitespacesAndNewlines), !notes.isEmpty else {
+            return nil
+        }
+        return notes
+    }
+
     private var content: some View {
-        VStack(alignment: .leading, spacing: 2) {
-            Text(task.text ?? "")
+        VStack(alignment: .leading, spacing: 3) {
+            Text((task.text ?? "").unicodeEmoji)
                 .font(.system(size: 16, weight: .semibold))
+                .lineSpacing(2)
                 .foregroundStyle(task.completed ? ChallengeTheme.completedText : Color(themeService.theme.primaryTextColor))
-            if let notes = task.notes, !notes.isEmpty {
-                Text(notes)
+            if let notes = trimmedNotes {
+                Text(notes.unicodeEmoji)
                     .font(.system(size: 15))
+                    .lineSpacing(3)
                     .foregroundStyle(Color(themeService.theme.ternaryTextColor))
             }
         }
-        .padding(.vertical, 10)
+        .padding(.top, 15)
+        .padding(.bottom, trimmedNotes == nil ? 12 : 19)
     }
 
     @ViewBuilder private var leadingControl: some View {

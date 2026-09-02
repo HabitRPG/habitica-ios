@@ -39,6 +39,8 @@ struct CreateChallengeForm: View {
     @ObservedObject var viewModel: ChallengeFormViewModel
     
     @Namespace private var buttonsNamespace
+    @State private var isEditingText = false
+    @FocusState private var focusedField: ChallengeFormFocus?
     
     var body: some View {
         NavigationView {
@@ -48,10 +50,10 @@ struct CreateChallengeForm: View {
                             ChallengeFormPrizePage(viewModel: viewModel)
                                 .frame(width: geometry.size.width)
                                 .id(0)
-                            ChallengeFormMetadataPage(viewModel: viewModel)
+                            ChallengeFormMetadataPage(viewModel: viewModel, focus: $focusedField)
                                 .frame(width: geometry.size.width)
                                 .id(1)
-                            ChallengeFormTagsPage(viewModel: viewModel)
+                            ChallengeFormTagsPage(viewModel: viewModel, focus: $focusedField)
                                 .frame(width: geometry.size.width)
                                 .id(2)
                             ChallengeFormTasksPage(viewModel: viewModel)
@@ -85,15 +87,23 @@ struct CreateChallengeForm: View {
                             confirmButton
                         }
                 }
-                if #available(iOS 26.0, *) {
-                    content.safeAreaBar(edge: .bottom, content: {
-                        bottomDock
-                    })
-                } else {
-                    VStack(spacing: 0) {
-                        content
-                        bottomDock
+                Group {
+                    if #available(iOS 26.0, *) {
+                        content.safeAreaBar(edge: .bottom, content: {
+                            bottomDock
+                        })
+                    } else {
+                        VStack(spacing: 0) {
+                            content
+                            bottomDock
+                        }
                     }
+                }
+                .onReceive(NotificationCenter.default.publisher(for: UIResponder.keyboardWillShowNotification)) { _ in
+                    isEditingText = true
+                }
+                .onReceive(NotificationCenter.default.publisher(for: UIResponder.keyboardWillHideNotification)) { _ in
+                    isEditingText = false
                 }
             }
         }
@@ -130,6 +140,18 @@ struct CreateChallengeForm: View {
                 HabiticaProgressView()
                     .frame(height: 40)
                     .padding(10)
+            } else if isEditingText {
+                let nextField = focusedField?.next
+                ChallengePillButton(nextField == nil ? L10n.done : L10n.ChallengeForm.nextField,
+                                    fill: Color(themeService.theme.fixedTintColor),
+                                    textColor: .white,
+                                    weight: .semibold) {
+                    if let nextField = nextField {
+                        focusedField = nextField
+                    } else {
+                        UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
+                    }
+                }
             } else if viewModel.hasNextStep {
                 let disableButton = !viewModel.isComplete(page: viewModel.currentStepIndex ?? 0)
                 ChallengePillButton(L10n.next,

@@ -13,6 +13,7 @@ import ReactiveSwift
 
 struct ChallengeFormTagsPage: View {
     @ObservedObject var viewModel: ChallengeFormViewModel
+    var focus: FocusState<ChallengeFormFocus?>.Binding?
 
     var body: some View {
         ScrollView {
@@ -29,7 +30,7 @@ struct ChallengeFormTagsPage: View {
                     .foregroundStyle(ChallengeTheme.handle)
                     .padding(.horizontal, 8)
                 VStack(alignment: .leading, spacing: 10) {
-                    ChallengeFormField(label: Text(L10n.ChallengeForm.tagLabel), text: $viewModel.challengeTag, multiline: false, placeholder: L10n.ChallengeForm.tagPlaceholder)
+                    ChallengeFormField(label: Text(L10n.ChallengeForm.tagLabel), text: $viewModel.challengeTag, multiline: false, placeholder: L10n.ChallengeForm.tagPlaceholder, focus: focus, field: .tag)
                         .padding(.top, 18)
                     Text(L10n.categories)
                         .font(.system(size: 17, weight: .semibold))
@@ -53,5 +54,6 @@ struct ChallengeFormTagsPage: View {
             }.padding(.horizontal, 18)
                 .padding(.top, 16)
         }
+        .scrollDismissesKeyboard(.immediately)
     }
 }

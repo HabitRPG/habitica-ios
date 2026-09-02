@@ -69,6 +69,7 @@ struct ChallengeFormPrizePage: View {
             .padding(.horizontal, 18)
             .padding(.top, 16)
         }
+        .scrollDismissesKeyboard(.immediately)
     }
 }
 

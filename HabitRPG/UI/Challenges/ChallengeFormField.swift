@@ -11,6 +11,21 @@ import SwiftUI
 import Habitica_Models
 import ReactiveSwift
 
+enum ChallengeFormFocus: Hashable {
+    case name
+    case summary
+    case description
+    case tag
+
+    var next: ChallengeFormFocus? {
+        switch self {
+        case .name: return .summary
+        case .summary: return .description
+        case .description, .tag: return nil
+        }
+    }
+}
+
 struct ChallengeFormField<Label: View>: View {
     @ObservedObject private var themeService = ThemeService.shared
     let label: Label
@@ -18,6 +33,8 @@ struct ChallengeFormField<Label: View>: View {
     let multiline: Bool
     let placeholder: String
     var minHeight: CGFloat?
+    var focus: FocusState<ChallengeFormFocus?>.Binding?
+    var field: ChallengeFormFocus?
 
     var body: some View {
         VStack(alignment: .leading, spacing: 9) {
@@ -32,6 +49,21 @@ struct ChallengeFormField<Label: View>: View {
                 .frame(minHeight: multiline ? (minHeight ?? 78) : nil, alignment: .top)
                 .background(Color(themeService.theme.windowBackgroundColor))
                 .clipShape(RoundedRectangle(cornerRadius: ChallengeTheme.containerRadius, style: .continuous))
+                .modifier(ChallengeFieldFocus(focus: focus, field: field))
+        }
+        .id(field)
+    }
+}
+
+private struct ChallengeFieldFocus: ViewModifier {
+    let focus: FocusState<ChallengeFormFocus?>.Binding?
+    let field: ChallengeFormFocus?
+
+    func body(content: Content) -> some View {
+        if let focus = focus, let field = field {
+            content.focused(focus, equals: field)
+        } else {
+            content
         }
     }
 }

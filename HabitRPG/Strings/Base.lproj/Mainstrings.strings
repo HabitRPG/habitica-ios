@@ -1609,6 +1609,7 @@
 "challenge_form.tags_description" = "Pick a short tag that will be added to all your Challenge’s tasks and up to 3 categories to help players find you!";
 "challenge_form.tag_label" = "Challenge Tag";
 "challenge_form.tag_placeholder" = "What tag will identify your Challenge?";
+"challenge_form.next_field" = "Next Field";
 "challenge_form.tasks_title" = "Add some tasks";
 "challenge_form.tasks_description" = "Finally, it’s time to create the tasks you’d like all Challenge participants to complete.";
 "task_tag" = "Task tag: %@";

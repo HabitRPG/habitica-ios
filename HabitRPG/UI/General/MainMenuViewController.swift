@@ -55,9 +55,7 @@ class MenuItem {
     var iconKey: MenuItem.Key?
     var title: String
     var subtitle: String?
-    var subtitleColor: UIColor?
     var pillText: String?
-    var pillColor: UIColor?
     var pillBuilder: ((PillView) -> Void)?
     var accessibilityLabel: String?
     var segue: String
@@ -279,25 +277,37 @@ class MainMenuViewController: BaseTableViewController {
     }
     
     private func reorderMenu(_ customMenu: NSArray) {
+        let shippedSections = menuSections
+        let shippedKeys = Set(shippedSections.flatMap { $0.items.map { $0.key } })
         var newOrder = [MenuSection]()
+        var usedSections = Set<MenuSection.Key>()
         for section in customMenu {
-            if let entry = section as? NSDictionary, let key = MenuSection.Key(rawValue: entry["key"] as? String ?? "") {
-                if var existingSection = menuSection(withKey: key) {
-                    if let itemKeys = entry["items"] as? NSArray {
-                        var items = [MenuItem]()
-                        for key in itemKeys {
-                            if let itemKey = MenuItem.Key(rawValue: key as? String ?? "") {
-                                items.append(menuItem(withKey: itemKey))
-                            }
-                        }
-                        existingSection.items = items
-                        if key == .social {
-                            existingSection.items.append(contentsOf: groupPlanItems)
-                        }
+            guard let entry = section as? NSDictionary,
+                  let key = MenuSection.Key(rawValue: entry["key"] as? String ?? ""),
+                  !usedSections.contains(key),
+                  var existingSection = menuSection(withKey: key) else {
+                continue
+            }
+            if let itemKeys = entry["items"] as? NSArray {
+                var items = [MenuItem]()
+                for rawKey in itemKeys {
+                    guard let itemKey = MenuItem.Key(rawValue: rawKey as? String ?? ""),
+                          shippedKeys.contains(itemKey),
+                          let item = MenuItem.allItems.first(where: { $0.key == itemKey }) else {
+                        continue
                     }
-                    newOrder.append(existingSection)
+                    items.append(item)
+                }
+                existingSection.items = items
+                if key == .social {
+                    existingSection.items.append(contentsOf: groupPlanItems)
                 }
             }
+            newOrder.append(existingSection)
+            usedSections.insert(key)
+        }
+        for (index, section) in shippedSections.enumerated() where !usedSections.contains(section.key) {
+            newOrder.insert(section, at: min(index, newOrder.count))
         }
         menuSections = newOrder
         tableView.reloadData()
@@ -631,7 +641,6 @@ class MainMenuViewController: BaseTableViewController {
             seasonText = L10n.isOpen
         }
         menuItem(withKey: .seasonalShop).pillText = seasonText
-        menuItem(withKey: .seasonalShop).pillColor = MainMenuTheme.seasonalBadge
         tableView.reloadData()
     }
     
@@ -644,6 +653,7 @@ class MainMenuViewController: BaseTableViewController {
         }
         tableView.backgroundColor = MainMenuTheme.sheetBackground
         tableView.separatorStyle = .none
+        updateSheetCorner()
         tableView.reloadData()
     }
 
@@ -942,7 +952,7 @@ class MainMenuViewController: BaseTableViewController {
         } else {
             pillView?.layer.sublayers?.filter { $0 is CAGradientLayer }.forEach { $0.removeFromSuperlayer() }
             pillView?.automaticTextColor = false
-            pillView?.pillColor = item?.pillColor ?? MainMenuTheme.seasonalBadge
+            pillView?.pillColor = MainMenuTheme.seasonalBadge
             pillView?.textColor = MainMenuTheme.seasonalBadgeText
         }
         
@@ -950,7 +960,7 @@ class MainMenuViewController: BaseTableViewController {
         subtitleLabel?.text = item?.subtitle
         subtitleLabel?.isHidden = item?.subtitle == nil
         subtitleLabel?.font = UIFontMetrics.default.scaledSystemFont(ofSize: 13)
-        subtitleLabel?.textColor = item?.subtitleColor ?? MainMenuTheme.rowSubtitle
+        subtitleLabel?.textColor = MainMenuTheme.rowSubtitle
 
         let iconView = cell.viewWithTag(5) as? UIImageView
         if let image = iconImage(for: item?.iconKey ?? item?.key) {
@@ -1025,13 +1035,9 @@ enum MainMenuTheme {
 
     private static var theme: Theme { ThemeService.shared.theme }
 
-    private static var isDefaultTheme: Bool {
-        (ThemeName(rawValue: UserDefaults.standard.string(forKey: "theme") ?? "") ?? .defaultTheme) == .defaultTheme
-    }
-
-    static var headerBackground: UIColor { isDefaultTheme ? .purple300 : theme.menuHeaderBackground }
-    static var headerText: UIColor { isDefaultTheme ? .white : theme.menuHeaderText }
-    static var headerIcon: UIColor { isDefaultTheme ? .white : theme.menuHeaderIcon }
+    static var headerBackground: UIColor { theme.menuHeaderBackground }
+    static var headerText: UIColor { theme.menuHeaderText }
+    static var headerIcon: UIColor { theme.menuHeaderIcon }
     static var headerBubble: UIColor { theme.menuHeaderBubble }
     static var headerBubbleText: UIColor { theme.menuHeaderBubbleText }
     static var sheetBackground: UIColor { theme.menuBackground }

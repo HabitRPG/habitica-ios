@@ -13,22 +13,29 @@ import ReactiveSwift
 
 struct ChallengeMetadataForm: View {
     @ObservedObject var viewModel: ChallengeFormViewModel
+    var focus: FocusState<ChallengeFormFocus?>.Binding?
 
     var body: some View {
         VStack(alignment: .leading, spacing: 22) {
             ChallengeFormField(label: Text(L10n.name),
                                text: $viewModel.name,
                                multiline: false,
-                               placeholder: L10n.ChallengeForm.namePlaceholder)
+                               placeholder: L10n.ChallengeForm.namePlaceholder,
+                               focus: focus,
+                               field: .name)
             ChallengeFormField(label: Text(L10n.summary),
                                text: $viewModel.summary,
                                multiline: true,
-                               placeholder: L10n.ChallengeForm.summaryPlaceholder)
+                               placeholder: L10n.ChallengeForm.summaryPlaceholder,
+                               focus: focus,
+                               field: .summary)
             ChallengeFormField(label: Text(L10n.description),
                                text: $viewModel.description,
                                multiline: true,
                                placeholder: L10n.ChallengeForm.descriptionPlaceholder,
-                               minHeight: 104)
+                               minHeight: 104,
+                               focus: focus,
+                               field: .description)
         }
     }
 }

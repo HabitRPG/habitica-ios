@@ -13,8 +13,10 @@ import ReactiveSwift
 
 struct ChallengeFormMetadataPage: View {
     @ObservedObject var viewModel: ChallengeFormViewModel
+    var focus: FocusState<ChallengeFormFocus?>.Binding?
 
     var body: some View {
+        ScrollViewReader { proxy in
         ScrollView {
             VStack(alignment: .leading, spacing: 8) {
                 Text(L10n.ChallengeForm.metadataTitle)
@@ -28,10 +30,16 @@ struct ChallengeFormMetadataPage: View {
                     .lineSpacing(2)
                     .foregroundStyle(ChallengeTheme.handle)
                     .padding(.horizontal, 8)
-                ChallengeMetadataForm(viewModel: viewModel)
+                ChallengeMetadataForm(viewModel: viewModel, focus: focus)
                     .padding(.top, 12)
             }.padding(.horizontal, 18)
                 .padding(.top, 16)
+        }
+        .scrollDismissesKeyboard(.immediately)
+        .onChange(of: focus?.wrappedValue) { _, newValue in
+            guard let newValue = newValue else { return }
+            withAnimation { proxy.scrollTo(newValue, anchor: .center) }
+        }
         }
     }
 }

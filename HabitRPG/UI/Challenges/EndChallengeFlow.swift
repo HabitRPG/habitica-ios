@@ -146,6 +146,7 @@ struct AwardWinnerSearchView: View {
                 Spacer(minLength: 24)
             }
         }
+        .scrollDismissesKeyboard(.immediately)
         .navigationDestination(item: $selectedMember) { box in
             AwardWinnerPlayerView(challenge: challenge, member: box.member, onClose: onClose, onFinished: onFinished)
         }

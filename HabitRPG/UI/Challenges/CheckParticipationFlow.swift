@@ -50,6 +50,7 @@ struct CheckParticipationView: View {
             }
             .padding(.horizontal, 18)
         }
+        .scrollDismissesKeyboard(.immediately)
         .background(Color(themeService.theme.contentBackgroundColor).ignoresSafeArea())
         .sheet(item: $selectedMember) { box in
             ParticipantProgressSheet(challenge: challenge, member: box.member, onClose: { selectedMember = nil }, onAwarded: onFinished)

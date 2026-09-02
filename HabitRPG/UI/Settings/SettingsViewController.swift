@@ -723,9 +723,8 @@ class SettingsViewController: FormViewController, Themeable {
                         return
                     }
                     if let newTheme = ThemeName(rawValue: row.value?.value ?? "") {
+                        UserDefaults.standard.set(newTheme.rawValue, forKey: "theme")
                         ThemeService.shared.theme = newTheme.themeClass
-                        let defaults = UserDefaults.standard
-                        defaults.set(newTheme.rawValue, forKey: "theme")
                     }
                 })
                 row.onPresent({ (_, to) in
@@ -898,8 +897,6 @@ class SettingsViewController: FormViewController, Themeable {
             let cancelSubRow = (form.rowBy(tag: SettingsTags.cancelSubscription))
             cancelSubRow?.hidden = false
             let themeRow = (form.rowBy(tag: SettingsTags.themeColor) as? PushRow<LabeledFormValue<String>>)
-            let customTheme = ThemeName.custom
-            themeRow?.options?.append(LabeledFormValue(value: customTheme.rawValue, label: customTheme.niceName))
             themeRow?.updateCell()
             serverRow?.evaluateHidden()
             activePromoRow?.evaluateHidden()
