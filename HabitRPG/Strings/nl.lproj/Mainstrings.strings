@@ -1582,3 +1582,4 @@
 "failed" = "Mislukt";
 "settings.pauseDamage.pause_damage_title2" = "Je reeksen en tellers worden niet teruggezet";
 "groups.by_invite" = "Op Uitnodiging";
+"settings.pauseDamage.pause_damage_description3" = "Schade die je aan een eindbaas toebrengt of voorwerpen die je vindt, worden bewaard totdat je schade weer aanzet";
