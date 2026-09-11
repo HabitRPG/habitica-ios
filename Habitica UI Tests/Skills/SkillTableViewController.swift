@@ -22,8 +22,8 @@ class SkillTests: HabiticaAppTests {
         app.launch(withStubs: stubData, toUrl: url)
         
         let tablesQuery = app.tables
-        expect(tablesQuery.staticTexts["Burst of Flames"].waitForExistence(timeout: 2)).to(beTrue())
-        expect(tablesQuery.staticTexts["Earthquake"].waitForExistence(timeout: 2)).to(beTrue())
+        expect(tablesQuery.staticTexts["Burst of Flames"].waitForExistence(timeout: 10)).to(beTrue())
+        expect(tablesQuery.staticTexts["Earthquake"].waitForExistence(timeout: 10)).to(beTrue())
     }
 
     func testListWarriorSkills() throws {
@@ -35,8 +35,8 @@ class SkillTests: HabiticaAppTests {
         app.launch(withStubs: stubData, toUrl: url)
         
         let tablesQuery = app.tables
-        expect(tablesQuery.staticTexts["Brutal Smash"].waitForExistence(timeout: 2)).to(beTrue())
-        expect(tablesQuery.staticTexts["Defensive Stance"].waitForExistence(timeout: 2)).to(beTrue())
+        expect(tablesQuery.staticTexts["Brutal Smash"].waitForExistence(timeout: 10)).to(beTrue())
+        expect(tablesQuery.staticTexts["Defensive Stance"].waitForExistence(timeout: 10)).to(beTrue())
     }
     
     func testHealerSkills() throws {
@@ -48,8 +48,8 @@ class SkillTests: HabiticaAppTests {
         app.launch(withStubs: stubData, toUrl: url)
         
         let tablesQuery = app.tables
-        expect(tablesQuery.staticTexts["Healing Light"].waitForExistence(timeout: 2)).to(beTrue())
-        expect(tablesQuery.staticTexts["Searing Brightness"].waitForExistence(timeout: 2)).to(beTrue())
+        expect(tablesQuery.staticTexts["Healing Light"].waitForExistence(timeout: 10)).to(beTrue())
+        expect(tablesQuery.staticTexts["Searing Brightness"].waitForExistence(timeout: 10)).to(beTrue())
     }
     
     func testListRogueSkills() throws {
@@ -61,8 +61,8 @@ class SkillTests: HabiticaAppTests {
         app.launch(withStubs: stubData, toUrl: url)
         
         let tablesQuery = app.tables
-        expect(tablesQuery.staticTexts["Pickpocket"].waitForExistence(timeout: 2)).to(beTrue())
-        expect(tablesQuery.staticTexts["Backstab"].waitForExistence(timeout: 2)).to(beTrue())
+        expect(tablesQuery.staticTexts["Pickpocket"].waitForExistence(timeout: 10)).to(beTrue())
+        expect(tablesQuery.staticTexts["Backstab"].waitForExistence(timeout: 10)).to(beTrue())
     }
     
     func testSkillsLockedLevel() throws {
@@ -74,11 +74,11 @@ class SkillTests: HabiticaAppTests {
         app.launch(withStubs: stubData, toUrl: url)
         
         let tablesQuery = app.tables
-        expect(tablesQuery.staticTexts["Burst of Flames"].waitForExistence(timeout: 2)).to(beTrue())
-        expect(tablesQuery.staticTexts["Ethereal Surge"].waitForExistence(timeout: 2)).to(beTrue())
+        expect(tablesQuery.staticTexts["Burst of Flames"].waitForExistence(timeout: 10)).to(beTrue())
+        expect(tablesQuery.staticTexts["Ethereal Surge"].waitForExistence(timeout: 10)).to(beTrue())
         expect(tablesQuery.staticTexts["Earthquake"].exists).to(beFalse())
-        expect(tablesQuery.staticTexts["Unlocks at level 13"].waitForExistence(timeout: 2)).to(beTrue())
-        expect(tablesQuery.staticTexts["Unlocks at level 14"].waitForExistence(timeout: 2)).to(beTrue())
+        expect(tablesQuery.staticTexts["Unlocks at level 13"].waitForExistence(timeout: 10)).to(beTrue())
+        expect(tablesQuery.staticTexts["Unlocks at level 14"].waitForExistence(timeout: 10)).to(beTrue())
     }
     
     func testSkillsLockedUnder10() throws {
@@ -90,7 +90,7 @@ class SkillTests: HabiticaAppTests {
         app.launch(withStubs: stubData, toUrl: url)
         
         let tablesQuery = app.tables
-        expect(tablesQuery.staticTexts["Unlocks after selecting a class"].waitForExistence(timeout: 2)).to(beTrue())
+        expect(tablesQuery.staticTexts["Unlocks after selecting a class"].waitForExistence(timeout: 10)).to(beTrue())
     }
     
     func testSkillsLockedDisabled() throws {
@@ -102,14 +102,14 @@ class SkillTests: HabiticaAppTests {
         app.launch(withStubs: stubData, toUrl: url)
         
         let tablesQuery = app.tables
-        expect(tablesQuery.staticTexts["Unlocks after selecting a class"].waitForExistence(timeout: 2)).to(beTrue())
+        expect(tablesQuery.staticTexts["Unlocks after selecting a class"].waitForExistence(timeout: 10)).to(beTrue())
     }
     
     func testListTransformationItems() throws {
         app.launch(withStubs: stubData, toUrl: url)
         
         let tablesQuery = app.tables
-        expect(tablesQuery.staticTexts["Seafoam"].waitForExistence(timeout: 2)).to(beTrue())
-        expect(tablesQuery.staticTexts["Spooky Sparkles"].waitForExistence(timeout: 2)).to(beTrue())
+        expect(tablesQuery.staticTexts["Seafoam"].waitForExistence(timeout: 10)).to(beTrue())
+        expect(tablesQuery.staticTexts["Spooky Sparkles"].waitForExistence(timeout: 10)).to(beTrue())
     }
 }

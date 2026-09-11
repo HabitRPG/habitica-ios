@@ -37,6 +37,9 @@ class TestUser: UserProtocol {
     var achievements: UserAchievementsProtocol?
     
     var loginIncentives: Int = 0
+
+    var rebirths: Int = 0
+    var rebirthLevel: Int = 0
     
     var pinnedItemsOrder: [String] = []
     

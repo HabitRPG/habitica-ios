@@ -60,6 +60,17 @@ public func expectExists(_ element: XCUIElement?, timeout: Double = 2) {
     expect(element?.waitForExistence(timeout: timeout)).to(beTrue())
 }
 
+public func expectExists(withPrefix prefix: String, in query: XCUIElementQuery, timeout: Double = 10) {
+    let element = query.matching(NSPredicate(format: "label BEGINSWITH %@", prefix)).firstMatch
+    expect(element.waitForExistence(timeout: timeout)).to(beTrue())
+}
+
+extension XCUIElementQuery {
+    func firstElement(withPrefix prefix: String) -> XCUIElement {
+        return matching(NSPredicate(format: "label BEGINSWITH %@", prefix)).firstMatch
+    }
+}
+
 
 public func expectNotExists(_ element: XCUIElement?, timeout: Double = 2) {
     expect(element?.exists).to(beFalse())

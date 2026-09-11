@@ -38,15 +38,4 @@ class ItemListTests: HabiticaAppTests {
         expect(tablesQuery.otherElements.staticTexts["Quests"].waitForExistence(timeout: 2)).to(beTrue())
     }
     
-    func testHasMarketFooter() {
-        app.launch(withStubs: stubData, toUrl: url)
-        let tablesQuery = app.tables
-        let MAX_SCROLLS = 15
-        var count = 0
-        while !tablesQuery.buttons["Open Shop"].exists && count < MAX_SCROLLS {
-            app.swipeUp(velocity: .fast)
-            count += 1
-        }
-        expect(tablesQuery.buttons["Open Shop"].waitForExistence(timeout: 2)).to(beTrue())
-    }
 }

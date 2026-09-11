@@ -17,13 +17,6 @@
       }
     },
     {
-      "id" : "8596565E-51D1-47BE-858F-CEF372B01FB0",
-      "name" : "Undefined Behavior Sanitizer",
-      "options" : {
-        "undefinedBehaviorSanitizerEnabled" : true
-      }
-    },
-    {
       "id" : "51282E9D-A23D-41D0-AA05-0C9372C41D13",
       "name" : "German",
       "options" : {

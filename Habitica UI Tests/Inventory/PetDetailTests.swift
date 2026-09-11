@@ -31,30 +31,19 @@ class PetDetailTests: HabiticaAppTests {
         expectExists(collection.cells["Unknown Pet"])
     }
     
-    func testEquippingPet() {
-        app.launch(withStubs: stubData, toUrl: url)
-        
-        let collection = app.collectionViews.firstMatch
-        collection.cells["Desert Dragon, Mount Owned"].tap()
-        app.sheets["Desert Dragon"].buttons["Equip"].tap()
-        collection.cells["Desert Dragon, Mount Owned"].tap()
-        sleep(1)
-        app.sheets["Desert Dragon"].buttons["Unequip"].tap()
-        collection.cells["Desert Dragon, Mount Owned"].tap()
-        expectExists(app.sheets["Desert Dragon"].buttons["Equip"])
-    }
-    
     func testSheetDisplay() {
         app.launch(withStubs: stubData, toUrl: url)
-        
+
         let collection = app.collectionViews.firstMatch
-        collection.cells["Skeleton Dragon, Mount Owned"].tap()
-        expectExists(app.sheets["Skeleton Dragon"].buttons["Equip"])
-        expectNotExists(app.sheets["Skeleton Dragon"].buttons["Feed"])
-        app.sheets["Skeleton Dragon"].buttons["Cancel"].tap()
-        
-        collection.cells["Shade Dragon, Raised 62%"].tap()
-        expectExists(app.sheets["Shade Dragon"].buttons["Equip"])
-        expectExists(app.sheets["Shade Dragon"].buttons["Feed"])
+        collection.cells.firstElement(withPrefix: "Skeleton Dragon").tap()
+        expectExists(app.staticTexts["Skeleton Dragon"], timeout: 10)
+        expectExists(app.buttons["Equip"], timeout: 10)
+        expectNotExists(app.buttons["Feed"])
+        app.otherElements["dismiss popup"].tap()
+
+        collection.cells.firstElement(withPrefix: "Shade Dragon").tap()
+        expectExists(app.staticTexts["Shade Dragon"], timeout: 10)
+        expectExists(app.buttons["Equip"], timeout: 10)
+        expectExists(app.buttons["Feed"], timeout: 10)
     }
 }

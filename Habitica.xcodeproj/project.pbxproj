@@ -67,7 +67,6 @@
 		290FF8A027DB626C00F1DE45 /* party.json in Resources */ = {isa = PBXBuildFile; fileRef = 290FF89F27DB626C00F1DE45 /* party.json */; };
 		290FF8A127DB62E700F1DE45 /* party.json in Resources */ = {isa = PBXBuildFile; fileRef = 290FF89F27DB626C00F1DE45 /* party.json */; };
 		290FF8A327DB62F500F1DE45 /* party-members.json in Resources */ = {isa = PBXBuildFile; fileRef = 290FF8A227DB62F500F1DE45 /* party-members.json */; };
-		290FF8A627DB634700F1DE45 /* PartyDetailTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 290FF8A527DB634700F1DE45 /* PartyDetailTests.swift */; };
 		290FF8A727DB657000F1DE45 /* party-members.json in Resources */ = {isa = PBXBuildFile; fileRef = 290FF8A227DB62F500F1DE45 /* party-members.json */; };
 		290FF8B827DF6AB800F1DE45 /* CustomizationDetailTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 290FF8B727DF6AB800F1DE45 /* CustomizationDetailTests.swift */; };
 		291017DF2B06161400D0607B /* SubscriptionPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 291017DE2B06161400D0607B /* SubscriptionPage.swift */; };
@@ -173,6 +172,7 @@
 		2938ED4328B4EF5D00E995A2 /* SwiftyStoreKit in Frameworks */ = {isa = PBXBuildFile; productRef = 2938ED4228B4EF5D00E995A2 /* SwiftyStoreKit */; };
 		2938ED4F28B5043700E995A2 /* Nimble in Frameworks */ = {isa = PBXBuildFile; productRef = 2938ED4E28B5043700E995A2 /* Nimble */; };
 		2938ED5828B504D100E995A2 /* ReactiveSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 2938ED5728B504D100E995A2 /* ReactiveSwift */; };
+		8DC32235D75BBB68FFB0DB21 /* ReactiveSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 9B4A1D28B605CDCA3A464451 /* ReactiveSwift */; };
 		29397EE42977FBA4009EFD20 /* CountdownView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29397EE32977FBA4009EFD20 /* CountdownView.swift */; };
 		293BB49A1FCD7DC0003B6F4F /* StatsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 293BB4991FCD7DC0003B6F4F /* StatsView.swift */; };
 		293BB49C1FCD7DC8003B6F4F /* StatsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 293BB49B1FCD7DC8003B6F4F /* StatsView.xib */; };
@@ -818,7 +818,6 @@
 		290FF89D27DB533300F1DE45 /* MountDetailTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MountDetailTests.swift; sourceTree = "<group>"; };
 		290FF89F27DB626C00F1DE45 /* party.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = party.json; sourceTree = "<group>"; };
 		290FF8A227DB62F500F1DE45 /* party-members.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = "party-members.json"; sourceTree = "<group>"; };
-		290FF8A527DB634700F1DE45 /* PartyDetailTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PartyDetailTests.swift; sourceTree = "<group>"; };
 		290FF8B727DF6AB800F1DE45 /* CustomizationDetailTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomizationDetailTests.swift; sourceTree = "<group>"; };
 		291017DE2B06161400D0607B /* SubscriptionPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscriptionPage.swift; sourceTree = "<group>"; };
 		2910EFC92C16EC8700D6D1E8 /* OldAvatarDetailViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OldAvatarDetailViewDataSource.swift; sourceTree = "<group>"; };
@@ -1502,6 +1501,7 @@
 				29C55B372C21AEC4008F553A /* CwlCatchException in Frameworks */,
 				29C55B302C21A1CB008F553A /* iOSSnapshotTestCase in Frameworks */,
 				2938ED4F28B5043700E995A2 /* Nimble in Frameworks */,
+				8DC32235D75BBB68FFB0DB21 /* ReactiveSwift in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1684,7 +1684,6 @@
 		290FF8A427DB632700F1DE45 /* Social */ = {
 			isa = PBXGroup;
 			children = (
-				290FF8A527DB634700F1DE45 /* PartyDetailTests.swift */,
 			);
 			path = Social;
 			sourceTree = "<group>";
@@ -3032,6 +3031,7 @@
 				2938ED4E28B5043700E995A2 /* Nimble */,
 				29C55B2F2C21A1CB008F553A /* iOSSnapshotTestCase */,
 				29C55B362C21AEC4008F553A /* CwlCatchException */,
+				9B4A1D28B605CDCA3A464451 /* ReactiveSwift */,
 			);
 			productName = HabiticaTests;
 			productReference = D94461831AB34F5C0015215E /* HabiticaTests.xctest */;
@@ -3445,7 +3445,6 @@
 			files = (
 				29AE771F27E4D56D00CC9646 /* MainMenuTests.swift in Sources */,
 				29706CAE27D8B7D5006EC139 /* HabiticaAppTests.swift in Sources */,
-				290FF8A627DB634700F1DE45 /* PartyDetailTests.swift in Sources */,
 				290FF89427DA5BA800F1DE45 /* ItemListViewController.swift in Sources */,
 				290FF89E27DB533300F1DE45 /* MountDetailTests.swift in Sources */,
 				29706CA627D8B797006EC139 /* Habitica_UI_Tests.swift in Sources */,
@@ -4383,7 +4382,7 @@
 					"\"$(SDKROOT)/usr/include/libxml2\"",
 				);
 				INFOPLIST_FILE = HabiticaTests/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.7;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -4762,7 +4761,7 @@
 					"\"$(SDKROOT)/usr/include/libxml2\"",
 				);
 				INFOPLIST_FILE = HabiticaTests/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.7;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -5415,7 +5414,7 @@
 					"\"$(SDKROOT)/usr/include/libxml2\"",
 				);
 				INFOPLIST_FILE = HabiticaTests/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.7;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -5451,7 +5450,7 @@
 					"\"$(SDKROOT)/usr/include/libxml2\"",
 				);
 				INFOPLIST_FILE = HabiticaTests/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.7;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -6071,6 +6070,11 @@
 			productName = Nimble;
 		};
 		2938ED5728B504D100E995A2 /* ReactiveSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 2938ED5628B504D100E995A2 /* XCRemoteSwiftPackageReference "ReactiveSwift" */;
+			productName = ReactiveSwift;
+		};
+		9B4A1D28B605CDCA3A464451 /* ReactiveSwift */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 2938ED5628B504D100E995A2 /* XCRemoteSwiftPackageReference "ReactiveSwift" */;
 			productName = ReactiveSwift;

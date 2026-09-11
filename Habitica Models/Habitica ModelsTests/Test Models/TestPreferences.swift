@@ -23,6 +23,9 @@ class TestPreferences: PreferencesProtocol {
     var hair: HairProtocol?
     
     var searchableUsername: Bool  = true
+
+    var analyticsConsent: Bool = false
+    var analyticsConsentGiven: Bool = false
     
     var isValid: Bool =  true
     
