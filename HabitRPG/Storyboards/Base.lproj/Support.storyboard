@@ -766,7 +766,7 @@
                                                     <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" pointerInteraction="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nFw-69-K7d">
                                                         <rect key="frame" x="0.0" y="61" width="414" height="34.5"/>
                                                         <constraints>
-                                                            <constraint firstAttribute="height" priority="500" constant="38" id="Vxe-9f-Cgh"/>
+                                                            <constraint firstAttribute="height" priority="500" constant="44" id="Vxe-9f-Cgh"/>
                                                         </constraints>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                         <state key="normal" title="Button"/>

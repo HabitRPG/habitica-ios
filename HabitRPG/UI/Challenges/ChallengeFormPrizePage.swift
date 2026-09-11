@@ -47,6 +47,7 @@ struct ChallengeFormPrizePage: View {
                     ForEach(viewModel.challengeLocations, id: \.id) { location in
                         ChallengeSelectionRow(title: location.name,
                                               isSelected: viewModel.challengeLocation?.id == location.id,
+                                              showsCheckmark: true,
                                               showsDivider: location.id != viewModel.challengeLocations.last?.id) {
                             withAnimation {
                                 viewModel.challengeLocation = location

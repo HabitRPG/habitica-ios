@@ -72,7 +72,7 @@ class ReportBugViewController: BaseUIViewController, MFMailComposeViewController
         updateAppBackground.cornerRadius = UIConstants.largeCornerRadius
         clearCacheBackground.cornerRadius = UIConstants.largeCornerRadius
         manualSyncBackground.cornerRadius = UIConstants.largeCornerRadius
-        moreHelpButton.cornerRadius = UIConstants.mediumCornerRadius
+        moreHelpButton.cornerRadius = 22
     }
     
     override func populateText() {
@@ -112,11 +112,13 @@ class ReportBugViewController: BaseUIViewController, MFMailComposeViewController
         updateAppDescriptionLabel.textColor = theme.ternaryTextColor
         updateAppDescriptionLabel.font = UIFontMetrics.default.scaledSystemFont(ofSize: 17)
         moreHelpTitleLabel.textColor = theme.primaryTextColor
-        moreHelpTitleLabel.font = UIFontMetrics.default.scaledSystemFont(ofSize: 15, ofWeight: .semibold)
+        moreHelpTitleLabel.font = UIFontMetrics.default.scaledSystemFont(ofSize: 17, ofWeight: .semibold)
         moreHelpDescriptionLabel.textColor = theme.ternaryTextColor
-        moreHelpDescriptionLabel.font = UIFontMetrics.default.scaledSystemFont(ofSize: 17)
-        moreHelpButton.tintColor = theme.fixedTintColor
-        moreHelpButton.setTitleColor(theme.lightTextColor, for: .normal)
+        moreHelpDescriptionLabel.font = UIFontMetrics.default.scaledSystemFont(ofSize: 15)
+        moreHelpButton.backgroundColor = .purple400
+        moreHelpButton.tintColor = .white
+        moreHelpButton.setTitleColor(.white, for: .normal)
+        moreHelpButton.titleLabel?.font = UIFontMetrics.default.scaledSystemFont(ofSize: 16, ofWeight: .semibold)
         knownIssuesBackground.backgroundColor = theme.windowBackgroundColor
     }
     

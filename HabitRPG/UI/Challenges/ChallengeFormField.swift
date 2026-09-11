@@ -81,7 +81,7 @@ struct ChallengeSelectionRow: View {
         if isDisabled {
             return Color(themeService.theme.quadTextColor)
         }
-        return isSelected ? ChallengeTheme.deepPurple : Color(themeService.theme.primaryTextColor)
+        return isSelected ? ChallengeTheme.selectedRowText : Color(themeService.theme.primaryTextColor)
     }
 
     var body: some View {
@@ -94,7 +94,7 @@ struct ChallengeSelectionRow: View {
                 if isSelected && showsCheckmark {
                     Image(systemName: "checkmark")
                         .font(.system(size: 17, weight: .semibold))
-                        .foregroundStyle(ChallengeTheme.deepPurple)
+                        .foregroundStyle(ChallengeTheme.selectedRowText)
                 }
             }
             .padding(.vertical, 18)
@@ -120,7 +120,7 @@ struct ChallengeSelectionList<Content: View>: View {
         VStack(alignment: .leading, spacing: 0) {
             content
         }
-        .background(Color(themeService.theme.windowBackgroundColor))
+        .background(ChallengeTheme.selectionListFill)
         .clipShape(RoundedRectangle(cornerRadius: ChallengeTheme.containerRadius, style: .continuous))
     }
 }

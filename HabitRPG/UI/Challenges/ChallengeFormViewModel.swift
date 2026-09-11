@@ -112,7 +112,7 @@ class ChallengeFormViewModel: ViewModel {
             })
             .filter { $0 != nil }
             .flatMap(.latest, {[weak self] partyID in
-                return self?.socialRepository.getGroup(groupID: partyID ?? "") ?? SignalProducer.empty
+                return self?.socialRepository.getGroup(groupID: partyID ?? "", retrieveIfNotFound: true) ?? SignalProducer.empty
             }).on(value: { party in
                 if let party = party, !self.challengeLocations.contains(where: { $0.id == party.id }) {
                     self.challengeLocations.insert(ChallengeLocation(id: party.id ?? "", name: party.name ?? ""), at: 1)

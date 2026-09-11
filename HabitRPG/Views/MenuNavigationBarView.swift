@@ -201,12 +201,13 @@ class MenuNavigationBarView: UIView, Themeable {
 
         let labelX = avatarWrapper.frame.maxX + 12
         let labelWidth = max(0, notificationsButton.frame.minX - 12 - labelX)
-        let lineHeight: CGFloat = 14
-        let lineSpacing: CGFloat = 6
-        let stackHeight = usernameLabel.isHidden ? lineHeight : lineHeight * 2 + lineSpacing
+        let displayNameHeight = ceil(displayNameLabel.font.lineHeight)
+        let usernameHeight = ceil(usernameLabel.font.lineHeight)
+        let lineSpacing: CGFloat = 2
+        let stackHeight = usernameLabel.isHidden ? displayNameHeight : displayNameHeight + usernameHeight + lineSpacing
         let stackTop = centerY - stackHeight / 2
-        displayNameLabel.pin.start(labelX).width(labelWidth).height(lineHeight).top(stackTop)
-        usernameLabel.pin.start(labelX).below(of: displayNameLabel).marginTop(lineSpacing).width(labelWidth).height(lineHeight)
+        displayNameLabel.pin.start(labelX).width(labelWidth).height(displayNameHeight).top(stackTop)
+        usernameLabel.pin.start(labelX).below(of: displayNameLabel).marginTop(lineSpacing).width(labelWidth).height(usernameHeight)
 
         positionBadge(notificationsBadge, on: notificationsButton)
         positionBadge(messagesBadge, on: messagesButton)

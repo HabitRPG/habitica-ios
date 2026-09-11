@@ -30,8 +30,8 @@ struct ChallengeListCard: View {
             .overlay(alignment: .top) {
                 if isOwner {
                     Image(uiImage: Asset.challengeCrown.image)
-                        .resizable().scaledToFit().frame(width: 30)
-                        .offset(x: 2, y: -14)
+                        .resizable().scaledToFit().frame(width: 16)
+                        .offset(y: -12)
                 }
             }
             .frame(width: 36)

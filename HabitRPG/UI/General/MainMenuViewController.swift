@@ -309,8 +309,38 @@ class MainMenuViewController: BaseTableViewController {
         for (index, section) in shippedSections.enumerated() where !usedSections.contains(section.key) {
             newOrder.insert(section, at: min(index, newOrder.count))
         }
-        menuSections = newOrder
+        menuSections = removingDuplicateItems(from: newOrder, shippedSections: shippedSections)
         tableView.reloadData()
+    }
+
+    private func removingDuplicateItems(from sections: [MenuSection], shippedSections: [MenuSection]) -> [MenuSection] {
+        var shippedSectionForItem = [MenuItem.Key: MenuSection.Key]()
+        for section in shippedSections {
+            for item in section.items where shippedSectionForItem[item.key] == nil {
+                shippedSectionForItem[item.key] = section.key
+            }
+        }
+
+        var occurrences = [MenuItem.Key: Int]()
+        for section in sections {
+            for item in section.items {
+                occurrences[item.key, default: 0] += 1
+            }
+        }
+        let presentSections = Set(sections.map { $0.key })
+
+        var placed = Set<MenuItem.Key>()
+        return sections.map { section in
+            var section = section
+            section.items = section.items.filter { item in
+                guard (occurrences[item.key] ?? 0) > 1 else { return true }
+                if let owner = shippedSectionForItem[item.key], presentSections.contains(owner) {
+                    return owner == section.key
+                }
+                return placed.insert(item.key).inserted
+            }
+            return section
+        }
     }
     
     private static let subscriptionFooterTag = 11111

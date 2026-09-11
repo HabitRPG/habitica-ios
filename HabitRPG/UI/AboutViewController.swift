@@ -46,7 +46,8 @@ class AboutViewController: BaseTableViewController, MFMailComposeViewControllerD
             L10n.About.habiticaOnWeb,
             L10n.About.rateOurApp,
             L10n.Titles.hallOfContributors,
-            L10n.Titles.hallOfPatrons
+            L10n.Titles.hallOfPatrons,
+            L10n.communityGuidelines
         ]
     }
 
@@ -64,12 +65,12 @@ class AboutViewController: BaseTableViewController, MFMailComposeViewControllerD
         (36, 28, 11), (345, 36, 9), (357, 66, 7), (55, 101, 12), (18, 133, 9), (338, 161, 11)
     ]
 
-    private let waveImageView = UIImageView(image: UIImage(named: "menuWave"))
+    private let waveImageView = UIImageView(image: UIImage(named: "aboutHills"))
     private let purpleBand = UIView()
     private let versionLabel = UILabel()
     private let updateButton = UIButton(type: .custom)
     private let subtitleLabel = UILabel()
-    private let socialImageView = UIImageView(image: UIImage(named: "menuSocialIcons"))
+    private let socialIconNames = ["aboutSocialGithub", "aboutSocialBluesky", "aboutSocialInstagram"]
     private var socialButtons: [UIButton] = []
     private let privacyButton = UIButton(type: .custom)
     private let termsButton = UIButton(type: .custom)
@@ -131,7 +132,7 @@ class AboutViewController: BaseTableViewController, MFMailComposeViewControllerD
 
             let title = UILabel()
             title.text = cardTitles[index]
-            title.font = UIFont.systemFont(ofSize: 17, weight: .bold)
+            title.font = UIFont.systemFont(ofSize: 17, weight: .semibold)
             title.textAlignment = .center
             container.addSubview(title)
 
@@ -179,7 +180,7 @@ class AboutViewController: BaseTableViewController, MFMailComposeViewControllerD
         waveImageView.contentMode = .scaleToFill
         scrollView.addSubview(waveImageView)
 
-        versionLabel.font = UIFont.systemFont(ofSize: 15, weight: .bold)
+        versionLabel.font = UIFont.systemFont(ofSize: 15, weight: .semibold)
         versionLabel.textAlignment = .center
         versionLabel.textColor = .white
         scrollView.addSubview(versionLabel)
@@ -188,26 +189,29 @@ class AboutViewController: BaseTableViewController, MFMailComposeViewControllerD
         subtitleLabel.font = UIFont.systemFont(ofSize: 12, weight: .semibold)
         subtitleLabel.textAlignment = .center
         subtitleLabel.numberOfLines = 0
-        subtitleLabel.textColor = UIColor(white: 1, alpha: 0.9)
+        subtitleLabel.textColor = .white
         scrollView.addSubview(subtitleLabel)
 
-        socialImageView.contentMode = .scaleAspectFit
-        scrollView.addSubview(socialImageView)
-        for index in 0..<3 {
+        for index in 0..<socialIconNames.count {
             let button = UIButton(type: .custom)
             button.tag = index
+            button.setImage(UIImage(named: socialIconNames[index])?.withRenderingMode(.alwaysOriginal), for: .normal)
+            button.imageView?.contentMode = .scaleAspectFit
+            button.backgroundColor = UIColor("#7E52D8")
+            button.layer.cornerRadius = 17
+            button.clipsToBounds = true
             button.addTarget(self, action: #selector(socialTapped(_:)), for: .touchUpInside)
             scrollView.addSubview(button)
             socialButtons.append(button)
         }
 
         privacyButton.setTitle(L10n.privacyPolicy, for: .normal)
-        privacyButton.titleLabel?.font = UIFont.systemFont(ofSize: 13, weight: .regular)
+        privacyButton.titleLabel?.font = UIFont.systemFont(ofSize: 13, weight: .semibold)
         privacyButton.addTarget(self, action: #selector(privacyTapped), for: .touchUpInside)
         scrollView.addSubview(privacyButton)
 
         termsButton.setTitle(L10n.termsOfService, for: .normal)
-        termsButton.titleLabel?.font = UIFont.systemFont(ofSize: 13, weight: .regular)
+        termsButton.titleLabel?.font = UIFont.systemFont(ofSize: 13, weight: .semibold)
         termsButton.addTarget(self, action: #selector(termsTapped), for: .touchUpInside)
         scrollView.addSubview(termsButton)
 
@@ -266,10 +270,10 @@ class AboutViewController: BaseTableViewController, MFMailComposeViewControllerD
         }
 
         let waveTop = linksBottom + 42
-        let waveHeight = (64 * width / 393).rounded()
+        let waveHeight = (width * 180 / 1179).rounded()
         waveImageView.frame = CGRect(x: 0, y: waveTop, width: width, height: waveHeight)
 
-        let purpleTop = waveTop + waveHeight - 4
+        let purpleTop = waveTop + waveHeight
         versionLabel.frame = CGRect(x: 24, y: purpleTop + 10, width: width - 48, height: 20)
         var footerY = versionLabel.frame.maxY + 4
         if !updateButton.isHidden {
@@ -279,16 +283,17 @@ class AboutViewController: BaseTableViewController, MFMailComposeViewControllerD
         }
         subtitleLabel.frame = CGRect(x: (width - 261) / 2, y: footerY, width: 261, height: 34)
 
-        let socialW: CGFloat = 214
-        let socialH: CGFloat = 50
-        socialImageView.frame = CGRect(x: (width - socialW) / 2, y: subtitleLabel.frame.maxY + 10, width: socialW, height: socialH)
-        let iconCenters: [CGFloat] = [0.14, 0.5, 0.86]
-        for index in 0..<socialButtons.count {
-            let centerX = socialImageView.frame.minX + socialW * iconCenters[index]
-            socialButtons[index].frame = CGRect(x: centerX - 25, y: socialImageView.frame.minY, width: 50, height: 50)
+        let socialDiameter: CGFloat = 34
+        let socialSpacing: CGFloat = 56
+        let socialTotal = socialDiameter * CGFloat(socialButtons.count) + socialSpacing * CGFloat(socialButtons.count - 1)
+        let socialTop = subtitleLabel.frame.maxY + 18
+        var socialX = (width - socialTotal) / 2
+        for button in socialButtons {
+            button.frame = CGRect(x: socialX, y: socialTop, width: socialDiameter, height: socialDiameter)
+            socialX += socialDiameter + socialSpacing
         }
 
-        let policyY = socialImageView.frame.maxY + 26
+        let policyY = socialTop + socialDiameter + 26
         privacyButton.sizeToFit()
         termsButton.sizeToFit()
         let gap: CGFloat = 56
@@ -332,7 +337,7 @@ class AboutViewController: BaseTableViewController, MFMailComposeViewControllerD
         purpleBand.backgroundColor = UIColor("#925CF3")
         versionLabel.textColor = .white
         updateButton.setTitleColor(.white, for: .normal)
-        subtitleLabel.attributedText = subtitleAttributed(subtitleLabel.text ?? "", color: UIColor(white: 1, alpha: 0.9))
+        subtitleLabel.attributedText = subtitleAttributed(subtitleLabel.text ?? "", color: .white)
         privacyButton.setTitleColor(UIColor(white: 1, alpha: 0.8), for: .normal)
         termsButton.setTitleColor(UIColor(white: 1, alpha: 0.8), for: .normal)
     }
@@ -418,8 +423,10 @@ class AboutViewController: BaseTableViewController, MFMailComposeViewControllerD
             open(url: configRepository.string(variable: .appstoreUrl) ?? "")
         case 3:
             perform(segue: StoryboardSegue.Main.hallOfContributorsSegue)
-        default:
+        case 4:
             perform(segue: StoryboardSegue.Main.hallOfPatronsSegue)
+        default:
+            open(url: "https://habitica.com/static/community-guidelines")
         }
     }
 

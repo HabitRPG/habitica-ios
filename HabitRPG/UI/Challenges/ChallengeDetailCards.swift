@@ -155,8 +155,8 @@ struct ChallengeDetailCreatorCard: View {
             }
             if isOwner {
                 Image(uiImage: Asset.challengeCrown.image)
-                    .resizable().scaledToFit().frame(width: 30)
-                    .offset(x: 2, y: -27)
+                    .resizable().scaledToFit().frame(width: 16)
+                    .offset(y: -25)
             }
         }
         .frame(width: 40, height: 40)
