@@ -49,7 +49,7 @@
 /* (No Comment) */
 "classes.warrior" = "Krijger";
 /* (No Comment) */
-"classes.warrior_description" = "Krijgers behalen meer en betere \"voltreffers\", die willekeurig extra goud, ervaringspunten, en kans op vondsten geven voor het afstrepen van een taak. Ook doen ze veel schade aan eindbazen. Speel een Krijger als je je gemotiveerd voelt door onvoorspelbare jackpot-achtige beloningen, of als je pijn aan eindbazen wil uitdelen in queesten!";
+"classes.warrior_description" = "Krijgers behalen meer voltreffers en richten meer schade aan bij Queeste bazen. Speel als Krijger als je monsters simpel wil verslaan met krachtige slagen. Krijgers hebben baat bij een hoge Kracht eigenschap.";
 /* (No Comment) */
 "close" = "Sluiten";
 /* (No Comment) */
@@ -143,7 +143,7 @@
 /* (No Comment) */
 "inventory.available_until" = "Beschikbaar tot %@";
 /* (No Comment) */
-"inventory.hatched" = "Je hebt een nieuw Huisdier uitgebroed!";
+"inventory.hatched" = "Je hebt een nieuw %s Huisdier uitgebroed!";
 /* (No Comment) */
 "inventory.no_gems_left" = "Je hebt deze maand alle edelstenen gekocht die je kunt kopen. Binnen de eerste drie dagen van elke maand komen er meer beschikbaar. Bedankt voor het abonneren!";
 /* (No Comment) */
@@ -976,10 +976,10 @@
 "notifications.new_mystery_item" = "Je hebt nieuwe **Mysterieuze Items**";
 "notifications.unread_guild_message" = "Er zijn nieuwe berichten in **%@**.";
 "notifications.unread_party_message" = "Er zijn nieuwe berichten in je groep, **%@**.";
-"notifications.party_invite" = "Je bent uitgenodigd voor de groep **%@**";
+"notifications.party_invite" = "Je bent uitgenodigd voor de Groep **%@**";
 "notifications.public_guild_invite" = "Je bent uitgenodigd voor het openbare gilde **%@**";
 "notifications.private_guild_invite" = "Je bent uitgenodigd voor het privé gilde **%@**";
-"notifications.quest_invite" = "Je bent uitgenodigd voor de queeste **%@**";
+"notifications.quest_invite" = "Je bent uitgenodigd voor de Queeste **%@**";
 "notifications.dismiss_all" = "Alles verwijderen";
 "empty.habits.title" = "Dit zijn je Gewoontes";
 "empty.habits.description" = "Gewoontes hebben geen vast ritme. Je kunt ze meerdere keren per dag afvinken.";
@@ -1088,7 +1088,7 @@
 "duration_month" = "maand";
 "subscription_options_title" = "Kies de abonnementslengte die voor jou werkt";
 "subscription_benefits_title_subscribed" = "Je krijgt deze voordelen door Abonnee te zijn";
-"subscription_info_5_description" = "Krijg een Koninklijke Paarse Jackalope en dubbele eieren, Uitbroeddranken en dagelijks Voedsel om je huisdierencollectie te uit te breiden!";
+"subscription_info_5_description" = "Krijg een Koninklijke Paarse Jackalope en dubbele Eieren, Uitbroeddranken en dagelijks Voedsel om je huisdierencollectie te uit te breiden!";
 "subscription_info_5_title" = "Verdubbel de vondsten";
 "accessibility.viewX" = "Bekijk %@";
 "accessibility.notOwned" = "Niet in bezit";
@@ -1115,7 +1115,7 @@
 "learn_more" = "Meer informatie";
 "insufficient_hourglasses_message_subscriber" = "Je hebt meer mystieke zandlopers nodig om dit voorwerp te kopen! Blijf geabonneerd om je zandlopers te blijven ontvangen.";
 "insufficient_hourglasses_message" = "Je hebt meer mystieke zandlopers nodig om dit voorwerp te kopen! Zandlopers worden beloond voor het geabonneerd zijn van opeenvolgende maanden.";
-"more_gems_message" = "Je hebt meer Edelstenen nodig om dit te kopen!";
+"more_gems_message" = "Je hebt meer Edelstenen nodig om dit te kopen";
 "complete_more_tasks" = "Je moet meer taken voltooien voordat je dit voorwerp kunt aanschaffen!";
 "gift_sent_to" = "Jij verzond %@:";
 "gift_sent_confirmation" = "Je geschenk is verzonden!";
@@ -1273,7 +1273,7 @@
 "week_reminder_title" = "Hoe gaat het met je taken?";
 "daily_tip_9" = "Als je het moeilijk hebt, probeer dan je taken in kleinere delen op te splitsen.";
 "delete_challenge_task_description" = "Dit is een van de %d taken die deel uitmaken van de “%@” uitdaging. Je moet de uitdaging verlaten om deze taak te verwijderen.";
-"broken_challenge_description" = "Dit is een van de % d taken die deel uitmaken van een uitdaging die niet langer bestaat. Wat zou je willen doen met deze overgebleven taken?";
+"broken_challenge_description" = "Dit is een van de %d taken die deel uitmaken van een Uitdaging die niet langer bestaat. Wat zou je willen doen met deze overgebleven taken?";
 "block_description" = "Een geblokkeerde gebruiker kan je geen privéberichten sturen, maar je zult zijn of haar berichten nog steeds in de herberg of gilde zien. Dit heeft geen effect als de persoon nu of in de toekomst moderator is.";
 "adventure_guide_description" = "Voltooi deze begintaken en je verdient 5 prestaties en 100 goud als je klaar bent!";
 "seasonal_potions_available" = "Seizoensvoorwerpen beschikbaar";
@@ -1515,7 +1515,7 @@
 "shops.goBack" = "Ga Terug";
 "shops.useOrbOfRebirth" = "Bol der Hergeboorte Gebruiken";
 "shops.rebirthConfirmKeepItem1" = "Jouw takenlijst";
-"shops.rebirthConfirmKeepItem2" = "Alle Uitrusting, Huisdieren en Rijdieren";
+"shops.rebirthConfirmKeepItem2" = "Alle Uitrusting, Huisdieren, en Rijdieren";
 "shops.rebirthConfirmKeepItem3" = "Jouw Prestaties";
 "shops.rebirthConfirmKeepItem4" = "Jouw Gezelschap en Uitdagingen";
 "terms_of_service" = "Algemene Voorwaarden";
@@ -1583,3 +1583,11 @@
 "settings.pauseDamage.pause_damage_title2" = "Je reeksen en tellers worden niet teruggezet";
 "groups.by_invite" = "Op Uitnodiging";
 "settings.pauseDamage.pause_damage_description3" = "Schade die je aan een eindbaas toebrengt of voorwerpen die je vindt, worden bewaard totdat je schade weer aanzet";
+"login.terms_text" = "Je bevestigt dat je ten minste 18 jaar bent, en dat je **[Terms of Service](https://habitica.com/static/terms)** en **[Privacy Policy](https://habitica.com/static/privacy)** hebt gelezen en hiermee akkoord bent.";
+"settings.pauseDamage.pause_damage_title3" = "Je Queestevoortgang wordt nog niet meegerekend";
+"settings.pauseDamage.resume_damage_title1" = "Je gemiste Dagelijkse Taken brengen je schade toe. ";
+"settings.pauseDamage.resume_damage_title2" = "Je reeksen en tellers kunnen worden teruggezet";
+"equipped_x" = "Je hebt %s Uitgerust";
+"groups.lfp.subtitle" = "Hierbij een lijst van spelers die een Gezelschap zoeken";
+"armoire.rate_experience_title" = "20%% Ervaringspunten";
+"shops.freeRebirthAtLevel100" = "GRATIS Bol der Hergeboorte op niveau 100";
