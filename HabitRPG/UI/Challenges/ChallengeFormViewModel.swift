@@ -113,13 +113,15 @@ class ChallengeFormViewModel: ViewModel {
             .filter { $0 != nil }
             .flatMap(.latest, {[weak self] partyID in
                 return self?.socialRepository.getGroup(groupID: partyID ?? "", retrieveIfNotFound: true) ?? SignalProducer.empty
-            }).on(value: { party in
+            }).on(value: {[weak self] party in
+                guard let self = self else { return }
                 if let party = party, !self.challengeLocations.contains(where: { $0.id == party.id }) {
                     self.challengeLocations.insert(ChallengeLocation(id: party.id ?? "", name: party.name ?? ""), at: 1)
                 }
             }).start())
         disposable.add(userRepository.getGroupPlans()
-            .on(value: { plans in
+            .on(value: {[weak self] plans in
+                guard let self = self else { return }
                 plans.value.forEach { plan in
                     if !self.challengeLocations.contains(where: { $0.id == plan.id }) {
                         self.challengeLocations.append(ChallengeLocation(id: plan.id ?? "", name: plan.name ?? ""))

@@ -197,7 +197,7 @@ class SocialRepository: BaseRepository<SocialLocalRepository> {
                 return SignalProducer.empty
             })
             .flatMap(.concat, {[weak self] (group) -> SignalProducer<GroupProtocol?, Never> in
-                if retrieveIfNotFound, let weakSelf = self {
+                if group == nil && retrieveIfNotFound, let weakSelf = self {
                     return SignalProducer(weakSelf.retrieveGroup(groupID: groupID))
                 } else {
                     return SignalProducer(value: group)
