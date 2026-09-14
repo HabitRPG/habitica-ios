@@ -44,7 +44,7 @@ enum ChallengeTheme {
     static var chipText: Color { adaptive(light: 0x878190, dark: 0xC3C0C7) }
     static var joinedCount: Color { adaptive(light: 0x24A574, dark: 0x2ED49A) }
     static var selectedRowText: Color { ThemeService.shared.theme.isDark ? .purple500 : deepPurple }
-    static var selectionListFill: Color {
+    static var formFieldFill: Color {
         ThemeService.shared.theme.isDark ? .gray10 : Color(ThemeService.shared.theme.windowBackgroundColor)
     }
 }

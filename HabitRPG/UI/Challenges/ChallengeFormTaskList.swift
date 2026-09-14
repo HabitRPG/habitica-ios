@@ -179,7 +179,7 @@ struct ChallengeFormTaskRow: View {
             }
         }
         .frame(minHeight: 56)
-        .background(Color(themeService.theme.windowBackgroundColor))
+        .background(ChallengeTheme.formFieldFill)
         .clipShape(RoundedRectangle(cornerRadius: ChallengeTheme.containerRadius, style: .continuous))
     }
 
@@ -284,7 +284,7 @@ struct ChallengeFormTaskList<Title: View>: View {
                     .foregroundStyle(Color(ThemeService.shared.theme.primaryTextColor))
                     .frame(maxWidth: .infinity)
                     .frame(height: 54)
-                    .background(Color(ThemeService.shared.theme.windowBackgroundColor))
+                    .background(ChallengeTheme.formFieldFill)
                     .clipShape(RoundedRectangle(cornerRadius: ChallengeTheme.containerRadius, style: .continuous))
             }
             .buttonStyle(.plain)

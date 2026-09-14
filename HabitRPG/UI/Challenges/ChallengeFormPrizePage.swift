@@ -111,7 +111,7 @@ struct ChallengePrizeStepper: View {
             .padding(.vertical, 11)
             .padding(.horizontal, 26)
             .frame(minWidth: 112)
-            .background(Color(themeService.theme.windowBackgroundColor))
+            .background(ChallengeTheme.formFieldFill)
             .clipShape(RoundedRectangle(cornerRadius: 26, style: .continuous))
             stepButton(systemName: "plus") {
                 amount = max(minAmount, min(maxAmount, amount + 1))

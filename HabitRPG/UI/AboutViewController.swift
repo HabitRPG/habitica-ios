@@ -331,7 +331,7 @@ class AboutViewController: BaseTableViewController, MFMailComposeViewControllerD
         }
 
         for button in linkButtons {
-            button.setTitleColor(UIColor("#925CF3"), for: .normal)
+            button.setTitleColor(theme.isDark ? .purple600 : UIColor("#925CF3"), for: .normal)
         }
 
         purpleBand.backgroundColor = UIColor("#925CF3")

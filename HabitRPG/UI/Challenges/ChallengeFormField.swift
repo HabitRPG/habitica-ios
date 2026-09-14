@@ -47,7 +47,7 @@ struct ChallengeFormField<Label: View>: View {
                 .padding(.vertical, 17)
                 .padding(.horizontal, 20)
                 .frame(minHeight: multiline ? (minHeight ?? 78) : nil, alignment: .top)
-                .background(Color(themeService.theme.windowBackgroundColor))
+                .background(ChallengeTheme.formFieldFill)
                 .clipShape(RoundedRectangle(cornerRadius: ChallengeTheme.containerRadius, style: .continuous))
                 .modifier(ChallengeFieldFocus(focus: focus, field: field))
         }
@@ -120,7 +120,7 @@ struct ChallengeSelectionList<Content: View>: View {
         VStack(alignment: .leading, spacing: 0) {
             content
         }
-        .background(ChallengeTheme.selectionListFill)
+        .background(ChallengeTheme.formFieldFill)
         .clipShape(RoundedRectangle(cornerRadius: ChallengeTheme.containerRadius, style: .continuous))
     }
 }
