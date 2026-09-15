@@ -29,14 +29,12 @@ enum ConfigVariable: Int {
     case showSubscriptionBanner
     case knownIssues
     case activePromotion
-    case customMenu
     case maintenanceData
     case activePromo
     case surveyURL
     
     // A/B Tests
     case moveAdventureGuide
-    case reorderMenu
     case enableIPadUI
     case showQuestInMenu
     case disableIntroSlides
@@ -69,9 +67,7 @@ enum ConfigVariable: Int {
         case .moveAdventureGuide: return "moveAdventureGuide"
         case .knownIssues: return "knownIssues"
         case .activePromotion: return "activePromo"
-        case .customMenu: return "customMenu"
         case .maintenanceData: return "maintenanceData"
-        case .reorderMenu: return "reorderMenu"
         case .enableIPadUI: return "enableIpadUI"
         case .showQuestInMenu: return "showQuestInMenu"
         case .disableIntroSlides: return "disableIntroSlides"
@@ -119,14 +115,10 @@ enum ConfigVariable: Int {
             return "[]" as NSString
         case .activePromotion:
             return "" as NSString
-        case .customMenu:
-            return "[]" as NSString
         case .showSubscriptionBanner:
             return false as NSNumber
         case .maintenanceData:
             return "{}" as NSString
-        case .reorderMenu:
-            return false as NSNumber
         case .enableIPadUI:
             return false as NSNumber
         case .showQuestInMenu:
@@ -169,9 +161,7 @@ enum ConfigVariable: Int {
             .moveAdventureGuide,
             .knownIssues,
             .activePromotion,
-            .customMenu,
             .maintenanceData,
-            .reorderMenu,
             .enableIPadUI,
             .showQuestInMenu,
             .disableIntroSlides,

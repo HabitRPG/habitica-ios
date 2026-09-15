@@ -264,82 +264,7 @@ class MainMenuViewController: BaseTableViewController {
                 menuItem(withKey: .subscription).subtitle = L10n.getMoreHabitica
             }
             
-            if !configRepository.enableIPadUI() && configRepository.testingLevel != .debug && configRepository.testingLevel != .simulator {
-                let customMenu = configRepository.array(variable: .customMenu)
-                // swiftlint:disable:next empty_count
-                if customMenu.count > 0 {
-                    reorderMenu(customMenu)
-                }
-            }
-            
             menuItem(withKey: .challenges).isHidden = configRepository.bool(variable: .hideChallenges)
-        }
-    }
-    
-    private func reorderMenu(_ customMenu: NSArray) {
-        let shippedSections = menuSections
-        let shippedKeys = Set(shippedSections.flatMap { $0.items.map { $0.key } })
-        var newOrder = [MenuSection]()
-        var usedSections = Set<MenuSection.Key>()
-        for section in customMenu {
-            guard let entry = section as? NSDictionary,
-                  let key = MenuSection.Key(rawValue: entry["key"] as? String ?? ""),
-                  !usedSections.contains(key),
-                  var existingSection = menuSection(withKey: key) else {
-                continue
-            }
-            if let itemKeys = entry["items"] as? NSArray {
-                var items = [MenuItem]()
-                for rawKey in itemKeys {
-                    guard let itemKey = MenuItem.Key(rawValue: rawKey as? String ?? ""),
-                          shippedKeys.contains(itemKey),
-                          let item = MenuItem.allItems.first(where: { $0.key == itemKey }) else {
-                        continue
-                    }
-                    items.append(item)
-                }
-                existingSection.items = items
-                if key == .social {
-                    existingSection.items.append(contentsOf: groupPlanItems)
-                }
-            }
-            newOrder.append(existingSection)
-            usedSections.insert(key)
-        }
-        for (index, section) in shippedSections.enumerated() where !usedSections.contains(section.key) {
-            newOrder.insert(section, at: min(index, newOrder.count))
-        }
-        menuSections = removingDuplicateItems(from: newOrder, shippedSections: shippedSections)
-        tableView.reloadData()
-    }
-
-    private func removingDuplicateItems(from sections: [MenuSection], shippedSections: [MenuSection]) -> [MenuSection] {
-        var shippedSectionForItem = [MenuItem.Key: MenuSection.Key]()
-        for section in shippedSections {
-            for item in section.items where shippedSectionForItem[item.key] == nil {
-                shippedSectionForItem[item.key] = section.key
-            }
-        }
-
-        var occurrences = [MenuItem.Key: Int]()
-        for section in sections {
-            for item in section.items {
-                occurrences[item.key, default: 0] += 1
-            }
-        }
-        let presentSections = Set(sections.map { $0.key })
-
-        var placed = Set<MenuItem.Key>()
-        return sections.map { section in
-            var section = section
-            section.items = section.items.filter { item in
-                guard (occurrences[item.key] ?? 0) > 1 else { return true }
-                if let owner = shippedSectionForItem[item.key], presentSections.contains(owner) {
-                    return owner == section.key
-                }
-                return placed.insert(item.key).inserted
-            }
-            return section
         }
     }
     
@@ -737,7 +662,7 @@ class MainMenuViewController: BaseTableViewController {
     }
     
     private func socialItems() -> [MenuItem] {
-        return [menuItem(withKey: .party)] + groupPlanItems + [menuItem(withKey: .messages), menuItem(withKey: .challenges)]
+        return [menuItem(withKey: .party), menuItem(withKey: .challenges)] + groupPlanItems + [menuItem(withKey: .messages)]
     }
 
     private func setupMenu() {
@@ -786,13 +711,6 @@ class MainMenuViewController: BaseTableViewController {
             menuItem(withKey: .messages).isHidden = false
             menuItem(withKey: .notifications).isHidden = false
         }
-    }
-    
-    private func menuSection(withKey key: MenuSection.Key) -> MenuSection? {
-        for section in menuSections where section.key == key {
-            return section
-        }
-        return nil
     }
     
     private func menuItem(withKey key: MenuItem.Key) -> MenuItem {
