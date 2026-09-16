@@ -92,6 +92,7 @@ struct CreateChallengeForm: View {
                         }
                     }
                 }
+                .background(Color(themeService.theme.contentBackgroundColor).ignoresSafeArea())
                 .onReceive(NotificationCenter.default.publisher(for: UIResponder.keyboardWillShowNotification)) { _ in
                     isEditingText = true
                 }
