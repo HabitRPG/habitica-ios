@@ -150,9 +150,36 @@ struct RewardListItem: View {
     }
 }
 
+struct ChallengeChecklistEntry: Equatable {
+    let text: String
+    let isCompleted: Bool
+}
+
+struct ChallengeTaskSnapshot: Equatable {
+    let id: String
+    let type: String?
+    let text: String
+    let notes: String?
+    let value: Float
+    let up: Bool
+    let down: Bool
+    let checklist: [ChallengeChecklistEntry]
+
+    init(_ task: TaskProtocol) {
+        id = task.id ?? ""
+        type = task.type
+        text = task.text ?? ""
+        notes = task.notes
+        value = task.value
+        up = task.up
+        down = task.down
+        checklist = task.checklist.map { ChallengeChecklistEntry(text: $0.text ?? "", isCompleted: $0.completed) }
+    }
+}
+
 struct ChallengeFormTaskRow: View {
     @ObservedObject private var themeService = ThemeService.shared
-    let task: TaskProtocol
+    let task: ChallengeTaskSnapshot
     @State private var isChecklistExpanded = false
 
     private var showsChecklist: Bool {
@@ -179,7 +206,7 @@ struct ChallengeFormTaskRow: View {
                     rewardColumn
                 }
             }
-            .frame(minHeight: 46)
+            .frame(minHeight: showsChecklist ? 60 : 46)
             if showsChecklist && isChecklistExpanded {
                 checklistItems
             }
@@ -191,7 +218,7 @@ struct ChallengeFormTaskRow: View {
 
     private var taskText: some View {
         VStack(alignment: .leading, spacing: 1) {
-            Text((task.text ?? "").unicodeEmoji)
+            Text(task.text.unicodeEmoji)
                 .font(.system(size: 16, weight: .semibold))
                 .foregroundStyle(Color(themeService.theme.primaryTextColor))
             if let notes = task.notes?.trimmingCharacters(in: .whitespacesAndNewlines), !notes.isEmpty {
@@ -205,57 +232,79 @@ struct ChallengeFormTaskRow: View {
     }
 
     private var checklistIndicator: some View {
-        let completedCount = task.checklist.filter { $0.completed }.count
-        let textColor = Color(completedCount == task.checklist.count ? themeService.theme.quadTextColor : themeService.theme.primaryTextColor)
+        let completedCount = task.checklist.filter { $0.isCompleted }.count
+        let hasRemaining = completedCount < task.checklist.count
         return Button {
             withAnimation(.easeInOut(duration: 0.2)) {
                 isChecklistExpanded.toggle()
             }
         } label: {
-            VStack(spacing: 2) {
+            VStack(spacing: 0) {
                 Text("\(completedCount)")
-                Rectangle()
-                    .fill(textColor)
-                    .frame(width: 12, height: 1)
                 Text("\(task.checklist.count)")
             }
-            .font(.system(size: 12, weight: .medium))
-            .foregroundStyle(textColor)
-            .frame(minWidth: 24)
+            .font(.system(size: 15, weight: .semibold))
+            .monospacedDigit()
+            .foregroundStyle(Color(themeService.theme.primaryTextColor))
+            .frame(minWidth: 34)
             .padding(.vertical, 5)
             .background(Color(themeService.theme.offsetBackgroundColor))
-            .clipShape(RoundedRectangle(cornerRadius: UIConstants.smallCornerRadius, style: .continuous))
+            .clipShape(RoundedRectangle(cornerRadius: UIConstants.mediumCornerRadius, style: .continuous))
+            .overlay(alignment: .topTrailing) {
+                if hasRemaining && !isChecklistExpanded {
+                    Circle()
+                        .fill(Color(UIColor.forTaskValue(task.value)))
+                        .frame(width: 8, height: 8)
+                        .offset(x: 3, y: -2)
+                }
+            }
             .padding(.horizontal, 10)
+            .padding(.vertical, 7)
             .frame(maxHeight: .infinity)
             .contentShape(.rect)
         }
         .buttonStyle(.plain)
         .accessibilityLabel(isChecklistExpanded ? L10n.Accessibility.collapseChecklist : L10n.Accessibility.expandChecklist)
+        .accessibilityValue("\(completedCount)/\(task.checklist.count)")
     }
 
     private var checklistItems: some View {
         VStack(alignment: .leading, spacing: 0) {
-            Divider()
             ForEach(Array(task.checklist.enumerated()), id: \.offset) { _, item in
-                HStack(spacing: 10) {
-                    Circle()
-                        .fill(Color(themeService.theme.quadTextColor))
-                        .frame(width: 5, height: 5)
-                    Text((item.text ?? "").unicodeEmoji)
-                        .font(.system(size: 15))
-                        .foregroundStyle(Color(themeService.theme.primaryTextColor))
+                HStack(spacing: 0) {
+                    checklistBox(isCompleted: item.isCompleted)
+                        .frame(width: 40)
+                    Text(item.text.unicodeEmoji)
+                        .font(.system(size: 16, weight: .semibold))
+                        .strikethrough(item.isCompleted)
+                        .foregroundStyle(Color(item.isCompleted ? themeService.theme.quadTextColor : themeService.theme.primaryTextColor))
                         .frame(maxWidth: .infinity, alignment: .leading)
+                        .padding(.leading, 10)
+                        .padding(.trailing, 15)
+                        .padding(.vertical, 10)
                 }
-                .padding(.vertical, 8)
             }
         }
-        .padding(.leading, 50)
-        .padding(.trailing, 15)
         .padding(.bottom, 6)
         .contentShape(.rect)
         .onTapGesture {
             withAnimation(.easeInOut(duration: 0.2)) {
                 isChecklistExpanded = false
+            }
+        }
+    }
+
+    private func checklistBox(isCompleted: Bool) -> some View {
+        ZStack {
+            RoundedRectangle(cornerRadius: task.type == TaskType.daily ? 6 : 12)
+                .fill(Color(themeService.theme.offsetBackgroundColor))
+                .frame(width: 24, height: 24)
+            if isCompleted {
+                Image(uiImage: Asset.checkChecklist.image.withRenderingMode(.alwaysTemplate))
+                    .resizable()
+                    .scaledToFit()
+                    .frame(width: 14, height: 14)
+                    .foregroundStyle(Color(themeService.theme.quadTextColor))
             }
         }
     }
@@ -324,7 +373,7 @@ struct ChallengeFormTaskRow: View {
 }
 
 struct TaskListItem: View {
-    let task: TaskProtocol
+    let task: ChallengeTaskSnapshot
 
     var body: some View {
         ChallengeFormTaskRow(task: task)
@@ -358,7 +407,7 @@ struct ChallengeFormTaskList<Title: View>: View {
             .padding(.horizontal, 8)
             if tasks.first?.isValid == true {
                 ForEach(tasks, id: \.id) { task in
-                    TaskListItem(task: task)
+                    TaskListItem(task: ChallengeTaskSnapshot(task))
                         .onTapGesture {
                             if let action = viewModel.presentTaskForm {
                                 action(taskType, task)
