@@ -102,12 +102,24 @@ struct CreateChallengeForm: View {
         }
     }
 
+    private func nextFocusField() -> ChallengeFormFocus? {
+        guard let focusedField = focusedField else {
+            return nil
+        }
+        if focusedField == .description && !viewModel.isEditing {
+            return nil
+        }
+        return focusedField.next
+    }
+
     @ViewBuilder private func page(for step: ChallengeFormStep) -> some View {
         switch step {
         case .prize:
             ChallengeFormPrizePage(viewModel: viewModel)
         case .info:
             ChallengeFormMetadataPage(viewModel: viewModel, focus: $focusedField)
+        case .tags:
+            ChallengeFormTagsPage(viewModel: viewModel, focus: $focusedField)
         case .tasks:
             ChallengeFormTasksPage(viewModel: viewModel)
         }
@@ -147,7 +159,7 @@ struct CreateChallengeForm: View {
                     .frame(height: 40)
                     .padding(10)
             } else if isEditingText {
-                let nextField = focusedField?.next
+                let nextField = nextFocusField()
                 ChallengePillButton(nextField == nil ? L10n.done : L10n.ChallengeForm.nextField,
                                     fill: Color(themeService.theme.fixedTintColor),
                                     textColor: .white,
@@ -159,15 +171,18 @@ struct CreateChallengeForm: View {
                     }
                 }
             } else if viewModel.hasNextStep {
-                let nextStep = viewModel.steps[(viewModel.currentStepIndex ?? 0) + 1]
+                let currentIndex = viewModel.currentStepIndex ?? 0
+                let nextStep = viewModel.steps[currentIndex + 1]
+                let disableButton = !viewModel.isEditing && !viewModel.isComplete(step: viewModel.steps[currentIndex])
                 ChallengePillButton(nextStep == .tasks ? L10n.ChallengeForm.reviewTasks : L10n.next,
-                                    fill: Color(themeService.theme.fixedTintColor),
-                                    textColor: .white,
+                                    fill: disableButton ? Color(themeService.theme.offsetBackgroundColor) : Color(themeService.theme.fixedTintColor),
+                                    textColor: disableButton ? Color(themeService.theme.quadTextColor) : .white,
                                     weight: .semibold) {
                     withAnimation(.bouncy) {
                         viewModel.showNextStep()
                     }
                 }
+                .disabled(disableButton)
             }
         }
         .padding(.horizontal, 20)

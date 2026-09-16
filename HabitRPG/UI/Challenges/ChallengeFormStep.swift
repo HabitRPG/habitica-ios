@@ -13,5 +13,6 @@ import ReactiveSwift
 enum ChallengeFormStep: CaseIterable {
     case prize
     case info
+    case tags
     case tasks
 }

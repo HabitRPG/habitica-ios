@@ -45,7 +45,7 @@ class ChallengeFormViewModel: ViewModel {
     
     @Published var currentStepIndex: Int? = 0
     @Published var isSaving = false
-    var steps: [ChallengeFormStep] { isEditing ? [.info, .tasks] : [.prize, .info, .tasks] }
+    var steps: [ChallengeFormStep] { isEditing ? [.info, .tasks] : [.prize, .info, .tags, .tasks] }
     
     @Published var prizeAmount: Int = 1
     @Published var challengeLocation: ChallengeLocation?
@@ -69,10 +69,10 @@ class ChallengeFormViewModel: ViewModel {
         case .prize:
             return prizeAmount >= minGemAmount && prizeAmount <= userGemCount
         case .info:
-            return !name.isEmpty &&
-            !summary.isEmpty &&
-            !description.isEmpty &&
-            !challengeTag.isEmpty &&
+            let hasDetails = !name.isEmpty && !summary.isEmpty && !description.isEmpty
+            return isEditing ? hasDetails && isComplete(step: .tags) : hasDetails
+        case .tags:
+            return !challengeTag.isEmpty &&
             (!challengeCategories.isEmpty && challengeCategories.count < 4)
         case .tasks:
             return (habits.count + dailies.count + todos.count + rewards.count) > 0

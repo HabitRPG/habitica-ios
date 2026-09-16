@@ -11,6 +11,33 @@ import SwiftUI
 import Habitica_Models
 import ReactiveSwift
 
+struct ChallengeFormTagsPage: View {
+    @ObservedObject var viewModel: ChallengeFormViewModel
+    var focus: FocusState<ChallengeFormFocus?>.Binding?
+
+    var body: some View {
+        ScrollView {
+            VStack(alignment: .leading, spacing: 8) {
+                Text(L10n.ChallengeForm.tagsTitle)
+                    .font(.system(size: 20, weight: .semibold))
+                    .tracking(-0.45)
+                    .lineSpacing(1)
+                    .padding(.horizontal, 8)
+                Text(L10n.ChallengeForm.tagsDescription)
+                    .font(.system(size: 17))
+                    .tracking(-0.43)
+                    .lineSpacing(2)
+                    .foregroundStyle(ChallengeTheme.handle)
+                    .padding(.horizontal, 8)
+                ChallengeTagSection(viewModel: viewModel, focus: focus)
+                    .padding(.top, 18)
+            }.padding(.horizontal, 18)
+                .padding(.top, 16)
+        }
+        .scrollDismissesKeyboard(.immediately)
+    }
+}
+
 struct ChallengeTagSection: View {
     @ObservedObject var viewModel: ChallengeFormViewModel
     var focus: FocusState<ChallengeFormFocus?>.Binding?
