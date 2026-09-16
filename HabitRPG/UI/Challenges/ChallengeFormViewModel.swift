@@ -296,9 +296,14 @@ class ChallengeFormViewModel: ViewModel {
             call = socialRepository.updateChallenge(challenge: getUpdatedChallenge())
                 .flatMap(.latest) { _ in
                     return SignalProducer(ops)
-                }.flatMap(.latest, { op in
+                }.flatMap(.concat, { op in
                     self.performTaskOp(op, challengeID: challengeID)
                 })
+                .collect()
+                .flatMap(.latest, { _ in
+                    return self.socialRepository.retrieveChallenge(challengeID: challengeID)
+                })
+                .map { (_) -> TaskProtocol? in nil }
         } else if let cloningChallengeID = cloningChallengeID {
             call = socialRepository.cloneChallenge(challengeID: cloningChallengeID, challenge: getUpdatedChallenge())
                 .map { (_) -> TaskProtocol? in nil }
@@ -308,9 +313,11 @@ class ChallengeFormViewModel: ViewModel {
                     return SignalProducer(allTasks.map { task in
                         return (challenge?.id ?? "", task)
                     })
-                }.flatMap(.latest, { challengeID, task in
+                }.flatMap(.concat, { challengeID, task in
                     self.taskRepository.createChallengeTask(challengeID: challengeID, task: task)
                 })
+                .collect()
+                .map { (_) -> TaskProtocol? in nil }
         }
         call
             .observeResult({ result in

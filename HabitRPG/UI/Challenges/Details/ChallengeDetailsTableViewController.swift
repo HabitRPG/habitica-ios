@@ -14,6 +14,11 @@ class ChallengeDetailsTableViewController: MultiModelTableViewController {
     var viewModel: ChallengeDetailViewModel?
     private let disposable = ScopedDisposable(CompositeDisposable())
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        viewModel?.reloadChallenge()
+    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
         self.topHeaderCoordinator?.hideHeader = true
