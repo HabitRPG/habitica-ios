@@ -150,83 +150,175 @@ struct RewardListItem: View {
     }
 }
 
-struct ChallengeFormTaskSquare: View {
-    let fill: Color
-    let glyph: String
-
-    var body: some View {
-        ZStack {
-            fill
-            Image(systemName: glyph)
-                .font(.system(size: 20, weight: .semibold))
-                .foregroundStyle(.white)
-        }
-        .frame(width: 52)
-        .frame(maxHeight: .infinity)
-    }
-}
-
 struct ChallengeFormTaskRow: View {
     @ObservedObject private var themeService = ThemeService.shared
     let task: TaskProtocol
+    @State private var isChecklistExpanded = false
+
+    private var showsChecklist: Bool {
+        (task.type == TaskType.daily || task.type == TaskType.todo) && !task.checklist.isEmpty
+    }
 
     var body: some View {
-        Group {
-            if task.type == TaskType.reward {
-                rewardRow
-            } else {
-                standardRow
+        VStack(spacing: 0) {
+            HStack(spacing: 0) {
+                if task.type == TaskType.habit {
+                    habitColumn(isPositive: true)
+                } else if task.type == TaskType.daily || task.type == TaskType.todo {
+                    checkboxColumn
+                }
+                taskText
+                    .padding(.leading, task.type == TaskType.reward ? 12 : 10)
+                    .padding(.trailing, 11)
+                if showsChecklist {
+                    checklistIndicator
+                }
+                if task.type == TaskType.habit {
+                    habitColumn(isPositive: false)
+                } else if task.type == TaskType.reward {
+                    rewardColumn
+                }
+            }
+            .frame(minHeight: 46)
+            if showsChecklist && isChecklistExpanded {
+                checklistItems
             }
         }
-        .frame(minHeight: 56)
         .background(ChallengeTheme.formFieldFill)
-        .clipShape(RoundedRectangle(cornerRadius: ChallengeTheme.containerRadius, style: .continuous))
+        .clipShape(RoundedRectangle(cornerRadius: ChallengeTheme.taskRadius, style: .continuous))
+        .padding(.horizontal, 6)
     }
 
-    private var standardRow: some View {
-        HStack(spacing: 0) {
-            leadingSquare
-            Text(task.text ?? "")
-                .font(.system(size: 17))
+    private var taskText: some View {
+        VStack(alignment: .leading, spacing: 1) {
+            Text((task.text ?? "").unicodeEmoji)
+                .font(.system(size: 16, weight: .semibold))
                 .foregroundStyle(Color(themeService.theme.primaryTextColor))
-                .padding(.horizontal, 15)
-                .frame(maxWidth: .infinity, alignment: .leading)
-            if task.type == TaskType.habit {
-                ChallengeFormTaskSquare(fill: ChallengeTheme.habitFill, glyph: "minus")
+            if let notes = task.notes?.trimmingCharacters(in: .whitespacesAndNewlines), !notes.isEmpty {
+                Text(notes.unicodeEmoji)
+                    .font(.system(size: 15))
+                    .foregroundStyle(Color(themeService.theme.ternaryTextColor))
             }
         }
+        .padding(.vertical, 13)
+        .frame(maxWidth: .infinity, alignment: .leading)
     }
 
-    private var rewardRow: some View {
-        HStack(spacing: 0) {
-            Text(task.text ?? "")
-                .font(.system(size: 17))
-                .foregroundStyle(Color(themeService.theme.primaryTextColor))
-                .padding(.leading, 20)
-                .frame(maxWidth: .infinity, alignment: .leading)
-            VStack(spacing: 1) {
-                Image(uiImage: HabiticaIcons.imageOfGold)
-                    .resizable().scaledToFit().frame(width: 17, height: 17)
-                Text("\(Int(task.value))")
-                    .font(.system(size: 13, weight: .semibold))
-                    .foregroundStyle(ChallengeTheme.username)
+    private var checklistIndicator: some View {
+        let completedCount = task.checklist.filter { $0.completed }.count
+        let textColor = Color(completedCount == task.checklist.count ? themeService.theme.quadTextColor : themeService.theme.primaryTextColor)
+        return Button {
+            withAnimation(.easeInOut(duration: 0.2)) {
+                isChecklistExpanded.toggle()
             }
+        } label: {
+            VStack(spacing: 2) {
+                Text("\(completedCount)")
+                Rectangle()
+                    .fill(textColor)
+                    .frame(width: 12, height: 1)
+                Text("\(task.checklist.count)")
+            }
+            .font(.system(size: 12, weight: .medium))
+            .foregroundStyle(textColor)
+            .frame(minWidth: 24)
             .padding(.vertical, 5)
-            .padding(.horizontal, 12)
-            .background(ChallengeTheme.chipFill)
-            .clipShape(RoundedRectangle(cornerRadius: 11, style: .continuous))
-            .padding(.trailing, 8)
-            .padding(.vertical, 6)
+            .background(Color(themeService.theme.offsetBackgroundColor))
+            .clipShape(RoundedRectangle(cornerRadius: UIConstants.smallCornerRadius, style: .continuous))
+            .padding(.horizontal, 10)
+            .frame(maxHeight: .infinity)
+            .contentShape(.rect)
+        }
+        .buttonStyle(.plain)
+        .accessibilityLabel(isChecklistExpanded ? L10n.Accessibility.collapseChecklist : L10n.Accessibility.expandChecklist)
+    }
+
+    private var checklistItems: some View {
+        VStack(alignment: .leading, spacing: 0) {
+            Divider()
+            ForEach(Array(task.checklist.enumerated()), id: \.offset) { _, item in
+                HStack(spacing: 10) {
+                    Circle()
+                        .fill(Color(themeService.theme.quadTextColor))
+                        .frame(width: 5, height: 5)
+                    Text((item.text ?? "").unicodeEmoji)
+                        .font(.system(size: 15))
+                        .foregroundStyle(Color(themeService.theme.primaryTextColor))
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                }
+                .padding(.vertical, 8)
+            }
+        }
+        .padding(.leading, 50)
+        .padding(.trailing, 15)
+        .padding(.bottom, 6)
+        .contentShape(.rect)
+        .onTapGesture {
+            withAnimation(.easeInOut(duration: 0.2)) {
+                isChecklistExpanded = false
+            }
         }
     }
 
-    @ViewBuilder private var leadingSquare: some View {
-        if task.type == TaskType.habit {
-            ChallengeFormTaskSquare(fill: ChallengeTheme.habitFill, glyph: "plus")
-        } else if task.type == TaskType.daily {
-            ChallengeFormTaskSquare(fill: ChallengeTheme.dailyFill, glyph: "checkmark")
-        } else if task.type == TaskType.todo {
-            ChallengeFormTaskSquare(fill: ChallengeTheme.todoFill, glyph: "checkmark")
+    private func habitColumn(isPositive: Bool) -> some View {
+        let theme = themeService.theme
+        let isActive = isPositive ? task.up : task.down
+        let circleColor: UIColor
+        if !isActive {
+            circleColor = theme.separatorColor
+        } else if task.value >= -1 && task.value < 1 {
+            circleColor = .yellow10
+        } else {
+            circleColor = .forTaskValue(task.value)
+        }
+        let icon = isPositive ? Asset.plus.image : Asset.minus.image
+        return ZStack {
+            Color(isActive ? UIColor.forTaskValueLight(task.value) : theme.windowBackgroundColor)
+            Circle()
+                .fill(Color(circleColor))
+                .frame(width: 24, height: 24)
+            taskOverlay
+            Image(uiImage: icon.withRenderingMode(.alwaysTemplate))
+                .resizable()
+                .scaledToFit()
+                .frame(width: 12, height: 12)
+                .foregroundStyle(Color(isActive ? UIColor.white : theme.quadTextColor))
+        }
+        .frame(width: 40)
+        .frame(maxHeight: .infinity)
+    }
+
+    private var checkboxColumn: some View {
+        let theme = themeService.theme
+        return ZStack {
+            Color(UIColor.forTaskValueLight(task.value))
+            RoundedRectangle(cornerRadius: task.type == TaskType.daily ? 6 : 12)
+                .fill(Color(UIColor(white: theme.isDark ? 0.0 : 1.0, alpha: theme.isDark ? 0.25 : 0.7)))
+                .frame(width: 24, height: 24)
+            taskOverlay
+        }
+        .frame(width: 40)
+        .frame(maxHeight: .infinity)
+    }
+
+    private var rewardColumn: some View {
+        VStack(spacing: 2) {
+            Image(uiImage: HabiticaIcons.imageOfGold)
+                .resizable()
+                .scaledToFit()
+                .frame(width: 18, height: 18)
+            Text("\(Int(task.value))")
+                .font(.system(size: 15, weight: .semibold))
+                .foregroundStyle(Color(themeService.theme.isDark ? UIColor.yellow100 : UIColor.yellow1))
+        }
+        .frame(width: 56)
+        .frame(maxHeight: .infinity)
+        .background(Color(UIColor.yellow500.withAlphaComponent(0.3)))
+    }
+
+    @ViewBuilder private var taskOverlay: some View {
+        if themeService.theme.isDark {
+            Color(themeService.theme.taskOverlayTint)
         }
     }
 }

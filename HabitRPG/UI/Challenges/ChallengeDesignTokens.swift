@@ -13,11 +13,8 @@ enum ChallengeTheme {
         hex(ThemeService.shared.theme.isDark ? dark : light)
     }
 
-    static let habitFill = hex(0x24CC8E)
-    static let dailyFill = hex(0xFFBE5D)
     static let dailyBlueFill = hex(0x4FA3DD)
     static let dailyBlueGlyph = hex(0x0B3D5C)
-    static let todoFill = hex(0xFF944C)
 
     static let purple = hex(0x925CF3)
     static let deepPurple = hex(0x6133B4)
@@ -44,7 +41,5 @@ enum ChallengeTheme {
     static var chipText: Color { adaptive(light: 0x878190, dark: 0xC3C0C7) }
     static var joinedCount: Color { adaptive(light: 0x24A574, dark: 0x2ED49A) }
     static var selectedRowText: Color { ThemeService.shared.theme.isDark ? .purple500 : deepPurple }
-    static var formFieldFill: Color {
-        ThemeService.shared.theme.isDark ? .gray10 : Color(ThemeService.shared.theme.windowBackgroundColor)
-    }
+    static var formFieldFill: Color { Color(ThemeService.shared.theme.windowBackgroundColor) }
 }
