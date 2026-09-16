@@ -47,18 +47,11 @@ struct CreateChallengeForm: View {
             GeometryReader { geometry in
                     let content = ScrollView(.horizontal, showsIndicators: false) {
                         LazyHStack(spacing: 0) {
-                            ChallengeFormPrizePage(viewModel: viewModel)
-                                .frame(width: geometry.size.width)
-                                .id(0)
-                            ChallengeFormMetadataPage(viewModel: viewModel, focus: $focusedField)
-                                .frame(width: geometry.size.width)
-                                .id(1)
-                            ChallengeFormTagsPage(viewModel: viewModel, focus: $focusedField)
-                                .frame(width: geometry.size.width)
-                                .id(2)
-                            ChallengeFormTasksPage(viewModel: viewModel)
-                                .frame(width: geometry.size.width)
-                                .id(3)
+                            ForEach(Array(viewModel.steps.enumerated()), id: \.offset) { index, step in
+                                page(for: step)
+                                    .frame(width: geometry.size.width)
+                                    .id(index)
+                            }
                         }
                         .foregroundStyle(Color(themeService.theme.primaryTextColor))
                         .scrollTargetLayout()
@@ -109,8 +102,19 @@ struct CreateChallengeForm: View {
         }
     }
 
+    @ViewBuilder private func page(for step: ChallengeFormStep) -> some View {
+        switch step {
+        case .prize:
+            ChallengeFormPrizePage(viewModel: viewModel)
+        case .info:
+            ChallengeFormMetadataPage(viewModel: viewModel, focus: $focusedField)
+        case .tasks:
+            ChallengeFormTasksPage(viewModel: viewModel)
+        }
+    }
+
     @ViewBuilder private var confirmButton: some View {
-        let canConfirm = !viewModel.hasNextStep && viewModel.canSave
+        let canConfirm = viewModel.canSave
         if #available(iOS 26.0, *) {
             Button(role: .confirm) {
                 viewModel.save()
@@ -135,7 +139,9 @@ struct CreateChallengeForm: View {
 
     @ViewBuilder private var bottomDock: some View {
         VStack(spacing: 20) {
-            PagerIndicator(currentIndex: viewModel.currentStepIndex ?? 0, total: 4)
+            if viewModel.steps.count > 2 {
+                PagerIndicator(currentIndex: viewModel.currentStepIndex ?? 0, total: viewModel.steps.count)
+            }
             if viewModel.isSaving {
                 HabiticaProgressView()
                     .frame(height: 40)
@@ -153,16 +159,15 @@ struct CreateChallengeForm: View {
                     }
                 }
             } else if viewModel.hasNextStep {
-                let disableButton = !viewModel.isComplete(page: viewModel.currentStepIndex ?? 0)
-                ChallengePillButton(L10n.next,
-                                    fill: disableButton ? Color(themeService.theme.offsetBackgroundColor) : Color(themeService.theme.fixedTintColor),
-                                    textColor: disableButton ? Color(themeService.theme.quadTextColor) : .white,
+                let nextStep = viewModel.steps[(viewModel.currentStepIndex ?? 0) + 1]
+                ChallengePillButton(nextStep == .tasks ? L10n.ChallengeForm.reviewTasks : L10n.next,
+                                    fill: Color(themeService.theme.fixedTintColor),
+                                    textColor: .white,
                                     weight: .semibold) {
                     withAnimation(.bouncy) {
                         viewModel.showNextStep()
                     }
                 }
-                .disabled(disableButton)
             }
         }
         .padding(.horizontal, 20)

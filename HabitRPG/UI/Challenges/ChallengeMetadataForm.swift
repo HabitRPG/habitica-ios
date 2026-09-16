@@ -27,6 +27,7 @@ struct ChallengeMetadataForm: View {
                                text: $viewModel.summary,
                                multiline: true,
                                placeholder: L10n.ChallengeForm.summaryPlaceholder,
+                               characterLimit: 250,
                                focus: focus,
                                field: .summary)
             ChallengeFormField(label: Text(L10n.description),

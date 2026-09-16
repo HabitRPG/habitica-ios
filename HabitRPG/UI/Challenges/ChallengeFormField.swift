@@ -21,7 +21,8 @@ enum ChallengeFormFocus: Hashable {
         switch self {
         case .name: return .summary
         case .summary: return .description
-        case .description, .tag: return nil
+        case .description: return .tag
+        case .tag: return nil
         }
     }
 }
@@ -33,16 +34,48 @@ struct ChallengeFormField<Label: View>: View {
     let multiline: Bool
     let placeholder: String
     var minHeight: CGFloat?
+    var characterLimit: Int?
     var focus: FocusState<ChallengeFormFocus?>.Binding?
     var field: ChallengeFormFocus?
 
+    private var showsCounter: Bool {
+        guard let characterLimit = characterLimit else {
+            return false
+        }
+        return text.count >= characterLimit - 30
+    }
+
+    private var fieldIdentifier: String {
+        guard let field = field else {
+            return ""
+        }
+        switch field {
+        case .name:
+            return "challengeForm.name"
+        case .summary:
+            return "challengeForm.summary"
+        case .description:
+            return "challengeForm.description"
+        case .tag:
+            return "challengeForm.tag"
+        }
+    }
+
     var body: some View {
         VStack(alignment: .leading, spacing: 9) {
-            label
-                .font(.system(size: 17, weight: .semibold))
-                .padding(.leading, 8)
+            HStack(alignment: .firstTextBaseline, spacing: 8) {
+                label
+                    .font(.system(size: 17, weight: .semibold))
+                Spacer(minLength: 0)
+                if let characterLimit = characterLimit, showsCounter {
+                    characterCounter(limit: characterLimit)
+                }
+            }
+            .padding(.horizontal, 8)
+            .animation(.easeInOut(duration: 0.2), value: showsCounter)
             TextField("", text: $text, prompt: Text(placeholder).foregroundColor(ChallengeTheme.counter), axis: multiline ? .vertical : .horizontal)
                 .font(.system(size: 17))
+                .accessibilityIdentifier(fieldIdentifier)
                 .lineLimit(multiline ? 3...8 : 1...1)
                 .padding(.vertical, 17)
                 .padding(.horizontal, 20)
@@ -50,8 +83,28 @@ struct ChallengeFormField<Label: View>: View {
                 .background(ChallengeTheme.formFieldFill)
                 .clipShape(RoundedRectangle(cornerRadius: ChallengeTheme.containerRadius, style: .continuous))
                 .modifier(ChallengeFieldFocus(focus: focus, field: field))
+                .onChange(of: text) { _, newValue in
+                    guard let characterLimit = characterLimit, newValue.count > characterLimit else {
+                        return
+                    }
+                    text = String(newValue.prefix(characterLimit))
+                }
         }
         .id(field)
+    }
+
+    private func characterCounter(limit: Int) -> some View {
+        let isAtLimit = text.count >= limit
+        let tint = isAtLimit ? Color(themeService.theme.errorColor) : ChallengeTheme.formSectionLabel
+        return Text("\(text.count) / \(limit)")
+            .font(.system(size: 13, weight: .semibold))
+            .monospacedDigit()
+            .foregroundStyle(tint)
+            .padding(.vertical, 3)
+            .padding(.horizontal, 9)
+            .background(isAtLimit ? Color(themeService.theme.errorColor).opacity(0.14) : ChallengeTheme.chipFill)
+            .clipShape(Capsule())
+            .transition(.opacity.combined(with: .scale(scale: 0.92)))
     }
 }
 

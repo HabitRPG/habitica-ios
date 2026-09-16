@@ -18,20 +18,9 @@ struct ChallengeFormMetadataPage: View {
     var body: some View {
         ScrollViewReader { proxy in
         ScrollView {
-            VStack(alignment: .leading, spacing: 8) {
-                Text(L10n.ChallengeForm.metadataTitle)
-                    .font(.system(size: 20, weight: .semibold))
-                    .tracking(-0.45)
-                    .lineSpacing(1)
-                    .padding(.horizontal, 8)
-                Text(L10n.ChallengeForm.metadataDescription)
-                    .font(.system(size: 17))
-                    .tracking(-0.43)
-                    .lineSpacing(2)
-                    .foregroundStyle(ChallengeTheme.handle)
-                    .padding(.horizontal, 8)
+            VStack(alignment: .leading, spacing: 22) {
                 ChallengeMetadataForm(viewModel: viewModel, focus: focus)
-                    .padding(.top, 12)
+                ChallengeTagSection(viewModel: viewModel, focus: focus)
             }.padding(.horizontal, 18)
                 .padding(.top, 16)
         }

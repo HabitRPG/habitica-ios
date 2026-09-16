@@ -45,7 +45,7 @@ class ChallengeFormViewModel: ViewModel {
     
     @Published var currentStepIndex: Int? = 0
     @Published var isSaving = false
-    let steps = ChallengeFormStep.allCases
+    var steps: [ChallengeFormStep] { isEditing ? [.info, .tasks] : [.prize, .info, .tasks] }
     
     @Published var prizeAmount: Int = 1
     @Published var challengeLocation: ChallengeLocation?
@@ -64,29 +64,23 @@ class ChallengeFormViewModel: ViewModel {
         ChallengeLocation(id: Constants.TAVERN_ID, name: "Public Challenge List")
     ]
     
-    func isComplete(page: Int) -> Bool {
-        if page == 0 {
+    func isComplete(step: ChallengeFormStep) -> Bool {
+        switch step {
+        case .prize:
             return prizeAmount >= minGemAmount && prizeAmount <= userGemCount
-        } else if page == 1 {
+        case .info:
             return !name.isEmpty &&
             !summary.isEmpty &&
-            !description.isEmpty
-        } else if page == 2 {
-            return !challengeTag.isEmpty &&
+            !description.isEmpty &&
+            !challengeTag.isEmpty &&
             (!challengeCategories.isEmpty && challengeCategories.count < 4)
-        } else if page == 3 {
+        case .tasks:
             return (habits.count + dailies.count + todos.count + rewards.count) > 0
         }
-        return false
     }
     
     var canSave: Bool {
-        return (
-            isComplete(page: 0) &&
-            isComplete(page: 1) &&
-            isComplete(page: 2) &&
-            isComplete(page: 3)
-        )
+        return steps.allSatisfy { isComplete(step: $0) }
     }
     
     var isPublicChallenge: Bool {
@@ -141,7 +135,7 @@ class ChallengeFormViewModel: ViewModel {
     }
     
     var hasNextStep: Bool {
-        return (currentStepIndex ?? 0) < 3
+        return (currentStepIndex ?? 0) < steps.count - 1
     }
     
     func showPreviousStep() {
@@ -154,7 +148,7 @@ class ChallengeFormViewModel: ViewModel {
     
     func showNextStep() {
         if let index = currentStepIndex {
-            if index < 3 {
+            if index < steps.count - 1 {
                 currentStepIndex = index + 1
             }
         }

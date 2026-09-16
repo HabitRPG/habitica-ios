@@ -1961,6 +1961,8 @@ public enum L10n {
     public static var prizeTitle: String { return L10n.tr("Mainstrings", "challenge_form.prize_title") }
     /// If you’re making a public Challenge, you have to offer at least 1 Gem as a prize
     public static var publicGemNote: String { return L10n.tr("Mainstrings", "challenge_form.public_gem_note") }
+    /// Review Tasks
+    public static var reviewTasks: String { return L10n.tr("Mainstrings", "challenge_form.review_tasks") }
     /// Select up to %d Gems
     public static func selectUpToGems(_ p1: Int) -> String {
       return L10n.tr("Mainstrings", "challenge_form.select_up_to_gems", p1)

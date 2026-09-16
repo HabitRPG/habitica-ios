@@ -17,17 +17,6 @@ struct ChallengeFormTasksPage: View {
     var body: some View {
         ScrollView {
             VStack(alignment: .leading, spacing: 8) {
-                Text(L10n.ChallengeForm.tasksTitle)
-                    .font(.system(size: 20, weight: .semibold))
-                    .tracking(-0.45)
-                    .lineSpacing(1)
-                    .padding(.horizontal, 8)
-                Text(L10n.ChallengeForm.tasksDescription)
-                    .font(.system(size: 17))
-                    .tracking(-0.43)
-                    .lineSpacing(2)
-                    .foregroundStyle(ChallengeTheme.handle)
-                    .padding(.horizontal, 8)
                 ChallengeFormTaskList(viewModel: viewModel,
                                       title: Text(L10n.challengeHabits),
                                       taskType: .habit,
