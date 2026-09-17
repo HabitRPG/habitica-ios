@@ -83,8 +83,7 @@ class LoginViewModelJWTTests: XCTestCase {
     }
 
     func testIsValidEmailFunction() {
-        XCTAssertTrue(isValidEmail(email: "test@example.com"))
-        XCTAssertFalse(isValidEmail(email: "not-an-email"))
-        XCTAssertFalse(isValidEmail(email: nil))
+        XCTAssertTrue("test@example.com".isValidEmail())
+        XCTAssertFalse("not-an-email".isValidEmail())
     }
 }

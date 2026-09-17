@@ -10,6 +10,10 @@
 		066C5326277834A579626B59 /* RebirthEnabledSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFC4D0BB65279CB739EE01A1 /* RebirthEnabledSheet.swift */; };
 		11FBD29CC1529227B4C6DC96 /* ChallengeDetailCards.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B1FBA7F442B4D0851C436E7 /* ChallengeDetailCards.swift */; };
 		2526B556D5CCD0754DDFE843 /* CheckParticipationFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = B806BC76FA69844A4527B6D4 /* CheckParticipationFlow.swift */; };
+		2901701C305BDF970031AAD2 /* Route.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29017018305BDF970031AAD2 /* Route.swift */; };
+		2901701D305BDF970031AAD2 /* RouteMatch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29017019305BDF970031AAD2 /* RouteMatch.swift */; };
+		2901701E305BDF970031AAD2 /* RegexRoute.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29017017305BDF970031AAD2 /* RegexRoute.swift */; };
+		2901701F305BDF970031AAD2 /* RouterHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2901701A305BDF970031AAD2 /* RouterHandler.swift */; };
 		290279632057EC03006DACB9 /* FAQTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 290279622057EC03006DACB9 /* FAQTableViewController.swift */; };
 		2902796C2057F2C5006DACB9 /* Assets-Images.swift in Sources */ = {isa = PBXBuildFile; fileRef = 290279692057F2C4006DACB9 /* Assets-Images.swift */; };
 		2902796D2057F2C5006DACB9 /* Strings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2902796A2057F2C5006DACB9 /* Strings.swift */; };
@@ -36,7 +40,7 @@
 		2907F99E1F694C4000328AEE /* GemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2907F99D1F694C4000328AEE /* GemViewController.swift */; };
 		29084B3326CF97F500AD9966 /* ShopViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29084B3226CF97F500AD9966 /* ShopViewController.swift */; };
 		2908D8742232D45D00DDECA1 /* BaseTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2908D8732232D45D00DDECA1 /* BaseTableViewController.swift */; };
-		2908E3512217255600D246CD /* BuildFile in Resources */ = {isa = PBXBuildFile; };
+		2908E3512217255600D246CD /* (null) in Resources */ = {isa = PBXBuildFile; };
 		290922F02242628600645D0E /* LanguageHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 290922EF2242628600645D0E /* LanguageHandler.swift */; };
 		2909D41F272199BE00FF2B29 /* MultiLineTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2909D41E272199BE00FF2B29 /* MultiLineTextField.swift */; };
 		2909D4222722C20A00FF2B29 /* Servers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2909D4212722C20A00FF2B29 /* Servers.swift */; };
@@ -172,7 +176,6 @@
 		2938ED4328B4EF5D00E995A2 /* SwiftyStoreKit in Frameworks */ = {isa = PBXBuildFile; productRef = 2938ED4228B4EF5D00E995A2 /* SwiftyStoreKit */; };
 		2938ED4F28B5043700E995A2 /* Nimble in Frameworks */ = {isa = PBXBuildFile; productRef = 2938ED4E28B5043700E995A2 /* Nimble */; };
 		2938ED5828B504D100E995A2 /* ReactiveSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 2938ED5728B504D100E995A2 /* ReactiveSwift */; };
-		8DC32235D75BBB68FFB0DB21 /* ReactiveSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 9B4A1D28B605CDCA3A464451 /* ReactiveSwift */; };
 		29397EE42977FBA4009EFD20 /* CountdownView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29397EE32977FBA4009EFD20 /* CountdownView.swift */; };
 		293BB49A1FCD7DC0003B6F4F /* StatsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 293BB4991FCD7DC0003B6F4F /* StatsView.swift */; };
 		293BB49C1FCD7DC8003B6F4F /* StatsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 293BB49B1FCD7DC8003B6F4F /* StatsView.xib */; };
@@ -585,16 +588,14 @@
 		7A84E1B32289963E0081E96F /* BaseRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29FC884D2010CCC2002B3D3F /* BaseRepository.swift */; };
 		7A84E1B42289968B0081E96F /* AuthenticationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 299BD6391F557FE700E22935 /* AuthenticationManager.swift */; };
 		87B69ED943E9C5CED8FC4CFF /* ChallengeDesignTokens.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45A03166535634BFDA9F2FFA /* ChallengeDesignTokens.swift */; };
+		8DC32235D75BBB68FFB0DB21 /* ReactiveSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 9B4A1D28B605CDCA3A464451 /* ReactiveSwift */; };
 		95F1528285B14E64A581009E /* ScoreTaskIntent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ED7C6C98BC047ADAD0F9D60 /* ScoreTaskIntent.swift */; };
-		A0B363012E73567D00F2E0CC /* BuildFile in Frameworks */ = {isa = PBXBuildFile; };
-		A0B363032E73567D00F2E0CC /* BuildFile in Frameworks */ = {isa = PBXBuildFile; };
+		A0B363012E73567D00F2E0CC /* (null) in Frameworks */ = {isa = PBXBuildFile; };
+		A0B363032E73567D00F2E0CC /* (null) in Frameworks */ = {isa = PBXBuildFile; };
 		A0B363052E73567D00F2E0CC /* FirebaseRemoteConfig in Frameworks */ = {isa = PBXBuildFile; productRef = A0B363042E73567D00F2E0CC /* FirebaseRemoteConfig */; };
-		AA835E822EBC15F400C6D779 /* project.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = AA835E812EBC15F400C6D779 /* project.xcconfig */; };
-		AA835E832EBC15F400C6D779 /* project.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = AA835E812EBC15F400C6D779 /* project.xcconfig */; };
 		C8415994225F8B7800989FB8 /* Habitica_Snapshots.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8415993225F8B7800989FB8 /* Habitica_Snapshots.swift */; };
 		C841599C225F8C2A00989FB8 /* SnapshotHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = C841599B225F8C2900989FB8 /* SnapshotHelper.swift */; };
 		C85A68AF2527812400EED0D6 /* SpellTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C85A68AE2527812400EED0D6 /* SpellTabBarController.swift */; };
-		C897F63C218CCF51002907C2 /* RouterHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = C897F63B218CCF51002907C2 /* RouterHandler.swift */; };
 		C897F63F218CE054002907C2 /* Storyboard Scenes.swift in Sources */ = {isa = PBXBuildFile; fileRef = C897F63D218CE052002907C2 /* Storyboard Scenes.swift */; };
 		C897F640218CE054002907C2 /* Storyboard Segues.swift in Sources */ = {isa = PBXBuildFile; fileRef = C897F63E218CE052002907C2 /* Storyboard Segues.swift */; };
 		D521896F3FF1F641B2C11B5B /* ChallengeParticipantComponents.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1A5560D21EEA121A70B5F89 /* ChallengeParticipantComponents.swift */; };
@@ -761,6 +762,10 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		29017017305BDF970031AAD2 /* RegexRoute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegexRoute.swift; sourceTree = "<group>"; };
+		29017018305BDF970031AAD2 /* Route.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Route.swift; sourceTree = "<group>"; };
+		29017019305BDF970031AAD2 /* RouteMatch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteMatch.swift; sourceTree = "<group>"; };
+		2901701A305BDF970031AAD2 /* RouterHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouterHandler.swift; sourceTree = "<group>"; };
 		290279622057EC03006DACB9 /* FAQTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FAQTableViewController.swift; sourceTree = "<group>"; };
 		290279692057F2C4006DACB9 /* Assets-Images.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Assets-Images.swift"; sourceTree = "<group>"; };
 		2902796A2057F2C5006DACB9 /* Strings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Strings.swift; sourceTree = "<group>"; };
@@ -1334,7 +1339,6 @@
 		C8415995225F8B7800989FB8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C841599B225F8C2900989FB8 /* SnapshotHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SnapshotHelper.swift; path = fastlane/SnapshotHelper.swift; sourceTree = SOURCE_ROOT; };
 		C85A68AE2527812400EED0D6 /* SpellTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpellTabBarController.swift; sourceTree = "<group>"; };
-		C897F63B218CCF51002907C2 /* RouterHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouterHandler.swift; sourceTree = "<group>"; };
 		C897F63D218CE052002907C2 /* Storyboard Scenes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Storyboard Scenes.swift"; sourceTree = "<group>"; };
 		C897F63E218CE052002907C2 /* Storyboard Segues.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Storyboard Segues.swift"; sourceTree = "<group>"; };
 		D902AD861B53E1B60098A1BD /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -1525,10 +1529,10 @@
 				292BD8AB28B4EB42006447EF /* Eureka in Frameworks */,
 				D9CD2DBE1BC7FBB500B1304B /* CoreSpotlight.framework in Frameworks */,
 				29995A6126CBCB0B0063D4C9 /* AdServices.framework in Frameworks */,
-				A0B363012E73567D00F2E0CC /* BuildFile in Frameworks */,
+				A0B363012E73567D00F2E0CC /* (null) in Frameworks */,
 				D958E2B11915D41D00186A08 /* SystemConfiguration.framework in Frameworks */,
 				2953D84028B5215400DC456E /* ReactiveCocoa in Frameworks */,
-				A0B363032E73567D00F2E0CC /* BuildFile in Frameworks */,
+				A0B363032E73567D00F2E0CC /* (null) in Frameworks */,
 				D958E2B01915D41400186A08 /* Security.framework in Frameworks */,
 				292BD89C28B4EA4F006447EF /* KeychainAccess in Frameworks */,
 				292BD8A828B4EB10006447EF /* PinLayout in Frameworks */,
@@ -1552,6 +1556,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2901701B305BDF970031AAD2 /* Routing */ = {
+			isa = PBXGroup;
+			children = (
+				29017017305BDF970031AAD2 /* RegexRoute.swift */,
+				29017018305BDF970031AAD2 /* Route.swift */,
+				29017019305BDF970031AAD2 /* RouteMatch.swift */,
+				2901701A305BDF970031AAD2 /* RouterHandler.swift */,
+			);
+			path = Routing;
+			sourceTree = "<group>";
+		};
 		290279642057F005006DACB9 /* Strings */ = {
 			isa = PBXGroup;
 			children = (
@@ -2507,9 +2522,9 @@
 		D987393919687E46002A2426 /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
-				29CBCDA72EC4FF6D0020FC14 /* UIConstants.swift */,
-				2979D5F42EE1D1E000BB2F54 /* AuthenticationStorage.swift */,
 				299BD6391F557FE700E22935 /* AuthenticationManager.swift */,
+				2979D5F42EE1D1E000BB2F54 /* AuthenticationStorage.swift */,
+				7378D44F2E3E439100CC03B9 /* CategoryNameHelper.swift */,
 				29E162E11FFC21E100685640 /* CustomFontMetrics.swift */,
 				29706C8A27D27893006EC139 /* Emoji.swift */,
 				291424A0260CCE740069F792 /* EventHelper.swift */,
@@ -2521,20 +2536,20 @@
 				29A98592254841C500F04665 /* KeyboardManager.swift */,
 				29EBDA82232A3ABA006611E3 /* KeychainItem.swift */,
 				290922EF2242628600645D0E /* LanguageHandler.swift */,
+				2988EFC428D3583E00D703BC /* Measurements.swift */,
 				29323E1E2050563700AC6D6F /* NetworkErrorHandler.swift */,
 				29C38C8824A33E6600F219A1 /* NotificationManager.swift */,
 				29FC885120134A8F002B3D3F /* PurchaseHandler.swift */,
 				29A984D12547294E00F04665 /* RemoteLogger.swift */,
-				C897F63B218CCF51002907C2 /* RouterHandler.swift */,
+				2901701B305BDF970031AAD2 /* Routing */,
 				29C135FF24EAE07E00DBC6B3 /* SharingManager.swift */,
-				2988EFC428D3583E00D703BC /* Measurements.swift */,
 				29DBFF0020CE6FFF00DF9CF2 /* SoundManager.swift */,
 				29FC5A6320402EE2008E88C8 /* Theme Engine */,
 				290458CF2021D6C60032BC5E /* TopHeaderCoordinator.swift */,
 				291A5E6126CD35E800E9CD50 /* TutorialStepsProtocol.swift */,
+				29CBCDA72EC4FF6D0020FC14 /* UIConstants.swift */,
 				29C1360324EBD66900DBC6B3 /* UIWindow+VisibleController.swift */,
 				2919FDDC2091D5370096A53B /* UserManager.swift */,
-				7378D44F2E3E439100CC03B9 /* CategoryNameHelper.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -3094,7 +3109,7 @@
 				BuildIndependentTargetsInParallel = YES;
 				CLASSPREFIX = HRPG;
 				LastSwiftUpdateCheck = 1320;
-				LastUpgradeCheck = 2600;
+				LastUpgradeCheck = 2700;
 				ORGANIZATIONNAME = "HabitRPG Inc.";
 				TargetAttributes = {
 					29706CA227D8B797006EC139 = {
@@ -3247,7 +3262,6 @@
 			files = (
 				2988EFC228D32C4300D703BC /* Mainstrings.strings in Resources */,
 				29BEE634252CCFE300D456F8 /* Assets.xcassets in Resources */,
-				AA835E832EBC15F400C6D779 /* project.xcconfig in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3255,7 +3269,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AA835E822EBC15F400C6D779 /* project.xcconfig in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3303,7 +3316,7 @@
 				49E378532009542C00E0DA3D /* ChallengeTableViewHeaderView.xib in Resources */,
 				498E4D001FA17C1A006933FF /* ChallengeCategoriesTableViewCell.xib in Resources */,
 				2914487A20864A3300F3A6B5 /* EquipmentOverviewView.xib in Resources */,
-				2908E3512217255600D246CD /* BuildFile in Resources */,
+				2908E3512217255600D246CD /* (null) in Resources */,
 				29028C442037132A00B7F704 /* SystemMessageTableViewCell.xib in Resources */,
 				29AAA1611F2B597400029737 /* SpeechbubbleView.xib in Resources */,
 				29FC885E2018D858002B3D3F /* WorldBossDescription.xib in Resources */,
@@ -3563,6 +3576,10 @@
 				29F9761822DDFDA50079B945 /* AchievementHeaderReusableView.swift in Sources */,
 				2973E2582ED5F51B000C2E0F /* TaskFormReminderView.swift in Sources */,
 				29DC5AC220A1C63000993400 /* SeparatedStackView.swift in Sources */,
+				2901701C305BDF970031AAD2 /* Route.swift in Sources */,
+				2901701D305BDF970031AAD2 /* RouteMatch.swift in Sources */,
+				2901701E305BDF970031AAD2 /* RegexRoute.swift in Sources */,
+				2901701F305BDF970031AAD2 /* RouterHandler.swift in Sources */,
 				29701FE01F560D310097BBCC /* UIApplication-Extensions.swift in Sources */,
 				29D16C7E25A33F70001D9A61 /* MainVCSelectionSegue.swift in Sources */,
 				2919FDDF2091D87A0096A53B /* FaintViewController.swift in Sources */,
@@ -3783,7 +3800,6 @@
 				49FA9FF720DC47AD0086C478 /* TaskTableViewController.swift in Sources */,
 				299F93F1246D9C49008DB702 /* PaddedTextField.swift in Sources */,
 				29C14479302B45A1007B2EB3 /* FallExtraGemsPromotion.swift in Sources */,
-				C897F63C218CCF51002907C2 /* RouterHandler.swift in Sources */,
 				2910EFCA2C16EC8700D6D1E8 /* OldAvatarDetailViewDataSource.swift in Sources */,
 				29C9BDDD2E9EA21000FC4FCA /* HabiticaButtonUI.swift in Sources */,
 				29C14473302B444D007B2EB3 /* SummerExtraGemsPromotion.swift in Sources */,
@@ -4317,7 +4333,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 13.0;
+				MACOSX_DEPLOYMENT_TARGET = "$(RECOMMENDED_MACOSX_DEPLOYMENT_TARGET)";
 				MARKETING_VERSION = 4.1.0;
 				OTHER_LDFLAGS = (
 					"-ObjC",
@@ -4416,7 +4432,7 @@
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				INFOPLIST_FILE = "Habitica Snapshots/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 14.7;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -4458,7 +4474,7 @@
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				INFOPLIST_FILE = "Habitica Intents/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 16.6;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.6;
 				"IPHONEOS_DEPLOYMENT_TARGET[sdk=macosx*]" = 15.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -4502,7 +4518,7 @@
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				INFOPLIST_FILE = "Habitica IntentsUI/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 16.6;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.6;
 				"IPHONEOS_DEPLOYMENT_TARGET[sdk=macosx*]" = 15.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -4587,7 +4603,7 @@
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.6;
 				MARKETING_VERSION = 1.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
@@ -4696,7 +4712,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 13.0;
+				MACOSX_DEPLOYMENT_TARGET = "$(RECOMMENDED_MACOSX_DEPLOYMENT_TARGET)";
 				MARKETING_VERSION = 4.1.0;
 				OTHER_LDFLAGS = (
 					"-ObjC",
@@ -4795,7 +4811,7 @@
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				INFOPLIST_FILE = "Habitica Snapshots/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 14.7;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -4837,7 +4853,7 @@
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				INFOPLIST_FILE = "Habitica Intents/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 16.6;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.6;
 				"IPHONEOS_DEPLOYMENT_TARGET[sdk=macosx*]" = 15.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -4881,7 +4897,7 @@
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				INFOPLIST_FILE = "Habitica IntentsUI/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 16.6;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.6;
 				"IPHONEOS_DEPLOYMENT_TARGET[sdk=macosx*]" = 15.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -4966,7 +4982,7 @@
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.6;
 				MARKETING_VERSION = 1.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
@@ -4997,7 +5013,7 @@
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.6;
 				MARKETING_VERSION = 1.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
@@ -5031,7 +5047,7 @@
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.6;
 				MARKETING_VERSION = 1.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
@@ -5162,7 +5178,7 @@
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				INFOPLIST_FILE = "Habitica IntentsUI/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 16.6;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.6;
 				"IPHONEOS_DEPLOYMENT_TARGET[sdk=macosx*]" = 15.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -5207,7 +5223,7 @@
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				INFOPLIST_FILE = "Habitica IntentsUI/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 16.6;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.6;
 				"IPHONEOS_DEPLOYMENT_TARGET[sdk=macosx*]" = 15.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -5249,7 +5265,7 @@
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				INFOPLIST_FILE = "Habitica Intents/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 16.6;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.6;
 				"IPHONEOS_DEPLOYMENT_TARGET[sdk=macosx*]" = 15.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -5295,7 +5311,7 @@
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				INFOPLIST_FILE = "Habitica Intents/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 16.6;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.6;
 				"IPHONEOS_DEPLOYMENT_TARGET[sdk=macosx*]" = 15.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -5333,7 +5349,7 @@
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				INFOPLIST_FILE = "Habitica Snapshots/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 14.7;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -5372,7 +5388,7 @@
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				INFOPLIST_FILE = "Habitica Snapshots/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 14.7;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -5627,7 +5643,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 13.0;
+				MACOSX_DEPLOYMENT_TARGET = "$(RECOMMENDED_MACOSX_DEPLOYMENT_TARGET)";
 				MARKETING_VERSION = 4.1.0;
 				OTHER_LDFLAGS = (
 					"-ObjC",
@@ -5705,7 +5721,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 13.0;
+				MACOSX_DEPLOYMENT_TARGET = "$(RECOMMENDED_MACOSX_DEPLOYMENT_TARGET)";
 				MARKETING_VERSION = 4.1.0;
 				OTHER_LDFLAGS = (
 					"-ObjC",
@@ -5856,7 +5872,7 @@
 			repositoryURL = "https://github.com/openid/AppAuth-iOS.git";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 2.0.0;
+				minimumVersion = 3.0.0;
 			};
 		};
 		292BD8A328B4EAE9006447EF /* XCRemoteSwiftPackageReference "Down" */ = {
@@ -5975,8 +5991,8 @@
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/SwiftUIX/SwiftUIX";
 			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 0.1.3;
+				branch = master;
+				kind = branch;
 			};
 		};
 		29AE771827E3521800CC9646 /* XCRemoteSwiftPackageReference "InputBarAccessoryView" */ = {
@@ -6070,11 +6086,6 @@
 			productName = Nimble;
 		};
 		2938ED5728B504D100E995A2 /* ReactiveSwift */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 2938ED5628B504D100E995A2 /* XCRemoteSwiftPackageReference "ReactiveSwift" */;
-			productName = ReactiveSwift;
-		};
-		9B4A1D28B605CDCA3A464451 /* ReactiveSwift */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 2938ED5628B504D100E995A2 /* XCRemoteSwiftPackageReference "ReactiveSwift" */;
 			productName = ReactiveSwift;
@@ -6183,6 +6194,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 29D048B82E3A641A004A6AAA /* XCRemoteSwiftPackageReference "realm-swift" */;
 			productName = RealmSwift;
+		};
+		9B4A1D28B605CDCA3A464451 /* ReactiveSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 2938ED5628B504D100E995A2 /* XCRemoteSwiftPackageReference "ReactiveSwift" */;
+			productName = ReactiveSwift;
 		};
 		A0B363042E73567D00F2E0CC /* FirebaseRemoteConfig */ = {
 			isa = XCSwiftPackageProductDependency;

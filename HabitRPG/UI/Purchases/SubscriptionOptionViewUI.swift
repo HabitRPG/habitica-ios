@@ -65,18 +65,14 @@ struct SubscriptionOptionViewUI<Price: View, Recurring: View, Tag: View>: View {
                         HStack(spacing: 6) {
                             Group {
                                 if nonSalePrice != nil {
-                                    if #available(iOS 17.0, *) {
-                                        if isSelected {
-                                            price.foregroundStyle(
-                                                LinearGradient(colors: [.blue10, .teal100], startPoint: .leading, endPoint: .trailing)
-                                            )
-                                        } else {
-                                            price.foregroundStyle(
-                                                LinearGradient(colors: [.blue100, .teal100], startPoint: .leading, endPoint: .trailing)
-                                            )
-                                        }
+                                    if isSelected {
+                                        price.foregroundStyle(
+                                            LinearGradient(colors: [.blue10, .teal100], startPoint: .leading, endPoint: .trailing)
+                                        )
                                     } else {
-                                        price
+                                        price.foregroundStyle(
+                                            LinearGradient(colors: [.blue100, .teal100], startPoint: .leading, endPoint: .trailing)
+                                        )
                                     }
                                 } else {
                                     price

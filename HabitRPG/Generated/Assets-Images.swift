@@ -184,6 +184,7 @@ internal enum Asset {
     internal static let quests = ImageAsset(name: "empty/Quests")
     internal static let special = ImageAsset(name: "empty/Special")
   }
+  internal static let exclamationSquare = ImageAsset(name: "exclamation_square")
   internal static let extraGemsPromoBannerLeft = ImageAsset(name: "extra_gems_promo_banner_left")
   internal static let extraGemsPromoBannerRight = ImageAsset(name: "extra_gems_promo_banner_right")
   internal static let extraGemsPromoInfoLeft = ImageAsset(name: "extra_gems_promo_info_left")
