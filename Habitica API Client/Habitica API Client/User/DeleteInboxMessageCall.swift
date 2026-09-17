@@ -12,6 +12,6 @@ import ReactiveSwift
 
 public class DeleteInboxMessageCall: ResponseObjectCall<EmptyResponseProtocol, APIEmptyResponse> {
     public init(message: InboxMessageProtocol) {
-        super.init(httpMethod: .DELETE, endpoint: "user/messages/\(message.id ?? "")")
+        super.init(httpMethod: .DELETE, endpoint: "inbox/messages/\(message.id ?? "")")
     }
 }

@@ -50,6 +50,7 @@ class RealmNotification: BaseModel,
     @objc dynamic var achievementKey: String?
     @objc dynamic var achievementMessage: String?
     @objc dynamic var achievementModalText: String?
+    @objc dynamic var achievementIcon: String?
     @objc dynamic var egg: String?
     @objc dynamic var hatchingPotion: String?
     
@@ -125,5 +126,6 @@ class RealmNotification: BaseModel,
         achievementKey = protocolObject.achievementKey
         achievementMessage = protocolObject.achievementMessage
         achievementModalText = protocolObject.achievementModalText
+        achievementIcon = protocolObject.achievementIcon
     }
 }
