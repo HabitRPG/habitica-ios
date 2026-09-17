@@ -22,9 +22,5 @@ struct HabiticaWidgets: WidgetBundle {
 }
 
 func widgetPadding() -> CGFloat {
-    if #available(iOS 17.0, *) {
-        return 0
-    } else {
-        return 12
-    }
+    return 0
 }
