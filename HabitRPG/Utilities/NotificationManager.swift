@@ -49,6 +49,7 @@ class NotificationManager {
                  .achievementGoodAsGold,
                  .achievementAllThatGlitters,
                  .achievementBoneCollector,
+                 .achievementUltimateGear,
                  .achievementSkeletonCrew:
                 notificationDisplayed = NotificationManager.displayAchievement(notification: notification, isOnboarding: false, isLastOnboardingAchievement: false)
             case HabiticaNotificationType.achievementGeneric:
@@ -145,30 +146,6 @@ class NotificationManager {
             description = L10n.challengeJoinedDescription
             imageKey = "challenge"
             
-        case HabiticaNotificationType.achievementAllYourBase.rawValue,
-             HabiticaNotificationType.achievementBackToBasics.rawValue,
-             HabiticaNotificationType.achievementJustAddWater.rawValue,
-             HabiticaNotificationType.achievementLostMasterclasser.rawValue,
-             HabiticaNotificationType.achievementMindOverMatter.rawValue,
-             HabiticaNotificationType.achievementDustDevil.rawValue,
-             HabiticaNotificationType.achievementAridAuthority.rawValue,
-             HabiticaNotificationType.achievementMonsterMagus.rawValue,
-             HabiticaNotificationType.achievementUndeadUndertaker.rawValue,
-             HabiticaNotificationType.achievementPrimedForPainting.rawValue,
-             HabiticaNotificationType.achievementPearlyPro.rawValue,
-             HabiticaNotificationType.achievementTickledPink.rawValue,
-             HabiticaNotificationType.achievementRosyOutlook.rawValue,
-             HabiticaNotificationType.achievementBugBonanza.rawValue,
-             HabiticaNotificationType.achievementBareNecessities.rawValue,
-             HabiticaNotificationType.achievementFreshwaterFriends.rawValue,
-             HabiticaNotificationType.achievementGoodAsGold.rawValue,
-             HabiticaNotificationType.achievementAllThatGlitters.rawValue,
-             HabiticaNotificationType.achievementBoneCollector.rawValue,
-             HabiticaNotificationType.achievementSkeletonCrew.rawValue:
-            text = notification.achievementMessage ?? ""
-            description = notification.achievementModalText ?? ""
-            imageKey = notification.achievementKey ?? ""
-            
         case HabiticaNotificationType.achievementInvitedFriend.rawValue:
             text = L10n.invitedFriendTitle
             description = L10n.invitedFriendDescription
@@ -198,7 +175,11 @@ class NotificationManager {
             description = L10n.onboardingCompleteDescription
             imageKey = "onboardingComplete"
         default:
-            break
+            if notification.achievementMessage != nil && notification.achievementModalText != nil {
+                text = notification.achievementMessage ?? ""
+                description = notification.achievementModalText ?? ""
+                imageKey = notification.iconName ?? ""
+            }
         }
         
         if notification.type == HabiticaNotificationType.achievementOnboardingComplete {

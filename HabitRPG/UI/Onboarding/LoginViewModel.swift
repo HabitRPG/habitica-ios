@@ -158,7 +158,7 @@ class LoginViewModel: ObservableObject {
     
     func performAppleLogin(identityToken: String, name: String) {
         let content = decode(jwtToken: identityToken)
-        if let email = content["email"] as? String, !email.contains("privaterelay.appleid.com") {
+        if let email = content["email"] as? String {
             self.email = email
         } else if email.isEmpty {
             needsEmailField = true
