@@ -1615,6 +1615,7 @@
 "challenge_form.tag_placeholder" = "What tag will identify your Challenge?";
 "challenge_form.next_field" = "Next Field";
 "challenge_form.review_tasks" = "Review Tasks";
+"challenge_form.add_tasks" = "Add Tasks";
 "challenge_form.tasks_title" = "Add some tasks";
 "challenge_form.tasks_description" = "Finally, it’s time to create the tasks you’d like all Challenge participants to complete.";
 "task_tag" = "Task tag: %@";

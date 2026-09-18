@@ -1949,6 +1949,8 @@ public enum L10n {
   }
 
   public enum ChallengeForm {
+    /// Add Tasks
+    public static var addTasks: String { return L10n.tr("Mainstrings", "challenge_form.add_tasks") }
     /// What details do participants need to know about your Challenge?
     public static var descriptionPlaceholder: String { return L10n.tr("Mainstrings", "challenge_form.description_placeholder") }
     /// Add this Challenge to...

@@ -272,11 +272,11 @@ class ChallengeFormViewModel: ViewModel {
     private func performTaskOp(_ op: ChallengeTaskOp, challengeID: String) -> Signal<TaskProtocol?, Never> {
         switch op {
         case .create(let task):
-            return taskRepository.createChallengeTask(challengeID: challengeID, task: task)
+            return taskRepository.createChallengeTask(challengeID: challengeID, task: task).take(first: 1)
         case .update(let task):
-            return taskRepository.updateTask(task)
+            return taskRepository.updateTask(task).take(first: 1)
         case .delete(let task):
-            return taskRepository.deleteTask(task).map { (_) -> TaskProtocol? in nil }
+            return taskRepository.deleteTask(task).map { (_) -> TaskProtocol? in nil }.take(first: 1)
         }
     }
     
@@ -294,6 +294,7 @@ class ChallengeFormViewModel: ViewModel {
             let challengeID = editedChallenge?.id ?? ""
             let ops = taskOps(allTasks: allTasks)
             call = socialRepository.updateChallenge(challenge: getUpdatedChallenge())
+                .take(first: 1)
                 .flatMap(.latest) { _ in
                     return SignalProducer(ops)
                 }.flatMap(.concat, { op in
@@ -301,7 +302,7 @@ class ChallengeFormViewModel: ViewModel {
                 })
                 .collect()
                 .flatMap(.latest, { _ in
-                    return self.socialRepository.retrieveChallenge(challengeID: challengeID)
+                    return self.socialRepository.retrieveChallenge(challengeID: challengeID).take(first: 1)
                 })
                 .map { (_) -> TaskProtocol? in nil }
         } else if let cloningChallengeID = cloningChallengeID {
@@ -309,12 +310,13 @@ class ChallengeFormViewModel: ViewModel {
                 .map { (_) -> TaskProtocol? in nil }
         } else {
             call = socialRepository.createChallenge(challenge: getUpdatedChallenge())
+                .take(first: 1)
                 .flatMap(.latest) { challenge in
                     return SignalProducer(allTasks.map { task in
                         return (challenge?.id ?? "", task)
                     })
                 }.flatMap(.concat, { challengeID, task in
-                    self.taskRepository.createChallengeTask(challengeID: challengeID, task: task)
+                    self.taskRepository.createChallengeTask(challengeID: challengeID, task: task).take(first: 1)
                 })
                 .collect()
                 .map { (_) -> TaskProtocol? in nil }

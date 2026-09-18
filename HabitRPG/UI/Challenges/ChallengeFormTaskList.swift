@@ -239,25 +239,21 @@ struct ChallengeFormTaskRow: View {
                 isChecklistExpanded.toggle()
             }
         } label: {
-            VStack(spacing: 0) {
+            let contentColor = hasRemaining ? themeService.theme.primaryTextColor : themeService.theme.quadTextColor
+            VStack(spacing: 1) {
                 Text("\(completedCount)")
+                Rectangle()
+                    .fill(Color(contentColor))
+                    .frame(width: 13, height: 1)
                 Text("\(task.checklist.count)")
             }
             .font(.system(size: 15, weight: .semibold))
             .monospacedDigit()
-            .foregroundStyle(Color(themeService.theme.primaryTextColor))
+            .foregroundStyle(Color(contentColor))
             .frame(minWidth: 34)
             .padding(.vertical, 5)
             .background(Color(themeService.theme.offsetBackgroundColor))
             .clipShape(RoundedRectangle(cornerRadius: UIConstants.mediumCornerRadius, style: .continuous))
-            .overlay(alignment: .topTrailing) {
-                if hasRemaining && !isChecklistExpanded {
-                    Circle()
-                        .fill(Color(UIColor.forTaskValue(task.value)))
-                        .frame(width: 8, height: 8)
-                        .offset(x: 3, y: -2)
-                }
-            }
             .padding(.horizontal, 10)
             .padding(.vertical, 7)
             .frame(maxHeight: .infinity)
@@ -398,10 +394,9 @@ struct ChallengeFormTaskList<Title: View>: View {
                     Text("\(tasks.count)")
                         .font(.system(size: 13, weight: .semibold))
                         .foregroundStyle(ChallengeTheme.formSectionLabel)
-                        .frame(minWidth: 22, minHeight: 22)
-                        .padding(.horizontal, 6)
+                        .frame(width: 22, height: 22)
                         .background(Color(ThemeService.shared.theme.offsetBackgroundColor))
-                        .clipShape(Capsule())
+                        .clipShape(Circle())
                 }
             }
             .padding(.horizontal, 8)

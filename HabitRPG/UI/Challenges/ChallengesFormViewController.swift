@@ -175,7 +175,8 @@ struct CreateChallengeForm: View {
                 let currentIndex = viewModel.currentStepIndex ?? 0
                 let nextStep = viewModel.steps[currentIndex + 1]
                 let disableButton = !viewModel.isEditing && !viewModel.isComplete(step: viewModel.steps[currentIndex])
-                ChallengePillButton(nextStep == .tasks ? L10n.ChallengeForm.reviewTasks : L10n.next,
+                let tasksStepTitle = viewModel.isEditing ? L10n.ChallengeForm.reviewTasks : L10n.ChallengeForm.addTasks
+                ChallengePillButton(nextStep == .tasks ? tasksStepTitle : L10n.next,
                                     fill: disableButton ? Color(themeService.theme.offsetBackgroundColor) : Color(themeService.theme.fixedTintColor),
                                     textColor: disableButton ? Color(themeService.theme.quadTextColor) : .white,
                                     weight: .semibold) {
