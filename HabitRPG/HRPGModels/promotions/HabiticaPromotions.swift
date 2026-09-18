@@ -44,6 +44,7 @@ enum HabiticaPromotions: String, Identifiable {
             .summerExtraGems,
             .fallExtraGems,
             .spookyExtraGems,
+            .winterExtraGems,
             .flashExtraGems
         ]
     }
