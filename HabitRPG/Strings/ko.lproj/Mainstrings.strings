@@ -666,7 +666,7 @@
 "gift_one_get_one_description_date" = "%@까지 구독을 선물하고 무료 구독도 받으세요";
 "excess_x_items_left" = "가능한 모든 펫을 부화시키는 데 필요한 아이템은 %d개의 %@뿐입니다. 그래도 %d개를 구매하시겠습니까?";
 "percent_complete" = "%d%%완수함";
-"delete_x_tasks" = "%s 삭제";
+"delete_x_tasks" = "%d개 과제 삭제";
 "jubilant_gryphatrice" = "환희의 그리파트리스";
 "challenge_category.entertainment" = "즐길거리";
 "challenge_category.finance" = "재정";
@@ -735,7 +735,7 @@
 "years" = "년";
 "max_gem_cap" = "최대 보석 한도";
 "tutorials.todos_1" = "한 번만 해야 하는 작업은 할 일 목록을 사용하세요.";
-"faint.disclaimer" = "%@ 구매가 완료되었습니다";
+"faint.disclaimer" = "부서진 장비는 상점에서 다시 구매할 수 있습니다";
 "armoire.drop_rate" = "장비상자 드롭율";
 "armoire.enchanted_armoire_drop_rates" = "마법의 장비상자 드롭율";
 "armoire.rate_equipment_title" = "60%% 장비";
