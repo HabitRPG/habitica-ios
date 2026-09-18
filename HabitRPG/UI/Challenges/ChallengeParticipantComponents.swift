@@ -330,7 +330,7 @@ struct ChallengePlayerTaskRow: View {
     }
 
     private var content: some View {
-        VStack(alignment: .leading, spacing: 3) {
+        VStack(alignment: .leading, spacing: 5) {
             Text((task.text ?? "").unicodeEmoji)
                 .font(.system(size: 16, weight: .semibold))
                 .lineSpacing(2)
@@ -343,7 +343,7 @@ struct ChallengePlayerTaskRow: View {
             }
         }
         .padding(.top, 15)
-        .padding(.bottom, trimmedNotes == nil ? 12 : 19)
+        .padding(.bottom, trimmedNotes == nil ? 16 : 22)
     }
 
     @ViewBuilder private var leadingControl: some View {
