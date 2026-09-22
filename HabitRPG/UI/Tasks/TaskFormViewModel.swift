@@ -12,6 +12,11 @@ class TaskFormViewModel: ObservableObject {
     private let taskRepository = TaskRepository()
     
     @Published var isTaskEditable: Bool = true
+    var isChallengeOwner = false {
+        didSet {
+            isTaskEditable = isChallengeOwner || task?.isEditable != false
+        }
+    }
 
     @Published var text: String = ""
     @Published var notes: String = ""
@@ -98,7 +103,7 @@ class TaskFormViewModel: ObservableObject {
                 return item.detached()
             }) ?? [])
             
-            _isTaskEditable = Published(initialValue: task?.isEditable != false)
+            _isTaskEditable = Published(initialValue: isChallengeOwner || task?.isEditable != false)
         }
     }
 }

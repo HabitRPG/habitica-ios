@@ -251,7 +251,11 @@ class TaskFormController: UIHostingController<TaskFormView> {
     
     private let viewModel = TaskFormViewModel()
     
-    var challengeTaskDelegate: ChallengeTaskFormDelegate?
+    var challengeTaskDelegate: ChallengeTaskFormDelegate? {
+        didSet {
+            viewModel.isChallengeOwner = challengeTaskDelegate != nil
+        }
+    }
     
     var taskType: TaskType = .habit {
         didSet {
