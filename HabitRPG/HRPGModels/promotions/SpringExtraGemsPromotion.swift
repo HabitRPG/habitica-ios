@@ -57,5 +57,6 @@ class SpringExtraGemsPromotion: ExtraGemsPromotion {
         super.configureInfoView(viewController)
         viewController.promoBanner.descriptionLabel.textColor = UIColor("#D5C8FF")
         viewController.promptText = L10n.SpringPromo.infoPrompt
+        viewController.promoBanner.setTitleImage(Asset.springPromoTitle.image)
     }
 }

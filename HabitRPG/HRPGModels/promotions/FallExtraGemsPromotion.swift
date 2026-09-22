@@ -57,5 +57,6 @@ class FallExtraGemsPromotion: ExtraGemsPromotion {
         super.configureInfoView(viewController)
         viewController.promoBanner.descriptionLabel.textColor = UIColor("#FEDEAD")
         viewController.promptText = L10n.FallPromo.infoPrompt
+        viewController.promoBanner.setTitleImage(Asset.fallPromoTitle.image)
     }
 }

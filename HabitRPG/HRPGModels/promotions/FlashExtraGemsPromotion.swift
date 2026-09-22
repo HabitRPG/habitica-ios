@@ -20,8 +20,8 @@ class FlashExtraGemsPromotion: ExtraGemsPromotion {
 
         gradient.colors = [UIColor("#FF6165").cgColor, UIColor("#FF944C").cgColor, UIColor("#FFBE5D").cgColor, UIColor("#24CC8F").cgColor, UIColor("#50B5E9").cgColor]
         gradient.locations = [0.0, 0.2, 0.6, 0.8, 1.0]
-        gradient.startPoint = CGPoint(x: 0.0, y: 0.0)
-        gradient.endPoint = CGPoint(x: 1.0, y: 1.0)
+        gradient.startPoint = CGPoint(x: -0.2, y: -0.0)
+        gradient.endPoint = CGPoint(x: 1.2, y: 1.0)
         gradient.frame = CGRect(x: 0.0, y: 0.0, width: view.frame.size.width, height: view.frame.size.height)
         return gradient
     }
@@ -51,11 +51,13 @@ class FlashExtraGemsPromotion: ExtraGemsPromotion {
     override func configurePurchaseBanner(view: PromoBannerView) {
         super.configurePurchaseBanner(view: view)
         view.setTitleImage(Asset.flashPromoTitle.image)
+        view.setDescription(L10n.endsX(shortDateFormatter.string(from: endDate)))
     }
     
     override func configureInfoView(_ viewController: PromotionInfoViewController) {
         super.configureInfoView(viewController)
         viewController.promoBanner.descriptionLabel.textColor = UIColor("#FEDEAD")
         viewController.promptText = L10n.FlashPromo.infoPrompt
+        viewController.promoBanner.setTitleImage(Asset.flashPromoTitle.image)
     }
 }

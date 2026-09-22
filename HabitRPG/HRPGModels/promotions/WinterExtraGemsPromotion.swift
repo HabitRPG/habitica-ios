@@ -58,5 +58,6 @@ class WinterExtraGemsPromotion: ExtraGemsPromotion {
         super.configureInfoView(viewController)
         viewController.promoBanner.descriptionLabel.textColor = UIColor("#77F4C7")
         viewController.promptText = L10n.WinterPromo.infoPrompt
+        viewController.promoBanner.setTitleImage(Asset.winterPromoTitle.image)
     }
 }

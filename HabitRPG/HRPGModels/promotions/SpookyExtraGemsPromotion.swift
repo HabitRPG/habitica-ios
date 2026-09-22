@@ -62,5 +62,6 @@ class SpookyExtraGemsPromotion: ExtraGemsPromotion {
         super.configureInfoView(viewController)
         viewController.promoBanner.descriptionLabel.textColor = UIColor("#D5C8FF")
         viewController.promptText = L10n.SpookyPromo.infoPrompt
+        viewController.promoBanner.setTitleImage(Asset.spookyPromoTitle.image)
     }
 }

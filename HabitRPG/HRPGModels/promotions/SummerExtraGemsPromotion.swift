@@ -57,5 +57,6 @@ class SummerExtraGemsPromotion: ExtraGemsPromotion {
         super.configureInfoView(viewController)
         viewController.promoBanner.descriptionLabel.textColor = UIColor("#8EEDF6")
         viewController.promptText = L10n.SummerPromo.infoPrompt
+        viewController.promoBanner.setTitleImage(Asset.summerPromoTitle.image)
     }
 }

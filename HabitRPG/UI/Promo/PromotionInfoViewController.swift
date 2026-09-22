@@ -92,10 +92,10 @@ class PromotionInfoViewController: BaseUIViewController {
     
     override func applyTheme(theme: Theme) {
         super.applyTheme(theme: theme)
-        instructionsTitleLabel.textColor = theme.secondaryTextColor
-        limitationsTitleLabel.textColor = theme.secondaryTextColor
-        instructionsDescriptionLabel.textColor = theme.quadTextColor
-        limitationsDescriptionLabel.textColor = theme.quadTextColor
+        instructionsTitleLabel.textColor = .gray500
+        limitationsTitleLabel.textColor = .gray500
+        instructionsDescriptionLabel.textColor = .gray300
+        limitationsDescriptionLabel.textColor = .gray300
         view.backgroundColor = .gray5
         promptButton.cornerRadius = promptButton.frame.height / 2
     }

@@ -426,7 +426,7 @@ class AboutViewController: BaseTableViewController, MFMailComposeViewControllerD
         case 4:
             perform(segue: StoryboardSegue.Main.hallOfPatronsSegue)
         default:
-            open(url: "https://habitica.com/static/community-guidelines")
+            RouterHandler.shared.handleOrOpen(urlString: "/static/community-guidelines")
         }
     }
 

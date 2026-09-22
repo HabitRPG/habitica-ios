@@ -22,14 +22,13 @@ class ExtraGemsPromotion: HabiticaPromotion {
     var pinnedPillArtHeight: CGFloat { return 40 }
     var pinnedPillLeftArt: UIImage? { return Asset.extraGemsPromoMenuSmall.image }
     
-    // Optimize: Reuse DateFormatter instance to avoid expensive creation
-    private lazy var shortDateFormatter: DateFormatter = {
+    lazy var shortDateFormatter: DateFormatter = {
         let formatter = DateFormatter()
         formatter.dateFormat = "MMM d"
         return formatter
     }()
     
-    private lazy var fullDateFormatter: DateFormatter = {
+    lazy var fullDateFormatter: DateFormatter = {
         let formatter = DateFormatter()
         formatter.dateStyle = .medium
         formatter.timeStyle = .long
@@ -99,10 +98,10 @@ class ExtraGemsPromotion: HabiticaPromotion {
         gradientLayer.cornerRadius = UIConstants.mediumCornerRadius
         view.priceLabel.backgroundColor = .clear
         view.priceLabelBackground.layer.insertSublayer(gradientLayer, at: 0)
-        view.priceLabel.textColor = .white
+        view.priceLabel.textColor = .black
         view.footerLabel.text = L10n.usuallyXGems(regularAmount)
         view.footerLabel.textColor = UIColor("#CAC7CE")
-        view.footerLabel.font = UIFontMetrics.default.scaledSystemFont(ofSize: 12)
+        view.footerLabel.font = UIFontMetrics.default.scaledSystemFont(ofSize: 12, ofWeight: .semibold)
         view.circleView.backgroundColor = .gray50
         switch regularAmount {
         case 4:
@@ -123,7 +122,6 @@ class ExtraGemsPromotion: HabiticaPromotion {
         viewController.promoBanner.backgroundColor = backgroundColor
         viewController.promoBanner.leftImageView.image = Asset.extraGemsPromoInfoLeft.image
         viewController.promoBanner.rightImageView.image = Asset.extraGemsPromoInfoRight.image
-        viewController.promoBanner.setTitleImage(Asset.fallPromoTitle.image)
         viewController.promoBanner.setDescription(L10n.limitedEvent.uppercased())
         viewController.promoBanner.descriptionLabel.font = UIFontMetrics.default.scaledSystemFont(ofSize: 12)
         viewController.promoBanner.descriptionLabel.textColor = UIColor("#FEDEAD")
@@ -133,7 +131,7 @@ class ExtraGemsPromotion: HabiticaPromotion {
         
         viewController.promptLabel.textColor = .white
         viewController.promptButton.setTitle(L10n.viewGemBundles, for: .normal)
-        viewController.promptButton.setTitleColor(.white, for: .normal)
+        viewController.promptButton.setTitleColor(.black, for: .normal)
         viewController.promptButton.layer.sublayers?.filter { $0 is CAGradientLayer }.forEach { $0.removeFromSuperlayer() }
         let gradientLayer = makeGradient(view: viewController.promptButton)
         viewController.promptButton.layer.insertSublayer(gradientLayer, at: 0)

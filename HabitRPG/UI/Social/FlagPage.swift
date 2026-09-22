@@ -146,7 +146,7 @@ struct FlagPage: View {
             Text(AttributedString(L10n.reportingDisclaimer(typeText)).withCommunityGuidelinesLinked().withTermsOfServiceLinked())
                 .environment(\.openURL, OpenURLAction(handler: { url in
                     if url.absoluteString.contains("community-guidelines") {
-                        RouterHandler.shared.handle(urlString: "https://habitica.com/static/community-guidelines")
+                        RouterHandler.shared.handle(urlString: "/static/community-guidelines")
                         return .handled
                     }
                     return .systemAction

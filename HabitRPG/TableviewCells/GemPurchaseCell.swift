@@ -25,6 +25,7 @@ class GemPurchaseCell: UICollectionViewCell {
         super.awakeFromNib()
         circleView.backgroundColor = .purple200
         circleView.cornerRadius = circleView.frame.size.height / 2
+        priceLabel.cornerRadius = priceLabel.frame.size.height / 2
     }
     
     func setGemAmount(_ amount: Int) {

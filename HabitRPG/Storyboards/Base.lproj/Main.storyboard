@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="24765" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="25098" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina6_7" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="24743"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="25073"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -287,6 +287,7 @@
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="none" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" id="yoT-GF-vkQ">
                         <rect key="frame" x="0.0" y="0.0" width="430" height="932"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <sections/>
                     </tableView>
                     <navigationItem key="navigationItem" id="hnF-ml-Qfo"/>
@@ -1203,7 +1204,7 @@
             <objects>
                 <collectionViewController storyboardIdentifier="GemPurchaseViewController" id="0F5-C1-rPv" customClass="GemViewController" customModule="Habitica" customModuleProvider="target" sceneMemberID="viewController">
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" dataMode="prototypes" id="CgT-fS-CrK">
-                        <rect key="frame" x="0.0" y="0.0" width="430" height="873"/>
+                        <rect key="frame" x="0.0" y="0.0" width="430" height="863"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.3562011719" green="0.20886228979999999" blue="0.6801757812" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="18" minimumInteritemSpacing="18" id="VJm-WU-tp7">
@@ -1406,7 +1407,6 @@
                                                 </userDefinedRuntimeAttribute>
                                             </userDefinedRuntimeAttributes>
                                             <connections>
-                                                <action selector="giftGemsTapped:" destination="0F5-C1-rPv" eventType="touchUpInside" id="upA-PP-fzK"/>
                                                 <action selector="viewSubscriptionsTapped:" destination="0F5-C1-rPv" eventType="touchUpInside" id="RMG-L8-cXp"/>
                                             </connections>
                                         </button>
@@ -2504,11 +2504,11 @@
                         <viewControllerLayoutGuide type="bottom" id="WaS-jq-SUQ"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="Io1-HB-nAL">
-                        <rect key="frame" x="0.0" y="0.0" width="430" height="863"/>
+                        <rect key="frame" x="0.0" y="0.0" width="430" height="873"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="e5P-ER-Ol8">
-                                <rect key="frame" x="0.0" y="74" width="430" height="755"/>
+                                <rect key="frame" x="0.0" y="74" width="430" height="765"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="CWi-0Z-cNn">
                                         <rect key="frame" x="0.0" y="0.0" width="430" height="325"/>
@@ -2610,7 +2610,7 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="hFs-vR-qJJ">
-                        <barButtonItem key="rightBarButtonItem" style="done" systemItem="done" id="KsR-uQ-xY6">
+                        <barButtonItem key="rightBarButtonItem" systemItem="cancel" id="KsR-uQ-xY6">
                             <connections>
                                 <segue destination="1AC-4C-EqI" kind="unwind" unwindAction="unwindToList:" id="JhO-Cx-HhQ"/>
                             </connections>
@@ -2856,7 +2856,7 @@
         <segue reference="ScC-Xo-JyG"/>
         <segue reference="WRT-c8-yJ5"/>
         <segue reference="ETz-qE-xC2"/>
-        <segue reference="0lJ-Wy-mKC"/>
+        <segue reference="mRM-bY-AV4"/>
         <segue reference="qTg-hC-uiS"/>
         <segue reference="gXQ-dZ-OGd"/>
         <segue reference="j9F-en-5nH"/>
