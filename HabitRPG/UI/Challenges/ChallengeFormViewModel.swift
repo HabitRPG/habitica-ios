@@ -11,6 +11,23 @@ import SwiftUI
 import Habitica_Models
 import ReactiveSwift
 
+private enum ChallengeTaskOp {
+    case create(TaskProtocol)
+    case update(TaskProtocol)
+    case delete(TaskProtocol)
+}
+
+private class FormChallengeCategory: NSObject, ChallengeCategoryProtocol {
+    var id: String?
+    var slug: String?
+    var name: String?
+
+    init(slug: String) {
+        self.slug = slug
+        name = slug
+    }
+}
+
 class ChallengeFormViewModel: ViewModel {
     private let userRepository = UserRepository()
     private let socialRepository = SocialRepository()
@@ -19,12 +36,16 @@ class ChallengeFormViewModel: ViewModel {
     var presentTaskForm: ((TaskType, TaskProtocol?) -> Void)?
     
     var editedChallenge: ChallengeProtocol?
+    private var cloningChallengeID: String?
+    private var originalTasks: [TaskProtocol] = []
+    private var originalTaskIDs: Set<String> = []
+    var isEditing: Bool { editedChallenge != nil }
     
     @Published var userGemCount = 0
     
     @Published var currentStepIndex: Int? = 0
     @Published var isSaving = false
-    let steps = ChallengeFormStep.allCases
+    var steps: [ChallengeFormStep] { isEditing ? [.info, .tasks] : [.prize, .info, .tags, .tasks] }
     
     @Published var prizeAmount: Int = 1
     @Published var challengeLocation: ChallengeLocation?
@@ -43,29 +64,23 @@ class ChallengeFormViewModel: ViewModel {
         ChallengeLocation(id: Constants.TAVERN_ID, name: "Public Challenge List")
     ]
     
-    func isComplete(page: Int) -> Bool {
-        if page == 0 {
+    func isComplete(step: ChallengeFormStep) -> Bool {
+        switch step {
+        case .prize:
             return prizeAmount >= minGemAmount && prizeAmount <= userGemCount
-        } else if page == 1 {
-            return !name.isEmpty &&
-            !summary.isEmpty &&
-            !description.isEmpty
-        } else if page == 2 {
+        case .info:
+            let hasDetails = !name.isEmpty && !summary.isEmpty && !description.isEmpty
+            return isEditing ? hasDetails && isComplete(step: .tags) : hasDetails
+        case .tags:
             return !challengeTag.isEmpty &&
             (!challengeCategories.isEmpty && challengeCategories.count < 4)
-        } else if page == 3 {
+        case .tasks:
             return (habits.count + dailies.count + todos.count + rewards.count) > 0
         }
-        return false
     }
     
     var canSave: Bool {
-        return (
-            isComplete(page: 0) &&
-            isComplete(page: 1) &&
-            isComplete(page: 2) &&
-            isComplete(page: 3)
-        )
+        return steps.allSatisfy { isComplete(step: $0) }
     }
     
     var isPublicChallenge: Bool {
@@ -91,14 +106,16 @@ class ChallengeFormViewModel: ViewModel {
             })
             .filter { $0 != nil }
             .flatMap(.latest, {[weak self] partyID in
-                return self?.socialRepository.getGroup(groupID: partyID ?? "") ?? SignalProducer.empty
-            }).on(value: { party in
+                return self?.socialRepository.getGroup(groupID: partyID ?? "", retrieveIfNotFound: true) ?? SignalProducer.empty
+            }).on(value: {[weak self] party in
+                guard let self = self else { return }
                 if let party = party, !self.challengeLocations.contains(where: { $0.id == party.id }) {
                     self.challengeLocations.insert(ChallengeLocation(id: party.id ?? "", name: party.name ?? ""), at: 1)
                 }
             }).start())
         disposable.add(userRepository.getGroupPlans()
-            .on(value: { plans in
+            .on(value: {[weak self] plans in
+                guard let self = self else { return }
                 plans.value.forEach { plan in
                     if !self.challengeLocations.contains(where: { $0.id == plan.id }) {
                         self.challengeLocations.append(ChallengeLocation(id: plan.id ?? "", name: plan.name ?? ""))
@@ -118,7 +135,7 @@ class ChallengeFormViewModel: ViewModel {
     }
     
     var hasNextStep: Bool {
-        return (currentStepIndex ?? 0) < 3
+        return (currentStepIndex ?? 0) < steps.count - 1
     }
     
     func showPreviousStep() {
@@ -131,7 +148,7 @@ class ChallengeFormViewModel: ViewModel {
     
     func showNextStep() {
         if let index = currentStepIndex {
-            if index < 4 {
+            if index < steps.count - 1 {
                 currentStepIndex = index + 1
             }
         }
@@ -190,7 +207,77 @@ class ChallengeFormViewModel: ViewModel {
         challenge.tasksOrder["dailies"] = dailies.map { $0.id ?? "" }
         challenge.tasksOrder["todos"] = todos.map { $0.id ?? "" }
         challenge.tasksOrder["rewards"] = rewards.map { $0.id ?? "" }
+        challenge.categories = challengeCategories.map { FormChallengeCategory(slug: $0.rawValue) }
         return challenge
+    }
+
+    func configureForEditing(_ challenge: ChallengeProtocol) {
+        editedChallenge = challenge
+        prefillMetadata(from: challenge)
+        loadChallengeTasks(challengeID: challenge.id ?? "")
+    }
+
+    func configureForCloning(_ challenge: ChallengeProtocol) {
+        cloningChallengeID = challenge.id
+        prefillMetadata(from: challenge)
+        loadChallengeTasks(challengeID: challenge.id ?? "")
+    }
+
+    private func prefillMetadata(from challenge: ChallengeProtocol) {
+        name = challenge.name ?? ""
+        summary = challenge.summary ?? ""
+        description = challenge.notes ?? ""
+        challengeTag = challenge.shortName ?? ""
+        prizeAmount = challenge.prize
+        if let groupID = challenge.groupID {
+            if let existing = challengeLocations.first(where: { $0.id == groupID }) {
+                challengeLocation = existing
+            } else {
+                let location = ChallengeLocation(id: groupID, name: challenge.groupName ?? "")
+                challengeLocations.append(location)
+                challengeLocation = location
+            }
+        }
+        challengeCategories = Set(challenge.categories.compactMap { ChallengeCategory(rawValue: $0.slug ?? "") })
+    }
+
+    private func loadChallengeTasks(challengeID: String) {
+        disposable.add(socialRepository.getChallengeTasks(challengeID: challengeID).take(first: 1).startWithResult { [weak self] result in
+            guard let self = self, case .success(let (tasks, _)) = result else { return }
+            self.habits = tasks.filter { $0.type == TaskType.habit }
+            self.dailies = tasks.filter { $0.type == TaskType.daily }
+            self.todos = tasks.filter { $0.type == TaskType.todo }
+            self.rewards = tasks.filter { $0.type == TaskType.reward }
+            self.originalTasks = tasks
+            self.originalTaskIDs = Set(tasks.compactMap { $0.id })
+        })
+    }
+
+    private func taskOps(allTasks: [TaskProtocol]) -> [ChallengeTaskOp] {
+        let currentIDs = Set(allTasks.compactMap { $0.id })
+        var ops: [ChallengeTaskOp] = []
+        for task in allTasks {
+            if let id = task.id, originalTaskIDs.contains(id) {
+                ops.append(.update(task))
+            } else {
+                ops.append(.create(task))
+            }
+        }
+        for task in originalTasks where !(task.id.map { currentIDs.contains($0) } ?? false) {
+            ops.append(.delete(task))
+        }
+        return ops
+    }
+
+    private func performTaskOp(_ op: ChallengeTaskOp, challengeID: String) -> Signal<TaskProtocol?, Never> {
+        switch op {
+        case .create(let task):
+            return taskRepository.createChallengeTask(challengeID: challengeID, task: task).take(first: 1)
+        case .update(let task):
+            return taskRepository.updateTask(task).take(first: 1)
+        case .delete(let task):
+            return taskRepository.deleteTask(task).map { (_) -> TaskProtocol? in nil }.take(first: 1)
+        }
     }
     
     func save() {
@@ -204,21 +291,35 @@ class ChallengeFormViewModel: ViewModel {
         allTasks.append(contentsOf: rewards)
         let call: Signal<TaskProtocol?, Error>
         if editedChallenge != nil {
+            let challengeID = editedChallenge?.id ?? ""
+            let ops = taskOps(allTasks: allTasks)
             call = socialRepository.updateChallenge(challenge: getUpdatedChallenge())
+                .take(first: 1)
                 .flatMap(.latest) { _ in
-                    return SignalProducer(allTasks)
-                }.flatMap(.latest, { task in
-                    self.taskRepository.updateTask(task)
+                    return SignalProducer(ops)
+                }.flatMap(.concat, { op in
+                    self.performTaskOp(op, challengeID: challengeID)
                 })
+                .collect()
+                .flatMap(.latest, { _ in
+                    return self.socialRepository.retrieveChallenge(challengeID: challengeID).take(first: 1)
+                })
+                .map { (_) -> TaskProtocol? in nil }
+        } else if let cloningChallengeID = cloningChallengeID {
+            call = socialRepository.cloneChallenge(challengeID: cloningChallengeID, challenge: getUpdatedChallenge())
+                .map { (_) -> TaskProtocol? in nil }
         } else {
             call = socialRepository.createChallenge(challenge: getUpdatedChallenge())
+                .take(first: 1)
                 .flatMap(.latest) { challenge in
                     return SignalProducer(allTasks.map { task in
                         return (challenge?.id ?? "", task)
                     })
-                }.flatMap(.latest, { challengeID, task in
-                    self.taskRepository.createChallengeTask(challengeID: challengeID, task: task)
+                }.flatMap(.concat, { challengeID, task in
+                    self.taskRepository.createChallengeTask(challengeID: challengeID, task: task).take(first: 1)
                 })
+                .collect()
+                .map { (_) -> TaskProtocol? in nil }
         }
         call
             .observeResult({ result in

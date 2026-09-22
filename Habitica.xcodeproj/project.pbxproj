@@ -8,6 +8,12 @@
 
 /* Begin PBXBuildFile section */
 		066C5326277834A579626B59 /* RebirthEnabledSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFC4D0BB65279CB739EE01A1 /* RebirthEnabledSheet.swift */; };
+		11FBD29CC1529227B4C6DC96 /* ChallengeDetailCards.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B1FBA7F442B4D0851C436E7 /* ChallengeDetailCards.swift */; };
+		2526B556D5CCD0754DDFE843 /* CheckParticipationFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = B806BC76FA69844A4527B6D4 /* CheckParticipationFlow.swift */; };
+		2901701C305BDF970031AAD2 /* Route.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29017018305BDF970031AAD2 /* Route.swift */; };
+		2901701D305BDF970031AAD2 /* RouteMatch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29017019305BDF970031AAD2 /* RouteMatch.swift */; };
+		2901701E305BDF970031AAD2 /* RegexRoute.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29017017305BDF970031AAD2 /* RegexRoute.swift */; };
+		2901701F305BDF970031AAD2 /* RouterHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2901701A305BDF970031AAD2 /* RouterHandler.swift */; };
 		290279632057EC03006DACB9 /* FAQTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 290279622057EC03006DACB9 /* FAQTableViewController.swift */; };
 		2902796C2057F2C5006DACB9 /* Assets-Images.swift in Sources */ = {isa = PBXBuildFile; fileRef = 290279692057F2C4006DACB9 /* Assets-Images.swift */; };
 		2902796D2057F2C5006DACB9 /* Strings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2902796A2057F2C5006DACB9 /* Strings.swift */; };
@@ -65,7 +71,6 @@
 		290FF8A027DB626C00F1DE45 /* party.json in Resources */ = {isa = PBXBuildFile; fileRef = 290FF89F27DB626C00F1DE45 /* party.json */; };
 		290FF8A127DB62E700F1DE45 /* party.json in Resources */ = {isa = PBXBuildFile; fileRef = 290FF89F27DB626C00F1DE45 /* party.json */; };
 		290FF8A327DB62F500F1DE45 /* party-members.json in Resources */ = {isa = PBXBuildFile; fileRef = 290FF8A227DB62F500F1DE45 /* party-members.json */; };
-		290FF8A627DB634700F1DE45 /* PartyDetailTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 290FF8A527DB634700F1DE45 /* PartyDetailTests.swift */; };
 		290FF8A727DB657000F1DE45 /* party-members.json in Resources */ = {isa = PBXBuildFile; fileRef = 290FF8A227DB62F500F1DE45 /* party-members.json */; };
 		290FF8B827DF6AB800F1DE45 /* CustomizationDetailTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 290FF8B727DF6AB800F1DE45 /* CustomizationDetailTests.swift */; };
 		291017DF2B06161400D0607B /* SubscriptionPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 291017DE2B06161400D0607B /* SubscriptionPage.swift */; };
@@ -241,9 +246,6 @@
 		29706CB727D911F5006EC139 /* XCUIApplication-Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29706CB627D911F5006EC139 /* XCUIApplication-Extensions.swift */; };
 		29706CB827D917CD006EC139 /* tasks.json in Resources */ = {isa = PBXBuildFile; fileRef = 29706CB427D9115C006EC139 /* tasks.json */; };
 		2970CB52227B1A8600FACCB7 /* MarkdownTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2970CB51227B1A8600FACCB7 /* MarkdownTests.swift */; };
-		2972A33A2EBB96CC00106850 /* AmplitudeSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 2972A3392EBB96CC00106850 /* AmplitudeSwift */; };
-		2972A33C2EBB9A1600106850 /* AmplitudeSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 2972A33B2EBB9A1600106850 /* AmplitudeSwift */; };
-		2972A33E2EBB9A1E00106850 /* AmplitudeSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 2972A33D2EBB9A1E00106850 /* AmplitudeSwift */; };
 		2972A3402EBBA87D00106850 /* AchievementDetailSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2972A33F2EBBA87D00106850 /* AchievementDetailSheet.swift */; };
 		2972A3422EC1FF5200106850 /* QuestDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2972A3412EC1FF5200106850 /* QuestDetails.swift */; };
 		29737EEF2D38055000480353 /* NSRange-Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29737EEE2D38054C00480353 /* NSRange-Extensions.swift */; };
@@ -405,6 +407,17 @@
 		29C1360424EBD66900DBC6B3 /* UIWindow+VisibleController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29C1360324EBD66900DBC6B3 /* UIWindow+VisibleController.swift */; };
 		29C1360624EBD7E000DBC6B3 /* FeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29C1360524EBD7E000DBC6B3 /* FeedViewController.swift */; };
 		29C1360824EE917F00DBC6B3 /* UITableView-Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29C1360724EE917F00DBC6B3 /* UITableView-Extensions.swift */; };
+		29C14465302B424A007B2EB3 /* GiftOneGetOnePromotion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29C14464302B424A007B2EB3 /* GiftOneGetOnePromotion.swift */; };
+		29C14467302B424F007B2EB3 /* Survey2021Promotion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29C14466302B424F007B2EB3 /* Survey2021Promotion.swift */; };
+		29C14469302B4258007B2EB3 /* SpookyExtraGemsPromotion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29C14468302B4258007B2EB3 /* SpookyExtraGemsPromotion.swift */; };
+		29C1446B302B4260007B2EB3 /* ExtraGemsPromotion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29C1446A302B4260007B2EB3 /* ExtraGemsPromotion.swift */; };
+		29C1446D302B426A007B2EB3 /* HabiticaPromotionType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29C1446C302B426A007B2EB3 /* HabiticaPromotionType.swift */; };
+		29C1446F302B4273007B2EB3 /* HabiticaWebPromotion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29C1446E302B4273007B2EB3 /* HabiticaWebPromotion.swift */; };
+		29C14471302B443A007B2EB3 /* SpringExtraGemsPromotion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29C14470302B443A007B2EB3 /* SpringExtraGemsPromotion.swift */; };
+		29C14473302B444D007B2EB3 /* SummerExtraGemsPromotion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29C14472302B444D007B2EB3 /* SummerExtraGemsPromotion.swift */; };
+		29C14475302B44C3007B2EB3 /* WinterExtraGemsPromotion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29C14474302B44C3007B2EB3 /* WinterExtraGemsPromotion.swift */; };
+		29C14477302B44D9007B2EB3 /* FlashExtraGemsPromotion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29C14476302B44D9007B2EB3 /* FlashExtraGemsPromotion.swift */; };
+		29C14479302B45A1007B2EB3 /* FallExtraGemsPromotion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29C14478302B45A1007B2EB3 /* FallExtraGemsPromotion.swift */; };
 		29C1B6AE205952E40001D3EF /* Tasks.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 29C1B6B0205952E40001D3EF /* Tasks.storyboard */; };
 		29C38C8524A2466400F219A1 /* AdventureGuidePromoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29C38C8424A2466400F219A1 /* AdventureGuidePromoView.swift */; };
 		29C38C8724A256F800F219A1 /* AdventureGuideViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29C38C8624A256F800F219A1 /* AdventureGuideViewController.swift */; };
@@ -560,6 +573,7 @@
 		49E6F57E1FF9A2AE0062C8B2 /* DoubleButtonTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 49E6F57C1FF9A2AE0062C8B2 /* DoubleButtonTableViewCell.xib */; };
 		49EE3FD8201908AB00CD7608 /* ChallengeButtonStyleProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49EE3FD7201908AB00CD7608 /* ChallengeButtonStyleProvider.swift */; };
 		49FA9FF720DC47AD0086C478 /* TaskTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49FA9FF620DC47AD0086C478 /* TaskTableViewController.swift */; };
+		6B2B86527D424DB6D2E8F6D8 /* ChallengeListCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4065B2D91CD565D8E39D5036 /* ChallengeListCard.swift */; };
 		7378D4502E3E439100CC03B9 /* CategoryNameHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7378D44F2E3E439100CC03B9 /* CategoryNameHelper.swift */; };
 		7A84E194228928AC0081E96F /* IntentHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A84E193228928AC0081E96F /* IntentHandler.swift */; };
 		7A84E19C228928AD0081E96F /* IntentsUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A84E19B228928AD0081E96F /* IntentsUI.framework */; };
@@ -570,17 +584,17 @@
 		7A84E1B222898E9F0081E96F /* TaskManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A84E1B122898E9F0081E96F /* TaskManager.swift */; };
 		7A84E1B32289963E0081E96F /* BaseRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29FC884D2010CCC2002B3D3F /* BaseRepository.swift */; };
 		7A84E1B42289968B0081E96F /* AuthenticationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 299BD6391F557FE700E22935 /* AuthenticationManager.swift */; };
+		87B69ED943E9C5CED8FC4CFF /* ChallengeDesignTokens.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45A03166535634BFDA9F2FFA /* ChallengeDesignTokens.swift */; };
+		8DC32235D75BBB68FFB0DB21 /* ReactiveSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 9B4A1D28B605CDCA3A464451 /* ReactiveSwift */; };
 		A0B363012E73567D00F2E0CC /* (null) in Frameworks */ = {isa = PBXBuildFile; };
 		A0B363032E73567D00F2E0CC /* (null) in Frameworks */ = {isa = PBXBuildFile; };
 		A0B363052E73567D00F2E0CC /* FirebaseRemoteConfig in Frameworks */ = {isa = PBXBuildFile; productRef = A0B363042E73567D00F2E0CC /* FirebaseRemoteConfig */; };
-		AA835E822EBC15F400C6D779 /* project.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = AA835E812EBC15F400C6D779 /* project.xcconfig */; };
-		AA835E832EBC15F400C6D779 /* project.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = AA835E812EBC15F400C6D779 /* project.xcconfig */; };
 		C8415994225F8B7800989FB8 /* Habitica_Snapshots.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8415993225F8B7800989FB8 /* Habitica_Snapshots.swift */; };
 		C841599C225F8C2A00989FB8 /* SnapshotHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = C841599B225F8C2900989FB8 /* SnapshotHelper.swift */; };
 		C85A68AF2527812400EED0D6 /* SpellTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C85A68AE2527812400EED0D6 /* SpellTabBarController.swift */; };
-		C897F63C218CCF51002907C2 /* RouterHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = C897F63B218CCF51002907C2 /* RouterHandler.swift */; };
 		C897F63F218CE054002907C2 /* Storyboard Scenes.swift in Sources */ = {isa = PBXBuildFile; fileRef = C897F63D218CE052002907C2 /* Storyboard Scenes.swift */; };
 		C897F640218CE054002907C2 /* Storyboard Segues.swift in Sources */ = {isa = PBXBuildFile; fileRef = C897F63E218CE052002907C2 /* Storyboard Segues.swift */; };
+		D521896F3FF1F641B2C11B5B /* ChallengeParticipantComponents.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1A5560D21EEA121A70B5F89 /* ChallengeParticipantComponents.swift */; };
 		D902AD871B53E1B60098A1BD /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D902AD861B53E1B60098A1BD /* GoogleService-Info.plist */; };
 		D90576851BD83240009BB7BC /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = D90576871BD83240009BB7BC /* InfoPlist.strings */; };
 		D91CCAD01BCF11CC001C6A0C /* UserTopHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = D91CCACF1BCF11CC001C6A0C /* UserTopHeader.xib */; };
@@ -644,6 +658,7 @@
 		D9EB4EAD18CB4A9400BB2094 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D9EB4EAC18CB4A9400BB2094 /* Images.xcassets */; };
 		D9F1E3EC1E55E1DB0034D0F4 /* SubscriptionInformation.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9F1E3EB1E55E1DB0034D0F4 /* SubscriptionInformation.swift */; };
 		DC2C41815D97E02EF9D3BEF9 /* HRPGLabeledProgressBarTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC2C40206801F9FB5D6D6190 /* HRPGLabeledProgressBarTests.swift */; };
+		FC900D986CC601050C4F4584 /* EndChallengeFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8613CAFBCA8EB22E006EFB65 /* EndChallengeFlow.swift */; };
 		FED442C2846F244654A40CCD /* RebirthAchievementSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BF2BE8A390A17E6EE7EF36B /* RebirthAchievementSheet.swift */; };
 /* End PBXBuildFile section */
 
@@ -743,6 +758,10 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		29017017305BDF970031AAD2 /* RegexRoute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegexRoute.swift; sourceTree = "<group>"; };
+		29017018305BDF970031AAD2 /* Route.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Route.swift; sourceTree = "<group>"; };
+		29017019305BDF970031AAD2 /* RouteMatch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteMatch.swift; sourceTree = "<group>"; };
+		2901701A305BDF970031AAD2 /* RouterHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouterHandler.swift; sourceTree = "<group>"; };
 		290279622057EC03006DACB9 /* FAQTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FAQTableViewController.swift; sourceTree = "<group>"; };
 		290279692057F2C4006DACB9 /* Assets-Images.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Assets-Images.swift"; sourceTree = "<group>"; };
 		2902796A2057F2C5006DACB9 /* Strings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Strings.swift; sourceTree = "<group>"; };
@@ -800,7 +819,6 @@
 		290FF89D27DB533300F1DE45 /* MountDetailTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MountDetailTests.swift; sourceTree = "<group>"; };
 		290FF89F27DB626C00F1DE45 /* party.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = party.json; sourceTree = "<group>"; };
 		290FF8A227DB62F500F1DE45 /* party-members.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = "party-members.json"; sourceTree = "<group>"; };
-		290FF8A527DB634700F1DE45 /* PartyDetailTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PartyDetailTests.swift; sourceTree = "<group>"; };
 		290FF8B727DF6AB800F1DE45 /* CustomizationDetailTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomizationDetailTests.swift; sourceTree = "<group>"; };
 		291017DE2B06161400D0607B /* SubscriptionPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscriptionPage.swift; sourceTree = "<group>"; };
 		2910EFC92C16EC8700D6D1E8 /* OldAvatarDetailViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OldAvatarDetailViewDataSource.swift; sourceTree = "<group>"; };
@@ -1132,6 +1150,17 @@
 		29C1360324EBD66900DBC6B3 /* UIWindow+VisibleController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIWindow+VisibleController.swift"; sourceTree = "<group>"; };
 		29C1360524EBD7E000DBC6B3 /* FeedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewController.swift; sourceTree = "<group>"; };
 		29C1360724EE917F00DBC6B3 /* UITableView-Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView-Extensions.swift"; sourceTree = "<group>"; };
+		29C14464302B424A007B2EB3 /* GiftOneGetOnePromotion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GiftOneGetOnePromotion.swift; sourceTree = "<group>"; };
+		29C14466302B424F007B2EB3 /* Survey2021Promotion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Survey2021Promotion.swift; sourceTree = "<group>"; };
+		29C14468302B4258007B2EB3 /* SpookyExtraGemsPromotion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpookyExtraGemsPromotion.swift; sourceTree = "<group>"; };
+		29C1446A302B4260007B2EB3 /* ExtraGemsPromotion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtraGemsPromotion.swift; sourceTree = "<group>"; };
+		29C1446C302B426A007B2EB3 /* HabiticaPromotionType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabiticaPromotionType.swift; sourceTree = "<group>"; };
+		29C1446E302B4273007B2EB3 /* HabiticaWebPromotion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabiticaWebPromotion.swift; sourceTree = "<group>"; };
+		29C14470302B443A007B2EB3 /* SpringExtraGemsPromotion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpringExtraGemsPromotion.swift; sourceTree = "<group>"; };
+		29C14472302B444D007B2EB3 /* SummerExtraGemsPromotion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SummerExtraGemsPromotion.swift; sourceTree = "<group>"; };
+		29C14474302B44C3007B2EB3 /* WinterExtraGemsPromotion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WinterExtraGemsPromotion.swift; sourceTree = "<group>"; };
+		29C14476302B44D9007B2EB3 /* FlashExtraGemsPromotion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlashExtraGemsPromotion.swift; sourceTree = "<group>"; };
+		29C14478302B45A1007B2EB3 /* FallExtraGemsPromotion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FallExtraGemsPromotion.swift; sourceTree = "<group>"; };
 		29C1B6AF205952E40001D3EF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Tasks.storyboard; sourceTree = "<group>"; };
 		29C38C8424A2466400F219A1 /* AdventureGuidePromoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdventureGuidePromoView.swift; sourceTree = "<group>"; };
 		29C38C8624A256F800F219A1 /* AdventureGuideViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdventureGuideViewController.swift; sourceTree = "<group>"; };
@@ -1242,6 +1271,8 @@
 		2D736E72B3BE75DFC46328BE /* uk */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = uk; path = uk.lproj/Mainstrings.strings; sourceTree = "<group>"; };
 		328C951D24A2C13100293E16 /* LinksOnlyTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinksOnlyTextView.swift; sourceTree = "<group>"; };
 		32C6FFF126ED896400C8F682 /* PathTraceable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PathTraceable.swift; sourceTree = "<group>"; };
+		4065B2D91CD565D8E39D5036 /* ChallengeListCard.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ChallengeListCard.swift; sourceTree = "<group>"; };
+		45A03166535634BFDA9F2FFA /* ChallengeDesignTokens.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ChallengeDesignTokens.swift; sourceTree = "<group>"; };
 		49005B711F180588004830D9 /* CurrencyCountView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurrencyCountView.swift; sourceTree = "<group>"; };
 		4904C73F1F1ED87400F80723 /* GradientImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GradientImageView.swift; sourceTree = "<group>"; };
 		491C6E5A2020FE64005030A2 /* Challenge-Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Challenge-Extensions.swift"; sourceTree = "<group>"; };
@@ -1293,13 +1324,16 @@
 		7A84E1B122898E9F0081E96F /* TaskManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskManager.swift; sourceTree = "<group>"; };
 		7A84E1B6228A5CB40081E96F /* Habitica Intents.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Habitica Intents.entitlements"; sourceTree = "<group>"; };
 		7BF2BE8A390A17E6EE7EF36B /* RebirthAchievementSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RebirthAchievementSheet.swift; sourceTree = "<group>"; };
+		8613CAFBCA8EB22E006EFB65 /* EndChallengeFlow.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = EndChallengeFlow.swift; sourceTree = "<group>"; };
+		8B1FBA7F442B4D0851C436E7 /* ChallengeDetailCards.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ChallengeDetailCards.swift; sourceTree = "<group>"; };
+		A1A5560D21EEA121A70B5F89 /* ChallengeParticipantComponents.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ChallengeParticipantComponents.swift; sourceTree = "<group>"; };
 		AA835E812EBC15F400C6D779 /* project.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = project.xcconfig; sourceTree = "<group>"; };
+		B806BC76FA69844A4527B6D4 /* CheckParticipationFlow.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = CheckParticipationFlow.swift; sourceTree = "<group>"; };
 		C8415991225F8B7800989FB8 /* Habitica Snapshots.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Habitica Snapshots.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C8415993225F8B7800989FB8 /* Habitica_Snapshots.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Habitica_Snapshots.swift; sourceTree = "<group>"; };
 		C8415995225F8B7800989FB8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C841599B225F8C2900989FB8 /* SnapshotHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SnapshotHelper.swift; path = fastlane/SnapshotHelper.swift; sourceTree = SOURCE_ROOT; };
 		C85A68AE2527812400EED0D6 /* SpellTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpellTabBarController.swift; sourceTree = "<group>"; };
-		C897F63B218CCF51002907C2 /* RouterHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouterHandler.swift; sourceTree = "<group>"; };
 		C897F63D218CE052002907C2 /* Storyboard Scenes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Storyboard Scenes.swift"; sourceTree = "<group>"; };
 		C897F63E218CE052002907C2 /* Storyboard Segues.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Storyboard Segues.swift"; sourceTree = "<group>"; };
 		D902AD861B53E1B60098A1BD /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -1417,7 +1451,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2972A33E2EBB9A1E00106850 /* AmplitudeSwift in Frameworks */,
 				2953D83D28B51FA700DC456E /* ReactiveSwift in Frameworks */,
 				29D048C02E3A647F004A6AAA /* RealmSwift in Frameworks */,
 				2994A8B128FE946A00CEDED7 /* Habitica_Database.framework in Frameworks */,
@@ -1437,7 +1470,6 @@
 				2994A8B028FE946800CEDED7 /* Habitica_Database.framework in Frameworks */,
 				2938ED4028B4EEBC00E995A2 /* KeychainAccess in Frameworks */,
 				2994A8AE28FE945E00CEDED7 /* Habitica_Models.framework in Frameworks */,
-				2972A33C2EBB9A1600106850 /* AmplitudeSwift in Frameworks */,
 				2994A8B228FE947800CEDED7 /* Habitica_API_Client.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1466,6 +1498,7 @@
 				29C55B372C21AEC4008F553A /* CwlCatchException in Frameworks */,
 				29C55B302C21A1CB008F553A /* iOSSnapshotTestCase in Frameworks */,
 				2938ED4F28B5043700E995A2 /* Nimble in Frameworks */,
+				8DC32235D75BBB68FFB0DB21 /* ReactiveSwift in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1483,7 +1516,6 @@
 				2945AE972B285D000022F3CC /* PanModal in Frameworks */,
 				294F5D6628CA1DCB00760F6C /* ConfettiSwiftUI in Frameworks */,
 				2938ED4328B4EF5D00E995A2 /* SwiftyStoreKit in Frameworks */,
-				2972A33A2EBB96CC00106850 /* AmplitudeSwift in Frameworks */,
 				D92D26161D58EF00001FD977 /* AVFoundation.framework in Frameworks */,
 				29D048BA2E3A641A004A6AAA /* RealmSwift in Frameworks */,
 				292BD8AB28B4EB42006447EF /* Eureka in Frameworks */,
@@ -1516,6 +1548,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2901701B305BDF970031AAD2 /* Routing */ = {
+			isa = PBXGroup;
+			children = (
+				29017017305BDF970031AAD2 /* RegexRoute.swift */,
+				29017018305BDF970031AAD2 /* Route.swift */,
+				29017019305BDF970031AAD2 /* RouteMatch.swift */,
+				2901701A305BDF970031AAD2 /* RouterHandler.swift */,
+			);
+			path = Routing;
+			sourceTree = "<group>";
+		};
 		290279642057F005006DACB9 /* Strings */ = {
 			isa = PBXGroup;
 			children = (
@@ -1556,6 +1599,17 @@
 			isa = PBXGroup;
 			children = (
 				29066CF324FE62E700A266EE /* HabiticaPromotions.swift */,
+				29C1446E302B4273007B2EB3 /* HabiticaWebPromotion.swift */,
+				29C1446C302B426A007B2EB3 /* HabiticaPromotionType.swift */,
+				29C1446A302B4260007B2EB3 /* ExtraGemsPromotion.swift */,
+				29C14478302B45A1007B2EB3 /* FallExtraGemsPromotion.swift */,
+				29C14470302B443A007B2EB3 /* SpringExtraGemsPromotion.swift */,
+				29C14472302B444D007B2EB3 /* SummerExtraGemsPromotion.swift */,
+				29C14468302B4258007B2EB3 /* SpookyExtraGemsPromotion.swift */,
+				29C14476302B44D9007B2EB3 /* FlashExtraGemsPromotion.swift */,
+				29C14474302B44C3007B2EB3 /* WinterExtraGemsPromotion.swift */,
+				29C14466302B424F007B2EB3 /* Survey2021Promotion.swift */,
+				29C14464302B424A007B2EB3 /* GiftOneGetOnePromotion.swift */,
 			);
 			path = promotions;
 			sourceTree = "<group>";
@@ -1637,7 +1691,6 @@
 		290FF8A427DB632700F1DE45 /* Social */ = {
 			isa = PBXGroup;
 			children = (
-				290FF8A527DB634700F1DE45 /* PartyDetailTests.swift */,
 			);
 			path = Social;
 			sourceTree = "<group>";
@@ -2460,9 +2513,9 @@
 		D987393919687E46002A2426 /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
-				29CBCDA72EC4FF6D0020FC14 /* UIConstants.swift */,
-				2979D5F42EE1D1E000BB2F54 /* AuthenticationStorage.swift */,
 				299BD6391F557FE700E22935 /* AuthenticationManager.swift */,
+				2979D5F42EE1D1E000BB2F54 /* AuthenticationStorage.swift */,
+				7378D44F2E3E439100CC03B9 /* CategoryNameHelper.swift */,
 				29E162E11FFC21E100685640 /* CustomFontMetrics.swift */,
 				29706C8A27D27893006EC139 /* Emoji.swift */,
 				291424A0260CCE740069F792 /* EventHelper.swift */,
@@ -2474,20 +2527,20 @@
 				29A98592254841C500F04665 /* KeyboardManager.swift */,
 				29EBDA82232A3ABA006611E3 /* KeychainItem.swift */,
 				290922EF2242628600645D0E /* LanguageHandler.swift */,
+				2988EFC428D3583E00D703BC /* Measurements.swift */,
 				29323E1E2050563700AC6D6F /* NetworkErrorHandler.swift */,
 				29C38C8824A33E6600F219A1 /* NotificationManager.swift */,
 				29FC885120134A8F002B3D3F /* PurchaseHandler.swift */,
 				29A984D12547294E00F04665 /* RemoteLogger.swift */,
-				C897F63B218CCF51002907C2 /* RouterHandler.swift */,
+				2901701B305BDF970031AAD2 /* Routing */,
 				29C135FF24EAE07E00DBC6B3 /* SharingManager.swift */,
-				2988EFC428D3583E00D703BC /* Measurements.swift */,
 				29DBFF0020CE6FFF00DF9CF2 /* SoundManager.swift */,
 				29FC5A6320402EE2008E88C8 /* Theme Engine */,
 				290458CF2021D6C60032BC5E /* TopHeaderCoordinator.swift */,
 				291A5E6126CD35E800E9CD50 /* TutorialStepsProtocol.swift */,
+				29CBCDA72EC4FF6D0020FC14 /* UIConstants.swift */,
 				29C1360324EBD66900DBC6B3 /* UIWindow+VisibleController.swift */,
 				2919FDDC2091D5370096A53B /* UserManager.swift */,
-				7378D44F2E3E439100CC03B9 /* CategoryNameHelper.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -2711,6 +2764,12 @@
 				2956FA492F605E2700C36330 /* ChallengeLocation.swift */,
 				49A84FAF1F9FC945003E2956 /* Details */,
 				D9E02EC51E5E0458002CFCE2 /* ChallengeTableViewController.swift */,
+				45A03166535634BFDA9F2FFA /* ChallengeDesignTokens.swift */,
+				A1A5560D21EEA121A70B5F89 /* ChallengeParticipantComponents.swift */,
+				8613CAFBCA8EB22E006EFB65 /* EndChallengeFlow.swift */,
+				B806BC76FA69844A4527B6D4 /* CheckParticipationFlow.swift */,
+				4065B2D91CD565D8E39D5036 /* ChallengeListCard.swift */,
+				8B1FBA7F442B4D0851C436E7 /* ChallengeDetailCards.swift */,
 			);
 			path = Challenges;
 			sourceTree = "<group>";
@@ -2895,7 +2954,6 @@
 				2938ED3D28B4EEB200E995A2 /* KeychainAccess */,
 				2953D83C28B51FA700DC456E /* ReactiveSwift */,
 				29D048BF2E3A647F004A6AAA /* RealmSwift */,
-				2972A33D2EBB9A1E00106850 /* AmplitudeSwift */,
 			);
 			productName = "Habitica WidgetsExtension";
 			productReference = 29BEE62B252CCFE100D456F8 /* Habitica WidgetsExtension.appex */;
@@ -2919,7 +2977,6 @@
 				2938ED3F28B4EEBC00E995A2 /* KeychainAccess */,
 				2953D83A28B51F9E00DC456E /* ReactiveSwift */,
 				29D048BB2E3A6423004A6AAA /* RealmSwift */,
-				2972A33B2EBB9A1600106850 /* AmplitudeSwift */,
 			);
 			productName = "Habitica Intents";
 			productReference = 7A84E191228928AC0081E96F /* Habitica Intents.appex */;
@@ -2978,6 +3035,7 @@
 				2938ED4E28B5043700E995A2 /* Nimble */,
 				29C55B2F2C21A1CB008F553A /* iOSSnapshotTestCase */,
 				29C55B362C21AEC4008F553A /* CwlCatchException */,
+				9B4A1D28B605CDCA3A464451 /* ReactiveSwift */,
 			);
 			productName = HabiticaTests;
 			productReference = D94461831AB34F5C0015215E /* HabiticaTests.xctest */;
@@ -3025,7 +3083,6 @@
 				299336F52E8C084E00ADB6BA /* FirebaseRemoteConfig */,
 				299336F72E8C08F300ADB6BA /* FirebaseCrashlytics */,
 				299336F92E8C0A0600ADB6BA /* FirebaseMessaging */,
-				2972A3392EBB96CC00106850 /* AmplitudeSwift */,
 			);
 			productName = HabitRPG;
 			productReference = D9EB4E8B18CB4A9400BB2094 /* Habitica.app */;
@@ -3040,7 +3097,7 @@
 				BuildIndependentTargetsInParallel = YES;
 				CLASSPREFIX = HRPG;
 				LastSwiftUpdateCheck = 1320;
-				LastUpgradeCheck = 2600;
+				LastUpgradeCheck = 2700;
 				ORGANIZATIONNAME = "HabitRPG Inc.";
 				TargetAttributes = {
 					29706CA227D8B797006EC139 = {
@@ -3155,7 +3212,6 @@
 				29C55B312C21A247008F553A /* XCRemoteSwiftPackageReference "CwlCatchException" */,
 				29D048B82E3A641A004A6AAA /* XCRemoteSwiftPackageReference "realm-swift" */,
 				299336F42E8C084E00ADB6BA /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
-				2972A3382EBB96CC00106850 /* XCRemoteSwiftPackageReference "Amplitude-Swift" */,
 			);
 			productRefGroup = D9EB4E8C18CB4A9400BB2094 /* Products */;
 			projectDirPath = "";
@@ -3193,7 +3249,6 @@
 			files = (
 				2988EFC228D32C4300D703BC /* Mainstrings.strings in Resources */,
 				29BEE634252CCFE300D456F8 /* Assets.xcassets in Resources */,
-				AA835E832EBC15F400C6D779 /* project.xcconfig in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3201,7 +3256,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AA835E822EBC15F400C6D779 /* project.xcconfig in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3391,7 +3445,6 @@
 			files = (
 				29AE771F27E4D56D00CC9646 /* MainMenuTests.swift in Sources */,
 				29706CAE27D8B7D5006EC139 /* HabiticaAppTests.swift in Sources */,
-				290FF8A627DB634700F1DE45 /* PartyDetailTests.swift in Sources */,
 				290FF89427DA5BA800F1DE45 /* ItemListViewController.swift in Sources */,
 				290FF89E27DB533300F1DE45 /* MountDetailTests.swift in Sources */,
 				29706CA627D8B797006EC139 /* Habitica_UI_Tests.swift in Sources */,
@@ -3495,6 +3548,7 @@
 				29D50AD125F769520009CF55 /* Alignment-Extensions.swift in Sources */,
 				29084B3326CF97F500AD9966 /* ShopViewController.swift in Sources */,
 				498E4CFF1FA17C1A006933FF /* ChallengeCategoriesTableViewCell.swift in Sources */,
+				29C1446D302B426A007B2EB3 /* HabiticaPromotionType.swift in Sources */,
 				2909D4242722C22500FF2B29 /* InitialScreens.swift in Sources */,
 				29F4671C2E8A9DC1009643C5 /* ViewModel.swift in Sources */,
 				297517B61F30EBFC00B5BCB9 /* TaskSetupViewController.swift in Sources */,
@@ -3508,6 +3562,10 @@
 				29F9761822DDFDA50079B945 /* AchievementHeaderReusableView.swift in Sources */,
 				2973E2582ED5F51B000C2E0F /* TaskFormReminderView.swift in Sources */,
 				29DC5AC220A1C63000993400 /* SeparatedStackView.swift in Sources */,
+				2901701C305BDF970031AAD2 /* Route.swift in Sources */,
+				2901701D305BDF970031AAD2 /* RouteMatch.swift in Sources */,
+				2901701E305BDF970031AAD2 /* RegexRoute.swift in Sources */,
+				2901701F305BDF970031AAD2 /* RouterHandler.swift in Sources */,
 				29701FE01F560D310097BBCC /* UIApplication-Extensions.swift in Sources */,
 				29D16C7E25A33F70001D9A61 /* MainVCSelectionSegue.swift in Sources */,
 				2919FDDF2091D87A0096A53B /* FaintViewController.swift in Sources */,
@@ -3557,6 +3615,7 @@
 				299BD63A1F557FE700E22935 /* AuthenticationManager.swift in Sources */,
 				29BD3EB527591FBE003AD251 /* EditingFormViewController.swift in Sources */,
 				291448622084ED6F00F3A6B5 /* StableDetailViewController.swift in Sources */,
+				29C1446F302B4273007B2EB3 /* HabiticaWebPromotion.swift in Sources */,
 				295611162056ED8000D9711A /* ContentRepository.swift in Sources */,
 				29ED1AFB1F338E5D005A3895 /* SetupCustomizationRepository.swift in Sources */,
 				29E1631F200F62CB00685640 /* GroupChatViewController.swift in Sources */,
@@ -3610,6 +3669,7 @@
 				2973E2662ED5F566000C2E0F /* FormRow.swift in Sources */,
 				29FC5A6920403011008E88C8 /* ThemeService.swift in Sources */,
 				29255E491F3E1B0F0094A3E3 /* ToastView.swift in Sources */,
+				29C14469302B4258007B2EB3 /* SpookyExtraGemsPromotion.swift in Sources */,
 				290C3017206A963D0066AF5B /* MainMenuViewController.swift in Sources */,
 				2973E25C2ED5F52C000C2E0F /* DailySchedulingView.swift in Sources */,
 				D9BB45611E71CD850002AE2E /* DailyTableViewCell.swift in Sources */,
@@ -3623,6 +3683,7 @@
 				29DF933D2EC640860047801F /* GamifiedBottomSheet.swift in Sources */,
 				49E6F57D1FF9A2AE0062C8B2 /* DoubleButtonTableViewCell.swift in Sources */,
 				D9BB45631E71CE910002AE2E /* HabitTableViewCell.swift in Sources */,
+				29C14471302B443A007B2EB3 /* SpringExtraGemsPromotion.swift in Sources */,
 				2914488E2089EC5C00F3A6B5 /* AvatarOverviewViewController.swift in Sources */,
 				29CAC3CD2A3C7C61006DF74D /* PartyInviteViewController.swift in Sources */,
 				29C1360224EBD12E00DBC6B3 /* AbbreviatedNumberLabel.swift in Sources */,
@@ -3692,6 +3753,7 @@
 				2953D84228B6564A00DC456E /* ArmoireViewController.swift in Sources */,
 				29FC88602018DB64002B3D3F /* WorldBossDescriptionView.swift in Sources */,
 				29DBDE4A274BE745008F6777 /* AccountSettingsViewController.swift in Sources */,
+				29C1446B302B4260007B2EB3 /* ExtraGemsPromotion.swift in Sources */,
 				49391ED120C9C898002B2BB5 /* HabitTableViewController.swift in Sources */,
 				29028C3E203701B900B7F704 /* ChatTableViewCell.swift in Sources */,
 				29066CF424FE62E700A266EE /* HabiticaPromotions.swift in Sources */,
@@ -3723,9 +3785,10 @@
 				2909D4222722C20A00FF2B29 /* Servers.swift in Sources */,
 				49FA9FF720DC47AD0086C478 /* TaskTableViewController.swift in Sources */,
 				299F93F1246D9C49008DB702 /* PaddedTextField.swift in Sources */,
-				C897F63C218CCF51002907C2 /* RouterHandler.swift in Sources */,
+				29C14479302B45A1007B2EB3 /* FallExtraGemsPromotion.swift in Sources */,
 				2910EFCA2C16EC8700D6D1E8 /* OldAvatarDetailViewDataSource.swift in Sources */,
 				29C9BDDD2E9EA21000FC4FCA /* HabiticaButtonUI.swift in Sources */,
+				29C14473302B444D007B2EB3 /* SummerExtraGemsPromotion.swift in Sources */,
 				2956FA4E2F605E3800C36330 /* ChallengeFormPrizePage.swift in Sources */,
 				D9525F9D1E64739900C529B8 /* PaddedView.swift in Sources */,
 				2914488C2089E2D300F3A6B5 /* AvatarOverviewItemView.swift in Sources */,
@@ -3743,10 +3806,12 @@
 				29BEEB2F253EFA7300D456F8 /* MaintenanceViewController.swift in Sources */,
 				2942FAEF26777E00003F6500 /* HabiticaLogger.swift in Sources */,
 				D9BB45DA1E79A02C0002AE2E /* LabeledCheckboxView.swift in Sources */,
+				29C14465302B424A007B2EB3 /* GiftOneGetOnePromotion.swift in Sources */,
 				29A1B9B91F6ACC2F0055CF57 /* UIAlertAction-Extensions.swift in Sources */,
 				C85A68AF2527812400EED0D6 /* SpellTabBarController.swift in Sources */,
 				29FC884C2010CC8A002B3D3F /* SocialRepository.swift in Sources */,
 				498E4D031FA17C31006933FF /* ChallengeDescriptionTableViewCell.swift in Sources */,
+				29C14467302B424F007B2EB3 /* Survey2021Promotion.swift in Sources */,
 				D9BB455B1E71C52F0002AE2E /* TaskTableViewCell.swift in Sources */,
 				291E95B720988B85006EE585 /* PartyDetailViewController.swift in Sources */,
 				2956FA562F605E5200C36330 /* ChallengeFormTagsPage.swift in Sources */,
@@ -3764,6 +3829,7 @@
 				2956FA502F605E3F00C36330 /* ChallengeFormField.swift in Sources */,
 				29DE29E42F58421C0063A2CF /* ChallengesFormViewController.swift in Sources */,
 				29706C9627D64547006EC139 /* HabiticaApplication.swift in Sources */,
+				29C14475302B44C3007B2EB3 /* WinterExtraGemsPromotion.swift in Sources */,
 				29B3FEB11F9A37E3000B12CF /* BaseSettingsViewController.swift in Sources */,
 				290B62A4207F818E007287C4 /* ItemsViewDataSource.swift in Sources */,
 				D9CE90451E4CDD6200702578 /* PillView.swift in Sources */,
@@ -3836,6 +3902,7 @@
 				299CE6312CC28D4400ABA85C /* AppDelege+Maintenance.swift in Sources */,
 				29F89F1A1F47882A004E5B84 /* String-Extensions.swift in Sources */,
 				29A0318828D9F5EC00F3A1EF /* ChecklistFormView.swift in Sources */,
+				29C14477302B44D9007B2EB3 /* FlashExtraGemsPromotion.swift in Sources */,
 				298119AF1F5040DA00F9FB39 /* QuestDetailView.swift in Sources */,
 				29DC5ACB20A20A6C00993400 /* QuestTitleView.swift in Sources */,
 				299FB2AA2084BA6200422522 /* StableOverviewCell.swift in Sources */,
@@ -3918,6 +3985,12 @@
 				29A984D32547294E00F04665 /* RemoteLogger.swift in Sources */,
 				D97ED0AE1E6DBB97006C2A26 /* JoinChallengeInteractor.swift in Sources */,
 				29DF93512ECDFDB90047801F /* LevelupSheet.swift in Sources */,
+				87B69ED943E9C5CED8FC4CFF /* ChallengeDesignTokens.swift in Sources */,
+				D521896F3FF1F641B2C11B5B /* ChallengeParticipantComponents.swift in Sources */,
+				FC900D986CC601050C4F4584 /* EndChallengeFlow.swift in Sources */,
+				2526B556D5CCD0754DDFE843 /* CheckParticipationFlow.swift in Sources */,
+				6B2B86527D424DB6D2E8F6D8 /* ChallengeListCard.swift in Sources */,
+				11FBD29CC1529227B4C6DC96 /* ChallengeDetailCards.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4184,7 +4257,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = YES;
-				CURRENT_PROJECT_VERSION = 1013;
+				CURRENT_PROJECT_VERSION = 1022;
 				DEVELOPMENT_TEAM = 9Q9SMRMCNN;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -4222,7 +4295,7 @@
 				CODE_SIGN_ENTITLEMENTS = Habitica.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CURRENT_PROJECT_VERSION = 1013;
+				CURRENT_PROJECT_VERSION = 1022;
 				DERIVE_MACCATALYST_PRODUCT_BUNDLE_IDENTIFIER = NO;
 				DEVELOPMENT_ASSET_PATHS = "\"HabitRPG/Preview Assets.xcassets\"";
 				ENABLE_APP_SANDBOX = YES;
@@ -4246,8 +4319,8 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 13.0;
-				MARKETING_VERSION = 4.0.4;
+				MACOSX_DEPLOYMENT_TARGET = "$(RECOMMENDED_MACOSX_DEPLOYMENT_TARGET)";
+				MARKETING_VERSION = 4.1.0;
 				OTHER_LDFLAGS = (
 					"-ObjC",
 					"-framework",
@@ -4311,7 +4384,7 @@
 					"\"$(SDKROOT)/usr/include/libxml2\"",
 				);
 				INFOPLIST_FILE = HabiticaTests/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.7;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -4345,7 +4418,7 @@
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				INFOPLIST_FILE = "Habitica Snapshots/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 14.7;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -4379,7 +4452,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 1013;
+				CURRENT_PROJECT_VERSION = 1022;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_APP_SANDBOX = YES;
 				ENABLE_OUTGOING_NETWORK_CONNECTIONS = YES;
@@ -4387,14 +4460,14 @@
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				INFOPLIST_FILE = "Habitica Intents/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 16.6;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.6;
 				"IPHONEOS_DEPLOYMENT_TARGET[sdk=macosx*]" = 15.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 4.0.4;
+				MARKETING_VERSION = 4.1.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				OTHER_LDFLAGS = "$(inherited)";
@@ -4423,7 +4496,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 1013;
+				CURRENT_PROJECT_VERSION = 1022;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_APP_SANDBOX = YES;
 				ENABLE_OUTGOING_NETWORK_CONNECTIONS = YES;
@@ -4431,14 +4504,14 @@
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				INFOPLIST_FILE = "Habitica IntentsUI/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 16.6;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.6;
 				"IPHONEOS_DEPLOYMENT_TARGET[sdk=macosx*]" = 15.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 4.0.4;
+				MARKETING_VERSION = 4.1.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = "$(BUNDLE_ID_PREFIX).ios.Habitica.HabiticaIntentsUI";
@@ -4469,7 +4542,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 1013;
+				CURRENT_PROJECT_VERSION = 1022;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_APP_SANDBOX = YES;
 				ENABLE_OUTGOING_NETWORK_CONNECTIONS = YES;
@@ -4484,7 +4557,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 4.0.4;
+				MARKETING_VERSION = 4.1.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				OTHER_LDFLAGS = "$(inherited)";
@@ -4510,13 +4583,13 @@
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 1013;
+				CURRENT_PROJECT_VERSION = 1022;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.6;
 				MARKETING_VERSION = 1.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
@@ -4563,7 +4636,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = YES;
-				CURRENT_PROJECT_VERSION = 1013;
+				CURRENT_PROJECT_VERSION = 1022;
 				DEVELOPMENT_TEAM = 9Q9SMRMCNN;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -4601,7 +4674,7 @@
 				CODE_SIGN_ENTITLEMENTS = Habitica.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CURRENT_PROJECT_VERSION = 1013;
+				CURRENT_PROJECT_VERSION = 1022;
 				DERIVE_MACCATALYST_PRODUCT_BUNDLE_IDENTIFIER = NO;
 				DEVELOPMENT_ASSET_PATHS = "\"HabitRPG/Preview Assets.xcassets\"";
 				ENABLE_APP_SANDBOX = YES;
@@ -4625,8 +4698,8 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 13.0;
-				MARKETING_VERSION = 4.0.4;
+				MACOSX_DEPLOYMENT_TARGET = "$(RECOMMENDED_MACOSX_DEPLOYMENT_TARGET)";
+				MARKETING_VERSION = 4.1.0;
 				OTHER_LDFLAGS = (
 					"-ObjC",
 					"-framework",
@@ -4690,7 +4763,7 @@
 					"\"$(SDKROOT)/usr/include/libxml2\"",
 				);
 				INFOPLIST_FILE = HabiticaTests/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.7;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -4724,7 +4797,7 @@
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				INFOPLIST_FILE = "Habitica Snapshots/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 14.7;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -4758,7 +4831,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 1013;
+				CURRENT_PROJECT_VERSION = 1022;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_APP_SANDBOX = YES;
 				ENABLE_OUTGOING_NETWORK_CONNECTIONS = YES;
@@ -4766,14 +4839,14 @@
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				INFOPLIST_FILE = "Habitica Intents/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 16.6;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.6;
 				"IPHONEOS_DEPLOYMENT_TARGET[sdk=macosx*]" = 15.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 4.0.4;
+				MARKETING_VERSION = 4.1.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				OTHER_LDFLAGS = "$(inherited)";
@@ -4802,7 +4875,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 1013;
+				CURRENT_PROJECT_VERSION = 1022;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_APP_SANDBOX = YES;
 				ENABLE_OUTGOING_NETWORK_CONNECTIONS = YES;
@@ -4810,14 +4883,14 @@
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				INFOPLIST_FILE = "Habitica IntentsUI/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 16.6;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.6;
 				"IPHONEOS_DEPLOYMENT_TARGET[sdk=macosx*]" = 15.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 4.0.4;
+				MARKETING_VERSION = 4.1.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = "$(BUNDLE_ID_PREFIX).ios.Habitica.HabiticaIntentsUI";
@@ -4848,7 +4921,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 1013;
+				CURRENT_PROJECT_VERSION = 1022;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_APP_SANDBOX = YES;
 				ENABLE_OUTGOING_NETWORK_CONNECTIONS = YES;
@@ -4863,7 +4936,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 4.0.4;
+				MARKETING_VERSION = 4.1.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				OTHER_LDFLAGS = "$(inherited)";
@@ -4889,13 +4962,13 @@
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 1013;
+				CURRENT_PROJECT_VERSION = 1022;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.6;
 				MARKETING_VERSION = 1.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
@@ -4920,13 +4993,13 @@
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1013;
+				CURRENT_PROJECT_VERSION = 1022;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.6;
 				MARKETING_VERSION = 1.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
@@ -4954,13 +5027,13 @@
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 1013;
+				CURRENT_PROJECT_VERSION = 1022;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.6;
 				MARKETING_VERSION = 1.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
@@ -4991,7 +5064,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1013;
+				CURRENT_PROJECT_VERSION = 1022;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_APP_SANDBOX = YES;
 				ENABLE_OUTGOING_NETWORK_CONNECTIONS = YES;
@@ -5006,7 +5079,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 4.0.4;
+				MARKETING_VERSION = 4.1.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				OTHER_LDFLAGS = "$(inherited)";
@@ -5040,7 +5113,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 1013;
+				CURRENT_PROJECT_VERSION = 1022;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_APP_SANDBOX = YES;
 				ENABLE_OUTGOING_NETWORK_CONNECTIONS = YES;
@@ -5055,7 +5128,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 4.0.4;
+				MARKETING_VERSION = 4.1.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				OTHER_LDFLAGS = "$(inherited)";
@@ -5083,7 +5156,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1013;
+				CURRENT_PROJECT_VERSION = 1022;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_APP_SANDBOX = YES;
 				ENABLE_OUTGOING_NETWORK_CONNECTIONS = YES;
@@ -5091,14 +5164,14 @@
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				INFOPLIST_FILE = "Habitica IntentsUI/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 16.6;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.6;
 				"IPHONEOS_DEPLOYMENT_TARGET[sdk=macosx*]" = 15.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 4.0.4;
+				MARKETING_VERSION = 4.1.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = "$(BUNDLE_ID_PREFIX).ios.Habitica.HabiticaIntentsUI";
@@ -5128,7 +5201,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 1013;
+				CURRENT_PROJECT_VERSION = 1022;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_APP_SANDBOX = YES;
 				ENABLE_OUTGOING_NETWORK_CONNECTIONS = YES;
@@ -5136,14 +5209,14 @@
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				INFOPLIST_FILE = "Habitica IntentsUI/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 16.6;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.6;
 				"IPHONEOS_DEPLOYMENT_TARGET[sdk=macosx*]" = 15.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 4.0.4;
+				MARKETING_VERSION = 4.1.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = "$(BUNDLE_ID_PREFIX).ios.Habitica.HabiticaIntentsUI";
@@ -5170,7 +5243,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1013;
+				CURRENT_PROJECT_VERSION = 1022;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_APP_SANDBOX = YES;
 				ENABLE_OUTGOING_NETWORK_CONNECTIONS = YES;
@@ -5178,14 +5251,14 @@
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				INFOPLIST_FILE = "Habitica Intents/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 16.6;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.6;
 				"IPHONEOS_DEPLOYMENT_TARGET[sdk=macosx*]" = 15.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 4.0.4;
+				MARKETING_VERSION = 4.1.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				OTHER_LDFLAGS = "$(inherited)";
@@ -5216,7 +5289,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 1013;
+				CURRENT_PROJECT_VERSION = 1022;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_APP_SANDBOX = YES;
 				ENABLE_OUTGOING_NETWORK_CONNECTIONS = YES;
@@ -5224,14 +5297,14 @@
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				INFOPLIST_FILE = "Habitica Intents/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 16.6;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.6;
 				"IPHONEOS_DEPLOYMENT_TARGET[sdk=macosx*]" = 15.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 4.0.4;
+				MARKETING_VERSION = 4.1.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				OTHER_LDFLAGS = "$(inherited)";
@@ -5262,7 +5335,7 @@
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				INFOPLIST_FILE = "Habitica Snapshots/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 14.7;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -5301,7 +5374,7 @@
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				INFOPLIST_FILE = "Habitica Snapshots/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 14.7;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -5343,7 +5416,7 @@
 					"\"$(SDKROOT)/usr/include/libxml2\"",
 				);
 				INFOPLIST_FILE = HabiticaTests/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.7;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -5379,7 +5452,7 @@
 					"\"$(SDKROOT)/usr/include/libxml2\"",
 				);
 				INFOPLIST_FILE = HabiticaTests/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.7;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -5428,7 +5501,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 1013;
+				CURRENT_PROJECT_VERSION = 1022;
 				DEVELOPMENT_TEAM = 9Q9SMRMCNN;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
@@ -5494,7 +5567,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = YES;
-				CURRENT_PROJECT_VERSION = 1013;
+				CURRENT_PROJECT_VERSION = 1022;
 				DEVELOPMENT_TEAM = 9Q9SMRMCNN;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -5532,7 +5605,7 @@
 				CODE_SIGN_ENTITLEMENTS = Habitica.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CURRENT_PROJECT_VERSION = 1013;
+				CURRENT_PROJECT_VERSION = 1022;
 				DERIVE_MACCATALYST_PRODUCT_BUNDLE_IDENTIFIER = NO;
 				DEVELOPMENT_ASSET_PATHS = "\"HabitRPG/Preview Assets.xcassets\"";
 				ENABLE_APP_SANDBOX = YES;
@@ -5556,8 +5629,8 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 13.0;
-				MARKETING_VERSION = 4.0.4;
+				MACOSX_DEPLOYMENT_TARGET = "$(RECOMMENDED_MACOSX_DEPLOYMENT_TARGET)";
+				MARKETING_VERSION = 4.1.0;
 				OTHER_LDFLAGS = (
 					"-ObjC",
 					"-framework",
@@ -5611,7 +5684,7 @@
 				CODE_SIGN_ENTITLEMENTS = Habitica.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CURRENT_PROJECT_VERSION = 1013;
+				CURRENT_PROJECT_VERSION = 1022;
 				DERIVE_MACCATALYST_PRODUCT_BUNDLE_IDENTIFIER = NO;
 				DEVELOPMENT_ASSET_PATHS = "\"HabitRPG/Preview Assets.xcassets\"";
 				ENABLE_APP_SANDBOX = YES;
@@ -5634,8 +5707,8 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 13.0;
-				MARKETING_VERSION = 4.0.4;
+				MACOSX_DEPLOYMENT_TARGET = "$(RECOMMENDED_MACOSX_DEPLOYMENT_TARGET)";
+				MARKETING_VERSION = 4.1.0;
 				OTHER_LDFLAGS = (
 					"-ObjC",
 					"-framework",
@@ -5785,7 +5858,7 @@
 			repositoryURL = "https://github.com/openid/AppAuth-iOS.git";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 2.0.0;
+				minimumVersion = 3.0.0;
 			};
 		};
 		292BD8A328B4EAE9006447EF /* XCRemoteSwiftPackageReference "Down" */ = {
@@ -5884,14 +5957,6 @@
 				minimumVersion = 2.0.0;
 			};
 		};
-		2972A3382EBB96CC00106850 /* XCRemoteSwiftPackageReference "Amplitude-Swift" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/amplitude/Amplitude-Swift";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 1.0.0;
-			};
-		};
 		299336F42E8C084E00ADB6BA /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
@@ -5904,8 +5969,8 @@
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/SwiftUIX/SwiftUIX";
 			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 0.1.3;
+				branch = master;
+				kind = branch;
 			};
 		};
 		29AE771827E3521800CC9646 /* XCRemoteSwiftPackageReference "InputBarAccessoryView" */ = {
@@ -6033,21 +6098,6 @@
 			package = 2953D84328B7772A00DC456E /* XCRemoteSwiftPackageReference "BottomSheet" */;
 			productName = BottomSheet;
 		};
-		2972A3392EBB96CC00106850 /* AmplitudeSwift */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 2972A3382EBB96CC00106850 /* XCRemoteSwiftPackageReference "Amplitude-Swift" */;
-			productName = AmplitudeSwift;
-		};
-		2972A33B2EBB9A1600106850 /* AmplitudeSwift */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 2972A3382EBB96CC00106850 /* XCRemoteSwiftPackageReference "Amplitude-Swift" */;
-			productName = AmplitudeSwift;
-		};
-		2972A33D2EBB9A1E00106850 /* AmplitudeSwift */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 2972A3382EBB96CC00106850 /* XCRemoteSwiftPackageReference "Amplitude-Swift" */;
-			productName = AmplitudeSwift;
-		};
 		299336F52E8C084E00ADB6BA /* FirebaseRemoteConfig */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 299336F42E8C084E00ADB6BA /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
@@ -6107,6 +6157,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 29D048B82E3A641A004A6AAA /* XCRemoteSwiftPackageReference "realm-swift" */;
 			productName = RealmSwift;
+		};
+		9B4A1D28B605CDCA3A464451 /* ReactiveSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 2938ED5628B504D100E995A2 /* XCRemoteSwiftPackageReference "ReactiveSwift" */;
+			productName = ReactiveSwift;
 		};
 		A0B363042E73567D00F2E0CC /* FirebaseRemoteConfig */ = {
 			isa = XCSwiftPackageProductDependency;

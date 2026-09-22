@@ -124,7 +124,7 @@ class StringsTests: HabiticaTests {
         expect(L10n.saleEndsIn("Test")).toNot(beNil())
         expect(L10n.sell(10)).toNot(beNil())
         expect(L10n.subscriptionDuration("Test")).toNot(beNil())
-        expect(L10n.subscriptionInfo3DescriptionNew("Test")).toNot(beNil())
+        expect(L10n.subscriptionInfo3DescriptionGear("Test", "Test2")).toNot(beNil())
         expect(L10n.suggestPetHatchMissingEgg("Test")).toNot(beNil())
         expect(L10n.suggestPetHatchMissingPotion("Test")).toNot(beNil())
         expect(L10n.suggestPetHatchMissingBoth("Test", "Test2")).toNot(beNil())

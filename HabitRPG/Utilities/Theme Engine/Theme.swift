@@ -50,6 +50,19 @@ public protocol Theme {
     var tintedMainUI: UIColor { get }
     var tintedSubUI: UIColor { get }
     var tintedDetailsUI: UIColor { get }
+
+    var menuHeaderBackground: UIColor { get }
+    var menuHeaderText: UIColor { get }
+    var menuHeaderIcon: UIColor { get }
+    var menuHeaderBubble: UIColor { get }
+    var menuHeaderBubbleText: UIColor { get }
+    var menuBackground: UIColor { get }
+    var menuIcon: UIColor { get }
+    var menuText: UIColor { get }
+    var menuLockBackground: UIColor { get }
+    var menuLockIcon: UIColor { get }
+    var menuPillBackground: UIColor { get }
+    var menuPillText: UIColor { get }
 }
 
 public protocol DarkTheme: Theme {
@@ -98,7 +111,20 @@ extension Theme {
     public var tintedMainUI: UIColor { return UIColor.purple500 }
     public var tintedSubUI: UIColor { return UIColor.purple400 }
     public var tintedDetailsUI: UIColor { return UIColor.purple100 }
-    
+
+    public var menuHeaderBackground: UIColor { return navbarHiddenColor }
+    public var menuHeaderText: UIColor { return menuHeaderBackground.isLight() ? UIColor.gray50 : lightTextColor }
+    public var menuHeaderIcon: UIColor { return menuHeaderText }
+    public var menuHeaderBubble: UIColor { return UIColor.purple100 }
+    public var menuHeaderBubbleText: UIColor { return UIColor.white }
+    public var menuBackground: UIColor { return UIColor.purpleWhite }
+    public var menuIcon: UIColor { return UIColor.purple400 }
+    public var menuText: UIColor { return UIColor.purple100 }
+    public var menuLockBackground: UIColor { return UIColor.purple600 }
+    public var menuLockIcon: UIColor { return UIColor.purple50 }
+    public var menuPillBackground: UIColor { return UIColor.purple400 }
+    public var menuPillText: UIColor { return UIColor.white }
+
     public func applyContentBackgroundColor(views: [UIView]) {
         applyBackgroundColor(views: views, color: contentBackgroundColor)
     }
@@ -146,4 +172,10 @@ extension DarkTheme {
     public var tintedSubtleUI: UIColor { return UIColor.purple500.withAlphaComponent(0.12) }
     public var tintedMainText: UIColor { return UIColor.purple500 }
     public var tintedSubText: UIColor { return UIColor.purple500 }
+
+    public var menuBackground: UIColor { return UIColor.black }
+    public var menuIcon: UIColor { return UIColor.purple500 }
+    public var menuText: UIColor { return UIColor.purpleWhite }
+    public var menuLockBackground: UIColor { return UIColor.purple100 }
+    public var menuLockIcon: UIColor { return UIColor.purple500 }
 }

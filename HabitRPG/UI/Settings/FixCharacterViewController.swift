@@ -160,11 +160,10 @@ class FixCharacterViewController: BaseTableViewController {
         let value = stats[identifierFor(index: item)]
         if let intValue = value as? Int {
             valueField.text = String(intValue)
-            valueField.keyboardType = .numberPad
         } else if let floatValue = value as? Float {
             valueField.text = floatValue == floatValue.rounded() ? String(format: "%.0f", floatValue) : "\(floatValue)"
-            valueField.keyboardType = .decimalPad
         }
+        valueField.keyboardType = .numberPad
         let isDark = ThemeService.shared.theme.isDark
         switch item {
         case 0:
@@ -217,12 +216,7 @@ class FixCharacterViewController: BaseTableViewController {
     
     @IBAction func textFieldChanged(_ sender: UITextField) {
         if let cell = sender.superview?.superview?.superview as? UITableViewCell, let indexPath = tableView.indexPath(for: cell) {
-            let value = stats[identifierFor(index: indexPath.item)]
-            if value is Int {
-                stats[identifierFor(index: indexPath.item)] = Int(sender.text ?? "") ?? Float(sender.text ?? "") ?? 0
-            } else if value is Float {
-                stats[identifierFor(index: indexPath.item)] = Float(sender.text ?? "") ?? 0
-            }
+            stats[identifierFor(index: indexPath.item)] = Int(sender.text ?? "") ?? 0
         }
     }
     

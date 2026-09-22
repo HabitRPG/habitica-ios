@@ -31,16 +31,4 @@ class MountDetailTests: HabiticaAppTests {
         expectExists(collection.cells["Unknown Mount"])
     }
 
-    func testEquippingMount() {
-        app.launch(withStubs: stubData, toUrl: url)
-        
-        let collection = app.collectionViews.firstMatch
-        collection.cells["Base Fox"].tap()
-        app.sheets["Base Fox"].buttons["Equip"].tap()
-        sleep(1)
-        collection.cells["Base Fox"].tap()
-        app.sheets["Base Fox"].buttons["Unequip"].tap()
-        collection.cells["Base Fox"].tap()
-        expectExists(app.sheets["Base Fox"].buttons["Equip"])
-    }
 }

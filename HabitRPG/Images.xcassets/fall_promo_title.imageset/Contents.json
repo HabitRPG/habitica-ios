@@ -1,17 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "fall_promo_title.png",
+      "filename" : "Combined Shape.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "fall_promo_title@2x.png",
+      "filename" : "Combined Shape@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "fall_promo_title@3x.png",
+      "filename" : "Combined Shape@3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }

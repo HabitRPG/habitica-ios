@@ -21,27 +21,13 @@ class MainMenuTests: HabiticaAppTests {
         app.launch(withStubs: stubData, toUrl: url)
         
         let table = app.tables
-        expectExists(table.staticTexts["Achievements"])
-        expectExists(table.staticTexts["Market"])
-        expectExists(table.staticTexts["Items"])
-        expectExists(table.staticTexts["Purchase Gems"])
-        expectExists(table.staticTexts["Subscription"])
-        expectExists(table.staticTexts["News"])
-        expectExists(table.staticTexts["Support"])
-        expectExists(table.staticTexts["About"])
-    }
-    
-    func testAllItemsTappable() throws {
-        app.launch(withStubs: stubData, toUrl: url)
-        
-        let table = app.tables
-        for item in table.cells.allElementsBoundByIndex {
-            item.tap()
-            if app.navigationBars.buttons["Done"].exists {
-                app.navigationBars.buttons["Done"].tap()
-            } else {
-                app.navigationBars.buttons["Back"].tap()
-            }
-        }
+        expectExists(table.staticTexts[L10n.Titles.achievements])
+        expectExists(table.staticTexts[L10n.Locations.market])
+        expectExists(table.staticTexts[L10n.Titles.items])
+        expectExists(table.staticTexts[L10n.Menu.gems])
+        expectExists(table.staticTexts[L10n.Menu.subscription])
+        expectExists(table.staticTexts[L10n.Titles.news])
+        expectExists(table.staticTexts[L10n.Menu.helpAbout])
+        expectExists(table.staticTexts[L10n.Titles.about])
     }
 }

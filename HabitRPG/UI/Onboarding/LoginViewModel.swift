@@ -158,7 +158,7 @@ class LoginViewModel: ObservableObject {
     
     func performAppleLogin(identityToken: String, name: String) {
         let content = decode(jwtToken: identityToken)
-        if let email = content["email"] as? String, !email.contains("privaterelay.appleid.com") {
+        if let email = content["email"] as? String {
             self.email = email
         } else if email.isEmpty {
             needsEmailField = true
@@ -305,14 +305,10 @@ class LoginViewModel: ObservableObject {
     func prefillUsername() {
         if email.isValidEmail() {
             username = String(email.split(separator: "@").first ?? "").replacing(/[\s+]/, with: "")
+            if username.count > 20 {
+                username = String(username[..<username.index(username.startIndex, offsetBy: 20)])
+            }
             verifyUsername(initial: true)
         }
     }
-}
-
-func isValidEmail(email: String?) -> Bool {
-    let emailRegEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}"
-
-    let emailTest = NSPredicate(format: "SELF MATCHES %@", emailRegEx)
-    return emailTest.evaluate(with: email)
 }

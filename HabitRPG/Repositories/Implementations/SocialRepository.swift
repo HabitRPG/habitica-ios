@@ -58,8 +58,8 @@ class SocialRepository: BaseRepository<SocialLocalRepository> {
         })
     }
     
-    func retrieveChallenges(page: Int, memberOnly: Bool) -> Signal<[ChallengeProtocol]?, Never> {
-        if page == 0 {
+    func retrieveChallenges(page: Int, memberOnly: Bool, clearCache: Bool = true) -> Signal<[ChallengeProtocol]?, Never> {
+        if page == 0 && clearCache {
             localRepository.deleteAllChallenges()
         }
         
@@ -197,7 +197,7 @@ class SocialRepository: BaseRepository<SocialLocalRepository> {
                 return SignalProducer.empty
             })
             .flatMap(.concat, {[weak self] (group) -> SignalProducer<GroupProtocol?, Never> in
-                if retrieveIfNotFound, let weakSelf = self {
+                if group == nil && retrieveIfNotFound, let weakSelf = self {
                     return SignalProducer(weakSelf.retrieveGroup(groupID: groupID))
                 } else {
                     return SignalProducer(value: group)
@@ -360,18 +360,32 @@ class SocialRepository: BaseRepository<SocialLocalRepository> {
     }
     
     public func createChallenge(challenge: ChallengeProtocol) -> Signal<ChallengeProtocol?, Error> {
-        localRepository.save(challenge)
         let call = CreateChallengeCall(challenge: challenge)
-        
+
         return call.httpResponseSignal.promoteError().flatMap(.latest, { response in
             if response.statusCode == 201 {
                 return SignalProducer(value: response)
             } else {
                 return SignalProducer(error: NSError(domain: "", code: -1))
             }
-        }).flatMap(.latest, { _ in
-            return call.objectSignal
+        }).flatMap(.latest, {[weak self] _ in
+            return call.objectSignal.on(value: {[weak self] returnedChallenge in
+                self?.saveOwnedChallenge(returnedChallenge, sentChallenge: challenge)
+            })
         })
+    }
+
+    private func saveOwnedChallenge(_ returnedChallenge: ChallengeProtocol?, sentChallenge: ChallengeProtocol) {
+        guard let returnedChallenge = returnedChallenge, returnedChallenge.id != nil else {
+            return
+        }
+        if returnedChallenge.leaderID == nil {
+            returnedChallenge.leaderID = currentUserId
+        }
+        if returnedChallenge.groupID == nil {
+            returnedChallenge.groupID = sentChallenge.groupID
+        }
+        localRepository.save(returnedChallenge)
     }
     
     public func updateChallenge(challenge: ChallengeProtocol) -> Signal<ChallengeProtocol?, Never> {
@@ -415,7 +429,48 @@ class SocialRepository: BaseRepository<SocialLocalRepository> {
             ToastManager.show(text: L10n.leftChallenge, color: .green)
         })
     }
-    
+
+    public func deleteChallenge(challengeID: String) -> Signal<EmptyResponseProtocol?, Never> {
+        let call = DeleteChallengeCall(challengeID: challengeID)
+        return call.objectSignal.on(value: {[weak self] _ in
+            self?.localRepository.deleteChallenge(challengeID: challengeID)
+        }).flatMap(.latest, {[weak self] response -> Signal<EmptyResponseProtocol?, Never> in
+            return self?.userRepository.retrieveUser().map({ _ in response }) ?? Signal.empty
+        })
+    }
+
+    public func selectChallengeWinner(challengeID: String, winnerID: String) -> Signal<EmptyResponseProtocol?, Never> {
+        let call = SelectChallengeWinnerCall(challengeID: challengeID, winnerID: winnerID)
+        return call.objectSignal.on(value: {[weak self] _ in
+            self?.localRepository.deleteChallenge(challengeID: challengeID)
+        }).flatMap(.latest, {[weak self] response -> Signal<EmptyResponseProtocol?, Never> in
+            return self?.userRepository.retrieveUser().map({ _ in response }) ?? Signal.empty
+        })
+    }
+
+    public func retrieveChallengeMembers(challengeID: String, includeAllPublicFields: Bool = true, lastID: String? = nil, search: String? = nil) -> Signal<[MemberProtocol]?, Never> {
+        return RetrieveChallengeMembersCall(challengeID: challengeID, includeAllPublicFields: includeAllPublicFields, lastID: lastID, search: search).arraySignal
+    }
+
+    public func retrieveChallengeMemberProgress(challengeID: String, memberID: String) -> Signal<ChallengeMemberProgressProtocol?, Never> {
+        return RetrieveChallengeMemberProgressCall(challengeID: challengeID, memberID: memberID).objectSignal
+    }
+
+    public func cloneChallenge(challengeID: String, challenge: ChallengeProtocol) -> Signal<ChallengeProtocol?, Error> {
+        let call = CloneChallengeCall(challengeID: challengeID, challenge: challenge)
+        return call.httpResponseSignal.promoteError().flatMap(.latest, { response -> SignalProducer<HTTPURLResponse, Error> in
+            if response.statusCode >= 200 && response.statusCode < 300 {
+                return SignalProducer(value: response)
+            } else {
+                return SignalProducer(error: NSError(domain: "", code: -1))
+            }
+        }).flatMap(.latest, {[weak self] _ in
+            return call.objectSignal.on(value: {[weak self] clonedChallenge in
+                self?.saveOwnedChallenge(clonedChallenge, sentChallenge: challenge)
+            })
+        })
+    }
+
     public func getMessagesThreads() -> SignalProducer<ReactiveResults<[InboxConversationProtocol]>, ReactiveSwiftRealmError> {
         return currentUserIDProducer.skipNil().flatMap(.latest, {[weak self] (userID) in
             return self?.localRepository.getMessagesThreads(userID: userID) ?? SignalProducer.empty

@@ -133,6 +133,7 @@
 		29DF933F2ECB6B560047801F /* NotificationCardReceivedProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29DF933E2ECB6B4F0047801F /* NotificationCardReceivedProtocol.swift */; };
 		29E31C2A290C005C004BB386 /* AssignedDetailsProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29E31C29290C005C004BB386 /* AssignedDetailsProtocol.swift */; };
 		29EBDA7923290E04006611E3 /* InboxConversation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29EBDA7823290E04006611E3 /* InboxConversation.swift */; };
+		783C010A64130E01CD7A6629 /* ChallengeMemberProgressProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F59FF528CC959A226E37ED1 /* ChallengeMemberProgressProtocol.swift */; };
 		DC2C4767C68C2D9F295C7804 /* ProfileProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC2C4B6483B722EF73FA7153 /* ProfileProtocol.swift */; };
 		DC2C49AA09AF07160BDB05BF /* PreferencesProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC2C4C19F7CA64826BF23A5A /* PreferencesProtocol.swift */; };
 		DC2C4D71684BDBCF39F84273 /* FlagsProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC2C4E928EBDE3260EBA94B5 /* FlagsProtocol.swift */; };
@@ -278,6 +279,7 @@
 		29DF933E2ECB6B4F0047801F /* NotificationCardReceivedProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationCardReceivedProtocol.swift; sourceTree = "<group>"; };
 		29E31C29290C005C004BB386 /* AssignedDetailsProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssignedDetailsProtocol.swift; sourceTree = "<group>"; };
 		29EBDA7823290E04006611E3 /* InboxConversation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InboxConversation.swift; sourceTree = "<group>"; };
+		7F59FF528CC959A226E37ED1 /* ChallengeMemberProgressProtocol.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ChallengeMemberProgressProtocol.swift; sourceTree = "<group>"; };
 		AA835E7F2EBC102600C6D779 /* project.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = project.xcconfig; sourceTree = "<group>"; };
 		DC2C4B6483B722EF73FA7153 /* ProfileProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileProtocol.swift; sourceTree = "<group>"; };
 		DC2C4C19F7CA64826BF23A5A /* PreferencesProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreferencesProtocol.swift; sourceTree = "<group>"; };
@@ -328,6 +330,7 @@
 				2927269920B6FB61009DD08A /* ChallengeProtocol.swift */,
 				2927269B20B6FD34009DD08A /* ChallengeCategory.swift */,
 				292844E820DD17DC0011DC43 /* GroupInvitationProtocol.swift */,
+				7F59FF528CC959A226E37ED1 /* ChallengeMemberProgressProtocol.swift */,
 			);
 			path = Group;
 			sourceTree = "<group>";
@@ -581,7 +584,7 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = YES;
 				LastSwiftUpdateCheck = 0920;
-				LastUpgradeCheck = 1510;
+				LastUpgradeCheck = 2700;
 				ORGANIZATIONNAME = "HabitRPG Inc.";
 				TargetAttributes = {
 					298FB9CF204D9403004DDACC = {
@@ -758,6 +761,7 @@
 				295E9DE820B3263E00D58D45 /* ShopCategoryProtocol.swift in Sources */,
 				29DBFF0B20D15A4A00DF9CF2 /* UserNewMessagesProtocol.swift in Sources */,
 				29A984CD2547293E00F04665 /* Constants.swift in Sources */,
+				783C010A64130E01CD7A6629 /* ChallengeMemberProgressProtocol.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -847,6 +851,7 @@
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				VERSIONING_SYSTEM = "apple-generic";
@@ -911,6 +916,7 @@
 				MODULE_VERIFIER_SUPPORTED_LANGUAGE_STANDARDS = "gnu11 gnu++14";
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				VALIDATE_PRODUCT = YES;
@@ -923,7 +929,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = AA835E7F2EBC102600C6D779 /* project.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
 				APPLICATION_EXTENSION_API_ONLY = YES;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
@@ -935,7 +940,7 @@
 				ENABLE_MODULE_VERIFIER = YES;
 				INFOPLIST_FILE = "Habitica Models/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -954,7 +959,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = AA835E7F2EBC102600C6D779 /* project.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
 				APPLICATION_EXTENSION_API_ONLY = YES;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
@@ -966,7 +970,7 @@
 				ENABLE_MODULE_VERIFIER = YES;
 				INFOPLIST_FILE = "Habitica Models/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -984,10 +988,9 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = AA835E7F2EBC102600C6D779 /* project.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = "Habitica ModelsTests/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 14.7;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1004,10 +1007,9 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = AA835E7F2EBC102600C6D779 /* project.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = "Habitica ModelsTests/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 14.7;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1084,6 +1086,7 @@
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				VERSIONING_SYSTEM = "apple-generic";
@@ -1095,7 +1098,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = AA835E7F2EBC102600C6D779 /* project.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
 				APPLICATION_EXTENSION_API_ONLY = YES;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
@@ -1108,7 +1110,7 @@
 				ENABLE_MODULE_VERIFIER = YES;
 				INFOPLIST_FILE = "Habitica Models/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1127,10 +1129,9 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = AA835E7F2EBC102600C6D779 /* project.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = "Habitica ModelsTests/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 14.7;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1207,6 +1208,7 @@
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				VERSIONING_SYSTEM = "apple-generic";
@@ -1218,7 +1220,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = AA835E7F2EBC102600C6D779 /* project.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
 				APPLICATION_EXTENSION_API_ONLY = YES;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
@@ -1231,7 +1232,7 @@
 				ENABLE_MODULE_VERIFIER = YES;
 				INFOPLIST_FILE = "Habitica Models/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1250,10 +1251,9 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = AA835E7F2EBC102600C6D779 /* project.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = "Habitica ModelsTests/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 14.7;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

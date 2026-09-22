@@ -8,74 +8,82 @@
 
 import XCTest
 @testable import Habitica
-@testable import ReactiveCocoa
-@testable import ReactiveSwift
 
 class LoginViewModelTests: XCTestCase {
-    
+
     var viewModel = LoginViewModel()
-    
-    private let isFormValidObserver = TestObserver<Bool, Never>()
-    private let emailVisibilityObserver = TestObserver<Bool, Never>()
-    private let passwordRepeatVisibilityObserver = TestObserver<Bool, Never>()
-    private let loginButtonTitleObserver = TestObserver<String, Never>()
-    private let usernameFieldTitleObserver = TestObserver<String, Never>()
-    private let authTypeButtonTitleObserver = TestObserver<String, Never>()
-    
+
     override func setUp() {
         super.setUp()
-        self.viewModel = LoginViewModel()
-        
-        self.viewModel.outputs.isFormValid.observe(self.isFormValidObserver.observer)
-        self.viewModel.outputs.emailFieldVisibility.observe(self.emailVisibilityObserver.observer)
-        self.viewModel.outputs.passwordRepeatFieldVisibility.observe(self.passwordRepeatVisibilityObserver.observer)
-        self.viewModel.outputs.loginButtonTitle.observe(self.loginButtonTitleObserver.observer)
-        self.viewModel.outputs.usernameFieldTitle.observe(self.usernameFieldTitleObserver.observer)
-        self.viewModel.outputs.authTypeButtonTitle.observe(self.authTypeButtonTitleObserver.observer)
+        viewModel = LoginViewModel()
     }
-    
-    func testShowsEmptyLoginForm() {
-        self.viewModel.inputs.setAuthType(authType: LoginViewAuthType.login)
-        self.isFormValidObserver.assertLastValue(value: false)
-        self.emailVisibilityObserver.assertLastValue(value: false)
-        self.passwordRepeatVisibilityObserver.assertLastValue(value: false)
+
+    func testCanSubmitUsernameRequiresAcceptedTermsAndValidUsername() {
+        XCTAssertFalse(viewModel.canSubmitUsername)
+
+        viewModel.acceptedTerms = true
+        XCTAssertFalse(viewModel.canSubmitUsername)
+
+        viewModel.usernameValid = false
+        XCTAssertFalse(viewModel.canSubmitUsername)
+
+        viewModel.usernameValid = true
+        XCTAssertTrue(viewModel.canSubmitUsername)
+
+        viewModel.acceptedTerms = false
+        XCTAssertFalse(viewModel.canSubmitUsername)
     }
-    
-    func testShowsEmptyRegisterForm() {
-        self.viewModel.inputs.setAuthType(authType: LoginViewAuthType.register)
-        self.isFormValidObserver.assertLastValue(value: false)
-        self.emailVisibilityObserver.assertLastValue(value: true)
-        self.passwordRepeatVisibilityObserver.assertLastValue(value: true)
+
+    func testVerifyUsernameResetsStateForEmptyUsername() {
+        viewModel.usernameValid = true
+        viewModel.usernameIssues = ["taken"]
+        viewModel.username = ""
+
+        viewModel.verifyUsername()
+
+        XCTAssertNil(viewModel.usernameValid)
+        XCTAssertEqual(viewModel.usernameIssues, [])
     }
-    
-    func testValidatesLoginForm() {
-        self.viewModel.inputs.setAuthType(authType: LoginViewAuthType.login)
-        self.isFormValidObserver.assertLastValue(value: false)
-        self.viewModel.inputs.usernameChanged(username: "test")
-        self.viewModel.inputs.passwordChanged(password: "test")
-        
-        self.isFormValidObserver.assertLastValue(value: true)
+
+    func testPrefillUsernameDoesNothingForInvalidEmail() {
+        viewModel.email = "not-an-email"
+        viewModel.username = ""
+
+        viewModel.prefillUsername()
+
+        XCTAssertEqual(viewModel.username, "")
     }
-    
-    func testValidatesRegisterForm() {
-        self.viewModel.inputs.setAuthType(authType: LoginViewAuthType.register)
-        self.isFormValidObserver.assertLastValue(value: false)
-        self.viewModel.inputs.usernameChanged(username: "test")
-        self.viewModel.inputs.emailChanged(email: "test@test.com")
-        self.viewModel.inputs.passwordChanged(password: "test")
-        self.viewModel.inputs.passwordRepeatChanged(passwordRepeat: "test")
-        
-        self.isFormValidObserver.assertLastValue(value: true)
+
+    func testInitialState() {
+        XCTAssertFalse(viewModel.showUsernameView)
+        XCTAssertFalse(viewModel.acceptedTerms)
+        XCTAssertFalse(viewModel.needsEmailField)
+        XCTAssertNil(viewModel.usernameValid)
+        XCTAssertEqual(viewModel.usernameIssues, [])
     }
-    
-    func testInvalidatesRegisterFormNonmatchingPasswords() {
-        self.viewModel.inputs.setAuthType(authType: LoginViewAuthType.register)
-        self.isFormValidObserver.assertLastValue(value: false)
-        self.viewModel.inputs.usernameChanged(username: "test")
-        self.viewModel.inputs.emailChanged(email: "test@test.com")
-        self.viewModel.inputs.passwordChanged(password: "test")
-        self.viewModel.inputs.passwordRepeatChanged(passwordRepeat: "test2")
-        
-        self.isFormValidObserver.assertLastValue(value: false)
+}
+
+class LoginViewModelJWTTests: XCTestCase {
+
+    func testDecodeJWTTokenExtractsPayloadClaims() {
+        let jwt = "header.eyJlbWFpbCI6ICJ0ZXN0QGV4YW1wbGUuY29tIiwgInN1YiI6ICIxMjM0NTY3ODkwIn0.signature"
+
+        let payload = decode(jwtToken: jwt)
+
+        XCTAssertEqual(payload["email"] as? String, "test@example.com")
+        XCTAssertEqual(payload["sub"] as? String, "1234567890")
+    }
+
+    func testDecodeJWTTokenReturnsEmptyDictionaryForInvalidPayload() {
+        let jwt = "header.not-valid-base64!!!.signature"
+
+        let payload = decode(jwtToken: jwt)
+
+        XCTAssertTrue(payload.isEmpty)
+    }
+
+    func testIsValidEmailFunction() {
+        XCTAssertTrue("test@example.com".isValidEmail())
+        XCTAssertFalse("not-an-email".isValidEmail())
     }
 }

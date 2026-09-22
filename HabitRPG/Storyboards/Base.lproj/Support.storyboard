@@ -763,16 +763,15 @@
                                                             <constraint firstAttribute="height" constant="8" id="a7j-zL-4Mj"/>
                                                         </constraints>
                                                     </view>
-                                                    <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" pointerInteraction="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nFw-69-K7d">
-                                                        <rect key="frame" x="0.0" y="61" width="414" height="34.5"/>
+                                                    <button opaque="NO" contentMode="scaleToFill" verticalCompressionResistancePriority="1000" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="custom" lineBreakMode="middleTruncation" pointerInteraction="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nFw-69-K7d">
+                                                        <rect key="frame" x="0.0" y="61" width="414" height="44"/>
                                                         <constraints>
-                                                            <constraint firstAttribute="height" priority="500" constant="38" id="Vxe-9f-Cgh"/>
+                                                            <constraint firstAttribute="height" constant="44" id="Vxe-9f-Cgh"/>
                                                         </constraints>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                        <state key="normal" title="Button"/>
-                                                        <buttonConfiguration key="configuration" style="filled" title="Button">
-                                                            <fontDescription key="titleFontDescription" type="system" pointSize="17"/>
-                                                        </buttonConfiguration>
+                                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="16"/>
+                                                        <state key="normal" title="Button">
+                                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        </state>
                                                         <connections>
                                                             <action selector="reportBugButtonTapped:" destination="UI6-xH-IfR" eventType="touchUpInside" id="xXD-Fx-V8a"/>
                                                         </connections>

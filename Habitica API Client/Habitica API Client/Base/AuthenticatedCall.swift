@@ -79,6 +79,8 @@ public class AuthenticatedCall: JsonNetworkCall {
         return headers
     }
     
+    public override var requiresAuthentication: Bool { return needsAuthentication }
+
     public override func fire() {
         queue.async {
             if self.needsAuthentication {

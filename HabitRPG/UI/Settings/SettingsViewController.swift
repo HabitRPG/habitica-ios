@@ -39,6 +39,7 @@ enum SettingsTags {
     static let initialTaskBoard = "initialTaskBoard"
     static let manuallyRestartDay = "manuallyRestartDay"
     static let pauseDamage = "pauseDamage"
+    static let activePromo = "activePromo"
 }
 
 // swiftlint:disable:next type_body_length
@@ -230,6 +231,22 @@ class SettingsViewController: FormViewController, Themeable {
                     appDelegate?.updateServer()
                 })
         }
+        <<< AlertRow<LabeledFormValue<String>>(SettingsTags.activePromo) { row in
+            row.title = L10n.Settings.activePromotion
+            row.hidden = true
+            
+            row.options = HabiticaPromotions.all.map({ (promo) -> LabeledFormValue<String> in
+                return LabeledFormValue(value: promo.rawValue, label: promo.niceName)
+            })
+            row.cellUpdate({ (cell, _) in
+                cell.textLabel?.textColor = ThemeService.shared.theme.primaryTextColor
+                cell.textLabel?.textAlignment = .natural
+                cell.backgroundColor = ThemeService.shared.theme.windowBackgroundColor
+            })
+            row.onChange({ (row) in
+                UserDefaults().set(row.value?.value, forKey: "activePromo")
+            })
+    }
         <<< ButtonRow(SettingsTags.customUrl) { row in
             row.hidden = true
             row.cellStyle = .subtitle
@@ -246,7 +263,7 @@ class SettingsViewController: FormViewController, Themeable {
                 self?.userRepository.cancelSubscription()
             })
     }
-    
+
     private func setupUserSection() {
         form +++ Section(L10n.Settings.user)
             <<< ButtonRow(SettingsTags.myAccount) { row in
@@ -706,9 +723,8 @@ class SettingsViewController: FormViewController, Themeable {
                         return
                     }
                     if let newTheme = ThemeName(rawValue: row.value?.value ?? "") {
+                        UserDefaults.standard.set(newTheme.rawValue, forKey: "theme")
                         ThemeService.shared.theme = newTheme.themeClass
-                        let defaults = UserDefaults.standard
-                        defaults.set(newTheme.rawValue, forKey: "theme")
                     }
                 })
                 row.onPresent({ (_, to) in
@@ -876,18 +892,19 @@ class SettingsViewController: FormViewController, Themeable {
         if configRepository.testingLevel.isTrustworthy {
             let serverRow = (form.rowBy(tag: SettingsTags.server) as? AlertRow<LabeledFormValue<String>>)
             serverRow?.hidden = false
+            let activePromoRow = (form.rowBy(tag: SettingsTags.activePromo) as? AlertRow<LabeledFormValue<String>>)
+            activePromoRow?.hidden = false
             let cancelSubRow = (form.rowBy(tag: SettingsTags.cancelSubscription))
             cancelSubRow?.hidden = false
             let themeRow = (form.rowBy(tag: SettingsTags.themeColor) as? PushRow<LabeledFormValue<String>>)
-            let customTheme = ThemeName.custom
-            themeRow?.options?.append(LabeledFormValue(value: customTheme.rawValue, label: customTheme.niceName))
             themeRow?.updateCell()
             serverRow?.evaluateHidden()
+            activePromoRow?.evaluateHidden()
             cancelSubRow?.evaluateHidden()
         }
         
         let customUrlEnabled = UserDefaults.standard.bool(forKey: "customUrlEnabled")
-        if (customUrlEnabled) {
+        if customUrlEnabled {
             let chosenServer = UserDefaults.standard.string(forKey: "chosenServer")
             let serverRow = (form.rowBy(tag: SettingsTags.server) as? AlertRow<LabeledFormValue<String>>)
             let customUrlRow = (form.rowBy(tag: SettingsTags.customUrl) as? ButtonRow)

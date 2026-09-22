@@ -28,12 +28,18 @@ class ChallengeTableViewCell: UITableViewCell {
         self.memberCountLabel.text = String(challenge.memberCount)
 
         self.officialBadge.isHidden = !challenge.official
-        self.participatingBadge.isHidden = !isParticipating
+        self.participatingBadge.isHidden = true
         self.ownerBadge.isHidden = !isOwner
-        
-        prizeLabel.textColor = UIColor.green100
+
+        prizeLabel.textColor = ThemeService.shared.theme.secondaryTextColor
         summaryLabel.textColor = ThemeService.shared.theme.secondaryTextColor
-        memberCountLabel.textColor = ThemeService.shared.theme.secondaryTextColor
+        if isParticipating {
+            memberCountLabel.textColor = UIColor.green10
+            memberCountLabel.font = UIFont.systemFont(ofSize: 14, weight: .bold)
+        } else {
+            memberCountLabel.textColor = ThemeService.shared.theme.secondaryTextColor
+            memberCountLabel.font = UIFont.systemFont(ofSize: 14, weight: .semibold)
+        }
         
         prizeLabel.backgroundColor = .clear
         nameLabel.backgroundColor = .clear

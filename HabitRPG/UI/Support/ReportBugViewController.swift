@@ -53,7 +53,7 @@ class ReportBugViewController: BaseUIViewController, MFMailComposeViewController
         mainStackView.isLayoutMarginsRelativeArrangement = true
         mainStackView.layoutMargins = UIEdgeInsets(top: 0, left: 16, bottom: 0, right: 16)
         moreHelpStackView.isLayoutMarginsRelativeArrangement = true
-        moreHelpStackView.layoutMargins = UIEdgeInsets(top: 30, left: 0, bottom: 0, right: 0)
+        moreHelpStackView.layoutMargins = UIEdgeInsets(top: 30, left: 16, bottom: 0, right: 16)
         knownIssuesStackView.isLayoutMarginsRelativeArrangement = true
         knownIssuesStackView.layoutMargins = UIEdgeInsets(top: 0, left: 15, bottom: 0, right: 0)
         knownIssuesStackView.separatorBetweenItems = true
@@ -72,7 +72,7 @@ class ReportBugViewController: BaseUIViewController, MFMailComposeViewController
         updateAppBackground.cornerRadius = UIConstants.largeCornerRadius
         clearCacheBackground.cornerRadius = UIConstants.largeCornerRadius
         manualSyncBackground.cornerRadius = UIConstants.largeCornerRadius
-        moreHelpButton.cornerRadius = UIConstants.mediumCornerRadius
+        moreHelpButton.cornerRadius = 22
     }
     
     override func populateText() {
@@ -111,12 +111,14 @@ class ReportBugViewController: BaseUIViewController, MFMailComposeViewController
         updateAppTitleLabel.font = UIFontMetrics.default.scaledSystemFont(ofSize: 15, ofWeight: .semibold)
         updateAppDescriptionLabel.textColor = theme.ternaryTextColor
         updateAppDescriptionLabel.font = UIFontMetrics.default.scaledSystemFont(ofSize: 17)
-        moreHelpTitleLabel.textColor = theme.primaryTextColor
-        moreHelpTitleLabel.font = UIFontMetrics.default.scaledSystemFont(ofSize: 15, ofWeight: .semibold)
+        moreHelpTitleLabel.textColor = theme.isDark ? .white : UIColor("#25242A")
+        moreHelpTitleLabel.font = UIFontMetrics.default.scaledSystemFont(ofSize: 17, ofWeight: .semibold)
         moreHelpDescriptionLabel.textColor = theme.ternaryTextColor
-        moreHelpDescriptionLabel.font = UIFontMetrics.default.scaledSystemFont(ofSize: 17)
-        moreHelpButton.tintColor = theme.fixedTintColor
-        moreHelpButton.setTitleColor(theme.lightTextColor, for: .normal)
+        moreHelpDescriptionLabel.font = UIFontMetrics.default.scaledSystemFont(ofSize: 15)
+        moreHelpButton.backgroundColor = .purple400
+        moreHelpButton.tintColor = .white
+        moreHelpButton.setTitleColor(.white, for: .normal)
+        moreHelpButton.titleLabel?.font = UIFontMetrics.default.scaledSystemFont(ofSize: 16, ofWeight: .semibold)
         knownIssuesBackground.backgroundColor = theme.windowBackgroundColor
     }
     

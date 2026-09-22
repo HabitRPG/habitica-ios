@@ -80,18 +80,9 @@ class ToastManager: NSObject {
                                                                               options: NSLayoutConstraint.FormatOptions(rawValue: 0),
                                                                               metrics: nil, views: ["view": contentView]))
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.3, execute: {
-                if #available(iOS 17.0, *) {
-                    withAnimation {
-                        contentView.rootView.options.isVisible = true
-                    } completion: {
-                        if let completionBlock = completion {
-                            completionBlock()
-                        }
-                    }
-                } else {
-                    withAnimation {
-                        contentView.rootView.options.isVisible = true
-                    }
+                withAnimation {
+                    contentView.rootView.options.isVisible = true
+                } completion: {
                     if let completionBlock = completion {
                         completionBlock()
                     }
@@ -103,16 +94,9 @@ class ToastManager: NSObject {
     }
     
     private func dismiss(toast: UIHostingView<ToastView>, completion: (() -> Void)?) {
-        if #available(iOS 17.0, *) {
-            withAnimation {
-                toast.rootView.options.isVisible = false
-            } completion: {
-                toast.removeFromSuperview()
-                if let completionBlock = completion {
-                    completionBlock()
-                }
-            }
-        } else {
+        withAnimation {
+            toast.rootView.options.isVisible = false
+        } completion: {
             toast.removeFromSuperview()
             if let completionBlock = completion {
                 completionBlock()

@@ -505,3 +505,15 @@ public class SocialLocalRepository: BaseLocalRepository {
             })
     }
 }
+
+extension SocialLocalRepository {
+    public func deleteChallenge(challengeID: String) {
+        updateCall { realm in
+            if let challenge = realm.object(ofType: RealmChallenge.self, forPrimaryKey: challengeID) {
+                realm.delete(challenge)
+            }
+            let memberships = realm.objects(RealmChallengeMembership.self).filter("challengeID == %@", challengeID)
+            realm.delete(memberships)
+        }
+    }
+}

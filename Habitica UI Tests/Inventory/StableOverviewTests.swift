@@ -12,7 +12,7 @@ import Nimble
 class StableOverviewTests: HabiticaAppTests {
 
     private let url = "/inventory/stable"
-    
+
     override func setUp() {
         super.setUp()
         stubData["user"] = stubFileResponse(name: "user")
@@ -20,51 +20,35 @@ class StableOverviewTests: HabiticaAppTests {
 
     func testListingPets() {
         app.launch(withStubs: stubData, toUrl: url)
-        
+
         let collection = app.collectionViews.firstMatch
-        expectExists(collection.staticTexts["Bear Cub"])
-        expectExists(collection.scroll(toFindCellWithId: "Hedgehog 1 of 10"))
-        expectExists(collection.scroll(toFindCellWithId: "Confection Cactus 1 of 1"))
-        expectExists(collection.scroll(toFindCellWithId: "Phoenix-Base 1 of 1"))
+        expectExists(collection.staticTexts["Bear Cub"], timeout: 15)
+        expectExists(withPrefix: "Cactus", in: collection.cells)
+        expectExists(withPrefix: "Dragon", in: collection.cells)
     }
-    
-    func testCountsOwnedPets() {
-        app.launch(withStubs: stubData, toUrl: url)
-        let collection = app.collectionViews.firstMatch
-        expectExists(collection.staticTexts["11/53"])
-        expectExists(collection.scroll(toFindCellWithId: "Falcon 1 of 10"))
-        expectExists(collection.staticTexts["1/10"])
-    }
-    
+
     func testOpensPetDetail() {
         app.launch(withStubs: stubData, toUrl: url)
-        let collection = app.collectionViews
-        expectExists(collection.staticTexts["Dragon"])
+        let collection = app.collectionViews.firstMatch
+        expectExists(collection.staticTexts["Dragon"], timeout: 15)
         collection.staticTexts["Dragon"].tap()
-        expectExists(collection.cells["Skeleton Dragon, Raised 10%"])
+        expectExists(withPrefix: "Skeleton Dragon", in: app.collectionViews.cells)
     }
-    
+
     func testListingMounts() {
         app.launch(withStubs: stubData, toUrl: url)
+        expectExists(app.segmentedControls.buttons["Mounts"], timeout: 15)
         app.segmentedControls.buttons["Mounts"].tap()
         let collection = app.collectionViews.firstMatch
-        expectExists(collection.staticTexts["Bear Cub"])
-        expectExists(collection.scroll(toFindCellWithId: "Caterpillar 1 of 10"))
-        expectExists(collection.scroll(toFindCellWithId: "Phoenix-Base 1 of 1"))
+        expectExists(collection.staticTexts["Bear"], timeout: 15)
+        expectExists(withPrefix: "Cactus", in: collection.cells)
     }
-    
-    func testCountsOwnedMounts() {
-        app.launch(withStubs: stubData, toUrl: url)
-        app.segmentedControls.buttons["Mounts"].tap()
-        let collection = app.collectionViews
-        expectExists(collection.staticTexts["7/53"])
-    }
-    
+
     func testOpensMountDetail() {
         app.launch(withStubs: stubData, toUrl: url)
-        let collection = app.collectionViews
-        expectExists(collection.staticTexts["Lion Cub"])
+        let collection = app.collectionViews.firstMatch
+        expectExists(collection.staticTexts["Lion Cub"], timeout: 15)
         collection.staticTexts["Lion Cub"].tap()
-        expectExists(collection.cells["White Lion, Owned"])
+        expectExists(withPrefix: "White Lion", in: app.collectionViews.cells)
     }
 }

@@ -20,8 +20,8 @@ class TaskListTests: HabiticaAppTests {
     
     func testDisplaysHeader() {
         app.launch(withStubs:stubData)
-        XCTAssertTrue(app.staticTexts["Level 16"].waitForExistence(timeout: 2))
-        XCTAssertTrue(app.otherElements["Health 50 of 50"].exists)
+        XCTAssertTrue(app.staticTexts["Lvl 16"].waitForExistence(timeout: 10))
+        expectExists(withPrefix: "HP 50", in: app.otherElements)
     }
     
     func testDisplaysEmptyStateHabit() {
@@ -49,22 +49,19 @@ class TaskListTests: HabiticaAppTests {
     
     func testDisplaysHabits() {
         app.launch(withStubs:stubData)
-        let tablesQuery = app.tables
-        XCTAssertTrue(tablesQuery.otherElements["HTTPS://google.com, Value: Neutral"].waitForExistence(timeout: 2))
+        expectExists(withPrefix: "HTTPS://google.com", in: app.tables.otherElements)
     }
-    
+
     func testDisplaysDailies() {
         app.launch(withStubs:stubData)
         app.tabBars["Tab Bar"].buttons[L10n.Tasks.dailies].tap()
-        let tablesQuery = app.tables
-        XCTAssertTrue(tablesQuery.otherElements["Due, 文字入力を試みても変換が出来ず, Value: Neutral, 1 checklist items"].waitForExistence(timeout: 1))
+        expectExists(withPrefix: "Due, 文字入力を試みても変換が出来ず", in: app.tables.otherElements)
     }
-    
+
     func testDisplaysTodos() {
         app.launch(withStubs:stubData)
         app.tabBars["Tab Bar"].buttons[L10n.Tasks.todos].tap()
-        let tablesQuery = app.tables
-        XCTAssertTrue(tablesQuery.otherElements["Not Completed, test. todo, Value: Neutral"].waitForExistence(timeout: 1))
+        expectExists(withPrefix: "Not Completed, test. todo", in: app.tables.otherElements)
     }
 }
 

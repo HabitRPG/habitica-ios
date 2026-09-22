@@ -13,12 +13,12 @@ struct PagerIndicator: View {
     let currentIndex: Int
     let total: Int
     
-    var size: CGFloat = 8
-    
+    var size: CGFloat = 7
+
     var body: some View {
         ZStack(alignment: .leading) {
             HStack(spacing: 8) {
-                ForEach(0..<total) { index in
+                ForEach(0..<total, id: \.self) { _ in
                     Circle()
                         .fill()
                         .foregroundStyle(Color(ThemeService.shared.theme.offsetBackgroundColor))
@@ -29,7 +29,7 @@ struct PagerIndicator: View {
                 .fill()
                 .foregroundStyle(Color(ThemeService.shared.theme.primaryTextColor))
                 .frame(width: size, height: size)
-                .offset(x: CGFloat(currentIndex * 16), y: 0)
+                .offset(x: CGFloat(currentIndex) * (size + 8), y: 0)
         }
     }
 }
@@ -39,111 +39,156 @@ struct CreateChallengeForm: View {
     @ObservedObject var viewModel: ChallengeFormViewModel
     
     @Namespace private var buttonsNamespace
+    @State private var isEditingText = false
+    @FocusState private var focusedField: ChallengeFormFocus?
     
     var body: some View {
         NavigationView {
             GeometryReader { geometry in
                     let content = ScrollView(.horizontal, showsIndicators: false) {
                         LazyHStack(spacing: 0) {
-                            ChallengeFormPrizePage(viewModel: viewModel)
-                                .frame(width: geometry.size.width)
-                                .id(0)
-                            ChallengeFormMetadataPage(viewModel: viewModel)
-                                .frame(width: geometry.size.width)
-                                .id(1)
-                            ChallengeFormTagsPage(viewModel: viewModel)
-                                .frame(width: geometry.size.width)
-                                .id(2)
-                            ChallengeFormTasksPage(viewModel: viewModel)
-                                .frame(width: geometry.size.width)
-                                .id(3)
+                            ForEach(Array(viewModel.steps.enumerated()), id: \.offset) { index, step in
+                                page(for: step)
+                                    .frame(width: geometry.size.width)
+                                    .id(index)
+                            }
                         }
                         .foregroundStyle(Color(themeService.theme.primaryTextColor))
                         .scrollTargetLayout()
                     }
                     .scrollTargetBehavior(.paging)
                     .scrollPosition(id: $viewModel.currentStepIndex)
-                    .navigationTitle(L10n.createChallenge)
+                    .navigationTitle(viewModel.isEditing ? L10n.editChallenge : L10n.createChallenge)
                     .navigationBarTitleDisplayMode(.inline)
                     .toolbar {
-                        if viewModel.hasPreviousStep {
-                            ToolbarItem(placement: .topBarLeading) {
-                                Button {
+                        ToolbarItem(placement: .topBarLeading) {
+                            Button {
+                                if viewModel.hasPreviousStep {
                                     withAnimation(.bouncy) {
                                         viewModel.showPreviousStep()
                                     }
-                                } label: {
-                                    Image(Asset.caretLeft.name)
+                                } else {
+                                    viewModel.dismiss()
                                 }
-                            }
-                        } else {
-                            ToolbarItem(placement: .topBarLeading) {
-                                CurrencyView(value: viewModel.userGemCount,
-                                             currency: .gem,
-                                             textColor: themeService.theme.isDark ? .green500 : .green1)
-                                .fixedSize()
+                            } label: {
+                                Image(systemName: viewModel.hasPreviousStep ? "chevron.left" : "xmark")
+                                    .font(.system(size: 17, weight: .semibold))
+                                    .foregroundStyle(Color(themeService.theme.primaryTextColor))
                             }
                         }
                         ToolbarItem(placement: .topBarTrailing) {
-                            Button {
-                                viewModel.dismiss()
-                            } label: {
-                                Image(Asset.close.name)
-                            }
+                            confirmButton
                         }
                 }
-                if #available(iOS 26.0, *) {
-                    content.safeAreaBar(edge: .bottom, content: {
-                        VStack {
-                            PagerIndicator(currentIndex: viewModel.currentStepIndex ?? 0, total: 4)
-                            if viewModel.isSaving {
-                                HabiticaProgressView()
-                                    .frame(height: 40)
-                                    .padding(10)
-                            } else {
-                                let disableButton = (!viewModel.hasNextStep && !viewModel.canSave) ||
-                                (viewModel.hasNextStep && !viewModel.isComplete(page: viewModel.currentStepIndex ?? 0))
-                                HabiticaButtonUI(label: Text(viewModel.hasNextStep ? L10n.next : L10n.createChallenge)
-                                    .foregroundStyle(disableButton ? Color(themeService.theme.quadTextColor) : .white),
-                                                 color: Color(disableButton ? themeService.theme.offsetBackgroundColor : themeService.theme.fixedTintColor)) {
-                                    withAnimation(.bouncy) {
-                                        if viewModel.hasNextStep {
-                                            viewModel.showNextStep()
-                                        } else {
-                                            viewModel.save()
-                                        }
-                                    }
-                                }.disabled(disableButton)
-                            }
-                        }.padding(16)
-                    })
-                } else {
-                    VStack {
-                        content
-                        VStack {
-                                HStack {
-                                    if viewModel.hasPreviousStep {
-                                        Button {
-                                            withAnimation(.bouncy) {
-                                                viewModel.showPreviousStep()
-                                            }
-                                        } label: {
-                                            Image(Asset.caretLeft.name)
-                                                .frame(minWidth: 40, minHeight: 40)
-                                        }
-                                        .contentShape(.circle)
-                                    }
-                                    HabiticaButtonUI(label: Text(L10n.next), color: Color(themeService.theme.fixedTintColor)) {
-                                        withAnimation(.bouncy) {
-                                            viewModel.showNextStep()
-                                        }
-                                    }
-                                }
-                        }.padding(16)
+                Group {
+                    if #available(iOS 26.0, *) {
+                        content.safeAreaBar(edge: .bottom, content: {
+                            bottomDock
+                        })
+                    } else {
+                        VStack(spacing: 0) {
+                            content
+                            bottomDock
+                        }
                     }
+                }
+                .background(Color(themeService.theme.contentBackgroundColor).ignoresSafeArea())
+                .onReceive(NotificationCenter.default.publisher(for: UIResponder.keyboardWillShowNotification)) { _ in
+                    isEditingText = true
+                }
+                .onReceive(NotificationCenter.default.publisher(for: UIResponder.keyboardWillHideNotification)) { _ in
+                    isEditingText = false
                 }
             }
         }
+    }
+
+    private func nextFocusField() -> ChallengeFormFocus? {
+        guard let focusedField = focusedField else {
+            return nil
+        }
+        if focusedField == .description && !viewModel.isEditing {
+            return nil
+        }
+        return focusedField.next
+    }
+
+    @ViewBuilder private func page(for step: ChallengeFormStep) -> some View {
+        switch step {
+        case .prize:
+            ChallengeFormPrizePage(viewModel: viewModel)
+        case .info:
+            ChallengeFormMetadataPage(viewModel: viewModel, focus: $focusedField)
+        case .tags:
+            ChallengeFormTagsPage(viewModel: viewModel, focus: $focusedField)
+        case .tasks:
+            ChallengeFormTasksPage(viewModel: viewModel)
+        }
+    }
+
+    @ViewBuilder private var confirmButton: some View {
+        let canConfirm = viewModel.canSave
+        if #available(iOS 26.0, *) {
+            Button(role: .confirm) {
+                viewModel.save()
+            }
+            .buttonStyle(.glassProminent)
+            .tint(Color(themeService.theme.fixedTintColor))
+            .disabled(!canConfirm)
+        } else {
+            Button {
+                viewModel.save()
+            } label: {
+                Image(systemName: "checkmark")
+                    .font(.system(size: 15, weight: .bold))
+                    .foregroundStyle(canConfirm ? .white : Color(themeService.theme.quadTextColor))
+                    .frame(width: 30, height: 30)
+                    .background(canConfirm ? Color(themeService.theme.fixedTintColor) : Color(themeService.theme.offsetBackgroundColor))
+                    .clipShape(Circle())
+            }
+            .disabled(!canConfirm)
+        }
+    }
+
+    @ViewBuilder private var bottomDock: some View {
+        VStack(spacing: 20) {
+            if viewModel.steps.count > 2 {
+                PagerIndicator(currentIndex: viewModel.currentStepIndex ?? 0, total: viewModel.steps.count)
+            }
+            if viewModel.isSaving {
+                HabiticaProgressView()
+                    .frame(height: 40)
+                    .padding(10)
+            } else if isEditingText {
+                let nextField = nextFocusField()
+                ChallengePillButton(nextField == nil ? L10n.done : L10n.ChallengeForm.nextField,
+                                    fill: Color(themeService.theme.fixedTintColor),
+                                    textColor: .white,
+                                    weight: .semibold) {
+                    if let nextField = nextField {
+                        focusedField = nextField
+                    } else {
+                        UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
+                    }
+                }
+            } else if viewModel.hasNextStep {
+                let currentIndex = viewModel.currentStepIndex ?? 0
+                let nextStep = viewModel.steps[currentIndex + 1]
+                let disableButton = !viewModel.isEditing && !viewModel.isComplete(step: viewModel.steps[currentIndex])
+                let tasksStepTitle = viewModel.isEditing ? L10n.ChallengeForm.reviewTasks : L10n.ChallengeForm.addTasks
+                ChallengePillButton(nextStep == .tasks ? tasksStepTitle : L10n.next,
+                                    fill: disableButton ? Color(themeService.theme.offsetBackgroundColor) : Color(themeService.theme.fixedTintColor),
+                                    textColor: disableButton ? Color(themeService.theme.quadTextColor) : .white,
+                                    weight: .semibold) {
+                    withAnimation(.bouncy) {
+                        viewModel.showNextStep()
+                    }
+                }
+                .disabled(disableButton)
+            }
+        }
+        .padding(.horizontal, 20)
+        .padding(.vertical, 16)
     }
 }
 
@@ -158,7 +203,15 @@ class CreateChallengeViewController: BaseHostingViewController<CreateChallengeFo
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder, rootView: CreateChallengeForm(viewModel: viewModel))
     }
-    
+
+    func prepareForEditing(challenge: ChallengeProtocol) {
+        viewModel.configureForEditing(challenge)
+    }
+
+    func prepareForCloning(challenge: ChallengeProtocol) {
+        viewModel.configureForCloning(challenge)
+    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
         viewModel.onDismiss = { [weak self] in

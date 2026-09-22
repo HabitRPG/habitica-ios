@@ -47,6 +47,8 @@ class PurchaseHandler: NSObject, SKPaymentTransactionObserver {
     var pendingGifts = [String: String]()
     var wasSubscriptionCancelled: Bool?
 
+    private var inFlightTransactionIdentifiers = Set<String>()
+
     private var hasCompletionHandler = false
     override private init() {
         #if DEBUG
@@ -75,9 +77,6 @@ class PurchaseHandler: NSObject, SKPaymentTransactionObserver {
             if results.restoreFailedPurchases.isEmpty == false {
                 logger.log("Restore Failed: \(results.restoreFailedPurchases)", level: .error)
             } else if results.restoredPurchases.isEmpty == false {
-                for purchase in results.restoredPurchases {
-                    SwiftyStoreKit.finishTransaction(purchase.transaction)
-                }
                 logger.log("Restore Success: \(results.restoredPurchases)")
             } else {
                 logger.log("Nothing to Restore")
@@ -113,6 +112,9 @@ class PurchaseHandler: NSObject, SKPaymentTransactionObserver {
     }
     
     func handleUnfinished(transaction: SKPaymentTransaction, user: UserProtocol, receiptData: Data) {
+        if let transactionIdentifier = transaction.transactionIdentifier, inFlightTransactionIdentifiers.contains(transactionIdentifier) {
+            return
+        }
         let productIdentifier = transaction.payment.productIdentifier
         if transaction.transactionState == .purchased || transaction.transactionState == .restored {
             if self.isInAppPurchase(productIdentifier) {
@@ -149,8 +151,8 @@ class PurchaseHandler: NSObject, SKPaymentTransactionObserver {
         SwiftyStoreKit.purchaseProduct(identifier, quantity: 1, atomically: false, applicationUsername: applicationUsername) { (result) in
             switch result {
             case .success(let product):
-                self.verifyPurchase(product)
-                completion(true)
+                self.markInFlight(product.transaction)
+                self.verifyPurchase(product, completion: completion)
             case .error(let error):
                 self.handle(error: error)
                 completion(false)
@@ -159,7 +161,7 @@ class PurchaseHandler: NSObject, SKPaymentTransactionObserver {
             }
         }
     }
-    
+
     func giftGems(_ identifier: String, applicationUsername: String, recipientID: String, completion: @escaping (Bool) -> Void) {
         if !isAllowedToMakePurchases() {
             return
@@ -168,8 +170,8 @@ class PurchaseHandler: NSObject, SKPaymentTransactionObserver {
         SwiftyStoreKit.purchaseProduct(identifier, quantity: 1, atomically: false, applicationUsername: applicationUsername) { (result) in
             switch result {
             case .success(let product):
-                self.verifyPurchase(product)
-                completion(true)
+                self.markInFlight(product.transaction)
+                self.verifyPurchase(product, completion: completion)
             case .error(let error):
                 self.handle(error: error)
                 completion(false)
@@ -183,6 +185,7 @@ class PurchaseHandler: NSObject, SKPaymentTransactionObserver {
         SwiftyStoreKit.purchaseProduct(identifier, atomically: false) { result in
             switch result {
             case .success(let product):
+                self.markInFlight(product.transaction)
                 SwiftyStoreKit.verifyReceipt(using: self.appleValidator) { verificationResult in
                     switch verificationResult {
                     case .success(let receipt):
@@ -191,15 +194,18 @@ class PurchaseHandler: NSObject, SKPaymentTransactionObserver {
                                 if status {
                                     SwiftyStoreKit.finishTransaction(product.transaction)
                                 }
+                                self.clearInFlight(product.transaction)
+                                completion(status)
                             }
                         } else {
                             SwiftyStoreKit.finishTransaction(product.transaction)
+                            self.clearInFlight(product.transaction)
+                            completion(false)
                         }
                     case .error(let error):
-                        if error.localizedDescription.contains("Code: 1") {
-                            return
-                        }
                         self.handle(error: error)
+                        self.clearInFlight(product.transaction)
+                        completion(false)
                     }
                 }
             case .error(let error):
@@ -212,85 +218,124 @@ class PurchaseHandler: NSObject, SKPaymentTransactionObserver {
         }
     }
     
-    func verifyPurchase(_ product: PurchaseDetails) {
+    func verifyPurchase(_ product: PurchaseDetails, completion: @escaping (Bool) -> Void = { _ in }) {
         SwiftyStoreKit.fetchReceipt(forceRefresh: false) { result in
             switch result {
             case .success(let receiptData):
-                // Verify the purchase of a Subscription
                 self.activatePurchase(product.productId, receipt: receiptData) { status in
-                    if status {
-                        if product.needsFinishTransaction {
-                            SwiftyStoreKit.finishTransaction(product.transaction)
-                        }
+                    if status && product.needsFinishTransaction {
+                        SwiftyStoreKit.finishTransaction(product.transaction)
                     }
+                    self.clearInFlight(product.transaction)
+                    completion(status)
                 }
             case .error(let error):
                 self.handle(error: error)
                 logger.log("Receipt verification failed: \(error)", level: .error)
+                self.clearInFlight(product.transaction)
+                completion(false)
             }
         }
     }
     
+    private func markInFlight(_ transaction: PaymentTransaction) {
+        if let identifier = transaction.transactionIdentifier {
+            inFlightTransactionIdentifiers.insert(identifier)
+        }
+    }
+
+    private func clearInFlight(_ transaction: PaymentTransaction) {
+        if let identifier = transaction.transactionIdentifier {
+            inFlightTransactionIdentifiers.remove(identifier)
+        }
+    }
+
     func activatePurchase(_ identifier: String, receipt: Data, completion: @escaping (Bool) -> Void) {
         var recipientID: String?
         if let id = pendingGifts[identifier] {
             recipientID = id
         }
-        userRepository.purchaseGems(receipt: ["receipt": receipt.base64EncodedString(options: NSData.Base64EncodingOptions(rawValue: 0))], recipient: recipientID)
-            .observeValues {[weak self] (result) in
-                if result?.error?.isEmpty != true || result?.error == "RECEIPT_ALREADY_USED" {
-                    if recipientID != nil {
-                        self?.pendingGifts.removeValue(forKey: identifier)
-                    }
-                    completion(true)
-                    self?.userRepository.retrieveUser(forced: true).observeCompleted {}
-                } else {
-                    completion(false)
+        var didFinish = false
+        let finish: (Bool) -> Void = { status in
+            if didFinish { return }
+            didFinish = true
+            completion(status)
+        }
+        let signal = userRepository.purchaseGems(receipt: ["receipt": receipt.base64EncodedString(options: NSData.Base64EncodingOptions(rawValue: 0))], recipient: recipientID)
+        signal.observeValues {[weak self] (result) in
+            if result?.error?.isEmpty != true || result?.error == "RECEIPT_ALREADY_USED" {
+                if recipientID != nil {
+                    self?.pendingGifts.removeValue(forKey: identifier)
                 }
+                self?.userRepository.retrieveUser(forced: true).observeCompleted {}
+                finish(true)
+            } else {
+                finish(false)
+            }
+        }
+        signal.observeCompleted {
+            finish(false)
         }
     }
-    
+
     func activateNoRenewSubscription(_ identifier: String, receipt: Data, recipientID: String?, completion: @escaping (Bool) -> Void) {
         pendingGifts[identifier] = recipientID
         if recipientID == nil {
             completion(false)
             return
         }
-        userRepository.purchaseNoRenewSubscription(identifier: identifier,
+        var didFinish = false
+        let finish: (Bool) -> Void = { status in
+            if didFinish { return }
+            didFinish = true
+            completion(status)
+        }
+        let signal = userRepository.purchaseNoRenewSubscription(identifier: identifier,
                                                    receipt: ["receipt": receipt.base64EncodedString(options: NSData.Base64EncodingOptions(rawValue: 0))],
-                                                   recipient: recipientID).observeValues {[weak self] (result) in
+                                                   recipient: recipientID)
+        signal.observeValues {[weak self] (result) in
             if result != nil {
                 self?.pendingGifts.removeValue(forKey: identifier)
-                completion(true)
                 self?.userRepository.retrieveUser(forced: true).observeCompleted {}
+                finish(true)
             } else {
-                completion(false)
+                finish(false)
             }
         }
+        signal.observeCompleted {
+            finish(false)
+        }
     }
-    
+
     func isInAppPurchase(_ identifier: String) -> Bool {
         return PurchaseHandler.IAPIdentifiers.contains(identifier)
     }
-    
+
     private var isActivatingSubscription = false
     func activateSubscription(_ identifier: String, receipt: ReceiptInfo, completion: @escaping (Bool) -> Void) {
         if isActivatingSubscription {
+            completion(false)
             return
         }
-        if let lastReceipt = receipt["latest_receipt"] as? String {
-            isActivatingSubscription = true
-            userRepository.subscribe(sku: identifier, receipt: lastReceipt).on(completed: {
-                self.userRepository.retrieveUser(forced: true).observeCompleted {}
-            }).observeResult { (result) in
-                self.isActivatingSubscription = false
-                switch result {
-                case .success:
-                    completion(true)
-                case .failure:
-                    completion(false)
-                }
-            }
+        guard let lastReceipt = receipt["latest_receipt"] as? String else {
+            completion(false)
+            return
+        }
+        isActivatingSubscription = true
+        var didFinish = false
+        let finish: (Bool) -> Void = { [weak self] status in
+            if didFinish { return }
+            didFinish = true
+            self?.isActivatingSubscription = false
+            completion(status)
+        }
+        let signal = userRepository.subscribe(sku: identifier, receipt: lastReceipt)
+        signal.observeValues { [weak self] _ in
+            self?.userRepository.retrieveUser(forced: true).observeCompleted {}
+            finish(true)
+        }
+        signal.observeCompleted {
+            finish(false)
         }
     }
     
@@ -351,9 +396,6 @@ class PurchaseHandler: NSObject, SKPaymentTransactionObserver {
                     SwiftyStoreKit.finishTransaction(transaction)
                 }
             case .error(let error):
-                if error.localizedDescription.contains("Code: 1") {
-                    return
-                }
                 self?.handle(error: error)
             }
         })
@@ -366,7 +408,7 @@ class PurchaseHandler: NSObject, SKPaymentTransactionObserver {
         wasSubscriptionCancelled = true
     }
     
-    private func checkForCancellation(user: UserProtocol) {
+    func getRecentSubscriptionRenewal(user: UserProtocol, onResult: @escaping (Product.SubscriptionInfo.RenewalInfo?) -> Void) {
         let searchedID = user.purchased?.subscriptionPlan?.customerId
         SwiftyStoreKit.verifyReceipt(using: self.appleValidator) { result in
             switch result {
@@ -392,14 +434,7 @@ class PurchaseHandler: NSObject, SKPaymentTransactionObserver {
                                         latestRenewalInfo = renewalInfo
                                     }
                                 }
-                                if let renewalInfo = latestRenewalInfo {
-                                    let isCancelled = renewalInfo.expirationReason != nil && renewalInfo.expirationReason != .billingError
-                                    if !renewalInfo.willAutoRenew || isCancelled || (renewalInfo.expirationReason == .billingError && !renewalInfo.isInBillingRetry) {
-                                        self.userRepository.cancelSubscription().observeCompleted {
-                                            self.wasSubscriptionCancelled = true
-                                        }
-                                    }
-                                }
+                                onResult(latestRenewalInfo)
                             } catch let error {
                                 print(error)
                             }
@@ -407,6 +442,19 @@ class PurchaseHandler: NSObject, SKPaymentTransactionObserver {
                 }
             case .error:
                 return
+            }
+        }
+    }
+    
+    private func checkForCancellation(user: UserProtocol) {
+        getRecentSubscriptionRenewal(user: user) { latestRenewalInfo in
+            if let renewalInfo = latestRenewalInfo {
+                let isCancelled = renewalInfo.expirationReason != nil && renewalInfo.expirationReason != .billingError
+                if !renewalInfo.willAutoRenew || isCancelled || (renewalInfo.expirationReason == .billingError && !renewalInfo.isInBillingRetry) {
+                    self.userRepository.cancelSubscription().observeCompleted {
+                        self.wasSubscriptionCancelled = true
+                    }
+                }
             }
         }
     }

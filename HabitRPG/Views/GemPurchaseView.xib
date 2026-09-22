@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="24127" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="24765" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
-        <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="24063"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="24743"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -16,7 +16,18 @@
                 <rect key="frame" x="0.0" y="0.0" width="160" height="212"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Eym-FQ-v4g">
+                        <rect key="frame" x="40.5" y="32" width="79" height="79"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="79" id="nCz-uq-LDV"/>
+                            <constraint firstAttribute="width" constant="79" id="qaM-Cd-uM8"/>
+                        </constraints>
+                    </view>
                     <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="21_gems" translatesAutoresizingMaskIntoConstraints="NO" id="aHI-TN-dVp">
+                        <rect key="frame" x="0.0" y="16" width="160" height="111"/>
+                    </imageView>
+                    <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="21_gems" translatesAutoresizingMaskIntoConstraints="NO" id="9e1-2w-G5k">
                         <rect key="frame" x="0.0" y="16" width="160" height="111"/>
                     </imageView>
                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="PZY-LO-5K0">
@@ -68,7 +79,7 @@
                         <nil key="highlightedColor"/>
                         <userDefinedRuntimeAttributes>
                             <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                <real key="value" value="13"/>
+                                <real key="value" value="18"/>
                             </userDefinedRuntimeAttribute>
                         </userDefinedRuntimeAttributes>
                     </label>
@@ -81,20 +92,26 @@
                 <constraint firstItem="8CD-7L-CWx" firstAttribute="top" secondItem="aHI-TN-dVp" secondAttribute="bottom" id="07d-TX-fQv"/>
                 <constraint firstItem="I2h-et-1tI" firstAttribute="leading" secondItem="XB3-4A-WOm" secondAttribute="leading" constant="13" id="3n4-Ly-SGT"/>
                 <constraint firstItem="teB-5y-AcR" firstAttribute="bottom" secondItem="I2h-et-1tI" secondAttribute="bottom" id="4RP-LV-3I1"/>
+                <constraint firstItem="9e1-2w-G5k" firstAttribute="height" secondItem="aHI-TN-dVp" secondAttribute="height" id="4Ua-mP-aqQ"/>
                 <constraint firstItem="PZY-LO-5K0" firstAttribute="centerY" secondItem="8CD-7L-CWx" secondAttribute="centerY" id="67V-EJ-dhX"/>
+                <constraint firstItem="9e1-2w-G5k" firstAttribute="centerX" secondItem="aHI-TN-dVp" secondAttribute="centerX" id="6cv-iQ-um6"/>
                 <constraint firstItem="8CD-7L-CWx" firstAttribute="centerX" secondItem="XB3-4A-WOm" secondAttribute="centerX" id="9AQ-ai-1qF"/>
                 <constraint firstItem="teB-5y-AcR" firstAttribute="trailing" secondItem="I2h-et-1tI" secondAttribute="trailing" id="C3X-hS-onL"/>
+                <constraint firstItem="9e1-2w-G5k" firstAttribute="width" secondItem="aHI-TN-dVp" secondAttribute="width" id="D1l-UE-ase"/>
                 <constraint firstItem="aqg-2P-exk" firstAttribute="top" secondItem="I2h-et-1tI" secondAttribute="bottom" constant="7" id="EbC-Zl-x3L"/>
+                <constraint firstItem="9e1-2w-G5k" firstAttribute="top" secondItem="aHI-TN-dVp" secondAttribute="top" id="F5J-Cm-2wG"/>
                 <constraint firstItem="teB-5y-AcR" firstAttribute="leading" secondItem="I2h-et-1tI" secondAttribute="leading" id="G7l-uR-rbj"/>
                 <constraint firstItem="aHI-TN-dVp" firstAttribute="top" secondItem="XB3-4A-WOm" secondAttribute="top" constant="16" id="Ggk-wq-lk4"/>
                 <constraint firstAttribute="trailing" secondItem="I2h-et-1tI" secondAttribute="trailing" constant="13" id="PLk-tH-rnD"/>
                 <constraint firstAttribute="trailing" secondItem="aqg-2P-exk" secondAttribute="trailing" constant="8" id="RaV-tR-ylE"/>
                 <constraint firstItem="aJz-UN-jEZ" firstAttribute="centerY" secondItem="I2h-et-1tI" secondAttribute="centerY" id="RjW-rU-arl"/>
+                <constraint firstItem="Eym-FQ-v4g" firstAttribute="centerX" secondItem="aHI-TN-dVp" secondAttribute="centerX" id="boN-fx-hYw"/>
                 <constraint firstAttribute="trailing" secondItem="aHI-TN-dVp" secondAttribute="trailing" id="dq0-oc-6b6"/>
                 <constraint firstAttribute="bottom" secondItem="aqg-2P-exk" secondAttribute="bottom" constant="6" id="je7-jr-Je1"/>
                 <constraint firstItem="I2h-et-1tI" firstAttribute="top" secondItem="8CD-7L-CWx" secondAttribute="bottom" constant="13" id="mu4-v4-aze"/>
                 <constraint firstItem="aqg-2P-exk" firstAttribute="leading" secondItem="XB3-4A-WOm" secondAttribute="leading" constant="8" id="nZo-8r-VSy"/>
                 <constraint firstItem="8CD-7L-CWx" firstAttribute="leading" secondItem="PZY-LO-5K0" secondAttribute="trailing" constant="8" id="sgB-Kb-D0i"/>
+                <constraint firstItem="Eym-FQ-v4g" firstAttribute="centerY" secondItem="aHI-TN-dVp" secondAttribute="centerY" id="t2J-Qa-Xso"/>
                 <constraint firstItem="z3F-yU-X87" firstAttribute="centerY" secondItem="8CD-7L-CWx" secondAttribute="centerY" id="u07-yP-7Gq"/>
                 <constraint firstItem="z3F-yU-X87" firstAttribute="leading" secondItem="8CD-7L-CWx" secondAttribute="trailing" constant="8" id="vFY-U0-Y7f"/>
                 <constraint firstItem="aHI-TN-dVp" firstAttribute="leading" secondItem="XB3-4A-WOm" secondAttribute="leading" id="xiw-nf-llb"/>
@@ -109,6 +126,7 @@
             </userDefinedRuntimeAttributes>
             <connections>
                 <outlet property="amountLabel" destination="8CD-7L-CWx" id="uXR-9n-amd"/>
+                <outlet property="circleView" destination="Eym-FQ-v4g" id="A5w-KE-g7m"/>
                 <outlet property="footerLabel" destination="aqg-2P-exk" id="cRI-Y0-rn5"/>
                 <outlet property="imageView" destination="aHI-TN-dVp" id="wbE-Wj-Ko4"/>
                 <outlet property="leftDecorationImageView" destination="PZY-LO-5K0" id="w5Q-Uk-qA9"/>
@@ -116,11 +134,15 @@
                 <outlet property="priceLabel" destination="I2h-et-1tI" id="lML-5w-2g8"/>
                 <outlet property="priceLabelBackground" destination="teB-5y-AcR" id="3yM-jp-zbI"/>
                 <outlet property="rightDecorationImageView" destination="z3F-yU-X87" id="9C8-uQ-N5s"/>
+                <outlet property="sparkleView" destination="9e1-2w-G5k" id="Zi4-Aw-qmr"/>
             </connections>
             <point key="canvasLocation" x="154" y="599.5"/>
         </collectionViewCell>
     </objects>
     <resources>
-        <image name="21_gems" width="82" height="80"/>
+        <image name="21_gems" width="110" height="85"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
     </resources>
 </document>

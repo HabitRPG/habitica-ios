@@ -1,0 +1,9 @@
+{
+  "images" : [
+    {
+      "filename" : "menu_help.png",
+      "idiom" : "universal"
+    }
+  ],
+  "info" : { "author" : "xcode", "version" : 1 }
+}

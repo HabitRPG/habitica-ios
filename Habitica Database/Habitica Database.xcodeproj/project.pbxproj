@@ -56,8 +56,6 @@
 		29323E582052F8BC00AC6D6F /* RealmUserItems.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29323E572052F8BC00AC6D6F /* RealmUserItems.swift */; };
 		29323E5A2052F8C200AC6D6F /* RealmOutfit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29323E592052F8C200AC6D6F /* RealmOutfit.swift */; };
 		29323E5C2052F8E900AC6D6F /* RealmUserGear.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29323E5B2052F8E900AC6D6F /* RealmUserGear.swift */; };
-		2938ED5228B5047F00E995A2 /* ReactiveSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 2938ED5128B5047F00E995A2 /* ReactiveSwift */; };
-		2938ED6228B50B8100E995A2 /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 2938ED6128B50B8100E995A2 /* RealmSwift */; };
 		2953D85028BCE0F500DC456E /* RealmGroupPlan.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2953D84F28BCE0F500DC456E /* RealmGroupPlan.swift */; };
 		2953D85628BCE88F00DC456E /* RealmTaskPreferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2953D85528BCE88F00DC456E /* RealmTaskPreferences.swift */; };
 		2954A35229475A0B001953B1 /* RealmPermissions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2954A35129475A0B001953B1 /* RealmPermissions.swift */; };
@@ -99,9 +97,12 @@
 		29A06E1523EB3381003BADE9 /* RealmEmailNotifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29A06E1423EB3381003BADE9 /* RealmEmailNotifications.swift */; };
 		29A6B86C20690DF00086B2A6 /* RealmWeekRepeat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29A6B86B20690DF00086B2A6 /* RealmWeekRepeat.swift */; };
 		29ACED7425DD36FE00E1263D /* RealmGroupCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29ACED7325DD36FE00E1263D /* RealmGroupCategory.swift */; };
+		29B4917F305BE37000CC3B15 /* ReactiveSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 29B4917E305BE37000CC3B15 /* ReactiveSwift */; };
+		29B49185305BE59200CC3B15 /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 29B49184305BE59200CC3B15 /* RealmSwift */; };
 		29BD3EB1275903B0003AD251 /* BaseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29BD3EB0275903AF003AD251 /* BaseModel.swift */; };
-		29C0AEB2291945D80076BC6B /* Habitica_Models.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 29C0AEB1291945D80076BC6B /* Habitica_Models.framework */; };
 		29C38C8324A2339300F219A1 /* RealmUserAchievements.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29C38C8224A2339300F219A1 /* RealmUserAchievements.swift */; };
+		29D52A89305DD1CE00AEDA66 /* Habitica_Models.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 29D52A88305DD1CE00AEDA66 /* Habitica_Models.framework */; };
+		29D52A8A305DD1CE00AEDA66 /* Habitica_Models.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 29D52A88305DD1CE00AEDA66 /* Habitica_Models.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		29DBDE50274D0048008F6777 /* RealmSocialAuthentication.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29DBDE4F274D0048008F6777 /* RealmSocialAuthentication.swift */; };
 		29DBFEFB20CADB4100DF9CF2 /* RealmSpecialItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29DBFEFA20CADB4100DF9CF2 /* RealmSpecialItem.swift */; };
 		29DBFF0D20D15B0500DF9CF2 /* RealmUserNewMessages.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29DBFF0C20D15B0500DF9CF2 /* RealmUserNewMessages.swift */; };
@@ -118,6 +119,20 @@
 			remoteInfo = "Habitica Database";
 		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		29D52A8B305DD1CE00AEDA66 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				29D52A8A305DD1CE00AEDA66 /* Habitica_Models.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		2902795F2057E957006DACB9 /* RealmFAQEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmFAQEntry.swift; sourceTree = "<group>"; };
@@ -216,6 +231,7 @@
 		29BD3EB0275903AF003AD251 /* BaseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseModel.swift; sourceTree = "<group>"; };
 		29C0AEB1291945D80076BC6B /* Habitica_Models.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Habitica_Models.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		29C38C8224A2339300F219A1 /* RealmUserAchievements.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmUserAchievements.swift; sourceTree = "<group>"; };
+		29D52A88305DD1CE00AEDA66 /* Habitica_Models.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Habitica_Models.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		29DBDE4F274D0048008F6777 /* RealmSocialAuthentication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmSocialAuthentication.swift; sourceTree = "<group>"; };
 		29DBFEFA20CADB4100DF9CF2 /* RealmSpecialItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmSpecialItem.swift; sourceTree = "<group>"; };
 		29DBFF0C20D15B0500DF9CF2 /* RealmUserNewMessages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmUserNewMessages.swift; sourceTree = "<group>"; };
@@ -229,9 +245,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2938ED6228B50B8100E995A2 /* RealmSwift in Frameworks */,
-				2938ED5228B5047F00E995A2 /* ReactiveSwift in Frameworks */,
-				29C0AEB2291945D80076BC6B /* Habitica_Models.framework in Frameworks */,
+				29B49185305BE59200CC3B15 /* RealmSwift in Frameworks */,
+				29B4917F305BE37000CC3B15 /* ReactiveSwift in Frameworks */,
+				29D52A89305DD1CE00AEDA66 /* Habitica_Models.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -437,6 +453,7 @@
 		29C0AEB0291945D80076BC6B /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				29D52A88305DD1CE00AEDA66 /* Habitica_Models.framework */,
 				29C0AEB1291945D80076BC6B /* Habitica_Models.framework */,
 			);
 			name = Frameworks;
@@ -472,6 +489,7 @@
 				298FB9A7204D9338004DDACC /* Sources */,
 				298FB9A8204D9338004DDACC /* Frameworks */,
 				298FB9AA204D9338004DDACC /* Resources */,
+				29D52A8B305DD1CE00AEDA66 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -479,8 +497,8 @@
 			);
 			name = "Habitica Database";
 			packageProductDependencies = (
-				2938ED5128B5047F00E995A2 /* ReactiveSwift */,
-				2938ED6128B50B8100E995A2 /* RealmSwift */,
+				29B4917E305BE37000CC3B15 /* ReactiveSwift */,
+				29B49184305BE59200CC3B15 /* RealmSwift */,
 			);
 			productName = "Habitica Database";
 			productReference = 298FB9AC204D9338004DDACC /* Habitica_Database.framework */;
@@ -510,8 +528,9 @@
 		298FB9A3204D9338004DDACC /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				BuildIndependentTargetsInParallel = YES;
 				LastSwiftUpdateCheck = 0920;
-				LastUpgradeCheck = 1240;
+				LastUpgradeCheck = 2700;
 				ORGANIZATIONNAME = "HabitRPG Inc.";
 				TargetAttributes = {
 					298FB9AB204D9338004DDACC = {
@@ -535,8 +554,8 @@
 			);
 			mainGroup = 298FB9A2204D9338004DDACC;
 			packageReferences = (
-				2938ED5028B5047F00E995A2 /* XCRemoteSwiftPackageReference "ReactiveSwift" */,
-				2938ED6028B50B8100E995A2 /* XCRemoteSwiftPackageReference "realm-swift" */,
+				29B4917D305BE37000CC3B15 /* XCRemoteSwiftPackageReference "ReactiveSwift" */,
+				29B49183305BE59200CC3B15 /* XCRemoteSwiftPackageReference "realm-swift" */,
 			);
 			productRefGroup = 298FB9AD204D9338004DDACC /* Products */;
 			projectDirPath = "";
@@ -690,7 +709,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = AA835E802EBC13F700C6D779 /* project.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
@@ -727,6 +745,7 @@
 				DEVELOPMENT_TEAM = 9Q9SMRMCNN;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -745,6 +764,7 @@
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				VERSIONING_SYSTEM = "apple-generic";
@@ -756,7 +776,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = AA835E802EBC13F700C6D779 /* project.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
@@ -793,6 +812,7 @@
 				DEVELOPMENT_TEAM = 9Q9SMRMCNN;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -804,6 +824,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				VALIDATE_PRODUCT = YES;
@@ -824,17 +845,20 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_MODULE_VERIFIER = YES;
 				INFOPLIST_FILE = "Habitica Database/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
+				MODULE_VERIFIER_SUPPORTED_LANGUAGE_STANDARDS = "gnu11 gnu++14";
 				PRODUCT_BUNDLE_IDENTIFIER = "$(BUNDLE_ID_PREFIX).ios.habitica.Habitica-Database";
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
+				SWIFT_INSTALL_OBJC_HEADER = NO;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -853,17 +877,20 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_MODULE_VERIFIER = YES;
 				INFOPLIST_FILE = "Habitica Database/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
+				MODULE_VERIFIER_SUPPORTED_LANGUAGE_STANDARDS = "gnu11 gnu++14";
 				PRODUCT_BUNDLE_IDENTIFIER = "$(BUNDLE_ID_PREFIX).ios.habitica.Habitica-Database";
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
+				SWIFT_INSTALL_OBJC_HEADER = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -873,9 +900,9 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = AA835E802EBC13F700C6D779 /* project.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = "Habitica DatabaseTests/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -892,9 +919,9 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = AA835E802EBC13F700C6D779 /* project.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = "Habitica DatabaseTests/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -911,7 +938,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = AA835E802EBC13F700C6D779 /* project.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
@@ -948,6 +974,7 @@
 				DEVELOPMENT_TEAM = 9Q9SMRMCNN;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -959,6 +986,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				VALIDATE_PRODUCT = YES;
@@ -979,17 +1007,20 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_MODULE_VERIFIER = YES;
 				INFOPLIST_FILE = "Habitica Database/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
+				MODULE_VERIFIER_SUPPORTED_LANGUAGE_STANDARDS = "gnu11 gnu++14";
 				PRODUCT_BUNDLE_IDENTIFIER = "$(BUNDLE_ID_PREFIX).ios.habitica.Habitica-Database";
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
+				SWIFT_INSTALL_OBJC_HEADER = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -999,9 +1030,9 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = AA835E802EBC13F700C6D779 /* project.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = "Habitica DatabaseTests/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1018,7 +1049,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = AA835E802EBC13F700C6D779 /* project.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
@@ -1055,6 +1085,7 @@
 				DEVELOPMENT_TEAM = 9Q9SMRMCNN;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -1066,6 +1097,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				VALIDATE_PRODUCT = YES;
@@ -1086,17 +1118,20 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_MODULE_VERIFIER = YES;
 				INFOPLIST_FILE = "Habitica Database/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
+				MODULE_VERIFIER_SUPPORTED_LANGUAGE_STANDARDS = "gnu11 gnu++14";
 				PRODUCT_BUNDLE_IDENTIFIER = "$(BUNDLE_ID_PREFIX).ios.habitica.Habitica-Database";
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
+				SWIFT_INSTALL_OBJC_HEADER = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -1106,9 +1141,9 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = AA835E802EBC13F700C6D779 /* project.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = "Habitica DatabaseTests/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1160,15 +1195,15 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		2938ED5028B5047F00E995A2 /* XCRemoteSwiftPackageReference "ReactiveSwift" */ = {
+		29B4917D305BE37000CC3B15 /* XCRemoteSwiftPackageReference "ReactiveSwift" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/ReactiveCocoa/ReactiveSwift";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 7.0.0;
+				minimumVersion = 7.2.1;
 			};
 		};
-		2938ED6028B50B8100E995A2 /* XCRemoteSwiftPackageReference "realm-swift" */ = {
+		29B49183305BE59200CC3B15 /* XCRemoteSwiftPackageReference "realm-swift" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/realm/realm-swift.git";
 			requirement = {
@@ -1179,14 +1214,14 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		2938ED5128B5047F00E995A2 /* ReactiveSwift */ = {
+		29B4917E305BE37000CC3B15 /* ReactiveSwift */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 2938ED5028B5047F00E995A2 /* XCRemoteSwiftPackageReference "ReactiveSwift" */;
+			package = 29B4917D305BE37000CC3B15 /* XCRemoteSwiftPackageReference "ReactiveSwift" */;
 			productName = ReactiveSwift;
 		};
-		2938ED6128B50B8100E995A2 /* RealmSwift */ = {
+		29B49184305BE59200CC3B15 /* RealmSwift */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 2938ED6028B50B8100E995A2 /* XCRemoteSwiftPackageReference "realm-swift" */;
+			package = 29B49183305BE59200CC3B15 /* XCRemoteSwiftPackageReference "realm-swift" */;
 			productName = RealmSwift;
 		};
 /* End XCSwiftPackageProductDependency section */

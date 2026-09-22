@@ -1,21 +1,21 @@
 strings:
   inputs: HabitRPG/Strings/Base.lproj/Mainstrings.strings
   outputs:
-    - templatePath: swiftgen-templates/habiticastrings-swift4.stencil
+    - templatePath: swiftgen-templates/habiticastrings-swift5.stencil
       output: HabitRPG/Generated/Strings.swift
       params:
           publicAccess: true
 xcassets:
   inputs: HabitRPG/Images.xcassets
   outputs:
-    - templateName: swift4
+    - templateName: swift5
       output: HabitRPG/Generated/Assets-Images.swift
 ib:
   inputs: HabitRPG/Storyboards/Base.lproj/
   outputs:
-    - templateName: scenes-swift4
+    - templateName: scenes-swift5
       output: HabitRPG/Generated/Storyboard Scenes.swift
-    - templateName: segues-swift4
+    - templateName: segues-swift5
       output: HabitRPG/Generated/Storyboard Segues.swift
 yaml:
   inputs: secrets.yml

@@ -15,6 +15,14 @@ class NotificationManager {
     private static let configRepository = ConfigRepository.shared
     private static let userRepository = UserRepository()
     
+    private static let onboardingNotificationKeys = [
+        "createdTask",
+        "completedTask",
+        "hatchedPet",
+        "fedPet",
+        "purchasedEquipment"
+    ]
+    
     static func handle(notifications: [NotificationProtocol]) -> [NotificationProtocol] {
         notifications.filter { notification in
             return NotificationManager.seenNotifications.contains(notification.id) != true
@@ -49,12 +57,13 @@ class NotificationManager {
                  .achievementGoodAsGold,
                  .achievementAllThatGlitters,
                  .achievementBoneCollector,
+                 .achievementUltimateGear,
                  .achievementSkeletonCrew:
-                notificationDisplayed = NotificationManager.displayAchievement(notification: notification, isOnboarding: false, isLastOnboardingAchievement: false)
+                notificationDisplayed = NotificationManager.displayAchievement(notification: notification, isOnboarding: false)
             case HabiticaNotificationType.achievementGeneric:
-                notificationDisplayed = NotificationManager.displayAchievement(notification: notification, isOnboarding: true, isLastOnboardingAchievement: notifications.contains {
-                    return $0.type == HabiticaNotificationType.achievementOnboardingComplete
-                })
+                notificationDisplayed = NotificationManager.displayAchievement(notification: notification, isOnboarding: onboardingNotificationKeys.contains(where: { key in
+                    key == notification.achievementKey
+                }))
             case HabiticaNotificationType.rebirthEnabled:
                 notificationDisplayed = NotificationManager.displayRebirthEnabled(notification: notification)
             case HabiticaNotificationType.rebirthAchievement:
@@ -92,7 +101,7 @@ class NotificationManager {
     }
     
     // swiftlint:disable:next function_body_length cyclomatic_complexity
-    static func displayAchievement(notification: NotificationProtocol, isOnboarding: Bool, isLastOnboardingAchievement: Bool) -> Bool {
+    static func displayAchievement(notification: NotificationProtocol, isOnboarding: Bool) -> Bool {
         if isOnboarding && UserDefaults.standard.bool(forKey: "isInSetup") {
             if let key = notification.achievementKey {
                 var pending = UserDefaults.standard.stringArray(forKey: "pendingOnboardingAchievements") ?? []
@@ -145,30 +154,6 @@ class NotificationManager {
             description = L10n.challengeJoinedDescription
             imageKey = "challenge"
             
-        case HabiticaNotificationType.achievementAllYourBase.rawValue,
-             HabiticaNotificationType.achievementBackToBasics.rawValue,
-             HabiticaNotificationType.achievementJustAddWater.rawValue,
-             HabiticaNotificationType.achievementLostMasterclasser.rawValue,
-             HabiticaNotificationType.achievementMindOverMatter.rawValue,
-             HabiticaNotificationType.achievementDustDevil.rawValue,
-             HabiticaNotificationType.achievementAridAuthority.rawValue,
-             HabiticaNotificationType.achievementMonsterMagus.rawValue,
-             HabiticaNotificationType.achievementUndeadUndertaker.rawValue,
-             HabiticaNotificationType.achievementPrimedForPainting.rawValue,
-             HabiticaNotificationType.achievementPearlyPro.rawValue,
-             HabiticaNotificationType.achievementTickledPink.rawValue,
-             HabiticaNotificationType.achievementRosyOutlook.rawValue,
-             HabiticaNotificationType.achievementBugBonanza.rawValue,
-             HabiticaNotificationType.achievementBareNecessities.rawValue,
-             HabiticaNotificationType.achievementFreshwaterFriends.rawValue,
-             HabiticaNotificationType.achievementGoodAsGold.rawValue,
-             HabiticaNotificationType.achievementAllThatGlitters.rawValue,
-             HabiticaNotificationType.achievementBoneCollector.rawValue,
-             HabiticaNotificationType.achievementSkeletonCrew.rawValue:
-            text = notification.achievementMessage ?? ""
-            description = notification.achievementModalText ?? ""
-            imageKey = notification.achievementKey ?? ""
-            
         case HabiticaNotificationType.achievementInvitedFriend.rawValue:
             text = L10n.invitedFriendTitle
             description = L10n.invitedFriendDescription
@@ -198,7 +183,11 @@ class NotificationManager {
             description = L10n.onboardingCompleteDescription
             imageKey = "onboardingComplete"
         default:
-            break
+            if notification.achievementMessage != nil && notification.achievementModalText != nil {
+                text = notification.achievementMessage ?? ""
+                description = notification.achievementModalText ?? ""
+                imageKey = notification.iconName ?? ""
+            }
         }
         
         if notification.type == HabiticaNotificationType.achievementOnboardingComplete {
@@ -207,16 +196,13 @@ class NotificationManager {
             viewC.show()
             return true
         }
-        if isLastOnboardingAchievement {
-            
-        } else {
-            let viewC = HostingBottomSheetController(rootView: AchievementReceivedSheet(key: imageKey,
-                                                                                        isOnboarding: isOnboarding,
-                                                                                        text: Text(text),
-                                                                                        description: Text(description)),
-                                                     prefersGrabberVisible: false)
-            viewC.show()
-        }
+        let viewC = HostingBottomSheetController(rootView: AchievementReceivedSheet(key: imageKey,
+                                                                                    isOnboarding: isOnboarding,
+                                                                                    text: Text(text),
+                                                                                    description: Text(description)),
+                                                 prefersGrabberVisible: false)
+        viewC.show()
+    
         return true
     }
 

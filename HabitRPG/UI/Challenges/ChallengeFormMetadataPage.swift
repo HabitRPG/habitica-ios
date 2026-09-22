@@ -13,20 +13,38 @@ import ReactiveSwift
 
 struct ChallengeFormMetadataPage: View {
     @ObservedObject var viewModel: ChallengeFormViewModel
+    var focus: FocusState<ChallengeFormFocus?>.Binding?
 
     var body: some View {
+        ScrollViewReader { proxy in
         ScrollView {
-            VStack(alignment: .leading, spacing: 8) {
-                Text("What’s your Challenge about?")
-                    .font(.system(size: 20, weight: .semibold))
-                    .padding(.horizontal, 23)
-                Text("This information helps others know the topic, rules, and goals of your Challenge.")
-                    .font(.system(size: 17))
-                    .padding(.horizontal, 23)
-                ChallengeMetadataForm(viewModel: viewModel)
-                    .padding(.top, 12)
-            }.padding(.horizontal, 12)
+            VStack(alignment: .leading, spacing: 22) {
+                if !viewModel.isEditing {
+                    VStack(alignment: .leading, spacing: 8) {
+                        Text(L10n.ChallengeForm.metadataTitle)
+                            .font(.system(size: 20, weight: .semibold))
+                            .tracking(-0.45)
+                            .lineSpacing(1)
+                        Text(L10n.ChallengeForm.metadataDescription)
+                            .font(.system(size: 17))
+                            .tracking(-0.43)
+                            .lineSpacing(2)
+                            .foregroundStyle(ChallengeTheme.handle)
+                    }
+                    .padding(.horizontal, 8)
+                }
+                ChallengeMetadataForm(viewModel: viewModel, focus: focus)
+                if viewModel.isEditing {
+                    ChallengeTagSection(viewModel: viewModel, focus: focus)
+                }
+            }.padding(.horizontal, 18)
                 .padding(.top, 16)
+        }
+        .scrollDismissesKeyboard(.immediately)
+        .onChange(of: focus?.wrappedValue) { _, newValue in
+            guard let newValue = newValue else { return }
+            withAnimation { proxy.scrollTo(newValue, anchor: .center) }
+        }
         }
     }
 }

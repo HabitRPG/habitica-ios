@@ -1,0 +1,9 @@
+{
+  "images" : [
+    {
+      "filename" : "menu_subscription.png",
+      "idiom" : "universal"
+    }
+  ],
+  "info" : { "author" : "xcode", "version" : 1 }
+}

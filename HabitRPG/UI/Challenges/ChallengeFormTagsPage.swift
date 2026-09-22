@@ -13,50 +13,56 @@ import ReactiveSwift
 
 struct ChallengeFormTagsPage: View {
     @ObservedObject var viewModel: ChallengeFormViewModel
+    var focus: FocusState<ChallengeFormFocus?>.Binding?
 
     var body: some View {
         ScrollView {
             VStack(alignment: .leading, spacing: 8) {
-                Text("Identify your Challenge")
+                Text(L10n.ChallengeForm.tagsTitle)
                     .font(.system(size: 20, weight: .semibold))
-                    .padding(.horizontal, 23)
-                Text("Pick a short tag that will be added to all your Challenge’s tasks and up to 3 categories to help players find you!")
+                    .tracking(-0.45)
+                    .lineSpacing(1)
+                    .padding(.horizontal, 8)
+                Text(L10n.ChallengeForm.tagsDescription)
                     .font(.system(size: 17))
-                    .padding(.horizontal, 23)
-                VStack(alignment: .leading, spacing: 10) {
-                    ChallengeFormField(label: Text("Challenge Tag"), text: $viewModel.challengeTag, multiline: false, placeholder: "What tag will identify your Challenge?")
-                    Text("Categories")
-                        .font(.system(size: 17, weight: .semibold))
-                        .padding(.leading, 23)
-                        .padding(.top, 26)
-                    VStack(alignment: .leading, spacing: 15) {
-                        ForEach(ChallengeCategory.allCases) { challengeCategory in
-                            if challengeCategory != .official {
-                                HStack {
-                                    Text(challengeCategory.localizedName)
-                                    Spacer()
-                                    if viewModel.challengeCategories.contains(challengeCategory) {
-                                        Image(Asset.checkmark.name)
-                                            .renderingMode(.template)
-                                            .foregroundStyle(Color(ThemeService.shared.theme.fixedTintColor))
-                                    }
-                                }.padding(.leading, 12)
-                                    .contentShape(.rect)
-                                    .onTapGesture {
-                                        viewModel.categoryTapped(category: challengeCategory)
-                                    }
-                                if challengeCategory != ChallengeCategory.allCases.last {
-                                    Divider()
-                                }
-                            }
+                    .tracking(-0.43)
+                    .lineSpacing(2)
+                    .foregroundStyle(ChallengeTheme.handle)
+                    .padding(.horizontal, 8)
+                ChallengeTagSection(viewModel: viewModel, focus: focus)
+                    .padding(.top, 18)
+            }.padding(.horizontal, 18)
+                .padding(.top, 16)
+        }
+        .scrollDismissesKeyboard(.immediately)
+    }
+}
+
+struct ChallengeTagSection: View {
+    @ObservedObject var viewModel: ChallengeFormViewModel
+    var focus: FocusState<ChallengeFormFocus?>.Binding?
+
+    var body: some View {
+        VStack(alignment: .leading, spacing: 10) {
+            ChallengeFormField(label: Text(L10n.ChallengeForm.tagLabel), text: $viewModel.challengeTag, multiline: false, placeholder: L10n.ChallengeForm.tagPlaceholder, focus: focus, field: .tag)
+            Text(L10n.categories)
+                .font(.system(size: 17, weight: .semibold))
+                .padding(.top, 26)
+                .padding(.leading, 8)
+            ChallengeSelectionList {
+                ForEach(ChallengeCategory.allCases) { challengeCategory in
+                    if challengeCategory != .official {
+                        let isSelected = viewModel.challengeCategories.contains(challengeCategory)
+                        ChallengeSelectionRow(title: challengeCategory.localizedName,
+                                              isSelected: isSelected,
+                                              isDisabled: !isSelected && viewModel.challengeCategories.count >= 3,
+                                              showsCheckmark: true,
+                                              showsDivider: challengeCategory != ChallengeCategory.allCases.last) {
+                            viewModel.categoryTapped(category: challengeCategory)
                         }
                     }
-                    .padding(15)
-                    .background(Color(ThemeService.shared.theme.windowBackgroundColor))
-                    .cornerRadius(UIConstants.largeCornerRadius)
                 }
-            }.padding(.horizontal, 12)
-                .padding(.top, 16)
+            }
         }
     }
 }

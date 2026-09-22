@@ -8,6 +8,9 @@
 #elseif os(tvOS) || os(watchOS)
   import UIKit
 #endif
+#if canImport(SwiftUI)
+  import SwiftUI
+#endif
 
 // Deprecated typealiases
 @available(*, deprecated, renamed: "ImageAsset.Image", message: "This typealias will be removed in SwiftGen 7.0")
@@ -19,17 +22,9 @@ internal typealias AssetImageTypeAlias = ImageAsset.Image
 
 // swiftlint:disable identifier_name line_length nesting type_body_length type_name
 internal enum Asset {
-  internal static let _21GemsFall = ImageAsset(name: "21GemsFall")
-  internal static let _21GemsSpooky = ImageAsset(name: "21GemsSpooky")
   internal static let _21Gems = ImageAsset(name: "21_gems")
-  internal static let _42GemsFall = ImageAsset(name: "42GemsFall")
-  internal static let _42GemsSpooky = ImageAsset(name: "42GemsSpooky")
   internal static let _42Gems = ImageAsset(name: "42_gems")
-  internal static let _4GemsFall = ImageAsset(name: "4GemsFall")
-  internal static let _4GemsSpooky = ImageAsset(name: "4GemsSpooky")
   internal static let _4Gems = ImageAsset(name: "4_gems")
-  internal static let _84GemsFall = ImageAsset(name: "84GemsFall")
-  internal static let _84GemsSpooky = ImageAsset(name: "84GemsSpooky")
   internal static let _84Gems = ImageAsset(name: "84_gems")
   internal static let adventureGuideBackground = ImageAsset(name: "AdventureGuideBackground")
   internal static let adventureGuideStars = ImageAsset(name: "AdventureGuideStars")
@@ -64,6 +59,10 @@ internal enum Asset {
   internal static let shop = ImageAsset(name: "Shop")
   internal static let veteranPets = ImageAsset(name: "VeteranPets")
   internal static let welcomeDiamond = ImageAsset(name: "WelcomeDiamond")
+  internal static let aboutHills = ImageAsset(name: "aboutHills")
+  internal static let aboutSocialBluesky = ImageAsset(name: "aboutSocialBluesky")
+  internal static let aboutSocialGithub = ImageAsset(name: "aboutSocialGithub")
+  internal static let aboutSocialInstagram = ImageAsset(name: "aboutSocialInstagram")
   internal static let addIcon = ImageAsset(name: "add_icon")
   internal static let adventureGuideArt = ImageAsset(name: "adventureGuideArt")
   internal static let adventureGuideStar = ImageAsset(name: "adventureGuideStar")
@@ -88,6 +87,8 @@ internal enum Asset {
   internal static let categorySkin = ImageAsset(name: "category_skin")
   internal static let challenge = ImageAsset(name: "challenge")
   internal static let challengeBroken = ImageAsset(name: "challenge_broken")
+  internal static let challengeCrown = ImageAsset(name: "challenge_crown")
+  internal static let challengeGemPrize = ImageAsset(name: "challenge_gem_prize")
   internal static let checkChecklist = ImageAsset(name: "check_checklist")
   internal static let checkboxChecked = ImageAsset(name: "checkbox_checked")
   internal static let checkboxUnchecked = ImageAsset(name: "checkbox_unchecked")
@@ -183,17 +184,22 @@ internal enum Asset {
     internal static let quests = ImageAsset(name: "empty/Quests")
     internal static let special = ImageAsset(name: "empty/Special")
   }
+  internal static let exclamationSquare = ImageAsset(name: "exclamation_square")
+  internal static let extraGemsPromoBannerLeft = ImageAsset(name: "extra_gems_promo_banner_left")
+  internal static let extraGemsPromoBannerRight = ImageAsset(name: "extra_gems_promo_banner_right")
+  internal static let extraGemsPromoInfoLeft = ImageAsset(name: "extra_gems_promo_info_left")
+  internal static let extraGemsPromoInfoRight = ImageAsset(name: "extra_gems_promo_info_right")
+  internal static let extraGemsPromoMenuLeft = ImageAsset(name: "extra_gems_promo_menu_left")
+  internal static let extraGemsPromoMenuRight = ImageAsset(name: "extra_gems_promo_menu_right")
+  internal static let extraGemsPromoMenuSmall = ImageAsset(name: "extra_gems_promo_menu_small")
   internal static let faintGhost = ImageAsset(name: "faint_ghost")
   internal static let faintHeart = ImageAsset(name: "faint_heart")
-  internal static let fallPromoBannerLeft = ImageAsset(name: "fall_promo_banner_left")
-  internal static let fallPromoBannerRight = ImageAsset(name: "fall_promo_banner_right")
-  internal static let fallPromoInfoLeft = ImageAsset(name: "fall_promo_info_left")
-  internal static let fallPromoInfoRight = ImageAsset(name: "fall_promo_info_right")
-  internal static let fallPromoMenuDescription = ImageAsset(name: "fall_promo_menu_description")
-  internal static let fallPromoMenuLeft = ImageAsset(name: "fall_promo_menu_left")
-  internal static let fallPromoMenuRight = ImageAsset(name: "fall_promo_menu_right")
+  internal static let fall20Sparkle = ImageAsset(name: "fall_20_sparkle")
+  internal static let fall42Sparkle = ImageAsset(name: "fall_42_sparkle")
+  internal static let fall4Sparkle = ImageAsset(name: "fall_4_sparkle")
+  internal static let fall84Sparkle = ImageAsset(name: "fall_84_sparkle")
+  internal static let fallGemSaleArtMini = ImageAsset(name: "fall_gem_sale_art_mini")
   internal static let fallPromoTitle = ImageAsset(name: "fall_promo_title")
-  internal static let fallPromoTitleDate = ImageAsset(name: "fall_promo_title_date")
   internal static let fanfareRadial = ImageAsset(name: "fanfare_radial")
   internal static let fanfareStar = ImageAsset(name: "fanfare_star")
   internal static let faqIcon = ImageAsset(name: "faq_icon")
@@ -211,11 +217,16 @@ internal enum Asset {
   internal static let filterIcon = ImageAsset(name: "filter_icon")
   internal static let filterIconActive = ImageAsset(name: "filter_icon_active")
   internal static let flagFlap = ImageAsset(name: "flag_flap")
+  internal static let flash20Sparkle = ImageAsset(name: "flash_20_sparkle")
+  internal static let flash42Sparkle = ImageAsset(name: "flash_42_sparkle")
+  internal static let flash4Sparkle = ImageAsset(name: "flash_4_sparkle")
+  internal static let flash84Sparkle = ImageAsset(name: "flash_84_sparkle")
+  internal static let flashPromoTitle = ImageAsset(name: "flash_promo_title")
+  internal static let g1g1PromoMini = ImageAsset(name: "g1g1_promo_mini")
   internal static let g1g1SparklesLeft = ImageAsset(name: "g1g1_sparkles_left")
   internal static let g1g1SparklesRight = ImageAsset(name: "g1g1_sparkles_right")
-  internal static let gemPurchaseFooter = ImageAsset(name: "gem_purchase_footer")
-  internal static let gemPurchaseFooterSparkles = ImageAsset(name: "gem_purchase_footer_sparkles")
-  internal static let gemPurchaseHeader = ImageAsset(name: "gem_purchase_header")
+  internal static let gemPurchaseFooterBottom = ImageAsset(name: "gem_purchase_footer_bottom")
+  internal static let gemPurchaseFooterTop = ImageAsset(name: "gem_purchase_footer_top")
   internal static let gemPurchaseHeaderDark = ImageAsset(name: "gem_purchase_header_dark")
   internal static let gemcapLeft = ImageAsset(name: "gemcap_left")
   internal static let gemcapRight = ImageAsset(name: "gemcap_right")
@@ -228,10 +239,8 @@ internal enum Asset {
   internal static let hourglassBannerRight = ImageAsset(name: "hourglass_banner_right")
   internal static let icChevronRightWhite = ImageAsset(name: "ic_chevron_right_white")
   internal static let iconHelp = ImageAsset(name: "icon_help")
-  internal static let iconInventory = ImageAsset(name: "icon_inventory")
   internal static let iconLock = ImageAsset(name: "icon_lock")
   internal static let iconRage = ImageAsset(name: "icon_rage")
-  internal static let iconSocial = ImageAsset(name: "icon_social")
   internal static let indicatorDiamondSelected = ImageAsset(name: "indicatorDiamondSelected")
   internal static let indicatorDiamondUnselected = ImageAsset(name: "indicatorDiamondUnselected")
   internal static let insufficientGems = ImageAsset(name: "insufficient_gems")
@@ -252,6 +261,29 @@ internal enum Asset {
   internal static let loginUsername = ImageAsset(name: "login_username")
   internal static let logoText = ImageAsset(name: "logo_text")
   internal static let melior = ImageAsset(name: "melior")
+  internal static let menuSeasonalShopFall = ImageAsset(name: "menu_SeasonalShopFall")
+  internal static let menuSeasonalShopSpring = ImageAsset(name: "menu_SeasonalShopSpring")
+  internal static let menuSeasonalShopSummer = ImageAsset(name: "menu_SeasonalShopSummer")
+  internal static let menuSeasonalShopWinter = ImageAsset(name: "menu_SeasonalShopWinter")
+  internal static let menuAchievements = ImageAsset(name: "menu_achievements")
+  internal static let menuAvatarCustomization = ImageAsset(name: "menu_avatarCustomization")
+  internal static let menuChallenges = ImageAsset(name: "menu_challenges")
+  internal static let menuCustomizationShop = ImageAsset(name: "menu_customizationShop")
+  internal static let menuEquipment = ImageAsset(name: "menu_equipment")
+  internal static let menuGems = ImageAsset(name: "menu_gems")
+  internal static let menuGroupPlan = ImageAsset(name: "menu_groupPlan")
+  internal static let menuHelp = ImageAsset(name: "menu_help")
+  internal static let menuItems = ImageAsset(name: "menu_items")
+  internal static let menuLockIcon = ImageAsset(name: "menu_lock_icon")
+  internal static let menuMarket = ImageAsset(name: "menu_market")
+  internal static let menuNews = ImageAsset(name: "menu_news")
+  internal static let menuParty = ImageAsset(name: "menu_party")
+  internal static let menuPetsMounts = ImageAsset(name: "menu_petsMounts")
+  internal static let menuQuestShop = ImageAsset(name: "menu_questShop")
+  internal static let menuSkills = ImageAsset(name: "menu_skills")
+  internal static let menuStats = ImageAsset(name: "menu_stats")
+  internal static let menuSubscription = ImageAsset(name: "menu_subscription")
+  internal static let menuTimeTravelersShop = ImageAsset(name: "menu_timeTravelersShop")
   internal static let messages = ImageAsset(name: "messages")
   internal static let minus = ImageAsset(name: "minus")
   internal static let minusGray = ImageAsset(name: "minus_gray")
@@ -296,15 +328,26 @@ internal enum Asset {
   internal static let sparkleStarsRight = ImageAsset(name: "sparkleStarsRight")
   internal static let speechBubble = ImageAsset(name: "speech_bubble")
   internal static let speechbubbleCaret = ImageAsset(name: "speechbubble_caret")
+  internal static let spooky20Sparkle = ImageAsset(name: "spooky_20_sparkle")
+  internal static let spooky42Sparkle = ImageAsset(name: "spooky_42_sparkle")
+  internal static let spooky4Sparkle = ImageAsset(name: "spooky_4_sparkle")
+  internal static let spooky84Sparkle = ImageAsset(name: "spooky_84_sparkle")
+  internal static let spookyGemSaleArtEnd = ImageAsset(name: "spooky_gem_sale_art_end")
+  internal static let spookyGemSaleArtStart = ImageAsset(name: "spooky_gem_sale_art_start")
   internal static let spookyPromoBannerLeft = ImageAsset(name: "spooky_promo_banner_left")
   internal static let spookyPromoBannerRight = ImageAsset(name: "spooky_promo_banner_right")
   internal static let spookyPromoInfoLeft = ImageAsset(name: "spooky_promo_info_left")
   internal static let spookyPromoInfoRight = ImageAsset(name: "spooky_promo_info_right")
-  internal static let spookyPromoMenuDescription = ImageAsset(name: "spooky_promo_menu_description")
   internal static let spookyPromoMenuLeft = ImageAsset(name: "spooky_promo_menu_left")
   internal static let spookyPromoMenuRight = ImageAsset(name: "spooky_promo_menu_right")
+  internal static let spookyPromoMenuSmall = ImageAsset(name: "spooky_promo_menu_small")
   internal static let spookyPromoTitle = ImageAsset(name: "spooky_promo_title")
   internal static let spookyPromoTitleDate = ImageAsset(name: "spooky_promo_title_date")
+  internal static let spring20Sparkle = ImageAsset(name: "spring_20_sparkle")
+  internal static let spring42Sparkle = ImageAsset(name: "spring_42_sparkle")
+  internal static let spring4Sparkle = ImageAsset(name: "spring_4_sparkle")
+  internal static let spring84Sparkle = ImageAsset(name: "spring_84_sparkle")
+  internal static let springPromoTitle = ImageAsset(name: "spring_promo_title")
   internal static let stableTileApril = ImageAsset(name: "stable_tile_april")
   internal static let stableTileAugust = ImageAsset(name: "stable_tile_august")
   internal static let stableTileDecember = ImageAsset(name: "stable_tile_december")
@@ -342,8 +385,13 @@ internal enum Asset {
   internal static let subscriptionPromoGems = ImageAsset(name: "subscription_promo_gems")
   internal static let subscriptionPromoGold = ImageAsset(name: "subscription_promo_gold")
   internal static let subscriptionSelectionIndicator = ImageAsset(name: "subscription_selection_indicator")
+  internal static let summer20Sparkle = ImageAsset(name: "summer_20_sparkle")
+  internal static let summer42Sparkle = ImageAsset(name: "summer_42_sparkle")
+  internal static let summer4Sparkle = ImageAsset(name: "summer_4_sparkle")
+  internal static let summer84Sparkle = ImageAsset(name: "summer_84_sparkle")
   internal static let summerCoralBackground = ImageAsset(name: "summer_coral_background")
   internal static let summerIanScene = ImageAsset(name: "summer_ian_scene")
+  internal static let summerPromoTitle = ImageAsset(name: "summer_promo_title")
   internal static let supportArt = ImageAsset(name: "support_art")
   internal static let surveyArtLeft = ImageAsset(name: "survey_art_left")
   internal static let surveyArtRight = ImageAsset(name: "survey_art_right")
@@ -364,6 +412,11 @@ internal enum Asset {
   internal static let teamPlan = ImageAsset(name: "team_plan")
   internal static let triangle = ImageAsset(name: "triangle")
   internal static let usernameHeader = ImageAsset(name: "username_header")
+  internal static let winter20Sparkle = ImageAsset(name: "winter_20_sparkle")
+  internal static let winter42Sparkle = ImageAsset(name: "winter_42_sparkle")
+  internal static let winter4Sparkle = ImageAsset(name: "winter_4_sparkle")
+  internal static let winter84Sparkle = ImageAsset(name: "winter_84_sparkle")
+  internal static let winterPromoTitle = ImageAsset(name: "winter_promo_title")
   internal static let wonChallengeIcon = ImageAsset(name: "won_challenge_icon")
   internal static let wordmarkWhite = ImageAsset(name: "wordmark_white")
 }
@@ -407,13 +460,20 @@ internal struct ImageAsset {
     return result
   }
   #endif
+
+  #if canImport(SwiftUI)
+  @available(iOS 13.0, tvOS 13.0, watchOS 6.0, macOS 10.15, *)
+  internal var swiftUIImage: SwiftUI.Image {
+    SwiftUI.Image(asset: self)
+  }
+  #endif
 }
 
 internal extension ImageAsset.Image {
   @available(iOS 8.0, tvOS 9.0, watchOS 2.0, *)
   @available(macOS, deprecated,
     message: "This initializer is unsafe on macOS, please use the ImageAsset.image property")
-  convenience init!(asset: ImageAsset) {
+  convenience init?(asset: ImageAsset) {
     #if os(iOS) || os(tvOS)
     let bundle = BundleToken.bundle
     self.init(named: asset.name, in: bundle, compatibleWith: nil)
@@ -424,6 +484,26 @@ internal extension ImageAsset.Image {
     #endif
   }
 }
+
+#if canImport(SwiftUI)
+@available(iOS 13.0, tvOS 13.0, watchOS 6.0, macOS 10.15, *)
+internal extension SwiftUI.Image {
+  init(asset: ImageAsset) {
+    let bundle = BundleToken.bundle
+    self.init(asset.name, bundle: bundle)
+  }
+
+  init(asset: ImageAsset, label: Text) {
+    let bundle = BundleToken.bundle
+    self.init(asset.name, bundle: bundle, label: label)
+  }
+
+  init(decorative asset: ImageAsset) {
+    let bundle = BundleToken.bundle
+    self.init(decorative: asset.name, bundle: bundle)
+  }
+}
+#endif
 
 // swiftlint:disable convenience_type
 private final class BundleToken {

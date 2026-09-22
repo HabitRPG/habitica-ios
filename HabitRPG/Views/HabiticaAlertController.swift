@@ -346,7 +346,7 @@ class HabiticaAlertController: UIViewController, Themeable {
         if message != nil, let fontDescriptor = UIFontDescriptor
             .preferredFontDescriptor(withTextStyle: UIFont.TextStyle.body)
             .withSymbolicTraits(UIFontDescriptor.SymbolicTraits.traitLooseLeading) {
-                    let looseLeadingFont = UIFont(descriptor: fontDescriptor, size: 15)
+                    let looseLeadingFont = UIFont(descriptor: fontDescriptor, size: 17)
                     subtitleLabel.font = looseLeadingFont
                 }
     }

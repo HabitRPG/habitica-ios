@@ -1,0 +1,45 @@
+import SwiftUI
+
+enum ChallengeTheme {
+    private static func hex(_ value: UInt) -> Color {
+        Color(
+            red: Double((value >> 16) & 0xFF) / 255.0,
+            green: Double((value >> 8) & 0xFF) / 255.0,
+            blue: Double(value & 0xFF) / 255.0
+        )
+    }
+
+    private static func adaptive(light: UInt, dark: UInt) -> Color {
+        hex(ThemeService.shared.theme.isDark ? dark : light)
+    }
+
+    static let dailyBlueFill = hex(0x4FA3DD)
+    static let dailyBlueGlyph = hex(0x0B3D5C)
+
+    static let purple = hex(0x925CF3)
+    static let deepPurple = hex(0x6133B4)
+    static let deleteRed = hex(0xDE3F3F)
+    static let joinGreen = hex(0x24CC8E)
+    static let joinGreenText = hex(0x0A5638)
+    static let leaveRed = hex(0xFE6165)
+    static let leaveRedText = hex(0x5E1216)
+
+    static let containerRadius: CGFloat = 26
+    static var taskRadius: CGFloat { UIConstants.mediumCornerRadius }
+
+    static var sectionLabel: Color { ThemeService.shared.theme.isDark ? .gray500 : .gray10 }
+    static var formSectionLabel: Color { adaptive(light: 0x6B6873, dark: 0x918E99) }
+    static let username = hex(0x908D98)
+    static var handle: Color { ThemeService.shared.theme.isDark ? .gray400 : .gray50 }
+    static let counter = hex(0xA4A1AB)
+    static let completedText = hex(0xA8A5AE)
+    static let cardFillLight = hex(0xF4F4F5)
+
+    static var cardTitle: Color { adaptive(light: 0x4E4A57, dark: 0xE1E0E3) }
+    static let creatorName = Color.tier7
+    static var chipFill: Color { adaptive(light: 0xE1E0E3, dark: 0x4A474F) }
+    static var chipText: Color { adaptive(light: 0x878190, dark: 0xC3C0C7) }
+    static var joinedCount: Color { adaptive(light: 0x24A574, dark: 0x2ED49A) }
+    static var selectedRowText: Color { ThemeService.shared.theme.isDark ? .purple500 : deepPurple }
+    static var formFieldFill: Color { Color(ThemeService.shared.theme.windowBackgroundColor) }
+}

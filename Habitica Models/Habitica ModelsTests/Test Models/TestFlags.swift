@@ -20,6 +20,7 @@ class TestFlags: FlagsProtocol {
     
     var armoireEmpty: Bool = false
     var cronCount: Int = 0
+    var lastFreeRebirth: Date?
     var rebirthEnabled: Bool = false
     var communityGuidelinesAccepted: Bool = false
     var hasNewStuff: Bool = false

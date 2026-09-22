@@ -372,7 +372,9 @@ public class UserLocalRepository: BaseLocalRepository {
     
     public func getAchievements(userID: String) -> SignalProducer<ReactiveResults<[AchievementProtocol]>, ReactiveSwiftRealmError> {
         return RealmAchievement.findBy(query: "userID == '\(userID)'").sorted(key: "index").reactive().map({ (value, changeset) -> ReactiveResults<[AchievementProtocol]> in
-            return (value.map({ (achievement) -> AchievementProtocol in return achievement }), changeset)
+            return (value.map({ (achievement) -> AchievementProtocol in return achievement }).sorted(by: { first, second in
+                return first.index < second.index
+            }), changeset)
         })
     }
     
