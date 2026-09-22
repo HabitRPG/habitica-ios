@@ -85,6 +85,7 @@ class SubscriptionViewModel: BaseSubscriptionViewModel {
     @Published var presentationPoint: PresentationPoint?
     @Published var isSubscribed: Bool = false
     @Published var subscriptionPlan: SubscriptionPlanProtocol?
+    @Published var subscriptionRenewal: Date?
     @Published var showHourglassPromo: Bool = true
     @Published var mysteryGear: GearProtocol?
     @Published var mysteryGearSet: GearSetProtocol?
@@ -98,12 +99,10 @@ class SubscriptionViewModel: BaseSubscriptionViewModel {
     @Published var scrollToTop: Date?
     
     var gemCapTotal: Int {
-        get {
-            if subscriptionPlan?.isValid == true {
-                return subscriptionPlan?.gemCapTotal ?? 24
-            }
-            return 24
+        if subscriptionPlan?.isValid == true {
+            return subscriptionPlan?.gemCapTotal ?? 24
         }
+        return 24
     }
 
     init(presentationPoint: PresentationPoint?) {
@@ -128,6 +127,12 @@ class SubscriptionViewModel: BaseSubscriptionViewModel {
             self?.isSubscribed = user.isSubscribed
             self?.subscriptionPlan = user.purchased?.subscriptionPlan
             self?.showHourglassPromo = user.purchased?.subscriptionPlan?.isEligableForHourglassPromo == true
+            
+            PurchaseHandler.shared.getRecentSubscriptionRenewal(user: user) { renewal in
+                if let renewal = renewal {
+                    self?.subscriptionRenewal = renewal.renewalDate
+                }
+            }
         }).start()
         
         if presentationPoint != nil {
@@ -214,26 +219,35 @@ class SubscriptionViewModel: BaseSubscriptionViewModel {
     func checkForExistingSubscription() {
         isRestoringPurchase = true
         SwiftyStoreKit.verifyReceipt(using: self.appleValidator, forceRefresh: true) { result in
-            self.isRestoringPurchase = false
             switch result {
             case .success(let verifiedReceipt):
-                guard let purchases = verifiedReceipt["latest_receipt_info"] as? [ReceiptInfo] else {
+                let purchases = verifiedReceipt["latest_receipt_info"] as? [ReceiptInfo] ?? []
+                let validIdentifier = purchases
+                    .compactMap { $0["product_id"] as? String }
+                    .first { self.isValidSubscription($0, receipt: verifiedReceipt) }
+                guard let identifier = validIdentifier else {
+                    self.isRestoringPurchase = false
+                    self.showNoActiveSubscriptionAlert()
                     return
                 }
-                for purchase in purchases {
-                    if let identifier = purchase["product_id"] as? String {
-                        if self.isValidSubscription(identifier, receipt: verifiedReceipt) {
-                            PurchaseHandler.shared.activateSubscription(identifier, receipt: verifiedReceipt, completion: { _ in })
-                        }
+                PurchaseHandler.shared.activateSubscription(identifier, receipt: verifiedReceipt) { success in
+                    self.isRestoringPurchase = false
+                    if !success {
+                        self.showNoActiveSubscriptionAlert()
                     }
                 }
             case .error(let error):
+                self.isRestoringPurchase = false
                 logger.log("Receipt verification failed: \(error)", level: .error)
+                self.showNoActiveSubscriptionAlert()
             }
-            let alert = HabiticaAlertController(title: L10n.noActiveSubscriptionToRestore)
-            alert.addCloseAction()
-            alert.show()
         }
+    }
+
+    private func showNoActiveSubscriptionAlert() {
+        let alert = HabiticaAlertController(title: L10n.noActiveSubscriptionToRestore)
+        alert.addCloseAction()
+        alert.show()
     }
 }
 
@@ -448,7 +462,7 @@ struct SubscriptionPage: View {
                         .multilineTextAlignment(.center)
                         .padding(.horizontal, 24)
                     if let plan = subscriptionPlan {
-                        SubscriptionDetailViewUI(plan: plan)
+                        SubscriptionDetailViewUI(plan: plan, renewalDate: viewModel.subscriptionRenewal)
                             .padding(.vertical, 10)
                             .padding(.horizontal, 24)
                     }

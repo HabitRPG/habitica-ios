@@ -375,26 +375,25 @@ struct TaskFilterPage: View {
                         .scaledFont(size: 15, weight: .semibold)
                 })
 
-                Group {
-                    if viewModel.isSaving {
-                        HabiticaProgressView().frame(height: 60)
-                    } else if viewModel.isEditing {
-                        Button {
-                            focusItemId = nil
-                            viewModel.save()
-                        } label: {
-                            Text(L10n.save)
-                                .frame(maxWidth: .infinity)
-                        }.listRowBackground(Color(themeService.theme.windowBackgroundColor))
+                Button {
+                    if viewModel.isEditing {
+                        focusItemId = nil
+                        viewModel.save()
                     } else {
-                        Button {
-                            viewModel.beginEditing()
-                        } label: {
-                            Text(L10n.editTags)
-                                .frame(maxWidth: .infinity)
-                        }.listRowBackground(Color(themeService.theme.windowBackgroundColor))
+                        viewModel.beginEditing()
                     }
-                }
+                } label: {
+                    Text(viewModel.isEditing ? L10n.save : L10n.editTags)
+                        .opacity(viewModel.isSaving ? 0 : 1)
+                        .frame(maxWidth: .infinity)
+                        .overlay {
+                            if viewModel.isSaving {
+                                ProgressView()
+                                    .habiticaProgressStyle(strokeWidth: 3)
+                                    .frame(width: 22, height: 22)
+                            }
+                        }
+                }.listRowBackground(Color(themeService.theme.windowBackgroundColor))
             }.listStyle(.insetGrouped)
                 .scrollContentBackground(.hidden)
                 .scrollDismissesKeyboard(.immediately)

@@ -404,7 +404,7 @@
 "tasks.add_x" = "Aggiungi %@";
 "tasks.repeats.daily" = "giornaliera";
 "tasks.repeats.weekly" = "settimanale";
-"tasks.repeats.monthly" = "ogni Mese";
+"tasks.repeats.monthly" = "ogni mese";
 "tasks.repeats.yearly" = "annuale";
 "tasks.repeats.every_day" = "ogni giorno";
 "tasks.repeats.weekdays" = "giorni della settimana";
@@ -623,7 +623,7 @@
 "errors.request" = "Si è verificato un errore con la tua richiesta: %@";
 "days" = "giorni";
 "weeks" = "settimane";
-"months" = "Mesi";
+"months" = "mesi";
 "years" = "anni";
 "leave_challenge_title" = "Vuoi abbandonare la sfida?";
 "leave_challenge_prompt" = "Vuoi abbandonare la Sfida e tenere o eliminare le attività?";
@@ -1651,7 +1651,7 @@
 "stable.pets_and_mounts" = "Animali e Cavalcature";
 "challenges_won" = "Sfide vinte";
 "tasks.repeats.monthly_week_of" = "il %1$@ %2$@ del mese";
-"tasks.repeats.fifth_week_warning" = "Questa attività non risulterà in scadenza durante i mesi con meno di %@s.";
+"tasks.repeats.fifth_week_warning" = "Questa attività non risulterà in scadenza nei mesi con meno di %@s.";
 "shops.rebirthShop" = "Sfera della Rinascita";
 "shops.rebirthConfirmTitle" = "Vuoi davvero utilizzare la Sfera della Rinascita?";
 "shops.rebirthShopDescription" = "Riavvia all'istante la tua avventura come Guerriero al livello 1, mantenendo Medaglie, Oggetti ed Equipaggiamento. Le tue attività verranno colorate di giallo, ma manterranno la propria cronologia. Tutte le serie delle attività verranno azzerate. Oro, Esperienza, Mana e gli effetti di tutte le Abilità verranno rimossi.";
@@ -1660,8 +1660,8 @@
 "shops.rebirthEnabledTitle" = "Sfera della Rinascita Sbloccata";
 "shops.rebirthEnabledSubtitle" = "È disponibile una nuova avventura!";
 "shops.rebirthAchievementTitle" = "Rinascita Completata!";
-"shops.rebirthAchievementDescription" = "Hai iniziato una nuova avventura! Questa è la tua Rinascita %1$d e il Livello più alto che hai raggiunto è %2$d.";
-"shops.rebirthAchievementDescriptionMax" = "Hai iniziato una nuova avventura! Questa è la tua Rinascita %1$d e il livello più alto che hai raggiunto è %d o maggiore.";
+"shops.rebirthAchievementDescription" = "Hai iniziato una nuova avventura! Questa è la tua Rinascita %1$d e il livello più alto che hai raggiunto è %2$d.";
+"shops.rebirthAchievementDescriptionMax" = "Hai iniziato una nuova avventura! Questa è la tua Rinascita numero %d e il livello più alto che hai raggiunto è %d o maggiore.";
 "shops.freeRebirthAtLevel100" = "Sfera della Rinascita GRATUITA al livello 100";
 "shops.dayUntilFreeRebirth" = "%d giorno alla Sfera della Rinascita GRATUITA";
 "shops.daysUntilFreeRebirth" = "%d giorni alla Sfera della Rinascita GRATUITA";
@@ -1680,3 +1680,4 @@
 "shops.rebirthConfirmKeepItem4" = "La tua Squadra e le tue Sfide";
 "shops.rebirthConfirmMessage" = "Vuoi davvero utilizzare la Sfera della Rinascita?\n\nPotrai:\n• Tornare al Livello 1 come Guerriero\n• Resettare tutte le tue statistiche e i punti attributo\n• Perdere tutto il tuo oro e mana\n• Resettare tutti i valori delle attività e le serie\n\nConserverai:\n• Tutto il tuo equipaggiamento, gli animali e le cavalcature\n• Tutti i tuoi obiettivi\n• La tua gilda, la tua squadra e le tue sfide";
 "shops.rebirthEnabledDescription" = "Usa la Sfera della Rinascita per dare nuova vita alla tua avventura su Habitica quando senti di aver raggiunto tutti i tuoi obiettivi! Ricomincia dal livello 1 conservando i tuoi compiti,le tue Medaglie e i tuoi Animali domestici grazie a questo oggetto speciale che trovi nel Mercato.";
+"shops.rebirthConfirmTitleGems" = "Vuoi davvero utilizzare la Sfera della Rinascita per %d Gemme?";

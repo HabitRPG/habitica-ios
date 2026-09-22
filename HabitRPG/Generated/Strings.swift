@@ -2185,6 +2185,10 @@ public enum L10n {
   }
 
   public enum FallPromo {
+    /// Between %@ and %@, simply purchase any Gem bundle like usual and your account will be credited with the promotional amount of Gems. More Gems to spend, share, or save for any future releases!
+    public static func infoInstructions(_ p1: String, _ p2: String) -> String {
+      return L10n.tr("Mainstrings", "fall_promo.info_instructions", p1, p2)
+    }
     /// Get more Gems with each purchase for a limited time! Fall into one of our best deals on Gems before it’s gone.
     public static var infoPrompt: String { return L10n.tr("Mainstrings", "fall_promo.info_prompt") }
   }
@@ -3148,6 +3152,10 @@ public enum L10n {
   }
 
   public enum SpookyPromo {
+    /// Between %@ and %@, simply purchase any Gem bundle like usual and your account will be credited with the promotional amount of Gems. More Gems to spend, share, or save for any future releases!
+    public static func infoInstructions(_ p1: String, _ p2: String) -> String {
+      return L10n.tr("Mainstrings", "spooky_promo.info_instructions", p1, p2)
+    }
     /// Get more Gems with each purchase for a limited time! Put on your best costume and claim one of our best deals on Gems before it’s gone!
     public static var infoPrompt: String { return L10n.tr("Mainstrings", "spooky_promo.info_prompt") }
   }

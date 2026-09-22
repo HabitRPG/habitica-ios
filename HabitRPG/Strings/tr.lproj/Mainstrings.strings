@@ -192,7 +192,7 @@
 "tasks.repeats.repeats_every" = "%@ tekrarlar";
 "tasks.repeats.daily" = "günlük";
 "tasks.repeats.weekly" = "haftalık";
-"tasks.repeats.monthly" = "aylık";
+"tasks.repeats.monthly" = "her ayda";
 "tasks.repeats.yearly" = "yıllık";
 "tasks.repeats.every_day" = "her gün";
 "tasks.repeats.weekdays" = "hafta içleri";
@@ -666,3 +666,5 @@
 "stable.special_pets" = "Özel Evcil Hayvanlar";
 "equipment.use_costume" = "Kostüm Kullan";
 "more_options" = "Daha Çok Seçenek";
+"settings.pauseDamage.pause_damage_description2" = "Günlük seriler ve Alışkanlık sayaçları sadece bu açıkken sayılacak";
+"settings.pauseDamage.pause_damage_title3" = "Görevin bekliyor kalacak";
