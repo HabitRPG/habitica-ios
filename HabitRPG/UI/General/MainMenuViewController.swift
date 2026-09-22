@@ -554,7 +554,10 @@ class MainMenuViewController: BaseTableViewController {
     private func updatePromoCells() {
         if (activePromo?.endDate.timeIntervalSince1970 ?? 0) < Date().timeIntervalSince1970 {
             menuItem(withKey: .gems).pillText = nil
+            menuItem(withKey: .gems).pillBuilder = nil
+            menuItem(withKey: .gems).subtitle = nil
             menuItem(withKey: .subscription).pillText = nil
+            menuItem(withKey: .subscription).pillBuilder = nil
             return
         }
         if let promo = activePromo {
