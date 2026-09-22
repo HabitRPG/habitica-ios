@@ -24,8 +24,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/openid/AppAuth-iOS.git",
       "state" : {
-        "revision" : "a972daac82d449d58ab119e91c68153e29ddac33",
-        "version" : "3.0.0"
+        "revision" : "a7caeda164dc5108bf4649472b28a5af65dc6f33",
+        "version" : "2.1.0"
       }
     },
     {
@@ -285,8 +285,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/SwiftUIX/SwiftUIX",
       "state" : {
-        "branch" : "master",
-        "revision" : "3a99044b7045fb5907a7df18c7fe323e5656c6ab"
+        "revision" : "3a99044b7045fb5907a7df18c7fe323e5656c6ab",
+        "version" : "0.3.2"
       }
     },
     {
