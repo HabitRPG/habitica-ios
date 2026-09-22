@@ -18,12 +18,20 @@ struct AchievementReceivedSheet<Title: View, Description: View>: View {
     let text: Title
     let description: Description
     
+    var iconName: String {
+        if key.starts(with: "achievement-") {
+            return "\(key)2x"
+        } else {
+            return "achievement-\(key)2x"
+        }
+    }
+    
     var body: some View {
         GamifiedBottomSheet(upperBackgroundColor: .yellow100,
                             upperContent: VStack {FanfareContainer(haloColor: .yellow500,
                                                                    outerRingColor: .yellow500,
                                                                    plusColor: .yellow10, content: {
-            PixelArtView(name: "achievement-\(key)2x")
+            PixelArtView(name: iconName)
                                     .frame(width: 72, height: 72)
         })
             Text(L10n.youGotAchievement)
