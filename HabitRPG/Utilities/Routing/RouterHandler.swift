@@ -389,9 +389,12 @@ class RouterHandler {
     
     private func present(_ viewController: UIViewController) async {
         if let tabbarController = await MainActor.run(body: { self.tabbarController }) {
-            var presenter: UIViewController = tabbarController
-            while presenter.isPresenting, let presented = await presenter.presentedViewController {
-                presenter = presented
+            let presenter: UIViewController = await MainActor.run {
+                var presenter: UIViewController = tabbarController
+                while presenter.isPresenting, let presented = presenter.presentedViewController {
+                    presenter = presented
+                }
+                return presenter
             }
             if await presenter.isBeingDismissed {
                 await self.present(viewController)
