@@ -2870,7 +2870,7 @@
         <image name="add_icon" width="20" height="20"/>
         <image name="adventureGuideArt" width="153" height="46"/>
         <image name="filter_icon" width="26" height="22"/>
-        <image name="gem_purchase_footer_top" width="411" height="72"/>
+        <image name="gem_purchase_footer_top" width="411" height="73"/>
         <image name="gem_purchase_header_dark" width="254" height="68"/>
         <image name="gift_sub_gift" width="24" height="25"/>
         <image name="search_icon" width="20" height="20"/>
