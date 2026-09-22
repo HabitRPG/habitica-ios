@@ -15,6 +15,14 @@ class NotificationManager {
     private static let configRepository = ConfigRepository.shared
     private static let userRepository = UserRepository()
     
+    private static let onboardingNotificationKeys = [
+        "createdTask",
+        "completedTask",
+        "hatchedPet",
+        "fedPet",
+        "purchasedEquipment"
+    ]
+    
     static func handle(notifications: [NotificationProtocol]) -> [NotificationProtocol] {
         notifications.filter { notification in
             return NotificationManager.seenNotifications.contains(notification.id) != true
@@ -51,11 +59,11 @@ class NotificationManager {
                  .achievementBoneCollector,
                  .achievementUltimateGear,
                  .achievementSkeletonCrew:
-                notificationDisplayed = NotificationManager.displayAchievement(notification: notification, isOnboarding: false, isLastOnboardingAchievement: false)
+                notificationDisplayed = NotificationManager.displayAchievement(notification: notification, isOnboarding: false)
             case HabiticaNotificationType.achievementGeneric:
-                notificationDisplayed = NotificationManager.displayAchievement(notification: notification, isOnboarding: true, isLastOnboardingAchievement: notifications.contains {
-                    return $0.type == HabiticaNotificationType.achievementOnboardingComplete
-                })
+                notificationDisplayed = NotificationManager.displayAchievement(notification: notification, isOnboarding: onboardingNotificationKeys.contains(where: { key in
+                    key == notification.achievementKey
+                }))
             case HabiticaNotificationType.rebirthEnabled:
                 notificationDisplayed = NotificationManager.displayRebirthEnabled(notification: notification)
             case HabiticaNotificationType.rebirthAchievement:
@@ -93,7 +101,7 @@ class NotificationManager {
     }
     
     // swiftlint:disable:next function_body_length cyclomatic_complexity
-    static func displayAchievement(notification: NotificationProtocol, isOnboarding: Bool, isLastOnboardingAchievement: Bool) -> Bool {
+    static func displayAchievement(notification: NotificationProtocol, isOnboarding: Bool) -> Bool {
         if isOnboarding && UserDefaults.standard.bool(forKey: "isInSetup") {
             if let key = notification.achievementKey {
                 var pending = UserDefaults.standard.stringArray(forKey: "pendingOnboardingAchievements") ?? []
@@ -188,16 +196,13 @@ class NotificationManager {
             viewC.show()
             return true
         }
-        if isLastOnboardingAchievement {
-            
-        } else {
-            let viewC = HostingBottomSheetController(rootView: AchievementReceivedSheet(key: imageKey,
-                                                                                        isOnboarding: isOnboarding,
-                                                                                        text: Text(text),
-                                                                                        description: Text(description)),
-                                                     prefersGrabberVisible: false)
-            viewC.show()
-        }
+        let viewC = HostingBottomSheetController(rootView: AchievementReceivedSheet(key: imageKey,
+                                                                                    isOnboarding: isOnboarding,
+                                                                                    text: Text(text),
+                                                                                    description: Text(description)),
+                                                 prefersGrabberVisible: false)
+        viewC.show()
+    
         return true
     }
 
