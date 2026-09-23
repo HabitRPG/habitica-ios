@@ -110,7 +110,7 @@ struct ChallengeDetailCreatorCard: View {
                             .font(.system(size: 17, weight: .semibold))
                             .tracking(-0.43)
                             .lineSpacing(2)
-                            .foregroundStyle(ChallengeTheme.creatorName)
+                            .foregroundStyle(Color(UIColor.contributorColor(forTier: creator?.contributor?.level ?? 0)))
                         if showsDiamond {
                             Image(uiImage: HabiticaIcons.imageOfContributorBadge(tier: creator?.contributor?.level ?? 1, isNPC: false))
                                 .resizable().scaledToFit().frame(width: 14, height: 13)
@@ -119,7 +119,7 @@ struct ChallengeDetailCreatorCard: View {
                     if isOwner {
                         Text(L10n.youOwnThisChallenge)
                             .font(.system(size: 15))
-                            .foregroundStyle(Color(red: 0x7E / 255, green: 0x7B / 255, blue: 0x86 / 255))
+                            .foregroundStyle(Color(themeService.theme.ternaryTextColor))
                     }
                 }
                 Spacer(minLength: 0)
