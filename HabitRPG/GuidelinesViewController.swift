@@ -10,7 +10,7 @@ import UIKit
 import Down
 import SwiftUIX
 
-class GuidelinesViewController: UIViewController {
+class GuidelinesViewController: BaseUIViewController {
     @IBOutlet weak var textView: UITextView!
     let activityIndicator = UIHostingView(rootView: HabiticaProgressView())
 
@@ -35,6 +35,11 @@ class GuidelinesViewController: UIViewController {
                 }
             }
         }
+    }
+    
+    override func applyTheme(theme: any Theme) {
+        super.applyTheme(theme: theme)
+        textView.backgroundColor = theme.contentBackgroundColor
     }
     
     override func viewDidLayoutSubviews() {
