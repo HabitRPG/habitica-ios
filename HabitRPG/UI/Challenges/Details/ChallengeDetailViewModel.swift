@@ -433,7 +433,8 @@ class ChallengeDetailTaskRowItem: ConcreteMultiModelDataSourceItem<UITableViewCe
             ChallengePlayerTaskRow(task: task)
         }
         .margins(.horizontal, 18)
-        .margins(.vertical, 4)
+        .margins(.top, 5)
+        .margins(.bottom, 3)
         cell.backgroundColor = .clear
         cell.selectionStyle = .none
     }
@@ -479,7 +480,7 @@ class ChallengeDetailCTAItem: ConcreteMultiModelDataSourceItem<UITableViewCell> 
         }
         .margins(.horizontal, 18)
         .margins(.top, 6)
-        .margins(.bottom, 22)
+        .margins(.bottom, 3)
         cell.backgroundColor = .clear
         cell.selectionStyle = .none
     }
@@ -512,7 +513,8 @@ class ChallengeDetailCreatorItem: ConcreteMultiModelDataSourceItem<UITableViewCe
             )
         }
         .margins(.horizontal, 18)
-        .margins(.vertical, 4)
+        .margins(.top, 27)
+        .margins(.bottom, 3)
         cell.backgroundColor = .clear
         cell.selectionStyle = .none
     }
@@ -531,7 +533,8 @@ class ChallengeDetailCategoriesItem: ConcreteMultiModelDataSourceItem<UITableVie
             ChallengeDetailCategoriesCard(challenge: challenge)
         }
         .margins(.horizontal, 18)
-        .margins(.vertical, 4)
+        .margins(.top, 27)
+        .margins(.bottom, 3)
         cell.backgroundColor = .clear
         cell.selectionStyle = .none
     }
@@ -550,7 +553,8 @@ class ChallengeDetailDescriptionItem: ConcreteMultiModelDataSourceItem<UITableVi
             ChallengeDetailDescriptionCard(challenge: challenge)
         }
         .margins(.horizontal, 18)
-        .margins(.vertical, 4)
+        .margins(.top, 27)
+        .margins(.bottom, 3)
         cell.backgroundColor = .clear
         cell.selectionStyle = .none
     }
