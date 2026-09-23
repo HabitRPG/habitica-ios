@@ -68,6 +68,11 @@ class PromotionInfoViewController: BaseUIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        if #unavailable(iOS 26.0) {
+            navigationItem.rightBarButtonItem?.style = .done
+        }
+        
         promotion = configRepository.activePromotion()
         
         instructionsTitleLabel.text = L10n.promoInfoInstructionsTitle
@@ -92,11 +97,11 @@ class PromotionInfoViewController: BaseUIViewController {
     
     override func applyTheme(theme: Theme) {
         super.applyTheme(theme: theme)
-        instructionsTitleLabel.textColor = .gray500
-        limitationsTitleLabel.textColor = .gray500
-        instructionsDescriptionLabel.textColor = .gray300
-        limitationsDescriptionLabel.textColor = .gray300
-        view.backgroundColor = .gray5
+        instructionsTitleLabel.textColor = .white
+        limitationsTitleLabel.textColor = .white
+        instructionsDescriptionLabel.textColor = .gray500
+        limitationsDescriptionLabel.textColor = .gray500
+        view.backgroundColor = .blackPurple50
         promptButton.cornerRadius = promptButton.frame.height / 2
     }
     

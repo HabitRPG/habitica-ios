@@ -95,7 +95,7 @@ class ExtraGemsPromotion: HabiticaPromotion {
         view.backgroundColor = backgroundColor
         view.priceLabel.layer.sublayers?.filter { $0 is CAGradientLayer }.forEach { $0.removeFromSuperlayer() }
         let gradientLayer = makeGradient(view: view.priceLabel)
-        gradientLayer.cornerRadius = UIConstants.mediumCornerRadius
+        gradientLayer.cornerRadius = view.priceLabel.frame.size.height / 2
         view.priceLabel.backgroundColor = .clear
         view.priceLabelBackground.layer.insertSublayer(gradientLayer, at: 0)
         view.priceLabel.textColor = .black

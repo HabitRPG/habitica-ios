@@ -57,6 +57,7 @@ class FlashExtraGemsPromotion: ExtraGemsPromotion {
     override func configureInfoView(_ viewController: PromotionInfoViewController) {
         super.configureInfoView(viewController)
         viewController.promoBanner.descriptionLabel.textColor = UIColor("#FEDEAD")
+        viewController.promoBanner.durationLabel.text = L10n.endsX(shortDateFormatter.string(from: endDate))
         viewController.promptText = L10n.FlashPromo.infoPrompt
         viewController.promoBanner.setTitleImage(Asset.flashPromoTitle.image)
     }

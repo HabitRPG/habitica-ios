@@ -60,6 +60,11 @@ class GemViewController: BaseCollectionViewController, UICollectionViewDelegateF
         stretchImageView.isHidden = true
     }
 
+    override func applyTheme(theme: any Theme) {
+        super.applyTheme(theme: theme)
+        collectionView.backgroundColor = .purple300
+    }
+    
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         if let flowLayout = collectionView.collectionViewLayout as? UICollectionViewFlowLayout {
@@ -107,11 +112,13 @@ class GemViewController: BaseCollectionViewController, UICollectionViewDelegateF
         let contentHeight = scrollView.contentSize.height
         if contentHeight > 0 {
             let bottomSize = max(0, scrollView.contentOffset.y - (contentHeight - scrollView.frame.size.height))
-            stretchView.frame = CGRect(x: 0, y: contentHeight, width: scrollView.frame.size.width, height: bottomSize)
-            let scaleFactor = stretchView.frame.width / (stretchImageView.image?.size.width ?? stretchView.frame.width)
-            let imageHeight = (stretchImageView.image?.size.height ?? 0) * scaleFactor
-            stretchImageView.frame = CGRect(x: 0, y: stretchView.frame.height - imageHeight, width: stretchView.frame.width, height: imageHeight)
-            stretchImageView.isHidden = false
+            if user?.isSubscribed != true {
+                stretchView.frame = CGRect(x: 0, y: contentHeight, width: scrollView.frame.size.width, height: bottomSize)
+                let scaleFactor = stretchView.frame.width / (stretchImageView.image?.size.width ?? stretchView.frame.width)
+                let imageHeight = (stretchImageView.image?.size.height ?? 0) * scaleFactor
+                stretchImageView.frame = CGRect(x: 0, y: stretchView.frame.height - imageHeight, width: stretchView.frame.width, height: imageHeight)
+                stretchImageView.isHidden = false
+            }
         }
         super.scrollViewDidScroll(scrollView)
     }
@@ -146,6 +153,14 @@ class GemViewController: BaseCollectionViewController, UICollectionViewDelegateF
             return CGSize(width: collectionView.frame.size.width, height: 392)
         } else {
             return CGSize(width: collectionView.frame.size.width, height: 302)
+        }
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForFooterInSection section: Int) -> CGSize {
+        if user?.isSubscribed == true {
+            return CGSize(width: collectionView.frame.size.width, height: 180)
+        } else {
+            return CGSize(width: collectionView.frame.size.width, height: 450)
         }
     }
     
@@ -185,6 +200,12 @@ class GemViewController: BaseCollectionViewController, UICollectionViewDelegateF
                 if activePromo != nil {
                     view.backgroundColor = .gray10
                 }
+            }
+            if user?.isSubscribed == true {
+                if let view = view.viewWithTag(3) {
+                    view.isHidden = true
+                }
+                view.viewWithTag(4)?.isHidden = true
             }
         } else if kind == UICollectionView.elementKindSectionHeader {
             if let stackView = view.viewWithTag(6) as? UIStackView {
