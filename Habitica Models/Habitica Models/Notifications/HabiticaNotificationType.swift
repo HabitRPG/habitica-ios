@@ -62,6 +62,7 @@ public enum HabiticaNotificationType: String, EquatableStringEnumProtocol {
     case achievementBoneCollector = "ACHIEVEMENT_BONE_COLLECTOR"
     case achievementSkeletonCrew = "ACHIEVEMENT_SKELETON_CREW"
     case achievementUltimateGear = "ULTIMATE_GEAR_ACHIEVEMENT"
+    case achievementPetColor = "ACHIEVEMENT_PET_COLOR"
     
     case loginIncentive = "LOGIN_INCENTIVE"
 

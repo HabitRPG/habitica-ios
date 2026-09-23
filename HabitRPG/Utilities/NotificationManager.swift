@@ -58,6 +58,7 @@ class NotificationManager {
                  .achievementAllThatGlitters,
                  .achievementBoneCollector,
                  .achievementUltimateGear,
+                 .achievementPetColor,
                  .achievementSkeletonCrew:
                 notificationDisplayed = NotificationManager.displayAchievement(notification: notification, isOnboarding: false)
             case HabiticaNotificationType.achievementGeneric:
