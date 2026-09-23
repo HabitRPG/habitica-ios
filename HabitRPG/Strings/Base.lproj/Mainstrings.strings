@@ -1621,6 +1621,7 @@
 "challenge_form.tasks_title" = "Add some tasks";
 "challenge_form.tasks_description" = "Finally, it’s time to create the tasks you’d like all Challenge participants to complete.";
 "task_tag" = "Task tag: %@";
+"challenge_in_group" = "In %@";
 "participants" = "Participants";
 "prize" = "Prize";
 "official" = "Official";

@@ -164,6 +164,10 @@ public enum L10n {
   public static var challengeEnded: String { return L10n.tr("Mainstrings", "challenge_ended") }
   /// Challenge Habits
   public static var challengeHabits: String { return L10n.tr("Mainstrings", "challenge_habits") }
+  /// In %@
+  public static func challengeInGroup(_ p1: String) -> String {
+    return L10n.tr("Mainstrings", "challenge_in_group", p1)
+  }
   /// Challenge Rewards
   public static var challengeRewards: String { return L10n.tr("Mainstrings", "challenge_rewards") }
   /// Challenge To Do’s
