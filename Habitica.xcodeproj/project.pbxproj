@@ -1729,6 +1729,7 @@
 				2927025624E3EEDE00BCAA77 /* ReportBugViewController.swift */,
 				290279622057EC03006DACB9 /* FAQTableViewController.swift */,
 				299328A824E57858003BCE0C /* FAQDetailViewController.swift */,
+				29FC5A6A20406932008E88C8 /* GuidelinesViewController.swift */,
 			);
 			path = Support;
 			sourceTree = "<group>";
@@ -2878,7 +2879,6 @@
 				2914943B273163AF00DF2153 /* SceneDelegate.swift */,
 				29E1630A200D050E00685640 /* TopHeaderNavigationController.swift */,
 				29951A212327E94F00918FC8 /* ThemedNavigationController.swift */,
-				29FC5A6A20406932008E88C8 /* GuidelinesViewController.swift */,
 				2902799620583D82006DACB9 /* LoadingViewController.swift */,
 				29D16C7625A336E8001D9A61 /* MainSplitViewController.swift */,
 				29D16C7D25A33F70001D9A61 /* MainVCSelectionSegue.swift */,

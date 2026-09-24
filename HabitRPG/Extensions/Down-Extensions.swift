@@ -230,14 +230,22 @@ private class HabiticaStyler: DownStyler {
     override func style(paragraph str: NSMutableAttributedString) {
         let paragraphStyle = NSMutableParagraphStyle()
         paragraphStyle.lineSpacing = 3
-        paragraphStyle.paragraphSpacing = 7
+        paragraphStyle.paragraphSpacing = 12
         str.addAttribute(.paragraphStyle, value: paragraphStyle)
     }
     
+    override func style(list str: NSMutableAttributedString, nestDepth: Int) {
+        let paragraphStyle = NSMutableParagraphStyle()
+        paragraphStyle.lineSpacing = 3
+        paragraphStyle.paragraphSpacing = 12
+        paragraphStyle.headIndent = 16 + CGFloat(16 * nestDepth)
+        str.addAttribute(.paragraphStyle, value: paragraphStyle)
+    }
+
     override func style(listItemPrefix str: NSMutableAttributedString) {
         str.addAttribute(.font, value: UIFontMetrics.default.scaledSystemFont(ofSize: baseSize))
         str.addAttribute(.foregroundColor, value: textColor)
-        
+
         var listDotLocation = 0
 
         for char in str.string {
@@ -246,7 +254,7 @@ private class HabiticaStyler: DownStyler {
             }
             listDotLocation += 1
         }
-        str.replaceCharacters(in: NSRange(location: listDotLocation, length: 1), with: " ")
+        str.replaceCharacters(in: NSRange(location: listDotLocation, length: 1), with: " ᐧ")
     }
 
     override func style(text str: NSMutableAttributedString) {
