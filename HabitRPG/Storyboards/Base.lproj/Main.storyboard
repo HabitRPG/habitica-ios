@@ -1244,7 +1244,7 @@
                                         <stackView opaque="NO" tag="6" contentMode="scaleToFill" axis="vertical" spacing="14" translatesAutoresizingMaskIntoConstraints="NO" id="5i8-z2-1Et">
                                             <rect key="frame" x="0.0" y="98" width="406" height="135"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" tag="3" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" text="Gems allow you to buy fun extras for your account, including:" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xhA-8b-NmG">
+                                                <label opaque="NO" userInteractionEnabled="NO" tag="3" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" text="Unlock even more ways to stay productive with Gems!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xhA-8b-NmG">
                                                     <rect key="frame" x="0.0" y="0.0" width="406" height="40.666666666666664"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" priority="500" constant="21" id="Myz-28-LqS"/>
@@ -1262,63 +1262,84 @@
                                                         <fragment content="✔">
                                                             <attributes>
                                                                 <color key="NSColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                                <font key="NSFont" size="13" name="ZapfDingbatsITC"/>
+                                                                <font key="NSFont" size="16" name="ZapfDingbatsITC"/>
+                                                                <font key="NSOriginalFont" size="16" name="HelveticaNeue"/>
                                                                 <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineSpacing="3" tighteningFactorForTruncation="0.0"/>
                                                             </attributes>
                                                         </fragment>
                                                         <fragment>
-                                                            <string key="content"> Cool costumes for your avatar
+                                                            <string key="content"> Premium Avatar Customizations
 </string>
                                                             <attributes>
                                                                 <color key="NSColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                                <font key="NSFont" metaFont="system"/>
+                                                                <font key="NSFont" size="16" name="HelveticaNeue"/>
                                                                 <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineSpacing="3" tighteningFactorForTruncation="0.0"/>
                                                             </attributes>
                                                         </fragment>
                                                         <fragment content="✔">
                                                             <attributes>
                                                                 <color key="NSColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                                <font key="NSFont" size="13" name="ZapfDingbatsITC"/>
+                                                                <font key="NSFont" size="16" name="ZapfDingbatsITC"/>
+                                                                <font key="NSOriginalFont" size="16" name="HelveticaNeue"/>
                                                                 <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineSpacing="3" tighteningFactorForTruncation="0.0"/>
                                                             </attributes>
                                                         </fragment>
                                                         <fragment>
-                                                            <string key="content"> Awesome backgrounds
+                                                            <string key="content"> Past Seasonal Gear Sets
 </string>
                                                             <attributes>
                                                                 <color key="NSColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                                <font key="NSFont" metaFont="system"/>
+                                                                <font key="NSFont" size="16" name="HelveticaNeue"/>
                                                                 <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineSpacing="3" tighteningFactorForTruncation="0.0"/>
                                                             </attributes>
                                                         </fragment>
                                                         <fragment content="✔">
                                                             <attributes>
                                                                 <color key="NSColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                                <font key="NSFont" size="13" name="ZapfDingbatsITC"/>
+                                                                <font key="NSFont" size="16" name="ZapfDingbatsITC"/>
+                                                                <font key="NSOriginalFont" size="16" name="HelveticaNeue"/>
                                                                 <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineSpacing="3" tighteningFactorForTruncation="0.0"/>
                                                             </attributes>
                                                         </fragment>
                                                         <fragment>
-                                                            <string key="content"> Quests that reward you with pet eggs
+                                                            <string key="content"> Access to our library of Backgrounds
 </string>
                                                             <attributes>
                                                                 <color key="NSColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                                <font key="NSFont" metaFont="system"/>
+                                                                <font key="NSFont" size="16" name="HelveticaNeue"/>
                                                                 <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineSpacing="3" tighteningFactorForTruncation="0.0"/>
                                                             </attributes>
                                                         </fragment>
                                                         <fragment content="✔">
                                                             <attributes>
                                                                 <color key="NSColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                                <font key="NSFont" size="13" name="ZapfDingbatsITC"/>
+                                                                <font key="NSFont" size="16" name="ZapfDingbatsITC"/>
+                                                                <font key="NSOriginalFont" size="16" name="HelveticaNeue"/>
                                                                 <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineSpacing="3" tighteningFactorForTruncation="0.0"/>
                                                             </attributes>
                                                         </fragment>
-                                                        <fragment content=" The ability to change your class before level 100">
+                                                        <fragment>
+                                                            <string key="content"> Community Challenge Creation
+</string>
                                                             <attributes>
                                                                 <color key="NSColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                                <font key="NSFont" metaFont="system"/>
+                                                                <font key="NSFont" size="16" name="HelveticaNeue"/>
                                                                 <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineSpacing="3" tighteningFactorForTruncation="0.0"/>
+                                                            </attributes>
+                                                        </fragment>
+                                                        <fragment content="✔">
+                                                            <attributes>
+                                                                <color key="NSColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                <font key="NSFont" size="16" name="ZapfDingbatsITC"/>
+                                                                <font key="NSOriginalFont" size="16" name="HelveticaNeue"/>
+                                                                <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineSpacing="3" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO"/>
+                                                            </attributes>
+                                                        </fragment>
+                                                        <fragment content=" Pet and Hatching Potion Quests">
+                                                            <attributes>
+                                                                <color key="NSColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                <font key="NSFont" size="16" name="HelveticaNeue"/>
+                                                                <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineSpacing="3" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO"/>
                                                             </attributes>
                                                         </fragment>
                                                     </attributedString>
@@ -1353,16 +1374,16 @@
                                     </constraints>
                                 </imageView>
                                 <label opaque="NO" userInteractionEnabled="NO" tag="2" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="421-JA-vci">
-                                    <rect key="frame" x="40" y="76" width="350" height="0.0"/>
+                                    <rect key="frame" x="40" y="44" width="350" height="0.0"/>
                                     <constraints>
                                         <constraint firstAttribute="height" priority="500" constant="40" id="Glh-tL-HTw"/>
                                     </constraints>
-                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <imageView userInteractionEnabled="NO" tag="1" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="gift_sub_gift" translatesAutoresizingMaskIntoConstraints="NO" id="McX-fu-cEX">
-                                    <rect key="frame" x="197" y="32" width="36" height="36"/>
+                                    <rect key="frame" x="197" y="0.0" width="36" height="36"/>
                                     <constraints>
                                         <constraint firstAttribute="width" constant="36" id="Stk-pd-YeO"/>
                                         <constraint firstAttribute="height" constant="36" id="ZfH-Ya-fcD"/>
@@ -1421,11 +1442,11 @@
                                         <constraint firstItem="8GC-DI-d9y" firstAttribute="top" secondItem="n8g-Us-K2Y" secondAttribute="top" id="XaW-Am-QJt"/>
                                         <constraint firstItem="n04-cX-DVB" firstAttribute="top" secondItem="g5u-KO-DVp" secondAttribute="bottom" constant="16" id="lz9-rH-FJi"/>
                                         <constraint firstAttribute="trailing" secondItem="8GC-DI-d9y" secondAttribute="trailing" constant="32" id="oUG-TV-B1D"/>
-                                        <constraint firstAttribute="height" constant="160" id="pXO-f8-Sh3"/>
+                                        <constraint firstAttribute="height" constant="160" identifier="height" id="pXO-f8-Sh3"/>
                                     </constraints>
                                 </view>
                                 <button opaque="NO" tag="5" contentMode="scaleToFill" horizontalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" pointerInteraction="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Lhc-vl-WcB">
-                                    <rect key="frame" x="16" y="88" width="398" height="50"/>
+                                    <rect key="frame" x="16" y="56" width="398" height="50"/>
                                     <color key="backgroundColor" red="0.2900390625" green="0.1717529297" blue="0.5551757812" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="50" id="Hbu-zl-sxs"/>
@@ -1446,7 +1467,7 @@
                             </subviews>
                             <constraints>
                                 <constraint firstAttribute="trailing" secondItem="n8g-Us-K2Y" secondAttribute="trailing" id="1TW-Tw-Tew"/>
-                                <constraint firstItem="McX-fu-cEX" firstAttribute="top" secondItem="n9Z-3I-42b" secondAttribute="top" constant="32" id="46d-wB-Btr"/>
+                                <constraint firstItem="McX-fu-cEX" firstAttribute="top" secondItem="n9Z-3I-42b" secondAttribute="top" id="46d-wB-Btr"/>
                                 <constraint firstItem="JcU-dL-l4V" firstAttribute="bottom" secondItem="n8g-Us-K2Y" secondAttribute="top" id="7OL-4I-EyR"/>
                                 <constraint firstAttribute="trailing" secondItem="JcU-dL-l4V" secondAttribute="trailing" id="AXF-js-HA5"/>
                                 <constraint firstItem="Lhc-vl-WcB" firstAttribute="leading" secondItem="n9Z-3I-42b" secondAttribute="leading" constant="16" id="EgK-6Y-tsB"/>
@@ -2207,7 +2228,7 @@
                         <viewControllerLayoutGuide type="bottom" id="Zsl-fp-0gc"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="ZSn-9B-UNd">
-                        <rect key="frame" x="0.0" y="0.0" width="430" height="863"/>
+                        <rect key="frame" x="0.0" y="0.0" width="430" height="873"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="lcf-yP-12X">
@@ -2224,7 +2245,7 @@
                                 </connections>
                             </segmentedControl>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vIw-NX-YTf">
-                                <rect key="frame" x="0.0" y="120" width="430" height="709"/>
+                                <rect key="frame" x="0.0" y="120" width="430" height="719"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BJC-jA-n9n">
                                         <rect key="frame" x="0.0" y="0.0" width="430" height="421.66666666666669"/>

@@ -51,7 +51,9 @@ class FlashExtraGemsPromotion: ExtraGemsPromotion {
     override func configurePurchaseBanner(view: PromoBannerView) {
         super.configurePurchaseBanner(view: view)
         view.setTitleImage(Asset.flashPromoTitle.image)
-        view.setDescription(L10n.endsX(shortDateFormatter.string(from: endDate)))
+        let formatter = DateFormatter()
+        formatter.dateFormat = "MMMM d"
+        view.setDescription(L10n.endsX(formatter.string(from: endDate)))
     }
     
     override func configureInfoView(_ viewController: PromotionInfoViewController) {
