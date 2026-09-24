@@ -1282,7 +1282,7 @@
 "more_questions_text" = "Je kunt [contact opnemen](mailto:admin@habitica.com?subject=%%5BiOS%%5D%%20Question) een lid van ons team zal hun uiterste best doen om je te helpen!";
 "support.questions_description" = "We leggen de basis uit en beantwoorden veelgestelde vragen om je op weg te helpen";
 "mana_description" = "Mana punten worden vrijgespeeld in het klasse systeem op level 10, en stellen je in staat om **Vaardigheden te gebruiken** zodra je ze begint te leren op level 11.\n\nEen gedeelte van je **MP worden aangevuld** bij de dagelijkse reset, maar je krijgt er meer terug door taken af te ronden of de Magiër klassevaardigheid te gebruiken.";
-"gold_description" = "Goud is de **voornaamste valuta** in Habitica en stelt je in staat om bepaalde uitrustingen, queesten, voorwerpen of zelfs op maat ingestelde beloningen voor jezelf te kopen.\n\n**Verdien Goud** door taken en queesten af te ronden, en met sommige klasse vaardigheden. Een hogere **Perceptie eigenschap** zorgt voor een hogere goudopbrengst.\n\nAls je een abonnement neemt op Habitica, kun je goud zelfs gebruiken om een aantal edelstenen van te kopen, gebaseerd op de tijdsduur van je abonnement.";
+"gold_description" = "Goud is de voornaamste valuta in Habitica en stelt je in staat om bepaalde uitrustingen, queesten, voorwerpen of zelfs op maat ingestelde beloningen voor jezelf te kopen.\n\nVerdien Goud door taken en queesten af te ronden, en met sommige klasse vaardigheden.";
 "magic_potions" = "Magisch drankje";
 "hatch_pet_again" = "Broed huisdier opnieuw uit";
 "streak" = "Reeks";
@@ -1304,7 +1304,7 @@
 "magic_potion" = "Magisch drankje";
 "survey.button" = "Ga naar enquête";
 "survey.description" = "Vul deze 5 minuten durende enquête in om ons te helpen groeien en een prestatie te ontvangen!";
-"survey.title" = "Habitica spelersenquête";
+"survey.title" = "Spelersenquête";
 "gems_promo.info_limitations" = "Deze promotie is alleen geldig tijdens het tijdelijke evenement. Dit evenement begint op %@ (12:00 UTC) en eindigt op %@ (00:00 UTC). De promo-aanbieding is alleen beschikbaar als je edelstenen voor jezelf koopt.";
 "spooky_promo.info_instructions" = "Koop je tussen %@ en %@ een edelsteenbundel zoals gewoonlijk dan word je account opgewaardeerd met het promotie aantal aan edelstenen. Meer edelstenen om uit te geven, te delen of te sparen voor toekomstige releases!";
 "spooky_promo.info_prompt" = "De edelsteen uitverkoop is terug om het einde van het herfstgala van dit jaar te achtervolgen! Dit is een laatste kans om meer edelstenen te krijgen dan ooit, dus sla je voorraad in zolang het duurt!";
@@ -1591,3 +1591,11 @@
 "groups.lfp.subtitle" = "Hierbij een lijst van spelers die een Gezelschap zoeken";
 "armoire.rate_experience_title" = "20%% Ervaringspunten";
 "shops.freeRebirthAtLevel100" = "GRATIS Bol der Hergeboorte op niveau 100";
+"settings.active_promotion" = "Actieve Promotie";
+"inventory.no_saddle_description" = "Zadels veranderen een Huisdier direct in een Rijdier. Je kan er een kopen op de Marktplaats.";
+"stable.evolved_pet" = "Je hebt %s getemd, maak eens een ritje!";
+"party.looking_for_party" = "Je zoekt een Gezelschap!";
+"groups.lfp.subtitle_empty" = "Niemand zoekt op dit moment een Gezelschap. Kom later eens terug!";
+"groups.copy_shared_tasks" = "Gedeelde taken kopiëren";
+"gems_promo.menu_prompt" = "Krijg extra Edelstenen bij elke aankoop!";
+"settings.user_data" = "Gebruikersgegevens";
