@@ -1,4 +1,5 @@
 import SwiftUI
+import SwiftUIX
 
 struct RebirthEnabledSheet: View {
     @ObservedObject var themeService = ThemeService.shared

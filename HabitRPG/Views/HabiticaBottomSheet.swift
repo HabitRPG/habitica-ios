@@ -28,8 +28,8 @@ private class QueueManager {
     private static var isQueueStuck: Bool {
         if let head = displayQueue.first, head.didAttempt {
             // The head was already attempted but isn't showing.
-            let vc = head.viewController
-            return !vc.isBeingPresented && !vc.isMovingToParent && !vc.isCurrentlyPresented
+            let viewController = head.viewController
+            return !viewController.isBeingPresented && !viewController.isMovingToParent && !viewController.isCurrentlyPresented
         }
         return false
     }

@@ -7,6 +7,7 @@
 //
 
 import SwiftUI
+import SwiftUIX
 
 struct OnboardingCompletedSheet: View {
     @ObservedObject var themeService = ThemeService.shared

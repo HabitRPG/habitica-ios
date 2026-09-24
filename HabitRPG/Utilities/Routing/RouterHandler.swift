@@ -28,7 +28,6 @@ class RouterHandler {
         parameterRoutes.append(RegexRoute(route: route, call: call))
     }
     
-    // swiftlint:disable:next function_body_length cyclomatic_complexity
     func register() {
         let configRepository = ConfigRepository.shared
         register("/groups/guild/:groupID") { link in

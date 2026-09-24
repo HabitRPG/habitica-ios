@@ -1,5 +1,5 @@
 // swiftlint:disable all
-// Generated using SwiftGen — https://github.com/SwiftGen/SwiftGen
+// Generated using SwiftGen  https://github.com/SwiftGen/SwiftGen
 
 // swiftlint:disable sorted_imports
 import Foundation
@@ -118,3 +118,4 @@ internal extension SegueType where RawValue == String {
     self.init(rawValue: identifier)
   }
 }
+// swiftlint:enable all

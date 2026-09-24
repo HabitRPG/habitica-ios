@@ -1,5 +1,5 @@
 // swiftlint:disable all
-// Generated using SwiftGen — https://github.com/SwiftGen/SwiftGen
+// Generated using SwiftGen  https://github.com/SwiftGen/SwiftGen
 
 // swiftlint:disable sorted_imports
 import Foundation
@@ -239,3 +239,5 @@ private final class BundleToken {
   }()
 }
 // swiftlint:enable convenience_type
+
+// swiftlint:enable all

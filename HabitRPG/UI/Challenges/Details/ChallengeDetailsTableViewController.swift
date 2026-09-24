@@ -113,7 +113,9 @@ class ChallengeDetailsTableViewController: MultiModelTableViewController {
     }
 
     func viewProgressAction() {
-        guard let challenge = viewModel?.challengeProperty.value else { return }
+        guard let challenge = viewModel?.challengeProperty.value else {
+            return
+        }
         let host = UIHostingController(rootView: CheckParticipationView(challenge: challenge, onClose: { [weak self] in
             self?.dismiss(animated: true)
         }, onFinished: { [weak self] in
@@ -127,12 +129,16 @@ class ChallengeDetailsTableViewController: MultiModelTableViewController {
 
     func exportChallengeAction() {
         let challengeID = viewModel?.challengeID ?? ""
-        guard let url = URL(string: "https://habitica.com/challenges/\(challengeID)") else { return }
+        guard let url = URL(string: "https://habitica.com/challenges/\(challengeID)") else {
+            return
+        }
         UIApplication.shared.open(url)
     }
 
     func editChallengeAction() {
-        guard let challenge = viewModel?.challengeProperty.value else { return }
+        guard let challenge = viewModel?.challengeProperty.value else {
+            return
+        }
         let viewController = CreateChallengeViewController()
         viewController.prepareForEditing(challenge: challenge)
         viewController.modalPresentationStyle = .formSheet
@@ -141,7 +147,9 @@ class ChallengeDetailsTableViewController: MultiModelTableViewController {
     }
 
     func cloneChallengeAction() {
-        guard let challenge = viewModel?.challengeProperty.value else { return }
+        guard let challenge = viewModel?.challengeProperty.value else {
+            return
+        }
         let viewController = CreateChallengeViewController()
         viewController.prepareForCloning(challenge: challenge)
         viewController.modalPresentationStyle = .formSheet
@@ -195,7 +203,9 @@ class ChallengeDetailsTableViewController: MultiModelTableViewController {
     }
     
     func endChallengeAction() {
-        guard let challenge = viewModel?.challengeProperty.value else { return }
+        guard let challenge = viewModel?.challengeProperty.value else {
+            return
+        }
         let host = UIHostingController(rootView: EndChallengeFlow(challenge: challenge, onClose: { [weak self] in
             self?.dismiss(animated: true)
         }, onFinished: { [weak self] in

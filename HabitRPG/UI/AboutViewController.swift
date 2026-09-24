@@ -219,7 +219,9 @@ class AboutViewController: BaseTableViewController, MFMailComposeViewControllerD
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         let width = view.bounds.width
-        guard width > 0 else { return }
+        guard width > 0 else {
+            return
+        }
         let margin: CGFloat = 16
         let cardW = width - margin * 2
 

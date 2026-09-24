@@ -147,7 +147,9 @@ class TaskFilterViewModel: ViewModel {
             tag.order = nextOrder
             nextOrder += 1
             operations.append(serialTagOperation { [weak self] in
-                guard let self = self else { return nil }
+                guard let self = self else {
+                    return nil
+                }
                 let newTag = self.taskRepository.getNewTag(id: tag.id)
                 newTag.text = tag.text
                 newTag.order = tag.order
@@ -166,7 +168,9 @@ class TaskFilterViewModel: ViewModel {
             }
         }
         let finish = { [weak self] in
-            guard let self = self else { return }
+            guard let self = self else {
+                return
+            }
             withAnimation {
                 self.tags = self.editedTags.compactMap { tag in
                     if tag.text?.isEmpty == false {

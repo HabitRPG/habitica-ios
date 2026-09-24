@@ -4,8 +4,6 @@
 //
 //  Created by Phillip Thelen on 19.08.26.
 //
-
-
 import Foundation
 import Habitica_Models
 import Habitica_API_Client

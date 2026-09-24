@@ -94,7 +94,7 @@ class TaskDetailLineView: UIView {
         hasContent = false
         setReminder(task: task, reminders: task.reminders)
         setChallenge(enabled: task.isChallengeTask, broken: task.challengeBroken)
-        setStreak(count: task.streak)
+        setStreak(streak: task.streak)
         
         if task.type == "habit" {
             setCalendarIcon(enabled: false)
@@ -190,10 +190,9 @@ class TaskDetailLineView: UIView {
         }
     }
     
-    private func setStreak(count: Int) {
-        // swiftlint:disable:next empty_count
-        if count > 0 {
-            streakLabel.text = String(count)
+    private func setStreak(streak: Int) {
+        if streak > 0 {
+            streakLabel.text = String(streak)
             streakIconView.isHidden = false
             streakLabel.textColor = textColor
             streakIconView.tintColor = iconColor

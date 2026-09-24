@@ -107,7 +107,9 @@ class ChallengeTableViewDataSource: BaseReactiveTableViewDataSource<ChallengePro
         }
         socialRepository.retrieveChallenges(page: page, memberOnly: memberOnly, clearCache: shouldClear)
             .on(value: { [weak self] challenges in
-                guard let self = self else { return }
+                guard let self = self else {
+                    return
+                }
                 if !memberOnly {
                     let ids = (challenges ?? []).compactMap { $0.id }
                     DispatchQueue.main.async {

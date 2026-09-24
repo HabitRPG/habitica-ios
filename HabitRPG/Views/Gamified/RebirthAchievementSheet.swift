@@ -1,4 +1,5 @@
 import SwiftUI
+import SwiftUIX
 
 struct RebirthAchievementSheet: View {
     @ObservedObject var themeService = ThemeService.shared

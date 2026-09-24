@@ -95,7 +95,9 @@ struct ChallengeMarkdownView: UIViewRepresentable {
     }
 
     func sizeThatFits(_ proposal: ProposedViewSize, uiView: MarkdownTextView, context: Context) -> CGSize? {
-        guard let width = proposal.width, width > 0, width < .infinity else { return nil }
+        guard let width = proposal.width, width > 0, width < .infinity else {
+            return nil
+        }
         let height = uiView.sizeThatFits(CGSize(width: width, height: .greatestFiniteMagnitude)).height
         return CGSize(width: width, height: height)
     }
@@ -184,7 +186,9 @@ struct ChallengeDetailCategoriesCard: View {
 
     private var chips: [(name: String, official: Bool)] {
         challenge.categories.compactMap { category in
-            guard let slug = category.slug else { return nil }
+            guard let slug = category.slug else {
+                return nil
+            }
             let name = ChallengeCategory(rawValue: slug)?.localizedName ?? category.name ?? slug
             return (name, slug == ChallengeCategory.official.rawValue)
         }

@@ -50,7 +50,6 @@ enum HabiticaPromotions: String, Identifiable {
     }
 }
 
-
 protocol HabiticaPromotion {
     var identifier: String { get }
     var promoType: HabiticaPromotionType { get }

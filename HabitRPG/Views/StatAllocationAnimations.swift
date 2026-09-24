@@ -496,7 +496,9 @@ class SunburstView: UIView {
 
 extension UILabel {
     func addSunburstEffect(color: UIColor, dotCount: Int = 12) {
-        guard let superview = superview else { return }
+        guard let superview = superview else {
+            return
+        }
         let centerInSuperview = CGPoint(x: frame.midX, y: frame.midY)
         let sunburst = SunburstView(dotCount: dotCount)
         sunburst.burst(from: centerInSuperview, in: superview)

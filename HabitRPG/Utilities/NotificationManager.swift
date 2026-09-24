@@ -100,7 +100,6 @@ class NotificationManager {
 
     }
     
-    // swiftlint:disable:next function_body_length cyclomatic_complexity
     static func displayAchievement(notification: NotificationProtocol, isOnboarding: Bool) -> Bool {
         if isOnboarding && UserDefaults.standard.bool(forKey: "isInSetup") {
             if let key = notification.achievementKey {

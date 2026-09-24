@@ -338,7 +338,9 @@ class TaskRepeatablesSummaryInteractor: NSObject {
         let plainText = repeatablesSummary(task)
         var result = AttributedString(plainText)
 
-        guard task.frequency == "monthly" else { return result }
+        guard task.frequency == "monthly" else {
+            return result
+        }
 
         if task.everyX == 1 {
             let monthlyStr = L10n.Tasks.Repeats.monthly

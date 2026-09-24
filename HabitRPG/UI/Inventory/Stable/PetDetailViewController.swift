@@ -116,17 +116,17 @@ class PetDetailViewController: StableDetailViewController<PetProtocol, PetStable
         guard let stableItem = datasource?.item(at: indexPath) else {
             return nil
         }
-        return UIContextMenuConfiguration(identifier: nil, previewProvider: nil, actionProvider: { _ in
+        return UIContextMenuConfiguration(identifier: nil, previewProvider: nil, actionProvider: {[weak self] _ in
             var actions = [UIAction]()
             if stableItem.trained > 0 && stableItem.pet?.type != "special" && stableItem.canRaise {
-                actions.append(UIAction(title: L10n.Stable.feed, handler: {[weak self] (_) in
+                actions.append(UIAction(title: L10n.Stable.feed, handler: { (_) in
                     self?.selectedPet = stableItem.pet
                     self?.perform(segue: StoryboardSegue.Stable.feedSegue)
                 }))
             }
             if stableItem.trained > 0 {
                 let equipString = L10n.equip
-                actions.append(UIAction(title: equipString, handler: {[weak self] _ in
+                actions.append(UIAction(title: equipString, handler: { _ in
                     self?.inventoryRepository.equip(type: "pet", key: stableItem.pet?.key ?? "").observeCompleted {
                     }
                 }))

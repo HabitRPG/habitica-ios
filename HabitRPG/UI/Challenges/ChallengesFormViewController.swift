@@ -113,7 +113,8 @@ struct CreateChallengeForm: View {
         return focusedField.next
     }
 
-    @ViewBuilder private func page(for step: ChallengeFormStep) -> some View {
+    @ViewBuilder
+    private func page(for step: ChallengeFormStep) -> some View {
         switch step {
         case .prize:
             ChallengeFormPrizePage(viewModel: viewModel)

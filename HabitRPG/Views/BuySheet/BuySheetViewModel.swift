@@ -218,7 +218,6 @@ class BuySheetViewModel: ViewModel {
         }
     }
     
-    // swiftlint:disable:next cyclomatic_complexity
     private func buyItem(quantity: Int) {
         let key = item.key ?? ""
         let purchaseType = item.purchaseType ?? ""
@@ -289,7 +288,6 @@ class BuySheetViewModel: ViewModel {
         }
     }
     
-    // swiftlint:disable:next cyclomatic_complexity
     private func remainingPurchaseQuantity(onResult: @escaping ((Int) -> Void)) {
         var ownedCount = 0
         var shouldWarn = true
@@ -436,7 +434,9 @@ class BuySheetViewModel: ViewModel {
 
 extension BuySheetViewModel {
     var rebirthBannerText: String? {
-        guard item.purchaseType == "rebirth_orb" else { return nil }
+        guard item.purchaseType == "rebirth_orb" else {
+            return nil
+        }
         let userLevel = user?.stats?.level ?? 0
         if userLevel >= 100 {
             if let lastFreeRebirth = user?.flags?.lastFreeRebirth {
@@ -509,7 +509,9 @@ extension BuySheetViewModel {
         let alert = HabiticaAlertController(attributedTitle: attributedTitle, attributedMessage: attributedMessage)
         alert.containerViewSpacing = 28
         let confirmButton = alert.addAction(title: L10n.Shops.useOrbOfRebirth, style: .destructive, isMainAction: true) { [weak self] _ in
-            guard let self = self else { return }
+            guard let self = self else {
+                return
+            }
             withAnimation {
                 self.isPurchasing = true
             }

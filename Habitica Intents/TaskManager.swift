@@ -55,14 +55,6 @@ class TaskManager: BaseRepository<TaskLocalRepository> {
 
     @objc
     func setupNetworkClient() {
-        /*
-         Comment for code review, TODO, remove:
-         This function is a direct copy of the function from AppDelegate, there
-         may be a better solution to handle the project inegration, to avoid the duplicate
-         code, but it's beyond what I know regarding swift project setup. Alternatively,
-         we could separate the code, but that doesn't seem like a call I should make.
-         - Chris Coffin
-         */
         NetworkAuthenticationManager.shared.currentUserId = AuthenticationManager.shared.currentUserId
         NetworkAuthenticationManager.shared.currentUserKey = AuthenticationManager.shared.currentUserKey
         updateServer()
@@ -88,50 +80,18 @@ class TaskManager: BaseRepository<TaskLocalRepository> {
     }
 
     func updateServer() {
-        /*
-         Comment for code review, TODO, remove:
-         This function is a direct copy of the function from AppDelegate, there
-         may be a better solution to handle the project inegration, to avoid the duplicate
-         code, but it's beyond what I know regarding swift project setup. Alternatively,
-         we could separate the code, but that doesn't seem like a call I should make.
-         - Chris Coffin
-         */
         if let chosenServer = UserDefaults().string(forKey: "chosenServer") {
             AuthenticatedCall.defaultConfiguration = HabiticaServerConfig.from(chosenServer)
         }
     }
 
     func getTasks(predicate: NSPredicate, sortKey: String = "order") -> SignalProducer<ReactiveResults<[TaskProtocol]>, ReactiveSwiftRealmError> {
-        /*
-         Comment for code review, TODO, remove:
-         This function is a direct copy of the function from TaskRepositoryImpl, there
-         may be a better solution to handle the project inegration, to avoid the duplicate
-         code, but it's beyond what I know regarding swift project setup. Alternatively,
-         we could separate the code, but that doesn't seem like a call I should make.
-
-         Adding TaskManagerImpl directly causes there to be a chain of inclusions which
-         leads to inclusions of many of the UI elements as well. This seemed like to many
-         dependencies for these two functions.
-         - Chris Coffin
-         */
         return currentUserIDProducer.skipNil().flatMap(.latest, {[weak self] (userID) in
             return self?.localRepository.getTasks(userID: userID, predicate: predicate, sortKey: sortKey) ?? SignalProducer.empty
         })
     }
 
     func retrieveTasks(dueOnDay: Date? = nil, type: String? = "todo") -> Signal<[TaskProtocol]?, Never> {
-        /*
-         Comment for code review, TODO, remove:
-         This function is a direct copy of the function from TaskRepositoryImpl, there
-         may be a better solution to handle the project inegration, to avoid the duplicate
-         code, but it's beyond what I know regarding swift project setup. Alternatively,
-         we could separate the code, but that doesn't seem like a call I should make.
-
-         Adding TaskManagerImpl directly causes there to be a chain of inclusions which
-         leads to inclusions of many of the UI elements as well. This seemed like to many
-         dependencies for these two functions.
-         - Chris Coffin
-         */
         let call = RetrieveTasksCall(dueOnDay: dueOnDay, type: type)
         return call.arraySignal.on(value: {[weak self] tasks in
             if let tasks = tasks, dueOnDay == nil {
