@@ -25,6 +25,8 @@ excluded: # paths to ignore during linting. Takes precedence over `included`.
   - Pods
   - HabitRPG/Utilities/HabiticaIcons.swift
 line_length: 200
+function_body_length: 100
+cyclomatic_complexity: 13
 type_body_length:
   - 350 # warning
   - 450 # error

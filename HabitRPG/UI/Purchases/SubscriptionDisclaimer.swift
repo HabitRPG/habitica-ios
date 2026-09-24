@@ -15,6 +15,7 @@ import SwiftUIX
 struct SubscriptionDisclaimer: View {
     var body: some View {
         VStack(alignment: .leading, spacing: 0) {
+            // swiftlint:disable:next line_length
             Text("Once we’ve confirmed your purchase, the payment will be charged to your Apple ID.\n\nSubscriptions automatically renew unless auto-renewal is turned off at least 24-hours before the end of the current period. You can manage subscription renewal from your Apple ID Settings. If you have an active subscription, your account will be charged for renewal within 24-hours prior to the end of your current subscription period and you will be charged the same price you initially paid.")
                 .font(.system(size: 11))
             HStack(spacing: 0) {

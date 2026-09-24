@@ -7,6 +7,7 @@
 //
 
 import SwiftUI
+import SwiftUIX
 
 struct PetItemsFlowView<LeftIcon: View, MiddleIcon: View, RightIcon: View>: View {
     @ObservedObject var themeService = ThemeService.shared
@@ -17,7 +18,8 @@ struct PetItemsFlowView<LeftIcon: View, MiddleIcon: View, RightIcon: View>: View
     var isleftIconActive = true
     var isRightIconActive = true
     
-    @Environment(\.scenePhase) var scenePhase
+    @Environment(\.scenePhase)
+    var scenePhase
     @State private var highlightedStep = 0
     
     var body: some View {
@@ -61,7 +63,9 @@ struct PetItemsFlowView<LeftIcon: View, MiddleIcon: View, RightIcon: View>: View
         .padding(.top, 70)
         .padding(.horizontal, 32)
         .task(id: scenePhase) {
-            guard scenePhase == .active else { return }
+            guard scenePhase == .active else {
+                return
+            }
             repeat {
                 withAnimation {
                     highlightedStep += 1
@@ -117,8 +121,7 @@ struct HatchSuggestionSheet: View {
         }
     }
     
-    @ViewBuilder
-    private var petIcon: some View {
+    @ViewBuilder private var petIcon: some View {
         if item.canRaise {
             PixelArtView(name: "stable_Pet-\(item.pet?.egg ?? "")-\(item.pet?.potion ?? "")-outline")
         } else {

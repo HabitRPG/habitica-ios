@@ -32,4 +32,7 @@
    <FileRef
       location = "group:RegexRoute.swift">
    </FileRef>
+   <FileRef
+      location = "group:DeleteAccountView.swift">
+   </FileRef>
 </Workspace>

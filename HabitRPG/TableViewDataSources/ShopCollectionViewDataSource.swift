@@ -217,7 +217,9 @@ class ShopCollectionViewDataSource: BaseReactiveCollectionViewDataSource<InAppRe
     }
 
     private func calculateRebirthPrice() -> Int {
-        guard let userLevel = user?.stats?.level else { return 6 }
+        guard let userLevel = user?.stats?.level else {
+            return 6
+        }
 
         if userLevel >= 100 {
             guard let lastFreeRebirth = user?.flags?.lastFreeRebirth else {

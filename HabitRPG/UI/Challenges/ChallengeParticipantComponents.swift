@@ -400,7 +400,8 @@ struct ChallengeParticipantTaskList: View {
         }
     }
 
-    @ViewBuilder private func section(_ title: String, _ items: [TaskProtocol]) -> some View {
+    @ViewBuilder
+    private func section(_ title: String, _ items: [TaskProtocol]) -> some View {
         if !items.isEmpty {
             Text(title)
                 .font(.system(size: 17, weight: .semibold))
@@ -436,7 +437,9 @@ final class ChallengeMembersViewModel: ObservableObject {
     }
 
     func filtered(_ search: String) -> [MemberProtocol] {
-        guard !search.isEmpty else { return members }
+        guard !search.isEmpty else {
+            return members
+        }
         let query = search.lowercased()
         return members.filter {
             ($0.profile?.name?.lowercased().contains(query) ?? false) ||

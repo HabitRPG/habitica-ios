@@ -97,16 +97,16 @@ class PurchaseHandler: NSObject, SKPaymentTransactionObserver {
                 logger.log(format: "Purchase: %@", level: .warning, arguments: getVaList([product.payment.productIdentifier]))
             }
         }
-        SwiftyStoreKit.fetchReceipt(forceRefresh: false) { result in
+        SwiftyStoreKit.fetchReceipt(forceRefresh: false) { [weak self] result in
             switch result {
             case .success(let receiptData):
-                self.userRepository.getUser().take(first: 1).on(value: {[weak self] user in
+                self?.userRepository.getUser().take(first: 1).on(value: { user in
                     for transaction in transactions {
                         self?.handleUnfinished(transaction: transaction, user: user, receiptData: receiptData)
                     }
                 }).start()
             case .error(let error):
-                self.handle(error: error)
+                self?.handle(error: error)
             }
         }
     }
@@ -257,7 +257,9 @@ class PurchaseHandler: NSObject, SKPaymentTransactionObserver {
         }
         var didFinish = false
         let finish: (Bool) -> Void = { status in
-            if didFinish { return }
+            if didFinish {
+                return
+            }
             didFinish = true
             completion(status)
         }
@@ -286,7 +288,9 @@ class PurchaseHandler: NSObject, SKPaymentTransactionObserver {
         }
         var didFinish = false
         let finish: (Bool) -> Void = { status in
-            if didFinish { return }
+            if didFinish {
+                return
+            }
             didFinish = true
             completion(status)
         }
@@ -324,7 +328,9 @@ class PurchaseHandler: NSObject, SKPaymentTransactionObserver {
         isActivatingSubscription = true
         var didFinish = false
         let finish: (Bool) -> Void = { [weak self] status in
-            if didFinish { return }
+            if didFinish {
+                return
+            }
             didFinish = true
             self?.isActivatingSubscription = false
             completion(status)

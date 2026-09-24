@@ -175,11 +175,15 @@ class ChallengeDetailViewModel: ChallengeDetailViewModelProtocol, ChallengeDetai
     func setupInfo() {
         Signal.combineLatest(challengeProperty.signal.skipNil(), challengeMembershipProperty.signal, challengeCreatorProperty.signal)
             .observeValues {[weak self] (challenge, membership, creator) in
-            guard let self = self else { return }
+            guard let self = self else {
+                return
+            }
             let infoItem = ChallengeDetailHeaderItem(challenge)
             let isParticipating = membership != nil
             let ctaItem = ChallengeDetailCTAItem(isParticipating: isParticipating) {[weak self] in
-                guard let self = self, let challenge = self.challengeProperty.value else { return }
+                guard let self = self, let challenge = self.challengeProperty.value else {
+                    return
+                }
                 if isParticipating {
                     self.leaveInteractor?.run(with: challenge)
                 } else {

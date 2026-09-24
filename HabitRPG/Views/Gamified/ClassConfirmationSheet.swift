@@ -7,6 +7,7 @@
 //
 
 import SwiftUI
+import SwiftUIX
 import Habitica_Models
 
 struct ClassConfirmationSheet: View {

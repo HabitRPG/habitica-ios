@@ -43,7 +43,6 @@ class SubscriptionPromoView: UIView, Themeable {
         button.setTitle(L10n.subscribe, for: .normal)
         button.setTitleColor(.white, for: .normal)
         button.titleLabel?.font = .boldSystemFont(ofSize: 14)
-        button.contentEdgeInsets = UIEdgeInsets(top: 0, left: 28, bottom: 0, right: 28)
         button.isPointerInteractionEnabled = true
         return button
     }()

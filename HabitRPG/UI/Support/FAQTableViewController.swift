@@ -99,7 +99,7 @@ class FAQViewController: BaseUIViewController, MFMailComposeViewControllerDelega
         populateMechanics()
         disposable.inner.add(contentRepository.getFAQEntries().on(value: {[weak self] entries in
             self?.populateFAQ(questions: entries.value)
-            }).start())
+        }).start())
         
         disposable.inner.add(userRepository.getUser().on(value: {[weak self] user in
             self?.user = user
@@ -228,18 +228,52 @@ class FAQViewController: BaseUIViewController, MFMailComposeViewControllerDelega
             destination?.index = selectedIndex ?? 0
         }
     }
-
+    
     private static var mechanics: [[String: Any]] {
         let isDark = ThemeService.shared.theme.isDark
         return [
-            ["title": L10n.healthPoints, "subtitle": "HP", "icon": HabiticaIcons.imageOfHeartLarge, "text": L10n.healthDescription, "color": isDark ? UIColor.red500 : UIColor.red10],
-            ["title": L10n.experiencePoints, "subtitle": "EXP", "icon": HabiticaIcons.imageOfExperienceReward, "text": L10n.experienceDescription, "color": isDark ? UIColor.yellow500 : UIColor.yellow5],
-            ["title": L10n.manaPoints, "subtitle": "MP", "icon": HabiticaIcons.imageOfMagic, "text": L10n.manaDescription, "color": isDark ? UIColor.blue500 : UIColor.blue10],
-            ["title": L10n.gold, "subtitle": L10n.currency, "icon": HabiticaIcons.imageOfGoldReward, "text": L10n.goldDescription, "color": isDark ? UIColor.orange500 : UIColor.orange10],
-            ["title": L10n.gems, "subtitle": L10n.premiumCurrency, "icon": HabiticaIcons.imageOfGem, "text": L10n.gemsDescription, "color": isDark ? UIColor.green500 : UIColor.green10],
-            ["title": L10n.mysticHourglasses, "subtitle": L10n.subscriberCurrency, "icon": HabiticaIcons.imageOfHourglass, "text": L10n.hourglassesDescription, "color": isDark ? UIColor.purple500 : UIColor.purple300],
-            ["title": L10n.statAllocation, "subtitle": "STR, CON, INT, PER", "icon": HabiticaIcons.imageOfStats, "text": L10n.statDescription, "color": isDark ? UIColor.orange100 : UIColor.orange1],
-            ["title": L10n.contributorTiers, "subtitle": L10n.habiticaHelpers, "icon": Asset.contributorsFaqIcon.image, "text": L10n.contributorTiersDescription, "color": isDark ? UIColor.teal500 : UIColor.teal10, "showContributorTiers": true]
+            ["title": L10n.healthPoints,
+             "subtitle": "HP",
+             "icon": HabiticaIcons.imageOfHeartLarge,
+             "text": L10n.healthDescription,
+             "color": isDark ? UIColor.red500 : UIColor.red10],
+            ["title": L10n.experiencePoints,
+             "subtitle": "EXP",
+             "icon": HabiticaIcons.imageOfExperienceReward,
+             "text": L10n.experienceDescription,
+             "color": isDark ? UIColor.yellow500 : UIColor.yellow5],
+            ["title": L10n.manaPoints,
+             "subtitle": "MP",
+             "icon": HabiticaIcons.imageOfMagic,
+             "text": L10n.manaDescription,
+             "color": isDark ? UIColor.blue500 : UIColor.blue10],
+            ["title": L10n.gold,
+             "subtitle": L10n.currency,
+             "icon": HabiticaIcons.imageOfGoldReward,
+             "text": L10n.goldDescription,
+             "color": isDark ? UIColor.orange500 : UIColor.orange10],
+            ["title": L10n.gems,
+             "subtitle": L10n.premiumCurrency,
+             "icon": HabiticaIcons.imageOfGem,
+             "text": L10n.gemsDescription,
+             "color": isDark ? UIColor.green500 : UIColor.green10],
+            ["title": L10n.mysticHourglasses,
+             "subtitle": L10n.subscriberCurrency,
+             "icon": HabiticaIcons.imageOfHourglass,
+             "text": L10n.hourglassesDescription,
+             "color": isDark ? UIColor.purple500 : UIColor.purple300],
+            ["title": L10n.statAllocation,
+             "subtitle": "STR, CON, INT, PER",
+             "icon": HabiticaIcons.imageOfStats,
+             "text": L10n.statDescription,
+             "color": isDark ? UIColor.orange100 : UIColor.orange1],
+            ["title": L10n.contributorTiers,
+             "subtitle": L10n.habiticaHelpers,
+             "icon": Asset.contributorsFaqIcon.image,
+             "text": L10n.contributorTiersDescription,
+             "color": isDark ? UIColor.teal500 : UIColor.teal10,
+             "showContributorTiers": true
+            ]
         ]
     }
     

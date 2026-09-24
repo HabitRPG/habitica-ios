@@ -8,14 +8,14 @@ strings:
 xcassets:
   inputs: HabitRPG/Images.xcassets
   outputs:
-    - templateName: swift5
+    - templatePath: swiftgen-templates/xcassets.stencil
       output: HabitRPG/Generated/Assets-Images.swift
 ib:
   inputs: HabitRPG/Storyboards/Base.lproj/
   outputs:
-    - templateName: scenes-swift5
+    - templatePath: swiftgen-templates/scenes.stencil
       output: HabitRPG/Generated/Storyboard Scenes.swift
-    - templateName: segues-swift5
+    - templatePath: swiftgen-templates/segues.stencil
       output: HabitRPG/Generated/Storyboard Segues.swift
 yaml:
   inputs: secrets.yml

@@ -7,6 +7,7 @@
 //
 
 import SwiftUI
+import SwiftUIX
 
 struct SolidColorView: View {
     let color: Color

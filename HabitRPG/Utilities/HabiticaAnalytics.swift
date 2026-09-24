@@ -33,11 +33,6 @@ public class HabiticaAnalytics {
         guard analyticsConsented else {
             return
         }
-        let properties = [
-            "eventAction": "navigated",
-            "eventCategory": "navigation",
-            "hitType": "pageview"
-        ]
     }
     
     public func log(_ eventName: String, withEventProperties properties: [String: Any] = [:]) {

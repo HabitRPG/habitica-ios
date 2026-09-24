@@ -1,4 +1,4 @@
-// Generated using SwiftGen, by O.Halligon — https://github.com/SwiftGen/SwiftGen
+// Generated using SwiftGen, by O.Halligon ??? https://github.com/SwiftGen/SwiftGen
 
 {% if tables.count > 0 %}
 {% set accessModifier %}{% if param.publicAccess %}public{% else %}internal{% endif %}{% endset %}
@@ -72,6 +72,8 @@ extension {{enumName}} {
 }
 
 private final class BundleToken {}
+
+// swiftlint:enable all
 {% else %}
 // No string found
 {% endif %}

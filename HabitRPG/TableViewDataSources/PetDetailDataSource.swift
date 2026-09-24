@@ -72,7 +72,9 @@ class PetDetailDataSource: StableDetailDataSource<PetProtocol, PetStableItem> {
                         }))
 
             .on(value: {[weak self](ownedPets, ownedMounts, pets, mounts) in
-                guard !UserManager.shared.isLoggingOut else { return }
+                guard !UserManager.shared.isLoggingOut else {
+                    return
+                }
                 self?.sections[0].items.removeAll()
                 self?.sections[1].items.removeAll()
                 pets.sorted(by: { first, second in
@@ -97,7 +99,9 @@ class PetDetailDataSource: StableDetailDataSource<PetProtocol, PetStableItem> {
                             return itemMap
                         })
                         .on(value: {[weak self] ownedItems in
-                            guard !UserManager.shared.isLoggingOut else { return }
+                            guard !UserManager.shared.isLoggingOut else {
+                                return
+                            }
                             self?.ownedItems = ownedItems
                             self?.collectionView?.reloadData()
                         }).start())

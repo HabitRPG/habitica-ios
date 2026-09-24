@@ -5,8 +5,6 @@
 //  Created by Phillip Thelen on 10.03.26.
 //  Copyright © 2026 HabitRPG Inc. All rights reserved.
 //
-
-
 import SwiftUI
 import Habitica_Models
 import ReactiveSwift
@@ -108,14 +106,18 @@ class ChallengeFormViewModel: ViewModel {
             .flatMap(.latest, {[weak self] partyID in
                 return self?.socialRepository.getGroup(groupID: partyID ?? "", retrieveIfNotFound: true) ?? SignalProducer.empty
             }).on(value: {[weak self] party in
-                guard let self = self else { return }
+                guard let self = self else {
+                    return
+                }
                 if let party = party, !self.challengeLocations.contains(where: { $0.id == party.id }) {
                     self.challengeLocations.insert(ChallengeLocation(id: party.id ?? "", name: party.name ?? ""), at: 1)
                 }
             }).start())
         disposable.add(userRepository.getGroupPlans()
             .on(value: {[weak self] plans in
-                guard let self = self else { return }
+                guard let self = self else {
+                    return
+                }
                 plans.value.forEach { plan in
                     if !self.challengeLocations.contains(where: { $0.id == plan.id }) {
                         self.challengeLocations.append(ChallengeLocation(id: plan.id ?? "", name: plan.name ?? ""))
@@ -243,7 +245,9 @@ class ChallengeFormViewModel: ViewModel {
 
     private func loadChallengeTasks(challengeID: String) {
         disposable.add(socialRepository.getChallengeTasks(challengeID: challengeID).take(first: 1).startWithResult { [weak self] result in
-            guard let self = self, case .success(let (tasks, _)) = result else { return }
+            guard let self = self, case .success(let (tasks, _)) = result else {
+                return
+            }
             self.habits = tasks.filter { $0.type == TaskType.habit }
             self.dailies = tasks.filter { $0.type == TaskType.daily }
             self.todos = tasks.filter { $0.type == TaskType.todo }
@@ -269,8 +273,8 @@ class ChallengeFormViewModel: ViewModel {
         return ops
     }
 
-    private func performTaskOp(_ op: ChallengeTaskOp, challengeID: String) -> Signal<TaskProtocol?, Never> {
-        switch op {
+    private func performTaskOp(_ operation: ChallengeTaskOp, challengeID: String) -> Signal<TaskProtocol?, Never> {
+        switch operation {
         case .create(let task):
             return taskRepository.createChallengeTask(challengeID: challengeID, task: task).take(first: 1)
         case .update(let task):

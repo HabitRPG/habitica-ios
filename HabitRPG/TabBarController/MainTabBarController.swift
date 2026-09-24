@@ -100,9 +100,8 @@ class MainTabBarController: UITabBarController {
     private func fetchData() {
         disposable.inner.add(userRepository.getUser().on(value: {[weak self] user in
             var badgeCount = 0
-            // swiftlint:disable:next empty_count
-            if let count = user.inbox?.numberNewMessages, count > 0 {
-                badgeCount += count
+            if let messageCount = user.inbox?.numberNewMessages, messageCount > 0 {
+                badgeCount += messageCount
             }
             if user.flags?.hasNewStuff == true {
                 badgeCount += 1
@@ -116,7 +115,7 @@ class MainTabBarController: UITabBarController {
                 
             }
             self?.showAdventureGuideBadge = user.achievements?.hasCompletedOnboarding != true && self?.configRepository.bool(variable: .moveAdventureGuide) != true
-            self?.setBadgeCount(index: 4, count: badgeCount)
+            self?.setBadgeCount(index: 4, badgeCount: badgeCount)
             
             if let tutorials = user.flags?.tutorials {
                 self?.updateTutorialSteps(tutorials)
@@ -159,7 +158,7 @@ class MainTabBarController: UITabBarController {
     private func updateTutorialSteps(_ tutorials: [TutorialStepProtocol]) {
         for tutorial in tutorials {
             if tutorial.key == "habits" {
-                setBadgeCount(index: 0, count: tutorial.wasSeen ? 0 : 1)
+                setBadgeCount(index: 0, badgeCount: tutorial.wasSeen ? 0 : 1)
             }
             if tutorial.key == "dailies" {
                 tutorialDailyCount = tutorial.wasSeen ? 0 : 1
@@ -170,20 +169,20 @@ class MainTabBarController: UITabBarController {
                 updateToDoBadge()
             }
             if tutorial.key == "rewards" {
-                setBadgeCount(index: 3, count: tutorial.wasSeen ? 0 : 1)
+                setBadgeCount(index: 3, badgeCount: tutorial.wasSeen ? 0 : 1)
             }
         }
     }
     
     private func updateDailyBadge() {
-        setBadgeCount(index: 1, count: dueDailiesCount + tutorialDailyCount)
+        setBadgeCount(index: 1, badgeCount: dueDailiesCount + tutorialDailyCount)
     }
     
     private func updateToDoBadge() {
-        setBadgeCount(index: 2, count: dueToDosCount + tutorialToDoCount)
+        setBadgeCount(index: 2, badgeCount: dueToDosCount + tutorialToDoCount)
     }
     
-    private func setBadgeCount(index: Int, count: Int) {
+    private func setBadgeCount(index: Int, badgeCount: Int) {
         if index == 4 && showAdventureGuideBadge {
             return
         }
@@ -200,10 +199,9 @@ class MainTabBarController: UITabBarController {
         }
         badge.backgroundColor = ThemeService.shared.theme.isDark ? .gray100 : .gray50
         if let label = badge.containedView as? UILabel {
-            label.text = "\(count)"
+            label.text = "\(badgeCount)"
         }
-        // swiftlint:disable:next empty_count
-        badge.isHidden = count == 0
+        badge.isHidden = badgeCount == 0
         badge.isUserInteractionEnabled = false
         tabBar.addSubview(badge)
         (tabBar as? MainTabBar)?.layoutBadges()

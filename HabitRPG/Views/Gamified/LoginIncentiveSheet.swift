@@ -7,6 +7,7 @@
 //
 
 import SwiftUI
+import SwiftUIX
 
 struct LoginIncentiveSheet: View {
     @ObservedObject var themeService = ThemeService.shared
@@ -17,7 +18,8 @@ struct LoginIncentiveSheet: View {
     let text: String
     let nextUnlockIn: Int
     
-    @Environment(\.scenePhase) var scenePhase
+    @Environment(\.scenePhase)
+    var scenePhase
     @State private var imageIndex = 0
     
     private func corrected(imageName: String) -> String {
@@ -73,7 +75,9 @@ struct LoginIncentiveSheet: View {
                 presentationManager.dismiss()
             }
         }.task(id: scenePhase) {
-            guard scenePhase == .active else { return }
+            guard scenePhase == .active else {
+                return
+            }
             if rewards.count > 1 {
                 repeat {
                     try? await Task.sleep(for: .seconds(2))

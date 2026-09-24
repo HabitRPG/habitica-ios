@@ -224,7 +224,7 @@ struct LoginForm: View {
                 .padding(.top, 7)
                 .submitLabel(.next)
                 .keyboardType(.URL)
-                .onChange(of: customUrl) { _ in
+                .onChange(of: customUrl, initial: false) { _, _ in
                     let appDelegate = UIApplication.shared.delegate as? HabiticaAppDelegate
                     appDelegate?.updateServer()
                 }

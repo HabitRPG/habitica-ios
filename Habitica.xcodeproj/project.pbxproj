@@ -526,6 +526,8 @@
 		29FC8862201A300B002B3D3F /* ProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29FC8861201A300B002B3D3F /* ProgressBar.swift */; };
 		29FC8864201B78D6002B3D3F /* QuestMenuHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 29FC8863201B78D6002B3D3F /* QuestMenuHeader.xib */; };
 		29FC8866201B7B5B002B3D3F /* QuestMenuHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29FC8865201B7B5B002B3D3F /* QuestMenuHeader.swift */; };
+		29FCA9EA30653FA000F90432 /* ResetAccountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29FCA9E930653FA000F90432 /* ResetAccountView.swift */; };
+		29FCA9EC30653FDF00F90432 /* DeleteAccountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29FCA9EB30653FDF00F90432 /* DeleteAccountView.swift */; };
 		29FD8AA0203D753F0094322E /* SplitSocialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29FD8A9F203D753F0094322E /* SplitSocialViewController.swift */; };
 		29FD8AA3203D7D010094322E /* PartyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29FD8AA2203D7D010094322E /* PartyViewController.swift */; };
 		29FD8AA7203DA42A0094322E /* NSLayoutConstraint-Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29FD8AA6203DA42A0094322E /* NSLayoutConstraint-Extensions.swift */; };
@@ -1263,6 +1265,8 @@
 		29FC8861201A300B002B3D3F /* ProgressBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressBar.swift; sourceTree = "<group>"; };
 		29FC8863201B78D6002B3D3F /* QuestMenuHeader.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = QuestMenuHeader.xib; sourceTree = "<group>"; };
 		29FC8865201B7B5B002B3D3F /* QuestMenuHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestMenuHeader.swift; sourceTree = "<group>"; };
+		29FCA9E930653FA000F90432 /* ResetAccountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetAccountView.swift; sourceTree = "<group>"; };
+		29FCA9EB30653FDF00F90432 /* DeleteAccountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteAccountView.swift; sourceTree = "<group>"; };
 		29FD8A9F203D753F0094322E /* SplitSocialViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplitSocialViewController.swift; sourceTree = "<group>"; };
 		29FD8AA2203D7D010094322E /* PartyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PartyViewController.swift; sourceTree = "<group>"; };
 		29FD8AA6203DA42A0094322E /* NSLayoutConstraint-Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSLayoutConstraint-Extensions.swift"; sourceTree = "<group>"; };
@@ -1972,7 +1976,9 @@
 				29B3FEB01F9A37E3000B12CF /* BaseSettingsViewController.swift */,
 				294EB59C1FA0A7E4006083BD /* FixCharacterViewController.swift */,
 				290B62492073C37A007287C4 /* SettingsViewController.swift */,
+				29FCA9EB30653FDF00F90432 /* DeleteAccountView.swift */,
 				29DBDE49274BE745008F6777 /* AccountSettingsViewController.swift */,
+				29FCA9E930653FA000F90432 /* ResetAccountView.swift */,
 				29DBDE53274D0AA3008F6777 /* AccountSettingsViewController+Apple.swift */,
 				29BD3EB427591FBE003AD251 /* EditingFormViewController.swift */,
 			);
@@ -3553,6 +3559,7 @@
 				29F4671C2E8A9DC1009643C5 /* ViewModel.swift in Sources */,
 				297517B61F30EBFC00B5BCB9 /* TaskSetupViewController.swift in Sources */,
 				2914485B2084E61400F3A6B5 /* MountOverviewDataSource.swift in Sources */,
+				29FCA9EC30653FDF00F90432 /* DeleteAccountView.swift in Sources */,
 				2988EFC528D3583E00D703BC /* Measurements.swift in Sources */,
 				29F177F92AB85D52008B8F0C /* PetBottomSheetView.swift in Sources */,
 				291E95AF20988025006EE585 /* NewsViewController.swift in Sources */,
@@ -3956,6 +3963,7 @@
 				29CAC3CB2A3A1288006DF74D /* BaseHostingViewController.swift in Sources */,
 				29A4CB71257FF3150013F0B3 /* String-SafeExtensions.swift in Sources */,
 				29646DE1205C18FA0050886C /* TaskType-Extensions.swift in Sources */,
+				29FCA9EA30653FA000F90432 /* ResetAccountView.swift in Sources */,
 				29C1360624EBD7E000DBC6B3 /* FeedViewController.swift in Sources */,
 				29B4788820BD732A00B6123F /* SkillsTaskTableViewDataSource.swift in Sources */,
 				494E54221F310BA00003683C /* HRPGShopSectionHeaderCollectionReusableView.swift in Sources */,

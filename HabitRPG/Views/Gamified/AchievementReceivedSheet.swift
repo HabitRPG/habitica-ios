@@ -7,6 +7,7 @@
 //
 
 import SwiftUI
+import SwiftUIX
 
 struct AchievementReceivedSheet<Title: View, Description: View>: View {
     @ObservedObject var themeService = ThemeService.shared

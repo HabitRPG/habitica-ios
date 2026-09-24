@@ -5,8 +5,6 @@
 //  Created by Phillip Thelen on 10.03.26.
 //  Copyright © 2026 HabitRPG Inc. All rights reserved.
 //
-
-
 import SwiftUI
 import Habitica_Models
 import ReactiveSwift
@@ -42,7 +40,9 @@ struct ChallengeFormMetadataPage: View {
         }
         .scrollDismissesKeyboard(.immediately)
         .onChange(of: focus?.wrappedValue) { _, newValue in
-            guard let newValue = newValue else { return }
+            guard let newValue = newValue else {
+                return
+            }
             withAnimation { proxy.scrollTo(newValue, anchor: .center) }
         }
         }

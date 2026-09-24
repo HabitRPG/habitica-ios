@@ -7,6 +7,7 @@
 //
 
 import SwiftUI
+import SwiftUIX
 import SwiftyStoreKit
 
 struct InsufficientCurrencySheet<Icon: View, Title: View, Content: View, Buttons: View>: View {

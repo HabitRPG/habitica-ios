@@ -95,7 +95,7 @@ private class ObservingView<T: UIView> {
 }
 
 private extension Array where Element: ObservingView<UIView> {
-  mutating func reap () {
+  mutating func reap() {
     self = self.filter { nil != $0.value }
   }
 }

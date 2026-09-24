@@ -392,7 +392,7 @@ class HabiticaAppDelegate: UIResponder, MessagingDelegate, UIApplicationDelegate
         if UserDefaults.standard.bool(forKey: "userWasAttributed") {
             return
         }
-        DispatchQueue.global(qos: .background).async {
+        DispatchQueue.global(qos: .background).async { [weak self] in
             do {
             let attributionToken = try AAAttribution.attributionToken()
             if let url = URL(string: "https://api-adservices.apple.com/api/v1/") {
@@ -400,7 +400,7 @@ class HabiticaAppDelegate: UIResponder, MessagingDelegate, UIApplicationDelegate
                 request.httpMethod = "POST"
                 request.setValue("text/plain", forHTTPHeaderField: "Content-Type")
                 request.httpBody = Data(attributionToken.utf8)
-                let task = URLSession.shared.dataTask(with: request as URLRequest) { [weak self] (data, _, error) in
+                let task = URLSession.shared.dataTask(with: request as URLRequest) { (data, _, error) in
                     if let error = error {
                         logger.log(error)
                         return
