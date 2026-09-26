@@ -1124,7 +1124,7 @@
 "fall_promo.info_prompt" = "가을 갈라가 진행 중이므로 보석 세일을 진행하기에 완벽한 시기입니다. 이제 구매할 때마다 그 어느 때보다 많은 보석을 받게 됩니다.";
 "fall_promo.info_instructions" = "%@부터 %@까지 보석 묶음을 구매하면 평소보다 더 많은 보석이 계정에 지급됩니다. 더 많은 보석을 사용하거나 나누고, 앞으로 출시될 상품을 위해 모아 두세요!";
 "spooky_promo.info_instructions" = "%@부터 %@까지 보석 묶음을 구매하면 평소보다 더 많은 보석이 계정에 지급됩니다. 더 많은 보석을 사용하거나 나누고, 앞으로 출시될 상품을 위해 모아 두세요!";
-"survey.title" = "Habitica 이용자 설문 조사";
+"survey.title" = "플레이어 설문 조사";
 "suggest_pet_hatch_missing_potion" = "이 펫을 부화시키려면 %@ 물약이 더 필요합니다";
 "suggest_pet_hatch_missing_both" = "이 펫을 부화시키려면 %@와(과) %@의 물약이 필요합니다";
 "suggest_pet_hatch_again_missing_egg" = "이 펫을 다시 부화시키려면 %@ 알이 더 필요합니다";
@@ -1524,3 +1524,13 @@
 "shops.rebirthConfirmTitleGems" = "보석 %d개를 소모해 환생의 구슬을 사용하시겠습니까?";
 "delete_x" = "%s 삭제";
 "task" = "과제";
+"settings.active_promotion" = "진행 중인 이벤트";
+"subscription_ends_on" = "종료일 %@";
+"view_offer" = "혜택 보기";
+"spring_promo.info_prompt" = "한정 기간 동안 보석을 구매할 때마다 더 많은 보석을 받아보세요! 이벤트가 종료되기 전에 봄맞이 최고의 보석 혜택을 놓치지 마세요!";
+"summer_promo.info_prompt" = "한정 기간 동안 보석을 구매할 때마다 더 많은 보석을 받아보세요! 이벤트가 종료되기 전에 여유롭게 햇살을 즐기며 최고의 보석 혜택을 누려보세요!";
+"winter_promo.info_prompt" = "한정 기간 동안 보석을 구매할 때마다 더 많은 보석을 받아보세요! 옷을 든든히 입으시고, 이벤트가 끝나기 전에 최고의 보석 혜택을 챙겨가세요.";
+"flash_promo.info_prompt" = "한정 기간 동안 보석을 구매할 때마다 더 많은 보석을 받아보세요! 이벤트가 종료되기 전에 최고의 보석 혜택을 누려보세요!";
+"gems_promo.info_instructions" = "%@부터 %@까지 보석 묶음을 구매하면 평소보다 더 많은 보석이 계정에 지급됩니다. 더 많은 보석을 사용하거나 나누고, 앞으로 출시될 상품을 위해 모아 두세요!";
+"gems_promo.menu_prompt" = "구매할 때마다 추가 보석을 받아보세요!";
+"ends_x" = "%s에 종료";
