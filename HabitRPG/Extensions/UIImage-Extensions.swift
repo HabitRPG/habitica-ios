@@ -37,6 +37,10 @@ extension UIImage {
         return nil
     }
     
+    var aspectRatio: CGFloat {
+        return size.height / size.width
+    }
+    
     // Resizable UIImage with max width/height from: https://stackoverflow.com/questions/24709244/how-do-set-a-width-and-height-of-an-image-in-swift
     func resize(maxWidthHeight: Double) -> UIImage? {
         let actualHeight = Double(size.height)
@@ -44,28 +48,14 @@ extension UIImage {
         if actualWidth < maxWidthHeight && actualHeight < maxWidthHeight {
             return self
         }
-        var maxWidth = 0.0
-        var maxHeight = 0.0
+        let scaleFactor = maxWidthHeight / max(actualWidth, actualHeight)
+        let targetSize = CGSize(width: (actualWidth * scaleFactor).rounded(), height: (actualHeight * scaleFactor).rounded())
 
-        if actualWidth > actualHeight {
-            maxWidth = maxWidthHeight
-            let per = (100.0 * maxWidthHeight / actualWidth)
-            maxHeight = (actualHeight * per) / 100.0
-        } else {
-            maxHeight = maxWidthHeight
-            let per = (100.0 * maxWidthHeight / actualHeight)
-            maxWidth = (actualWidth * per) / 100.0
+        let format = UIGraphicsImageRendererFormat.preferred()
+        format.opaque = false
+        return UIGraphicsImageRenderer(size: targetSize, format: format).image { _ in
+            draw(in: CGRect(origin: .zero, size: targetSize))
         }
-
-        let hasAlpha = true
-        let scale: CGFloat = 0.0
-
-        UIGraphicsBeginImageContextWithOptions(CGSize(width: maxWidth, height: maxHeight), !hasAlpha, scale)
-        self.draw(in: CGRect(origin: .zero, size: CGSize(width: maxWidth, height: maxHeight)))
-
-        let scaledImage = UIGraphicsGetImageFromCurrentImageContext()
-        
-        return scaledImage
     }
 
     static func gradientImage(bounds: CGRect, colors: [UIColor]) -> UIImage {

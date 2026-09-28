@@ -231,21 +231,23 @@ private class HabiticaStyler: DownStyler {
         let paragraphStyle = NSMutableParagraphStyle()
         paragraphStyle.lineSpacing = 3
         paragraphStyle.paragraphSpacing = 12
-        paragraphStyle.alignment = .justified
+        // Paragraph styling runs after inline styling, so image centering has to be applied here
+        if str.containsAttachments(in: NSRange(location: 0, length: str.length)) {
+            paragraphStyle.alignment = .center
+        }
         str.addAttribute(.paragraphStyle, value: paragraphStyle)
     }
-    
+
     override func style(list str: NSMutableAttributedString, nestDepth: Int) {
         let paragraphStyle = NSMutableParagraphStyle()
         paragraphStyle.lineSpacing = 3
         paragraphStyle.paragraphSpacing = 12
-        paragraphStyle.alignment = .justified
         paragraphStyle.headIndent = 30 + CGFloat(16 * nestDepth)
         str.addAttribute(.paragraphStyle, value: paragraphStyle)
     }
 
     override func style(listItemPrefix str: NSMutableAttributedString) {
-        str.addAttribute(.font, value: UIFontMetrics.default.scaledSystemFont(ofSize: baseSize))
+        str.addAttribute(.font, value: UIFontMetrics.default.scaledBoldSystemFont(ofSize: baseSize))
         str.addAttribute(.foregroundColor, value: textColor)
 
         var listDotLocation = 0
@@ -256,7 +258,7 @@ private class HabiticaStyler: DownStyler {
             }
             listDotLocation += 1
         }
-        str.replaceCharacters(in: NSRange(location: listDotLocation, length: 1), with: " -")
+        str.replaceCharacters(in: NSRange(location: listDotLocation, length: 1), with: " ·")
     }
 
     override func style(text str: NSMutableAttributedString) {
@@ -298,19 +300,56 @@ private class HabiticaStyler: DownStyler {
     }
     override func style(image str: NSMutableAttributedString, title: String?, url: String?) {
         if let imageURL = URL(string: url ?? "") {
-            let attachment = NSTextAttachment()
+            let attachment = RemoteImageTextAttachment()
             let addedString = NSAttributedString(attachment: attachment)
             let configuration = UIImage.SymbolConfiguration(pointSize: 150)
             attachment.image = UIImage(systemName: "photo", withConfiguration: configuration)
             str.replaceCharacters(in: NSRange(location: 0, length: str.length), with: addedString)
+
             Task {
                 let response = try? (await URLSession.shared.data(from: imageURL))
-                guard let data = response?.0 else {
+                guard let data = response?.0, let image = UIImage(data: data)?.resize(maxWidthHeight: 350) else {
                     return
                 }
-                let resizableImage = UIImage(data: data)
-                attachment.image = resizableImage?.resize(maxWidthHeight: 200)
+                await attachment.setLoadedImage(image)
             }
+        }
+    }
+}
+
+// Text layout caches the size of the placeholder image, so the layout needs to be invalidated
+// once the real image is loaded. Otherwise it is drawn into the placeholder's frame and gets stretched.
+private class RemoteImageTextAttachment: NSTextAttachment {
+    private weak var layoutContainer: NSTextContainer?
+
+    override func attachmentBounds(for textContainer: NSTextContainer?, proposedLineFragment lineFrag: CGRect,
+                                   glyphPosition position: CGPoint, characterIndex charIndex: Int) -> CGRect {
+        layoutContainer = textContainer ?? layoutContainer
+        return super.attachmentBounds(for: textContainer, proposedLineFragment: lineFrag, glyphPosition: position, characterIndex: charIndex)
+    }
+
+    @available(iOS 15.0, *)
+    override func attachmentBounds(for attributes: [NSAttributedString.Key: Any], location: NSTextLocation, textContainer: NSTextContainer?,
+                                   proposedLineFragment: CGRect, position: CGPoint) -> CGRect {
+        layoutContainer = textContainer ?? layoutContainer
+        return super.attachmentBounds(for: attributes, location: location, textContainer: textContainer,
+                                      proposedLineFragment: proposedLineFragment, position: position)
+    }
+
+    @MainActor
+    func setLoadedImage(_ loadedImage: UIImage) {
+        image = loadedImage
+        bounds = CGRect(origin: .zero, size: loadedImage.size)
+        guard let container = layoutContainer else {
+            return
+        }
+        if #available(iOS 15.0, *), let textLayoutManager = container.textLayoutManager {
+            textLayoutManager.invalidateLayout(for: textLayoutManager.documentRange)
+            textLayoutManager.textViewportLayoutController.layoutViewport()
+        } else if let layoutManager = container.layoutManager {
+            let range = NSRange(location: 0, length: layoutManager.textStorage?.length ?? 0)
+            layoutManager.invalidateLayout(forCharacterRange: range, actualCharacterRange: nil)
+            layoutManager.invalidateDisplay(forCharacterRange: range)
         }
     }
 }

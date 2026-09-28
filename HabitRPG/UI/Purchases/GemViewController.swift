@@ -153,9 +153,9 @@ class GemViewController: BaseCollectionViewController, UICollectionViewDelegateF
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
         if activePromo != nil && (activePromo?.promoType == .gemsAmount || activePromo?.promoType == .gemsPrice || activePromo?.promoType == .subscription) {
-            return CGSize(width: collectionView.frame.size.width, height: 392)
+            return CGSize(width: collectionView.frame.size.width, height: 422)
         } else {
-            return CGSize(width: collectionView.frame.size.width, height: 302)
+            return CGSize(width: collectionView.frame.size.width, height: 330)
         }
     }
     
