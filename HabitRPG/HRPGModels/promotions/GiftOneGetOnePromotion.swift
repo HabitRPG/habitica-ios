@@ -31,12 +31,28 @@ class GiftOneGetOnePromotion: HabiticaPromotion {
         return formatter
     }()
     
-    private lazy var fullDateFormatter: DateFormatter = {
+    private lazy var utcTimeFormatter: DateFormatter = {
         let formatter = DateFormatter()
-        formatter.dateStyle = .medium
-        formatter.timeStyle = .long
+        formatter.timeZone = TimeZone(identifier: "UTC")
+        formatter.dateFormat = "HH:mm"
         return formatter
     }()
+    
+    private lazy var ordinalFormatter: NumberFormatter = {
+        let formatter = NumberFormatter()
+        formatter.numberStyle = .ordinal
+        return formatter
+    }()
+    
+    private func limitationsDateString(_ date: Date) -> String {
+        let formatter = DateFormatter()
+        formatter.setLocalizedDateFormatFromTemplate("MMMMdjmmz")
+        if formatter.locale.language.languageCode == .english,
+           let ordinal = ordinalFormatter.string(from: NSNumber(value: Calendar.current.component(.day, from: date))) {
+            formatter.dateFormat = formatter.dateFormat.replacingOccurrences(of: "d", with: "'\(ordinal)'")
+        }
+        return "\(formatter.string(from: date)) (\(utcTimeFormatter.string(from: date)) UTC)"
+    }
     
     init(startDate: Date?, endDate: Date?) {
         self.startDate = startDate ?? Date.with(year: 2020, month: 12, day: 17, timezone: TimeZone(abbreviation: "UTC"))
@@ -143,8 +159,8 @@ class GiftOneGetOnePromotion: HabiticaPromotion {
         viewController.promptButton.layer.sublayers?.filter { $0 is CAGradientLayer }.forEach { $0.removeFromSuperlayer() }
         viewController.promptButton.layer.insertSublayer(makeGradient(view: viewController.promptButton), at: 0)
         viewController.instructionsDescription = L10n.GiftOneGetOneData.infoInstructions
-        viewController.limitationsDescription = L10n.GiftOneGetOneData.infoLimitations(fullDateFormatter.string(from: startDate),
-                                                                                       fullDateFormatter.string(from: endDate))
+        viewController.limitationsDescription = L10n.GiftOneGetOneData.infoLimitations(limitationsDateString(startDate),
+                                                                                       limitationsDateString(endDate))
         viewController.instructionsDescriptionLabel.textColor = .gray400
         viewController.limitationsDescriptionLabel.textColor = .gray400
         viewController.mainStackView.layoutMargins = UIEdgeInsets(top: 32, left: 16, bottom: 16, right: 16)
