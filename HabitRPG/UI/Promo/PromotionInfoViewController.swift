@@ -19,22 +19,21 @@ class PromotionInfoViewController: BaseUIViewController {
     @IBOutlet weak var promptLabel: UILabel!
     @IBOutlet weak var promptButton: UIButton!
     @IBOutlet private weak var instructionsTitleLabel: UILabel!
-    @IBOutlet private weak var instructionsDescriptionLabel: UILabel!
+    @IBOutlet weak var instructionsDescriptionLabel: UILabel!
     @IBOutlet private weak var limitationsTitleLabel: UILabel!
-    @IBOutlet private weak var limitationsDescriptionLabel: UILabel!
+    @IBOutlet weak var limitationsDescriptionLabel: UILabel!
     @IBOutlet weak var doneButton: UIBarButtonItem!
+    
+    var textLineSpacing: CGFloat = 3
+    var promptHorizontalInset: CGFloat = 0
+    var descriptionHorizontalInset: CGFloat = 0
     
     var promptText: String? {
         get {
             return promptLabel.text
         }
         set {
-            let paragraphStyle = NSMutableParagraphStyle()
-            paragraphStyle.lineSpacing = 3
-            paragraphStyle.alignment = .center
-            let attrString = NSMutableAttributedString(string: newValue ?? "")
-            attrString.addAttribute(.paragraphStyle, value: paragraphStyle, range: NSRange(location: 0, length: attrString.length))
-            promptLabel.attributedText = attrString
+            promptLabel.attributedText = centeredText(newValue, inset: promptHorizontalInset)
         }
     }
     
@@ -43,12 +42,7 @@ class PromotionInfoViewController: BaseUIViewController {
             return instructionsDescriptionLabel.text
         }
         set {
-            let paragraphStyle = NSMutableParagraphStyle()
-            paragraphStyle.lineSpacing = 3
-            paragraphStyle.alignment = .center
-            let attrString = NSMutableAttributedString(string: newValue ?? "")
-            attrString.addAttribute(.paragraphStyle, value: paragraphStyle, range: NSRange(location: 0, length: attrString.length))
-            instructionsDescriptionLabel.attributedText = attrString
+            instructionsDescriptionLabel.attributedText = centeredText(newValue, inset: descriptionHorizontalInset)
         }
     }
     
@@ -57,13 +51,18 @@ class PromotionInfoViewController: BaseUIViewController {
             return limitationsDescriptionLabel.text
         }
         set {
-            let paragraphStyle = NSMutableParagraphStyle()
-            paragraphStyle.lineSpacing = 3
-            paragraphStyle.alignment = .center
-            let attrString = NSMutableAttributedString(string: newValue ?? "")
-            attrString.addAttribute(.paragraphStyle, value: paragraphStyle, range: NSRange(location: 0, length: attrString.length))
-            limitationsDescriptionLabel.attributedText = attrString
+            limitationsDescriptionLabel.attributedText = centeredText(newValue, inset: descriptionHorizontalInset)
         }
+    }
+    
+    private func centeredText(_ text: String?, inset: CGFloat) -> NSAttributedString {
+        let paragraphStyle = NSMutableParagraphStyle()
+        paragraphStyle.lineSpacing = textLineSpacing
+        paragraphStyle.alignment = .center
+        paragraphStyle.firstLineHeadIndent = inset
+        paragraphStyle.headIndent = inset
+        paragraphStyle.tailIndent = -inset
+        return NSAttributedString(string: text ?? "", attributes: [.paragraphStyle: paragraphStyle])
     }
     
     override func viewDidLoad() {
@@ -86,6 +85,11 @@ class PromotionInfoViewController: BaseUIViewController {
         mainStackView.isLayoutMarginsRelativeArrangement = true
         
         promotion?.configureInfoView(self)
+    }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        promptButton.layer.sublayers?.filter { $0 is CAGradientLayer }.forEach { $0.frame = promptButton.bounds }
     }
     
     override func viewDidAppear(_ animated: Bool) {

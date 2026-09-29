@@ -582,7 +582,7 @@ public enum L10n {
   public static var giftGemsPrompt: String { return L10n.tr("Mainstrings", "gift_gems_prompt") }
   /// Gift a sub and get a sub free event going on now!
   public static var giftOneGetOne: String { return L10n.tr("Mainstrings", "gift_one_get_one") }
-  /// Gift a subscription now and you’ll get the same sub for yourself free!
+  /// Gift a subscription and get the same sub for yourself, free!
   public static var giftOneGetOneDescription: String { return L10n.tr("Mainstrings", "gift_one_get_one_description") }
   /// Gift a sub and get a sub for free until %@
   public static func giftOneGetOneDescriptionDate(_ p1: String) -> String {
@@ -2216,13 +2216,13 @@ public enum L10n {
   }
 
   public enum GiftOneGetOneData {
-    /// Tap ‘Gift a Subscription’ and type in the username of another account you’d like to gift to. From there, pick the sub length you’d like to gift and check out. Your account will automatically be rewarded with the same level of subscription you just gifted.
+    /// Tap the Gift a Subscription button and type in the username of another account you’d like to gift to. From there, pick the sub length you’d like to gift and check out. Your account will automatically be rewarded with the same level of subscription you just gifted.
     public static var infoInstructions: String { return L10n.tr("Mainstrings", "gift_one_get_one_data.info_instructions") }
-    /// This is a limited time event that starts on %@ and will end %@. This promotion only applies when you gift to another Habitican. If you or your gift recipient already have a subscription, the gifted subscription will add months of credit that will only be used after the current subscription is cancelled or expires.
+    /// This is a limited time event that starts on %@ and will end %@. This promotion only applies when you gift to another account. If you or your gift recipient already have a subscription, the gifted subscription will add months of credit that will only be used after the current subscription is canceled.
     public static func infoLimitations(_ p1: String, _ p2: String) -> String {
       return L10n.tr("Mainstrings", "gift_one_get_one_data.info_limitations", p1, p2)
     }
-    /// In honor of the season of giving we're bringing back a very special promotion. Now when you gift somebody else a subscription, you get the same sub for yourself for free!
+    /// In honor of the season of giving, when you gift somebody else a subscription, you get the same sub for yourself for free!
     public static var infoPrompt: String { return L10n.tr("Mainstrings", "gift_one_get_one_data.infoPrompt") }
     /// Gift a sub and get a sub for free until %@
     public static func purchaseBannerTitle(_ p1: String) -> String {

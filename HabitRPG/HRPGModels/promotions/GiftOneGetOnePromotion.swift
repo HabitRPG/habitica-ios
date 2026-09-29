@@ -15,12 +15,14 @@ class GiftOneGetOnePromotion: HabiticaPromotion {
     var startDate: Date
     var endDate: Date
     
-    var pinnedPillTitle: String? { return nil }
+    var pinnedPillTitle: String? { return L10n.giftOneGetOneTitle }
     var pinnedPillTitleImage: UIImage? { return nil }
-    var pinnedPillLeftArt: UIImage? { return nil }
-    var pinnedPillBackground: UIColor? { return backgroundColor }
-    var pinnedPillArrowColor: UIColor { return .yellow500 }
+    var pinnedPillLeftArt: UIImage? { return Asset.g1g1PromoMini.image }
+    var pinnedPillBackground: UIColor? { return nil }
+    var pinnedPillArrowColor: UIColor { return .white }
     var pinnedPillArtHeight: CGFloat { return 40 }
+    var pinnedPillArtInset: CGFloat { return 6 }
+    var pinnedPillTitleSpacing: CGFloat { return 13 }
     
     // Optimize: Reuse DateFormatter instance to avoid expensive creation
     private lazy var shortDateFormatter: DateFormatter = {
@@ -77,21 +79,24 @@ class GiftOneGetOnePromotion: HabiticaPromotion {
     }
     
     func configurePromoMenuView(view: PromoMenuView) {
+        view.setCardGradient(startColor: gradientStart ?? backgroundColor, endColor: gradientEnd ?? backgroundColor)
         view.leftImageView.image = Asset.promoGiftLeftLarge.image
         view.rightImageView.image = Asset.promoGiftRightLarge.image
-        view.setTitle(L10n.giftOneGetOneEvent)
-        view.setDescription(L10n.giftOneGetOneDescription)
-        view.actionButton.backgroundColor = buttonBackground
-        view.actionButton.setTitle(L10n.learnMore, for: .normal)
-        if ThemeService.shared.theme.isDark {
-            view.actionButton.setTitleColor(UIColor.teal100, for: .normal)
-            view.titleView.textColor = .white
-            view.descriptionView.textColor = .white
-        } else {
-            view.actionButton.setTitleColor(UIColor.teal10, for: .normal)
-            view.titleView.textColor = .blue1
-            view.descriptionView.textColor = .blue1
-        }
+        view.durationView.isHidden = true
+        view.cardTopPadding = 13
+        view.textGap = 1
+        view.buttonGap = 8
+        view.setTitle(L10n.giftOneGetOneTitle,
+                      font: .systemFont(ofSize: 20, weight: .semibold),
+                      color: .white,
+                      lineHeight: 25)
+        view.setDescription(L10n.giftOneGetOneDescription,
+                            font: .systemFont(ofSize: 13, weight: .semibold),
+                            color: .white,
+                            lineHeight: 18,
+                            maxLines: 2)
+        view.actionButton.backgroundColor = UIColor.white.withAlphaComponent(0.3)
+        view.setActionTitle(L10n.viewOffer)
     }
     
     func configurePurchaseBanner(view: PromoBannerView) {
@@ -116,24 +121,33 @@ class GiftOneGetOnePromotion: HabiticaPromotion {
         viewController.promoBanner.layer.insertSublayer(gradientLayer, at: 0)
         viewController.promoBanner.leftImageView.image = Asset.promoGiftsLeft.image
         viewController.promoBanner.rightImageView.image = Asset.promoGiftsRight.image
+        viewController.promoBanner.titleTopMargin = 19
+        viewController.promoBanner.descriptionTopMargin = 4
+        viewController.promoBanner.durationTopMargin = 10
         viewController.promoBanner.setTitle(L10n.giftOneGetOneTitle)
         viewController.promoBanner.titleView.textColor = .white
+        viewController.promoBanner.descriptionLabel.font = UIFontMetrics.default.scaledSystemFont(ofSize: 10)
         viewController.promoBanner.setDescription(L10n.limitedEvent.uppercased())
         viewController.promoBanner.descriptionLabel.textColor = .white
         viewController.promoBanner.durationLabel.textColor = .white
         viewController.promoBanner.durationLabel.font = UIFontMetrics.default.scaledSystemFont(ofSize: 15, ofWeight: .semibold)
         viewController.promoBanner.setDuration(L10n.xToY(shortDateFormatter.string(from: startDate), shortDateFormatter.string(from: endDate)))
-        if ThemeService.shared.theme.isDark {
-            viewController.promptLabel.textColor = UIColor.teal100
-        } else {
-            viewController.promptLabel.textColor = UIColor.teal10
-        }
+        viewController.textLineSpacing = 2
+        viewController.promptHorizontalInset = 10
+        viewController.descriptionHorizontalInset = 5
+        viewController.promptLabel.textColor = .white
         viewController.promptText = L10n.GiftOneGetOneData.infoPrompt
         viewController.promptButton.setTitle(L10n.giftSubscription, for: .normal)
         viewController.promptButton.setTitleColor(.white, for: .normal)
-        viewController.promptButton.backgroundColor = UIColor("#925CF3")
+        viewController.promptButton.backgroundColor = nil
+        viewController.promptButton.layer.sublayers?.filter { $0 is CAGradientLayer }.forEach { $0.removeFromSuperlayer() }
+        viewController.promptButton.layer.insertSublayer(makeGradient(view: viewController.promptButton), at: 0)
         viewController.instructionsDescription = L10n.GiftOneGetOneData.infoInstructions
         viewController.limitationsDescription = L10n.GiftOneGetOneData.infoLimitations(fullDateFormatter.string(from: startDate),
                                                                                        fullDateFormatter.string(from: endDate))
+        viewController.instructionsDescriptionLabel.textColor = .gray400
+        viewController.limitationsDescriptionLabel.textColor = .gray400
+        viewController.mainStackView.layoutMargins = UIEdgeInsets(top: 32, left: 16, bottom: 16, right: 16)
+        viewController.mainStackView.setCustomSpacing(30, after: viewController.promptButton)
     }
 }

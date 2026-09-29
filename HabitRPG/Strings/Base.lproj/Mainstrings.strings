@@ -1027,7 +1027,7 @@
 "gift_one_get_one" = "Gift a sub and get a sub free event going on now!";
 "gift_one_get_one_title" = "Gift One, Get One";
 "gift_one_get_one_event" = "Gift One, Get One Event";
-"gift_one_get_one_description" = "Gift a subscription now and you’ll get the same sub for yourself free!";
+"gift_one_get_one_description" = "Gift a subscription and get the same sub for yourself, free!";
 "gift_one_get_one_description_date" = "Gift a sub and get a sub for free until %@";
 "gems_support_developers" = "Purchasing Gems supports our small team at Habitica!";
 "gem_benefits_title" = "Gems allow you to buy fun extras for your account, including:";
@@ -1330,9 +1330,9 @@
 "magic_potions" = "Magic Potions";
 "magic_potion" = "Magic Potion";
 "use_immediately_disclaimer" = "This will take effect immediately after buying!";
-"gift_one_get_one_data.infoPrompt" = "In honor of the season of giving we're bringing back a very special promotion. Now when you gift somebody else a subscription, you get the same sub for yourself for free!";
-"gift_one_get_one_data.info_instructions" = "Tap ‘Gift a Subscription’ and type in the username of another account you’d like to gift to. From there, pick the sub length you’d like to gift and check out. Your account will automatically be rewarded with the same level of subscription you just gifted.";
-"gift_one_get_one_data.info_limitations" = "This is a limited time event that starts on %@ and will end %@. This promotion only applies when you gift to another Habitican. If you or your gift recipient already have a subscription, the gifted subscription will add months of credit that will only be used after the current subscription is cancelled or expires.";
+"gift_one_get_one_data.infoPrompt" = "In honor of the season of giving, when you gift somebody else a subscription, you get the same sub for yourself for free!";
+"gift_one_get_one_data.info_instructions" = "Tap the Gift a Subscription button and type in the username of another account you’d like to gift to. From there, pick the sub length you’d like to gift and check out. Your account will automatically be rewarded with the same level of subscription you just gifted.";
+"gift_one_get_one_data.info_limitations" = "This is a limited time event that starts on %@ and will end %@. This promotion only applies when you gift to another account. If you or your gift recipient already have a subscription, the gifted subscription will add months of credit that will only be used after the current subscription is canceled.";
 "gift_one_get_one_data.purchase_banner_title" = "Gift a sub and get a sub for free until %@";
 "gift_confirmation_body_g1_g1" = "You sent %@ a %@-month Habitica subscription and the same subscription was applied to your account for our Gift One Get One promotion!";
 "gift_one_get_one_screen_banner" = "While this promotion is active, you’ll receive a matching subscription automatically after sending your gift.";

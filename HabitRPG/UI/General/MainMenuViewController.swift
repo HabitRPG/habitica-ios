@@ -275,8 +275,8 @@ class MainMenuViewController: BaseTableViewController {
         } else if let start = promo.gradientStart, let end = promo.gradientEnd {
             let gradient = CAGradientLayer()
             gradient.colors = [start.cgColor, end.cgColor]
-            gradient.startPoint = CGPoint(x: 0, y: 0.5)
-            gradient.endPoint = CGPoint(x: 1, y: 0.5)
+            gradient.startPoint = CGPoint(x: 0, y: 0)
+            gradient.endPoint = CGPoint(x: 1, y: 1)
             gradient.frame = CGRect(x: 0, y: 0, width: pillWidth, height: 40)
             pill.layer.insertSublayer(gradient, at: 0)
         } else {
@@ -289,7 +289,7 @@ class MainMenuViewController: BaseTableViewController {
             let artView = UIImageView(image: leftArt)
             artView.contentMode = .scaleAspectFit
             let fitsInPill = artHeight <= 40
-            let artX: CGFloat = fitsInPill ? 0 : -12
+            let artX: CGFloat = fitsInPill ? promo.pinnedPillArtInset : -12
             artView.frame = CGRect(x: artX, y: fitsInPill ? 0 : 42 - artHeight, width: artWidth, height: artHeight)
             pill.addSubview(artView)
             artTrailing = artX + artWidth
@@ -309,7 +309,7 @@ class MainMenuViewController: BaseTableViewController {
                 .baselineOffset: (titleLineHeight - titleFont.lineHeight) / 4,
                 .paragraphStyle: paragraph
             ])
-            let labelX = artTrailing > 0 ? artTrailing + 16 : 44
+            let labelX = artTrailing > 0 ? artTrailing + promo.pinnedPillTitleSpacing : 44
             label.frame = CGRect(x: labelX, y: 0, width: pillWidth - 32 - labelX, height: 40)
             pill.addSubview(label)
         } else if let image = promo.pinnedPillTitleImage {
@@ -321,7 +321,7 @@ class MainMenuViewController: BaseTableViewController {
             let imageView = UIImageView(image: image)
             imageView.contentMode = .scaleAspectFit
             let centeredX = (pillWidth - scaledWidth) / 2
-            let titleX = artTrailing > 0 ? min(artTrailing + 16, centeredX) : centeredX
+            let titleX = artTrailing > 0 ? min(artTrailing + promo.pinnedPillTitleSpacing, centeredX) : centeredX
             imageView.frame = CGRect(x: titleX, y: (40 - scaledHeight) / 2, width: scaledWidth, height: scaledHeight)
             pill.addSubview(imageView)
         }
