@@ -27,6 +27,17 @@ class SpookyExtraGemsPromotion: ExtraGemsPromotion {
         return gradient
     }
     
+    override func makePillGradient(view: UIView) -> CAGradientLayer {
+        let gradient = CAGradientLayer()
+
+        gradient.colors = [UIColor("#FFBE5D").cgColor, UIColor("#FF6165").cgColor, UIColor("#925CF3").cgColor]
+        gradient.locations = [0.0, 0.52, 1.0]
+        gradient.startPoint = CGPoint(x: 0.0, y: 0.0)
+        gradient.endPoint = CGPoint(x: 1.0, y: 1.0)
+        gradient.frame = CGRect(x: 0.0, y: 0.0, width: view.frame.size.width, height: view.frame.size.height)
+        return gradient
+    }
+    
     override func configureGemView(view: GemPurchaseCell, regularAmount: Int) {
         super.configureGemView(view: view, regularAmount: regularAmount)
         switch regularAmount {
