@@ -195,6 +195,10 @@ class NotificationManager {
             viewC.show()
             return true
         }
+        if notification.achievementCount > 1 {
+            displayAchievementToast(text: text, imageKey: imageKey)
+            return true
+        }
         let viewC = HostingBottomSheetController(rootView: AchievementReceivedSheet(key: imageKey,
                                                                                     isOnboarding: isOnboarding,
                                                                                     text: Text(text),
@@ -203,6 +207,19 @@ class NotificationManager {
         viewC.show()
     
         return true
+    }
+
+    private static func displayAchievementToast(text: String, imageKey: String) {
+        let iconName = imageKey.starts(with: "achievement-") ? "\(imageKey)2x" : "achievement-\(imageKey)2x"
+        ImageManager.getImage(name: iconName) { image, _ in
+            DispatchQueue.main.async {
+                if let image = image {
+                    ToastManager.show(toast: ToastView(title: text, icon: image, background: .blue, iconPadding: 8))
+                } else {
+                    ToastManager.show(toast: ToastView(title: text, background: .blue))
+                }
+            }
+        }
     }
 
     static func displayRebirthEnabled(notification: NotificationProtocol) -> Bool {

@@ -53,11 +53,12 @@ struct ToastView: View {
         self.init(options: options)
     }
     
-    public init(title: String, subtitle: String, icon: UIImage, background: ToastColor, duration: Double? = nil, delay: Double? = nil) {
+    public init(title: String, subtitle: String, icon: UIImage, background: ToastColor, duration: Double? = nil, delay: Double? = nil, iconPadding: CGFloat? = nil) {
         let options = ToastOptions()
         options.title = title
         options.subtitle = subtitle
         options.leftImage = icon
+        options.iconPadding = iconPadding
         options.backgroundColor = background
         if let duration = duration {
             options.displayDuration = duration
@@ -68,11 +69,12 @@ struct ToastView: View {
         self.init(options: options)
     }
     
-    public init(title: String, icon: UIImage, background: ToastColor, duration: Double? = nil, delay: Double? = nil) {
+    public init(title: String, icon: UIImage, background: ToastColor, duration: Double? = nil, delay: Double? = nil, iconPadding: CGFloat? = nil) {
         let options = ToastOptions()
         options.title = title
         options.backgroundColor = background
         options.leftImage = icon
+        options.iconPadding = iconPadding
         if let duration = duration {
             options.displayDuration = duration
         }
@@ -151,6 +153,7 @@ struct ToastView: View {
                     if let image = options.leftImage {
                         Image(uiImage: image)
                             .frame(width: 46)
+                            .padding(options.iconPadding ?? 0)
                     }
                     HStack(spacing: 8) {
                         VStack(spacing: 2) {

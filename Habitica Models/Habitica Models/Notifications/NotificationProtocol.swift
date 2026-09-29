@@ -16,6 +16,7 @@ public protocol NotificationProtocol: BaseModelProtocol {
     var achievementMessage: String? { get set }
     var achievementModalText: String? { get set }
     var achievementIcon: String? { get set }
+    var achievementCount: Int { get set }
     var notificationMessage: String? { get set }
     var seen: Bool { get set }
 }

@@ -150,6 +150,7 @@ class ToastOptions: ObservableObject {
     @Published var subtitle: String?
     
     @Published var leftImage: UIImage?
+    @Published var iconPadding: CGFloat?
     
     var displayDuration = 2.0
     var delayDuration = 0.0
