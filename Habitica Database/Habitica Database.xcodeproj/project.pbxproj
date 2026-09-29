@@ -102,7 +102,6 @@
 		29BD3EB1275903B0003AD251 /* BaseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29BD3EB0275903AF003AD251 /* BaseModel.swift */; };
 		29C38C8324A2339300F219A1 /* RealmUserAchievements.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29C38C8224A2339300F219A1 /* RealmUserAchievements.swift */; };
 		29D52A89305DD1CE00AEDA66 /* Habitica_Models.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 29D52A88305DD1CE00AEDA66 /* Habitica_Models.framework */; };
-		29D52A8A305DD1CE00AEDA66 /* Habitica_Models.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 29D52A88305DD1CE00AEDA66 /* Habitica_Models.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		29DBDE50274D0048008F6777 /* RealmSocialAuthentication.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29DBDE4F274D0048008F6777 /* RealmSocialAuthentication.swift */; };
 		29DBFEFB20CADB4100DF9CF2 /* RealmSpecialItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29DBFEFA20CADB4100DF9CF2 /* RealmSpecialItem.swift */; };
 		29DBFF0D20D15B0500DF9CF2 /* RealmUserNewMessages.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29DBFF0C20D15B0500DF9CF2 /* RealmUserNewMessages.swift */; };
@@ -119,20 +118,6 @@
 			remoteInfo = "Habitica Database";
 		};
 /* End PBXContainerItemProxy section */
-
-/* Begin PBXCopyFilesBuildPhase section */
-		29D52A8B305DD1CE00AEDA66 /* Embed Frameworks */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 10;
-			files = (
-				29D52A8A305DD1CE00AEDA66 /* Habitica_Models.framework in Embed Frameworks */,
-			);
-			name = "Embed Frameworks";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		2902795F2057E957006DACB9 /* RealmFAQEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmFAQEntry.swift; sourceTree = "<group>"; };
@@ -489,7 +474,6 @@
 				298FB9A7204D9338004DDACC /* Sources */,
 				298FB9A8204D9338004DDACC /* Frameworks */,
 				298FB9AA204D9338004DDACC /* Resources */,
-				29D52A8B305DD1CE00AEDA66 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -740,7 +724,6 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 1;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				DEVELOPMENT_TEAM = 9Q9SMRMCNN;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -807,7 +790,6 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 1;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = 9Q9SMRMCNN;
 				ENABLE_NS_ASSERTIONS = NO;
@@ -969,7 +951,6 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 1;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = 9Q9SMRMCNN;
 				ENABLE_NS_ASSERTIONS = NO;
@@ -1080,7 +1061,6 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 1;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = 9Q9SMRMCNN;
 				ENABLE_NS_ASSERTIONS = NO;
