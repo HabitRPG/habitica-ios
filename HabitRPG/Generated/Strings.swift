@@ -24,6 +24,8 @@ public enum L10n {
   public static var accept: String { return L10n.tr("Mainstrings", "accept") }
   /// Accept All
   public static var acceptAll: String { return L10n.tr("Mainstrings", "accept_all") }
+  /// Achievement
+  public static var achievement: String { return L10n.tr("Mainstrings", "achievement") }
   /// Active
   public static var active: String { return L10n.tr("Mainstrings", "active") }
   /// Active on %@

@@ -156,7 +156,7 @@ struct ToastView: View {
                             .padding(options.iconPadding ?? 0)
                     }
                     HStack(spacing: 8) {
-                        VStack(spacing: 2) {
+                        VStack(alignment: .leading, spacing: 2) {
                             if let subtitle = options.subtitle, !subtitle.isEmpty {
                                 Text(subtitle)
                                     .scaledFont(size: 16)
@@ -175,7 +175,9 @@ struct ToastView: View {
                                 }
                             }.font(.callout)
                         }
-                    }.padding(14)
+                    }.padding(.vertical, 14)
+                        .padding(.trailing, 14)
+                        .padding(.leading, options.leftImage != nil ? 0 : 14)
                     if let image = options.rightIcon, let text = options.rightText {
                         HStack(spacing: 4) {
                             Text(text)

@@ -214,9 +214,9 @@ class NotificationManager {
         ImageManager.getImage(name: iconName) { image, _ in
             DispatchQueue.main.async {
                 if let image = image {
-                    ToastManager.show(toast: ToastView(title: text, icon: image, background: .blue, iconPadding: 8))
+                    ToastManager.show(toast: ToastView(title: text, subtitle: L10n.achievement, icon: image, background: .blue, iconPadding: 8))
                 } else {
-                    ToastManager.show(toast: ToastView(title: text, background: .blue))
+                    ToastManager.show(toast: ToastView(title: text, subtitle: L10n.achievement, background: .blue))
                 }
             }
         }

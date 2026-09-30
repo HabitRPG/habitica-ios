@@ -1388,7 +1388,7 @@
 "unshadow_mute_user_confirm" = "Do you want to remove the shadow ban from this user?";
 "mute_user_confirm" = "Do you want to mute this user?";
 "unmute_user_confirm" = "Do you want to unmute this user?";
-
+"achievement" = "Achievement";
 "birthday_header_description" = "Celebrate Habitica’s 10th birthday with gifts and exclusive items below!";
 "jubilant_gryphatrice" = "Jubilant Gryphatrice";
 "limited_edition" = "Limited Edition";
