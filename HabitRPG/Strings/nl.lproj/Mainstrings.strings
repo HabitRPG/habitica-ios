@@ -37,7 +37,7 @@
 /* (No Comment) */
 "classes.healer" = "Genezer";
 /* (No Comment) */
-"classes.healer_description" = "Genezers zijn ongevoelig voor schade, en kunnen deze bescherming uitstrekken naar anderen. Gemiste dagelijkse taken en slechte gewoontes hebben nauwelijks invloed op hun humeur, en ze hebben manieren om gezondheidspunten te herstellen na een mislukking. Speel een Genezer als je het leuk vindt om anderen in je gezelschap te assisteren, of als het idee om de dood voor de gek te houden door hard te werken je inspireert!";
+"classes.healer_description" = "Genezers leren vaardigheden waarmee ze zichzelf en hun Gezelschap kunnen beschermen tegen schade. Speel als Genezer als je het leuk vind om anderen te helpen of schade te ontwijken. Genezers hebben baat bij een hoge Weerbaarheid.";
 /* (No Comment) */
 "classes.mage" = "Magiër";
 /* (No Comment) */
@@ -45,7 +45,7 @@
 /* (No Comment) */
 "classes.rogue" = "Dief";
 /* (No Comment) */
-"classes.rogue_description" = "Dieven houden ervan rijkdom te vergaren, verkrijgen meer goud dan enig ander en zijn bedreven in het vinden van willekeurige voorwerpen. Hun kenmerkende behendigheid laat hen de consequenties ontduiken van het missen van dagelijkse taken. Speel een dief als je veel motivatie vindt in het krijgen van beloningen, het behalen van prestaties en het streven naar buit en badges!";
+"classes.rogue_description" = "Schurken leren vaardigheden waarmee ze grotere beloningen krijgen bij het voltooien van taken. Speel als Schurk als je meer items en Goud wil. Schurken hebben baat bij een hoge Perceptie stat.";
 /* (No Comment) */
 "classes.warrior" = "Krijger";
 /* (No Comment) */
@@ -163,7 +163,7 @@
 /* (No Comment) */
 "levelup_description" = "Door doelen in je echte leven te bereiken, ben je een niveau gestegen en ben je nu volledig genezen!";
 /* (No Comment) */
-"levelup_share" = "Ik ben naar niveau %Id gestegen in Habitica door mijn gewoontes in het echte leven te verbeteren!";
+"levelup_share" = "Ik ben naar niveau %ld gestegen in Habitica door mijn gewoontes in het echte leven te verbeteren!";
 /* (No Comment) */
 "levelup_title" = "Je hebt level %ld bereikt!";
 /* (No Comment) */
@@ -824,8 +824,8 @@
 "never_lower_case" = "nooit";
 "never" = "Nooit";
 "intro.card2.text" = "Als je taken in het echte leven volbrengt, speel je nieuwe dingen vrij in de game. Je kunt wapens verdienen, maar ook huisdieren en andere beloningen omdat je je doelen hebt gehaald.";
-"intro.task_setup_speechbubble" = "Wauw, goed bezig! Nou, waar zou je aan willen werken tijdens dit avontuur?";
-"intro.avatar_setup_speechbubble" = "Hoe wil je eruit zien? Wees niet bang: je kunt dit later altijd nog veranderen.";
+"intro.task_setup_speechbubble" = "Ziet er goed uit! Ok, kies aan welke categorieën je zou willen werken en dan maken wij een paar taken zodat je kan beginnen.\n\nHierna gaan we naar je taakbord!";
+"intro.avatar_setup_speechbubble" = "Jij bent nieuw hier, denk ik. Ik ben Justin, je gids in Habitica.\n\nDus, hoe wil je eruit zien? Wees niet bang, je kunt dit later veranderen.";
 "intro.welcome_prompt" = "Hoe zullen we jou noemen?";
 "hourglass_count" = "+%d Mysterieuze Zandloper";
 "gem_cap" = "%d Edelsteen limiet";
