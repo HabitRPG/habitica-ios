@@ -1599,3 +1599,11 @@
 "groups.copy_shared_tasks" = "Gedeelde taken kopiëren";
 "gems_promo.menu_prompt" = "Krijg extra Edelstenen bij elke aankoop!";
 "settings.user_data" = "Gebruikersgegevens";
+"settings.pauseDamage.resume_damage_description1" = "Bazen schaden je Gezelschapsleden weer als je Dagelijkse Taken mist";
+"settings.pauseDamage.resume_damage_title3" = "Je Queestevoortgang telt weer mee";
+"login.password_length_error" = "Wachtwoorden moeten uit ten minste 8 karakters bestaan.";
+"next_payment_x" = "Volgende Betaling %@";
+"faint.subtitle" = "Je zakt naar **level %s, verliest %s Goud, en breekt een onderdeel van je uitrusting**… Je kan ze allemaal terugverdienen door hard te werken!";
+"faint.good_luck_text" = "Maar je kan ze allemaal terugverdienen door hard te werken! Veel succes—je kan het. ";
+"faint.unsubbed_footer" = "Krijg elke dag een tweede kans om niet al je HP kwijt te raken met een abonnement";
+"groups.group_plan_settings" = "Groepsabonnementinstellingen";
