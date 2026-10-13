@@ -1448,7 +1448,7 @@
 "api_token_reset_title" = "If you need a new API Token";
 "api_token_title" = "API Token";
 "api_token_is_password" = "Your API Token is like a password";
-"api_token_password_description" = "Do not share it publicly. You may occasionally be asked for your User ID, but never post your API Token where others can see it, including on Github.";
+"api_token_password_description" = "Do not share it publicly. You may occasionally be asked for your User ID, but never post your API Token where others can see it, including on GitHub.";
 "save_preferences" = "Save Preferences";
 "accept_all" = "Accept All";
 "item_is_locked" = "Item is locked";
