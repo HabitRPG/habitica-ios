@@ -22,7 +22,7 @@ jobs:
         name:
           - "iPhone 17"
         os-version:
-          - "26.0"
+          - "26.5"
     steps:
       - name: Checkout
         uses: actions/checkout@v7
@@ -38,7 +38,7 @@ jobs:
           - "iPhone 17"
           - "iPad Pro (9.7-inch)"
         os-version:
-          - "26.0"
+          - "26.5"
     steps:
       - name: Checkout
         uses: actions/checkout@v7
@@ -51,12 +51,10 @@ jobs:
     strategy:
       matrix:
         name:
-          - "iPhone 8"
           - "iPhone 17"
-          - "iPhone 18 Pro Max"
+          - "iPhone 17 Pro Max"
           - "iPad Pro (9.7-inch)"
         os-version:
-          - "18.2"
           - "26.5"
     steps:
       - name: Checkout
