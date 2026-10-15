@@ -49,16 +49,14 @@ class TaskEmptyTableViewDataSource<T>: NSObject, UITableViewDataSource where T: 
         self.cellIdentifier = cellIdentifier ?? "emptyCell"
         self.styleFunction = styleFunction
         super.init()
-        if configRepository.bool(variable: .moveAdventureGuide) {
-            userRepository.getUser().on(value: { user in
-                self.showingAdventureGuide = !(user.achievements?.hasCompletedOnboarding ?? true)
-                if self.showingAdventureGuide {
-                    self.adventureGuideCompletedCount = user.achievements?.onboardingAchievements.filter({ $0.value }).count ?? 0
-                    self.adventureGuideTotalCount = 5
-                }
-                self.tableView?.reloadData()
-            }).start()
-        }
+        userRepository.getUser().on(value: { user in
+            self.showingAdventureGuide = !(user.achievements?.hasCompletedOnboarding ?? true)
+            if self.showingAdventureGuide {
+                self.adventureGuideCompletedCount = user.achievements?.onboardingAchievements.filter({ $0.value }).count ?? 0
+                self.adventureGuideTotalCount = 5
+            }
+            self.tableView?.reloadData()
+        }).start()
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

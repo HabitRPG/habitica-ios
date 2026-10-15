@@ -14,11 +14,8 @@ import Habitica_Models
 enum ConfigVariable: Int {
     // Permanent config variables
     case supportEmail
-    case twitterUsername
     case instagramUsername
     case appstoreUrl
-    case prodHost
-    case apiVersion
     case feedbackURL
     
     case shopSpriteSuffix
@@ -30,33 +27,25 @@ enum ConfigVariable: Int {
     case knownIssues
     case activePromotion
     case maintenanceData
-    case activePromo
     case surveyURL
     
     // A/B Tests
-    case moveAdventureGuide
     case enableIPadUI
-    case showQuestInMenu
     case disableIntroSlides
     case showTaskDetailScreen
     case showTaskGraphs
-    case advertiseTaskGraphs
     
     case enableCronButton
     
     case hideChallenges
-    case enableReviewRequest
 
     // swiftlint:disable cyclomatic_complexity
     func name() -> String {
         // swiftlint:disable switch_case_on_newline
         switch self {
         case .supportEmail: return "supportEmail"
-        case .twitterUsername: return "twitterUsername"
         case .instagramUsername: return "instagramUsername"
         case .appstoreUrl: return "appstoreUrl"
-        case .prodHost: return "prodHost"
-        case .apiVersion: return "apiVersion"
         case .shopSpriteSuffix: return "shopSpriteSuffix"
         case .maxChatLength: return "maxChatLength"
         case .lastVersionNumber: return "lastVersionNumber"
@@ -64,21 +53,16 @@ enum ConfigVariable: Int {
         case .randomizeAvatar: return "randomizeAvatar"
         case .showSubscriptionBanner: return "showSubscriptionBanner"
         case .feedbackURL: return "feedbackURL"
-        case .moveAdventureGuide: return "moveAdventureGuide"
         case .knownIssues: return "knownIssues"
         case .activePromotion: return "activePromo"
         case .maintenanceData: return "maintenanceData"
         case .enableIPadUI: return "enableIpadUI"
-        case .showQuestInMenu: return "showQuestInMenu"
         case .disableIntroSlides: return "disableIntroSlides"
         case .showTaskDetailScreen: return "showTaskDetailScreen"
-        case .activePromo: return "activePromo"
         case .surveyURL: return "surveyURL"
         case .showTaskGraphs: return "showTaskGraphs"
-        case .advertiseTaskGraphs: return "advertiseTaskGraphs"
         case .enableCronButton: return "enableCronButton"
         case .hideChallenges: return "hideChallenges"
-        case .enableReviewRequest: return "enableReviewRequest"
         }
         // swiftlint:enable switch_case_on_newline
     }
@@ -87,16 +71,10 @@ enum ConfigVariable: Int {
         switch self {
         case .supportEmail:
             return "admin@habitica.com" as NSString
-        case .twitterUsername:
-            return Constants.defaultTwitterUsername as NSString
         case .instagramUsername:
             return Constants.defaultInstagramUsername as NSString
         case .appstoreUrl:
             return Constants.defaultAppstoreUrl as NSString
-        case .prodHost:
-            return Constants.defaultProdHost as NSString
-        case .apiVersion:
-            return Constants.defaultApiVersion as NSString
         case .shopSpriteSuffix:
             return "" as NSString
         case .maxChatLength:
@@ -106,8 +84,6 @@ enum ConfigVariable: Int {
         case .lastVersionCode:
             return 0 as NSNumber
         case .randomizeAvatar:
-            return false as NSNumber
-        case .moveAdventureGuide:
             return false as NSNumber
         case .feedbackURL:
             return "https://docs.google.com/forms/d/e/1FAIpQLScPhrwq_7P1C6PTrI3lbvTsvqGyTNnGzp1ugi1Ml0PFee_p5g/viewform?usp=sf_link" as NSString
@@ -121,25 +97,17 @@ enum ConfigVariable: Int {
             return "{}" as NSString
         case .enableIPadUI:
             return false as NSNumber
-        case .showQuestInMenu:
-            return false as NSNumber
         case .disableIntroSlides:
             return false as NSNumber
         case .showTaskDetailScreen:
             return false as NSNumber
-        case .activePromo:
-            return "" as NSString
         case .surveyURL:
             return "" as NSString
         case .showTaskGraphs:
             return true as NSNumber
-        case .advertiseTaskGraphs:
-            return false as NSNumber
         case .enableCronButton:
             return false as NSNumber
         case .hideChallenges:
-            return false as NSNumber
-        case .enableReviewRequest:
             return false as NSNumber
         }
     }
@@ -147,28 +115,21 @@ enum ConfigVariable: Int {
     static func allVariables() -> [ConfigVariable] {
         return [
             .supportEmail,
-            .twitterUsername,
             .instagramUsername,
             .appstoreUrl,
-            .prodHost,
-            .apiVersion,
             .shopSpriteSuffix,
             .maxChatLength,
             .lastVersionNumber,
             .lastVersionCode,
             .randomizeAvatar,
             .feedbackURL,
-            .moveAdventureGuide,
             .knownIssues,
             .activePromotion,
             .maintenanceData,
             .enableIPadUI,
-            .showQuestInMenu,
             .disableIntroSlides,
-            .activePromo,
             .surveyURL,
             .showTaskGraphs,
-            .advertiseTaskGraphs,
             .enableCronButton,
             .hideChallenges
         ]
@@ -344,9 +305,6 @@ class ConfigRepository: NSObject {
         }
         for event in worldState?.events ?? [] where HabiticaPromotionType.getPromoFromKey(key: event.promo ?? event.eventKey ?? "", startDate: event.start, endDate: event.end) != nil {
             promo = HabiticaPromotionType.getPromoFromKey(key: event.promo ?? event.eventKey ?? "", startDate: event.start, endDate: event.end)
-        }
-        if promo == nil, let key = string(variable: .activePromo), key.isEmpty == false {
-            promo = HabiticaPromotionType.getPromoFromKey(key: key, startDate: nil, endDate: nil)
         }
         if let promo = promo, promo.endDate > Date() {
             return promo
