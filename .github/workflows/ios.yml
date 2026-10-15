@@ -10,7 +10,7 @@ jobs:
     runs-on: macos-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v7
       - name: Prepare
         run: ./.github/prepare-workflow
       - name: Run lint
@@ -20,13 +20,12 @@ jobs:
     strategy:
       matrix:
         name:
-          - "iPhone 12"
-          - "iPad Pro (9.7-inch)"
+          - "iPhone 17"
         os-version:
-          - "16.2"
+          - "27.0"
     steps:
       - name: Checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v7
       - name: Prepare
         run: ./.github/prepare-workflow
       - name: Build
@@ -36,13 +35,13 @@ jobs:
     strategy:
       matrix:
         name:
-          - "iPhone 12"
+          - "iPhone 17"
           - "iPad Pro (9.7-inch)"
         os-version:
-          - "16.2"
+          - "26.0"
     steps:
       - name: Checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v7
       - name: Prepare
         run: ./.github/prepare-workflow
       - name: Build
@@ -53,14 +52,15 @@ jobs:
       matrix:
         name:
           - "iPhone 8"
-          - "iPhone 11"
-          - "iPhone 13 Pro Max"
+          - "iPhone 17"
+          - "iPhone 18 Pro Max"
           - "iPad Pro (9.7-inch)"
         os-version:
-          - "16.2"
+          - "26.0"
+          - "27.0"
     steps:
       - name: Checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v7
       - name: Prepare
         run: ./.github/prepare-workflow
       - name: Build
