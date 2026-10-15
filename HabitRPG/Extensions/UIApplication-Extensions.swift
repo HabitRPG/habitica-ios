@@ -44,34 +44,30 @@ extension UIApplication {
     }
     
     class func requestReview() {
-        let configRepository = ConfigRepository.shared
-        if configRepository.bool(variable: .enableReviewRequest) {
-            
-            let defaults = UserDefaults.standard
-            
-            let checkinCount = defaults.integer(forKey: "loginIncentives")
-            if checkinCount < 10 {
-                return
-            }
-            
-            let initialCheckinCount = defaults.integer(forKey: "initialLoginIncentives")
-            if initialCheckinCount == 0 {
-                defaults.set(checkinCount, forKey: "initialLoginIncentives")
-            }
-            
-            if (checkinCount - initialCheckinCount) > 75 {
-                return
-            }
-            
-            #if os(macOS)
-                SKStoreReviewController.requestReview()
-            #else
-            guard let scene = UIApplication.shared.foregroundActiveScene else {
-                return
-            }
-                SKStoreReviewController.requestReview(in: scene)
-            #endif
+        let defaults = UserDefaults.standard
+        
+        let checkinCount = defaults.integer(forKey: "loginIncentives")
+        if checkinCount < 10 {
+            return
         }
+        
+        let initialCheckinCount = defaults.integer(forKey: "initialLoginIncentives")
+        if initialCheckinCount == 0 {
+            defaults.set(checkinCount, forKey: "initialLoginIncentives")
+        }
+        
+        if (checkinCount - initialCheckinCount) > 75 {
+            return
+        }
+        
+        #if os(macOS)
+            SKStoreReviewController.requestReview()
+        #else
+        guard let scene = UIApplication.shared.foregroundActiveScene else {
+            return
+        }
+            SKStoreReviewController.requestReview(in: scene)
+        #endif
     }
 }
 

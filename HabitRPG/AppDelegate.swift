@@ -186,31 +186,19 @@ class HabiticaAppDelegate: UIResponder, MessagingDelegate, UIApplicationDelegate
             return
         }
         HabiticaServerConfig.authHash = Secrets.authHash
-        if let host = ProcessInfo.processInfo.environment["CUSTOM_DOMAIN"], let apiVersion = configRepository.string(variable: .apiVersion) {
-            let config = ServerConfiguration(scheme: "https", host: host, apiRoute: "api/\(apiVersion.isEmpty ? "v4" : apiVersion)")
+        if let host = ProcessInfo.processInfo.environment["CUSTOM_DOMAIN"] {
+            let config = ServerConfiguration(scheme: "https", host: host, apiRoute: "api/\(Constants.defaultApiVersion)")
             AuthenticatedCall.defaultConfiguration = config
             return
         }
         if let chosenServer = UserDefaults().string(forKey: "chosenServer") {
             if chosenServer == "production" {
-                let configRepository = ConfigRepository.shared
-                if let host = configRepository.string(variable: .prodHost), let apiVersion = configRepository.string(variable: .apiVersion) {
-                    let config = ServerConfiguration(scheme: "https", host: host, apiRoute: "api/\(apiVersion.isEmpty ? "v4" : apiVersion)")
-                    AuthenticatedCall.defaultConfiguration = config
-                } else {
-                    AuthenticatedCall.defaultConfiguration = HabiticaServerConfig.production
-                }
+                AuthenticatedCall.defaultConfiguration = HabiticaServerConfig.production
             } else {
                 AuthenticatedCall.defaultConfiguration = HabiticaServerConfig.from(chosenServer)
             }
         } else {
-            let configRepository = ConfigRepository.shared
-            if let host = configRepository.string(variable: .prodHost), let apiVersion = configRepository.string(variable: .apiVersion), !host.isEmpty, !apiVersion.isEmpty {
-                let config = ServerConfiguration(scheme: "https", host: host, apiRoute: "api/\(apiVersion)")
-                AuthenticatedCall.defaultConfiguration = config
-            } else {
-                AuthenticatedCall.defaultConfiguration = HabiticaServerConfig.production
-            }
+            AuthenticatedCall.defaultConfiguration = HabiticaServerConfig.production
         }
     }
     

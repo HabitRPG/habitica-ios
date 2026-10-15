@@ -39,33 +39,6 @@ class MainTabBarController: UITabBarController {
             }
         }
     }
-        
-    private var showAdventureGuideBadge = false {
-        didSet {
-            let badge = badges?[4]
-            if showAdventureGuideBadge {
-                if badge == nil || badge?.containedView is UILabel {
-                    badge?.removeFromSuperview()
-                    let newBadge = PaddedView()
-                    badges?[4] = newBadge
-                    newBadge.verticalPadding = 4
-                    newBadge.horizontalPadding = 4
-                    newBadge.backgroundColor = .yellow10
-                    newBadge.containedView = UIImageView(image: Asset.adventureGuideStar.image)
-                    newBadge.isUserInteractionEnabled = false
-                    tabBar.addSubview(newBadge)
-                    (tabBar as? MainTabBar)?.layoutBadges()
-                } else {
-                    return
-                }
-            } else {
-                if !(badge?.containedView is UILabel) {
-                    badge?.removeFromSuperview()
-                    badges?.removeValue(forKey: 4)
-                }
-            }
-        }
-    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -114,7 +87,6 @@ class MainTabBarController: UITabBarController {
                 }
                 
             }
-            self?.showAdventureGuideBadge = user.achievements?.hasCompletedOnboarding != true && self?.configRepository.bool(variable: .moveAdventureGuide) != true
             self?.setBadgeCount(index: 4, badgeCount: badgeCount)
             
             if let tutorials = user.flags?.tutorials {
@@ -183,9 +155,6 @@ class MainTabBarController: UITabBarController {
     }
     
     private func setBadgeCount(index: Int, badgeCount: Int) {
-        if index == 4 && showAdventureGuideBadge {
-            return
-        }
         let badge = badges?[index] ?? PaddedView()
         badges?[index] = badge
         if !(badge.containedView is UILabel) {

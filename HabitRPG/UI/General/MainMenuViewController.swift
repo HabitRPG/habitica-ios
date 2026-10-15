@@ -411,36 +411,6 @@ class MainMenuViewController: BaseTableViewController {
         disposable.inner.add(userRepository.getUser().on(value: {[weak self] user in
             self?.user = user
         })
-        .filter({ $0.party?.id != nil })
-        .map({ $0.party?.id ?? "" })
-        .flatMap(.latest, { partyID in
-            return self.socialRepository.getGroup(groupID: partyID).skipNil()
-        })
-        .on(value: {[weak self] party in
-            if party.quest?.active == true && self?.configRepository.bool(variable: .showQuestInMenu) == true {
-                if self?.questHeaderView == nil {
-                    self?.questHeaderView = UIView.fromNib(nibName: "QuestMenuHeader")
-                }
-                self?.questHeaderView?.configure(group: party)
-                if let user = self?.user {
-                    self?.questHeaderView?.configure(user: user)
-                }
-                self?.tableView?.tableHeaderView = self?.questHeaderView
-            } else if self?.tableView.tableHeaderView == self?.questHeaderView {
-                self?.tableView.tableHeaderView = nil
-            }
-        })
-        .filter({ $0.quest?.active ==  true })
-        .flatMap(.latest, { party in
-            return self.inventoryRepository.getQuest(key: party.quest?.key ?? "").skipNil()
-        })
-        .on(value: {[weak self] quest in
-            if quest.isBossQuest {
-                self?.questHeaderView?.configure(quest: quest)
-            } else if self?.tableView.tableHeaderView == self?.questHeaderView {
-                self?.tableView.tableHeaderView = nil
-            }
-        })
         .start())
         disposable.inner.add(userRepository.getGroupPlans().on(value: {[weak self] value in
             guard let self = self else {
