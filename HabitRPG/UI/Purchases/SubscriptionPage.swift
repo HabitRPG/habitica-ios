@@ -328,9 +328,9 @@ struct SubscriptionPage: View {
             VStack(spacing: 0) {
                 if let endDate = viewModel.activePromo?.endDate, viewModel.activePromo?.identifier == "g1g1" {
                     G1G1Banner(endDate: endDate)
-                        .frame(height: 96)
+                        .frame(height: 80)
                         .cornerRadius(UIConstants.largeCornerRadius)
-                        .padding(.horizontal, 20)
+                        .padding(.horizontal, 16)
                         .padding(.bottom, 30)
                 }
                 if let point = viewModel.presentationPoint {

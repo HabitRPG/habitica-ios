@@ -14,6 +14,7 @@ private class APINotificationAchievementData: Decodable {
     var message: String?
     var modalText: String?
     var icon: String?
+    var count: Int?
 }
 
 private class APIItemReceivedData: Decodable {
@@ -49,6 +50,7 @@ public class APINotification: NotificationProtocol,
     public var achievementMessage: String?
     public var achievementModalText: String?
     public var achievementIcon: String?
+    public var achievementCount: Int = 0
     public var egg: String?
     public var hatchingPotion: String?
     public var nextRewardAt: Int = 0
@@ -123,6 +125,7 @@ public class APINotification: NotificationProtocol,
             achievementMessage = data?.message
             achievementModalText = data?.modalText
             achievementIcon = data?.icon
+            achievementCount = data?.count ?? 0
         }
     }
 }

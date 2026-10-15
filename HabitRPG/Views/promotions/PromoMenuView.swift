@@ -28,7 +28,21 @@ class PromoMenuView: UIView, Themeable {
     private let horizontalInset: CGFloat = 17
     private let cardCornerRadius: CGFloat = 20
     private let buttonHeight: CGFloat = 32
-    private let cardTopPadding: CGFloat = 21
+    var cardTopPadding: CGFloat = 21 {
+        didSet {
+            setNeedsLayout()
+        }
+    }
+    var textGap: CGFloat = 6 {
+        didSet {
+            setNeedsLayout()
+        }
+    }
+    var buttonGap: CGFloat = 12 {
+        didSet {
+            setNeedsLayout()
+        }
+    }
     private let cardBottomPadding: CGFloat = 14
     private let minimumCardHeight: CGFloat = 130
     private let outerVerticalMargin: CGFloat = 10
@@ -188,8 +202,8 @@ class PromoMenuView: UIView, Themeable {
         let gradient = cardGradientLayer ?? CAGradientLayer()
         gradient.colors = [startColor.cgColor, endColor.cgColor]
         gradient.locations = [0.0, 1.0]
-        gradient.startPoint = CGPoint(x: 0.0, y: 0.5)
-        gradient.endPoint = CGPoint(x: 1.0, y: 0.5)
+        gradient.startPoint = CGPoint(x: 0.0, y: 0.0)
+        gradient.endPoint = CGPoint(x: 1.0, y: 1.0)
         if cardGradientLayer == nil {
             cardView.layer.insertSublayer(gradient, at: 0)
             cardGradientLayer = gradient
@@ -271,8 +285,6 @@ class PromoMenuView: UIView, Themeable {
         if !descriptionView.isHidden { stack.append(descriptionView) }
         if !descriptionImageView.isHidden { stack.append(descriptionImageView) }
 
-        let textGap: CGFloat = 6
-        let buttonGap: CGFloat = 12
         var textHeight: CGFloat = 0
         for (index, view) in stack.enumerated() {
             textHeight += view.frame.height

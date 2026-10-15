@@ -26,6 +26,13 @@ class SummerExtraGemsPromotion: ExtraGemsPromotion {
         return gradient
     }
     
+    override func makePillGradient(view: UIView) -> CAGradientLayer {
+        let gradient = makeGradient(view: view)
+        gradient.startPoint = CGPoint(x: 0.0, y: 0.5)
+        gradient.endPoint = CGPoint(x: 1.0, y: 0.5)
+        return gradient
+    }
+    
     override func configureGemView(view: GemPurchaseCell, regularAmount: Int) {
         super.configureGemView(view: view, regularAmount: regularAmount)
         switch regularAmount {

@@ -337,7 +337,10 @@ class ConfigRepository: NSObject {
     func activePromotion() -> HabiticaPromotion? {
         var promo: HabiticaPromotion?
         if let active = userConfig.string(forKey: "activePromo"), testingLevel != .production && testingLevel != .beta {
-            return HabiticaPromotionType.getPromoFromKey(key: active, startDate: nil, endDate: nil)
+            let today = Calendar.current.startOfDay(for: Date())
+            return HabiticaPromotionType.getPromoFromKey(key: active,
+                                                         startDate: Calendar.current.date(byAdding: .day, value: -3, to: today),
+                                                         endDate: Calendar.current.date(byAdding: .day, value: 4, to: today))
         }
         for event in worldState?.events ?? [] where HabiticaPromotionType.getPromoFromKey(key: event.promo ?? event.eventKey ?? "", startDate: event.start, endDate: event.end) != nil {
             promo = HabiticaPromotionType.getPromoFromKey(key: event.promo ?? event.eventKey ?? "", startDate: event.start, endDate: event.end)

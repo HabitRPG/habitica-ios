@@ -16,3 +16,8 @@ BUNDLE_ID_PREFIX_ALT = com.habitica
 CODE_SIGN_IDENTITY= iPhone Developer
 
 DEVELOPMENT_TEAM = 9Q9SMRMCNN
+
+// App version and build number for the app, its extensions and the embedded frameworks.
+// This is the only place these should be set; do not override them in target build settings.
+MARKETING_VERSION = 4.1.0
+CURRENT_PROJECT_VERSION = 1022

@@ -38,6 +38,22 @@ class PromoBannerView: UIView {
     let leftImageView = UIImageView()
     let rightImageView = UIImageView()
     
+    var titleTopMargin: CGFloat = 25 {
+        didSet {
+            setNeedsLayout()
+        }
+    }
+    var descriptionTopMargin: CGFloat = 8 {
+        didSet {
+            setNeedsLayout()
+        }
+    }
+    var durationTopMargin: CGFloat = 8 {
+        didSet {
+            setNeedsLayout()
+        }
+    }
+    
     func setTitle(_ title: String) {
         titleView.isHidden = false
         titleView.text = title
@@ -105,23 +121,23 @@ class PromoBannerView: UIView {
         rightImageView.pin.sizeToFit().end().bottom()
         var upperEdge = edge.top
         if !titleView.isHidden {
-            titleView.pin.top(to: upperEdge).marginTop(25).start(60).end(60).sizeToFit(.width)
+            titleView.pin.top(to: upperEdge).marginTop(titleTopMargin).start(60).end(60).sizeToFit(.width)
             upperEdge = titleView.edge.bottom
         }
         if !titleImageView.isHidden {
-            titleImageView.pin.top(to: upperEdge).marginTop(25).sizeToFit().hCenter()
+            titleImageView.pin.top(to: upperEdge).marginTop(titleTopMargin).sizeToFit().hCenter()
             upperEdge = titleImageView.edge.bottom
         }
         if !descriptionLabel.isHidden {
-            descriptionLabel.pin.top(to: upperEdge).marginTop(8).start(60).end(60).sizeToFit(.width)
+            descriptionLabel.pin.top(to: upperEdge).marginTop(descriptionTopMargin).start(60).end(60).sizeToFit(.width)
             upperEdge = descriptionLabel.edge.bottom
         }
         if !descriptionImageView.isHidden {
-            descriptionImageView.pin.top(to: upperEdge).marginTop(8).sizeToFit().hCenter()
+            descriptionImageView.pin.top(to: upperEdge).marginTop(descriptionTopMargin).sizeToFit().hCenter()
             upperEdge = descriptionImageView.edge.bottom
         }
         if !durationLabel.isHidden {
-            durationLabel.pin.top(to: upperEdge).start(34).end(34).marginTop(8).maxWidth(400).sizeToFit(.width)
+            durationLabel.pin.top(to: upperEdge).start(34).end(34).marginTop(durationTopMargin).maxWidth(400).sizeToFit(.width)
             upperEdge = durationLabel.edge.bottom
         }
     

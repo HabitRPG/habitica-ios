@@ -87,6 +87,12 @@ class PillView: UIView {
         }
     }
 
+    @IBInspectable var horizontalPadding: CGFloat = 12 {
+        didSet {
+            self.invalidateIntrinsicContentSize()
+        }
+    }
+
     override var isHidden: Bool {
         didSet {
             self.invalidateIntrinsicContentSize()
@@ -154,7 +160,7 @@ class PillView: UIView {
                 return CGSize(width: 0, height: 0)
             }
             let originalSize = label.intrinsicContentSize
-            var width = originalSize.width+24
+            var width = originalSize.width+horizontalPadding*2
             let height = originalSize.height+12
             if icon != nil {
                 width += 15+4

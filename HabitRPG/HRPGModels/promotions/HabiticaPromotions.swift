@@ -45,7 +45,8 @@ enum HabiticaPromotions: String, Identifiable {
             .fallExtraGems,
             .spookyExtraGems,
             .winterExtraGems,
-            .flashExtraGems
+            .flashExtraGems,
+            .g1g1Sale
         ]
     }
 }
@@ -75,9 +76,13 @@ protocol HabiticaPromotion {
     var pinnedPillBackground: UIColor? { get }
     var pinnedPillArrowColor: UIColor { get }
     var pinnedPillArtHeight: CGFloat { get }
+    var pinnedPillArtInset: CGFloat { get }
+    var pinnedPillTitleSpacing: CGFloat { get }
     var hasPinnedPill: Bool { get }
 }
 
 extension HabiticaPromotion {
     var hasPinnedPill: Bool { return pinnedPillTitle != nil || pinnedPillTitleImage != nil }
+    var pinnedPillArtInset: CGFloat { return 0 }
+    var pinnedPillTitleSpacing: CGFloat { return 16 }
 }

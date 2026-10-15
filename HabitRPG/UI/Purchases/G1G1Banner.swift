@@ -21,24 +21,36 @@ struct G1G1Banner: View {
     var body: some View {
         ZStack(alignment: .center) {
             HStack {
-                Image(Asset.promoGiftsLeft.name)
+                Image(Asset.subScreenG1g1PresentsLeft.name)
                 Spacer()
-                Image(Asset.promoGiftsRight.name)
+                Image(Asset.subScreenG1g1PresentsRight.name)
             }
-            .background(LinearGradient(colors: [Color(UIColor("#3BCAD7")), Color(UIColor("#925CF3"))], startPoint: .topLeading, endPoint: .bottomTrailing))
-            VStack(spacing: 5) {
-                Text(L10n.giftOneGetOneTitle)
-                    .font(.system(size: 22, weight: .bold))
-                Text(L10n.giftOneGetOneDescriptionDate(formatter.string(from: endDate)))
-                    .font(.system(size: 16, weight: .semibold))
-                    .lineSpacing(2)
-                    .multilineTextAlignment(.center)
-                    .padding(.horizontal, 50)
-            }
+            .background(G1G1GradientBackground())
+            Text(L10n.giftOneGetOneDescriptionDate(formatter.string(from: endDate)))
+                .font(.system(size: 17, weight: .semibold))
+                .foregroundColor(.white)
+                .lineSpacing(2)
+                .multilineTextAlignment(.center)
+                .padding(.horizontal, 80)
         }
         .onTapGesture {
             RouterHandler.shared.handle(.promoInfo)
         }
+    }
+}
+
+private struct G1G1GradientBackground: UIViewRepresentable {
+    func makeUIView(context: Context) -> GradientView {
+        let view = GradientView()
+        view.startColor = UIColor("#3BCAD7")
+        view.endColor = UIColor("#925CF3")
+        view.startLocation = 0
+        view.endLocation = 1
+        view.diagonalMode = true
+        return view
+    }
+    
+    func updateUIView(_ uiView: GradientView, context: Context) {
     }
 }
 

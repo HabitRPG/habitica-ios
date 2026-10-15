@@ -26,6 +26,17 @@ class SpringExtraGemsPromotion: ExtraGemsPromotion {
         return gradient
     }
     
+    override func makePillGradient(view: UIView) -> CAGradientLayer {
+        let gradient = CAGradientLayer()
+
+        gradient.colors = [UIColor("#81F5C0").cgColor, UIColor("#CAFF91").cgColor, UIColor("#F5E867").cgColor]
+        gradient.locations = [0.0, 0.5, 1.0]
+        gradient.startPoint = CGPoint(x: 0.0, y: 0.5)
+        gradient.endPoint = CGPoint(x: 1.0, y: 0.5)
+        gradient.frame = CGRect(x: 0.0, y: 0.0, width: view.frame.size.width, height: view.frame.size.height)
+        return gradient
+    }
+    
     override func configureGemView(view: GemPurchaseCell, regularAmount: Int) {
         super.configureGemView(view: view, regularAmount: regularAmount)
         switch regularAmount {

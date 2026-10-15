@@ -63,3 +63,6 @@ sorted_first_last: error
 overridden_super_call:
   severity: error
 reporter: "xcode"
+
+conditional_returns_on_newline:
+    if_only: true  

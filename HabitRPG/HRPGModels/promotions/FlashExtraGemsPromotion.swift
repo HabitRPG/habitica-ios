@@ -19,9 +19,9 @@ class FlashExtraGemsPromotion: ExtraGemsPromotion {
         let gradient = CAGradientLayer()
 
         gradient.colors = [UIColor("#FF6165").cgColor, UIColor("#FF944C").cgColor, UIColor("#FFBE5D").cgColor, UIColor("#24CC8F").cgColor, UIColor("#50B5E9").cgColor]
-        gradient.locations = [0.0, 0.2, 0.6, 0.8, 1.0]
-        gradient.startPoint = CGPoint(x: -0.2, y: -0.0)
-        gradient.endPoint = CGPoint(x: 1.2, y: 1.0)
+        gradient.locations = [0.05, 0.28, 0.52, 0.74, 0.98]
+        gradient.startPoint = CGPoint(x: -0.21, y: -0.3)
+        gradient.endPoint = CGPoint(x: 1.31, y: -0.15)
         gradient.frame = CGRect(x: 0.0, y: 0.0, width: view.frame.size.width, height: view.frame.size.height)
         return gradient
     }
@@ -51,12 +51,17 @@ class FlashExtraGemsPromotion: ExtraGemsPromotion {
     override func configurePurchaseBanner(view: PromoBannerView) {
         super.configurePurchaseBanner(view: view)
         view.setTitleImage(Asset.flashPromoTitle.image)
-        view.setDescription(L10n.endsX(shortDateFormatter.string(from: endDate)))
+        let formatter = DateFormatter()
+        formatter.dateFormat = "MMMM d"
+        view.setDescription(L10n.endsX(formatter.string(from: endDate)))
     }
     
     override func configureInfoView(_ viewController: PromotionInfoViewController) {
         super.configureInfoView(viewController)
         viewController.promoBanner.descriptionLabel.textColor = UIColor("#FEDEAD")
+        let formatter = DateFormatter()
+        formatter.dateFormat = "MMMM d"
+        viewController.promoBanner.durationLabel.text = L10n.endsX(formatter.string(from: endDate))
         viewController.promptText = L10n.FlashPromo.infoPrompt
         viewController.promoBanner.setTitleImage(Asset.flashPromoTitle.image)
     }

@@ -235,16 +235,26 @@ class SettingsViewController: FormViewController, Themeable {
             row.title = L10n.Settings.activePromotion
             row.hidden = true
             
-            row.options = HabiticaPromotions.all.map({ (promo) -> LabeledFormValue<String> in
+            let followServer = LabeledFormValue(value: "", label: "None (Follow Server)")
+            row.options = [followServer] + HabiticaPromotions.all.map({ (promo) -> LabeledFormValue<String> in
                 return LabeledFormValue(value: promo.rawValue, label: promo.niceName)
             })
+            if let promo = HabiticaPromotions(rawValue: UserDefaults().string(forKey: "activePromo") ?? "") {
+                row.value = LabeledFormValue(value: promo.rawValue, label: promo.niceName)
+            } else {
+                row.value = followServer
+            }
             row.cellUpdate({ (cell, _) in
                 cell.textLabel?.textColor = ThemeService.shared.theme.primaryTextColor
                 cell.textLabel?.textAlignment = .natural
                 cell.backgroundColor = ThemeService.shared.theme.windowBackgroundColor
             })
             row.onChange({ (row) in
-                UserDefaults().set(row.value?.value, forKey: "activePromo")
+                if let value = row.value?.value, !value.isEmpty {
+                    UserDefaults().set(value, forKey: "activePromo")
+                } else {
+                    UserDefaults().removeObject(forKey: "activePromo")
+                }
             })
     }
         <<< ButtonRow(SettingsTags.customUrl) { row in

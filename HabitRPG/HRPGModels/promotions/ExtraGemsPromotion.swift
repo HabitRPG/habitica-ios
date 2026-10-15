@@ -61,10 +61,14 @@ class ExtraGemsPromotion: HabiticaPromotion {
         return gradient
     }
     
+    func makePillGradient(view: UIView) -> CAGradientLayer {
+        return makeGradient(view: view)
+    }
+    
     func configurePill(_ pillView: PillView) {
         pillView.backgroundColor = nil
         pillView.layer.sublayers?.filter { $0 is CAGradientLayer }.forEach { $0.removeFromSuperlayer() }
-        let gradientLayer = makeGradient(view: pillView)
+        let gradientLayer = makePillGradient(view: pillView)
         gradientLayer.cornerRadius = pillView.frame.size.height / 2
         pillView.layer.insertSublayer(gradientLayer, at: 0)
         pillView.textColor = .black
@@ -95,7 +99,7 @@ class ExtraGemsPromotion: HabiticaPromotion {
         view.backgroundColor = backgroundColor
         view.priceLabel.layer.sublayers?.filter { $0 is CAGradientLayer }.forEach { $0.removeFromSuperlayer() }
         let gradientLayer = makeGradient(view: view.priceLabel)
-        gradientLayer.cornerRadius = UIConstants.mediumCornerRadius
+        gradientLayer.cornerRadius = view.priceLabel.frame.size.height / 2
         view.priceLabel.backgroundColor = .clear
         view.priceLabelBackground.layer.insertSublayer(gradientLayer, at: 0)
         view.priceLabel.textColor = .black

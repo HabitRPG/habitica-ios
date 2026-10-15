@@ -10,7 +10,7 @@ import UIKit
 import Down
 import SwiftUIX
 
-class GuidelinesViewController: UIViewController {
+class GuidelinesViewController: BaseUIViewController {
     @IBOutlet weak var textView: UITextView!
     let activityIndicator = UIHostingView(rootView: HabiticaProgressView())
 
@@ -20,6 +20,7 @@ class GuidelinesViewController: UIViewController {
         view.addSubview(activityIndicator)
         
         navigationItem.title = L10n.Titles.guidelines
+        textView.isEditable = false
         
         let urlString = "https://s3.amazonaws.com/habitica-assets/mobileApp/endpoint/community-guidelines.md"
         guard let url = URL(string: urlString) else {
@@ -35,6 +36,11 @@ class GuidelinesViewController: UIViewController {
                 }
             }
         }
+    }
+    
+    override func applyTheme(theme: any Theme) {
+        super.applyTheme(theme: theme)
+        textView.backgroundColor = theme.contentBackgroundColor
     }
     
     override func viewDidLayoutSubviews() {

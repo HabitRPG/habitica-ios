@@ -19,8 +19,19 @@ class SpookyExtraGemsPromotion: ExtraGemsPromotion {
     override func makeGradient(view: UIView) -> CAGradientLayer {
         let gradient = CAGradientLayer()
 
-        gradient.colors = [UIColor("#FF944C").cgColor, UIColor("#FF6D71").cgColor, UIColor("##925CF3").cgColor]
+        gradient.colors = [UIColor("#FF944C").cgColor, UIColor("#FF6D71").cgColor, UIColor("#925CF3").cgColor]
         gradient.locations = [0.0, 0.5, 1.0]
+        gradient.startPoint = CGPoint(x: 0.0, y: 0.0)
+        gradient.endPoint = CGPoint(x: 1.0, y: 1.0)
+        gradient.frame = CGRect(x: 0.0, y: 0.0, width: view.frame.size.width, height: view.frame.size.height)
+        return gradient
+    }
+    
+    override func makePillGradient(view: UIView) -> CAGradientLayer {
+        let gradient = CAGradientLayer()
+
+        gradient.colors = [UIColor("#FFBE5D").cgColor, UIColor("#FF6165").cgColor, UIColor("#925CF3").cgColor]
+        gradient.locations = [0.0, 0.52, 1.0]
         gradient.startPoint = CGPoint(x: 0.0, y: 0.0)
         gradient.endPoint = CGPoint(x: 1.0, y: 1.0)
         gradient.frame = CGRect(x: 0.0, y: 0.0, width: view.frame.size.width, height: view.frame.size.height)
@@ -60,6 +71,8 @@ class SpookyExtraGemsPromotion: ExtraGemsPromotion {
     
     override func configureInfoView(_ viewController: PromotionInfoViewController) {
         super.configureInfoView(viewController)
+        viewController.promoBanner.leftImageView.image = Asset.spookyPromoInfoLeft.image
+        viewController.promoBanner.rightImageView.image = Asset.spookyPromoInfoRight.image
         viewController.promoBanner.descriptionLabel.textColor = UIColor("#D5C8FF")
         viewController.promptText = L10n.SpookyPromo.infoPrompt
         viewController.promoBanner.setTitleImage(Asset.spookyPromoTitle.image)

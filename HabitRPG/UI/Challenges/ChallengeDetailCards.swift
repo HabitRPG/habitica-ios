@@ -6,8 +6,23 @@ struct ChallengeDetailHeaderCard: View {
     @ObservedObject private var themeService = ThemeService.shared
     let challenge: ChallengeProtocol
 
+    private var groupName: String? {
+        guard challenge.groupID != Constants.TAVERN_ID, challenge.groupPrivacy != "public",
+              let name = challenge.groupName, !name.isEmpty else {
+            return nil
+        }
+        return name
+    }
+
     var body: some View {
         VStack(spacing: 0) {
+            if let groupName = groupName {
+                Text(L10n.challengeInGroup(groupName.unicodeEmoji))
+                    .font(.system(size: 13, weight: .medium).italic())
+                    .foregroundStyle(ChallengeTheme.handle)
+                    .multilineTextAlignment(.center)
+                    .padding(.bottom, 7)
+            }
             Text(challenge.name?.unicodeEmoji ?? "")
                 .font(.system(size: 22, weight: .bold))
                 .foregroundStyle(Color(themeService.theme.primaryTextColor))
@@ -112,7 +127,7 @@ struct ChallengeDetailCreatorCard: View {
                             .font(.system(size: 17, weight: .semibold))
                             .tracking(-0.43)
                             .lineSpacing(2)
-                            .foregroundStyle(ChallengeTheme.creatorName)
+                            .foregroundStyle(Color(UIColor.contributorColor(forTier: creator?.contributor?.level ?? 0)))
                         if showsDiamond {
                             Image(uiImage: HabiticaIcons.imageOfContributorBadge(tier: creator?.contributor?.level ?? 1, isNPC: false))
                                 .resizable().scaledToFit().frame(width: 14, height: 13)
@@ -121,7 +136,7 @@ struct ChallengeDetailCreatorCard: View {
                     if isOwner {
                         Text(L10n.youOwnThisChallenge)
                             .font(.system(size: 15))
-                            .foregroundStyle(Color(red: 0x7E / 255, green: 0x7B / 255, blue: 0x86 / 255))
+                            .foregroundStyle(Color(themeService.theme.ternaryTextColor))
                     }
                 }
                 Spacer(minLength: 0)

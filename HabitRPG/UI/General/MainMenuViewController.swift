@@ -252,17 +252,7 @@ class MainMenuViewController: BaseTableViewController {
             if user?.isSubscribed == true && activePromo == nil {
                 tableView.tableFooterView = nil
             }
-            if user?.isSubscribed == true {
-                if let endDate = user?.purchased?.subscriptionPlan?.dateTerminated {
-                    let formatter = DateFormatter()
-                    formatter.dateStyle = .long
-                    menuItem(withKey: .subscription).subtitle = L10n.subscriptionEndsOn(formatter.string(from: endDate))
-                } else {
-                    menuItem(withKey: .subscription).subtitle = nil
-                }
-            } else if menuItem(withKey: .subscription).pillText != L10n.sale {
-                menuItem(withKey: .subscription).subtitle = L10n.getMoreHabitica
-            }
+            updateSubscriptionSubtitle()
             
             menuItem(withKey: .challenges).isHidden = configRepository.bool(variable: .hideChallenges)
         }
@@ -285,8 +275,8 @@ class MainMenuViewController: BaseTableViewController {
         } else if let start = promo.gradientStart, let end = promo.gradientEnd {
             let gradient = CAGradientLayer()
             gradient.colors = [start.cgColor, end.cgColor]
-            gradient.startPoint = CGPoint(x: 0, y: 0.5)
-            gradient.endPoint = CGPoint(x: 1, y: 0.5)
+            gradient.startPoint = CGPoint(x: 0, y: 0)
+            gradient.endPoint = CGPoint(x: 1, y: 1)
             gradient.frame = CGRect(x: 0, y: 0, width: pillWidth, height: 40)
             pill.layer.insertSublayer(gradient, at: 0)
         } else {
@@ -299,7 +289,7 @@ class MainMenuViewController: BaseTableViewController {
             let artView = UIImageView(image: leftArt)
             artView.contentMode = .scaleAspectFit
             let fitsInPill = artHeight <= 40
-            let artX: CGFloat = fitsInPill ? 0 : -12
+            let artX: CGFloat = fitsInPill ? promo.pinnedPillArtInset : -12
             artView.frame = CGRect(x: artX, y: fitsInPill ? 0 : 42 - artHeight, width: artWidth, height: artHeight)
             pill.addSubview(artView)
             artTrailing = artX + artWidth
@@ -319,7 +309,7 @@ class MainMenuViewController: BaseTableViewController {
                 .baselineOffset: (titleLineHeight - titleFont.lineHeight) / 4,
                 .paragraphStyle: paragraph
             ])
-            let labelX = artTrailing > 0 ? artTrailing + 16 : 44
+            let labelX = artTrailing > 0 ? artTrailing + promo.pinnedPillTitleSpacing : 44
             label.frame = CGRect(x: labelX, y: 0, width: pillWidth - 32 - labelX, height: 40)
             pill.addSubview(label)
         } else if let image = promo.pinnedPillTitleImage {
@@ -331,7 +321,7 @@ class MainMenuViewController: BaseTableViewController {
             let imageView = UIImageView(image: image)
             imageView.contentMode = .scaleAspectFit
             let centeredX = (pillWidth - scaledWidth) / 2
-            let titleX = artTrailing > 0 ? min(artTrailing + 16, centeredX) : centeredX
+            let titleX = artTrailing > 0 ? min(artTrailing + promo.pinnedPillTitleSpacing, centeredX) : centeredX
             imageView.frame = CGRect(x: titleX, y: (40 - scaledHeight) / 2, width: scaledWidth, height: scaledHeight)
             pill.addSubview(imageView)
         }
@@ -552,21 +542,44 @@ class MainMenuViewController: BaseTableViewController {
     }
     
     private func updatePromoCells() {
-        if (activePromo?.endDate.timeIntervalSince1970 ?? 0) < Date().timeIntervalSince1970 {
-            menuItem(withKey: .gems).pillText = nil
-            menuItem(withKey: .subscription).pillText = nil
+        let gemsItem = menuItem(withKey: .gems)
+        let subscriptionItem = menuItem(withKey: .subscription)
+        var promoItem: MenuItem?
+        if let promo = activePromo, promo.endDate > Date() {
+            if promo.promoType == .gemsPrice || promo.promoType == .gemsAmount {
+                promoItem = gemsItem
+            } else if promo.promoType == .subscription {
+                promoItem = subscriptionItem
+            }
+        }
+        for item in [gemsItem, subscriptionItem] where item !== promoItem {
+            item.pillText = nil
+            item.pillBuilder = nil
+            item.subtitle = nil
+        }
+        if let promo = activePromo, let promoItem = promoItem {
+            promoItem.pillText = L10n.sale
+            promoItem.pillBuilder = promo.configurePill
+            promoItem.subtitle = L10n.saleEndsIn(promo.endDate.getShortRemainingString())
+        }
+        updateSubscriptionSubtitle()
+    }
+    
+    private func updateSubscriptionSubtitle() {
+        let subscriptionItem = menuItem(withKey: .subscription)
+        guard subscriptionItem.pillText != L10n.sale, let user = user, user.isValid else {
             return
         }
-        if let promo = activePromo {
-            var promoItem: MenuItem?
-            if promo.promoType == .gemsPrice || promo.promoType == .gemsAmount {
-                promoItem = menuItem(withKey: .gems)
-            } else if promo.promoType == .subscription {
-                promoItem = menuItem(withKey: .subscription)
+        if user.isSubscribed {
+            if let endDate = user.purchased?.subscriptionPlan?.dateTerminated {
+                let formatter = DateFormatter()
+                formatter.dateStyle = .long
+                subscriptionItem.subtitle = L10n.subscriptionEndsOn(formatter.string(from: endDate))
+            } else {
+                subscriptionItem.subtitle = nil
             }
-            promoItem?.pillText = L10n.sale
-            promoItem?.pillBuilder = promo.configurePill
-            promoItem?.subtitle = L10n.saleEndsIn(promo.endDate.getShortRemainingString())
+        } else {
+            subscriptionItem.subtitle = L10n.getMoreHabitica
         }
     }
     
@@ -896,8 +909,10 @@ class MainMenuViewController: BaseTableViewController {
         pillView?.text = item?.pillText
         pillView?.isHidden = item?.pillText == nil
         if let builder = item?.pillBuilder, let pill = pillView {
+            pill.horizontalPadding = 13.5
             builder(pill)
         } else {
+            pillView?.horizontalPadding = 12
             pillView?.layer.sublayers?.filter { $0 is CAGradientLayer }.forEach { $0.removeFromSuperlayer() }
             pillView?.automaticTextColor = false
             pillView?.pillColor = MainMenuTheme.seasonalBadge

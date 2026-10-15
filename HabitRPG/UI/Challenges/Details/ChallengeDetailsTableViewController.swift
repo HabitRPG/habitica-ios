@@ -65,6 +65,8 @@ class ChallengeDetailsTableViewController: MultiModelTableViewController {
         tableView.tableFooterView = UIView()
         tableView.register(UINib(nibName: "ChallengeTableViewHeaderView", bundle: nil), forHeaderFooterViewReuseIdentifier: "header")
         tableView.separatorStyle = .none
+        tableView.sectionHeaderTopPadding = 0
+        tableView.sectionFooterHeight = 0
         
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: Asset.moreInteractionsIcon.image, menu: overflowMenu)
         

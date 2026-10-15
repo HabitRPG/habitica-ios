@@ -53,11 +53,12 @@ struct ToastView: View {
         self.init(options: options)
     }
     
-    public init(title: String, subtitle: String, icon: UIImage, background: ToastColor, duration: Double? = nil, delay: Double? = nil) {
+    public init(title: String, subtitle: String, icon: UIImage, background: ToastColor, duration: Double? = nil, delay: Double? = nil, iconPadding: CGFloat? = nil) {
         let options = ToastOptions()
         options.title = title
         options.subtitle = subtitle
         options.leftImage = icon
+        options.iconPadding = iconPadding
         options.backgroundColor = background
         if let duration = duration {
             options.displayDuration = duration
@@ -68,11 +69,12 @@ struct ToastView: View {
         self.init(options: options)
     }
     
-    public init(title: String, icon: UIImage, background: ToastColor, duration: Double? = nil, delay: Double? = nil) {
+    public init(title: String, icon: UIImage, background: ToastColor, duration: Double? = nil, delay: Double? = nil, iconPadding: CGFloat? = nil) {
         let options = ToastOptions()
         options.title = title
         options.backgroundColor = background
         options.leftImage = icon
+        options.iconPadding = iconPadding
         if let duration = duration {
             options.displayDuration = duration
         }
@@ -151,9 +153,10 @@ struct ToastView: View {
                     if let image = options.leftImage {
                         Image(uiImage: image)
                             .frame(width: 46)
+                            .padding(options.iconPadding ?? 0)
                     }
                     HStack(spacing: 8) {
-                        VStack(spacing: 2) {
+                        VStack(alignment: .leading, spacing: 2) {
                             if let subtitle = options.subtitle, !subtitle.isEmpty {
                                 Text(subtitle)
                                     .scaledFont(size: 16)
@@ -172,7 +175,9 @@ struct ToastView: View {
                                 }
                             }.font(.callout)
                         }
-                    }.padding(14)
+                    }.padding(.vertical, 14)
+                        .padding(.trailing, 14)
+                        .padding(.leading, options.leftImage != nil ? 0 : 14)
                     if let image = options.rightIcon, let text = options.rightText {
                         HStack(spacing: 4) {
                             Text(text)
