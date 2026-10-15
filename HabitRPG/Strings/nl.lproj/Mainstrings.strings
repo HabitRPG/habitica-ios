@@ -1607,3 +1607,13 @@
 "faint.good_luck_text" = "Maar je kan ze allemaal terugverdienen door hard te werken! Veel succes—je kan het. ";
 "faint.unsubbed_footer" = "Krijg elke dag een tweede kans om niet al je HP kwijt te raken met een abonnement";
 "groups.group_plan_settings" = "Groepsabonnementinstellingen";
+"shops.rebirthConfirmFree" = "Begin opnieuw (GRATIS)";
+"shops.rebirthConfirmGems" = "Begin opnieuw (%d Edelstenen)";
+"shops.rebirthEnabledDescription" = "Gebruik de Bol der Hergeboorte om je Habitica avontuur nieuw leven in te blazen als je vindt dat je alles hebt bereikt! Begin opnieuw bij level 1, maar behoud je taken, Prestaties, en Huisdieren met dit speciale object van de Marktplaats.";
+"shops.rebirthAchievementTitle" = "Je Bent Herboren!";
+"shops.rebirthAchievementDescription" = "Je bent een nieuw avontuur begonnen! Dit is Hergeboorte nummer %d voor jou, en het hoogste level dat je hebt bereikt is %d.";
+"shops.rebirthAchievementDescriptionMax" = "Je bent een nieuw avontuur begonnen! Dit is Hergeboorte nummer %d voor jou, en het hoogste level dat je hebt bereikt is %d of hoger.";
+"shops.dayUntilFreeRebirth" = "%d dag tot een GRATIS Bol der Hergeboorte";
+"shops.daysUntilFreeRebirth" = "%d dagen tot een GRATIS Bol der Hergeboorte";
+"shops.goToMarket" = "Naar de Marktplaats";
+"shops.rebirthConfirmKeepHeader" = "Je behoudt:";
