@@ -36,7 +36,7 @@ jobs:
       matrix:
         name:
           - "iPhone 17"
-          - "iPad Pro (9.7-inch)"
+          - "iPad (A16)"
         os-version:
           - "26.5"
     steps:
@@ -53,7 +53,7 @@ jobs:
         name:
           - "iPhone 17"
           - "iPhone 17 Pro Max"
-          - "iPad Pro (9.7-inch)"
+          - "iPad (A16)"
         os-version:
           - "26.5"
     steps:
