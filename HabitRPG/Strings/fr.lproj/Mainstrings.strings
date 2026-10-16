@@ -860,7 +860,7 @@
 "subscribe" = "S'abonner";
 "send_gift" = "Offrir";
 "gift_one_get_one_title" = "Offrez-en un, recevez-en un";
-"gift_one_get_one_description" = "Offrez un abonnement maintenant pour recevoir le même abonnement gratuitement !";
+"gift_one_get_one_description" = "Offrez un abonnement pour recevoir le même abonnement, gratuitement !";
 "gems_support_developers" = "Acheter des gemmes soutient notre petite équipe à Habitica !";
 "buy_for_x" = "Acheter pour %@";
 "earned_achievement_share" = "J'ai gagné un nouveau succès dans Habitica !";
@@ -1199,9 +1199,9 @@
 "pet_accessibility_label_raised" = "%@, dressé %d%%";
 "gift_confirmation_body_g1_g1" = "Vous avez envoyé à %@ un abonnement de %@ mois et le même abonnement vous a été accordé pour notre promotion Un en cadeau, un reçu !";
 "gift_one_get_one_data.purchase_banner_title" = "Offrez un abonnement et recevez un abonnement gratuit jusqu'au %@";
-"gift_one_get_one_data.info_limitations" = "Il s'agit d'un événement limité dans le temps, qui démarre le %@ et finit le %@. Cette promotion ne s'applique que si vous offrez un abonnement à quelqu'un d'autre. Si vous ou l·e·a destinataire possède déjà un abonnement, l'abonnement offert ajoutera des mois supplémentaires qui se déclencheront quand l'abonnement en cours sera annulé ou expirera.";
-"gift_one_get_one_data.info_instructions" = "Choisissez \"Offrir un abonnement\", et entrez l'identifiant du compte auquel vous voulez faire un cadeau. Puis choisissez la durée d'abonnement que vous voulez offrir et validez. Vous recevrez automatiquement la même durée d'abonnement que celle que vous venez d'offrir.";
-"gift_one_get_one_data.infoPrompt" = "En l'honneur de la saison des cadeaux, nous reprenons une promotion très spéciale. Désormais, lorsque vous offrez un abonnement à quelqu'un, vous recevrez le même abonnement pour vous même !";
+"gift_one_get_one_data.info_limitations" = "Il s'agit d'un événement limité dans le temps, qui démarre le %@ et finit le %@. Cette promotion ne s'applique que si vous offrez un abonnement à un autre compte. Si vous ou l·e·a destinataire possède déjà un abonnement, l'abonnement offert ajoutera des mois supplémentaires qui se déclencheront quand l'abonnement en cours sera annulé.";
+"gift_one_get_one_data.info_instructions" = "Sélectionnez le bouton Offrir un abonnement, et entrez l'identifiant du compte auquel vous voulez faire un cadeau. Puis choisissez la durée d'abonnement que vous voulez offrir et validez. Vous recevrez automatiquement la même durée d'abonnement que celle que vous venez d'offrir.";
+"gift_one_get_one_data.infoPrompt" = "En l'honneur de la saison des cadeaux, lorsque vous offrez un abonnement à quelqu'un·e, vous recevrez le même abonnement pour vous-même gratuitement !";
 "gift_one_get_one_event" = "Offrez-en un, recevez-en un";
 "create_challenge_description" = "Pour créer un défi, connectez-vous sur le site Habitica et utilisez le bouton \"Créer\" sur l'écran \"Mes défis\".";
 "create_challenge" = "Créer un défi";
@@ -1795,3 +1795,5 @@
 "menu.new_message" = "Nouveau message";
 "menu.new_announcement" = "Nouvelle annonce";
 "menu.time_travelers_shop" = "Magasin des Voyageu·r·se·s Temporel·le·s";
+"achievement" = "Succès";
+"challenge_in_group" = "Dans %@";
