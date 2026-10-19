@@ -92,7 +92,7 @@ class MainSupportViewController: BaseUIViewController {
     }
     
     @IBAction func suggestionButtonTapped(_ sender: Any) {
-        if let url = URL(string: configRepository.string(variable: .feedbackURL) ?? "") {
+        if let url = URL(string: configRepository.value(for: .feedbackURL) ?? "") {
             UIApplication.shared.open(url, options: [:], completionHandler: nil)
         }
     }

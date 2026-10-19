@@ -389,7 +389,7 @@ class AboutViewController: BaseTableViewController, MFMailComposeViewControllerD
         case 1:
             open(url: "https://habitica.com")
         case 2:
-            open(url: configRepository.string(variable: .appstoreUrl) ?? "")
+            open(url: configRepository.value(for: .appstoreUrl) ?? "")
         case 3:
             perform(segue: StoryboardSegue.Main.hallOfContributorsSegue)
         case 4:
@@ -407,7 +407,7 @@ class AboutViewController: BaseTableViewController, MFMailComposeViewControllerD
         case 1:
             open(url: "https://bsky.app/profile/habitica.com")
         default:
-            open(url: "https://instagram.com/\(configRepository.string(variable: .instagramUsername) ?? "")")
+            open(url: "https://instagram.com/\(configRepository.value(for: .instagramUsername) ?? "")")
         }
     }
 
@@ -418,19 +418,19 @@ class AboutViewController: BaseTableViewController, MFMailComposeViewControllerD
         updateButton.addTarget(self, action: #selector(updateTapped), for: .touchUpInside)
         updateButton.isHidden = !needsUpdate()
         if needsUpdate() {
-            let newVersion = configRepository.string(variable: .lastVersionNumber) ?? ""
+            let newVersion = configRepository.value(for: .lastVersionNumber) ?? ""
             updateButton.setTitle("\(L10n.About.newVersion(newVersion))\n\(L10n.About.whatsNew)", for: .normal)
         }
         scrollView.addSubview(updateButton)
     }
 
     private func needsUpdate() -> Bool {
-        return (buildNumber as? NSString)?.intValue ?? 0 < configRepository.integer(variable: .lastVersionCode)
+        return (buildNumber as? NSString)?.intValue ?? 0 < configRepository.value(for: .lastVersionCode)
     }
 
     @objc
     private func updateTapped() {
-        open(url: configRepository.string(variable: .appstoreUrl) ?? "")
+        open(url: configRepository.value(for: .appstoreUrl) ?? "")
     }
 
     @objc
@@ -468,7 +468,7 @@ class AboutViewController: BaseTableViewController, MFMailComposeViewControllerD
     }
 
     private func handleAppFeedback() {
-        open(url: configRepository.string(variable: .feedbackURL) ?? "")
+        open(url: configRepository.value(for: .feedbackURL) ?? "")
     }
 
     private func handleBugReport() {

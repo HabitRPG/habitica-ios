@@ -310,7 +310,7 @@ class TaskTableViewController: BaseTableViewController, UISearchBarDelegate, UIT
     
     private func handleOpenForm(at indexPath: IndexPath) {
         dataSource?.selectRowAt(indexPath: indexPath)
-        if configRepository.bool(variable: .showTaskDetailScreen) {
+        if configRepository.value(for: .showTaskDetailScreen) {
             perform(segue: StoryboardSegue.Main.detailSegue)
         } else {
             perform(segue: StoryboardSegue.Main.formSegue)

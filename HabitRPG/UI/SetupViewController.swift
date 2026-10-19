@@ -74,7 +74,7 @@ class SetupViewController: UIViewController, UIScrollViewDelegate {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        if configRepository.bool(variable: .randomizeAvatar) {
+        if configRepository.value(for: .randomizeAvatar) {
             avatarSetupViewController?.randomizeButtonTapped()
         }
     }

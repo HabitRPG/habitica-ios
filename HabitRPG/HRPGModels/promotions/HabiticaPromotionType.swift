@@ -30,7 +30,7 @@ public enum HabiticaPromotionType {
         case "g1g1", "g1g1Sale":
             return GiftOneGetOnePromotion(startDate: startDate, endDate: endDate)
         case "survey2021":
-            let url = ConfigRepository.shared.string(variable: .surveyURL)
+            let url = ConfigRepository.shared.value(for: .surveyURL)
             return Survey2021Promotion(url: url)
         default:
             return nil

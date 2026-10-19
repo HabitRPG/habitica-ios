@@ -929,7 +929,7 @@ class SettingsViewController: FormViewController, Themeable {
         
         if let row = form.rowBy(tag: SettingsTags.manuallyRestartDay) {
             // Only show if no cron in last 24 hours
-            row.hidden = Condition(booleanLiteral: ((user.lastCron?.timeIntervalSinceNow ?? 0) > -86400) || !configRepository.bool(variable: .enableCronButton))
+            row.hidden = Condition(booleanLiteral: ((user.lastCron?.timeIntervalSinceNow ?? 0) > -86400) || !configRepository.value(for: .enableCronButton))
             row.evaluateHidden()        }
         isSettingUserData = false
     }

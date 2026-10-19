@@ -43,7 +43,7 @@ class ReportBugViewController: BaseUIViewController, MFMailComposeViewController
     private var supportEmail = ""
     private var user: UserProtocol?
     
-    private var knownIssues: NSArray = []
+    private var knownIssues: [String] = []
     private var selectedIndex = 0
     
     override func viewDidLoad() {
@@ -59,13 +59,13 @@ class ReportBugViewController: BaseUIViewController, MFMailComposeViewController
         knownIssuesStackView.separatorBetweenItems = true
         knownIssuesStackView.separatorInsets = UIEdgeInsets(top: 0, left: 15, bottom: 0, right: 0)
 
-        supportEmail = configRepository.string(variable: .supportEmail, defaultValue: "admin@habitica.com")
+        supportEmail = configRepository.value(for: .supportEmail)
         
         userRepository.getUser().on(value: {[weak self] user in
             self?.user = user
         }).start()
         
-        knownIssues = configRepository.array(variable: .knownIssues)
+        knownIssues = configRepository.value(for: .knownIssues)
         populateKnownIssues()
         
         knownIssuesStackView.cornerRadius = UIConstants.largeCornerRadius

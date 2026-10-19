@@ -7,134 +7,29 @@
 //
 import Foundation
 import Habitica_API_Client
-import FirebaseRemoteConfig
 import Habitica_Models
 
-@objc
-enum ConfigVariable: Int {
-    // Permanent config variables
-    case supportEmail
-    case instagramUsername
-    case appstoreUrl
-    case feedbackURL
+extension AnyClientConfigKey {
+    static let supportEmail = ClientConfigKey("supportEmail", default: "admin@habitica.com")
+    static let instagramUsername = ClientConfigKey("instagramUsername", default: Constants.defaultInstagramUsername)
+    static let appstoreUrl = ClientConfigKey("appstoreURL", default: Constants.defaultAppstoreUrl)
+    static let feedbackURL = ClientConfigKey("feedbackURL", default: "https://docs.google.com/forms/d/e/1FAIpQLScPhrwq_7P1C6PTrI3lbvTsvqGyTNnGzp1ugi1Ml0PFee_p5g/viewform?usp=sf_link")
     
-    case shopSpriteSuffix
-    case maxChatLength
-    case lastVersionNumber
-    case lastVersionCode
-    case randomizeAvatar
-    case showSubscriptionBanner
-    case knownIssues
-    case activePromotion
-    case maintenanceData
-    case surveyURL
-    
-    // A/B Tests
-    case enableIPadUI
-    case disableIntroSlides
-    case showTaskDetailScreen
-    case showTaskGraphs
-    
-    case enableCronButton
-    
-    case hideChallenges
+    static let maxChatLength = ClientConfigKey("maxChatLength", default: 3000)
+    static let lastVersionNumber = ClientConfigKey<String?>("lastVersionNumber", default: nil)
+    static let lastVersionCode = ClientConfigKey<Int>("lastVersionCode", default: 0)
+    static let randomizeAvatar = ClientConfigKey("randomizeAvatar", default: false)
+    static let showSubscriptionBanner = ClientConfigKey("showSubscriptionBanner", default: false)
+    static let knownIssues = ClientConfigKey<[String]>("knownIssues", default: [])
+    static let maintenanceData = ClientConfigKey<[String: String]>("maintenanceData", default: [:])
+    static let surveyURL = ClientConfigKey("surveyURL", default: "")
 
-    // swiftlint:disable cyclomatic_complexity
-    func name() -> String {
-        // swiftlint:disable switch_case_on_newline
-        switch self {
-        case .supportEmail: return "supportEmail"
-        case .instagramUsername: return "instagramUsername"
-        case .appstoreUrl: return "appstoreUrl"
-        case .shopSpriteSuffix: return "shopSpriteSuffix"
-        case .maxChatLength: return "maxChatLength"
-        case .lastVersionNumber: return "lastVersionNumber"
-        case .lastVersionCode: return "lastVersionCode"
-        case .randomizeAvatar: return "randomizeAvatar"
-        case .showSubscriptionBanner: return "showSubscriptionBanner"
-        case .feedbackURL: return "feedbackURL"
-        case .knownIssues: return "knownIssues"
-        case .activePromotion: return "activePromo"
-        case .maintenanceData: return "maintenanceData"
-        case .enableIPadUI: return "enableIpadUI"
-        case .disableIntroSlides: return "disableIntroSlides"
-        case .showTaskDetailScreen: return "showTaskDetailScreen"
-        case .surveyURL: return "surveyURL"
-        case .showTaskGraphs: return "showTaskGraphs"
-        case .enableCronButton: return "enableCronButton"
-        case .hideChallenges: return "hideChallenges"
-        }
-        // swiftlint:enable switch_case_on_newline
-    }
-
-    func defaultValue() -> NSObject {
-        switch self {
-        case .supportEmail:
-            return "admin@habitica.com" as NSString
-        case .instagramUsername:
-            return Constants.defaultInstagramUsername as NSString
-        case .appstoreUrl:
-            return Constants.defaultAppstoreUrl as NSString
-        case .shopSpriteSuffix:
-            return "" as NSString
-        case .maxChatLength:
-            return 3000 as NSNumber
-        case .lastVersionNumber:
-            return "" as NSString
-        case .lastVersionCode:
-            return 0 as NSNumber
-        case .randomizeAvatar:
-            return false as NSNumber
-        case .feedbackURL:
-            return "https://docs.google.com/forms/d/e/1FAIpQLScPhrwq_7P1C6PTrI3lbvTsvqGyTNnGzp1ugi1Ml0PFee_p5g/viewform?usp=sf_link" as NSString
-        case .knownIssues:
-            return "[]" as NSString
-        case .activePromotion:
-            return "" as NSString
-        case .showSubscriptionBanner:
-            return false as NSNumber
-        case .maintenanceData:
-            return "{}" as NSString
-        case .enableIPadUI:
-            return false as NSNumber
-        case .disableIntroSlides:
-            return false as NSNumber
-        case .showTaskDetailScreen:
-            return false as NSNumber
-        case .surveyURL:
-            return "" as NSString
-        case .showTaskGraphs:
-            return true as NSNumber
-        case .enableCronButton:
-            return false as NSNumber
-        case .hideChallenges:
-            return false as NSNumber
-        }
-    }
-    
-    static func allVariables() -> [ConfigVariable] {
-        return [
-            .supportEmail,
-            .instagramUsername,
-            .appstoreUrl,
-            .shopSpriteSuffix,
-            .maxChatLength,
-            .lastVersionNumber,
-            .lastVersionCode,
-            .randomizeAvatar,
-            .feedbackURL,
-            .knownIssues,
-            .activePromotion,
-            .maintenanceData,
-            .enableIPadUI,
-            .disableIntroSlides,
-            .surveyURL,
-            .showTaskGraphs,
-            .enableCronButton,
-            .hideChallenges
-        ]
-    }
-    // swiftlint:enable cyclomatic_complexity
+    static let enableIpadUI = ClientConfigKey("enableIpadUI", default: false)
+    static let disableIntroSlides = ClientConfigKey("disableIntroSlides", default: false)
+    static let showTaskDetailScreen = ClientConfigKey("showTaskDetailScreen", default: false)
+    static let showTaskGraphs = ClientConfigKey("showTaskGraphs", default: false)
+    static let enableCronButton = ClientConfigKey("enableCronButton", default: false)
+    static let hideChallenges = ClientConfigKey("hideChallenges", default: false)
 }
 
 extension Notification.Name {
@@ -164,38 +59,65 @@ enum TestingLevel: String {
     }
 }
 
-@objc
-class ConfigRepository: NSObject {
-    @objc public static let shared = ConfigRepository()
-    
-    private override init() {
-        super.init()
-    }
+class ConfigRepository {
+    public static let shared = ConfigRepository()
 
-    private static let remoteConfig = RemoteConfig.remoteConfig()
+    private static let configStorageKey = "clientConfig"
+    private static let lastFetchStorageKey = "clientConfigLastFetch"
+
     private let userConfig = UserDefaults.standard
     private let contentRepository = ContentRepository()
 
     private var worldState: WorldStateProtocol?
+    private var hasFetchedConfig = false
     
-    static var onFetchCompleted: (() -> Void)?
-    static var hasFetched: Bool {
-        return remoteConfig.lastFetchStatus == .success
+    var onFetchCompleted: (() -> Void)?
+    var hasFetched: Bool {
+        return hasFetchedConfig
     }
+    
+    private struct ConfigObserver {
+        let key: String
+        let notify: (JSONValue?) -> Void
+    }
+
+    // Guards config, lastFetch and observers
+    private let lock = NSLock()
+    private var config: [String: JSONValue]
+    private var lastFetch: Date?
+    private var observers = [UUID: ConfigObserver]()
+
+    var lastFetchDate: Date? {
+        return synchronized { lastFetch }
+    }
+
+    init() {
+        if let data = userConfig.data(forKey: ConfigRepository.configStorageKey),
+           let cachedConfig = try? JSONDecoder().decode([String: JSONValue].self, from: data) {
+            config = cachedConfig
+        } else {
+            config = [:]
+        }
+        lastFetch = userConfig.object(forKey: ConfigRepository.lastFetchStorageKey) as? Date
+    }
+
     @objc
     func fetchremoteConfig() {
-        ConfigRepository.remoteConfig.fetch(withExpirationDuration: HabiticaAppDelegate.isRunningLive() ? 3600 : 0) { (_, _) in
-            ConfigRepository.remoteConfig.activate(completion: { _, _ in
-                if let action = ConfigRepository.onFetchCompleted {
-                    action()
-                }
-            })
+        contentRepository.retrieveClientConfig().on(value: {[weak self] config in
+            guard let self = self else {
+                return
+            }
+            if let config = config {
+                self.update(config: config)
+            }
+            self.hasFetchedConfig = true
+            if let call = self.onFetchCompleted {
+                call()
+            }
+        }).observeCompleted {
+            
         }
-        var defaults = [String: NSObject]()
-        for variable in ConfigVariable.allVariables() {
-            defaults[variable.name()] = variable.defaultValue()
-        }
-        ConfigRepository.remoteConfig.setDefaults(defaults)
+
         contentRepository.getWorldState().on(value: {[weak self] state in
             self?.worldState = state
             var hasAprilFools = false
@@ -209,6 +131,31 @@ class ConfigRepository: NSObject {
                 EventHelper.disableAll()
             }
         }).start()
+    }
+
+    private func update(config newConfig: [String: JSONValue]) {
+        let now = Date()
+        let (oldConfig, currentObservers) = synchronized {
+            let oldConfig = config
+            config = newConfig
+            lastFetch = now
+            return (oldConfig, Array(observers.values))
+        }
+
+        if let data = try? JSONEncoder().encode(newConfig) {
+            userConfig.set(data, forKey: ConfigRepository.configStorageKey)
+        }
+        userConfig.set(now, forKey: ConfigRepository.lastFetchStorageKey)
+
+        for observer in currentObservers where oldConfig[observer.key] != newConfig[observer.key] {
+            observer.notify(newConfig[observer.key])
+        }
+    }
+
+    private func synchronized<T>(_ block: () -> T) -> T {
+        lock.lock()
+        defer { lock.unlock() }
+        return block()
     }
 
     var testingLevel: TestingLevel {
@@ -233,68 +180,48 @@ class ConfigRepository: NSObject {
         UserDefaults.standard.set(isEnabled, forKey: key)
     }
 
-    @objc
-    func bool(variable: ConfigVariable) -> Bool {
-        #if DEBUG
-        if testingLevel.isDeveloper {
-            return variable.defaultValue()
-        }
-        #endif
-        return ConfigRepository.remoteConfig.configValue(forKey: variable.name()).boolValue
+    func value<T>(for key: ClientConfigKey<T>) -> T {
+        let raw = synchronized { config[key.key] }
+        return decode(raw, for: key)
     }
 
-    @objc
-    func string(variable: ConfigVariable) -> String? {
-        if variable == .shopSpriteSuffix {
-            for event in worldState?.events ?? [] where event.npcImageSuffix?.isEmpty == false {
-                return event.npcImageSuffix
+    /// Emits the current value immediately and then again whenever a fetch changes it.
+    func values<T>(for key: ClientConfigKey<T>) -> AsyncStream<T> {
+        return AsyncStream(bufferingPolicy: .bufferingNewest(1)) { continuation in
+            let id = UUID()
+            synchronized {
+                observers[id] = ConfigObserver(key: key.key) {[weak self] raw in
+                    guard let self = self else {
+                        return
+                    }
+                    continuation.yield(self.decode(raw, for: key))
+                }
+                // Yield while holding the lock so no update can slip in between registering and the initial value
+                continuation.yield(decode(config[key.key], for: key))
             }
-            return nil
-        }
-        return ConfigRepository.remoteConfig.configValue(forKey: variable.name()).stringValue
-    }
-    
-    @objc
-    func string(variable: ConfigVariable, defaultValue: String) -> String {
-        return string(variable: variable) ?? defaultValue
-    }
-    
-    @objc
-    func integer(variable: ConfigVariable) -> Int {
-        return ConfigRepository.remoteConfig.configValue(forKey: variable.name()).numberValue.intValue
-    }
-    
-    @objc
-    func dictionary(variable: ConfigVariable) -> NSDictionary {
-        let configString = ConfigRepository.remoteConfig.configValue(forKey: variable.name()).stringValue
-        if let data = configString.data(using: String.Encoding.utf8) {
-            if let json = try? JSONSerialization.jsonObject(with: data, options: []) {
-                if let jsonDictionary = json as? NSDictionary {
-                    return jsonDictionary
+            continuation.onTermination = {[weak self] _ in
+                guard let self = self else {
+                    return
+                }
+                self.synchronized {
+                    self.observers[id] = nil
                 }
             }
         }
-        return NSDictionary()
     }
-    
-    @objc
-    func array(variable: ConfigVariable) -> NSArray {
-        let configString = ConfigRepository.remoteConfig.configValue(forKey: variable.name()).stringValue
-        if let data = configString.data(using: String.Encoding.utf8) {
-            do {
-                try JSONSerialization.jsonObject(with: data, options: [])
-            } catch let error {
-                logger.log(error)
-            }
-            if let json = try? JSONSerialization.jsonObject(with: data, options: []) {
-                if let jsonArray = json as? NSArray {
-                    return jsonArray
-                }
-            }
+
+    private func decode<T>(_ raw: JSONValue?, for key: ClientConfigKey<T>) -> T {
+        #if DEBUG
+        if testingLevel.isDeveloper {
+            return key.defaultValue
         }
-        return NSArray()
+        #endif
+        guard let raw = raw, let value = try? raw.decode(T.self) else {
+            return key.defaultValue
+        }
+        return value
     }
-    
+
     func activePromotion() -> HabiticaPromotion? {
         var promo: HabiticaPromotion?
         if let active = userConfig.string(forKey: "activePromo"), testingLevel != .production && testingLevel != .beta {
@@ -317,7 +244,14 @@ class ConfigRepository: NSObject {
         if isOnMac {
             return true
         }
-        return bool(variable: .enableIPadUI)
+        return false
+    }
+    
+    func shopSpriteSuffix() -> String? {
+        for event in worldState?.events ?? [] where event.npcImageSuffix?.isEmpty == false {
+            return event.npcImageSuffix
+        }
+        return nil
     }
     
     let isOnMac: Bool = {

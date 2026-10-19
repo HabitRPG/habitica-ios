@@ -242,6 +242,7 @@
 		29C2889229153A8400B361B5 /* CancelSubscribeCall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29C2889129153A8400B361B5 /* CancelSubscribeCall.swift */; };
 		29C38C8124A232A300F219A1 /* APIUserAchievements.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29C38C8024A232A300F219A1 /* APIUserAchievements.swift */; };
 		29CAC3C72A3A0CA6006DF74D /* LookingForPartyCall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29CAC3C62A3A0CA6006DF74D /* LookingForPartyCall.swift */; };
+		29D6B28430812578007C3015 /* RetrieveClientConfigCall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29D6B28330812578007C3015 /* RetrieveClientConfigCall.swift */; };
 		29DBDE4C274CFEC3008F6777 /* SocialDisconnectCall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29DBDE4B274CFEC3008F6777 /* SocialDisconnectCall.swift */; };
 		29DBDE52274D0126008F6777 /* APISocialAuthentication.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29DBDE51274D0126008F6777 /* APISocialAuthentication.swift */; };
 		29DBFEFD20CADBC900DF9CF2 /* APISpecialItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29DBFEFC20CADBC900DF9CF2 /* APISpecialItem.swift */; };
@@ -515,6 +516,7 @@
 		29C2889129153A8400B361B5 /* CancelSubscribeCall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CancelSubscribeCall.swift; sourceTree = "<group>"; };
 		29C38C8024A232A300F219A1 /* APIUserAchievements.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIUserAchievements.swift; sourceTree = "<group>"; };
 		29CAC3C62A3A0CA6006DF74D /* LookingForPartyCall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LookingForPartyCall.swift; sourceTree = "<group>"; };
+		29D6B28330812578007C3015 /* RetrieveClientConfigCall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RetrieveClientConfigCall.swift; sourceTree = "<group>"; };
 		29DBDE4B274CFEC3008F6777 /* SocialDisconnectCall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocialDisconnectCall.swift; sourceTree = "<group>"; };
 		29DBDE51274D0126008F6777 /* APISocialAuthentication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APISocialAuthentication.swift; sourceTree = "<group>"; };
 		29DBFEFC20CADBC900DF9CF2 /* APISpecialItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APISpecialItem.swift; sourceTree = "<group>"; };
@@ -919,6 +921,7 @@
 			isa = PBXGroup;
 			children = (
 				295610E12056C3AC00D9711A /* RetrieveContentCall.swift */,
+				29D6B28330812578007C3015 /* RetrieveClientConfigCall.swift */,
 				29027994205836A8006DACB9 /* RetrieveWorldStateCall.swift */,
 				2927024024E2D3DF00BCAA77 /* RetrieveHallOfContributorsCall.swift */,
 				2927024724E3035800BCAA77 /* RetrieveHallOfPatronsCall.swift */,
@@ -1274,6 +1277,7 @@
 				292DEEB1205039CA0086D5F7 /* TaskResponse.swift in Sources */,
 				290B628F207E17C1007287C4 /* APIMember.swift in Sources */,
 				295E9DFA20B47A5300D58D45 /* APIQuestColors.swift in Sources */,
+				29D6B28430812578007C3015 /* RetrieveClientConfigCall.swift in Sources */,
 				2953D85228BCE2AC00DC456E /* RetrieveGroupPlansCall.swift in Sources */,
 				290C3034206D24A40066AF5B /* RunCronCall.swift in Sources */,
 				292726A820B702C4009DD08A /* RetrieveChallengesCall.swift in Sources */,

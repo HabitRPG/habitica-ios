@@ -80,7 +80,7 @@ class MaintenanceViewController: UIViewController, Themeable {
     
     @objc
     func appstoreButtonTapped() {
-        if let url = URL(string: configRepository.string(variable: .appstoreUrl) ?? "") {
+        if let url = URL(string: configRepository.value(for: .appstoreUrl) ?? "") {
             UIApplication.shared.open(url, options: [:], completionHandler: nil)
         }
     }
