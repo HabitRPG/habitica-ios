@@ -53,6 +53,11 @@ class ContentRepository: BaseRepository<ContentLocalRepository> {
         return Signal.empty
     }
     
+    func retrieveClientConfig() -> Signal<[String: JSONValue]?, Never> {
+        print("👓 Reading config from server")
+        return RetrieveClientConfigCall().objectSignal
+    }
+    
     func getWorldState() -> SignalProducer<WorldStateProtocol, ReactiveSwiftRealmError> {
         return localRepository.getWorldState()
     }

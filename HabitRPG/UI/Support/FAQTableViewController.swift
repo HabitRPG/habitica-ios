@@ -106,7 +106,7 @@ class FAQViewController: BaseUIViewController, MFMailComposeViewControllerDelega
         }).start())
         
         moreQuestionsText.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(moreQuestionsTapped)))
-        supportEmail = configRepository.string(variable: .supportEmail, defaultValue: "admin@habitica.com")
+        supportEmail = configRepository.value(for: .supportEmail)
         topHeaderCoordinator?.viewDidLoad()
     }
     

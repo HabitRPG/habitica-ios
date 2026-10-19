@@ -38,7 +38,7 @@ class RouterHandler {
             }
             await self.push(viewController)
         }
-        if !configRepository.bool(variable: .hideChallenges) {
+        if !configRepository.value(for: .hideChallenges) {
             register("/challenges/:challengeID") { link in
                 await self.displayTab(index: 4)
                 let viewController = await StoryboardScene.Social.challengeDetailViewController.asyncInstantiate()

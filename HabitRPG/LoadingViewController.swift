@@ -46,6 +46,7 @@ class LoadingViewController: UIHostingController<LoadingPage> {
     
     private var userRepository: UserRepository?
     private var configRepository = ConfigRepository.shared
+    private var hasCompletedInitialLaunch = false
     private let disposable = CompositeDisposable()
     private let viewModel = LoadingViewModel()
     
@@ -104,10 +105,13 @@ class LoadingViewController: UIHostingController<LoadingPage> {
                 segueForLoggedInUser()
             }
         } else {
-            if ConfigRepository.hasFetched {
+            if configRepository.hasFetched || configRepository.lastFetchDate != nil {
                 completeInitialLaunch()
             } else {
-                ConfigRepository.onFetchCompleted = {
+                configRepository.onFetchCompleted = {
+                    self.completeInitialLaunch()
+                }
+                DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
                     self.completeInitialLaunch()
                 }
             }
@@ -118,7 +122,12 @@ class LoadingViewController: UIHostingController<LoadingPage> {
     
     private func completeInitialLaunch() {
         DispatchQueue.main.async {
-            if self.configRepository.bool(variable: .disableIntroSlides) {
+            // Can be reached from both the fetch callback and the timeout
+            if self.hasCompletedInitialLaunch {
+                return
+            }
+            self.hasCompletedInitialLaunch = true
+            if self.configRepository.value(for: .disableIntroSlides) {
                 self.perform(segue: StoryboardSegue.Intro.loginSegue)
             } else {
                 self.perform(segue: StoryboardSegue.Intro.introSegue)

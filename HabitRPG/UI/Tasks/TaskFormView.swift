@@ -287,7 +287,7 @@ class TaskFormController: UIHostingController<TaskFormView> {
             viewModel.darkTaskTintColor = Color(color)
             viewModel.lightestTaskTintColor = Color(editedTask != nil ? .forTaskValueExtraLight(editedTask?.value ?? 0) : .purple500)
 
-            viewModel.showTaskGraphs = configRepository.bool(variable: .showTaskGraphs)
+            viewModel.showTaskGraphs = configRepository.value(for: .showTaskGraphs)
             let darkestColor: UIColor = editedTask != nil ? .forTaskValueDarkest(editedTask?.value ?? 0) : .white
             viewModel.darkestTaskTintColor = Color(darkestColor)
             viewModel.textFieldTintColor = editedTask != nil ? viewModel.darkestTaskTintColor : Color(.purple10)

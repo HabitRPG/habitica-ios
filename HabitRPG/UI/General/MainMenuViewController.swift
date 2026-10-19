@@ -254,7 +254,7 @@ class MainMenuViewController: BaseTableViewController {
             }
             updateSubscriptionSubtitle()
             
-            menuItem(withKey: .challenges).isHidden = configRepository.bool(variable: .hideChallenges)
+            menuItem(withKey: .challenges).isHidden = configRepository.value(for: .hideChallenges)
         }
     }
     
@@ -349,7 +349,7 @@ class MainMenuViewController: BaseTableViewController {
 
     fileprivate func setupFooter() {
         stretchView.isHidden = true
-        if configRepository.bool(variable: .showSubscriptionBanner) {
+        if configRepository.value(for: .showSubscriptionBanner) {
             if tableView.tableFooterView?.tag == MainMenuViewController.subscriptionFooterTag {
                 return
             }
