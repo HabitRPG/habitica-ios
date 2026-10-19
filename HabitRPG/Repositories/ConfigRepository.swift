@@ -1,10 +1,3 @@
-//
-//  RemoteConfigRepository.swift
-//  Habitica
-//
-//  Created by Phillip Thelen on 16/03/2017.
-//  Copyright © 2017 HabitRPG Inc. All rights reserved.
-//
 import Foundation
 import Habitica_API_Client
 import Habitica_Models
@@ -85,6 +78,7 @@ class ConfigRepository {
     private let lock = NSLock()
     private var config: [String: JSONValue]
     private var lastFetch: Date?
+    private var lastFetchInSession: Date?
     private var observers = [UUID: ConfigObserver]()
 
     var lastFetchDate: Date? {
@@ -103,34 +97,34 @@ class ConfigRepository {
 
     @objc
     func fetchremoteConfig() {
-        contentRepository.retrieveClientConfig().on(value: {[weak self] config in
-            guard let self = self else {
-                return
-            }
-            if let config = config {
-                self.update(config: config)
-            }
-            self.hasFetchedConfig = true
-            if let call = self.onFetchCompleted {
-                call()
-            }
-        }).observeCompleted {
-            
-        }
-
-        contentRepository.getWorldState().on(value: {[weak self] state in
-            self?.worldState = state
-            var hasAprilFools = false
-            for event in state.events {
-                if let aprilFools = event.aprilFools {
-                    EventHelper.setup(event: aprilFools, endDate: event.end)
-                    hasAprilFools = true
+        if lastFetchInSession == nil || (lastFetchInSession?.timeIntervalSinceNow ?? 0) < (24 * 60 * 60) {
+            contentRepository.retrieveClientConfig().on(value: {[weak self] config in
+                guard let self = self else {
+                    return
                 }
-            }
-            if !hasAprilFools {
-                EventHelper.disableAll()
-            }
-        }).start()
+                if let config = config {
+                    self.update(config: config)
+                }
+                self.hasFetchedConfig = true
+                if let call = self.onFetchCompleted {
+                    call()
+                }
+            }).observeCompleted {}
+            
+            contentRepository.getWorldState().on(value: {[weak self] state in
+                self?.worldState = state
+                var hasAprilFools = false
+                for event in state.events {
+                    if let aprilFools = event.aprilFools {
+                        EventHelper.setup(event: aprilFools, endDate: event.end)
+                        hasAprilFools = true
+                    }
+                }
+                if !hasAprilFools {
+                    EventHelper.disableAll()
+                }
+            }).start()
+        }
     }
 
     private func update(config newConfig: [String: JSONValue]) {
@@ -139,6 +133,7 @@ class ConfigRepository {
             let oldConfig = config
             config = newConfig
             lastFetch = now
+            lastFetchInSession = now
             return (oldConfig, Array(observers.values))
         }
 
