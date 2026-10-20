@@ -784,7 +784,7 @@
 "subscribe" = "订阅";
 "send_gift" = "赠送礼物";
 "gift_one_get_one_title" = "赠一得一";
-"gift_one_get_one_description" = "现在赠送一份订阅，你也将免费获得一份相同的订阅！";
+"gift_one_get_one_description" = "赠送订阅，自己也能免费获得一份同等级订阅！";
 "gems_support_developers" = "购买宝石为Habitica小型团队提供有力支持！";
 "gem_benefits_title" = "宝石可用于购买更多小玩意，包括：";
 "buy_for_x" = "花费%@购买";
@@ -1125,9 +1125,9 @@
 "create_guild" = "创建公会";
 "gift_confirmation_body_g1_g1" = "你向%@赠送了一份为期%@个月的Habitica订阅，由于我们的赠一得一促销活动，相同的订阅也已添加至你的账号！";
 "gift_one_get_one_data.purchase_banner_title" = "赠一得一活动持续至%@";
-"gift_one_get_one_data.info_limitations" = "本次限时促销活动将从%@ (%@ UTC)开始并于%@ (%@ UTC)结束。本促销仅适用于你向另一位Habitica居民赠送订阅。如果你或你的礼物接收人已经拥有了一份订阅，那么赠送的订阅将被留存，并在当前订阅被取消或过期后生效。";
-"gift_one_get_one_data.info_instructions" = "点击“赠送订阅”，输入你想要赠送的账号的用户名。然后选择要赠送的订阅长度并付款。你的账号将自动获得与你刚刚赠送的订阅相同的订阅。";
-"gift_one_get_one_data.infoPrompt" = "为了庆祝这个送礼的节日，我们再次推出了特别促销活动。现在，当你向他人赠送一份订阅后，自己也将免费获得相同的订阅！";
+"gift_one_get_one_data.info_limitations" = "本次限时促销活动将从%@ (%@ UTC)开始并于%@ (%@ UTC)结束。本促销仅适用于你向另一位用户赠送订阅。如果你或你的礼物接收人已经拥有了一份订阅，那么赠送的订阅将被留存，并在当前订阅取消后生效。";
+"gift_one_get_one_data.info_instructions" = "点击“赠送订阅”按钮，输入你想要赠送的账号的用户名。然后选择要赠送的订阅长度并付款。你的账号将自动获得与你刚刚赠送的订阅相同的订阅。";
+"gift_one_get_one_data.infoPrompt" = "在这个赠予的季节，为他人赠送订阅，自己也能免费获得同等订阅！";
 "suggest_pet_hatch_again_missing_both" = "你需要一枚%@和一瓶%@药水来再次孵化此宠物";
 "suggest_pet_hatch_again_missing_potion" = "你还需要一瓶%@药水才能再次孵化此宠物";
 "gems_promo.info_limitations" = "此促销仅适用于限时活动期间。此活动从%@（12:00 UTC）开始，到%@（00:00 UTC）结束。此促销优惠仅适用于为自己购买宝石。";
@@ -1730,3 +1730,6 @@
 "menu.new_announcement" = "新公告";
 "menu.time_travelers_shop" = "时空旅行者商店";
 "winter_promo.info_prompt" = "限时活动！每次购买都能获得更多宝石！赶紧在优惠结束前抢购我们最超值的宝石捆绑包之一吧。";
+"achievement" = "成就";
+"challenge_categories" = "挑战类型";
+"challenge_in_group" = "在%@";
