@@ -248,7 +248,7 @@
 "organize_by" = "Organise By";
 "randomize" = "Randomise";
 "class_system_unlocked_description" = "Choose a class that fits your play style and unlock special skills and armour to help you on your journey";
-"gift_one_get_one_data.infoPrompt" = "In honour of the season of giving we're bringing back a very special promotion. Now when you gift somebody else a subscription, you get the same sub for yourself for free!";
+"gift_one_get_one_data.infoPrompt" = "In honour of the season of giving, when you gift somebody else a subscription, you get the same sub for yourself for free!";
 "errors.enter_valid_email" = "Please enter a valid E-mail address";
 "groups.invite.add_email" = "Add an E-mail";
 "tasks.examples.school_todo_text" = "Finish homework";
@@ -995,7 +995,7 @@
 "support.questions_description" = "We’ll explain the basics and answer common questions to get you up to speed";
 "stat_description" = "All Habitica characters have four stats that affect the gameplay aspects of Habitica.\n\n**Strength (STR)** affects critical hits and raises damage done to a Quest Boss. Warriors and Rogues gain STR from their class equipment.\n\n**Constitution (CON)** raises your HP and makes you take less damage. Healers and Warriors gain CON from their class equipment.\n\n**Intelligence (INT)** raises the amount of EXP you earn and gives you more Mana. Mages and Healers gain INT from their class equipment.\n\n**Perception (PER)** increases the gold you earn and the rate of finding dropped items. Rogues and Mages gain PER from their class equipment.\n\nAfter level 10, you earn 1 Stat Point for every level you gain that you can put into any stat you’d like. You can also equip gear that has different combinations of stat boosts.";
 "gems_description" = "Gems are a currency purchased with real money that allow you to buy extra content within Habitica and are one of the main sources of financial support for the Habitica team alongside subscriptions.\n\nAll content purchased through Gems is purely cosmetic or can be obtained for free with time.\n\nYou can also receive Gems through gifts from other players, Challenge prizes, contributing to Habitica, or subscribing.";
-"gift_one_get_one_data.info_limitations" = "This is a limited-time event that starts on %@ and will end on %@. This promotion only applies when you gift to another Habitican. If you or your gift recipient already have a subscription, the gifted subscription will add months of credit that will only be used after the current subscription is cancelled or expires.";
+"gift_one_get_one_data.info_limitations" = "This is a limited time event that starts on %@ and will end on %@. This promotion only applies when you gift to another account. If you or your gift recipient already have a subscription, the gifted subscription will add months of credit that will only be used after the current subscription is cancelled.";
 "unshadow_mute_user_confirm" = "Do you want to remove the shadow ban from this user?";
 "gift_one_get_one_data.purchase_banner_title" = "Gift a sub and get a sub for free until %@";
 "gift_confirmation_body_g1_g1" = "You sent %@ a %@-month Habitica subscription and the same subscription was applied to your account under our Gift One Get One promotion!";
@@ -1006,7 +1006,7 @@
 "checkin_prize_set_description" = "You earned a set of %s for being committed to improving your life";
 "moderator" = "Moderator";
 "staff" = "Staff";
-"gift_one_get_one_description" = "Gift a subscription now and you’ll get the same sub for yourself free!";
+"gift_one_get_one_description" = "Gift a subscription and get the same sub for yourself, free!";
 "gems_support_developers" = "Purchasing Gems supports our small team at Habitica!";
 "reason_for_report" = "Reason for report";
 "this_will_also_block_x" = "This will also block %@";
@@ -1372,7 +1372,7 @@
 "hourglasses_description" = "Mystic Hourglasses are an extremely rare form of currency you can only receive for subscribing to Habitica. You can use them in the Time Travellers’ Shop to buy past Subscriber Gear sets, exclusive Pets, Mounts, animated Backgrounds, or even special Quests! These extra perks are a great way to stay motivated through the year and reward yourself for a job well done.\n\nSubscribers receive a Mystic Hourglass at the start of each month they have subscription benefits, along with a bunch of other perks. Be sure to check out our subscription options if you’re interested in what the Time Travellers have to offer!";
 "survey.button" = "Go to Survey";
 "suggest_pet_hatch_missing_egg" = "You still need a %@ Egg to hatch this pet";
-"gift_one_get_one_data.info_instructions" = "Tap ‘Gift a Subscription’ and type in the username of another account you’d like to gift to. From there, pick the subscription length you’d like to gift and check out. Your account will automatically be rewarded with the same level of subscription you just gifted.";
+"gift_one_get_one_data.info_instructions" = "Tap the Gift a Subscription button and type in the username of another account you’d like to gift to. From there, pick the sub length you’d like to gift and check out. Your account will automatically be rewarded with the same level of subscription you just gifted.";
 "view_gem_bundles" = "View Gem Bundles";
 "spooky_promo.info_instructions" = "Between %@ and %@, simply purchase any Gem bundle like usual and your account will be credited with the promotional amount of Gems. More Gems to spend, share, or save for any future releases!";
 "suggest_pet_hatch_missing_potion" = "You still need a %@ Potion to hatch this pet";
@@ -1614,3 +1614,5 @@
 "menu.new_message" = "New message";
 "menu.new_announcement" = "New announcement";
 "menu.time_travelers_shop" = "Time Travellers’ Shop";
+"achievement" = "Achievement";
+"challenge_in_group" = "In %@";
