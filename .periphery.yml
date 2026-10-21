@@ -1,0 +1,6 @@
+project: Habitica.xcworkspace
+retain_public: true
+schemes:
+- Habitica
+- Habitica-Testflight-Beta
+- Habitica-Testflight-Staff

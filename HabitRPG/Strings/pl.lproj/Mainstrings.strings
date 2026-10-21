@@ -11,10 +11,6 @@
 /* (No Comment) */
 "avatar.flower" = "Kwiatek";
 /* (No Comment) */
-"avatar.glasses" = "Okulary";
-/* (No Comment) */
-"avatar.head" = "Głowa";
-/* (No Comment) */
 "avatar.mustache" = "Wąsy";
 /* (No Comment) */
 "avatar.shirt" = "Koszula";
@@ -57,8 +53,6 @@
 /* (No Comment) */
 "discover" = "Odkryj";
 /* (No Comment) */
-"edit" = "Edytuj";
-/* (No Comment) */
 "eggs" = "Jaja";
 /* (No Comment) */
 "equip" = "Załóż";
@@ -78,8 +72,6 @@
 "equipment.head" = "Nakrycie głowy";
 /* (No Comment) */
 "equipment.head_accessory" = "Dodatki na głowę";
-/* (No Comment) */
-"equipment.nothing_equipped" = "Brak wyposażenia";
 /* (No Comment) */
 "equipment.off_hand" = "Druga ręka";
 /* (No Comment) */
@@ -105,8 +97,6 @@
 /* (No Comment) */
 "invite_party" = "Zaproś Drużynę";
 /* (No Comment) */
-"leader" = "Przywódca";
-/* (No Comment) */
 "leave" = "Wyjdź";
 /* (No Comment) */
 "levelup_description" = "Realizując życiowe cele, osiągnąłeś %ld poziom!";
@@ -119,15 +109,11 @@
 /* (No Comment) */
 "member.last_logged_in" = "Ostatnio zalogowany";
 /* (No Comment) */
-"member.member_since" = "Członek od";
-/* (No Comment) */
 "menu.customize_avatar" = "Dostosuj Awatara";
 /* (No Comment) */
 "menu.help_faq" = "Pomoc i FAQ";
 /* (No Comment) */
 "menu.inventory" = "Inwentarz";
-/* (No Comment) */
-"menu.select_class" = "Wybierz Klasę";
 /* (No Comment) */
 "menu.shops" = "Sklepy";
 /* (No Comment) */
@@ -138,8 +124,6 @@
 "mounts" = "Wierzchowce";
 /* (No Comment) */
 "my_challenges" = "Moje Wyzwania";
-/* (No Comment) */
-"my_guilds" = "Moje GIldie";
 /* (No Comment) */
 "name" = "Nazwa";
 /* (No Comment) */
@@ -171,17 +155,11 @@
 /* (No Comment) */
 "reset_tips" = "Zresetuj podpowiedzi";
 /* (No Comment) */
-"resetStreak" = "Zresetuj serię";
-/* (No Comment) */
 "save" = "Zapisz";
 /* (No Comment) */
 "search" = "Szukaj";
 /* (No Comment) */
-"settings.api" = "API";
-/* (No Comment) */
 "settings.are_you_sure" = "Na pewno?";
-/* (No Comment) */
-"settings.authentication" = "Uwierzytelnienie";
 /* (No Comment) */
 "settings.change_class" = "Zmień Klasę";
 /* (No Comment) */
@@ -189,11 +167,7 @@
 /* (No Comment) */
 "settings.clear_cache" = "Wyczyść pamięć podręczną";
 /* (No Comment) */
-"settings.custom_day_start" = "Własny początek dnia";
-/* (No Comment) */
 "settings.daily_reminder" = "Codzienne przypomnienie";
-/* (No Comment) */
-"settings.day_start" = "Początek dnia";
 /* (No Comment) */
 "settings.disable_all_notifications" = "Wyłącz wszystkie powiadomienia push";
 /* (No Comment) */
@@ -210,8 +184,6 @@
 "settings.maintenance" = "Przerwa techniczna";
 /* (No Comment) */
 "settings.notification_badge" = "Ikonka Powiadomienia";
-/* (No Comment) */
-"settings.profile" = "Profil";
 /* (No Comment) */
 "settings.reload_content" = "Wczytaj zawartość ponownie";
 /* (No Comment) */
@@ -243,18 +215,6 @@
 /* (No Comment) */
 "stable.standard" = "Standardowe";
 /* (No Comment) */
-"stats.allocated" = "Przydzielono";
-/* (No Comment) */
-"stats.battle_gear" = "Wyposażenie bojowe";
-/* (No Comment) */
-"stats.buffs" = "Wzmocnienia";
-/* (No Comment) */
-"stats.class_bonus" = "Premia klasowa";
-/* (No Comment) */
-"stats.level" = "Poziom";
-/* (No Comment) */
-"stats.no_points_to_allocate" = "0 punktów do Rozdzielenia";
-/* (No Comment) */
 "stats.one_point_to_allocate" = "1 punkt do Rozdzielenia";
 /* (No Comment) */
 "summary" = "Podsumowanie";
@@ -266,8 +226,6 @@
 "tasks.form.checklist" = "Lista";
 /* (No Comment) */
 "tasks.form.clear" = "Wyczyść";
-/* (No Comment) */
-"tasks.form.confirm_delete" = "Jesteś pewien, że chcesz usunąć to zadanie?";
 /* (No Comment) */
 "tasks.form.cost" = "Koszt";
 /* (No Comment) */
@@ -287,8 +245,6 @@
 /* (No Comment) */
 "tasks.form.repeats" = "Sposób powtarzania";
 /* (No Comment) */
-"tasks.form.reset_streak" = "Zresetuj serię";
-/* (No Comment) */
 "tasks.form.tags" = "Tagi";
 /* (No Comment) */
 "tasks.form.trivial" = "Trywialny";
@@ -299,14 +255,6 @@
 /* (No Comment) */
 "tasks.todo" = "Do Zrobienia";
 /* (No Comment) */
-"theme.blue" = "Błękitny";
-/* (No Comment) */
-"theme.green" = "Zielony";
-/* (No Comment) */
-"theme.red" = "Czerwony";
-/* (No Comment) */
-"theme.yellow" = "Żółty";
-/* (No Comment) */
 "title" = "Tytuł";
 /* (No Comment) */
 "unequip" = "Zdejmij";
@@ -314,41 +262,29 @@
 "weekly" = "Tygodniowo";
 /* (No Comment) */
 "yearly" = "Co roku";
-"back" = "Powrót";
 "all" = "Wszystko";
 "weak" = "Słabe";
 "strong" = "Mocne";
 "due" = "Zaplanowane";
-"dated" = "Z datą";
 "done" = "Gotowe";
-"change" = "Zmień";
 "clear" = "Wyczyść";
 "use" = "Użyj";
 "titles.settings" = "Ustawienia";
-"titles.authentication" = "Uwierzytelnienie";
-"titles.profile" = "Profil";
-"titles.api" = "API";
 "titles.fix_values" = "Napraw wartości";
 "titles.select_class" = "Wybierz Klasę";
 "titles.stats" = "Statystyki";
 "titles.equipment" = "Wyposażenie";
 "titles.items" = "Przedmioty";
-"titles.faq" = "FAQ (często zadawane pytania)";
 "titles.about" = "O nas";
 "titles.news" = "Aktualności";
 "titles.pets" = "Chowańce";
 "titles.mounts" = "Wierzchowce";
 "titles.party" = "Drużyna";
-"titles.guilds" = "Gildie";
 "titles.guild" = "Gildia";
 "titles.challenges" = "Wyzwania";
-"titles.shops" = "Sklepy";
 "titles.choose_user" = "Wybierz użytkownika";
-"titles.choose_recipient" = "Wybierz odbiorcę";
 "titles.feed_pet" = "Nakarm Chowańca";
 "titles.guidelines" = "Wytyczne";
-"titles.invite_members" = "Zaproś Członków";
-"titles.spells" = "Zaklęcia";
 "stats.distribute_evenly_help" = "Przydziela taką samą liczbę punktów do każdego atrybutu.";
 "stats.distribute_class_help" = "Przydziela więcej punktów atrybutom, które są ważne dla Twojej Klasy.";
 "stats.distribute_tasks_help" = "Przydziela punkty w oparciu o kategorie Siły, Inteligencji, Kondycji oraz Percepcji przydzielone zadaniom, które wykonujesz.";
@@ -423,7 +359,6 @@
 "tasks.examples.creativity_todo_notes" = "Naciśnij by sprecyzować nazwę swojego projektu";
 "menu" = "Menu";
 "filter" = "Filtruj";
-"one_filter" = "1 Filtr";
 "x_filters" = "%ld Filtrów";
 "settings.fix_values_description" = "Jeśli napotkałeś błąd albo przez przypadek krzywdząco zmieniłeś Swoją postać to możesz ręcznie poprawić te wartości tutaj.";
 "settings.change_display_name" = "Zmień wyświetlaną nazwe";
@@ -434,20 +369,14 @@
 "settings.delete_account" = "Usuń konto";
 "settings.delete_account_description" = "Jesteś pewny? Usuniesz swoje konto bez możliwości powrotu! By ponownie używać Habitica, będziesz musiał zarejestrować nowe konto. Posiadane oraz wydane diamenty nie zostaną zwrócone. Jeśli jesteś pewny, wpisz poniżej swoje hasło.";
 "settings.change_email" = "Zmień E-mail";
-"settings.new_email" = "Nowy e-mail";
 "settings.change_username" = "Zmień nazwę użytkownika";
-"settings.new_username" = "Nowa nazwa użytkownika";
 "settings.change_password" = "Zmień hasło";
 "settings.new_password" = "Nowe hasło";
 "settings.old_password" = "Stare hasło";
-"settings.local" = "Lokalne";
-"guilds.invite_to_guild" = "Zaproś do Gildii";
 "join" = "Dołącz";
 "equipment.equipment" = "Wyposażenie";
 "equipment.costume_explanation" = "Wybierz \"Załóż kostium\", by wyposażyć w przedmioty swojego awatara, bez oddziaływania na statystyki z wyposażenia bojowego! To znaczy, że możesz przebrać swojego awatara w cokolwiek zechcesz, jednocześnie zachowując Twoje najlepsze wyposażenie bojowe założone.";
-"purchase_gems" = "Kup klejnoty";
 "level" = "Poziom";
-"size" = "Budowa";
 "shirt" = "Koszula";
 "bangs" = "Grzywka";
 "ponytail" = "Kucyk";
@@ -461,24 +390,13 @@
 "friday" = "Piątek";
 "saturday" = "Sobota";
 "sunday" = "Niedziela";
-"groups.invite.invitation_type" = "Typ zaproszenia";
 "userID" = "ID Użytkownika";
-"api_key" = "Klucz API";
 "email" = "E-mail";
-"groups.invite.add_userid" = "Dodaj ID Użytkownika";
-"groups.invite.add_email" = "Dodaj e-mail";
 "username" = "Nazwa użytkownika";
 "password" = "Hasło";
-"confirm_username" = "Potwierdź nazwę użytkownika";
-"about.website" = "Strona internetowa";
-"about.report_bug" = "Zgłoś błąd";
-"about.view_source_code" = "Zobacz kod źródłowy";
-"about.acknowledgements" = "Uznania";
-"about.version" = "Wersja";
 "about.no_email_title" = "Twój e-mail nie został jeszcze ustawiony";
 "login.register" = "Zarejestruj się";
 "login.login" = "Zaloguj się";
-"login.login_google" = "Zaloguj się korzystając z konta Google";
 "login.email_password_link" = "Wyślij link do zresetowania hasła mailem";
 "login.enter_email" = "Podaj adres email, którego użyłeś do założenia konta.";
 "login.reset_password_response" = "Jeżeli posiadamy Twój adres e-mail, instrukcja jak ustawić nowe hasło, zostanie wysłana do Ciebie mailem.";
@@ -498,7 +416,6 @@
 "slim" = "Szczupły";
 "broad" = "Krzepki/krzepka";
 "errors.error" = "Błąd";
-"errors.reply" = "Twoja wiadomość nie mogła zostać wysłana.";
 "errors.request" = "Wystąpił błąd podczas przetwarzania żądania: %@";
 "days" = "dni";
 "weeks" = "tygodnie";
@@ -511,7 +428,6 @@
 "locations.seasonal_shop" = "Sklepik sezonowy";
 "locations.stable" = "Stajnia";
 "NPCs.alex" = "Sprzedawca Alex";
-"NPCs.daniel" = "Oberżysta Daniel";
 "NPCs.ian" = "Przewodnik Misji Ian";
 "NPCs.seasonalSorceress" = "Sezonowa Czarodziejka";
 "NPCs.matt" = "Władca Bestii Matt";
@@ -521,7 +437,6 @@
 "write_to" = "Napisz do %@";
 "resume_damage" = "Wznów otrzymywanie obrażeń";
 "pause_damage" = "Wstrzymaj obrażenia";
-"world_boss_intro_header" = "Kochaniutki, nie bacz na potwora poniżej. To wciąż jest bezpieczne schronienie by rozmawiać podczas swoich przerw.";
 "tutorials.habits_1" = "Pierwsze są Nawyki. Mogą być pozytywne, które chcesz poprawić albo negatywne, które chcesz porzucić.";
 "tutorials.habits_2" = "Za każdym razem jak wykonujesz pozytywny Nawyk, naciśnij + by zdobyć doświadczenie i złoto!";
 "tutorials.habits_3" = "Jeśli się potkniesz i wykonasz negatywny Nawyk to naciśniecie - zredukuje życie Twojego awatara by pomóc Ci być odpowiedzialnym.";
@@ -532,10 +447,6 @@
 "tutorials.todos_2" = "Jeśli Twoje Do-Zrobienia musi być wykonane do pewnego momentu to ustaw mu odpowiedni termin. Wygląda na to, że możesz jedno odhaczyć - dawaj!";
 "tutorials.rewards_1" = "Kup wyposażenie dla Swojego awatara przy pomocy złota, które zarabiasz!";
 "tutorials.rewards_2" = "Możesz też ustawiać Własne Nagrody w prawdziwym świecie bazując na tym co Cię motywuje.";
-"tutorials.add_task" = "Stuknij, żeby dodać nowe zadanie.";
-"tutorials.edit_task" = "Stuknij zadanie, żeby je edytować i dodać przypomnienia. Przeciągnij w lewo, żeby usunąć.";
-"tutorials.filter_task" = "Stuknij, żeby filtrować zadania.";
-"tutorials.reorder_task" = "Przytrzymaj zadanie, by je przesunąć.";
 "tutorials.inbox" = "Tutaj możesz przeczytać i odpowiedzieć na prywatne wiadomości! Możesz też pisać do ludzi z ich profilów.";
 "tutorials.stats" = "Naciśnij na szary przycisk by rozdzielić dużo swoich statystyk naraz albo naciśnij na strzałki by przydzielać punkty pojedynczo.";
 "world_boss.pending_strike" = "Oczekujący cios";
@@ -543,18 +454,14 @@
 "buffs" = "Wzmocnienia";
 "allocated" = "Przydzielono";
 "gems" = "Klejnoty";
-"teleporting_habitica" = "Teleportuję do Habitiki";
 "subscription" = "Abonament";
 "remember_check_off_dailies" = "Pamiętaj, żeby sprawdzić swoje Codzienne!";
 "complete" = "Wykonane";
 "accept" = "Zaakceptuj";
 "reject" = "Odrzuć";
 "abort" = "Przerwij";
-"reply" = "Odpowiedz";
 "send" = "Wyślij";
-"reminder" = "Przypomnienie";
 "buy" = "kup";
-"success" = "sukces";
 "invitations" = "Zaproszenia";
 "accessibility.double_tap_to_edit" = "Kliknij dwukrotnie by edytować";
 "accessibility.complete_task" = "Wykonaj Zadanie";
@@ -562,38 +469,23 @@
 "accessibility.completed" = "Zakończone";
 "collect" = "Zbierz";
 "mystery_sets" = "Tajemnicze zestawy";
-"edit_tag" = "Edytuj tag";
-"create_tag" = "Stwórz tag";
-"unlockDropsTitle" = "Odblokowałeś system zdobyczy!";
-"unlockDropsDescription" = "Odblokowałeś System Zdobyczy! Od teraz po ukończeniu zadań, masz niewielką szansę znalezienia przedmiotu, włączając w to jaja, eliksiry i jedzenie!";
 "subscription_info_1_title" = "Kup klejnoty za złoto";
 "subscription_info_2_title" = "Wyjątkowe comiesięczne przedmioty";
 "subscription_info_3_title" = "Zachowuj dodatkowe wpisy w historii konta";
 "subscription_info_3_description" = "Zasubskrybuj teraz, aby otrzymać ekskluzywny zestaw i otrzymywać nowe przedmioty co miesiąc!";
-"subscription_benefits_title" = "Zostań subskrybentem, aby dostać te przydatne nagrody";
-"gem_benefits_title" = "Klejnoty pozwalają Ci kupować dodatkowe atrybuty takie jak:";
 "moderator" = "Moderator";
 "staff" = "Personel";
 "report_x_violation" = "Zgłosić naruszenie zasad przez %@ ?";
 "not_getting_drops" = "Nie otrzymujesz właściwych zdobyczy? Sprawdź Targ by kupić rzeczy, które potrzebujesz!";
-"streak_achievement_title" = "Zdobyłeś osiągnięcie serii!";
-"streak_achievement_description" = "Wykonałeś swój Codzienne przez 21 dni z rzędu! Wspaniała robota. Nie przerwij serii!";
-"next_checkin_prize_1_day" = "Twoja następna nagroda zostanie odblokowana przy następnej wizycie.";
 "next_checkin_prize_x_days" = "Twoja następna nagroda zostanie odblokowana za %dwizyt";
-"recipient" = "Odbiorca";
-"no_camera" = "Kamera jest niedostępna";
-"not_enough_gems" = "Niewystarczająca liczba Klejnotów";
 "choose_task" = "Wybierz Zadanie";
 "shops.purchased_all_gear" = "Już posiadasz wszystkie przedmioty dla swojej klasy. Więcej zostanie dodanych podczas Wielkich Gali zaczynających się w okolicach równonocy i przesileń.";
 "titles.skills" = "Umiejętności";
 "stats.intelligence_text" = "Zwiększa Doświadczenie otrzymane za wykonanie zadania. Zwiększa również maksymalną ilość Many i szybkość jej regeneracji.";
-"titles.avatar" = "Awatar";
-"titles.gift_subscription" = "Subskrypcja w prezencie";
 "titles.messages" = "Wiadomości";
 "titles.notifications" = "Powiadomienia";
 "titles.achievements" = "Osiągnięcia";
 "stats.points_to_allocate" = "%d punkty do przydzielenia";
-"stats.total" = "Razem";
 "stats.auto_allocate_points" = "Automatyczne przydzielanie punktów";
 "stats.distribute_evenly" = "Rozdzielaj po równo";
 "stats.distribute_class" = "Rozdzielaj w oparciu o klasę";
@@ -606,16 +498,9 @@
 "tasks.form.accessibility.task_difficulty" = "Poziom trudności to %@";
 "tasks.form.day_of_week" = "Dzień tygodnia";
 "tasks.form.day_of_month" = "Dzień miesiąca";
-"tasks.form.remind_me" = "Przypomnij mi";
 "tasks.form.new_reminder" = "Nowe przypomnienie";
-"tasks.form.rewards_title_placeholder" = "Jak chcesz się nagradzać?";
-"tasks.form.dailies_title_placeholder" = "Co chcesz robić regularnie?";
 "theme.alwaysDark" = "Zawsze ciemny";
 "theme.alwaysLight" = "Zawsze jasny";
-"theme.dark" = "Ciemny";
-"theme.light" = "Jasny";
-"theme.orange" = "Pomarańczowy";
-"theme.teal" = "Turkusowy";
 "settings.push_notifications.received_pm" = "Otrzymano wiadomość prywatną";
 "settings.confirm_new_password" = "Potwierdź nowe hasło";
 "settings.server" = "Serwer";
@@ -627,71 +512,47 @@
 "tasks.examples.team_todo_text" = "Skończ projekt grupowy";
 "tasks.due_tomorrow" = "Jutro";
 "tasks.due_today" = "Dzisiaj";
-"renew_subscription" = "Odnów subskrypcję";
 "titles.pets_and_mounts" = "Chowańce i Wierzchowce";
 "stats.strength_text" = "Zwiększa szansę na trafienia krytyczne oraz obrażenia przy zaliczaniu zadań. Zwiększa także obrażenia zadawane bossom Misji.";
 "titles.basics" = "Główne";
 "titles.hall_of_patrons" = "Sala chwały patronów";
 "titles.hall_of_contributors" = "Sala chwały wspierających";
-"titles.hall_of_heroes" = "Sala bohaterów";
 "stats.constitution_text" = "Zmniejsza ilość obrażeń otrzymywanych z twoich zadań. Nie zmniejsza obrażeń otrzymywanych od bosów.";
 "stats.stat_guide" = "Przewodnik po statystykach";
 "tasks.form.controls" = "Sterowanie";
-"tasks.form.habit_title_placeholder" = "Jakie nawyki chcesz kultywować albo z nimi zerwać?";
 "tasks.form.create" = "Nowy %@";
-"controls" = "Sterowanie";
 "stats.perception_text" = "Zwiększa: szansę na znalezienie przedmiotów, limit przedmiotów możliwych do zdobycia w ciągu dnia, bonusy za ciągłość wykonywania zadań i ilość Złota zdobywanego za zadania.";
 "tasks.form.due_date" = "Termin wykonania";
 "tasks.form.start_date" = "Data rozpoczęcia";
 "tasks.form.scheduling" = "Planowanie";
-"tasks.form.todos_title_placeholder" = "Co chcesz raz ukończyć?";
-"tasks.form.accessibility.disable_positive" = "Wyłącz pozytwyną akcję.";
-"tasks.form.accessibility.enable_positive" = "Włącz pozytywną akcję.";
-"tasks.form.accessibility.negative_enabled" = "Akcja negatywnego nawyku włączona.";
-"tasks.form.accessibility.positive_enabled" = "Akcja pozytywnego nawyku włączona.";
-"tasks.form.accessibility.positive_and_negative_enabled" = "Akcje pozytywnych i negatywnych zwyczajów włączone.";
 "tasks.form.every" = "Każdy";
-"tasks.form.accessibility.enable_negative" = "Włącz działanie negatywne.";
 "not_due" = "Niewykonane";
 "scheduled" = "Zaplanowano";
 "completed" = "Zakończone";
-"created_at" = "Utworzony w";
 "tasks.form.last_scored" = "Ostatni Wynik";
 "tasks.form.accessibility.attribute" = "Atrybut to% @";
 "tasks.form.adjust_streak" = "Dostosuj Serię";
 "tasks.form.positive" = "Pozytywny";
-"streak" = "Seria";
 "tasks.form.accessibility.enable" = "Włączyć %@";
 "tasks.form.accessibility.disable" = "Wyłączyć %@";
 "tasks.form.completion" = "Ukończenie";
 "tasks.form.negative" = "Negatywny";
-"tasks.form.completions" = "Ukończone";
-"tasks.form.accessibility.disable_negative" = "Wyłącz działanie negatywne.";
 "tasks.form.accessibility.set_attribute" = "Zmień atrybut na% @";
 "tasks.form.reset_counter" = "Zresetować Licznik";
 "tasks.form.adjust_counter" = "Dostosuj Licznik";
 "tasks.form.none" = "Nie";
 "tasks.tasks" = "Zadania";
 "tasks.due_in_x_days" = "Za %d dni";
-"resync" = "Synchronizacja";
-"menu.group_plans" = "Grupy";
 "menu.skills" = "Umiejętności";
 "tasks.repeats.monthly_the" = "%@";
 "tasks.form.times_scored" = "Liczba Punktów";
 "tasks.form.not_editable_disclaimer" = "Wyzwania i zadania grupowe mają ograniczone możliwości edycji w porównaniu z zwykłymi zadaniami";
-"update" = "Aktualizacja";
-"tasks.edit_details" = "Edytuj Szczegóły";
 "failed" = "Nieudane";
-"total_completions" = "Łączna liczba ukończeń";
 "tasks.every_x" = "każdy %d%@";
-"yes" = "Tak";
-"no" = "Nie";
-"tasks.form.notes_placeholder" = "Dodaj wszelkie notatki, które mogą Ci pomóc";
 "menu.support" = "Wsparcie";
 "resync_task" = "Zsynchronizuj to zadanie";
 "tasks.examples.team_daily_text" = "Aktualizowanie statusu zespołu";
 "menu.gems" = "kupuj klejnoty";
-"game_mechanics" = "Mechaniki Gry";
 "more_help_title" = "Potrzebujesz pomocy?";
 "sale_ends_in" = "Wyprzedaż kończy się %@";
 "more_questions_title" = "Wciąż masz pytanie?";
@@ -707,11 +568,9 @@
 "sell_no_currency" = "Sprzedaj za %d";
 "quests.confirm_leave_nostart" = "Jesteś pewny, że chcesz porzucić Misję? Nie będziesz w stanie w niej uczestniczyć.";
 "login.password_length_error" = "Hasło musi mieć 8 lub więcej znaków.";
-"gift_one_get_one" = "Wydarzenie Podaruj Subskrypcję i Otrzymaj Darmową Subskrypcję teraz trwa!";
 "quest_mechanics_pausing_title" = "Zatrzymaj otrzymywanie obrażeń";
 "1_day" = "1 Dzień";
 "challenge_category.creativity" = "Kreatywność";
-"gift_one_get_one_event" = "Wydarzenie Podaruj Jeden, Otrzymaj Jeden";
 "reason_for_report" = "Powód do zgłoszenia";
 "gift_gems_explanation_purchase" = "Wybierz poniżej ile Klejnotów podarować lub zmień zakładki, aby przekazać Klejnoty z Twojego konta";
 "task_status" = "Status Zadań";
@@ -729,7 +588,6 @@
 "login.already_have_account" = "Już masz konto?";
 "login.password_confirm_error" = "Hasło i potwierdzenie hasła muszą być takie same.";
 "gift_one_get_one_title" = "Podaruj Jeden, Otrzymaj Jeden";
-"food_singular" = "Pożywienie";
 "quests.unlock_level_short" = "Poziom %d";
 "quests.unlock_level" = "Odblokuj poprzez osiągnięcie %d poziomu";
 "repeat_password" = "Powtórz hasło";
@@ -744,7 +602,6 @@
 "remove" = "Usuń";
 "quests.reward_gold" = "%d Złota";
 "quests.confirm_force_start" = "Jesteś pewny? Nie wszyscy członkowie drużyny dołączyli do misji! Misja rozpocznie się automatycznie kiedy wszyscy gracze dołączą lub odrzucą zaproszenie.";
-"login.login_apple" = "Zarejestruj się przez Apple";
 "login.authentication_error" = "Był problem z uwierzytelnianiem. Spróbuj ponownie później";
 "login.social_register" = "Zarejestruj się z %@";
 "start_my_day" = "Zacznij Mój Dzień";

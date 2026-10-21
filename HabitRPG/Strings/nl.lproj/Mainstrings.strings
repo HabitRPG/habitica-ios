@@ -11,13 +11,9 @@
 /* (No Comment) */
 "avatar.flower" = "Bloem";
 /* (No Comment) */
-"avatar.glasses" = "Bril";
-/* (No Comment) */
 "avatar.hair_style" = "Haarstijl";
 /* (No Comment) */
 "avatar.hairColor" = "Haarkleur";
-/* (No Comment) */
-"avatar.head" = "Hoofd";
 /* (No Comment) */
 "avatar.mustache" = "Snor";
 /* (No Comment) */
@@ -55,8 +51,6 @@
 /* (No Comment) */
 "confirm" = "Bevestigen";
 /* (No Comment) */
-"controls" = "Intstellingen";
-/* (No Comment) */
 "copied_to_clipboard" = "Gekopieerd";
 /* (No Comment) */
 "create" = "Aanmaken";
@@ -72,8 +66,6 @@
 "difficulty" = "Moeilijkheidsgraad";
 /* (No Comment) */
 "discover" = "Ontdek";
-/* (No Comment) */
-"edit" = "Bewerken";
 /* (No Comment) */
 "eggs" = "Eieren";
 /* (No Comment) */
@@ -99,8 +91,6 @@
 /* (No Comment) */
 "equipment.head_accessory" = "Hoofdaccessoire";
 /* (No Comment) */
-"equipment.nothing_equipped" = "Niks aangetrokken";
-/* (No Comment) */
 "equipment.off_hand" = "Andere hand";
 /* (No Comment) */
 "equipment.use_costume" = "Kostuum gebruiken";
@@ -112,8 +102,6 @@
 "food" = "Voedsel";
 /* (No Comment) */
 "glasses" = "Bril";
-/* (No Comment) */
-"groups.assign_new_leader" = "Nieuwe leider toewijzen";
 /* (No Comment) */
 "groups.guild_invitation_invitername" = "**%@** heeft je uitgenodigd om deel te nemen aan Groep **%@**";
 /* (No Comment) */
@@ -155,8 +143,6 @@
 /* (No Comment) */
 "last_activity" = "Laatste Activiteit %@";
 /* (No Comment) */
-"leader" = "Leider";
-/* (No Comment) */
 "leave" = "Verlaten";
 /* (No Comment) */
 "level_number" = "Niveau %d";
@@ -171,15 +157,11 @@
 /* (No Comment) */
 "member.last_logged_in" = "Laatst ingelogd op";
 /* (No Comment) */
-"member.member_since" = "Lid sinds";
-/* (No Comment) */
 "menu.customize_avatar" = "Avatar aanpassen";
 /* (No Comment) */
 "menu.help_faq" = "Help & FAQ";
 /* (No Comment) */
 "menu.inventory" = "Bezittingen";
-/* (No Comment) */
-"menu.select_class" = "Selecteer klasse";
 /* (No Comment) */
 "menu.shops" = "Winkels";
 /* (No Comment) */
@@ -191,15 +173,11 @@
 /* (No Comment) */
 "my_challenges" = "Mijn Uitdagingen";
 /* (No Comment) */
-"my_guilds" = "Mijn gilden";
-/* (No Comment) */
 "name" = "Naam";
 /* (No Comment) */
 "notes" = "Notities";
 /* (No Comment) */
 "ok" = "OK";
-/* (No Comment) */
-"one_month" = "1 Maand";
 /* (No Comment) */
 "open" = "Open";
 /* (No Comment) */
@@ -251,12 +229,6 @@
 /* (No Comment) */
 "reset_tips" = "Reset de Tutorials";
 /* (No Comment) */
-"resetStreak" = "Serie resetten";
-/* (No Comment) */
-"resync" = "Hersyncroniseer";
-/* (No Comment) */
-"resync_all" = "Hersyncroniseer Alles";
-/* (No Comment) */
 "resync_task" = "Hersyncroniseer deze taak";
 /* (No Comment) */
 "save" = "Opslaan";
@@ -265,11 +237,7 @@
 /* (No Comment) */
 "sell" = "Verkoop voor %d goud";
 /* (No Comment) */
-"settings.api" = "API";
-/* (No Comment) */
 "settings.are_you_sure" = "Weet je het zeker?";
-/* (No Comment) */
-"settings.authentication" = "Authenticatie";
 /* (No Comment) */
 "settings.change_class" = "Verander klasse";
 /* (No Comment) */
@@ -277,11 +245,7 @@
 /* (No Comment) */
 "settings.clear_cache" = "Cache wissen";
 /* (No Comment) */
-"settings.custom_day_start" = "Aangepast begin van de dag";
-/* (No Comment) */
 "settings.daily_reminder" = "Dagelijkse herinnering";
-/* (No Comment) */
-"settings.day_start" = "Begin van de dag";
 /* (No Comment) */
 "settings.disable_all_notifications" = "Schakel alle pushnotificaties uit";
 /* (No Comment) */
@@ -302,8 +266,6 @@
 "settings.notification_badge" = "Notificatie badge";
 /* (No Comment) */
 "settings.preferences" = "Voorkeuren";
-/* (No Comment) */
-"settings.profile" = "Profiel";
 /* (No Comment) */
 "settings.reload_content" = "Herlaad inhoud";
 /* (No Comment) */
@@ -353,18 +315,6 @@
 /* (No Comment) */
 "stable.standard_pets" = "Standaard Huisdier";
 /* (No Comment) */
-"stats.allocated" = "Toegewezen";
-/* (No Comment) */
-"stats.battle_gear" = "Gevechtsuitrusting";
-/* (No Comment) */
-"stats.buffs" = "Versterkingen";
-/* (No Comment) */
-"stats.class_bonus" = "Klassebonus";
-/* (No Comment) */
-"stats.level" = "Niveau";
-/* (No Comment) */
-"stats.no_points_to_allocate" = "0 Punten om toe te wijzen";
-/* (No Comment) */
 "stats.one_point_to_allocate" = "1 Punt om toe te wijzen";
 /* (No Comment) */
 "stats.points_to_allocate" = "%d Punten om toe te wijzen";
@@ -375,20 +325,6 @@
 /* (No Comment) */
 "tasks.daily" = "Dagelijkse taak";
 /* (No Comment) */
-"tasks.form.accessibility.disable_negative" = "Zet negatieve punten uit.";
-/* (No Comment) */
-"tasks.form.accessibility.disable_positive" = "Zet positieve punten uit.";
-/* (No Comment) */
-"tasks.form.accessibility.enable_negative" = "Zet negatieve punten aan.";
-/* (No Comment) */
-"tasks.form.accessibility.enable_positive" = "Zet positieve punten aan.";
-/* (No Comment) */
-"tasks.form.accessibility.negative_enabled" = "Negatieve punten aangezet voor deze gewoonte.";
-/* (No Comment) */
-"tasks.form.accessibility.positive_and_negative_enabled" = "Positieve en negatieve punten aangezet voor deze gewoonte.";
-/* (No Comment) */
-"tasks.form.accessibility.positive_enabled" = "Positieve punten aangezet voor deze gewoonte.";
-/* (No Comment) */
 "tasks.form.accessibility.set_task_difficulty" = "Verander de moeilijkheidsgraad in %@";
 /* (No Comment) */
 "tasks.form.accessibility.task_difficulty" = "De moeilijkheidsgraad is %@";
@@ -397,15 +333,11 @@
 /* (No Comment) */
 "tasks.form.clear" = "Wissen";
 /* (No Comment) */
-"tasks.form.confirm_delete" = "Weet je zeker dat je deze taak wil verwijderen?";
-/* (No Comment) */
 "tasks.form.controls" = "Instellingen";
 /* (No Comment) */
 "tasks.form.cost" = "Kosten";
 /* (No Comment) */
 "tasks.form.create" = "Nieuw %@";
-/* (No Comment) */
-"tasks.form.dailies_title_placeholder" = "Wat wil je regelmatig doen?";
 /* (No Comment) */
 "tasks.form.day_of_month" = "Dag van de maand";
 /* (No Comment) */
@@ -421,8 +353,6 @@
 /* (No Comment) */
 "tasks.form.every" = "Elke";
 /* (No Comment) */
-"tasks.form.habit_title_placeholder" = "Welke gewoonte wil je versterken of afleren?";
-/* (No Comment) */
 "tasks.form.hard" = "Moeilijk";
 /* (No Comment) */
 "tasks.form.medium" = "Gemiddeld";
@@ -431,25 +361,15 @@
 /* (No Comment) */
 "tasks.form.new_reminder" = "Nieuwe Herinnering";
 /* (No Comment) */
-"tasks.form.notes_placeholder" = "Voeg notities toe om jezelf te helpen";
-/* (No Comment) */
-"tasks.form.remind_me" = "Herinner me";
-/* (No Comment) */
 "tasks.form.reminders" = "Herinneringen";
 /* (No Comment) */
 "tasks.form.repeats" = "Herhaalt zich";
-/* (No Comment) */
-"tasks.form.reset_streak" = "Serie resetten";
-/* (No Comment) */
-"tasks.form.rewards_title_placeholder" = "Hoe wil je jezelf belonen?";
 /* (No Comment) */
 "tasks.form.scheduling" = "Plannen";
 /* (No Comment) */
 "tasks.form.start_date" = "Startdatum";
 /* (No Comment) */
 "tasks.form.tags" = "Tags";
-/* (No Comment) */
-"tasks.form.todos_title_placeholder" = "Wat wil je één keer voltooien?";
 /* (No Comment) */
 "tasks.form.trivial" = "Basaal";
 /* (No Comment) */
@@ -458,22 +378,6 @@
 "tasks.reward" = "Beloning";
 /* (No Comment) */
 "tasks.todo" = "To Do";
-/* (No Comment) */
-"theme.blue" = "Blauw";
-/* (No Comment) */
-"theme.default_theme" = "Standaard";
-/* (No Comment) */
-"theme.green" = "Groen";
-/* (No Comment) */
-"theme.maroon" = "kastanjebruin";
-/* (No Comment) */
-"theme.orange" = "Oranje";
-/* (No Comment) */
-"theme.red" = "Rood";
-/* (No Comment) */
-"theme.teal" = "Taling";
-/* (No Comment) */
-"theme.yellow" = "Geel";
 /* (No Comment) */
 "title" = "Titel";
 /* (No Comment) */
@@ -488,41 +392,29 @@
 "x_months" = "%d Maanden";
 /* (No Comment) */
 "yearly" = "Jaarlijks";
-"back" = "Terug";
 "all" = "Alle";
 "weak" = "Zwak";
 "strong" = "Sterk";
 "due" = "Onvoltooid";
-"dated" = "Gedateerd";
 "done" = "Gedaan";
-"change" = "Verander";
 "clear" = "Wissen";
 "use" = "Gebruik";
 "titles.settings" = "Instellingen";
-"titles.authentication" = "Verificatie";
-"titles.profile" = "Profiel";
-"titles.api" = "API";
 "titles.fix_values" = "Waarden bijstellen";
 "titles.select_class" = "Selecteer klasse";
 "titles.stats" = "Statistieken";
 "titles.equipment" = "Uitrusting";
 "titles.items" = "Voorwerpen";
-"titles.faq" = "FAQ";
 "titles.about" = "Over";
 "titles.news" = "Nieuws";
 "titles.pets" = "Huisdieren";
 "titles.mounts" = "Rijdieren";
 "titles.party" = "Groep";
-"titles.guilds" = "Gilden";
 "titles.guild" = "Gilde";
 "titles.challenges" = "Uitdagingen";
-"titles.shops" = "Winkels";
 "titles.choose_user" = "Kies Gebruiker";
-"titles.choose_recipient" = "Kies Ontvanger";
 "titles.feed_pet" = "Voer je Huisdier";
 "titles.guidelines" = "Richtlijnen";
-"titles.invite_members" = "Nodig Leden uit";
-"titles.spells" = "Toverspreuken";
 "stats.auto_allocate_points" = "Verdeel punten automatisch";
 "stats.distribute_evenly" = "Verdeel gelijkmatig";
 "stats.distribute_evenly_help" = "Wijst hetzelfde aantal punten toe aan elke eigenschap.";
@@ -607,7 +499,6 @@
 "tasks.examples.creativity_todo_notes" = "Tik om de naam van je project aan te geven";
 "menu" = "Menu";
 "filter" = "Filter";
-"one_filter" = "1 Filter";
 "x_filters" = "%ld filters";
 "settings.fix_values_description" = "Als je een fout tegenkomt of een fout gemaakt hebt die je personage oneerlijk beïnvloed heeft, kan je deze waardes hier handmatig wijzigen.";
 "settings.change_display_name" = "Verander display naam";
@@ -618,27 +509,20 @@
 "settings.delete_account" = "Verwijder account";
 "settings.delete_account_description" = "Dit zal je account voor altijd verwijderen en het kan nooit meer hersteld worden! Opgespaarde of uitgegeven Edelstenen zullen niet terugbetaald worden. Als je het echt zeker weet, typ dan je wachtwoord in het onderstaande tekstvak.";
 "settings.change_email" = "Verander e-mail";
-"settings.new_email" = "Nieuwe e-mail";
 "settings.change_username" = "Gebruikersnaam wijzigen";
-"settings.new_username" = "Nieuwe gebruikersnaam";
 "settings.change_password" = "Verander Wachtwoord";
 "settings.new_password" = "Nieuw wachtwoord";
 "settings.old_password" = "Oud wachtwoord";
-"settings.local" = "Lokaal";
 "guilds.guild_challenges" = "Gildeuitdagingen";
-"guilds.invite_to_guild" = "Uitnodigen voor Gilde";
 "join" = "Deelnemen";
 "equipment.equipment" = "Uitrusting";
 "equipment.class_equipment" = "Klasse Uitrusting";
-"avatar.skin_color" = "Skinkleur";
-"purchase_gems" = "Koop Edelstenen";
 "level" = "Niveau";
 "party.create_party_title" = "Speel Habitica met een gezelschap";
 "party.create_party_button" = "Maak een nieuwe gezelschap aan";
 "party.join_party_title" = "Zoekt je een Gezelschap?";
 "party.party_challenges" = "gezelschapsuitdagingen";
 "party.start_quest" = "Start een queeste";
-"size" = "Grootte";
 "shirt" = "Shirt";
 "bangs" = "Pony";
 "ponytail" = "Paardenstaart";
@@ -653,42 +537,24 @@
 "saturday" = "Zaterdag";
 "sunday" = "Zondag";
 "active_on" = "Actief op %@";
-"no_days" = "Geen dagen";
-"groups.invite.invitation_type" = "Uitnodigingstype";
 "userID" = "Gebruikers ID";
-"api_key" = "API-Sleutel";
 "email" = "E-mail";
-"groups.invite.add_userid" = "Voeg een Gebruikers-ID toe";
-"groups.invite.add_email" = "Voeg een e-mail toe";
 "users_invited" = "Uitnodiging is verzonden naar gebruikers.";
 "username" = "Gebruikersnaam";
 "password" = "Wachtwoord";
-"username_prompt_title" = "Het is tijd om een gebruikersnaam te kiezen!";
-"confirm_username" = "Bevestig gebruikersnaam";
 "settings.confirm_username_prompt" = "Weet je zeker dat je jou huidige gebruikersnaam wilt bevestigen?";
-"username_confirmed_toast" = "Je gebruikersnaam is bevestigd";
 "settings.username_not_confirmed" = "Gebruikersnaam niet bevestigd";
-"about.website" = "Website";
-"about.report_bug" = "Fout melden";
-"about.view_source_code" = "Broncode bekijken";
-"about.acknowledgements" = "Dankwoord";
-"about.version" = "Versie";
-"about.export_database" = "Exporteer database";
 "about.no_email_title" = "Je e-mail is nog niet toegevoegd";
 "login.register" = "Registreren";
 "login.login" = "Inloggen";
-"login.login_google" = "Inloggen met Google";
 "login.email_password_link" = "E-mail een wachtwoord reset link";
 "login.enter_email" = "Voer je e-mailadres in die gebruikt is voor het registreten van je Habitica-account.";
 "login.reset_password_response" = "Als we je e-mailadres in ons bestand hebben staan, dan zijn er nu instructies verstuurd voor het opnieuw instellen van je wachtwoord.";
 "intro.card1.title" = "Welkom bij";
 "intro.card1.text" = "Het is tijd om plezier te hebben terwijl je dingen afmaakt. Sluit je aan bij 2 miljoen anderen die hun leven een taak tegelijkertijd verbeteren.";
 "intro.card2.title" = "Vooruitgang in het spel";
-"intro.card2.subtitle" = "Vooruitgang in het leven";
 "intro.card3.title" = "Wordt sociaal";
-"intro.card3.subtitle" = "Vecht tegen monsters";
 "intro.card3.text" = "Houd je aan je taken met de hulp van je vrienden. Ondersteun elkaar in het leven en in het gevecht om samen beter te worden!";
-"intro.lets_go" = "Laten we beginnen!";
 "skip" = "Sla over";
 "randomize" = "Randomiseren";
 "finish" = "Voltooi";
@@ -709,9 +575,6 @@
 "errors.error" = "Fout";
 "errors.sync" = "Syncronisatiefout";
 "errors.sync_message" = "Er is een fout opgetreden bij het syncroniseren van veranderingen.";
-"errors.quest_invite_accept" = "Er is een fout bij het accepteren van de queeste uitnodiging";
-"errors.quest_invite_reject" = "Er is een fout bij het afwijzen van de queeste uitnodiging";
-"errors.reply" = "Je bericht kon niet verstuurd worden.";
 "errors.request" = "Er was een fout met je verzoek: %@";
 "days" = "dagen";
 "weeks" = "weken";
@@ -724,7 +587,6 @@
 "locations.seasonal_shop" = "Seizoenswinkel";
 "locations.stable" = "Stal";
 "NPCs.alex" = "Alex de Handelaar";
-"NPCs.daniel" = "Daniel de Herbergbeheerder";
 "NPCs.ian" = "Ian the Queeste Gids";
 "NPCs.seasonalSorceress" = "Seizoenstovernares";
 "NPCs.matt" = "Matt de Dierenmeester";
@@ -735,7 +597,6 @@
 "write_to" = "Schrijf naar %@";
 "resume_damage" = "Schade Hervatten";
 "pause_damage" = "Pauzeer Schade";
-"world_boss_intro_header" = "Ojee, let niet op het monster hieronder. Dit is nog steeds een toevluchtsoord om te praten tijdens je rusttijd.";
 "tutorials.habits_1" = "Ten eerste zijn er Gewoontes. Dit kunnen positieve Gewoontes zijn die je wil verbeteren of negatieve Gewoontes waar je mee op wil houden.";
 "tutorials.habits_2" = "Tik op de + elke keer als je een positieve gewoonte doet om ervaring en goud te krijgen!";
 "tutorials.habits_3" = "Als je een fout maakt en een negatieve Gewoonte uitvoert, zal je personage's gezondheid verlaagd worden na het klikken op - om ervoor te zorgen dat je verantwoordelijk blijft.";
@@ -746,10 +607,6 @@
 "tutorials.todos_2" = "Als je to do op een bepaalde tijd moet zijn voltooid, stel je een einddatum in. Het lijkt erop dat je er een kunt aanvinken - ga je gang!";
 "tutorials.rewards_1" = "Koop uitrusting voor je avatar met het goud wat je verdient!";
 "tutorials.rewards_2" = "Je kan ook Aangepaste beloningen van de echte wereld maken gebaseerd op wat jou motivatie is.";
-"tutorials.add_task" = "Tik om een nieuwe taak toe te voegen.";
-"tutorials.edit_task" = "Tik op een taak om hem te bewerken en herinneringen toe te voegen. Veeg naar links om hem te verwijderen.";
-"tutorials.filter_task" = "Tik om taken te filteren.";
-"tutorials.reorder_task" = "Houd een taak ingedrukt om hem te verplaatsen.";
 "tutorials.inbox" = "Dit is waar je privé-berichten kan lezen en beantwoorden! Je kan berichten ook sturen naar mensen vanaf hun profiel.";
 "tutorials.stats" = "Tik op de grijze knop om veel punten in één keer toe te wijzen, of klik op de pijlen om één punt per keer toe te wijzen.";
 "world_boss.pending_strike" = "Inkomende Aanval";
@@ -757,18 +614,14 @@
 "buffs" = "Versterkingen";
 "allocated" = "Toegewezen";
 "gems" = "Edelstenen";
-"teleporting_habitica" = "Bezig met teleporteren naar Habitica";
 "subscription" = "Abonnement";
 "remember_check_off_dailies" = "Denk er aan je dagelijkse taken af te vinken!";
 "complete" = "Voltooid";
 "accept" = "Accepteren";
 "reject" = "Afwijzen";
 "abort" = "Afbreken";
-"reply" = "Antwoord";
 "send" = "Verstuur";
-"reminder" = "Herinnering";
 "buy" = "koop";
-"success" = "succes";
 "invitations" = "Uitnodigingen";
 "accessibility.tap_hide_boss_art" = "Tweemaal klikken om Baas kunst te verbergen";
 "accessibility.reply_to_message" = "Bericht beantwoorden";
@@ -784,49 +637,28 @@
 "accessibility.completed" = "Voltooid";
 "collect" = "Verzamel";
 "mystery_sets" = "Mysterie Sets";
-"edit_tag" = "Bewerk label";
-"create_tag" = "Label maken";
-"unlockDropsTitle" = "Je hebt het drop-systeem vrijgespeeld!";
-"unlockDropsDescription" = "Je hebt het Drop-systeem vrijgespeeld! Als je nu een taak voltooid, heb je een kleine kans om een voorwerp te vinden, zoals eieren, drankjes en voedsel!";
 "subscription_info_1_title" = "Gratis Maandelijkse Edelstenen";
 "subscription_info_2_title" = "Maandelijkse Mystieke zandlopers";
 "subscription_info_3_title" = "Maandelijkse Uitrusting Sets in Beperkte Oplage";
 "subscription_info_3_description" = "Schrijf je nu in om nu een exclusieve set te krijgen en elke maand nieuwe voorwerpen te ontvangen!";
-"subscription_benefits_title" = "Word abonnee en je krijgt deze handige voordelen";
-"gem_benefits_title" = "Edelstenen staan je toe om leuke extra's te kopen voor je account, waaronder:";
 "moderator" = "Beheerder";
 "staff" = "Medewerkers";
 "report_x_violation" = "@%@ rapporteren wegens overtreding?";
 "not_getting_drops" = "Vind je niet de gewenste drops? Check de Markt om precies de dingen te kopen die je nodig hebt!";
-"streak_achievement_title" = "Je hebt een serie prestatie verdiend!";
-"streak_achievement_description" = "Je hebt je dagelijkse taak 21 dagen op rij voltooid! Uitstekend. Behoud deze serie!";
-"next_checkin_prize_1_day" = "De volgende prijs wordt vrijgespeeld over 1 check-in";
 "next_checkin_prize_x_days" = "De volgende prijs wordt vrijgespeeld bij %d check-ins";
-"recipient" = "Ontvanger";
-"no_camera" = "Geen Camera beschikbaar";
-"not_enough_gems" = "Niet genoeg Edelstenen";
 "not_enough_hourglasses" = "Niet genoeg Zandlopers";
-"subscribe_for_hourglasses" = "Neem een abonnement voor Zandlopers";
 "not_enough_gold" = "Niet genoeg Goud";
-"take_me_back" = "Neem me terug";
 "monthly_gem_cap_reached" = "Maandelijkse Edelstenen-limiet bereikt";
-"your_balance" = "Je balans:";
 "choose_task" = "Kies taak";
 "shops.other_class_disclaimer" = "Je kan alleen uitrusting kopen voor je momentele klasse";
 "shops.purchased_all_gear" = "Nieuwe uitrusting wordt uitgebracht tijdens seizoen Gala's. Tot die tijd zijn er %d stuks uitrusting in het Betoverde Kabinet te vinden!";
 "titles.skills" = "Vaardigheden";
-"stats.total" = "Totaal";
 "whats_world_boss" = "Wat is een eindbaas?";
-"write_a_message" = "Schrijf een Bericht";
 "welcome_back" = "Welkom Terug!";
-"delete_tasks" = "Taken verwijderen";
-"keep_tasks" = "Taken bewaren";
 "never_lower_case" = "nooit";
-"never" = "Nooit";
 "intro.card2.text" = "Als je taken in het echte leven volbrengt, speel je nieuwe dingen vrij in de game. Je kunt wapens verdienen, maar ook huisdieren en andere beloningen omdat je je doelen hebt gehaald.";
 "intro.task_setup_speechbubble" = "Ziet er goed uit! Ok, kies aan welke categorieën je zou willen werken en dan maken wij een paar taken zodat je kan beginnen.\n\nHierna gaan we naar je taakbord!";
 "intro.avatar_setup_speechbubble" = "Jij bent nieuw hier, denk ik. Ik ben Justin, je gids in Habitica.\n\nDus, hoe wil je eruit zien? Wees niet bang, je kunt dit later veranderen.";
-"intro.welcome_prompt" = "Hoe zullen we jou noemen?";
 "hourglass_count" = "+%d Mysterieuze Zandloper";
 "gem_cap" = "%d Edelsteen limiet";
 "gift_subscription_prompt" = "Kies hieronder het abonnement dat je cadeau wilt geven! Deze aankoop zal niet automatisch vernieuwen.";
@@ -834,34 +666,24 @@
 "gift_confirmation_body_g1g1" = "Je het %@ een Habitica abonnement van %@ maanden gestuurd, en hetzelfde abonnement is aan jouw account toegevoegd vanwege de Geef er Een Krijg er Een actie!";
 "gift_confirmation_title" = "Je cadeautje is verstuurd!";
 "continue" = "Verder";
-"gift_recipient_subtitle" = "Vul de @ gebruikersnaam van de ontvanger in";
-"gift_recipient_title" = "Stuur cadeau";
 "groups.error_name_required" = "Je naam mag niet leeg zijn.";
 "login.forgot_password" = "Wachtwoord vergeten";
 "login.email_username" = "Email / Gebruikersnaam";
 "login.authentication_error" = "Er ging iets mis met de verificatie. Probeer het later nog eens";
 "login.password_confirm_error" = "Het wachtwoord en de bevestiging van het wachtwoord moeten hetzelfde zijn.";
-"damage_paused" = "Schade gepauzeerd";
-"about.love_open_source" = "We houden van open source software.";
-"about.leave_review" = "Laat een recensie achter";
-"about.send_feedback" = "Stuur feedback";
 "about.whats_new" = "Dit is nieuw";
 "about.new_version" = "Update beschikbaar: %@";
 "settings.searchable_username" = "Stel mijn gebruikersnaam voor";
-"settings.display_name_length_error" = "Je weergegeven naam moet tussen 1 en 30 karakters zijn.";
 "settings.confirm_username_description" = "Als je je gebruikersnaam bevestigt, kan deze worden gebruikt voor uitnodigingen, @meldingen en berichten. Je kunt je gebruikersnaam altijd veranderen via Instellingen.";
 "username_prompt_disclaimer" = "Gebruikersnamen moeten voldoen aan onze #<ts>Gebruiksvoorwaarden# and #<cg>Community Richtlijnen#. Als je nog geen aanmeldnaam had ingesteld, heb je nu een automatisch gegenereerde gebruikersnaam.";
 "username_prompt_wiki" = "Als je meer wilt weten over deze verandering, kun je erover #<wk>lezen in onze wiki.#";
 "username_prompt_body" = "Je weergegeven naam is niet veranderd maar je oude loginnaam wordt nu je gebruikersnaam, gebruikt voor uitnodigingen, schatmeldingen en berichten.";
 "repeat_password" = "Herhaal wachtwoord";
 "display_name" = "Weergegeven naam";
-"groups.invite.add_username" = "Voeg een gebruikersnaam toe";
-"tap_to_show" = "Tik om te zien";
 "open_app_store" = "Open App Store";
 "quests.rage_attack" = "Woede-aanval: %@";
 "quests.reward_gold" = "%d Goud";
 "quests.reward_experience" = "%d Ervaringspunten";
-"groups.invite_member" = "Nodig een lid uit";
 "groups.members" = "Leden";
 "party.leave_party_description" = "Het verlaten van je Gezelschap verwijdert je niet van eventuele Gezelschapsuitdagingen waar je nu aan mee doet.";
 "party.leave_party_title" = "Weet je zeker dat je het Gezelschap wil verlaten?";
@@ -913,22 +735,16 @@
 "titles.achievements" = "Prestaties";
 "titles.notifications" = "Meldingen";
 "titles.messages" = "Berichten";
-"titles.gift_subscription" = "Doe een abonnement cadeau";
-"titles.avatar" = "Avatar";
 "world_boss.first_bullet" = "Volbreng je taken om de eindbaas te verslaan";
 "world_boss.description" = "Een wereld eindbaas is een speciaal evenement waar heel Habitica samenwerkt om met hun taken een supersterk monster te verslaan!";
 "world_boss.action_prompt" = "Versla de eindbaas, win coole beloningen en red Habitica van de terreur van %@!";
 "world_boss.title" = "De %@ valt aan!";
-"world_boss.world_boss" = "Wereld eindbaas";
 "rage_meter" = "Woedemeter";
-"agree_guidelines_prompt" = "Ik hou me aan de richtlijnen";
 "faint.button" = "Gezondheid bijvullen en opnieuw proberen";
-"faint.dont_despair" = "Niet opgeven!";
 "faint.title" = "Je hebt geen Gezondheid meer!";
 "tutorials.spells" = "Vaardigheden zorgen ervoor dat je machine dingen kunt doen! Klik op een vaardigheid om hem te gebruiken. Het kost Mana (de blauwe balk), die je kunt verdienen door elke dag in te checken en je taken te volbrengen. Meer informatie vind je in de FAQ in het menu!";
 "about.no_email_message" = "Oeps, het lijkt erop dat je nog geen e-mail heb ingesteld op deze telefoon. Stel een account in in de iOS mail app om de optie van direct rapporteren te gebruiken, of email ons gewoon direct op %@";
 "settings.reset_account_description" = "Je verliest al je levels, Goud en Ervaringspunten. Alle taken en geschiedenisgegevens worden permanent verwijderd (Uitdagingstaken blijven wel behouden). Je verliest alle uitrusting, behalve abonnee items en gratis gedenk items, maar je kunt ze wel terugkopen. Je moet wel de juiste klasse zijn om klasse-specifieke uitrusting terug te kunnen kopen. Je behoudt je huidige klasse, Prestaties en je huis- en rijdieren. Om de reset te bevestigen, vul je wachtwoord in hieronder.";
-"invalid_recipient_message" = "Je moet bij ontvanger een geldige Habitica gebruikersnaam invullen.";
 "world_boss.fourth_bullet" = "Kijk in de taverne om te zien hoe het gaat met de eindbaas en de woedeaanvallen";
 "world_boss.second_bullet" = "De eindbaas doet je geen kwaad als je taken mist, maar zijn woedemeter gaat om hoog. Als de hele meter vol is, valt de baas een van de winkeliers aan!";
 "world_boss.third_bullet" = "Je kunt verdergaan met normale eindbazen, schade wordt toegebracht aan beide";
@@ -948,8 +764,6 @@
 "accessibility.not_completed" = "Nog niet volbracht";
 "accessibility.collapse_checklist" = "Klap de checklist in";
 "accessibility.expand_checklist" = "Klap de checklist uit";
-"defeat" = "Versla";
-"great" = "Super";
 "leave_challenge" = "Verlaat de uitdaging";
 "join_challenge" = "Ga de uitdaging aan";
 "publish_challenge" = "Maak de uitdaging openbaar";
@@ -961,14 +775,10 @@
 "subscription_gift_button" = "Geef een abonnement cadeau";
 "subscription_support_developers" = "Abonneren ondersteunt ons kleine team en helpt Habitica draaiende te houden";
 "subscribe" = "Abonneer";
-"send_gift" = "Stuur een cadeautje";
 "gift_one_get_one_title" = "Geef er één, krijg er één";
 "gift_one_get_one_description" = "Schenk nu een abonnement en je krijgt hetzelfde abonnement gratis!";
 "gems_support_developers" = "Abonneren ondersteunt ons kleine team bij Habitica!";
 "buy_for_x" = "Kopen voor %@";
-"earned_achievement_share" = "Ik heb een nieuwe prestatie in Habitica!";
-"invalid_recipient_title" = "Ongeldige Habitica gebruikersnaam";
-"filter_by_tags" = "Filter op tags";
 "purchased" = "Je hebt %@ gekocht";
 "buy_reward" = "Je hebt '%@' gekocht voor %@ goudstukken";
 "notifications.unallocated_stat_points" = "Je hebt **%d onverdeelde eigenschapspunten";
@@ -1004,11 +814,8 @@
 "titles.pets_and_mounts" = "Huisdieren & Rijdieren";
 "titles.hall_of_patrons" = "Hal der Weldoeners";
 "titles.hall_of_contributors" = "Hal der Bijdragers";
-"titles.hall_of_heroes" = "Hal der Helden";
-"login.login_apple" = "Meld je aan met Apple";
 "login.social_login" = "Meld je aan met %@";
 "login.social_register" = "Registreer met %@";
-"login.register_error" = "Er was een probleem met je aanvraag. Check alle data zorgvuldig a.u.b.";
 "login.email_invalid" = "Kies a.u.b. een geldig e-mail adres.";
 "copied_x_to_clipboard" = "%@ naar klembord gekopieerd";
 "quest_completed_title" = "Queeste volbracht!";
@@ -1029,23 +836,17 @@
 "party.remove_member_title" = "Ben je zeker dat je %@ uit de Gezelschap wilt verwijderen?";
 "party.transfer_ownership_description" = "Dit zal van %@ de nieuwe groepsleider maken";
 "party.transfer_ownership_title" = "Draag leiderschap over?";
-"more_options" = "Meer instellingen";
 "quest" = "Queeste";
-"food_singular" = "Voedsel";
 "hatching_potion" = "Uitkom toverdrank";
 "egg" = "Ei";
 "theme.alwaysDark" = "Altijd duister";
 "theme.alwaysLight" = "Altijd licht";
 "theme.followSystem" = "Gebruik de systeeminstellingen";
-"theme.dark" = "Duister";
-"theme.light" = "Licht";
 "settings.added_local_auth" = "Succesvolle toevoeging van e-mail en wachtwoord";
-"settings.add_email_and_password" = "Voeg E-mail en Wachtwoord authenticatie toe";
 "settings.push_notifications.mention_unjoined_guild" = "@Vermeldingen in niet toegetreden Gildes";
 "settings.push_notifications.mention_joined_guild" = "@Vermeldingen in toegetreden Gildes";
 "settings.push_notifications.mention_party" = "@Vermeldingen in Groep";
 "settings.push_notifications.party_activity" = "Groepsactiviteit";
-"settings.email_notifications.subscription_reminders" = "Abboneringsherinnering";
 "settings.email_notifications.banned_group" = "Verbannen uit Groep";
 "settings.email_notifications.title" = "E-mails";
 "settings.delete_account_description_social" = "Dit zal je account voor altijd verwijderen, en het kan nooit hersteld worden! Opgespaarde of uitgegeven Edelstenen zullen niet terugbetaald worden. Als je absoluut zeker bent, type dan DELETE in het onderstaande tekstvak.";
@@ -1062,42 +863,31 @@
 "subscribe_for_task_history" = "Wilt je meer dan 2 weken aan data?";
 "subscription_promo_description" = "Word abonnee om edelstenen met goud te kopen, ontvang maandelijkse mysterieuze voorwerpen, verhoogde vondstenlimieten en meer!";
 "subscription_promo_title" = "Edelstenen nodig?";
-"task_history" = "Taakgeschiedenis (zeer experimenteel)";
 "achievements.challenges" = "Uitdagingen gewonnen";
 "achievements.onboarding" = "Inwerkprestaties";
 "empty.inbox.description" = "Begin hieronder met chatten! Denk eraan vriendelijk te zijn en de communityrichtlijnen te volgen.";
 "get_more_habitica" = "Haal meer uit Habitica";
 "sale" = "Uitverkoop";
-"pin" = "Vastzetten";
-"unpin" = "Losmaken";
-"gift_one_get_one_event" = "\"Schenk er één en krijg er één\" gebeurtenis";
-"gift_one_get_one" = "\"Geef een abonnement cadeau en ontvang er één gratis\" evenement is nu bezig!";
 "cancel_subscription_group_plan" = "Je hebt een gratis abonnement omdat je lid bent van een partij of gilde met een groepsplan. Dit eindigt als je vertrekt of als het groepsplan door de eigenaar wordt opgezegd. Alle maanden extra abonnementskrediet die je hebt, worden aan het einde van het groepsplan toegepast.";
 "renew_subscription_gifted_description" = "Wil je jouw voordelen voortzetten? Je kunt ook een automatisch verlengend abonnement nemen onder het kopje Abonnementen in je Apple Account.";
 "renew_subscription_description" = "Wil je jouw voordelen voortzetten? Je kunt je abonnement herstarten onder het kopje Abonnementen in je Apple Account.";
 "cancel_subscription" = "Abonnement stopzetten";
 "cancelled" = "Geannuleerd";
-"not_recurring" = "Niet terugkerend";
 "ending_on" = "Voordelen eindigen op %@";
-"renew_subscription" = "Abonnement vernieuwen";
 "resubscribe" = "Opnieuw abonneren";
 "subscription_duration" = "Keert iedere %@ terug";
 "duration_12month" = "12 maanden";
 "duration_6month" = "6 maanden";
 "duration_3month" = "3 maanden";
 "duration_month" = "maand";
-"subscription_options_title" = "Kies de abonnementslengte die voor jou werkt";
-"subscription_benefits_title_subscribed" = "Je krijgt deze voordelen door Abonnee te zijn";
 "subscription_info_5_description" = "Krijg een Koninklijke Paarse Jackalope en dubbele Eieren, Uitbroeddranken en dagelijks Voedsel om je huisdierencollectie te uit te breiden!";
 "subscription_info_5_title" = "Verdubbel de vondsten";
 "accessibility.viewX" = "Bekijk %@";
 "accessibility.notOwned" = "Niet in bezit";
 "accessibility.owned" = "In bezit";
-"accessibility.unknown" = "Onbekend";
 "accessibility.unknown_mount" = "Onbekend rijdier";
 "accessibility.unknown_pet" = "Onbekend huisdier";
 "accessibility.xofx" = "%d of %d";
-"locations.time_travelers_shop" = "Tijdreizigers";
 "errors.user_not_found" = "Gebruiker niet gevonden.";
 "gift_gems_prompt" = "Wil je een glimmende lading edelstenen aan iemand anders schenken?";
 "feedPet_description" = "Voltooi taken om dierenvoeding te krijgen! Je kunt het je huisdier voeren via het tabblad huisdieren & rijdieren";
@@ -1122,17 +912,13 @@
 "gift_gems_explanation_balance" = "Voer in hoeveel van je edelstenen je cadeau wilt doen of wissel tussen tabbladen om edelstenen te kopen om cadeau te doen";
 "gift_gems_explanation_purchase" = "Kies hieronder hoeveel edelstenen je wilt schenken of schakel tussen tabbladen om edelstenen te schenken van je huidige saldo";
 "gift_gems_disclaimer" = "Habitica vereist nooit dat je edelstenen schenkt aan andere spelers. Mensen die smeken om edelstenen schenden de communityrichtlijnen en moet worden gemeld aan admin@habitica.com.";
-"gift_gems_alert_prompt" = "Vul de @username van de ontvanger in";
 "gift_gems_alert_title" = "Naar wie wil je het geschenk sturen?";
 "onwards" = "Voorwaarts!";
 "add" = "Toevoegen";
-"edit_challenge_tasks" = "Uitdagingstaken hebben slechts beperkte opties om te bewerken.";
 "is_open" = "Open";
 "inventory.available_for" = "Beschikbaar voor %@";
 "quests.confirm_leave_nostart" = "Weet je zeker dat je de queeste wilt verlaten? Je zult niet meer in staat zijn om deel te nemen.";
 "quests.confirm_leave" = "Weet je zeker dat je de queeste wilt verlaten? Al jouw vooruitgang binnen de queeste zal verloren raken.";
-"pending_items" = "Items in afwachting";
-"tasks.form.completions" = "Voltooiingen";
 "tasks.form.negative" = "Negatief";
 "tasks.form.positive" = "Positief";
 "tasks.form.adjust_streak" = "Serie aanpassen";
@@ -1156,7 +942,6 @@
 "view_onboarding_tasks" = "Bekijk onboarding taken";
 "first_drop_title" = "Je hebt nieuwe voorwerpen gevonden!";
 "completedTaskTitle" = "Je hebt een taak afgevinkt";
-"go_to_items" = "Ga naar voorwerpen";
 "first_drop_explanation2" = "Probeer je nieuwe ei en uitbroeddrank te combineren!";
 "first_drop_explanation1" = "Taken afvinken geeft je een kans om eieren, uitbroeddranken, en voer voor je huisdieren te vinden.";
 "view_achievements" = "Bekijk prestaties";
@@ -1198,7 +983,6 @@
 "leave_and_delete_x_tasks" = "Verlaat & verwijder %d taken";
 "leave_and_delete_task" = "Verlaat & verwijder taken";
 "common_questions" = "Veel voorkomende vragen";
-"game_mechanics" = "Spelmechanisme";
 "support.suggestions_button" = "Feedback verzenden";
 "support.suggestions_description" = "Heb je voorstellen over hoe de functies beter kunnen, of een idee voor iets nieuws? Vertel het ons!";
 "support.suggestions_title" = "Suggesties en feedback";
@@ -1236,7 +1020,6 @@
 "joined_challenge" = "Deelgenomen aan een uitdaging";
 "unhatched_pet" = "Nog niet uitgekomen huisdier";
 "hatch" = "Uitbroeden";
-"hatch_pet" = "Laat een huisdier uitkomen";
 "can_hatch_pet" = "Combineer je %@ ei en %@ uitbroeddrank om dit huisdier uit te broeden!";
 "suggest_pet_hatch_again_missing_both" = "Je hebt nog een %@ en een %@ uitbroeddrank nodig om dit huisdier opnieuw uit te broeden";
 "suggest_pet_hatch_again_missing_potion" = "Je hebt nog een %@ uitbroeddrank nodig om dit huisdier opnieuw uit te broeden";
@@ -1245,12 +1028,7 @@
 "suggest_pet_hatch_missing_potion" = "Je hebt nog een %@ uitbroeddrank nodig om dit huisdier uit te broeden";
 "class_system_disabled" = "Klassensysteem uitgeschakeld.";
 "could_not_gift_gems" = "Het edelstenen schenken is niet gelukt. Probeer het later nog eens.";
-"end_challenge_description" = "Om een uitdaging te beëindigen, log je in op de Habitica-website en tik je op de knop 'Uitdaging beëindigen' aan de rechterkant van het scherm van de uitdaging.";
-"create_challenge_description" = "Om een uitdaging aan te maken, log je in op de Habitica-website en tik je vervolgens op de knop \"Aanmaken\" op het scherm \"Mijn uitdagingen\".";
 "create_challenge" = "Uitdaging aanmaken";
-"create_guild" = "Gilde aanmaken";
-"create_guild_description" = "Om een gilde aan te maken, log je in op de Habitica-website en tik je vervolgens op de knop \"Aanmaken\" op het scherm \"Mijn gilden\".";
-"gift_confirmation_body_g1_g1" = "Je hebt %@ een habitica abonnement van %@ maanden gestuurd en hetzelfde abonnement is aan jouw account toegevoegd vanwege de geef er één krijg er één actie!";
 "gift_one_get_one_data.purchase_banner_title" = "Geef een abonnement cadeau en ontvang gratis een abonnement tot %@";
 "daily_tip_3" = "Je kunt ook specifieke herinneringen voor dagelijkse taken inplannen.";
 "daily_tip_2" = "Je kunt veranderen hoe vaak een dagelijkse taak zich herhaalt. Zelfs onregelmatige taken kunnen ingepland worden.";
@@ -1283,30 +1061,18 @@
 "support.questions_description" = "We leggen de basis uit en beantwoorden veelgestelde vragen om je op weg te helpen";
 "mana_description" = "Mana punten worden vrijgespeeld in het klasse systeem op level 10, en stellen je in staat om **Vaardigheden te gebruiken** zodra je ze begint te leren op level 11.\n\nEen gedeelte van je **MP worden aangevuld** bij de dagelijkse reset, maar je krijgt er meer terug door taken af te ronden of de Magiër klassevaardigheid te gebruiken.";
 "gold_description" = "Goud is de voornaamste valuta in Habitica en stelt je in staat om bepaalde uitrustingen, queesten, voorwerpen of zelfs op maat ingestelde beloningen voor jezelf te kopen.\n\nVerdien Goud door taken en queesten af te ronden, en met sommige klasse vaardigheden.";
-"magic_potions" = "Magisch drankje";
-"hatch_pet_again" = "Broed huisdier opnieuw uit";
-"streak" = "Reeks";
-"total_completions" = "Totale voltooiingen";
-"update" = "Update";
 "quests.unlock_incentive_short" = "%d ingecheckt";
 "quests.unlock_incentive" = "Ontgrendel door %d in te checken";
-"inventory.no_longer_available" = "Niet Meer Berijkbaar";
 "inventory.hatched_sharing" = "Ik heb net een %@ %@ huisdier uitgebroed in Habitica door het voltooien van taken in het echte leven!";
-"tasks.edit_details" = "Details Bewerken";
-"created_at" = "Aangemaakt op";
 "stat_description" = "Alle Habitica-personages hebben vier eigenschappen die invloed hebben op de spelaspecten van Habitica.\n\n**Kracht (KRA)** heeft invloed op voltreffers en verhoogt de schade die aan Eindbazen van Queesten gedaan wordt. Krijgers en Dieven ontvangen KRA van hun klasse-uitrusting.\n\n**Weerbaarheid (WBH)** verhoogt je gezondheid en zorgt ervoor dat je minder schade krijgt. Helers en Krijgers ontvangen WBH van hun klasse-uitrusting.\n\n**Intelligentie (INT)** verhoogt de hoeveelheid ERV die je verdient en geeft je meer Mana. Magiërs en Helers ontvangen INT van hun klasse-uitrusting.\n\n**Perceptie (PER)** verhoogt de hoeveelheid goud die je verdient en de mate waarin je voorwerpen vindt. Dieven en Magiërs ontvangen PER van hun klasse-uitrusting.\n\nNa level 10 krijg je 1 Eigenschapspunt voor ieder level dat je omhooggaat. Deze punten kun je naar keuze in een Eigenschap stoppen. Er zijn ook uitrustingen die bonussen op eigenschappen geven.";
 "beginner_objectives" = "Begindoelen";
-"fall_promo.info_instructions" = "Koop je tussen %@ en %@ een edelsteenbundel zoals gewoonlijk dan word je account opgewaardeerd met het promotie aantal aan edelstenen. Meer edelstenen om uit te geven, te delen of te sparen voor toekomstige releases!";
 "fall_promo.info_prompt" = "Het herfstgala is in volle gang, dus we dachten dat dit het perfecte moment was om onze allereerste edelsteen uitverkoop te introduceren! Nu krijg je bij elke aankoop meer edelstenen dan ooit tevoren.";
 "hourglasses_description" = "Mystieke zandlopers zijn een uiterst zeldzame vorm van valuta die u alleen kunt ontvangen als u zich gedurende drie opeenvolgende maanden of langer op Habitica abonneert. Ze worden gebruikt in de winkel van de tijdreiziger om eerdere uitrustingssets, huisdieren, rijdieren, geanimeerde achtergronden of zelfs speciale speurtochten te kopen. Deze extra voordelen zijn een goede manier om gemotiveerd te blijven gedurende het jaar en jezelf te belonen voor je goede werk.\n\nAbonnementhouders ontvangen een mystieke zandloper aan het begin van elke maand dat ze abonnee zijn, naast een boel andere voordelen. Zorg dat je onze abonneeropties bekijkt als je geïnteresseerd bent in wat de Tijdreizigers te bieden hebben!";
 "gems_description" = "Edelstenen zijn een valuta die met echt geld wordt gekocht en waarmee je extra inhoud binnen Habitica kunt kopen, en zijn naast abonnementen een van de belangrijkste bronnen van financiële steun voor het Habitica-team.\n\nAlle inhoud die je via edelstenen koopt, is puur cosmetisch of kan na verloop van tijd gratis worden verkregen.\n\nJe kunt ook edelstenen ontvangen via geschenken van andere spelers, uitdagingsprijzen, bijdragen aan Habitica of door te abonneren.";
-"use_immediately_disclaimer" = "Dit gaat direct na aankoop in!";
-"magic_potion" = "Magisch drankje";
 "survey.button" = "Ga naar enquête";
 "survey.description" = "Vul deze 5 minuten durende enquête in om ons te helpen groeien en een prestatie te ontvangen!";
 "survey.title" = "Spelersenquête";
 "gems_promo.info_limitations" = "Deze promotie is alleen geldig tijdens het tijdelijke evenement. Dit evenement begint op %@ (12:00 UTC) en eindigt op %@ (00:00 UTC). De promo-aanbieding is alleen beschikbaar als je edelstenen voor jezelf koopt.";
-"spooky_promo.info_instructions" = "Koop je tussen %@ en %@ een edelsteenbundel zoals gewoonlijk dan word je account opgewaardeerd met het promotie aantal aan edelstenen. Meer edelstenen om uit te geven, te delen of te sparen voor toekomstige releases!";
 "spooky_promo.info_prompt" = "De edelsteen uitverkoop is terug om het einde van het herfstgala van dit jaar te achtervolgen! Dit is een laatste kans om meer edelstenen te krijgen dan ooit, dus sla je voorraad in zolang het duurt!";
 "skills.caused_damage" = "Je hebt de baas schade toegebracht";
 "day" = "dag";
@@ -1321,7 +1087,6 @@
 "checkin_prize_earned" = "Je hebt een %@ verdiend als een beloning voor je toewijding aan het verbeteren van je leven.";
 "tasks.form.none" = "Geen";
 "see_you_tomorrow" = "Tot morgen";
-"menu.group_plans" = "Groepen";
 "settings.adjustment" = "Aanpassing";
 "open_for" = "Open voor %@";
 "report" = "Raporteer";
@@ -1330,7 +1095,6 @@
 "scheduled" = "Ingepland";
 "completed" = "Gedaan";
 "settings.updated_email" = "E-mail veranderd";
-"no" = "Nee";
 "settings.add_email" = "Voeg e-mail toe";
 "settings.change" = "Verander";
 "settings.reset_account_confirm" = "Weet je zeker dat je wil resetten?";
@@ -1342,7 +1106,6 @@
 "settings.cleared_cache" = "Cache leeggemaakt";
 "settings.custom_day_start_description" = "Verander wanneer jouw dag verwisseld na de standaard tijd van 12:00 AM";
 "tasks.form.not_editable_disclaimer" = "Uitdagingen en groepstaken hebben gelimiteerde bewerkingsopties in vergelijking met je normale taken";
-"yes" = "Ja";
 "none" = "Geen";
 "view_stats" = "Eigenschappen bekijken";
 "undo" = "Ongedaan maken";
@@ -1378,7 +1141,6 @@
 "gift_one_get_one_description_date" = "Doe een abo cadeau en ontvang gratis zelf een abo tot en met %@";
 "next_prize_in_1_checkin" = "Volgende prijs in 1 dag!";
 "reporting_disclaimer" = "Het is belangrijk dat je alleen een %@ rapporteert die de Gemeenschapsrichtlijnen en/of Algemene Voorwaarden overtreedt. Het indienen van een false melding is een overtreding van Habitica's Gemeenschapsrichtlijnen.";
-"shops.customization_notes" = "Je wilt je uiterlijk aanpassen? Dan ben je op de juiste plek! We krijgen regelmatig nieuwe opties binnen.";
 "edit_cancel_subscription" = "Abonnement aanpassen of opzeggen";
 "shops.purchased_all_gear_armoire_empty" = "Nieuwe Uitrustingen worden uitgebracht tijdens de seizoens Galas. Het Betoverd Kabinet krijgt ook elke maand nieuwe waren!";
 "next_prize_at_x_checkins" = "Volgende prijs na %d dagen!";
@@ -1421,16 +1183,13 @@
 "task" = "Taak";
 "player" = "Speler";
 "1_minute" = "1 Minute";
-"birthday" = "Verjaardag";
 "1_hour" = "1 Uur";
 "avatar.shirts" = "Overhemden";
 "avatar.hairColors" = "Haarkleuren";
-"avatar.backgrounds" = "Achtergronden";
 "avatar.mustaches" = "Snoeren";
 "avatar.beards" = "Baarden";
 "avatar.skins" = "Huiden";
 "avatar.wheelchairs" = "Rolstoelen";
-"day_x" = "Dag %d";
 "x_days" = "%d Dagen";
 "1_day" = "1 Dag";
 "challenges_won" = "Uitdagingen Gewonnen";
@@ -1439,7 +1198,6 @@
 "go_to_pets_mounts" = "Ga naar Huisdieren & Rijdieren";
 "stable.pets_and_mounts" = "Huisdieren & Rijdieren";
 "message" = "Bericht";
-"visit_the_market" = "Marktplaats Bezoeken";
 "class_change_success_title" = "U bent %@!";
 "party.quest_participant_one" = "1 Deelnemer";
 "subscription.info_faint_title" = "Tweede Kans Krijgen";
@@ -1448,27 +1206,20 @@
 "fall" = "Herfst";
 "winter" = "Winter";
 "boss" = "Baas";
-"two_gems_per_month" = "+2 Edelstenen per maand";
 "challenge_category.spirituality" = "Spiritualiteit";
 "background" = "Achtergrond";
 "social.x_members" = "%s Leden";
 "groups.list" = "Lijst";
 "groups.find_members" = "Leden Vinden";
-"groups.groups" = "Groepen";
-"groups.group" = "Groep";
 "event_backgrounds" = "Evenement Achtergronden";
-"buy_for" = "Kopen voor";
 "membership" = "Lidmaatschap";
 "ownership" = "Eigenaarschap";
 "pet" = "Huisdier";
 "purchase_for_without_currency" = "Koop voor %d";
 "party.look_for_party" = "Zoek een Gezelschap";
-"is_closed" = "Gesloten";
-"1_hourglass" = "1 Zandloper";
 "social.x_bank" = "%s Bank";
 "sell_no_currency" = "Verkopen voor %d";
 "stable.use_saddle" = "Zadel Gebruiken";
-"avatar.skin_colors" = "Huidkleuren";
 "inventory.no_saddle_tile" = "Je heeft geen Zadels";
 "classes.rogues" = "Schurken";
 "open_google_play" = "Google Play Store openen";
@@ -1480,20 +1231,14 @@
 "login.already_have_account" = "Heb je al een account?";
 "social.x_leader" = "%s Leider";
 "groups.rescinded" = "Ingetrokken";
-"groups.find_more_members" = "Nog meer leden zoeken";
 "party.leave" = "Gezelschap Verlaten";
 "groups.invited" = "Uitgenodigd!";
 "mount" = "Rijdier";
 "classes.mages" = "Magiërs";
-"ends_in_x" = "Eindt in %s";
 "challenge" = "Uitdaging";
 "faint.subbed_button_prompt" = "Tweede kans: Overleven met 1HP!";
-"menu.quest_shop" = "Queesten";
-"limited_edition" = "Beperkte Oplage";
 "classes.warriors" = "Krijger";
 "armoire.unsubbed_button_prompt" = "Abonneer je om weer gratis te openen!";
-"x_gems" = "%d Edelstenen";
-"jubilant_gryphatrice" = "Juichende Gryphatrice";
 "groups.invited_x" = "Je heeft @%@ Uitgenodigd";
 "mute_user" = "Gebruiker Dempen";
 "stats" = "Stats";
@@ -1504,7 +1249,6 @@
 "api_token_title" = "API-sleutel";
 "accept_all" = "Alles Accepteren";
 "copy_token" = "Sleutel Kopiëren";
-"open_stats" = "Stats Openen";
 "add_tag" = "Nieuwe label toevoegen";
 "edit_tags" = "Labels Bewerken";
 "privacy_policy" = "Privacybeleid";
@@ -1512,14 +1256,12 @@
 "shops.rebirthShop" = "Bol der Hergeboorte";
 "shops.rebirthEnabledTitle" = "Bol der Hergeboorte is Ontgrendeld";
 "shops.rebirthEnabledSubtitle" = "Een nieuw avontuur is beschikbaar!";
-"shops.goBack" = "Ga Terug";
 "shops.useOrbOfRebirth" = "Bol der Hergeboorte Gebruiken";
 "shops.rebirthConfirmKeepItem1" = "Jouw takenlijst";
 "shops.rebirthConfirmKeepItem2" = "Alle Uitrusting, Huisdieren, en Rijdieren";
 "shops.rebirthConfirmKeepItem3" = "Jouw Prestaties";
 "shops.rebirthConfirmKeepItem4" = "Jouw Gezelschap en Uitdagingen";
 "terms_of_service" = "Algemene Voorwaarden";
-"turkey_day" = "Dag van de Kalkoen";
 "settings.privacy_preferences" = "Privacyvoorkeuren";
 "your_privacy_preferences" = "Jouw Privacyvoorkeuren";
 "challenge_category.health_fitness" = "Gezondheid + Fitness";
@@ -1549,19 +1291,12 @@
 "unlock_x_gear_and_skills" = "Ontgrendel %@ uitrusting en vaardigheden";
 "challenge_category.habitica_official" = "Officieel van Habitica";
 "quest_mechanics_collecting_title" = "Queestevoorwerpen Verzamelen";
-"x_hourglasses" = "%d Zandlopers";
-"x_gems_month" = "%d edelstenen per maand";
-"hourglass_in_x_months" = "Zandloper in %d maanden";
 "items.footer_quests_title" = "Wilt je nog meer Queesten?";
-"four_for_free" = "Vier voor Gratis";
-"limitations" = "Beperkingen";
 "tasks.repeats.fifth_week_warning" = "Deze taak verschijnt niet in maanden met minder %@en.";
 "guilds.left_party" = "Je hebt het Gezelschap verlaten";
 "errors.enter_valid_email" = "Voer een geldig E-mailadres in";
 "errors.password_length" = "Wachtwoord moet %d of meer karakters zijn";
 "errors.password_not_matching" = "Wachtwoorden moeten hetzelfde zijn";
-"errors.username_already_taken" = "Gebruikersnaam al in gebruik.";
-"locations.customizations" = "Aanpassingen";
 "groups.send_invite" = "Stuur Uitnodiging";
 "guilds.joined_party" = "Je hebt je aangesloten bij het Gezelschap";
 "social.x_description" = "%s Beschrijving";
@@ -1587,13 +1322,11 @@
 "settings.pauseDamage.pause_damage_title3" = "Je Queestevoortgang wordt nog niet meegerekend";
 "settings.pauseDamage.resume_damage_title1" = "Je gemiste Dagelijkse Taken brengen je schade toe. ";
 "settings.pauseDamage.resume_damage_title2" = "Je reeksen en tellers kunnen worden teruggezet";
-"equipped_x" = "Je hebt %s Uitgerust";
 "groups.lfp.subtitle" = "Hierbij een lijst van spelers die een Gezelschap zoeken";
 "armoire.rate_experience_title" = "20%% Ervaringspunten";
 "shops.freeRebirthAtLevel100" = "GRATIS Bol der Hergeboorte op niveau 100";
 "settings.active_promotion" = "Actieve Promotie";
 "inventory.no_saddle_description" = "Zadels veranderen een Huisdier direct in een Rijdier. Je kan er een kopen op de Marktplaats.";
-"stable.evolved_pet" = "Je hebt %s getemd, maak eens een ritje!";
 "party.looking_for_party" = "Je zoekt een Gezelschap!";
 "groups.lfp.subtitle_empty" = "Niemand zoekt op dit moment een Gezelschap. Kom later eens terug!";
 "groups.copy_shared_tasks" = "Gedeelde taken kopiëren";
@@ -1604,7 +1337,6 @@
 "login.password_length_error" = "Wachtwoorden moeten uit ten minste 8 karakters bestaan.";
 "next_payment_x" = "Volgende Betaling %@";
 "faint.subtitle" = "Je zakt naar **level %s, verliest %s Goud, en breekt een onderdeel van je uitrusting**… Je kan ze allemaal terugverdienen door hard te werken!";
-"faint.good_luck_text" = "Maar je kan ze allemaal terugverdienen door hard te werken! Veel succes—je kan het. ";
 "faint.unsubbed_footer" = "Krijg elke dag een tweede kans om niet al je HP kwijt te raken met een abonnement";
 "groups.group_plan_settings" = "Groepsabonnementinstellingen";
 "shops.rebirthConfirmFree" = "Begin opnieuw (GRATIS)";

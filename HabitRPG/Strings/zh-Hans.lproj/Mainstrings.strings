@@ -11,10 +11,6 @@
 /* (No Comment) */
 "avatar.flower" = "花";
 /* (No Comment) */
-"avatar.glasses" = "眼镜";
-/* (No Comment) */
-"avatar.head" = "头部";
-/* (No Comment) */
 "avatar.mustache" = "上唇胡须";
 /* (No Comment) */
 "avatar.shirt" = "衬衣";
@@ -63,8 +59,6 @@
 /* (No Comment) */
 "equipment.head_accessory" = "头部饰品";
 /* (No Comment) */
-"equipment.nothing_equipped" = "没有装备";
-/* (No Comment) */
 "equipment.weapon" = "武器";
 /* (No Comment) */
 "experience" = "经验值";
@@ -74,8 +68,6 @@
 "health" = "生命值";
 /* (No Comment) */
 "invite_party" = "邀请队友";
-/* (No Comment) */
-"leader" = "会长";
 /* (No Comment) */
 "leave" = "离开";
 /* (No Comment) */
@@ -89,15 +81,11 @@
 /* (No Comment) */
 "member.last_logged_in" = "上次登录";
 /* (No Comment) */
-"member.member_since" = "成员自";
-/* (No Comment) */
 "menu.customize_avatar" = "自定义头像";
 /* (No Comment) */
 "menu.help_faq" = "帮助与FAQ";
 /* (No Comment) */
 "menu.inventory" = "物品栏";
-/* (No Comment) */
-"menu.select_class" = "选择职业";
 /* (No Comment) */
 "menu.shops" = "商店";
 /* (No Comment) */
@@ -108,8 +96,6 @@
 "mounts" = "坐骑";
 /* (No Comment) */
 "my_challenges" = "我的挑战";
-/* (No Comment) */
-"my_guilds" = "我的公会";
 /* (No Comment) */
 "name" = "名称";
 /* (No Comment) */
@@ -137,11 +123,7 @@
 /* (No Comment) */
 "search" = "搜索";
 /* (No Comment) */
-"settings.api" = "API";
-/* (No Comment) */
 "settings.are_you_sure" = "你确定吗？";
-/* (No Comment) */
-"settings.authentication" = "身份验证";
 /* (No Comment) */
 "settings.change_class" = "更改职业";
 /* (No Comment) */
@@ -149,11 +131,7 @@
 /* (No Comment) */
 "settings.clear_cache" = "清空缓存";
 /* (No Comment) */
-"settings.custom_day_start" = "自定义每日起始时间";
-/* (No Comment) */
 "settings.daily_reminder" = "日常任务提醒";
-/* (No Comment) */
-"settings.day_start" = "起始日期";
 /* (No Comment) */
 "settings.disable_all_notifications" = "关闭推送通知";
 /* (No Comment) */
@@ -168,8 +146,6 @@
 "settings.maintenance" = "维护";
 /* (No Comment) */
 "settings.notification_badge" = "通知徽章";
-/* (No Comment) */
-"settings.profile" = "简介";
 /* (No Comment) */
 "settings.reload_content" = "重新加载内容";
 /* (No Comment) */
@@ -192,14 +168,6 @@
 "stable.special_mounts" = "特殊坐骑";
 /* (No Comment) */
 "stable.special_pets" = "特殊宠物";
-/* (No Comment) */
-"stats.allocated" = "已分配";
-/* (No Comment) */
-"stats.battle_gear" = "战斗装备";
-/* (No Comment) */
-"stats.class_bonus" = "职业加成";
-/* (No Comment) */
-"stats.level" = "等级";
 /* (No Comment) */
 "tags" = "标签";
 /* (No Comment) */
@@ -234,8 +202,6 @@
 "weekly" = "每周";
 /* (No Comment) */
 "yearly" = "每年";
-"edit" = "编辑";
-"back" = "返回";
 "done" = "已完成";
 "titles.settings" = "设置";
 "titles.fix_values" = "修复数值";
@@ -245,11 +211,8 @@
 "titles.pets" = "宠物";
 "titles.mounts" = "坐骑";
 "titles.party" = "队伍";
-"titles.guilds" = "团队";
 "titles.guild" = "团队";
 "titles.challenges" = "挑战";
-"titles.shops" = "商店";
-"titles.gift_subscription" = "赠送订阅";
 "titles.feed_pet" = "喂食宠物";
 "stats.points_to_allocate" = "%d点待分配";
 "stats.auto_allocate_points" = "自动分配点数";
@@ -271,21 +234,9 @@
 "create" = "创建";
 "tasks.reward" = "奖励";
 "tasks.habits" = "习惯";
-"tasks.form.habit_title_placeholder" = "你想养成或者克服什么习惯？";
-"tasks.form.dailies_title_placeholder" = "你想有规律地做什么事情？";
-"tasks.form.todos_title_placeholder" = "有什么你只需完成一次的任务？";
-"tasks.form.rewards_title_placeholder" = "你想怎么奖励自己？";
 "tasks.form.start_date" = "开始日期";
 "tasks.form.repeats" = "重复";
 "tasks.form.every" = "每";
-"tasks.form.confirm_delete" = "你确定要删除这个任务？";
-"tasks.form.accessibility.positive_and_negative_enabled" = "积极和消极习惯功能已启用。";
-"tasks.form.accessibility.positive_enabled" = "积极习惯功能已启用。";
-"tasks.form.accessibility.negative_enabled" = "消极习惯功能已启用。";
-"tasks.form.accessibility.enable_positive" = "启用积极习惯功能。";
-"tasks.form.accessibility.disable_positive" = "禁用积极习惯功能。";
-"tasks.form.accessibility.enable_negative" = "启用消极习惯功能。";
-"tasks.form.accessibility.disable_negative" = "禁用消极习惯功能。";
 "tasks.form.accessibility.task_difficulty" = "难度为%@";
 "tasks.form.accessibility.set_task_difficulty" = "将难度修改为%@";
 "tasks.examples.habit_text" = "点击此处将其编辑为一个你想要戒掉的坏习惯";
@@ -315,31 +266,21 @@
 "settings.api_disclaimer" = "开发者与第三方工具访问令牌";
 "all" = "全部";
 "weak" = "待养成";
-"change" = "更改";
 "summary" = "概要";
 "clear" = "清空";
 "use" = "使用";
-"titles.authentication" = "身份验证";
-"titles.profile" = "个人简介";
 "strong" = "已养成";
 "due" = "期限";
-"dated" = "已过期";
-"stats.no_points_to_allocate" = "可分配的点数为0";
 "stats.one_point_to_allocate" = "1个点数可分配";
-"stats.buffs" = "增益";
-"stats.total" = "总计";
 "stats.character_build_title" = "角色属性";
 "stats.stat_guide" = "属性指南";
-"resetStreak" = "重置连击次数";
 "tasks.rewards" = "奖励";
 "tasks.todos" = "待办事项";
 "tasks.form.create" = "新%@";
 "tasks.form.controls" = "控制";
-"tasks.form.reset_streak" = "重置连击次数";
 "tasks.form.scheduling" = "预定日程";
 "tasks.form.checklist" = "清单";
 "tasks.form.new_checklist_item" = "新增清单条目";
-"tasks.form.remind_me" = "提醒我";
 "tasks.form.due_date" = "截止日期";
 "tasks.form.day_of_month" = "日";
 "tasks.form.day_of_week" = "星期";
@@ -405,11 +346,7 @@
 "tasks.examples.creativity_todo_notes" = "轻触为你的项目设置名称";
 "menu" = "菜单";
 "filter" = "筛选";
-"one_filter" = "1个筛选";
 "x_filters" = "%ld个筛选";
-"tasks.form.notes_placeholder" = "添加任何备注以供参考";
-"resync" = "重新同步";
-"resync_all" = "重新同步所有数据";
 "resync_task" = "重新同步任务";
 "skills.use_skill" = "你使用了 %@";
 "last_activity" = "最后活跃于 %@";
@@ -425,30 +362,19 @@
 "settings.change_password" = "修改密码";
 "settings.login_methods" = "登录方式";
 "settings.change_email" = "修改邮箱地址";
-"settings.new_email" = "新的邮箱地址";
 "settings.change_username" = "修改用户名";
-"settings.new_username" = "新的用户名";
 "settings.new_password" = "新密码";
 "settings.old_password" = "旧密码";
 "settings.confirm_new_password" = "确认新密码";
-"settings.local" = "本地";
 "settings.searchable_everywhere" = "所有地方";
 "settings.searchable_private_spaces" = "仅私有空间";
 "settings.mentions" = "提及";
-"theme.default_theme" = "默认";
-"theme.blue" = "蓝色";
-"theme.green" = "绿色";
-"theme.yellow" = "黄色";
-"theme.orange" = "橙色";
-"theme.red" = "红色";
-"theme.maroon" = "栗色";
 "details" = "详情";
 "guilds.leave_guild_title" = "离开公会？";
 "guilds.leave_guild_description" = "您想退出公会并保留或删除挑战吗？";
 "guilds.keep_challenges" = "保留挑战";
 "guilds.leave_challenges" = "放弃挑战";
 "guilds.guild_challenges" = "公会挑战";
-"guilds.invite_to_guild" = "邀请加入公会";
 "guilds.join_guild" = "加入公会";
 "join" = "加入";
 "food" = "食物";
@@ -472,7 +398,6 @@
 "equipment.auto_equip" = "自动装备新物品";
 "equipment.use_costume" = "显示装扮";
 "equipment.class_equipment" = "职业装备";
-"avatar.skin_color" = "肤色";
 "avatar.hairColor" = "发色";
 "avatar.hair_style" = "发型";
 "avatar.body" = "体格";
@@ -480,7 +405,6 @@
 "avatar.skin" = "皮肤";
 "avatar.extras" = "其他";
 "purchase_for_gems" = "花费%d颗宝石购买";
-"purchase_gems" = "购买宝石";
 "level" = "等级";
 "classes.class_header" = "%@职业";
 "party.invited_to_quest" = "%@ 邀请你参加一个副本";
@@ -495,7 +419,6 @@
 "party.party_challenges" = "队伍挑战";
 "party.start_quest" = "开始一个副本";
 "groups.members" = "成员";
-"groups.invite_member" = "邀请一个成员";
 "pending_damage" = "待结算伤害";
 "quests.boss_battle" = "Boss战";
 "quests.collection_quest" = "收集副本";
@@ -509,7 +432,6 @@
 "quests.reward_gold" = "%d个金币";
 "quests.rage_attack" = "怒气攻击：%@";
 "groups.leader_challenges" = "只有队长才能创建挑战";
-"groups.assign_new_leader" = "选出新会长";
 "groups.guild_invitation_no_invitername" = "有人邀请你加入团队：**%@**";
 "groups.guild_invitation_invitername" = "**@%@**邀请你加入团队：**%@**";
 "confirm" = "确认";
@@ -517,7 +439,6 @@
 "inventory.number_gems_left" = "每月宝石：剩余%d/%d";
 "inventory.wrong_class" = "只对%@s可用。你可以在设置里变更职业";
 "inventory.available_until" = "%@前可购买";
-"one_month" = "一个月";
 "x_months" = "%d个月";
 "unsubscribe_itunes" = "想要更改或取消订阅？你可以通过手机设置的Apple ID订阅页面，编辑或取消订阅的选项。剩下的月份将会被加到截止日期后。";
 "open_itunes" = "打开Apple ID Subscriptions";
@@ -525,7 +446,6 @@
 "unsubscribe_website" = "不想继续订阅了？由于你的支付方式，你只能通过网页版取消订阅。为此，请点击下方按钮，登录你的账号，点击右上方的用户头像，进入订阅部分。取消后，任何剩余的订阅月份将会计入你的结束日期。欢迎下次光临！";
 "open_website" = "打开Habitica网页版";
 "plain_backgrounds" = "基础背景";
-"size" = "身材";
 "shirt" = "衬衣";
 "bangs" = "刘海";
 "ponytail" = "马尾";
@@ -541,53 +461,30 @@
 "friday" = "周五";
 "saturday" = "周六";
 "sunday" = "周日";
-"groups.invite.invitation_type" = "邀请类型";
 "userID" = "User ID";
-"api_key" = "API 秘钥";
-"tap_to_show" = "轻触以显示";
 "email" = "邮件地址";
-"groups.invite.add_userid" = "添加一个User ID";
-"groups.invite.add_username" = "添加一个用户名";
-"groups.invite.add_email" = "添加一个邮件地址";
 "users_invited" = "邀请已经发送给玩家。";
 "username" = "用户名";
 "display_name" = "昵称";
 "password" = "密码";
 "repeat_password" = "重复密码";
-"username_prompt_title" = "是时候设置用户名了！";
 "username_prompt_wiki" = "如果你想了解更多有关此变动的信息，#<wk>请访问我们的维基。#";
-"confirm_username" = "确认用户名";
 "username_prompt_disclaimer" = "用户名应当符合我们的#<ts>服务条款#和#<cg>社区准则#。如果你之前没有设置登录名，你的用户名将自动生成。";
 "settings.confirm_username_prompt" = "你确定要使用你当前的用户名吗？";
 "settings.confirm_username_description" = "用户名一经确认就会显示在邀请、@提及和私信中。你可以随时在设置中更改用户名。";
-"username_confirmed_toast" = "你的用户名已确认";
 "settings.username_not_confirmed" = "用户名未确认";
-"settings.display_name_length_error" = "你的昵称长度必须在1到30个字符间。";
 "settings.searchable_username" = "用户名建议";
-"about.website" = "网站";
-"about.send_feedback" = "发送反馈";
-"about.report_bug" = "提交Bug";
-"about.leave_review" = "不保存评论";
-"about.view_source_code" = "查看源码";
-"about.acknowledgements" = "致谢";
-"about.version" = "版本";
-"about.export_database" = "导出数据库";
-"about.love_open_source" = "万维网热爱开源软件。";
 "about.no_email_title" = "你还没有设置邮件地址";
-"damage_paused" = "暂停伤害";
 "login.password_confirm_error" = "两次输入的密码不一致。";
 "login.authentication_error" = "身份验证出错。请稍后再试";
 "login.register" = "注册";
 "login.login" = "登录";
 "login.email_username" = "邮件地址 / 用户名";
-"login.login_google" = "Google登录";
 "login.forgot_password" = "忘记密码";
 "login.email_password_link" = "发送密码重置链接至电子邮箱";
 "login.enter_email" = "请输入你注册Habitica帐号时使用的电子邮箱地址。";
 "login.reset_password_response" = "如果我们已经记录过您的电子邮箱，那么设置新密码的说明邮件已发送至您的电子邮箱中。";
 "groups.error_name_required" = "名称不能为空。";
-"gift_recipient_title" = "你想赠送给谁？送礼物";
-"gift_recipient_subtitle" = "输入收信人的@用户名";
 "continue" = "继续";
 "gift_confirmation_title" = "你的礼物已送出！";
 "gift_confirmation_body_g1g1" = "你向%@赠送了一份为期%@个月的Habitica订阅，由于我们的赠一得一促销活动，相同的订阅也已添加至你的账号！";
@@ -595,17 +492,13 @@
 "gift_subscription_prompt" = "在下方选择你想要赠送的订阅时长！此购买不会自动续订。";
 "gem_cap" = "解锁使用金币换取宝石的功能，每月可兑换%d颗";
 "hourglass_count" = "+%d神秘沙漏";
-"intro.welcome_prompt" = "我们该怎么称呼你呢？";
 "intro.avatar_setup_speechbubble" = "新面孔呀！我是Justin，你的Habitica专属导游。\n\n你希望拥有怎样的外观？别担心，之后还能修改。";
 "intro.task_setup_speechbubble" = "帅气！现在任选你想专注的类别，我们先创建几个任务热热身。\n\n完成后直奔任务面板！";
 "intro.card1.title" = "欢迎来到";
 "intro.card2.title" = "游戏进度";
-"intro.card2.subtitle" = "人生成就";
 "intro.card2.text" = "完成现实生活中的任务以解锁游戏内容。完成任务，即可获得装备、宠物等奖励。";
 "intro.card3.title" = "交友";
-"intro.card3.subtitle" = "与怪物战斗";
 "intro.card3.text" = "和朋友们一起为目标努力吧。在生活和战斗中互相支持，共同进步！";
-"intro.lets_go" = "让我们开始吧！";
 "skip" = "跳过";
 "randomize" = "随机";
 "finish" = "结束";
@@ -626,52 +519,36 @@
 "errors.error" = "错误";
 "errors.sync" = "同步错误";
 "errors.sync_message" = "同步时发生错误。";
-"errors.quest_invite_accept" = "接受副本邀请时发生了错误";
-"errors.quest_invite_reject" = "拒绝副本邀请时发生了错误";
-"errors.reply" = "消息发送失败。";
-"never" = "从不";
 "days" = "天";
 "weeks" = "周";
 "months" = "个月";
 "years" = "年";
 "leave_challenge_title" = "放弃挑战？";
 "leave_challenge_prompt" = "放弃挑战后，保留任务还是删除任务？";
-"keep_tasks" = "保留任务";
-"delete_tasks" = "删除任务";
 "locations.market" = "市场";
 "locations.quest_shop" = "副本商店";
 "locations.seasonal_shop" = "季节商店";
 "locations.stable" = "马厩";
-"titles.api" = "API";
 "titles.select_class" = "选择职业";
 "titles.stats" = "属性";
-"titles.faq" = "常见问题";
 "titles.about" = "关于";
 "titles.news" = "新闻";
-"titles.avatar" = "头像";
 "titles.choose_user" = "选择用户";
-"titles.choose_recipient" = "选择收信人";
 "titles.guidelines" = "规范";
-"titles.invite_members" = "邀请成员";
-"titles.spells" = "咒语";
-"controls" = "控制";
 "tasks.dailies" = "日常任务";
 "tasks.form.new_reminder" = "新增提醒";
 "tasks.chores" = "杂务";
 "intro.card1.text" = "大功告成！接下来，请同两百万玩家一起行动，完成任务，共同提升生活品质吧。";
-"theme.teal" = "蓝绿";
 "equipment.costume_explanation" = "选择“使用服装”来装备你的角色形象不会影响你的战斗装备的属性点！这意味着你可以随便装扮你的角色，而不会改变你的最优属性点的战斗装备。";
 "classes.warrior_description" = "战士有更高的暴击率，可以对Boss打出更高伤害。若你渴望轻松打败怪物，那就选择战士吧！力量是战士的核心属性。";
 "classes.mage_description" = "法师可习得对BOSS造成伤害并提升经验值与法力值的技能。若你渴望快速升级，那就选择法师吧！智力是法师的核心属性。";
 "party.create_party_description" = "与朋友一起或独自进行副本。与怪物战斗，创建挑战，并通过队伍帮助自己保持责任感。";
 "inactive" = "不活跃";
 "active_on" = "%@ 前有效";
-"no_days" = "没有日子";
 "username_prompt_body" = "你的昵称还没有修改过，所以现在你的旧登录名会临时用于用于邀请、聊天版上@你，还有私信。";
 "about.no_email_message" = "糟糕！看起来在这部手机上你还没有设置过邮件。在iOS的邮件应用里配置账户，这样就能给我们快速发信。或者直接发到 %@";
 "errors.request" = "处理请求时发生错误: %@";
 "NPCs.alex" = "商人Alex";
-"NPCs.daniel" = "客栈老板Daniel";
 "NPCs.ian" = "副本向导Ian";
 "NPCs.seasonalSorceress" = "季节女巫";
 "NPCs.matt" = "驯兽师Matt";
@@ -679,13 +556,11 @@
 "unlocks_selecting_class" = "选择职业后解锁";
 "unlocks_level_ten" = "将在10级解锁";
 "copied_message" = "消息已复制";
-"write_a_message" = "发送信息";
 "write_message" = "输入信息";
 "write_to" = "发送给%@";
 "resume_damage" = "继续伤害";
 "pause_damage" = "暂停伤害";
 "whats_world_boss" = "世界Boss是什么？";
-"world_boss_intro_header" = "噢朋友，不用担心下面的怪物。这儿很安全，休息的时候来聊聊天吧。";
 "tutorials.habits_1" = "首先，设置习惯。你可以设置想养成的积极习惯，或想戒掉的消极习惯。";
 "tutorials.habits_2" = "完成积极习惯，就可点击加号，获得经验和金币！";
 "tutorials.habits_3" = "如果不小心完成消极习惯，则点击减号。这将减少生命值，帮助提升你的责任感。";
@@ -696,19 +571,12 @@
 "tutorials.todos_2" = "如果待办事项有截止日期，可以设置到期日。现在就去设置试试吧！";
 "tutorials.rewards_1" = "用赚到的金币为你的角色购买装备！";
 "tutorials.rewards_2" = "你也可以根据激励你的事件，设置现实奖励。";
-"tutorials.add_task" = "点击添加任务。";
-"tutorials.edit_task" = "点击任务以编辑和添加提醒。左划删除。";
-"tutorials.filter_task" = "点击筛选任务。";
-"tutorials.reorder_task" = "长按任务来拖动。";
 "tutorials.inbox" = "这里可以查看和回复私信！也可以从其他玩家的资料页发送私信。";
 "tutorials.stats" = "点击灰色按钮，自动分配全部属性。点击箭头，一次加一点属性。";
 "tutorials.spells" = "技能是强大的特殊能力！点击技能即可释放。使用技能需消耗魔法值(蓝色条)。魔法值可由每日签到和完成任务获得。更多信息请查询FAQ！";
 "faint.title" = "你的生命值已耗尽！";
-"faint.dont_despair" = "不要绝望！";
 "faint.button" = "回满生命值&再次尝试";
-"agree_guidelines_prompt" = "我同意遵守社区准则";
 "rage_meter" = "怒气值";
-"world_boss.world_boss" = "世界Boss";
 "world_boss.title" = "%@发动了攻击！";
 "world_boss.action_prompt" = "击败Boss，从%@的恐怖中拯救Habitica，并获得特殊奖励！";
 "world_boss.description" = "世界Boss是一种全体玩家齐心协力通过完成任务来打倒一个强大的怪物的特殊活动！";
@@ -727,7 +595,6 @@
 "checkin_yesterdays_dalies" = "在开始今天之前，勾选昨天已经完成的日常任务：";
 "start_my_day" = "开始新的一天";
 "gems" = "宝石";
-"teleporting_habitica" = "传送到Habitica";
 "subscription" = "订阅";
 "remember_check_off_dailies" = "记得完成你的日常任务！";
 "complete" = "完成";
@@ -735,11 +602,8 @@
 "reject" = "拒绝";
 "abort" = "中止";
 "force_start" = "强制开始";
-"reply" = "回复";
 "send" = "发送";
-"reminder" = "提醒";
 "buy" = "购买";
-"success" = "成功";
 "invitations" = "邀请";
 "accessibility.tap_hide_boss_art" = "双击隐藏Boss图像";
 "accessibility.world_boss_pending_damage" = "%@，世界Boss，即将造成伤害：%@";
@@ -761,11 +625,6 @@
 "accessibility.expand_checklist" = "展开清单";
 "collect" = "收集";
 "mystery_sets" = "神秘套装";
-"edit_tag" = "编辑标签";
-"create_tag" = "创建标签";
-"great" = "棒极了";
-"unlockDropsTitle" = "你解锁了掉落系统！";
-"unlockDropsDescription" = "你解锁了掉落系统！现在，完成任务有一定几率得到随机物品，比如宠物蛋、孵化药水、食物！";
 "leave_challenge" = "放弃挑战";
 "join_challenge" = "加入挑战";
 "publish_challenge" = "发布挑战";
@@ -777,39 +636,23 @@
 "subscription_info_2_description" = "不要错过每月可在时空旅行者商店中购买一次价格为1个神秘沙漏的物品的机会！";
 "subscription_info_3_title" = "月度限定装备套装";
 "subscription_info_3_description" = "现在订阅，即可获得专属套装，每月还能收到新物品！";
-"subscription_benefits_title" = "订阅以获得更多激励奖品";
 "subscription_gift_explanation" = "想要向他人赠送订阅？";
 "subscription_gift_button" = "赠送订阅";
 "subscription_support_developers" = "成为订阅者以支持我们的小团队并帮助维持Habitica的运作";
 "subscribe" = "订阅";
-"send_gift" = "赠送礼物";
 "gift_one_get_one_title" = "赠一得一";
 "gift_one_get_one_description" = "赠送订阅，自己也能免费获得一份同等级订阅！";
 "gems_support_developers" = "购买宝石为Habitica小型团队提供有力支持！";
-"gem_benefits_title" = "宝石可用于购买更多小玩意，包括：";
 "buy_for_x" = "花费%@购买";
 "moderator" = "版主";
 "staff" = "工作人员";
 "report_x_violation" = "举报%@违规？";
 "not_getting_drops" = "没有得到想要的掉落物品？访问市场以购买你所需要的物品！";
-"streak_achievement_title" = "你得到一个连击成就！";
-"streak_achievement_description" = "你已经连续21天完成你的日常任务！太棒了。别打断连击！";
-"earned_achievement_share" = "解锁一个新成就！";
-"next_checkin_prize_1_day" = "你的下一个奖励还需再签到1次";
 "next_checkin_prize_x_days" = "你的下一个奖励将在第%d次签到解锁";
-"recipient" = "收信人";
-"invalid_recipient_message" = "收信人用户名须正确。";
-"invalid_recipient_title" = "无效的Habitica用户名";
-"no_camera" = "摄像头不可用";
-"not_enough_gems" = "宝石不足";
 "not_enough_hourglasses" = "沙漏不足";
-"subscribe_for_hourglasses" = "订阅获取沙漏";
 "not_enough_gold" = "金币不足";
-"take_me_back" = "返回";
 "monthly_gem_cap_reached" = "达到每月宝石上限";
-"your_balance" = "你的余额：";
 "choose_task" = "选择任务";
-"filter_by_tags" = "根据标签筛选";
 "shops.other_class_disclaimer" = "你只能购买当前职业的装备";
 "shops.purchased_all_gear" = "新装备会魔法宝箱在季节性晚会上发布。在那之前，魔法宝箱里还有%d件装备需要找到!";
 "purchased" = "你已购买%@";
@@ -839,7 +682,6 @@
 "notifications.new_bailey" = "Bailey有新消息！";
 "settings.push_notifications.gifted_subscription" = "获赠订阅";
 "notifications.unallocated_stat_points" = "你有**%d未分配的属性点数**";
-"defeat" = "击败";
 "decline" = "拒绝";
 "never_lower_case" = "从不";
 "about.whats_new" = "查看最新消息";
@@ -869,13 +711,11 @@
 "empty.rewards.description" = "奖励系统是Habitica帮助你完成任务的好方法。立即尝试添加几个吧！";
 "empty.rewards.title" = "这些是你的奖励";
 "empty.todos.description" = "待办事项只需要完成一次。在待办事项中增加清单可以提高其价值。";
-"login.login_apple" = "通过Apple登录";
 "settings.theme_mode" = "主题模式";
 "settings.push_notifications.mention_unjoined_guild" = "在未加入的公会中被@提及";
 "settings.push_notifications.mention_joined_guild" = "在已加入的公会中被@提及";
 "settings.push_notifications.mention_party" = "在队伍中被@提及";
 "settings.push_notifications.party_activity" = "队伍活动";
-"task_history" = "任务历史（很实验性）";
 "party.remove_member_title" = "你确定要将%@从队伍中移除吗？";
 "party.transfer_ownership_title" = "要转让队长吗？";
 "transfer" = "转让";
@@ -885,8 +725,6 @@
 "theme.alwaysDark" = "强制深色";
 "theme.alwaysLight" = "强制浅色";
 "theme.followSystem" = "跟随系统";
-"theme.dark" = "深色";
-"theme.light" = "浅色";
 "cancel_subscription" = "取消订阅";
 "subscribe_for_task_history" = "要超过两个星期的数据吗？";
 "subscription_promo_description" = "成为订阅者来获得使用金币购买宝石、每月获得神秘物品、享受更高的每日掉落上限等福利！";
@@ -898,22 +736,17 @@
 "menu.subscription" = "订阅";
 "menu.gems" = "买宝石";
 "titles.pets_and_mounts" = "宠物与坐骑";
-"gift_one_get_one" = "订阅赠一得一活动正在进行中！";
 "cancel_subscription_group_plan" = "因为您的队伍或公会拥有团队计划，所以您将得到免费的订阅资格。如果您离开团队或团队计划被所有者取消，您的订阅便会被取消。您购买的订阅将会在团队计划后顺延。";
 "renew_subscription_gifted_description" = "想要继续获取订阅者奖励？你可以在手机设置中的Apple ID订阅界面激活连续订阅。";
 "renew_subscription_description" = "想要继续获取订阅奖励？你可以进入手机设置的Apple ID订阅界面重新激活订阅。";
 "cancelled" = "已取消";
-"not_recurring" = "关闭续订";
 "ending_on" = "额外奖励将于%@结束";
-"renew_subscription" = "续订";
 "resubscribe" = "恢复订阅";
 "subscription_duration" = "每%@订阅一次";
 "duration_12month" = "12个月";
 "duration_6month" = "6个月";
 "duration_3month" = "3个月";
 "duration_month" = "月";
-"subscription_options_title" = "选择适合你的订阅长度";
-"subscription_benefits_title_subscribed" = "成为订阅者，即可获得以下福利";
 "subscription_info_5_description" = "获得皇家紫色鹿角兔，以及每日宠物蛋、孵化药水，宠物食物的双倍掉落几率，丰富你的宠物图鉴！";
 "subscription_info_5_title" = "特殊宠物及更多掉落物品";
 "party.transfer_ownership_description" = "这将使%@成为新的队长";
@@ -921,7 +754,6 @@
 "purchase_from_time_travelers_shop" = "你可以在时空旅行者的商店购买这件自定义装扮";
 "purchase_customization" = "购买自定义装扮";
 "time_travel_backgrounds" = "蒸汽朋克背景";
-"more_options" = "其他选项";
 "achievements.onboarding" = "新人成就";
 "copied_x_to_clipboard" = "%@已复制到剪贴板";
 "quests.unlock_previous_short" = "完成副本“%d”";
@@ -930,7 +762,6 @@
 "quests.unlock_level_short" = "%d级";
 "quests.unlock_invite_short" = "邀请朋友";
 "quests.unlock_invite" = "邀请朋友加入队伍可解锁";
-"settings.email_notifications.subscription_reminders" = "订阅提醒";
 "settings.email_notifications.banned_group" = "已从团队中移除";
 "settings.email_notifications.title" = "电子邮箱";
 "settings.disable_all_emails" = "关闭邮件通知";
@@ -939,33 +770,25 @@
 "accessibility.viewX" = "查看%@";
 "accessibility.notOwned" = "未拥有";
 "accessibility.owned" = "已拥有";
-"accessibility.unknown" = "未知";
 "accessibility.unknown_mount" = "未知坐骑";
 "accessibility.unknown_pet" = "未知宠物";
 "accessibility.xofx" = "%d/%d";
 "party.quest_not_participating" = "你没有参加这个副本";
 "add" = "添加";
-"edit_challenge_tasks" = "挑战任务仅提供有限的编辑。";
 "new_message" = "新信息";
 "show_details" = "显示详情";
 "quest_completed_title" = "副本已完成！";
-"settings.add_email_and_password" = "添加邮箱和密码验证";
 "settings.delete_account_description_social" = "这将永久删除你的账号，并且永远无法恢复！已存入银行或已消费的宝石将不予退还。如果你已确定，请在下方文本框中输入“DELETE”。";
 "empty.inbox.description" = "开始聊天吧！记住要友善并遵守社区准则。";
-"locations.time_travelers_shop" = "时空旅行者";
 "errors.user_not_found" = "找不到该用户。";
 "login.social_login" = "用%@来登录";
 "login.social_register" = "用%@来注册";
-"login.register_error" = "请求存在了问题。请仔细检查所有数据。";
 "login.email_invalid" = "请输入有效的电子邮件。";
 "quest" = "副本";
-"food_singular" = "食物";
 "hatching_potion" = "孵化药水";
 "egg" = "蛋";
 "settings.added_local_auth" = "成功添加邮箱和密码";
 "onwards" = "继续前进！";
-"unpin" = "取消钉选";
-"pin" = "钉选";
 "learn_more" = "了解更多";
 "insufficient_hourglasses_message_subscriber" = "你需要更多的神秘沙漏来购买该物品！保持订阅，以继续接收你的沙漏。";
 "insufficient_hourglasses_message" = "你需要更多的神秘沙漏来购买该物品！沙漏连续订阅会获得奖励。";
@@ -976,7 +799,6 @@
 "gift_gems_explanation_balance" = "输入你想要赠送的宝石数量，或切换选项卡购买要赠送的宝石";
 "gift_gems_explanation_purchase" = "在下面选择要赠送的宝石数量，或从当前余额中将标签切换到赠送的宝石";
 "gift_gems_disclaimer" = "Habitica决不会要求你向其他玩家赠送宝石。向他人讨要宝石是一种违反社区准则的行为，应举报至admin@habitica.com。";
-"gift_gems_alert_prompt" = "输入收信人的@用户名";
 "gift_gems_alert_title" = "赠送宝石";
 "gift_gems_prompt" = "想要将闪闪发光的宝石赠送别人吗？";
 "onboardingCompleteTitle" = "你通过努力获得了**5项成就**和**100金币**。";
@@ -1005,7 +827,6 @@
 "onboardingComplete_achievement_title" = "你已完成新手任务！";
 "view_onboarding_tasks" = "查看新手任务";
 "first_drop_title" = "你找到了新物品！";
-"go_to_items" = "前往物品栏";
 "first_drop_explanation2" = "尝试使用孵化药水孵化你新获得的宠物蛋！";
 "first_drop_explanation1" = "完成任务有概率掉落宠物蛋、孵化药水和宠物食物。";
 "view_achievements" = "查看成就";
@@ -1055,7 +876,6 @@
 "support.bug_fixes_button" = "寻求帮助";
 "support.suggestions_description" = "如果你愿意给我们反馈或想请求新的功能，请告诉我们！";
 "support.suggestions_title" = "建议与反馈";
-"game_mechanics" = "游戏机制";
 "more_questions_title" = "还有问题要问？";
 "common_questions" = "常见问题";
 "common_fixes" = "常见修复方法";
@@ -1075,12 +895,9 @@
 "titles.basics" = "基本";
 "titles.hall_of_patrons" = "赞助人殿堂";
 "titles.hall_of_contributors" = "贡献者殿堂";
-"titles.hall_of_heroes" = "英雄殿堂";
 "leave_and_delete_tasks" = "离开并删除任务";
 "leave_and_keep_tasks" = "离开并保留任务";
-"hatch_pet_again" = "再次孵化宠物";
 "hatch" = "孵化";
-"hatch_pet" = "孵化宠物";
 "promo_info_limitations_title" = "限制事项";
 "promo_info_instructions_title" = "如何使用";
 "currency" = "货币";
@@ -1098,7 +915,6 @@
 "clear_cache_title" = "清除缓存并重新加载内容";
 "more_questions_text" = "你可以[联系我们](mailto:admin@habitica.com?subject=%%5BiOS%%5D%%20Question)，我们的团队成员会尽力提供帮助！";
 "experience_description" = "经验值代表你的进步，可以让你提升等级。你将主要通过完成任务或副本来**获得经验值**，但也有一些职业技能可以获得经验值。\n\n难度较高的任务或红色任务会给你**更多经验值**。**智力属性**也会提高你的经验值获取速度。";
-"gift_one_get_one_event" = "赠一得一活动";
 "suggest_pet_hatch_missing_potion" = "你还需要一瓶%@药水才能孵化此宠物";
 "suggest_pet_hatch_again_missing_egg" = "你还需要一枚%@蛋才能再次孵化此宠物";
 "suggest_pet_hatch_missing_egg" = "你还需要一枚%@蛋才能孵化此宠物";
@@ -1115,15 +931,9 @@
 "gold_description" = "金币是Habitica中的主要货币，可用于购买某些装备、副本、物品，甚至是你自己的自定义奖励。\n\n通过完成任务或副本，或通过某些职业技能可以获得金币。";
 "health_description" = "这代表你的角色的生命。未完成日常任务或点击负面习惯会**减少你的生命值**。\n\n提升等级、使用治疗药水或具有治疗能力的职业技能可以**恢复生命值**。\n\n如果你的**生命值降到0**，你将降低一级，失去所有金币和一件装备。丢失的装备可以重新购买。";
 "can_hatch_pet" = "对你的%@蛋使用%@药水来孵化这只宠物吧！";
-"use_immediately_disclaimer" = "购买后立即生效！";
-"magic_potion" = "魔法药水";
-"magic_potions" = "魔法药水";
 "unhatched_pet" = "未孵化的宠物";
 "class_system_disabled" = "Class系统已禁用。";
 "could_not_gift_gems" = "无法赠送宝石。请稍后再试。";
-"create_guild_description" = "要创建公会，请登录Habitica网页版，然后点击“我的公会”页面中的“创建”按钮。";
-"create_guild" = "创建公会";
-"gift_confirmation_body_g1_g1" = "你向%@赠送了一份为期%@个月的Habitica订阅，由于我们的赠一得一促销活动，相同的订阅也已添加至你的账号！";
 "gift_one_get_one_data.purchase_banner_title" = "赠一得一活动持续至%@";
 "gift_one_get_one_data.info_limitations" = "本次限时促销活动将从%@ (%@ UTC)开始并于%@ (%@ UTC)结束。本促销仅适用于你向另一位用户赠送订阅。如果你或你的礼物接收人已经拥有了一份订阅，那么赠送的订阅将被留存，并在当前订阅取消后生效。";
 "gift_one_get_one_data.info_instructions" = "点击“赠送订阅”按钮，输入你想要赠送的账号的用户名。然后选择要赠送的订阅长度并付款。你的账号将自动获得与你刚刚赠送的订阅相同的订阅。";
@@ -1131,18 +941,14 @@
 "suggest_pet_hatch_again_missing_both" = "你需要一枚%@和一瓶%@药水来再次孵化此宠物";
 "suggest_pet_hatch_again_missing_potion" = "你还需要一瓶%@药水才能再次孵化此宠物";
 "gems_promo.info_limitations" = "此促销仅适用于限时活动期间。此活动从%@（12:00 UTC）开始，到%@（00:00 UTC）结束。此促销优惠仅适用于为自己购买宝石。";
-"spooky_promo.info_instructions" = "在%@至%@期间，只需像往常一样购买任意宝石捆绑包，你的账户就会被存入促销赠送的宝石。这些多出来的宝石可用于消费、赠送或保存以供未来使用！";
 "spooky_promo.info_prompt" = "今年秋季庆典的宝石特卖已步入尾声！这是获取更多宝石的最后机会请趁早囤货！";
-"fall_promo.info_instructions" = "在%@至%@期间，只需像往常一样购买任意宝石捆绑包，你的账户就会被存入促销赠送的宝石。这些多出来的宝石可用于消费、赠送或保存以供未来使用！";
 "fall_promo.info_prompt" = "限时加赠每次购买宝石都能获得更多！金秋宝石超值优惠赶快入手别错过！";
 "gems_description" = "宝石是一种用真实货币购买的货币，可用于购买Habitica中的附加内容，是Habitica团队除订阅之外的主要收入来源之一。\n\n所有用宝石购买的内容都是纯粹的装饰，或者可以随时间的推移而免费获得。\n\n你还可以通过其他玩家的赠送、挑战奖励、对Habitica做出贡献或订阅来获得宝石。";
 "pet_accessibility_label_raised" = "%@, 喂养 %d%%";
 "unlocks_selecting_class_prompt" = "你达到了10级，你可以选择一个职业!";
 "unlocks_selecting_class_description" = "当您达到10级且选择了职业之后，就可以解锁技能";
 "class_system_enable_instructions" = "你可以在设置中开启职业系统，之后可选择职业";
-"end_challenge_description" = "要结束挑战，请登录Habitica网页版，然后点击挑战页面右侧的“结束挑战”按钮。";
 "settings.launch_screen" = "启动页";
-"create_challenge_description" = "创建挑战的话，登录habitica网站，在“我的挑战”界面，点击“创建”按钮。";
 "create_challenge" = "创建挑战";
 "achievements.challenges" = "已赢得的挑战";
 "menu.skills" = "技能";
@@ -1166,8 +972,6 @@
 "inventory.available_for" = "购买时间剩余%@";
 "quests.confirm_leave" = "你确定要离开此副本吗？你所有的进度都将丢失。";
 "quests.confirm_leave_nostart" = "你确定要退出此副本吗？你将无法再次加入。";
-"pending_items" = "待结算物品";
-"tasks.form.completions" = "完成情况";
 "tasks.form.negative" = "消极";
 "tasks.form.positive" = "积极";
 "tasks.form.adjust_streak" = "修正连击次数";
@@ -1178,13 +982,7 @@
 "beginner_objectives" = "新手目标";
 "quests.unlock_incentive_short" = "签到数%d";
 "quests.unlock_incentive" = "签到%d次后解锁";
-"inventory.no_longer_available" = "已下架";
 "inventory.hatched_sharing" = "通过完成现实生活中的任务，我刚刚在Habitica孵化了一只%@%@宠物！";
-"update" = "更新";
-"tasks.edit_details" = "编辑详情";
-"created_at" = "创建位置";
-"total_completions" = "总完成量";
-"streak" = "连击";
 "skills.caused_damage" = "你对boss造成了伤害";
 "tasks.form.completion" = "完成";
 "not_due" = "未截止";
@@ -1204,17 +1002,11 @@
 "inventory.avatar_bangs_customization" = "自定义头像刘海";
 "share_avatar" = "分享头像";
 "settings.reset_account_description_social" = "你将会失去所有的等级、金币和经验。你设置的所有任务及其任务历史数据将会被删除（挑战任务除外）。你将失去除了订阅者物品和免费纪念物品外的所有装备，但你之后可以重新购买被删除的物品。重新购买职业专属装备需要对应的职业。你当前的职业、成就、宠物和坐骑将会保留。如果你已确定要重置数据，请在下方输入“RESET”。";
-"x_gems_month" = "每月%d颗宝石";
 "failed" = "失败";
 "open_profile" = "打开简介";
-"birthday_set" = "生日套装";
-"x_gems" = "%d颗宝石";
-"party_robe" = "一件派对长袍";
 "message" = "信息";
 "player" = "玩家";
 "challenge" = "挑战";
-"1_hourglass" = "1个神秘沙漏";
-"x_hourglasses" = "%d个神秘沙漏";
 "settings.updated_email" = "邮箱已更新";
 "settings.updated_password" = "密码已成功更新";
 "one_item_found" = "1件物品待结算";
@@ -1232,7 +1024,6 @@
 "challenge_category.habitica_official" = "Habitica官方";
 "tasks.form.none" = "没有";
 "tasks.form.not_editable_disclaimer" = "与常规任务相比，挑战任务和队伍任务的编辑选项有限";
-"menu.group_plans" = "团队";
 "settings.next_cron_run" = "次日重置: %@";
 "settings.adjustment" = "调整";
 "settings.reloaded_content" = "重新加载内容";
@@ -1264,10 +1055,8 @@
 "challenge_category.recovery_support_groups" = "恢复和支持团队";
 "party.look_for_party" = "寻找队伍";
 "party.looking_for_party" = "你正在寻找队伍！";
-"thanks_for_your_support" = "感谢你的支持！";
 "subscription.info_faint_description" = "每日一次机会，在生命值耗尽时即刻治疗以避免前功尽弃！";
 "inventory.no_saddle_tile" = "你没有鞍";
-"stable.evolved_pet" = "你已经驯服了%s，出去兜兜风吧！";
 "faint.subbed_button_prompt" = "第二次机会：用1点生命值撑住！";
 "subscription.info_faint_title" = "获得复活机会";
 "groups.by_invite" = "通过邀请";
@@ -1287,9 +1076,7 @@
 "quest_mechanics_rage_title" = "怒气值";
 "guilds.left_party" = "你离开了队伍";
 "groups.cancel_invite" = "取消邀请";
-"limitations" = "限制事项";
 "challenge_category.time_management" = "时间管理和责任感";
-"birthday_limitations_description" = "本活动为限时活动，从%s开始，到%s结束。在此期间可购买限定版欢沁狮鹫蛇和十种魔法孵化药水。“免费四件套”部分中列出的其他礼物将自动发送至礼物发送日前30天内的所有活跃账号。礼物发送后创建的账号将无法领取礼品。";
 "settings.pause_damage_subtitle" = "伤害目前处于活跃状态。点击了解更多。";
 "inventory.visit_market" = "访问市场";
 "settings.pauseDamage.resume_damage_description2" = "未完成的日常任务将重置你的连击纪录，而习惯计数器将正常重置";
@@ -1298,7 +1085,6 @@
 "settings.pauseDamage.pause_damage_description2" = "日常任务连击次数和习惯计数器只会在伤害开启时计数";
 "settings.pauseDamage.pause_damage_title3" = "你的副本进度将保持待结算状态";
 "settings.pauseDamage.pause_damage_description3" = "你对Boss造成的伤害和已收集的物品将被储存，直至你恢复伤害";
-"groups.find_more_members" = "寻找更多队友";
 "groups.lfp.subtitle" = "这是想要加入队伍的玩家名单";
 "groups.lfp.subtitle_empty" = "目前没有玩家在寻找队伍。你可以稍后再来查看！";
 "armoire.rate_food_description" = "你将获得十种食物中的一种。在特别活动期间，普通食物会换为对应的蛋糕或糖果。";
@@ -1308,8 +1094,6 @@
 "armoire.rate_experience_description" = "获得的数量在10到50之间随机变化。";
 "faint.disclaimer" = "损坏的装备可在市场中重新购买";
 "sale_ends_in" = "特卖将于%@结束";
-"exclusive_items_await" = "专属物品和礼物在等着你";
-"purchase_gryphatrice_confirmation" = "花费%d颗宝石购买欢沁狮鹫蛇？";
 "items.empty.quest_description" = "通过升级、登录奖励或副本商店获得副本！";
 "challenge_category.mental_health" = "心理健康和自我护理";
 "challenge_category.academics" = "学业";
@@ -1326,16 +1110,12 @@
 "settings.resume_damage_subtitle" = "伤害目前已暂停。";
 "armoire.equipment_remaining" = "剩余装备：%d";
 "unshadow_mute_user" = "解除隐形屏蔽";
-"buy_for" = "购买花费";
-"equipped_x" = "你已装备%s";
-"party.looking_for_party_subtitle" = "关注邀请或创建自己的队伍";
 "party.leave_looking_for_party_subtitle" = "关注邀请或创建自己的队伍";
 "groups.find_members" = "寻找队友";
 "groups.invited" = "已邀请！";
 "groups.invited_x" = "已邀请@%@";
 "groups.rescinded" = "已撤销";
 "open_mystery_item" = "你打开神秘礼盒，得到了……";
-"faint.good_luck_text" = "但你可以通过努力把它们都找回来！祝你好运——你能做到的。 ";
 "faint.subtitle" = "你将降至**%s级，失去%s金币，并丢失1件装备**……不过只要努力，这些都能重新赚回来！";
 "shadow_mute_user" = "隐形屏蔽用户";
 "shadow_mute_user_confirm" = "你想要隐形屏蔽此用户吗？";
@@ -1344,15 +1124,6 @@
 "unmute_user" = "解除屏蔽";
 "mute_user_confirm" = "你想要屏蔽此用户吗？";
 "unmute_user_confirm" = "你想要解除此用户的屏蔽吗？";
-"birthday_header_description" = "收下以下礼物和专属物品，庆祝Habitica的10岁生日！";
-"limited_edition" = "限定版";
-"gryphatrice_description" = "稀有的欢沁狮鹫蛇加入了生日庆典！千万不要错过拥有这只专属动画宠物的机会。";
-"plenty_of_potions" = "大量药水";
-"four_for_free" = "免费四件套";
-"plenty_of_potions_description" = "我们返场了10种最受欢迎的魔法孵化药水。前往市场丰富你的收藏吧！";
-"four_for_free_description" = "为了让派对继续下去，我们将送出派对长袍、20 颗宝石、限定版披风套装和背景！";
-"visit_the_market" = "访问市场";
-"ends_in_x" = "于%s结束";
 "quest_mechanics_damage_description" = "每次有队伍成员签到时都会计算Boss造成的伤害。此伤害会在你执行下一个与服务器同步的操作时生效。Boss造成的伤害会记录在队伍聊天中。";
 "quest_mechanics_rage_description" = "一些困难的BOSS的生命值下会有一条橙色的怒气值。当参与者有未完成的日常任务时，怒气值就会增加。当它被蓄满时，BOSS会发动可怕的攻击，造成额外伤害！";
 "settings.custom_day_start_description" = "当你的每日起始时间超过默认的午夜时间时进行切换";
@@ -1367,7 +1138,6 @@
 "armoire.subbed_button_prompt" = "免费开启一次！";
 "armoire.unsubbed_footer" = "订阅后你每次购买宝箱都可额外获得一次开启宝箱的机会";
 "faint.unsubbed_button_prompt" = "订阅以用1点生命值撑住！";
-"sub_perk" = "订阅福利";
 "faint.unsubbed_footer" = "订阅后每天可获得一次第二次机会以避免生命值耗尽";
 "faint.subbed_used" = "今天你已经使用了第二次机会。%s后可再次使用。";
 "faint.subbed_footer" = "如果你的生命值耗尽，你的订阅可使你每天获得一次第二次机会";
@@ -1388,17 +1158,14 @@
 "items.empty.potion_description" = "完成任务、孵化药水副本，或前往市场囤货！";
 "no_x" = "没有%@";
 "you_raised_pet" = "你将你的%@宠物培育成了坐骑！";
-"day_x" = "第%d天";
 "quest_mechanics" = "副本机制";
 "quest_mechanics_boss_title" = "伤害Boss";
 "quest_mechanics_collecting_title" = "收集副本物品";
 "quest_mechanics_collecting_description" = "在进行收集副本时，完成任务有机会找到任务物品。待结算的物品将在第二天重置时生效。感知属性会提高物品掉率。";
 "quest_mechanics_boss_description" = "完成任意类型的任务或使用技能来累积待结算伤害！伤害将在你第二天重置时生效。力量属性会影响你所造成的伤害量。";
 "quest_mechanics_damage_title" = "Boss依据未完成的日常任务造成伤害";
-"hourglass_in_x_months" = "%d个月的神秘沙漏";
 "quest_mechanics_pausing_title" = "暂停伤害";
 "quest_mechanics_pausing_description" = "如果你完成日常任务很困难，可以在设置中暂停伤害来休息一下。这样既会防止Boss伤害你或其他人，也会暂停你自己的伤害。其他队友未完成的日常任务仍然会造成伤害，所以请一定要小心！";
-"groups.groups" = "团队";
 "sell_no_currency" = "出售获得%d";
 "guilds.joined_party" = "你加入了队伍";
 "social.x_leader" = "%s队长";
@@ -1409,13 +1176,10 @@
 "party.leave" = "离开队伍";
 "groups.list" = "名单";
 "groups.send_invite" = "发送邀请";
-"groups.group" = "团队";
 "unsubscribe_google" = "不想继续订阅了？由于您的支付方式，您只能通过Google Play商店取消订阅。取消后，任何剩余的订阅月份将会计入您的结束日期。";
 "errors.enter_valid_email" = "请输入有效的邮箱地址";
 "errors.password_length" = "密码不能少于%d个字符";
 "errors.password_not_matching" = "密码必须一致";
-"jubilant_gryphatrice" = "欢沁狮鹫蛇";
-"own_today_for" = "今天就花费%s或%d颗宝石拥有它";
 "day" = "天";
 "month" = "月";
 "year" = "年";
@@ -1426,8 +1190,6 @@
 "avatar.mustaches" = "上唇胡须";
 "avatar.beards" = "下唇胡须";
 "avatar.hairColors" = "发色";
-"avatar.skin_colors" = "肤色";
-"avatar.backgrounds" = "背景";
 "swaps_in_x" = "%@后切换";
 "refresh_for_items" = "刷新以查看新物品";
 "x_days" = "%d天";
@@ -1436,9 +1198,7 @@
 "1_hour" = "1小时";
 "x_minutes" = "%d分钟";
 "1_minute" = "1分钟";
-"locations.customizations" = "自定义";
 "avatar.wheelchairs" = "轮椅";
-"shops.customization_notes" = "想要改变你的外观吗？你来对地方了！我们一直在推出新的选择。";
 "monthly_backgrounds" = "每月背景";
 "empty.no_items_description" = "前往自定义商店来浏览自定义你的头像的多种方法！";
 "spring" = "春";
@@ -1449,7 +1209,6 @@
 "fall" = "秋";
 "winter" = "冬";
 "customization_shop" = "自定义商店";
-"menu.quest_shop" = "副本";
 "classes.warriors" = "战士";
 "classes.mages" = "法师";
 "classes.healers" = "医者";
@@ -1458,26 +1217,19 @@
 "shops.try_on_customize_avatar_return_next_season" = "你可以通过自定义头像来试穿它们。记得下个季节回来看看新商品！";
 "shops.try_on_customize_avatar" = "你可以通过自定义头像来试穿它们。";
 "shops.try_on_equipment" = "你可以在装备中试穿它们。新商品将于每月月初更新！";
-"insufficient_level_equipment_dialog_new" = "此物品只有%s可用。\n你可以在10级后选择一个职业。";
 "shops.try_on_customize_avatar_return_next_month" = "你可以通过自定义头像来试穿它们。记得下个月回来看看新商品！";
-"class_equipment_shop_dialog" = "此物品只有%s可用。\n打开设置来更改职业。";
 "items.footer_title" = "没有从任务中得到正确的项目?";
 "items.footer_description" = "在市场中购买你需要的物品吧！";
 "items.footer_quests_title" = "想要更多副本？";
 "items.footer_quests_descriptions" = "查看副本商店，看看有什么可用的！";
 "items.footer_food_title" = "没有从任务中得到正确的食物？";
 "items.footer_food_description" = "进入市场购买你需要的食物和鞍来升级你的宠物！";
-"is_closed" = "关闭";
 "shops.customizing_your_avatar" = "自定义你的头像";
 "shops.purchased_all_gear_armoire_empty" = "新装备在会季节性晚会上发布。魔法宝箱每个月都有新库存!";
 "shops.purchased_all_gear_title" = "你拥有了所有%@装备";
-"yes" = "是";
-"no" = "否";
 "terms_of_service" = "服务条款";
 "change_class_to" = "更改职业";
 "class_change_confirm" = "使用3颗宝石以更改职业？";
-"two_gems_per_month" = "每月宝石获取数量+2";
-"max_gem_cap" = "最大宝石持有数";
 "subscription.stay_motivated_with_more_rewards" = "订阅以获得更多激励奖品";
 "gift_one_get_one_description_date" = "在%@之前赠予订阅可以获得一份免费订阅";
 "class_change_confirm_description" = "商店中允许购买的装备会随职业变更，你习得的技能也随之更改，并且属性点数的分配会被重置。";
@@ -1502,11 +1254,6 @@
 "no_active_subscription_to_restore" = "未找到激活中的订阅记录以同步";
 "see_more_sub_options" = "查看更多订阅选项";
 "subscription_info_3_description_gear" = "始终保持穿着最新专属装备。立即订阅以获取%@’s %@！";
-"nye" = "新年的";
-"birthday" = "生日";
-"valentines" = "情人节";
-"turkey_day" = "感恩节";
-"open_stats" = "打开统计数据";
 "continue_benefits" = "继续享受额外福利";
 "community_guidelines" = "社群规范";
 "edit_cancel_subscription" = "编辑或删除订阅";
@@ -1544,7 +1291,6 @@
 "login.terms_text" = "请确认您已年满十八岁，且已经阅读并同意我们的 **[服务条款](https://habitica.com/static/terms)** 并已阅读 **[隐私政策](https://habitica.com/static/privacy)**.";
 "login.what_call_you" = "我们该怎么称呼你呢？";
 "privacy_policy" = "隐私政策";
-"errors.username_already_taken" = "用户名已被占用。";
 "one_quest_item_found" = "你找到了1个任务物品";
 "accept_all" = "全部接受";
 "quest_items_found" = "你找到了%d副本物品";
@@ -1624,7 +1370,6 @@
 "shops.freeRebirthAtLevel100" = "到达100级时可免费获取重生之球";
 "shops.goToMarket" = "前往商店";
 "shops.useOrbOfRebirth" = "使用重生之球";
-"shops.goBack" = "返回";
 "shops.rebirthConfirmResetHeader" = "以下内容将被重置：";
 "shops.rebirthConfirmResetItem1" = "等级与职业";
 "shops.rebirthConfirmResetItem2" = "全部的属性点数";
@@ -1635,11 +1380,8 @@
 "shops.rebirthConfirmKeepItem2" = "所有的装备、宠物、坐骑";
 "shops.rebirthConfirmKeepItem3" = "成就";
 "shops.rebirthConfirmKeepItem4" = "队伍和挑战";
-"shops.rebirthConfirmMessage" = "确定要使用重生之球吗？\n\n你将：\n• 重生为1级战士\n• 重置所有属性和技能点\n• 失去所有的金币和法力值\n• 重置所有任务值与连击次数\n\n以下内容将被保留：\n• 所有的装备、宠物和坐骑\n• 所有的成就\n• 你的工会、队伍和挑战";
 "tasks.repeats.monthly_week_of" = "本月的第 %1$@ %2$@ 周";
 "tasks.repeats.fifth_week_warning" = "这个任务不会在少于%@s天的月份中出现。";
-"shops.rebirthConfirmFree" = "重新开始（免费）";
-"shops.rebirthConfirmGems" = "重新开始 (%d 颗宝石)";
 "shops.dayUntilFreeRebirth" = "%d 天后可获得免费的重生之球";
 "shops.daysUntilFreeRebirth" = "%d 天后可获得免费的重生之球";
 "shops.rebirthConfirmTitleGems" = "确定要用%d颗宝石来购买并使用重生之球吗？";
@@ -1676,9 +1418,6 @@
 "players_todos" = "%@ 的代办事项";
 "clone_challenge" = "复制挑战";
 "edit_challenge" = "编辑挑战";
-"challenge_deleted" = "挑战已删除";
-"challenge_ended" = "挑战已结束";
-"create_my_challenge" = "创建我的挑战！";
 "challenge_creator" = "挑战创建者";
 "challenge_description" = "挑战描述";
 "you_own_this_challenge" = "你是此挑战的创建者";

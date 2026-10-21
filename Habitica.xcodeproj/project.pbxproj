@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E13003EE2714E652A4B0847E /* WidgetStrings.strings in Resources */ = {isa = PBXBuildFile; fileRef = ADA49126C6CE767FEBCC3503 /* WidgetStrings.strings */; };
+		E594DA3BF67C1D8C31F38266 /* WidgetStrings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B267EC47DDC0762C1D6A344 /* WidgetStrings.swift */; };
 		066C5326277834A579626B59 /* RebirthEnabledSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFC4D0BB65279CB739EE01A1 /* RebirthEnabledSheet.swift */; };
 		11FBD29CC1529227B4C6DC96 /* ChallengeDetailCards.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B1FBA7F442B4D0851C436E7 /* ChallengeDetailCards.swift */; };
 		2526B556D5CCD0754DDFE843 /* CheckParticipationFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = B806BC76FA69844A4527B6D4 /* CheckParticipationFlow.swift */; };
@@ -286,8 +288,6 @@
 		298119B51F5048C000F9FB39 /* QuestGoalView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 298119B41F5048C000F9FB39 /* QuestGoalView.xib */; };
 		298409CD203C3283003AD202 /* AvatarViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 298409CA203C2B4A003AD202 /* AvatarViewTests.swift */; };
 		2986EB0B1FCC63F900B316F6 /* AttributePointsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2986EB0A1FCC63F900B316F6 /* AttributePointsViewController.swift */; };
-		2988EFC228D32C4300D703BC /* Mainstrings.strings in Resources */ = {isa = PBXBuildFile; fileRef = 29DC5AC520A1D85300993400 /* Mainstrings.strings */; };
-		2988EFC328D32C4900D703BC /* Strings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2902796A2057F2C5006DACB9 /* Strings.swift */; };
 		2988EFC528D3583E00D703BC /* Measurements.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2988EFC428D3583E00D703BC /* Measurements.swift */; };
 		298BE1D52E30F376005DA8CD /* PrivacyPreferencesScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 298BE1D42E30F376005DA8CD /* PrivacyPreferencesScreenView.swift */; };
 		298F20B72A4ECC66004AABE5 /* HabiticaProgressIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 298F20B62A4ECC66004AABE5 /* HabiticaProgressIndicator.swift */; };
@@ -758,6 +758,25 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		9B267EC47DDC0762C1D6A344 /* WidgetStrings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetStrings.swift; sourceTree = "<group>"; };
+		F08F1B28B3121186680EBD7B /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/WidgetStrings.strings; sourceTree = "<group>"; };
+		8B846F9C746244A8E8124B19 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/WidgetStrings.strings; sourceTree = "<group>"; };
+		E9D850B1ED36CEF3F3C5020E /* bg */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = bg; path = bg.lproj/WidgetStrings.strings; sourceTree = "<group>"; };
+		168DD5B9683D51B18BAB2FAB /* cs */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = cs; path = cs.lproj/WidgetStrings.strings; sourceTree = "<group>"; };
+		6CEE77C29E29F8B95D24BA63 /* da */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = da; path = da.lproj/WidgetStrings.strings; sourceTree = "<group>"; };
+		E7B3ED82C89A3A0EFDFDBB03 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/WidgetStrings.strings; sourceTree = "<group>"; };
+		ECD495DAF6984F642E791B2A /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/WidgetStrings.strings; sourceTree = "<group>"; };
+		690FA24BEA7CA9F4DABACA14 /* he */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = he; path = he.lproj/WidgetStrings.strings; sourceTree = "<group>"; };
+		65065ED05378B4402462A17D /* hr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = hr; path = hr.lproj/WidgetStrings.strings; sourceTree = "<group>"; };
+		0B95E53FBDB7AE09A9889C64 /* pl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = pl; path = pl.lproj/WidgetStrings.strings; sourceTree = "<group>"; };
+		69ABAA5A18E95C6F1725FE8F /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = pt-BR.lproj/WidgetStrings.strings; sourceTree = "<group>"; };
+		C6978735A46E51B7C3E2FDDC /* ro */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ro; path = ro.lproj/WidgetStrings.strings; sourceTree = "<group>"; };
+		F863A5AB2470870F09328CD0 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/WidgetStrings.strings; sourceTree = "<group>"; };
+		F655D9CE3FA607C5A8F7286D /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = zh-Hans.lproj/WidgetStrings.strings; sourceTree = "<group>"; };
+		CA561B2E8BA9765B45618F8C /* it */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = it; path = it.lproj/WidgetStrings.strings; sourceTree = "<group>"; };
+		09ECF99D1B621438C2A048F1 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/WidgetStrings.strings; sourceTree = "<group>"; };
+		D2D07A2005F8AC686F53D3BC /* nl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = nl; path = nl.lproj/WidgetStrings.strings; sourceTree = "<group>"; };
+		60FF18B3C123008550D36CA2 /* uk */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = uk; path = uk.lproj/WidgetStrings.strings; sourceTree = "<group>"; };
 		29017017305BDF970031AAD2 /* RegexRoute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegexRoute.swift; sourceTree = "<group>"; };
 		29017018305BDF970031AAD2 /* Route.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Route.swift; sourceTree = "<group>"; };
 		29017019305BDF970031AAD2 /* RouteMatch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteMatch.swift; sourceTree = "<group>"; };
@@ -1548,6 +1567,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		A709C71704D312DE7ABCEEDE /* Generated */ = {
+			isa = PBXGroup;
+			children = (
+				9B267EC47DDC0762C1D6A344 /* WidgetStrings.swift */,
+			);
+			path = Generated;
+			sourceTree = "<group>";
+		};
+		C36C54BB943914BB89085073 /* Strings */ = {
+			isa = PBXGroup;
+			children = (
+				ADA49126C6CE767FEBCC3503 /* WidgetStrings.strings */,
+			);
+			path = Strings;
+			sourceTree = "<group>";
+		};
 		2901701B305BDF970031AAD2 /* Routing */ = {
 			isa = PBXGroup;
 			children = (
@@ -1996,6 +2031,8 @@
 			children = (
 				29BEE633252CCFE300D456F8 /* Assets.xcassets */,
 				29BEE635252CCFE300D456F8 /* Info.plist */,
+				A709C71704D312DE7ABCEEDE /* Generated */,
+				C36C54BB943914BB89085073 /* Strings */,
 				2979D5FB2EE1D2F100BB2F54 /* AuthenticationManager.swift */,
 				29BEE6C7252E144F00D456F8 /* HabiticaWidgets.swift */,
 				29BEE6CD252E14C000D456F8 /* RemainingDailiesWidget.swift */,
@@ -3248,8 +3285,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2988EFC228D32C4300D703BC /* Mainstrings.strings in Resources */,
 				29BEE634252CCFE300D456F8 /* Assets.xcassets in Resources */,
+				E13003EE2714E652A4B0847E /* WidgetStrings.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3418,7 +3455,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "${BUILD_DIR%Build/*}SourcePackages/checkouts/firebase-ios-sdk/Crashlytics/run -gsp ${PROJECT_DIR}/HabitRPG/GoogleService-Info.plist -p ios\n";
+			shellScript = "# Only upload dSYMs when archiving a non-Debug configuration\nif [ \"${ACTION}\" != \"install\" ] || [ \"${CONFIGURATION}\" = \"Debug\" ]; then\n  echo \"Skipping dSYM upload for ${CONFIGURATION} ${ACTION} build\"\n  exit 0\nfi\n${BUILD_DIR%Build/*}SourcePackages/checkouts/firebase-ios-sdk/Crashlytics/run -gsp ${PROJECT_DIR}/HabitRPG/GoogleService-Info.plist -p ios\n";
 		};
 		298BE1CF2E2FAC77005DA8CD /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -3470,11 +3507,11 @@
 				29D853F72F30C66100D4762D /* ImageSubstitutionManager.swift in Sources */,
 				2995F7FC25BAF3B600322CB3 /* RemoteLogger.swift in Sources */,
 				29BEE632252CCFE100D456F8 /* StatsWidget.swift in Sources */,
+				E594DA3BF67C1D8C31F38266 /* WidgetStrings.swift in Sources */,
 				29A4CB77257FF31F0013F0B3 /* String-SafeExtensions.swift in Sources */,
 				29CEA81D26414F0D00101C0A /* UIColor-Extensions.swift in Sources */,
 				29BEE6D7252E14F000D456F8 /* HabiticaWidgets.swift in Sources */,
 				29BEE760252E367600D456F8 /* URLImage.swift in Sources */,
-				2988EFC328D32C4900D703BC /* Strings.swift in Sources */,
 				29BEE6E7252E1B7700D456F8 /* Color-Extensions.swift in Sources */,
 				2979D5FC2EE1D2F100BB2F54 /* AuthenticationManager.swift in Sources */,
 				2979D5F32EE1CEFB00BB2F54 /* TaskManager.swift in Sources */,
@@ -4035,6 +4072,31 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		ADA49126C6CE767FEBCC3503 /* WidgetStrings.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F08F1B28B3121186680EBD7B /* Base */,
+				8B846F9C746244A8E8124B19 /* de */,
+				E9D850B1ED36CEF3F3C5020E /* bg */,
+				168DD5B9683D51B18BAB2FAB /* cs */,
+				6CEE77C29E29F8B95D24BA63 /* da */,
+				E7B3ED82C89A3A0EFDFDBB03 /* es */,
+				ECD495DAF6984F642E791B2A /* fr */,
+				690FA24BEA7CA9F4DABACA14 /* he */,
+				65065ED05378B4402462A17D /* hr */,
+				0B95E53FBDB7AE09A9889C64 /* pl */,
+				69ABAA5A18E95C6F1725FE8F /* pt-BR */,
+				C6978735A46E51B7C3E2FDDC /* ro */,
+				F863A5AB2470870F09328CD0 /* ru */,
+				F655D9CE3FA607C5A8F7286D /* zh-Hans */,
+				CA561B2E8BA9765B45618F8C /* it */,
+				09ECF99D1B621438C2A048F1 /* ja */,
+				D2D07A2005F8AC686F53D3BC /* nl */,
+				60FF18B3C123008550D36CA2 /* uk */,
+			);
+			name = WidgetStrings.strings;
+			sourceTree = "<group>";
+		};
 		2902799F20583ECA006DACB9 /* User.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -4306,6 +4368,9 @@
 				ENABLE_RESOURCE_ACCESS_CAMERA = YES;
 				ENABLE_RESOURCE_ACCESS_PHOTO_LIBRARY = YES;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
+				EXCLUDED_SOURCE_FILE_NAMES = (
+					"Preview*.xcassets",
+				);
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -4321,6 +4386,7 @@
 					"@executable_path/Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = "$(RECOMMENDED_MACOSX_DEPLOYMENT_TARGET)";
+				MARKETING_VERSION = 4.2.0;
 				OTHER_LDFLAGS = (
 					"-ObjC",
 					"-framework",
@@ -4466,6 +4532,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
+				MARKETING_VERSION = 4.2.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				OTHER_LDFLAGS = "$(inherited)";
@@ -4508,6 +4575,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
+				MARKETING_VERSION = 4.2.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = "$(BUNDLE_ID_PREFIX).ios.Habitica.HabiticaIntentsUI";
@@ -4552,6 +4620,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
+				MARKETING_VERSION = 4.2.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				OTHER_LDFLAGS = "$(inherited)";
@@ -4674,6 +4743,9 @@
 				ENABLE_RESOURCE_ACCESS_CAMERA = YES;
 				ENABLE_RESOURCE_ACCESS_PHOTO_LIBRARY = YES;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
+				EXCLUDED_SOURCE_FILE_NAMES = (
+					"Preview*.xcassets",
+				);
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -4689,6 +4761,7 @@
 					"@executable_path/Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = "$(RECOMMENDED_MACOSX_DEPLOYMENT_TARGET)";
+				MARKETING_VERSION = 4.2.0;
 				OTHER_LDFLAGS = (
 					"-ObjC",
 					"-framework",
@@ -4834,6 +4907,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
+				MARKETING_VERSION = 4.2.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				OTHER_LDFLAGS = "$(inherited)";
@@ -4876,6 +4950,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
+				MARKETING_VERSION = 4.2.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = "$(BUNDLE_ID_PREFIX).ios.Habitica.HabiticaIntentsUI";
@@ -4920,6 +4995,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
+				MARKETING_VERSION = 4.2.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				OTHER_LDFLAGS = "$(inherited)";
@@ -5055,6 +5131,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
+				MARKETING_VERSION = 4.2.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				OTHER_LDFLAGS = "$(inherited)";
@@ -5102,6 +5179,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
+				MARKETING_VERSION = 4.2.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				OTHER_LDFLAGS = "$(inherited)";
@@ -5143,6 +5221,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
+				MARKETING_VERSION = 4.2.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = "$(BUNDLE_ID_PREFIX).ios.Habitica.HabiticaIntentsUI";
@@ -5186,6 +5265,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
+				MARKETING_VERSION = 4.2.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = "$(BUNDLE_ID_PREFIX).ios.Habitica.HabiticaIntentsUI";
@@ -5226,6 +5306,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
+				MARKETING_VERSION = 4.2.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				OTHER_LDFLAGS = "$(inherited)";
@@ -5270,6 +5351,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
+				MARKETING_VERSION = 4.2.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				OTHER_LDFLAGS = "$(inherited)";
@@ -5592,6 +5674,7 @@
 					"@executable_path/Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = "$(RECOMMENDED_MACOSX_DEPLOYMENT_TARGET)";
+				MARKETING_VERSION = 4.2.0;
 				OTHER_LDFLAGS = (
 					"-ObjC",
 					"-framework",
@@ -5654,6 +5737,11 @@
 				ENABLE_RESOURCE_ACCESS_CAMERA = YES;
 				ENABLE_RESOURCE_ACCESS_PHOTO_LIBRARY = YES;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
+				EXCLUDED_SOURCE_FILE_NAMES = (
+					habitica_alpha.icon,
+					habitica_beta.icon,
+					"Preview*.xcassets",
+				);
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -5668,6 +5756,7 @@
 					"@executable_path/Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = "$(RECOMMENDED_MACOSX_DEPLOYMENT_TARGET)";
+				MARKETING_VERSION = 4.2.0;
 				OTHER_LDFLAGS = (
 					"-ObjC",
 					"-framework",

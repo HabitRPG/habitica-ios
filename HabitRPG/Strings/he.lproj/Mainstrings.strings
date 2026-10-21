@@ -11,8 +11,6 @@
 /* (No Comment) */
 "avatar.flower" = "פרח";
 /* (No Comment) */
-"avatar.head" = "ראש";
-/* (No Comment) */
 "avatar.mustache" = "שפם";
 /* (No Comment) */
 "avatar.shirt" = "חולצה";
@@ -51,8 +49,6 @@
 /* (No Comment) */
 "difficulty" = "רמת קושי";
 /* (No Comment) */
-"edit" = "עריכה";
-/* (No Comment) */
 "eggs" = "ביצים";
 /* (No Comment) */
 "equip" = "צייד";
@@ -71,8 +67,6 @@
 /* (No Comment) */
 "equipment.head_accessory" = "אביזר ראש";
 /* (No Comment) */
-"equipment.nothing_equipped" = "ללא ציוד";
-/* (No Comment) */
 "equipment.use_costume" = "שימוש בתחפושת";
 /* (No Comment) */
 "equipment.weapon" = "נשק";
@@ -85,8 +79,6 @@
 /* (No Comment) */
 "invite_party" = "הזמן חבורה";
 /* (No Comment) */
-"leader" = "מנהיג";
-/* (No Comment) */
 "leave" = "עזוב";
 /* (No Comment) */
 "levelup_share" = "הגעתי לדרגה %ld בהאביטיקה על ידי שיפור ההרגלים בחיים האמיתיים שלי!";
@@ -97,15 +89,11 @@
 /* (No Comment) */
 "member.last_logged_in" = "התחברות אחרונה";
 /* (No Comment) */
-"member.member_since" = "חבר מאז";
-/* (No Comment) */
 "menu.customize_avatar" = "התאם דמות";
 /* (No Comment) */
 "menu.help_faq" = "עזרה ושאלות נפוצות";
 /* (No Comment) */
 "menu.inventory" = "מלאי";
-/* (No Comment) */
-"menu.select_class" = "בחר מקצוע";
 /* (No Comment) */
 "menu.shops" = "חנויות";
 /* (No Comment) */
@@ -114,8 +102,6 @@
 "monthly" = "חודשי";
 /* (No Comment) */
 "mounts" = "חיות רכיבה";
-/* (No Comment) */
-"my_guilds" = "הגילדות שלי";
 /* (No Comment) */
 "name" = "שם";
 /* (No Comment) */
@@ -149,11 +135,7 @@
 /* (No Comment) */
 "search" = "חיפוש";
 /* (No Comment) */
-"settings.api" = "API";
-/* (No Comment) */
 "settings.are_you_sure" = "האם אתם בטוחים?";
-/* (No Comment) */
-"settings.authentication" = "אימות";
 /* (No Comment) */
 "settings.change_class" = "החליפו מקצוע";
 /* (No Comment) */
@@ -161,11 +143,7 @@
 /* (No Comment) */
 "settings.clear_cache" = "נקה Cache";
 /* (No Comment) */
-"settings.custom_day_start" = "שעת התחלת יום מותאמת אישית";
-/* (No Comment) */
 "settings.daily_reminder" = "תזכורת יומית";
-/* (No Comment) */
-"settings.day_start" = "התחלת יום";
 /* (No Comment) */
 "settings.enable_class_system" = "אפשרו את מערכת המקצועות";
 /* (No Comment) */
@@ -174,8 +152,6 @@
 "settings.log_out" = "התנתק";
 /* (No Comment) */
 "settings.maintenance" = "תחזוקה";
-/* (No Comment) */
-"settings.profile" = "פרופיל";
 /* (No Comment) */
 "settings.reload_content" = "טען תוכן מחדש";
 /* (No Comment) */
@@ -197,14 +173,6 @@
 /* (No Comment) */
 "stable.special_pets" = "חיות מחמד מיוחדות";
 /* (No Comment) */
-"stats.allocated" = "הוקצו";
-/* (No Comment) */
-"stats.battle_gear" = "ציוד לחימה";
-/* (No Comment) */
-"stats.buffs" = "הגברות";
-/* (No Comment) */
-"stats.level" = "דרגה";
-/* (No Comment) */
 "summary" = "סיכום";
 /* (No Comment) */
 "tags" = "תגיות";
@@ -214,8 +182,6 @@
 "tasks.form.checklist" = "רשימה";
 /* (No Comment) */
 "tasks.form.clear" = "נקה";
-/* (No Comment) */
-"tasks.form.confirm_delete" = "בטוח/ה שיש צורך למחוק את המשימה הזו?";
 /* (No Comment) */
 "tasks.form.difficulty" = "רמת קושי";
 /* (No Comment) */
@@ -239,14 +205,6 @@
 /* (No Comment) */
 "tasks.todo" = "מטלה";
 /* (No Comment) */
-"theme.blue" = "כחול";
-/* (No Comment) */
-"theme.green" = "ירוק";
-/* (No Comment) */
-"theme.red" = "אדום";
-/* (No Comment) */
-"theme.yellow" = "צהוב";
-/* (No Comment) */
 "title" = "כותרת";
 /* (No Comment) */
 "unequip" = "הסר ציוד";
@@ -254,37 +212,27 @@
 "weekly" = "שבועי";
 /* (No Comment) */
 "yearly" = "שנתי";
-"back" = "חזור";
 "all" = "הכל";
 "weak" = "חלש";
 "strong" = "חזק";
 "due" = "פעיל";
-"dated" = "מיושן";
 "done" = "בוצע";
 "clear" = "נקה";
 "use" = "השתמש";
 "titles.settings" = "הגדרות";
-"titles.authentication" = "אימות";
-"titles.profile" = "פרופיל";
-"titles.api" = "API";
 "titles.fix_values" = "תקן ערכים";
 "titles.select_class" = "בחר מקצוע";
 "titles.stats" = "נתונים";
 "titles.equipment" = "ציוד";
 "titles.items" = "פריטים";
-"titles.faq" = "שאלות נפוצות";
 "titles.about" = "אודות";
 "titles.news" = "חדשות";
 "titles.pets" = "חיות מחמד";
 "titles.mounts" = "חיות רכיבה";
 "titles.party" = "חבורה";
-"titles.guilds" = "גילדות";
 "titles.guild" = "גילדה";
 "titles.challenges" = "אתגרים";
-"titles.shops" = "חנויות";
 "titles.feed_pet" = "האכל חיית מחמד";
-"titles.invite_members" = "הזמן חברים";
-"titles.spells" = "קסמים";
 "stats.distribute_evenly_help" = "מקצה את אותו מספר נקודות לכל תכונה";
 "stats.distribute_class_help" = "מקצה יותר נקודות לתכונות שחשובות למקצוע שלך";
 "stats.distribute_tasks_help" = "הקצו נקודות בהתבסס על הקטגוריות של כוח, תבונה, חוסן, ותפיסה שקשורות למשימות שאתם משלימים.";
@@ -318,7 +266,6 @@
 "tasks.examples.creativity_todo_text" = "סיים פרוייקט יצירה";
 "menu" = "תפריט";
 "filter" = "סנן";
-"one_filter" = "1 סינון";
 "x_filters" = "%ld סינונים";
 "my_challenges" = "האתגרים שלי";
 "settings.danger_zone" = "אזור מסוכן";
@@ -326,20 +273,15 @@
 "settings.delete_account" = "מחקו את חשבונכם";
 "settings.delete_account_description" = "האם אתם בטוחים? פעולה זו תמחק את החשבון שלכם לצמיתות, ולא ניתן יהיה לשחזרו! עליכה יהיה ליצור חשבון חדש על מנת להשתמש בHabitica שוב. לא יתקבל החזר כספי עבור אבני-חן. אם אתם בטוחים לחלוטין, הקלידו את הסיסמה שלכם בתיבת הטקסט.";
 "settings.change_username" = "שנה/י שם משתמש/ת";
-"settings.new_username" = "שם משתמש/ת חדש";
 "settings.change_password" = "שנו סיסמה";
 "settings.new_password" = "סיסמה חדשה";
 "settings.old_password" = "סיסמה ישנה";
-"settings.local" = "מקומי";
 "join" = "הצטרפו";
 "food" = "אוכל";
 "share" = "שתף";
 "equipment.equipment" = "ציוד";
-"avatar.glasses" = "משקפיים";
-"purchase_gems" = "רכשו אבני חן";
 "level" = "דרגה";
 "glasses" = "משקפיים";
-"size" = "גודל";
 "shirt" = "חולצה";
 "bangs" = "טלטלים";
 "ponytail" = "קוקו";
@@ -353,19 +295,10 @@
 "friday" = "שישי";
 "saturday" = "שבת";
 "sunday" = "ראשון";
-"groups.invite.invitation_type" = "סוג הזמנה";
 "userID" = "מזהה משתמש";
-"api_key" = "מפתח API";
 "email" = "מייל";
-"groups.invite.add_userid" = "הוסף מזהה משתמש";
-"groups.invite.add_email" = "הוסף מייל";
 "username" = "שם משתמש";
 "password" = "סיסמה";
-"about.website" = "אתר";
-"about.report_bug" = "דיווח על תקלה";
-"about.view_source_code" = "צפה בקוד המקור";
-"about.acknowledgements" = "תודות";
-"about.version" = "גרסה";
 "login.register" = "הרשמו";
 "login.login" = "התחבר";
 "intro.card3.text" = "השארו מחוייבים למטרות שלכם עם חבריכם. תמכו אחד בשני בחיים ובקרב כשאתם משתפרים ביחד!";
@@ -383,9 +316,6 @@
 "locations.seasonal_shop" = "חנות עונתית";
 "locations.stable" = "אורווה";
 "write_message" = "כתבו הודעה";
-"tutorials.add_task" = "לחץ להוספת משימה חדשה.";
-"tutorials.edit_task" = "ליחצו על משימות כדי לערוך אותן וכדי להוסיף תזכורות. החליקו שמאלה כדי למחוק אותן.";
-"tutorials.filter_task" = "לחץ לסינון משימות.";
 "buffs" = "הגברות";
 "allocated" = "הוקצו";
 "gems" = "אבני חן";
@@ -395,9 +325,7 @@
 "accept" = "לקבל";
 "reject" = "דחו";
 "abort" = "בטל";
-"reply" = "השב";
 "send" = "שליחה";
-"reminder" = "תזכורת";
 "invitations" = "הזמנות";
 "accessibility.due" = "פעיל";
 "collect" = "לאסוף";
@@ -407,21 +335,12 @@
 "moderator" = "עורך";
 "staff" = "חבר צוות";
 "report_x_violation" = "דווח על הפרה של %@?";
-"streak_achievement_title" = "הרווחת הישג רצף!";
-"not_enough_gems" = "חסרות לך אבני חן";
 "choose_task" = "בחר משימה";
-"change" = "שנה";
 "titles.skills" = "יכולות";
-"titles.avatar" = "אווטר";
-"titles.gift_subscription" = "שלח מנוי במתנה";
 "titles.choose_user" = "בחר משתמש";
-"titles.choose_recipient" = "בחר משתמש יעד";
 "titles.guidelines" = "הנחיות";
-"stats.no_points_to_allocate" = "0 נקודות לפיזור";
 "stats.one_point_to_allocate" = "נקודה אחת לפיזור";
 "stats.points_to_allocate" = "%d נקודות לפיזור";
-"stats.class_bonus" = "עבודה-בונוס";
-"stats.total" = "סה\"כ";
 "stats.auto_allocate_points" = "פיזור נקודות אוטומטי";
 "stats.distribute_evenly" = "פיזור בצורה שווה";
 "stats.distribute_class" = "פיזור המבוסס על העבודה שבחרת";
@@ -431,19 +350,11 @@
 "stats.intelligence_text" = "מעלה את נקודות הניסיון המתקבלות מהשלמת משימות. בנוסף, מעלה את מכסת האנרגיה וכמה מהר האנרגיה משתחזרת לאורך זמן.";
 "stats.constitution_text" = "מוריד את כמות הנזק מהמשימות. לא מוריד את כמות הנזק הנגרמת מבוסים.";
 "stats.perception_text" = "מעלה את ההסתברות להשיג פריטים כאשר משלימים משימה, כמות הפריטים המקסימלית היומית, בונוס \"סטרייק\" (רציפות) ואת כמות הזהב שמשיגים ממשימה שהושלמה.";
-"controls" = "מקשים";
-"resetStreak" = "איפוס רצף";
 "tasks.form.create" = "חדש %@";
-"tasks.form.habit_title_placeholder" = "אילו הרגלים אתם רוצים לטפח ומאילו להיפתר?";
-"tasks.form.dailies_title_placeholder" = "מה אתם רוצים לעשות באופן קבוע?";
-"tasks.form.todos_title_placeholder" = "מה אתם רוצים להשלים רק פעם אחת?";
-"tasks.form.rewards_title_placeholder" = "איך אתם רוצים לתגמל את עצמכם?";
 "tasks.form.controls" = "מקשי שליטה";
-"tasks.form.reset_streak" = "איפוס רצף";
 "tasks.form.scheduling" = "תזמון";
 "tasks.form.new_checklist_item" = "פריט רשימת תיוג חדש";
 "tasks.form.new_reminder" = "תזכור חדש";
-"tasks.form.remind_me" = "הזכר לי";
 "tasks.form.start_date" = "תאריך התחלה";
 "tasks.form.due_date" = "תאריך סיום";
 "tasks.form.repeats" = "חזרתיות";
@@ -451,13 +362,6 @@
 "tasks.form.day_of_month" = "יום בחודש";
 "tasks.form.day_of_week" = "יום בשבוע";
 "tasks.form.cost" = "עלות";
-"tasks.form.accessibility.positive_and_negative_enabled" = "פעילות על הרגלים חיוביים ושלילים הופעלה.";
-"tasks.form.accessibility.positive_enabled" = "פעילות הרגלים חיוביים הופעלה.";
-"tasks.form.accessibility.negative_enabled" = "פעילות הרגלים שליליים הופעלה.";
-"tasks.form.accessibility.enable_positive" = "הפעל פעילות חיובית.";
-"tasks.form.accessibility.disable_positive" = "בטל פעילות חיובית.";
-"tasks.form.accessibility.enable_negative" = "הפעל פעילות שלילית.";
-"tasks.form.accessibility.disable_negative" = "בטל פעילות שלילית.";
 "tasks.form.accessibility.task_difficulty" = "רמת הקושי: %@";
 "tasks.form.accessibility.set_task_difficulty" = "שנה את רמת הקושי ל %@";
 "tasks.form.accessibility.enable" = "הפעל %@";
@@ -514,9 +418,6 @@
 "tasks.examples.creativity_habit" = "אמן יכולות יצירתית חדשה";
 "tasks.examples.creativity_daily_notes" = "לחץ כדי להגדיר את השם של הפרויקט הנוכחי + בחר את תזמונו!";
 "tasks.examples.creativity_todo_notes" = "לחץ כדי להגדיר את השם של הפרויקט שלך";
-"tasks.form.notes_placeholder" = "הוסף \"פתקונים\" כדי לעזור לך";
-"resync" = "סנכרון מחדש";
-"resync_all" = "סנכרון כללי מחדש";
 "resync_task" = "סנכרון משימה זו";
 "skills.unlocks_at" = "נפתח ברמה %d";
 "skills.use_skill" = "השתמשת ב %@";
@@ -544,12 +445,10 @@
 "settings.login_methods" = "שיטות התחברות";
 "settings.reset_account_description" = "אזהרה! הבחירה הזו תאפס הרבה מאוד חלקים מהמשתמש שלך. זה לא מומלץ, אבל חלק מהאנשים מוצאים את זה שימושי (איפוס כמעט מלא של הדמות)\nאתה תפסיד את כל הרמות שלך, הזהב ונקודות הניסיון. כל המשימות (חוץ מאתגרים) ימחקו לצמיתות! ובנוסף, אתה תפסיק את כל התיעוד ההיסטורי של המשימות. תפסיד כל החפצים אבל תוכל לרכוש אותם חזרה בהמשך, גם את כל החפצים שהשגת שהיו מוגבלים לתקופת זמן ולכן לא ניתן להשיגם עוד! (כולל חפצים שקנית דרך מינוי!). החיות וחיות הרכיבה ישארו, אולי במקום לבחור באופציה הזו כדאי לך להשתמש ב\"לידה מחדש\", שבניגוד לתהליך הזה, שומר על המשימות והחפצים שלך, אך עדיין מחזיר אותך לרמה 1.";
 "settings.change_email" = "שנה כתובת מייל";
-"settings.new_email" = "כתובת מייל חדשה";
 "settings.confirm_new_password" = "אשר סיסמא חדשה";
 "settings.searchable_everywhere" = "בכל מקום";
 "settings.searchable_private_spaces" = "רק אזורים פרטיים";
 "settings.mentions" = "איזכורים";
-"theme.default_theme" = "ברירת מחדל";
 "stable.premium" = "תֶקֶן";
 "stable.standard" = "תֶקֶ";
 "titles.notifications" = "הודעות";
@@ -557,23 +456,17 @@
 "not_due" = "המועד האחרון";
 "scheduled" = "מתוזמן";
 "completed" = "מוגמר";
-"yes" = "כן";
-"no" = "לא";
 "titles.messages" = "מסרונים";
 "titles.basics" = "בסיסיים";
 "tasks.form.none" = "ללא";
 "menu.gems" = "רכישת אבני חן";
 "menu.subscription" = "מנוי";
-"menu.group_plans" = "קבוצות";
 "tasks.form.not_editable_disclaimer" = "למשימות אתגר או משימות קבוצה אפשרויות עריכה מצומצמות בהשוואה למשימות הרגילות שלך";
 "settings.next_cron_run" = "איפוס יום למחרת %@";
 "settings.day_start_adjustment" = "התאמת תחילת היום";
 "settings.custom_day_start_description" = "שנה את השעה שבה היום מתחלף מעבר לשעת ברירת המחדל של 12:00 בלילה";
 "tasks.form.adjust_counter" = "עדכן מונה";
-"total_completions" = "סה\"כ המשימות שהושלמו";
 "tasks.form.times_scored" = "פעמים שנוקדו";
-"titles.hall_of_heroes" = "היכל הגיבורים";
-"created_at" = "נוצר ב";
 "skills.caused_damage" = "פגעת בבוס וגרמת לנזק";
 "tasks.form.last_scored" = "פעם אחרונה שנוקד";
 "menu.skills" = "יכולות";
@@ -581,11 +474,8 @@
 "titles.achievements" = "הישגים";
 "tasks.form.adjust_streak" = "עדכן רצף";
 "tasks.form.positive" = "חיובי";
-"streak" = "רצף";
-"update" = "עדכון";
 "tasks.form.completion" = "סיום";
 "tasks.form.negative" = "שלילי";
-"tasks.form.completions" = "מה שסיימתי";
 "titles.hall_of_contributors" = "היכל התורמים";
 "menu.support" = "תמיכה";
 "tasks.tasks" = "משימות";

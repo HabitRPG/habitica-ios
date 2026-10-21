@@ -1,10 +1,14 @@
 strings:
-  inputs: HabitRPG/Strings/Base.lproj/Mainstrings.strings
-  outputs:
-    - templatePath: swiftgen-templates/habiticastrings-swift5.stencil
-      output: HabitRPG/Generated/Strings.swift
-      params:
-          publicAccess: true
+  - inputs: HabitRPG/Strings/Base.lproj/Mainstrings.strings
+    outputs:
+      - templatePath: swiftgen-templates/habiticastrings-swift5.stencil
+        output: HabitRPG/Generated/Strings.swift
+        params:
+            publicAccess: true
+  - inputs: Habitica Widgets/Strings/Base.lproj/WidgetStrings.strings
+    outputs:
+      - templatePath: swiftgen-templates/habiticastrings-swift5.stencil
+        output: Habitica Widgets/Generated/WidgetStrings.swift
 xcassets:
   inputs: HabitRPG/Images.xcassets
   outputs:
