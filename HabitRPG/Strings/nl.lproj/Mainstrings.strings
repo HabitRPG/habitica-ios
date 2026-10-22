@@ -789,8 +789,8 @@
 "unlockDropsTitle" = "Je hebt het drop-systeem vrijgespeeld!";
 "unlockDropsDescription" = "Je hebt het Drop-systeem vrijgespeeld! Als je nu een taak voltooid, heb je een kleine kans om een voorwerp te vinden, zoals eieren, drankjes en voedsel!";
 "subscription_info_1_title" = "Gratis Maandelijkse Edelstenen";
-"subscription_info_2_title" = "Mystieke zandlopers";
-"subscription_info_3_title" = "Maandelijkse mysterie voorwerpen";
+"subscription_info_2_title" = "Maandelijkse Mystieke zandlopers";
+"subscription_info_3_title" = "Maandelijkse Uitrusting Sets in Beperkte Oplage";
 "subscription_info_3_description" = "Schrijf je nu in om nu een exclusieve set te krijgen en elke maand nieuwe voorwerpen te ontvangen!";
 "subscription_benefits_title" = "Word abonnee en je krijgt deze handige voordelen";
 "gem_benefits_title" = "Edelstenen staan je toe om leuke extra's te kopen voor je account, waaronder:";
@@ -955,8 +955,8 @@
 "publish_challenge" = "Maak de uitdaging openbaar";
 "view_participant_progress" = "Laat de voortgang zien van de participant";
 "end_challenge" = "Beëindig uitdaging";
-"subscription_info_1_description" = "Je kunt edelstenen van de markt kopen voor 20 goud per stuk!";
-"subscription_info_2_description" = "Verdien mystieke zandlopers om voorwerpen te kopen in de tijdreizigerswinkel!";
+"subscription_info_1_description" = "Krijg tot 50 met Goud te kopen Edelstenen in de marktplaats om Queesten, Aanpassingen, Huisdieren en meer van te kopen!";
+"subscription_info_2_description" = "Mis nooit een item met 1 Mystieke zandloper per maand om in de Tijdreizigerswinkel te gebruiken!";
 "subscription_gift_explanation" = "Wil je een abonnement cadeau doen aan iemand anders?";
 "subscription_gift_button" = "Geef een abonnement cadeau";
 "subscription_support_developers" = "Abonneren ondersteunt ons kleine team en helpt Habitica draaiende te houden";
@@ -1617,3 +1617,9 @@
 "shops.daysUntilFreeRebirth" = "%d dagen tot een GRATIS Bol der Hergeboorte";
 "shops.goToMarket" = "Naar de Marktplaats";
 "shops.rebirthConfirmKeepHeader" = "Je behoudt:";
+"armoire.subbed_button_prompt" = "Open gratis nog een keer!";
+"armoire.subbed_footer" = "Je abonnement geeft je een extra kans bij het Kabinet!";
+"checkin_prize_description" = "Je hebt een %s verdiend voor je inzet om je leven te verbeteren";
+"checkin_prize_set_description" = "Je hebt een set van %s verdiend voor je inzet om je leven te verbeteren";
+"shops.rebirthConfirmResetItem2" = "Al je Eigenschapspunten";
+"shops.rebirthConfirmResetItem3" = "Al je Goud en Mana";
