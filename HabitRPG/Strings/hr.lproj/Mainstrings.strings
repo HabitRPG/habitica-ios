@@ -949,7 +949,7 @@
 "about.report_bug" = "Prijavi Grešku";
 "settings.username_not_confirmed" = "Korisničko ime nije potvrđeno";
 "about.love_open_source" = "Web voli softver otvorenog koda.";
-"login.password_confirm_error" = "Zaporka i potvrda zaporke moraju se podudarati i biti duži od 8 znakova.";
+"login.password_confirm_error" = "Zaporka i potvrda zaporke moraju se podudarati.";
 "groups.error_name_required" = "Ime ne smije biti prazno.";
 "intro.card2.title" = "Napreduj u Igri";
 "intro.card2.subtitle" = "Napreduj u životu";
@@ -1103,7 +1103,7 @@
 "accessibility.world_boss_pending_damage" = "%@, Svjetski Boss, šteta na čekanju: %@";
 "force_start" = "Prisili Početak";
 "subscription_info_1_description" = "U Dućanu dobij do 50 dragulja koji se mogu kupiti za zlato, za kupovinu Pustolovina, Prilagodbi, Ljubimaca i još mnogo toga!";
-"subscription_info_5_title" = "Poseban ljubimac i veća šansa za dobivanje predmeta";
+"subscription_info_5_title" = "Poseban ljubimac i više predmeta";
 "subscription.info_armoire_description" = "Dvije su ti prilike da osvojiš novu opremu svaki put kada otvoriš Začarani ormar!";
 "faint.subtitle" = "Spustit ćeš se na **razinu %s, izgubiti %s Zlata i slomiti komad opreme... Možeš sve to zaraditi natrag napornim radom!";
 "faint.disclaimer" = "Slomljena oprema može se ponovno kupiti u Dućanu";
@@ -1151,7 +1151,7 @@
 "armoire.unsubbed_footer" = "Kao pretplatnik dobivaš dodatnu priliku za otvaranje Ormara svaki put kada ga kupiš";
 "world_boss.description" = "Svjetski Boss je poseban događaj na kojem cijela zajednica radi zajedno kako bi svojim zadacima srušila moćno čudovište!";
 "world_boss.rage_strike_warning" = "Budite oprezani...\nSvjetski Boss će nasrnuti i napasti jednog od naših prijateljski nastrojenih trgovaca nakon što se njegova crta bijesa ispuni. Pratite svoje dnevne zadatke kako biste pokušali spriječiti da se to dogodi!";
-"world_boss.rage_strike_explanation" = "Postoje 3 potencijalna Udara Bijesa (Rage Strikes).\nOva traka se puni kada Habitikanci propuste svoje Dnevne zadatke. Ako se napuni, DysHeartener će pokrenuti napad Shattering Heartbreak na jednog od Habitica trgovaca, stoga se pobrinite da obavite svoje zadatke!";
+"world_boss.rage_strike_explanation" = "Postoje 3 potencijalna Udara Bijesa.\nOva traka se puni kada Habitikanci propuste svoje Dnevne zadatke. Ako se napuni, DysHeartener će pokrenuti napad Shattering Heartbreak na jednog od Habitica trgovaca, stoga se pobrinite da obavite svoje zadatke!";
 "accessibility.viewX" = "Prikaži %@";
 "unlockDropsTitle" = "Otključao/la si sustav pada predmeta!";
 "unlockDropsDescription" = "Otključali ste Sustav Pada predmeta! Sada kada završite zadatke, imate male šanse da pronađete predmet, uključujući jaja, napitke i hranu!";
@@ -1214,7 +1214,7 @@
 "agree_guidelines_prompt" = "Slažem se da ću slijediti smjernice";
 "send" = "Pošalji";
 "create_tag" = "Stvori Oznaku";
-"subscription_info_2_description" = "Zaradite mistične pješčane satove za kupnju artikala u Dućanu vremenskog putnika!";
+"subscription_info_2_description" = "Zaradite 1 mistični pješčani sat mjesečno za kupnju artikala u Dućanu putnika kroz vrijeme!";
 "subscription_info_3_description" = "Pretplati se sada da dobiješ ekskluzivni set odmah i primiš nove predmete svaki mjesec!";
 "subscription_info_5_description" = "Nabavi Kraljevskog Ljubičastog Džekalopa plus dvostruko više Jaja, Napitaka za izlijeganje i Hrane svaki dan za rast svoje kolekcije Ljubimaca!";
 "subscription_benefits_title" = "Ostanite motivirani uz još više nagrada kada se pretplatite";
