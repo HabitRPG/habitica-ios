@@ -229,7 +229,7 @@
 /* (No Comment) */
 "quests.accepted" = "Prihvaćeno";
 /* (No Comment) */
-"quests.boss_battle" = "Borba protiv Bossa";
+"quests.boss_battle" = "Borba protiv Šefa";
 /* (No Comment) */
 "quests.collection_quest" = "Pustolovina prikupljanja";
 /* (No Comment) */
@@ -512,7 +512,7 @@
 "titles.about" = "O";
 "titles.news" = "Novosti";
 "titles.pets" = "Ljubimci";
-"titles.mounts" = "Životinje za jahanje";
+"titles.mounts" = "Jahaće životinje";
 "titles.party" = "Grupa";
 "titles.guilds" = "Cehovi";
 "titles.guild" = "Ceh";
@@ -543,7 +543,7 @@
 "stats.intelligence_text" = "Povećava Iskustvo zarađeno zadacima. Također povećava tvoj maksimum Mane i brzinu obnavljanja Mane.";
 "tasks.form.negative" = "Negativno";
 "tasks.form.none" = "Ništa";
-"titles.pets_and_mounts" = "Ljubimci i Životinje za jahanje";
+"titles.pets_and_mounts" = "Ljubimci i Jahaće životinje";
 "scheduled" = "Zakazano";
 "completed" = "Dovršeno";
 "titles.messages" = "Poruke";
@@ -631,8 +631,8 @@
 "tasks.examples.school_daily_text" = "Napišite domaću zadaću";
 "settings.custom_day_start_description" = "Pomakni resetiranje dana izvan zadanog vremena u ponoć";
 "settings.updated_password" = "Zaporka uspješno promijenjena";
-"settings.reset_account_description" = "Izgubit ćete sve svoje razine, Zlato i Iskustvo. Svi vaši zadaci i njihovi povijesni podaci bit će izbrisani (Zadaci iz Izazova će ostati). Izgubit ćete svu opremu, osim predmeta za Pretplatnike i besplatnih komemorativnih predmeta, ali moći ćete je ponovno kupiti. Morat ćete biti odgovarajuće klase da ponovno kupite opremu specifičnu za klasu. Zadržat ćete svoju trenutnu klasu, Postignuća te svoje Ljubimce i Životinje za jahanje. Za potvrdu poništenja, upišite svoju zaporku u nastavku.";
-"settings.reset_account_description_social" = "Izgubit ćete sve svoje razine, Zlato i Iskustvo. Svi vaši zadaci i njihovi povijesni podaci bit će izbrisani (Zadaci iz Izazova će ostati). Izgubit ćete svu opremu, osim predmeta za Pretplatnike i besplatnih komemorativnih predmeta, ali moći ćete je ponovno kupiti. Morat ćete biti odgovarajuće klase da ponovno kupite opremu specifičnu za klasu. Zadržat ćete svoju trenutnu klasu, Postignuća te svoje Ljubimce i Životinje za jahanje. Ako ste apsolutno sigurni, upišite RESET u tekstualno polje ispod.";
+"settings.reset_account_description" = "Izgubit ćete sve svoje razine, Zlato i Iskustvo. Svi vaši zadaci i njihovi povijesni podaci bit će izbrisani (Zadaci iz Izazova će ostati). Izgubit ćete svu opremu, osim predmeta za Pretplatnike i besplatnih komemorativnih predmeta, ali moći ćete je ponovno kupiti. Morat ćete biti odgovarajuće klase da ponovno kupite opremu specifičnu za klasu. Zadržat ćete svoju trenutnu klasu, Postignuća te svoje Ljubimce i Jahaće životinje. Za potvrdu poništenja, upišite svoju zaporku u nastavku.";
+"settings.reset_account_description_social" = "Izgubit ćete sve svoje razine, Zlato i Iskustvo. Svi vaši zadaci i njihovi povijesni podaci bit će izbrisani (Zadaci iz Izazova će ostati). Izgubit ćete svu opremu, osim predmeta za Pretplatnike i besplatnih komemorativnih predmeta, ali moći ćete je ponovno kupiti. Morat ćete biti odgovarajuće klase da ponovno kupite opremu specifičnu za klasu. Zadržat ćete svoju trenutnu klasu, Postignuća te svoje Ljubimce i Jahaće životinje. Ako ste apsolutno sigurni, upišite RESET u tekstualno polje ispod.";
 "tasks.examples.team_daily_text" = "Obavijestite tim o statusu";
 "tasks.examples.school_habit" = "Učiti/Odugovlačiti";
 "tasks.quality.worst" = "Najgore";
@@ -700,7 +700,7 @@
 "settings.change_username" = "Promjeni Korisničko ime";
 "settings.new_password" = "Nova Zaporka";
 "settings.pauseDamage.pause_damage_title1" = "Propušteni Dnevni zadaci vaš neće oštetiti";
-"settings.pauseDamage.pause_damage_description1" = "Bossevi će i dalje nanositi štetu uzrokovanu propuštenim Dnevnim zadacima ostalih članova Grupe";
+"settings.pauseDamage.pause_damage_description1" = "Šefovi će i dalje nanositi štetu uzrokovanu propuštenim Dnevnim zadacima ostalih članova Grupe";
 "settings.searchable_everywhere" = "Svugdje";
 "settings.email_notifications.title" = "Email Adrese";
 "settings.push_notifications.received_pm" = "Dobio/la si privatnu poruku";
@@ -775,7 +775,7 @@
 "inventory.visit_market" = "Posjeti Dućan";
 "avatar.hair_styles" = "Frizure";
 "party.quest_participant_one" = "1 Sudionik";
-"settings.pauseDamage.resume_damage_description1" = "Bossevi će ponovno nanositi štetu članovima Grupe zbog tvojih propuštenih Dnevnih zadataka";
+"settings.pauseDamage.resume_damage_description1" = "Šefovi će ponovno nanositi štetu članovima Grupe zbog tvojih propuštenih Dnevnih zadataka";
 "settings.pauseDamage.resume_damage_title2" = "Vaši nizovi i brojači se mogu poništiti";
 "settings.pauseDamage.resume_damage_description2" = "Propuštanje Dnevnog zadatka će poništiti vaš niz, a Brojači navika će se poništiti normalno";
 "settings.pauseDamage.resume_damage_title3" = "Napredak vaše Pustolovine će se ponovno primjenjivati";
@@ -991,7 +991,7 @@
 "groups.invite.add_userid" = "Dodaj Korisnički ID";
 "groups.invite.add_email" = "Dodaj Email";
 "broad" = "Širok";
-"whats_world_boss" = "Što je Boss Svijeta?";
+"whats_world_boss" = "Što je Šef Svijeta?";
 "settings.confirm_username_description" = "Potvrdom korisničkog imena ono će postati javno za pozivnice, @spominjanja i slanje poruka. Svoje korisničko ime možete promijeniti u postavkama u bilo kojem trenutku.";
 "leave_challenge_title" = "Napusti Pustolovinu?";
 "errors.request" = "Došlo je do pogreške s vašim zahtjevom: %@";
@@ -1100,7 +1100,7 @@
 "faint.unsubbed_footer" = "Pretplatom dobivaš drugu priliku svaki dan da izbjegneš ostanak bez HP-a";
 "faint.good_luck_text" = "Ali možete ih sve zaraditi natrag napornim radom! Sretno – bit ćete odličani. ";
 "reply" = "Odgovori";
-"accessibility.world_boss_pending_damage" = "%@, Svjetski Boss, šteta na čekanju: %@";
+"accessibility.world_boss_pending_damage" = "%@, Svjetski Šef, šteta na čekanju: %@";
 "force_start" = "Prisili Početak";
 "subscription_info_1_description" = "U Dućanu dobij do 50 dragulja koji se mogu kupiti za zlato, za kupovinu Pustolovina, Prilagodbi, Ljubimaca i još mnogo toga!";
 "subscription_info_5_title" = "Poseban ljubimac i više predmeta";
@@ -1110,7 +1110,7 @@
 "faint.unsubbed_button_prompt" = "Pretplati se za zadržavanje 1 HP-a!";
 "armoire.food" = "Pretražuješ Ormar i pronalaziš hranu. Što ona radi ovdje?";
 "armoire.experience" = "Boriš se s Ormarom i dobivaš Iskustvo. Neka ti tako!";
-"armoire.rate_experience_title" = "20% Bodovi Iskustva";
+"armoire.rate_experience_title" = "20%% Bodovi Iskustva";
 "armoire.rate_experience_description" = "Dobiveni iznos nasumično varira od 10 do 50.";
 "armoire.rate_food_description" = "Dobit ćeš jednu od deset vrsta Hrane. Tijekom specijalnih događaja, normalna hrana će se promijeniti u kolače ili slatkiše.";
 "world_boss.pending_strike" = "Predstojeći Udarac";
@@ -1126,16 +1126,16 @@
 "decline" = "Odbij";
 "accessibility.due" = "Rok";
 "armoire.enchanted_armoire_drop_rates" = "Stope dobivanja predmeta iz Začaranog Ormara";
-"armoire.rate_equipment_title" = "60% Komad Opreme";
-"armoire.rate_food_title" = "20% Komad Hrane";
+"armoire.rate_equipment_title" = "60%% Komad Opreme";
+"armoire.rate_food_title" = "20%% Komad Hrane";
 "armoire.equipment_remaining" = "Preostalo opreme: %d";
 "armoire.unsubbed_button_prompt" = "Pretplati se da ponovno otvoriš besplatno!";
 "armoire.subbed_button_prompt" = "Otvori ponovno besplatno!";
 "armoire.subbed_footer" = "Tvoja ti pretplata daje dodatnu šansu kod Ormara!";
 "world_boss.title" = "%@ napada!";
-"world_boss.second_bullet" = "Boss vas neće oštetiti za propuštene zadatke, ali će njegov mjerač bijesa porasti. Ako se bar napuni, Bos će napasti jednog od trgovaca!";
+"world_boss.second_bullet" = "Šef vas neće oštetiti za propuštene zadatke, ali će njegov mjerač bijesa porasti. Ako se bar napuni, Šef će napasti jednog od trgovaca!";
 "world_boss.third_bullet" = "Možete nastaviti s uobičajenim Bossovim Pustolovinama, šteta će se primijeniti na oboje";
-"world_boss.fourth_bullet" = "Provjeri Krčmu kako bi vidio/la napredak Bossa i napade bijesa";
+"world_boss.fourth_bullet" = "Provjeri Krčmu kako bi vidio/la napredak Šefa i napade bijesa";
 "checkin_yesterdays_dalies" = "Označi Dnevne zadatke koje si jučer obavio/la prije nego što započneš danas:";
 "remember_check_off_dailies" = "Ne zaboravite provjeriti svoje dnevne zadatke!";
 "accessibility.copy_message" = "Kopiraj Poruku";
@@ -1149,8 +1149,8 @@
 "armoire.equipment" = "Pronalaziš komad rijetke Opreme u Ormaru!";
 "armoire.rate_equipment_description" = "Novi komadi Opreme dodaju se svaki mjesec. Ako posjeduješ sve komade opreme, tada ćeš dobiti Hranu ili Iskustvo, s omjerom 50/50.";
 "armoire.unsubbed_footer" = "Kao pretplatnik dobivaš dodatnu priliku za otvaranje Ormara svaki put kada ga kupiš";
-"world_boss.description" = "Svjetski Boss je poseban događaj na kojem cijela zajednica radi zajedno kako bi svojim zadacima srušila moćno čudovište!";
-"world_boss.rage_strike_warning" = "Budite oprezani...\nSvjetski Boss će nasrnuti i napasti jednog od naših prijateljski nastrojenih trgovaca nakon što se njegova crta bijesa ispuni. Pratite svoje dnevne zadatke kako biste pokušali spriječiti da se to dogodi!";
+"world_boss.description" = "Svjetski Šef je poseban događaj na kojem cijela zajednica radi zajedno kako bi svojim zadacima srušila moćno čudovište!";
+"world_boss.rage_strike_warning" = "Budite oprezani...\nSvjetski Šef će nasrnuti i napasti jednog od naših prijateljski nastrojenih trgovaca nakon što se njegova crta bijesa ispuni. Pratite svoje dnevne zadatke kako biste pokušali spriječiti da se to dogodi!";
 "world_boss.rage_strike_explanation" = "Postoje 3 potencijalna Udara Bijesa.\nOva traka se puni kada Habitikanci propuste svoje Dnevne zadatke. Ako se napuni, DysHeartener će pokrenuti napad Shattering Heartbreak na jednog od Habitica trgovaca, stoga se pobrinite da obavite svoje zadatke!";
 "accessibility.viewX" = "Prikaži %@";
 "unlockDropsTitle" = "Otključao/la si sustav pada predmeta!";
@@ -1158,14 +1158,14 @@
 "accessibility.unknown" = "Nepoznato";
 "allocated" = "Dodjeljeno";
 "subscribe" = "Pretplatite se";
-"accessibility.unknown_mount" = "Nepoznata životinja za jahanje";
+"accessibility.unknown_mount" = "Nepoznata jahaća životinja";
 "accessibility.completed_x" = "Završeno %@";
 "rage_meter" = "Mjerač Bijesa";
-"subscription_info_2_title" = "Mjesečni Mistični Pješćani satovi";
+"subscription_info_2_title" = "Mjesečni Mistični Pješčani satovi";
 "end_challenge" = "Završi Izazov";
 "subscription_gift_button" = "Poklonite pretplatu";
 "invitations" = "Pozivi";
-"world_boss.action_prompt" = "Porazite Bossa da zaradite posebne nagrade i spasite Habiticu od terora %@!";
+"world_boss.action_prompt" = "Porazite Šefa da zaradite posebne nagrade i spasite Habiticu od terora %@!";
 "accessibility.score_habit_down" = "Zabilježi naviku kao negativno";
 "accessibility.not_completed_x" = "Nije Dovršeno %@";
 "accessibility.collapse_checklist" = "Sažmi Spisak";
@@ -1181,7 +1181,7 @@
 "accessibility.report_message" = "Prijavi Poruku";
 "mystery_sets" = "Misteriozni Setovi";
 "buffs" = "Pojačanja";
-"world_boss.world_boss" = "Svjetski Boss";
+"world_boss.world_boss" = "Svjetski Šef";
 "subscription" = "Pretplate";
 "accessibility.double_tap_to_edit" = "Dodirnite dvaput za uređivanje";
 "collect" = "Prikupiti";
@@ -1196,7 +1196,7 @@
 "buy" = "kupi";
 "accessibility.notOwned" = "Nije u vlasništvu";
 "view_participant_progress" = "Pogledaj Napredak Sudionika";
-"world_boss.first_bullet" = "Dovršite zadatke da oštetite Bossa";
+"world_boss.first_bullet" = "Dovršite zadatke da oštetite Šefa";
 "gems" = "Dragulji";
 "accessibility.not_completed" = "Nije Dovršeno";
 "complete" = "Gotovo";
@@ -1364,9 +1364,9 @@
 "partyUpDescription" = "Udružio/la si se s članom Grupe!";
 "purchasedEquipmentTitle" = "Kupio/la si Opremu";
 "learn_more" = "Saznaj Više";
-"mountMasterDescription" = "Zaradili ste Postignuće \"Gospodar Jahaćih životinja\" za pripitomljavanje svih jahaćih životinja!";
+"mountMasterDescription" = "Zaradili ste Postignuće „Gospodar Jahaćih životinja\" za pripitomljavanje svih jahaćih životinja!";
 "guildJoinedDescription" = "Upustite se u društvenu stranu Habitice pridruživanjem u Ceh!";
-"beastMasterDescription" = "Zaradili ste Postignuće \"Gospodar zvijeri\" za skupljanje svih ljubimaca!";
+"beastMasterDescription" = "Zaradili ste Postignuće „Gospodar zvijeri\" za skupljanje svih ljubimaca!";
 "beastMasterTitle" = "Gospodar zvijeri";
 "completedTaskTitle" = "Dovršio/la si zadatak";
 "onboardingComplete_achievement_title" = "Dovršio/la si svoje uvodne zadatke!";
@@ -1396,7 +1396,7 @@
 "gift_sent_confirmation" = "Vaš poklon je poslan!";
 "complete_task_description" = "Označi bilo koji od svojih zadataka kako bi zaradio/la nagrade";
 "first_drop_explanation2" = "Pokušaj spojiti svoje novo Jaje i Napitak za izlijeganje!";
-"triadBingoDescription" = "Zaradili ste Postignuće \"Trijad Bingp\" za pronalaženje svih ljubimaca, pripitomljavanje svih jahaćih životinja , i ponovno pronalaženje svih ljubimaca!";
+"triadBingoDescription" = "Zaradili ste Postignuće „Trijad Bingp\" za pronalaženje svih ljubimaca, pripitomljavanje svih jahaćih životinja i ponovno pronalaženje svih ljubimaca!";
 "add" = "Dodaj";
 "purchase_from_time_travelers_shop" = "Ovu prilagodbu možeš kupiti u Dućanu Putnika kroz vrijeme";
 "partyUpTitle" = "Okupite se u Grupu";
@@ -1420,7 +1420,7 @@
 "update_app_title" = "Ažurirajte Aplikaciju";
 "health_points" = "Bodovi zdravlja";
 "spooky_promo.info_instructions" = "Između %@ i %@ jednostavno kupi bilo koji paket Dragulja kao i obično i tvoj će račun biti nadopunjen promotivnom količinom Dragulja. Više Dragulja za trošenje, dijeljenje ili spremanje za sva buduća izdanja!";
-"stat_description" = "Svi Habitica likovi imaju četiri statistike koje utječu na aspekte igranja Habitice.\n\nSnaga (STR) utječe na kritične udarce i povećava štetu nanesenu Bossu u Pustolovini. Ratnici i Lupeži dobivaju STR od svoje opreme za klasu.\n\nOtpornost (CON) povećava tvoj HP i čini da primaš manje štete. Iscjelitelji i Ratnici dobivaju CON od svoje opreme za klasu.\n\nInteligencija (INT) povećava količinu EXP-a koju zarađuješ i daje ti više Mane. Čarobnjaci i Iscjelitelji dobivaju INT od svoje opreme za klasu.\n\nPercepcija (PER) povećava Zlato koje zarađuješ i stopu pronalaženja ispuštenih predmeta. Lupeži i Čarobnjaci dobivaju PER od svoje opreme za klasu.\n\nNakon 10. razine, zarađuješ 1 Bod za statistiku sa svakom novom razinom koji možeš uložiti u bilo koju statistiku koju želiš. Također možeš opremiti opremu koja ima različite kombinacije povećanja statistike.";
+"stat_description" = "Svi Habitica likovi imaju četiri statistike koje utječu na aspekte igranja Habitice.\n\nSnaga (STR) utječe na kritične udarce i povećava štetu nanesenu Šefu u Pustolovini. Ratnici i Lupeži dobivaju STR od svoje opreme za klasu.\n\nOtpornost (CON) povećava tvoj HP i čini da primaš manje štete. Iscjelitelji i Ratnici dobivaju CON od svoje opreme za klasu.\n\nInteligencija (INT) povećava količinu EXP-a koju zarađuješ i daje ti više Mane. Čarobnjaci i Iscjelitelji dobivaju INT od svoje opreme za klasu.\n\nPercepcija (PER) povećava Zlato koje zarađuješ i stopu pronalaženja ispuštenih predmeta. Lupeži i Čarobnjaci dobivaju PER od svoje opreme za klasu.\n\nNakon 10. razine, zarađuješ 1 Bod za statistiku sa svakom novom razinom koji možeš uložiti u bilo koju statistiku koju želiš. Također možeš opremiti opremu koja ima različite kombinacije povećanja statistike.";
 "hourglasses_description" = "Mistični pješčani satovi su izuzetno rijedak oblik valute koji možeš dobiti samo pretplatom na Habiticu. Možeš ih koristiti u Trgovini Putnika kroz vrijeme za kupnju starih setova opreme za pretplatnike, ekskluzivnih Ljubimaca, Jahače životinje, animiranih Pozadina ili čak posebnih Potraga! Ovi dodatni bonusi su sjajan način da ostanete motivirani tijekom cijele godine i nagradiš se za dobro obavljen posao.\n\nPretplatnici dobivaju Mistični pješčani sat na početku svakog mjeseca u kojem imaju pretplatničke pogodnosti, zajedno s hrpom drugih bonusa. Obavezno provjeri naše opcije pretplate ako te zanima što Putnici kroz vrijeme nude!";
 "spooky_promo.info_prompt" = "Za ograničeno vrijeme, uz svaku kupnju dobivaš više Dragulja! Obuci svoj najbolji kostim i prisvoji jednu od naših najboljih ponuda za Dragulje prije nego nestane!";
 "survey.title" = "Anketa za Igrače";
@@ -1511,14 +1511,14 @@
 "plenty_of_potions_description" = "Vraćamo 10 omiljenih Čarobnih napitaka za izleganje iz zajednice. Posjeti Dućan kako bi upotpunili vašu kolekciju!";
 "items.empty.egg_description" = "Završite zadatke, izvršite Pustolovine za ljubimce ili posjetite Dućan da se opskrbite!";
 "gift_one_get_one_data.info_limitations" = "Ovo je događaj ograničenog trajanja koji počinje %@ i završava %@. Promocija vrijedi samo kada poklanjaš drugom računu. Ako ti ili primatelj poklona već imate pretplatu, poklonjena pretplata dodaje mjesece kredita koji se koriste tek nakon otkazivanja trenutne pretplate.";
-"end_challenge_description" = "Da bi završili Izazov, prijavi se na Habitica web stranicu, a zatim dodirnite gumb \"Završi Izazov\" na desnoj strani zaslona Izazova.";
+"end_challenge_description" = "Da bi završili Izazov, prijavi se na Habitica web stranicu, a zatim dodirnite gumb „Završi Izazov\" na desnoj strani zaslona Izazova.";
 "could_not_gift_gems" = "Nije bilo moguće pokloniti dragulje. Molimo pokušaj ponovno kasnije.";
 "unlocks_selecting_class_description" = "Vještine se otključavaju kada dosegnete 10. razinu i odaberete klasu";
 "daily_tip_0" = "Želite li probati nešto novo? Pridružite se Izazovu kako bi proširili svoj popis zadataka i osvojili Dragulje!";
 "daily_tip_1" = "Dodaj spiske svojim Obavezama kako bi umnožili svoje nagrade!";
 "daily_tip_2" = "Možete promijeniti koliko se često svaki Dnevni zadatak ponavlja. Mogu se rasporediti čak i rijetki zadaci.";
 "unban_user_confirm" = "Želite li odblokirati ovog korisnika?";
-"limited_edition" = "Ograničeno izdanje";
+"limited_edition" = "Posebno izdanje";
 "visit_the_market" = "Posjetite Dućan";
 "exclusive_items_await" = "Ekskluzivni predmeti i darovi čekaju";
 "day_x" = "Dan %d";
@@ -1526,7 +1526,7 @@
 "background" = "Pozadina";
 "failed" = "Neuspjeh";
 "gift_one_get_one_screen_banner" = "Dok je ova promocija aktivna, automatski ćeš primiti odgovarajuću pretplatu nakon slanja poklona.";
-"pet_accessibility_label_mount_owned" = "%@, Životinja za jahanje u vlasništvu";
+"pet_accessibility_label_mount_owned" = "%@, Jahaća životinja u vlasništvu";
 "daily_tip_4" = "Povremeno ponovno procjenjivanje svojih zadataka može vam pomoći da ostaneš na pravom putu.";
 "quest_items_found" = "Pronašao/la si %d predmeta za pustolovinu";
 "one_quest_item_found" = "Pronašao/la si 1 predmet za pustolovinu";
@@ -1556,7 +1556,7 @@
 "birthday_limitations_description" = "Ovo je događaj ograničenog trajanja koji počinje %s i završava %s. Ekskluzivna Razdragana Grifonjača i deset Čarobnih napitaka za izleganje bit će dostupni za kupnju tijekom tog vremena. Ostali darovi navedeni u odjeljku \"Četiri besplatno\" automatski će biti dostavljeni svim računima koji su bili aktivni u 30 dana prije dana slanja dara. Računi stvoreni nakon slanja darova neće ih moći preuzeti.";
 "suggest_pet_hatch_missing_both" = "Potreban vam je %@ i %@ Napitak da izležeš ovog ljubimca";
 "class_system_disabled" = "Sustav klasa onemogućen.";
-"create_guild_description" = "Da bi stvorili Ceh, prijavi se na Habitica web stranicu, a zatim dodirni gumb \"Stvori\" na zaslonu \"Moji Cehovi\".";
+"create_guild_description" = "Da bi stvorili Ceh, prijavi se na Habitica web stranicu, a zatim dodirni gumb „Stvori\" na zaslonu „Moji Cehovi\".";
 "week_reminder_title" = "Kako vam idu zadaci?";
 "daily_tip_6" = "Pokušajte postaviti mjerač vremena na deset minuta i vidite koliko toga možeš obaviti!";
 "create_challenge" = "Kreiraj Izazov";
@@ -1578,21 +1578,21 @@
 "suggest_pet_hatch_again_missing_potion" = "Još uvijek vam je potreban %@ Napitak da ponovno izležeš ovog ljubimca";
 "daily_tip_8" = "Možete promijeniti težinu svog zadatka kako bi se više nagradili za teške zadatke!";
 "daily_tip_9" = "Ako vam je teško, pokušajte razbiti vaše zadatke na manje dijelove.";
-"unhatched_pet" = "Neizleženi ljubimac";
+"unhatched_pet" = "Neizlegnuti ljubimac";
 "use_immediately_disclaimer" = "Ovo će stupiti na snagu odmah nakon kupnje!";
 "gift_one_get_one_data.infoPrompt" = "U čast sezone darivanja: kad nekome pokloniš pretplatu, istu dobivaš besplatno i za sebe!";
-"create_challenge_description" = "Da bi stvorili Izazov, prijavite se na Habitica web stranicu, a zatim dodirni gumb \"Stvori\" na zaslonu \"Moji Izazovi\".";
+"create_challenge_description" = "Da bi stvorili Izazov, prijavite se na Habitica web stranicu, a zatim dodirni gumb „Stvori\" na zaslonu „Moji Izazovi\".";
 "class_system_enable_instructions" = "Sustav klasa možeš uključiti u Postavkama i kasnije odabrati klasu";
 "magic_potion" = "Magični napitak";
 "create_guild" = "Stvori Ceh";
 "daily_tip_5" = "Udahni nekoliko puta duboko kako bi se lakše fokusirao/la. Možeš ti to!";
-"gift_confirmation_body_g1_g1" = "Poslali ste %@ %@-mjesečnu Habitica pretplatu, a ista pretplata je primijenjena na tvoj račun u sklopu naše promocije \"Pokloni jedan, dobij jedan\"!";
+"gift_confirmation_body_g1_g1" = "Poslali ste %@ %@-mjesečnu Habitica pretplatu, a ista pretplata je primijenjena na tvoj račun u sklopu naše promocije „Pokloni jedan, dobij jedan\"!";
 "hatch_pet_again" = "Ponovno izlezi ljubimca";
 "pet_accessibility_label_raised" = "%@, Podigli %d%%";
 "items.footer_quests_descriptions" = "Posjetite Dućan Pustolovina da vidite što je dostupno!";
 "quest_mechanics" = "Mehanizmi Pustolovine";
-"quest_mechanics_boss_title" = "Nanošenje štete Bossu";
-"1_hourglass" = "1 Pješćani sat";
+"quest_mechanics_boss_title" = "Nanošenje štete Šefu";
+"1_hourglass" = "1 Pješčani sat";
 "items.footer_quests_title" = "Želite više Pustolovina?";
 "quest_mechanics_boss_description" = "Završite bilo koju vrstu zadatka ili koristite vještine kako bi skupili preostalu štetu! Šteta će biti primijenjena prilikom vašeg sljedećeg dnevnog resetiranja. Snaga utječe na to koliko štete nanosite.";
 "quest_mechanics_collecting_title" = "Prikupljanje predmeta za Pustolovinu";
@@ -1603,10 +1603,10 @@
 "items.footer_description" = "Pogledaj Dućan kako bi kupio/la upravo ono što ti treba!";
 "items.footer_food_title" = "Ne dobivate pravu hranu iz zadataka?";
 "items.footer_food_description" = "Posjetite Dućan kako bi kupili hranu ili Sedlo za trenutno podizanje razine svog Ljubimca!";
-"you_raised_pet" = "Podigao/la si svog %@ Ljubimca u Životinju za jahanje!";
+"you_raised_pet" = "Podigao/la si svog %@ Ljubimca u Jahaću životinju!";
 "x_gems_month" = "%d dragulja mjesečno";
-"hourglass_in_x_months" = "Pješćanih satova u %d mjeseci";
-"x_hourglasses" = "%d Pješćanih satova";
+"hourglass_in_x_months" = "Pješčanih satova u %d mjeseci";
+"x_hourglasses" = "%d Pješčanih satova";
 "items.footer_title" = "Ne dobivate prave predmete iz zadataka?";
 "open_stats" = "Otvori Statistike";
 "privacy_policy" = "Politika Privatnosti";
@@ -1681,15 +1681,15 @@
 "participating" = "Sudjelujete";
 "ownership" = "Vlasništvo";
 "task_reminder" = "Podsjetnik za Zadatak";
-"quest_mechanics_damage_description" = "Šteta od Bossa računa se svaki put kad se član Grupe prijavi tijekom dana. Ova šteta se primjenjuje sljedeći put kada izvršite radnju koja se sinkronizira sa serverom. Šteta od Bossa bilježi se u razgovoru vaše Grupe.";
-"quest_mechanics_pausing_description" = "Ako se mučite s izvršavanjem svojih Dnevnih zadataka, možete pauzirati štetu u Postavkama kako biste uzeli predah. To će spriječiti Bossa da naudi vama ili drugima, ali će i pauzirati vašu štetu. Propušteni Dnevni zadaci drugih članova i dalje će uzrokovati štetu, stoga budite oprezni!";
+"quest_mechanics_damage_description" = "Šteta od Šefa računa se svaki put kad se član Grupe prijavi tijekom dana. Ova šteta se primjenjuje sljedeći put kada izvršite radnju koja se sinkronizira sa serverom. Šteta od Šefa bilježi se u razgovoru vaše Grupe.";
+"quest_mechanics_pausing_description" = "Ako se mučite s izvršavanjem svojih Dnevnih zadataka, možete pauzirati štetu u Postavkama kako biste uzeli predah. To će spriječiti Šefa da naudi vama ili drugima, ali će i pauzirati vašu štetu. Propušteni Dnevni zadaci drugih članova i dalje će uzrokovati štetu, stoga budite oprezni!";
 "api_token_reset_desc" = "Zaporke možete promijeniti da biste je resetirali. Nakon što se resetira, morat ćete se ponovno prijaviti na svim drugim uređajima na kojima koristite Habiticu i dati novi API Token alatima trećih strana koje možda koristite.";
 "settings.change_class_title" = "Promijeni klasu za 3 Dragulja?";
 "mount" = "Jahaća životinja";
 "logins" = "Prijave";
 "joined_x" = "Pridružili se %s";
 "equipped_gear" = "Obuci Opremu";
-"stable.pets_and_mounts" = "Ljubimci i Životinje za Jahanje";
+"stable.pets_and_mounts" = "Ljubimci i Jahaće životinje";
 "challenges_won" = "Dobiveni Izazovi";
 "player_not_completed_quests" = "Igrač nije dovršio nijednu pustolovinu.";
 "player_not_won_challenges" = "Igrač nije pobijedio ni jedan izazov.";
@@ -1709,7 +1709,7 @@
 "class_change_success_subtitle" = "Sada možeš raspodijeliti atribute";
 "view_stats" = "Prikaži Atribute";
 "find_stats_menu" = "Atribute možeš pronaći bilo kada u izborniku";
-"go_to_pets_mounts" = "Idi na Ljubimce i Životinje za Jahanje";
+"go_to_pets_mounts" = "Idi na Ljubimce i Jahaće životinje";
 "not_now" = "Ne sada";
 "undo" = "Poništi";
 "assigned_stat" = "Dodijeljeni Atribut";
@@ -1736,7 +1736,7 @@
 "delete_task_confirmation" = "Sigurno želiš obrisati ovaj Zadatak?";
 "task" = "Zadatak";
 "item_only_available_for" = "Ovaj je predmet dostupan samo za %s";
-"boss" = "Bos";
+"boss" = "Šef";
 "login.custom_url" = "Prilagođeni URL";
 "tasks.repeats.monthly_week_of" = "%1$@ %2$@ u mjesecu";
 "tasks.repeats.fifth_week_warning" = "Ovaj se zadatak neće pojaviti u mjesecima koji imaju manje %@.";
@@ -1765,7 +1765,7 @@
 "shops.rebirthConfirmResetItem4" = "Sve vrijednosti zadataka i nizove";
 "shops.rebirthConfirmKeepHeader" = "Zadržat ćeš:";
 "shops.rebirthConfirmKeepItem1" = "Svoj popis zadataka";
-"shops.rebirthConfirmKeepItem2" = "Svu Opremu, Ljubimce i Životinje za Jahanje";
+"shops.rebirthConfirmKeepItem2" = "Svu Opremu, Ljubimce i Jahaće životinje";
 "shops.rebirthConfirmKeepItem3" = "Svoja Postignuća";
 "shops.rebirthConfirmKeepItem4" = "Svoju Grupu i Izazove";
 "shops.rebirthConfirmTitleGems" = "Sigurno želiš iskoristiti Kuglu Ponovnog Rođenja za %d Dragulja?";
