@@ -97,11 +97,15 @@ class HabiticaAppDelegate: UIResponder, MessagingDelegate, UIApplicationDelegate
             AuthenticationManager.shared.initialize(withStorage: KeychainAuthenticationStorage())
         }
         let launchEnvironment = ProcessInfo.processInfo.environment
-        if let userID = launchEnvironment["userid"] {
-            AuthenticationManager.shared.currentUserId = userID
+        let launchUserID = launchEnvironment["userid"] ?? UserDefaults.standard.string(forKey: "userid")
+        let launchAPIKey = launchEnvironment["apikey"] ?? UserDefaults.standard.string(forKey: "apikey")
+        if let userID = launchUserID, let apiKey = launchAPIKey, !userID.isEmpty, !apiKey.isEmpty {
+            AuthenticationManager.shared.setAuthentication(userId: userID, key: apiKey)
+            // An account passed in from outside is already set up, don't resume an unfinished setup
+            UserDefaults.standard.set(false, forKey: "isInSetup")
         }
-        if let apiKey = launchEnvironment["apikey"] {
-            AuthenticationManager.shared.currentUserKey = apiKey
+        if let server = UserDefaults.standard.string(forKey: "server"), Servers(rawValue: server) != nil {
+            UserDefaults.standard.set(server, forKey: "chosenServer")
         }
         
         if let stubs = launchEnvironment["STUB_DATA"]?.data(using: .utf8) {
