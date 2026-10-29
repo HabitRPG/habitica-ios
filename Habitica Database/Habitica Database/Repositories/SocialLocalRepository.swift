@@ -88,13 +88,63 @@ public class SocialLocalRepository: BaseLocalRepository {
     }
     
     public func save(groupID: String?, chatMessages: [ChatMessageProtocol]) {
-        save(objects: chatMessages.map { (chatMessage) in
+        guard let realm = getRealm() else {
+            return
+        }
+        realm.refresh()
+        let newMessageIDs = Set(chatMessages.map { $0.id })
+        var existingMessages = [String: RealmChatMessage]()
+        var messagesToRemove = [RealmChatMessage]()
+        realm.objects(RealmChatMessage.self).filter("groupID == %@", groupID ?? "").forEach { message in
+            let messageID = message.id
+            if let messageID = messageID {
+                existingMessages[messageID] = message
+            }
+            if !newMessageIDs.contains(messageID) {
+                messagesToRemove.append(message)
+            }
+        }
+        let messagesToSave = chatMessages.compactMap { (chatMessage) -> RealmChatMessage? in
             if let realmChatMessage = chatMessage as? RealmChatMessage {
                 return realmChatMessage
             }
+            if let messageID = chatMessage.id, let existingMessage = existingMessages[messageID], !hasChanged(existingMessage, comparedTo: chatMessage) {
+                return nil
+            }
             return RealmChatMessage(groupID: groupID, chatMessage: chatMessage)
-        })
-        removeOldChatMessages(groupID: groupID, newChatMessages: chatMessages)
+        }
+        if messagesToSave.isEmpty && messagesToRemove.isEmpty {
+            return
+        }
+        updateCall { realm in
+            realm.delete(messagesToRemove)
+            realm.add(messagesToSave, update: .all)
+        }
+    }
+    
+    private func hasChanged(_ existingMessage: RealmChatMessage, comparedTo chatMessage: ChatMessageProtocol) -> Bool {
+        if existingMessage.userID != chatMessage.userID
+            || existingMessage.text != chatMessage.text
+            || existingMessage.displayName != chatMessage.displayName
+            || existingMessage.username != chatMessage.username
+            || existingMessage.flagCount != chatMessage.flagCount
+            || existingMessage.contributor?.level != chatMessage.contributor?.level
+            || (existingMessage.userStyles == nil) != (chatMessage.userStyles == nil) {
+            return true
+        }
+        if let existingTimestamp = existingMessage.timestamp, let timestamp = chatMessage.timestamp {
+            if abs(existingTimestamp.timeIntervalSince(timestamp)) > 0.001 {
+                return true
+            }
+        } else if existingMessage.timestamp != chatMessage.timestamp {
+            return true
+        }
+        return reactionKeys(existingMessage.likes) != reactionKeys(chatMessage.likes)
+            || reactionKeys(existingMessage.flags) != reactionKeys(chatMessage.flags)
+    }
+    
+    private func reactionKeys(_ reactions: [ChatMessageReactionProtocol]) -> Set<String> {
+        return Set(reactions.map { "\($0.userID ?? ""):\($0.hasReacted)" })
     }
     
     public func save(groupID: String?, chatMessage: ChatMessageProtocol) {
@@ -261,23 +311,6 @@ public class SocialLocalRepository: BaseLocalRepository {
                 if let challenge = challenge {
                     realm.add(RealmChallenge(challenge), update: .modified)
                 }
-            }
-        }
-    }
-    
-    private func removeOldChatMessages(groupID: String?, newChatMessages: [ChatMessageProtocol]) {
-        let oldChatMessages = getRealm()?.objects(RealmChatMessage.self).filter("groupID == %@", groupID ?? "")
-        var messagesToRemove = [RealmChatMessage]()
-        oldChatMessages?.forEach { message in
-            if !newChatMessages.contains(where: { (newMessage) -> Bool in
-                return newMessage.id == message.id
-            }) {
-                messagesToRemove.append(message)
-            }
-        }
-        if messagesToRemove.isEmpty == false {
-            updateCall { realm in
-                realm.delete(messagesToRemove)
             }
         }
     }

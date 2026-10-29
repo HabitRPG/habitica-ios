@@ -49,6 +49,9 @@ class ChatTableViewCell: UITableViewCell, UITextViewDelegate, Themeable {
     private var hideDeleteButton = false
     private var hideReportButton = false
     
+    private var sublineUsername: String?
+    private var sublineDate: Date?
+    
     private var isOwnMessage = false {
         didSet {
             updateLeftMargin()
@@ -234,7 +237,18 @@ class ChatTableViewCell: UITableViewCell, UITextViewDelegate, Themeable {
         }
     }
     
+    func updateTimestamp() {
+        guard let date = sublineDate else {
+            return
+        }
+        setSubline(username: sublineUsername, date: date)
+        applyAccessibility()
+        setNeedsLayout()
+    }
+    
     private func setSubline(username: String?, date: Date) {
+        sublineUsername = username
+        sublineDate = date
         let date = formatter.localizedString(for: date, relativeTo: Date())
         if let username = username {
             sublineLabel.text = "@\(username) · \(date)"

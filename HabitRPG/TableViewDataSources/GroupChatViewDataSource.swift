@@ -50,6 +50,7 @@ class GroupChatViewDataSource: BaseReactiveTableViewDataSource<ChatMessageProtoc
                 let timerSignal: SignalProducer<Date, Never> = SignalProducer.timer(interval: .seconds(30), on: QueueScheduler.main)
                 self?.disposable.add(timerSignal.on(value: { _ in
                     self?.retrieveData(completed: nil)
+                    self?.tableView?.visibleCells.forEach { ($0 as? ChatTableViewCell)?.updateTimestamp() }
                 }).start())
             }
         }).start())
