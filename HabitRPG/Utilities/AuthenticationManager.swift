@@ -69,8 +69,9 @@ class AuthenticationManager {
     }
 
     func clearAuthenticationForAllUsers() {
-        currentUserId = nil
+        // key first: its setter needs the user ID to find the keychain entry
         currentUserKey = nil
+        currentUserId = nil
     }
 
     func clearAuthentication(userId: String) {

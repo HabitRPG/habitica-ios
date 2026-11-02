@@ -85,8 +85,24 @@ open class NetworkCall {
         fire()
     }
     
+    // One session per URLSessionConfiguration so connections and TLS handshakes are reused across calls.
+    private static let sessionLock = NSLock()
+    private static var sessions = [ObjectIdentifier: URLSession]()
+    
+    private static func session(for urlConfiguration: URLSessionConfiguration) -> URLSession {
+        sessionLock.lock()
+        defer { sessionLock.unlock() }
+        let key = ObjectIdentifier(urlConfiguration)
+        if let session = sessions[key] {
+            return session
+        }
+        let session = URLSession(configuration: urlConfiguration, delegate: nil, delegateQueue: OperationQueue.main)
+        sessions[key] = session
+        return session
+    }
+    
     open func fire() {
-        let session = URLSession(configuration: configuration.urlConfiguration, delegate: nil, delegateQueue: OperationQueue.main)
+        let session = NetworkCall.session(for: configuration.urlConfiguration)
         if let request = mutableRequest() {
             dataTaskProperty.value = session.dataTask(with: request as URLRequest) { (data, response, error) in
                 self.errorProperty.value = error as NSError?
@@ -98,7 +114,6 @@ open class NetworkCall {
                 } else {
                     self.dataProperty.value = data
                 }
-                session.finishTasksAndInvalidate()
                 self.endCall()
             }
         }

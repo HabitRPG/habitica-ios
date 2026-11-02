@@ -33,12 +33,7 @@ class PurchaseHandler: NSObject, SKPaymentTransactionObserver {
         "com.habitrpg.ios.habitica.subscription.12month": "basic_12mo"
     ]
     
-    static let habiticaSubMappingReversed = [
-        "basic_earned": "subscription1month",
-        "basic_3mo": "com.habitrpg.ios.habitica.subscription.3month",
-        "basic_6mo": "com.habitrpg.ios.habitica.subscription.6month",
-        "basic_12mo": "com.habitrpg.ios.habitica.subscription.12month"
-    ]
+    static let habiticaSubMappingReversed = Dictionary(uniqueKeysWithValues: habiticaSubMapping.map { ($1, $0) })
     
     private let itunesSharedSecret = Secrets.itunesSharedSecret
     private let appleValidator: AppleReceiptValidator
@@ -146,6 +141,7 @@ class PurchaseHandler: NSObject, SKPaymentTransactionObserver {
     
     func purchaseGems(_ identifier: String, applicationUsername: String, completion: @escaping (Bool) -> Void) {
         if !isAllowedToMakePurchases() {
+            completion(false)
             return
         }
         SwiftyStoreKit.purchaseProduct(identifier, quantity: 1, atomically: false, applicationUsername: applicationUsername) { (result) in
@@ -163,22 +159,10 @@ class PurchaseHandler: NSObject, SKPaymentTransactionObserver {
     }
 
     func giftGems(_ identifier: String, applicationUsername: String, recipientID: String, completion: @escaping (Bool) -> Void) {
-        if !isAllowedToMakePurchases() {
-            return
+        if isAllowedToMakePurchases() {
+            pendingGifts[identifier] = recipientID
         }
-        pendingGifts[identifier] = recipientID
-        SwiftyStoreKit.purchaseProduct(identifier, quantity: 1, atomically: false, applicationUsername: applicationUsername) { (result) in
-            switch result {
-            case .success(let product):
-                self.markInFlight(product.transaction)
-                self.verifyPurchase(product, completion: completion)
-            case .error(let error):
-                self.handle(error: error)
-                completion(false)
-            case .deferred:
-                return
-            }
-        }
+        purchaseGems(identifier, applicationUsername: applicationUsername, completion: completion)
     }
     
     func purchaseSubscription(_ identifier: String, completion: @escaping (Bool) -> Void) {

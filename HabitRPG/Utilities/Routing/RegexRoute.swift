@@ -20,8 +20,9 @@ struct RegexRoute {
         self.call = call
         let expression = try? NSRegularExpression(pattern: RegexRoute.parameterURLRegex)
         let range = NSRange(location: 0, length: route.count)
+        let pattern = expression?.stringByReplacingMatches(in: route, range: range, withTemplate: RegexRoute.defaultURLRegex) ?? route
         // swiftlint:disable:next force_try
-        self.regex = try! NSRegularExpression(pattern: expression?.stringByReplacingMatches(in: route, range: range, withTemplate: RegexRoute.defaultURLRegex) ?? route)
+        self.regex = try! NSRegularExpression(pattern: "^\(pattern)/?$")
         groupNames = expression?.matches(in: route, range: range).map({ result in
             return String((route as NSString).substring(with: result.range).dropFirst())
         }) ?? []

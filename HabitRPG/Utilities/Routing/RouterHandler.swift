@@ -300,8 +300,9 @@ class RouterHandler {
     
     @discardableResult
     func handle(url: URL) -> Bool {
-        if url.host == AuthenticatedCall.defaultConfiguration.host {
-            return handle(urlString: url.relativePath)
+        if let host = url.host {
+            // only Habitica links map to in-app screens; other sites must open in the browser
+            return host == AuthenticatedCall.defaultConfiguration.host && handle(urlString: url.relativePath)
         }
         let path = url.relativePath
         if let call = directRoutes[path] {

@@ -200,6 +200,9 @@ class TaskRepository: BaseRepository<TaskLocalRepository> {
         localRepository.setTaskSyncing(userID: currentUserId, task: task, isSyncing: true)
         
         let call = CreateTaskCall(task: task)
+        Signal.merge(call.errorSignal, call.serverErrorSignal).observeValues({[weak self] _ in
+            self?.localRepository.setTaskSyncing(userID: self?.currentUserId, task: task, isSyncing: false)
+        })
         
         return call.objectSignal.on(value: {[weak self] returnedTask in
             if let returnedTask = returnedTask {
@@ -232,7 +235,7 @@ class TaskRepository: BaseRepository<TaskLocalRepository> {
         localRepository.setTaskSyncing(userID: currentUserId, task: task, isSyncing: true)
         let call = UpdateTaskCall(task: task)
         
-        call.errorSignal.observeValues({[weak self] _ in
+        Signal.merge(call.errorSignal, call.serverErrorSignal).observeValues({[weak self] _ in
             self?.localRepository.setTaskSyncing(userID: self?.currentUserId, task: task, isSyncing: false)
         })
         return call.objectSignal.on(value: {[weak self]returnedTask in
