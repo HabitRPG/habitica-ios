@@ -11,6 +11,7 @@ import Habitica_Models
 import ReactiveSwift
 import RealmSwift
 
+// swiftlint:disable:next type_body_length
 public class SocialLocalRepository: BaseLocalRepository {
     
     public func save(_ group: GroupProtocol) {

@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import Habitica_Database
 import Habitica_Models
 import ReactiveSwift
 
@@ -40,8 +41,12 @@ class GroupChatViewDataSource: BaseReactiveTableViewDataSource<ChatMessageProtoc
             }
         }).start())
         disposable.add(socialRepository.getChatMessages(groupID: groupID).on(value: {[weak self] (chatMessages, changes) in
-            self?.sections[0].items = chatMessages
-            self?.notify(changes: changes)
+            guard let self = self else {
+                return
+            }
+            let oldCount = self.sections[0].items.count
+            self.sections[0].items = chatMessages
+            self.apply(changes: changes, oldCount: oldCount)
         }).start())
         disposable.add(socialRepository.getGroupMembers(groupID: groupID).filter({ members in
             return !members.value.isEmpty
@@ -125,6 +130,25 @@ class GroupChatViewDataSource: BaseReactiveTableViewDataSource<ChatMessageProtoc
         
         if let transform = self.tableView?.transform {
             cell.transform = transform
+        }
+    }
+    
+    private func apply(changes: ReactiveChangeset?, oldCount: Int) {
+        guard let changes = changes, !changes.initial, oldCount > 0,
+              let tableView = tableView, tableView.window != nil, tableView.dataSource === self,
+              !UserManager.shared.isLoggingOut, !userDrivenDataUpdate,
+              tableView.numberOfRows(inSection: 0) == oldCount,
+              oldCount - changes.deleted.count + changes.inserted.count == sections[0].items.count else {
+            notify(changes: changes)
+            return
+        }
+        tableView.performBatchUpdates {
+            tableView.deleteRows(at: changes.deleted.map { IndexPath(row: $0, section: 0) }, with: .none)
+            tableView.insertRows(at: changes.inserted.map { IndexPath(row: $0, section: 0) }, with: .fade)
+            tableView.reloadRows(at: changes.updated.map { IndexPath(row: $0, section: 0) }, with: .none)
+        }
+        if let visibleRows = tableView.indexPathsForVisibleRows {
+            tableView.reconfigureRows(at: visibleRows)
         }
     }
     
