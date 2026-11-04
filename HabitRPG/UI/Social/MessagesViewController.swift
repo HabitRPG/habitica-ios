@@ -168,7 +168,10 @@ class MessagesViewController: BaseUIViewController, UITableViewDelegate, UIScrol
         }
 
         let inputBarOffset = keyboardOffset + autocompleteHeight + inputBarHeight + 10
-        tableView.contentInset.top = inputBarOffset + 16
+        let insetTop = inputBarOffset + 16
+        if tableView.contentInset.top != insetTop {
+            tableView.contentInset.top = insetTop
+        }
         tableView.contentInset.bottom = navigationController?.navigationBar.frame.totalHeight ?? 0
         inputBarContainer.pin.left(safearea.left + 20)
             .right(safearea.right + 20)
