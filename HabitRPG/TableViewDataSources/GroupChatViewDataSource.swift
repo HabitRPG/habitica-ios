@@ -21,6 +21,7 @@ class GroupChatViewDataSource: BaseReactiveTableViewDataSource<ChatMessageProtoc
     private let userRepository = UserRepository()
     private let configRepository = ConfigRepository.shared
     private var user: UserProtocol?
+    private var cellUserValues: [String?]?
     private let groupID: String
     
     init(groupID: String) {
@@ -35,7 +36,11 @@ class GroupChatViewDataSource: BaseReactiveTableViewDataSource<ChatMessageProtoc
             }
             let isFirstLoad = self?.user == nil
             self?.user = user
-            self?.tableView?.reloadData()
+            let cellUserValues = [user.id, user.username, user.profile?.name, String(user.isModerator)]
+            if cellUserValues != self?.cellUserValues {
+                self?.cellUserValues = cellUserValues
+                self?.tableView?.reloadData()
+            }
             if isFirstLoad {
                 self?.retrieveData(completed: nil)
             }
