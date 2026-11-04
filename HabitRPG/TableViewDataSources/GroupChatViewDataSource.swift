@@ -22,6 +22,7 @@ class GroupChatViewDataSource: BaseReactiveTableViewDataSource<ChatMessageProtoc
     private let configRepository = ConfigRepository.shared
     private var user: UserProtocol?
     private var cellUserValues: [String?]?
+    private var messageIDs = [String]()
     private let groupID: String
     
     init(groupID: String) {
@@ -49,9 +50,10 @@ class GroupChatViewDataSource: BaseReactiveTableViewDataSource<ChatMessageProtoc
             guard let self = self else {
                 return
             }
-            let oldCount = self.sections[0].items.count
+            let oldIDs = self.messageIDs
+            self.messageIDs = chatMessages.map { $0.id ?? "" }
             self.sections[0].items = chatMessages
-            self.apply(changes: changes, oldCount: oldCount)
+            self.apply(changes: changes, oldIDs: oldIDs)
         }).start())
         disposable.add(socialRepository.getGroupMembers(groupID: groupID).filter({ members in
             return !members.value.isEmpty
@@ -138,23 +140,33 @@ class GroupChatViewDataSource: BaseReactiveTableViewDataSource<ChatMessageProtoc
         }
     }
     
-    private func apply(changes: ReactiveChangeset?, oldCount: Int) {
-        guard let changes = changes, !changes.initial, oldCount > 0,
+    private func apply(changes: ReactiveChangeset?, oldIDs: [String]) {
+        guard let changes = changes, !changes.initial, !oldIDs.isEmpty,
               let tableView = tableView, tableView.window != nil, tableView.dataSource === self,
               !UserManager.shared.isLoggingOut, !userDrivenDataUpdate,
-              tableView.numberOfRows(inSection: 0) == oldCount,
-              oldCount - changes.deleted.count + changes.inserted.count == sections[0].items.count else {
+              tableView.numberOfRows(inSection: 0) == oldIDs.count else {
             notify(changes: changes)
             return
         }
-        tableView.performBatchUpdates {
-            tableView.deleteRows(at: changes.deleted.map { IndexPath(row: $0, section: 0) }, with: .none)
-            tableView.insertRows(at: changes.inserted.map { IndexPath(row: $0, section: 0) }, with: .fade)
-            tableView.reloadRows(at: changes.updated.map { IndexPath(row: $0, section: 0) }, with: .none)
-        }
-        if let visibleRows = tableView.indexPathsForVisibleRows {
-            tableView.reconfigureRows(at: visibleRows)
-        }
+        let difference = messageIDs.difference(from: oldIDs)
+        tableView.performBatchUpdates({
+            for change in difference {
+                switch change {
+                case .remove(let offset, _, _):
+                    tableView.deleteRows(at: [IndexPath(row: offset, section: 0)], with: .none)
+                case .insert(let offset, _, _):
+                    tableView.insertRows(at: [IndexPath(row: offset, section: 0)], with: .fade)
+                }
+            }
+        }, completion: { [weak self, weak tableView] _ in
+            guard let self = self, let tableView = tableView, tableView.dataSource === self else {
+                return
+            }
+            let rows = tableView.indexPathsForVisibleRows?.filter { indexPath in
+                tableView.cellForRow(at: indexPath)?.reuseIdentifier == self.cellIdentifier(for: self.item(at: indexPath))
+            } ?? []
+            tableView.reconfigureRows(at: rows)
+        })
     }
     
     override func retrieveData(completed: (() -> Void)?) {
