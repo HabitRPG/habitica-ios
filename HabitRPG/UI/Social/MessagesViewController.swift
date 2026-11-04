@@ -170,7 +170,12 @@ class MessagesViewController: BaseUIViewController, UITableViewDelegate, UIScrol
         let inputBarOffset = keyboardOffset + autocompleteHeight + inputBarHeight + 10
         let insetTop = inputBarOffset + 16
         if tableView.contentInset.top != insetTop {
+            // table is inverted: the latest message is at the top, so offset == -inset.top means it's visible
+            let wasAtLatestMessage = tableView.contentOffset.y <= -tableView.contentInset.top + 1
             tableView.contentInset.top = insetTop
+            if wasAtLatestMessage {
+                tableView.contentOffset.y = -insetTop
+            }
         }
         tableView.contentInset.bottom = navigationController?.navigationBar.frame.totalHeight ?? 0
         inputBarContainer.pin.left(safearea.left + 20)
