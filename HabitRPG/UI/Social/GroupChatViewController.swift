@@ -82,8 +82,9 @@ class GroupChatViewController: MessagesViewController {
                     if self.tableView.dataSource == nil {
                         return
                     }
-                    if self.tableView.numberOfRows(inSection: 0) > 0 {
-                        self.tableView.scrollToRow(at: IndexPath(row: 0, section: 0), at: .bottom, animated: true)
+                    let newestRow = IndexPath(row: 0, section: 0)
+                    if self.tableView.numberOfRows(inSection: 0) > 0, self.tableView.indexPathsForVisibleRows?.contains(newestRow) != true {
+                        self.tableView.scrollToRow(at: newestRow, at: .bottom, animated: false)
                     }
                 }
             }
