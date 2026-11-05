@@ -48,7 +48,7 @@ private struct UITextViewWrapper: UIViewRepresentable {
     @State private var wasAssignedResponder = false
     
     func updateUIView(_ uiView: UITextView, context: UIViewRepresentableContext<UITextViewWrapper>) {
-        if uiView.markedTextRange == nil && uiView.text != self.text {
+        if !uiView.isFirstResponder && uiView.text != self.text {
             uiView.text = self.text
         }
         if giveInitialResponder && uiView.isFirstResponder && !wasAssignedResponder {
