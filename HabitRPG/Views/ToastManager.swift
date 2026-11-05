@@ -83,6 +83,10 @@ class ToastManager: NSObject {
                 withAnimation {
                     contentView.rootView.options.isVisible = true
                 } completion: {
+                    let options = contentView.rootView.options
+                    let announcement = ([options.subtitle, options.title, options.rightText] + options.statsChanges.map(\.text))
+                        .compactMap { $0 }.filter { !$0.isEmpty }.joined(separator: ", ")
+                    UIAccessibility.post(notification: .announcement, argument: announcement)
                     if let completionBlock = completion {
                         completionBlock()
                     }

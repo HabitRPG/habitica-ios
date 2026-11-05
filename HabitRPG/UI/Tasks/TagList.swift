@@ -32,6 +32,9 @@ struct TagList: View {
                 .foregroundStyle(isSelected ? taskColor : Color(themeService.theme.primaryTextColor))
                 .contentShape(.rect)
                 .frame(minHeight: 50).padding(.horizontal, 26)
+                .accessibilityElement(children: .ignore)
+                .accessibilityLabel(tag.text ?? "")
+                .accessibilityAddTraits(isSelected ? [.isButton, .isSelected] : .isButton)
                 .onTapGesture {
                     UISelectionFeedbackGenerator.oneShotSelectionChanged()
                     withAnimation(.spring(duration: 0.2)) {

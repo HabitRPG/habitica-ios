@@ -139,6 +139,8 @@ public class TaskLocalRepository: BaseLocalRepository {
                     realmTask.complete(forUser: userID, completed: direction == .up)
                     if direction == .up {
                         realmTask.streak += 1
+                    } else if realmTask.streak > 0 {
+                        realmTask.streak -= 1
                     }
                 } else {
                     if direction == .up {

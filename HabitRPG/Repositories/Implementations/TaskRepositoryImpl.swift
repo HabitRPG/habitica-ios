@@ -120,6 +120,8 @@ class TaskRepository: BaseRepository<TaskLocalRepository> {
                     SoundManager.shared.play(effect: .levelUp)
                     
                     expDiff = stats.toNextLevel - stats.experience + (response.experience ?? 0)
+                    // score response lacks toNextLevel, so fetch the user to get the new target
+                    UserRepository().retrieveUser(withTasks: false, forced: true).observeCompleted {}
                 }
                 let goldDiff = (response.gold ?? 0) - stats.gold
                 let questDamage = (response.temp?.quest?.progressDelta ?? 0)

@@ -191,6 +191,7 @@ struct ToastView: View {
                             .padding(4)
                     }
                 }
+                .accessibilityElement(children: .combine)
                 if #available(iOS 26.0, *) {
                         if options.isVisible {
                             content

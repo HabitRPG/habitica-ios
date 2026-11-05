@@ -137,6 +137,8 @@ private struct AchievementHeaderView: View {
         }
         .scaledFont(size: 15, weight: .semibold)
         .foregroundStyle(Color(themeService.theme.secondaryTextColor))
+        .accessibilityElement(children: .combine)
+        .accessibilityAddTraits(.isHeader)
     }
 }
 

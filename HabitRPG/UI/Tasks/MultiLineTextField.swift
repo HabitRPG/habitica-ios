@@ -35,6 +35,14 @@ private struct UITextViewWrapper: UIViewRepresentable {
         if nil != onDone {
             textField.returnKeyType = .done
             textField.enablesReturnKeyAutomatically = true
+        } else {
+            // return inserts a newline here, so give the keyboard a way to close
+            let toolbar = UIToolbar()
+            toolbar.sizeToFit()
+            toolbar.items = [.flexibleSpace(), UIBarButtonItem(systemItem: .done, primaryAction: UIAction { [weak textField] _ in
+                textField?.resignFirstResponder()
+            })]
+            textField.inputAccessoryView = toolbar
         }
         
         if giveInitialResponder {

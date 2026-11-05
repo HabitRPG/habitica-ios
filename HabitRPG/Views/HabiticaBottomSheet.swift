@@ -136,6 +136,13 @@ class HostingBottomSheetController<ContentView: View>: UIHostingController<Conte
         }
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        // tell VoiceOver / UI test drivers the sheet is now the active screen
+        view.accessibilityViewIsModal = true
+        UIAccessibility.post(notification: .screenChanged, argument: view)
+    }
+
     override func viewWillDisappear(_ animated: Bool) {
         if let root = rootView as? Dismissable {
             root.dismisser.onDismiss?()

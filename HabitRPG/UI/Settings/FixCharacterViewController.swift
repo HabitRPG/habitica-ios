@@ -132,6 +132,7 @@ class FixCharacterViewController: BaseTableViewController {
             let iconView = cell.viewWithTag(3) as? UIImageView,
             let valueField = cell.viewWithTag(2) as? UITextField {
             configure(item: indexPath.item, titleLabel: titleLabel, iconView: iconView, valueField: valueField)
+            valueField.accessibilityLabel = titleLabel.text
             valueField.textColor = ThemeService.shared.theme.primaryTextColor
             let bottomLabel = cell.viewWithTag(5) as? UILabel
             let spacing = view.constraints.first { constraint in

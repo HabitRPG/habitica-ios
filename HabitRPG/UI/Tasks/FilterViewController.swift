@@ -333,10 +333,12 @@ struct TaskFilterPage: View {
                                 }
                                 .contentShape(Rectangle())
                                 .frame(width: 24, height: 22)
+                                .accessibilityLabel(L10n.delete)
                                 .transition(.asymmetric(insertion: .push(from: .leading), removal: .push(from: .trailing)))
                                 TagFormItemView(tag: tag, focusItemId: focusItemId, onReturnPressed: {
                                     addNewTag(after: tag.id)
                                 })
+                                .accessibilityIdentifier("tagTextField")
                             } else {
                                 Text(tag.text ?? "")
                                     .scaledFont(size: 17, weight: isSelected ? .semibold : .regular)
