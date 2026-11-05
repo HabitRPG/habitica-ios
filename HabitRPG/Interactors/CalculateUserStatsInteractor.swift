@@ -85,7 +85,7 @@ class CalculateUserStatsInteractor: Interactor<(StatsProtocol, [GearProtocol]), 
                 
                 var itemClass = row.habitClass
                 let itemSpecialClass = row.specialClass
-                let classBonus = 0.5
+                let classBonus = 1.0
                 let userClassMatchesGearClass = itemClass == userStats.habitClass
                 let userClassMatchesGearSpecialClass = itemSpecialClass == userStats.habitClass
                 

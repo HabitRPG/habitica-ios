@@ -167,6 +167,7 @@
 		29323E1F2050563700AC6D6F /* NetworkErrorHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29323E1E2050563700AC6D6F /* NetworkErrorHandler.swift */; };
 		29323E352052008800AC6D6F /* UserTopHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29323E342052008800AC6D6F /* UserTopHeader.swift */; };
 		29323E4920521FD500AC6D6F /* ContributorProtocol-Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29323E4820521FD500AC6D6F /* ContributorProtocol-Extensions.swift */; };
+		293280E9309CDE3000C01F2E /* RealmSwift in Embed Frameworks */ = {isa = PBXBuildFile; productRef = 29D048B92E3A641A004A6AAA /* RealmSwift */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		293282141F389CC000D42961 /* SetupCustomizationItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 293282131F389CC000D42961 /* SetupCustomizationItemView.swift */; };
 		293282161F389DBB00D42961 /* SetupCustomizationItemView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 293282151F389DBB00D42961 /* SetupCustomizationItemView.xib */; };
 		2932821A1F39E28000D42961 /* TypingTextViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 293282191F39E28000D42961 /* TypingTextViewController.swift */; };
@@ -465,7 +466,6 @@
 		29DC5ACD20A321C900993400 /* GroupFormViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29DC5ACC20A321C900993400 /* GroupFormViewController.swift */; };
 		29DDAC1F2E79A1E6007EC4CD /* BuySheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29DDAC1E2E79A1E2007EC4CD /* BuySheet.swift */; };
 		29DDAC222E79A9F3007EC4CD /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 29DDAC202E79A74F007EC4CD /* Preview Assets.xcassets */; };
-		29DDAC232E8140D9007EC4CD /* RealmSwift in Embed Frameworks */ = {isa = PBXBuildFile; productRef = 29D048B92E3A641A004A6AAA /* RealmSwift */; };
 		29DDAC252E82C2CC007EC4CD /* StableDetailDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29DDAC242E82C2C5007EC4CD /* StableDetailDataSource.swift */; };
 		29DDAC272E82F3FC007EC4CD /* GlassTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29DDAC262E82F3F7007EC4CD /* GlassTextField.swift */; };
 		29DE29E42F58421C0063A2CF /* ChallengesFormViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29DE29E32F5842160063A2CF /* ChallengesFormViewController.swift */; };
@@ -714,7 +714,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				29DDAC232E8140D9007EC4CD /* RealmSwift in Embed Frameworks */,
+				293280E9309CDE3000C01F2E /* RealmSwift in Embed Frameworks */,
 				29265893206A4E84006C8B54 /* Habitica_Database.framework in Embed Frameworks */,
 				29265891206A4E84006C8B54 /* Habitica_Models.framework in Embed Frameworks */,
 				29265895206A4E84006C8B54 /* Habitica_API_Client.framework in Embed Frameworks */,
