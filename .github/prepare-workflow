@@ -1,6 +1,4 @@
-gem install bundler
-bundle update
-bundle install
-brew update
 brew install swiftlint || true
-brew upgrade swiftlint || true
+brew install swiftgen || true
+cp secrets.yml.example secrets.yml
+swiftgen
