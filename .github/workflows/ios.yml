@@ -29,7 +29,7 @@ jobs:
       - name: Prepare
         run: ./.github/prepare-workflow
       - name: Build
-        run: xcodebuild build -scheme Habitica -destination "platform=iOS Simulator,name=${{ matrix.name }},OS=${{ matrix.os-version }}"
+        run: xcodebuild build -workspace Habitica.xcworkspace -scheme Habitica -destination "platform=iOS Simulator,name=${{ matrix.name }},OS=${{ matrix.os-version }}"
   unit-tests:
     runs-on: macos-latest
     strategy:
@@ -45,7 +45,7 @@ jobs:
       - name: Prepare
         run: ./.github/prepare-workflow
       - name: Build
-        run: xcodebuild clean test -scheme 'Habitica' -destination 'platform=iOS Simulator,name=${{ matrix.name }},OS=${{ matrix.os-version }}' -testPlan "Unit Tests" -showBuildTimingSummary
+        run: xcodebuild clean test -workspace Habitica.xcworkspace -scheme 'Habitica' -destination 'platform=iOS Simulator,name=${{ matrix.name }},OS=${{ matrix.os-version }}' -testPlan "Unit Tests" -showBuildTimingSummary
   ui-tests:
     runs-on: macos-latest
     strategy:
@@ -62,4 +62,4 @@ jobs:
       - name: Prepare
         run: ./.github/prepare-workflow
       - name: Build
-        run: xcodebuild clean test -scheme 'Habitica' -destination 'platform=iOS Simulator,name=${{ matrix.name }},OS=${{ matrix.os-version }}' -testPlan "UI Tests" -showBuildTimingSummary
+        run: xcodebuild clean test -workspace Habitica.xcworkspace -scheme 'Habitica' -destination 'platform=iOS Simulator,name=${{ matrix.name }},OS=${{ matrix.os-version }}' -testPlan "UI Tests" -showBuildTimingSummary
