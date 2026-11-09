@@ -962,7 +962,7 @@
 "block_description" = "Pengguna yang terblokir tidak dapat mengirimkan pesan pribadi kepadamu tapi kamu masih tetap bisa melihat postingan mereka.";
 "createdTaskDescription" = "Lanjutkan! Jika kamu perlu bantuan untuk merencanakan tugas, coba pikirkan hal apa yang ingin kamu lakukan pada waktu tertentu dalam sehari";
 "create_task_title" = "Membuat Tugas";
-"delete_challenge_task_description" = "Tugas ini adalah salah satu bagian dari Tantangan \"%@\" . Kamu harus meninggalkan Tantangan untuk menghapus tugas ini.";
+"delete_challenge_task_description" = "Tugas ini adalah salah satu bagian dari Tantangan \"%2$@\" . Kamu harus meninggalkan Tantangan untuk menghapus tugas ini.";
 "support.questions_description" = "Kami akan menjelaskan semua dasar dan menjawab pertanyaan umum untuk mempercepat kamu";
 "support.bug_fixes_description" = "Ada sesuatu yang salah? Cek jawabannya disini atau hubungi kami";
 "support.suggestions_description" = "Punya saran agar fitur bisa bekerja lebih baik atau ide hal-hal baru? Sampaikan pada kami!";

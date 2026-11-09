@@ -1077,7 +1077,7 @@
 "more_questions_text" = "¡Puedes [contactarnos](mailto:admin@habitica.com?subject=%%5BiOS%%5D%%20Question) y un miembro de nuestro equipo hará todo lo que esté en su mano para ayudarte!";
 "health_points" = "Puntos de salud";
 "view_gem_bundles" = "Ver los lotes de gemas";
-"suggest_pet_hatch_missing_potion" = "Todavía necesitas una poción de %d para eclosionar esta mascota";
+"suggest_pet_hatch_missing_potion" = "Todavía necesitas una poción de %@ para eclosionar esta mascota";
 "suggest_pet_hatch_again_missing_potion" = "Todavía necesitas un %@ para eclosionar esta mascota de nuevo";
 "suggest_pet_hatch_again_missing_both" = "Necesitas un %@ y una poción de %@ para eclosionar esta mascota de nuevo";
 "unlocks_selecting_class_description" = "Las habilidades se desbloquean una vez alcances el nivel 10 y hayas elegido una clase";

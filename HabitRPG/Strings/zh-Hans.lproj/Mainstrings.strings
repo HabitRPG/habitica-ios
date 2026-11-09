@@ -865,7 +865,7 @@
 "support.questions_title" = "Habitica常见问题";
 "leave_and_delete_x_tasks" = "离开并删除%d个任务";
 "leave_and_delete_task" = "离开并删除任务";
-"delete_challenge_task_description" = "这是属于“%@”挑战的%d个任务之一。你必须先退出挑战才能删除此任务。";
+"delete_challenge_task_description" = "这是属于“%2$@”挑战的%1$d个任务之一。你必须先退出挑战才能删除此任务。";
 "delete_challenge_task" = "删除挑战任务？";
 "delete_x_tasks" = "删除%d个任务";
 "keep_x_tasks" = "保留%d个任务";
