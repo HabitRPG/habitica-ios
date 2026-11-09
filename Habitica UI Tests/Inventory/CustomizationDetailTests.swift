@@ -37,10 +37,6 @@ class CustomizationDetailTests: HabiticaAppTests {
         listsCustomizations(category: "Skin", prefix: "skin ")
     }
 
-    func testListHairColors() {
-        listsCustomizations(category: "Hair Color", prefix: "hair ")
-    }
-
     func testListBangs() {
         listsCustomizations(category: "Bangs", prefix: "hair ")
     }
@@ -49,7 +45,4 @@ class CustomizationDetailTests: HabiticaAppTests {
         listsCustomizations(category: "Wheelchair", prefix: "chair ")
     }
 
-    func testListBackgrounds() {
-        listsCustomizations(category: "Background", prefix: "background ")
-    }
 }

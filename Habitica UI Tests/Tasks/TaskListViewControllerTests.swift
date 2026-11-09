@@ -35,7 +35,7 @@ class TaskListTests: HabiticaAppTests {
         stubData["tasks/user"] = stubEmptyListResponse()
         app.launch(withStubs:stubData)
         let tablesQuery = app.tables
-        app.tabBars["Tab Bar"].buttons[L10n.Tasks.dailies].tap()
+        app.buttons[L10n.Tasks.dailies].firstMatch.tap() // iPadOS 18+ floats tabs at the top, not in a TabBar
         XCTAssertTrue(tablesQuery.staticTexts[L10n.Empty.Dailies.title].exists)
     }
     
@@ -43,7 +43,7 @@ class TaskListTests: HabiticaAppTests {
         stubData["tasks/user"] = stubEmptyListResponse()
         app.launch(withStubs:stubData)
         let tablesQuery = app.tables
-        app.tabBars["Tab Bar"].buttons[L10n.Tasks.todos].tap()
+        app.buttons[L10n.Tasks.todos].firstMatch.tap()
         XCTAssertTrue(tablesQuery.staticTexts[L10n.Empty.Todos.title].exists)
     }
     
@@ -54,13 +54,13 @@ class TaskListTests: HabiticaAppTests {
 
     func testDisplaysDailies() {
         app.launch(withStubs:stubData)
-        app.tabBars["Tab Bar"].buttons[L10n.Tasks.dailies].tap()
+        app.buttons[L10n.Tasks.dailies].firstMatch.tap()
         expectExists(withPrefix: "Due, 文字入力を試みても変換が出来ず", in: app.tables.otherElements)
     }
 
     func testDisplaysTodos() {
         app.launch(withStubs:stubData)
-        app.tabBars["Tab Bar"].buttons[L10n.Tasks.todos].tap()
+        app.buttons[L10n.Tasks.todos].firstMatch.tap()
         expectExists(withPrefix: "Not Completed, test. todo", in: app.tables.otherElements)
     }
 }

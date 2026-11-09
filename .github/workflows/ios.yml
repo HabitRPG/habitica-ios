@@ -18,6 +18,7 @@ jobs:
   build:
     runs-on: macos-latest
     strategy:
+      fail-fast: false
       matrix:
         name:
           - "iPhone 17"
@@ -33,6 +34,7 @@ jobs:
   unit-tests:
     runs-on: macos-latest
     strategy:
+      fail-fast: false
       matrix:
         name:
           - "iPhone 17"
@@ -49,6 +51,7 @@ jobs:
   ui-tests:
     runs-on: macos-latest
     strategy:
+      fail-fast: false
       matrix:
         name:
           - "iPhone 17"
