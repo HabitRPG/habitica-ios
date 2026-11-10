@@ -108,6 +108,9 @@ class AvatarDetailViewController: BaseCollectionViewController, UICollectionView
             if !customization.isPurchasable || datasource.owns(customization: customization) == true {
                 var key = customization.key ?? ""
                 if customization.key == datasource.equippedKey {
+                    if AvatarDetailViewDataSource.isNoneCustomization(customization) {
+                        return
+                    }
                     if customization.type == "background" {
                         key = datasource.equippedKey ?? ""
                         customizationRepository.unlock(path: "background.\(key)", value: 0, text: "")
