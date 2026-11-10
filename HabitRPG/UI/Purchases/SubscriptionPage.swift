@@ -251,6 +251,24 @@ class SubscriptionViewModel: BaseSubscriptionViewModel {
     }
 }
 
+struct IAPDisabledNotice: View {
+    var body: some View {
+        VStack(spacing: 8) {
+            Text(L10n.iapDisabledTitle)
+                .font(.system(size: 17, weight: .semibold))
+            Text(L10n.iapDisabledDescription)
+                .font(.system(size: 15))
+        }
+        .multilineTextAlignment(.center)
+        .foregroundStyle(.white)
+        .padding(20)
+        .frame(maxWidth: .infinity)
+        .background(Color(UIColor.purple200))
+        .cornerRadius(UIConstants.largeCornerRadius)
+        .accessibilityElement(children: .combine)
+    }
+}
+
 struct SubscriptionSeparator: View {
     var body: some View {
         HStack(spacing: 10) {
@@ -401,42 +419,47 @@ struct SubscriptionPage: View {
                     }
                     SubscriptionBenefitListView(presentationPoint: viewModel.presentationPoint, mysteryGear: viewModel.mysteryGear, mysteryGearSet: viewModel.mysteryGearSet)
                         .padding(.horizontal, 24)
-                    ZStack(alignment: .top) {
-                        VStack(spacing: 0) {
-                            ForEach(enumerating: viewModel.availableSubscriptions) { sub in
-                                Rectangle()
-                                    .fill()
-                                    .foregroundStyle(Color(UIColor.purple200))
-                                    .frame(height: viewModel.showHourglassPromo && sub == viewModel.availableSubscriptions.last ? 186 : 126)
-                                    .cornerRadius(UIConstants.largeCornerRadius)
-                                    .padding(.vertical, 4).onTapGesture {
-                                        withAnimation {
-                                            viewModel.selectedSubscription = sub
+                    if PurchaseHandler.shared.canMakePayments {
+                        ZStack(alignment: .top) {
+                            VStack(spacing: 0) {
+                                ForEach(enumerating: viewModel.availableSubscriptions) { sub in
+                                    Rectangle()
+                                        .fill()
+                                        .foregroundStyle(Color(UIColor.purple200))
+                                        .frame(height: viewModel.showHourglassPromo && sub == viewModel.availableSubscriptions.last ? 186 : 126)
+                                        .cornerRadius(UIConstants.largeCornerRadius)
+                                        .padding(.vertical, 4).onTapGesture {
+                                            withAnimation {
+                                                viewModel.selectedSubscription = sub
+                                            }
                                         }
-                                    }
+                                }
                             }
+                            Rectangle()
+                                .frame(height: viewModel.showHourglassPromo && viewModel.selectedSubscription == viewModel.availableSubscriptions.last ? 186 : 126)
+                                .cornerRadius(UIConstants.largeCornerRadius)
+                                .offset(y: 4.0 + (CGFloat(viewModel.availableSubscriptions.firstIndex(of: viewModel.selectedSubscription) ?? 0) * 134.0))
+                                .animation(.interpolatingSpring(stiffness: 500, damping: 55), value: viewModel.selectedSubscription)
+                            SubscriptionOptionStack(viewModel: viewModel)
                         }
-                        Rectangle()
-                            .frame(height: viewModel.showHourglassPromo && viewModel.selectedSubscription == viewModel.availableSubscriptions.last ? 186 : 126)
-                            .cornerRadius(UIConstants.largeCornerRadius)
-                            .offset(y: 4.0 + (CGFloat(viewModel.availableSubscriptions.firstIndex(of: viewModel.selectedSubscription) ?? 0) * 134.0))
-                            .animation(.interpolatingSpring(stiffness: 500, damping: 55), value: viewModel.selectedSubscription)
-                        SubscriptionOptionStack(viewModel: viewModel)
-                    }
-                    .padding(.horizontal, 24)
-                    Group {
-                        if viewModel.isSubscribing {
-                            ProgressView().habiticaProgressStyle().frame(height: 48)
+                        .padding(.horizontal, 24)
+                        Group {
+                            if viewModel.isSubscribing {
+                                ProgressView().habiticaProgressStyle().frame(height: 48)
+                                    .transition(.opacity)
+                            } else {
+                                HabiticaButtonUI(label: Text(L10n.subscribe).foregroundStyle(.purple100), color: Color(UIColor.yellow100), size: .compact) {
+                                    viewModel.subscribeTapped()
+                                }
                                 .transition(.opacity)
-                        } else {
-                            HabiticaButtonUI(label: Text(L10n.subscribe).foregroundStyle(.purple100), color: Color(UIColor.yellow100), size: .compact) {
-                                viewModel.subscribeTapped()
                             }
-                            .transition(.opacity)
                         }
+                        .padding(.vertical, 13)
+                        .padding(.horizontal, 24)
+                    } else {
+                        IAPDisabledNotice()
+                            .padding(24)
                     }
-                    .padding(.vertical, 13)
-                    .padding(.horizontal, 24)
                     Text(L10n.subscriptionSupportDevelopers)
                         .foregroundStyle(.white)
                         .font(.system(size: 13))

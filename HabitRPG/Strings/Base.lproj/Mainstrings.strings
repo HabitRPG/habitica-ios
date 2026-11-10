@@ -476,6 +476,7 @@
 "party.looking_for_party" = "You’re looking for a Party!";
 "party.party_description" = "Party Description";
 "party.party_challenges" = "Party Challenges";
+"party.no_challenges" = "Your Party has no Challenges yet. Create one from the Challenges screen and choose your Party as its location.";
 "party.start_quest" = "Start a Quest";
 "party.leave_party_title" = "Are you sure you want to leave the Party?";
 "party.leave_party_description" = "Leaving your Party will not remove you from any Party Challenges you are participating in.";
@@ -1255,6 +1256,8 @@
 "x_x_gem_cap" = "%d / %d Gem Cap";
 "resubscribe_to_pick_up" = "Resubscribe to pick up where you left off!";
 "restore_purchase" = "Restore Purchase";
+"iap_disabled_title" = "Purchases are turned off";
+"iap_disabled_description" = "In-app purchases are disabled on this device. To buy Gems or a subscription, allow In-App Purchases in Settings › Screen Time › Content & Privacy Restrictions, or ask whoever manages this device.";
 "no_active_subscription_to_restore" = "Could not find an active subscription to restore";
 "subscriber_benefit" = "Subscriber Benefit";
 "buy_gems_with_gold" = "Buy Gems with Gold";

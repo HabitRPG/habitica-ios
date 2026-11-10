@@ -53,37 +53,35 @@ class PurchaseHandler: NSObject, SKPaymentTransactionObserver {
         #endif
     }
     
+    /// False when IAPs are blocked (Screen Time, MDM or parental controls).
+    var canMakePayments: Bool {
+        SKPaymentQueue.canMakePayments()
+    }
+
     @objc
     func completionHandler() {
-        if !SKPaymentQueue.canMakePayments() {
+        if !canMakePayments {
             return
         }
         if hasCompletionHandler {
             return
         }
         hasCompletionHandler = true
-        
+
         // Workaround for SwiftyStoreKit.completeTransactions not correctly returning consumable IAPs
         SKPaymentQueue.default().add(self)
         SwiftyStoreKit.completeTransactions(atomically: false) { _ in
         }
-        
-        SwiftyStoreKit.restorePurchases(atomically: false) { results in
-            if results.restoreFailedPurchases.isEmpty == false {
-                logger.log("Restore Failed: \(results.restoreFailedPurchases)", level: .error)
-            } else if results.restoredPurchases.isEmpty == false {
-                logger.log("Restore Success: \(results.restoredPurchases)")
-            } else {
-                logger.log("Nothing to Restore")
-            }
-            self.userRepository.getUser().take(first: 1)
-                .on(value: { user in
-                    if user.isSubscribed && user.purchased?.subscriptionPlan?.dateTerminated == nil && user.purchased?.subscriptionPlan?.paymentMethod == "Apple" {
-                        self.checkForCancellation(user: user)
-                    }
-                })
-                .start()
-        }
+
+        // No automatic restore here: it asks for App Store sign-in and shows a system error when the store is blocked.
+        // Users restore via the "Restore Purchase" button on the subscription page.
+        userRepository.getUser().take(first: 1)
+            .on(value: { user in
+                if user.isSubscribed && user.purchased?.subscriptionPlan?.dateTerminated == nil && user.purchased?.subscriptionPlan?.paymentMethod == "Apple" {
+                    self.checkForCancellation(user: user)
+                }
+            })
+            .start()
     }
     
     func paymentQueue(_ queue: SKPaymentQueue, updatedTransactions transactions: [SKPaymentTransaction]) {
@@ -399,6 +397,10 @@ class PurchaseHandler: NSObject, SKPaymentTransactionObserver {
     }
     
     func getRecentSubscriptionRenewal(user: UserProtocol, onResult: @escaping (Product.SubscriptionInfo.RenewalInfo?) -> Void) {
+        // Without a local receipt, verifyReceipt starts a receipt refresh, which prompts for sign-in or shows a store error.
+        guard SwiftyStoreKit.localReceiptData != nil else {
+            return
+        }
         let searchedID = user.purchased?.subscriptionPlan?.customerId
         SwiftyStoreKit.verifyReceipt(using: self.appleValidator) { result in
             switch result {

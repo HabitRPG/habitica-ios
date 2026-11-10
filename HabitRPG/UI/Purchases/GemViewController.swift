@@ -31,6 +31,7 @@ class GemViewController: BaseCollectionViewController, UICollectionViewDelegateF
     private let stretchImageView = UIImageView(image: Asset.gemPurchaseFooterBottom.image)
     
     var isSubscribed = false
+    private let canMakePayments = PurchaseHandler.shared.canMakePayments
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -41,7 +42,10 @@ class GemViewController: BaseCollectionViewController, UICollectionViewDelegateF
 
         let nib = UINib.init(nibName: "GemPurchaseView", bundle: nil)
         self.collectionView?.register(nib, forCellWithReuseIdentifier: "Cell")
-        retrieveProductList()
+        self.collectionView?.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "IAPDisabledCell")
+        if canMakePayments {
+            retrieveProductList()
+        }
         
         disposable.inner.add(userRepository.getUser().on(value: {[weak self]user in
             self?.user = user
@@ -99,10 +103,16 @@ class GemViewController: BaseCollectionViewController, UICollectionViewDelegateF
     }
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        if !canMakePayments {
+            return 1
+        }
         return products?.count ?? 0
     }
 
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        if !canMakePayments {
+            return
+        }
         purchaseGems(identifier: PurchaseHandler.IAPIdentifiers[indexPath.item])
         let cell = collectionView.cellForItem(at: indexPath)
         (cell as? GemPurchaseCell)?.setLoading(true)
@@ -127,6 +137,11 @@ class GemViewController: BaseCollectionViewController, UICollectionViewDelegateF
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        if !canMakePayments {
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "IAPDisabledCell", for: indexPath)
+            cell.contentConfiguration = UIHostingConfiguration { IAPDisabledNotice() }.margins(.all, 0)
+            return cell
+        }
         guard let product = self.products?[indexPath.item], let cell = self.collectionView?.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath) as? GemPurchaseCell else {
             return UICollectionViewCell()
         }
@@ -172,6 +187,9 @@ class GemViewController: BaseCollectionViewController, UICollectionViewDelegateF
         let safeRight = view.safeAreaInsets.right
         let sideInset = max(25, safeLeft + 6) + max(25, safeRight + 6)
         let availableWidth = collectionView.bounds.width - sideInset
+        if !canMakePayments {
+            return CGSize(width: availableWidth, height: 200)
+        }
         let itemWidth = floor((availableWidth - 20) / 2)
         return CGSize(width: itemWidth, height: 222)
     }

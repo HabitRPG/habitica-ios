@@ -566,6 +566,10 @@ public enum L10n {
   public static var hourglassesDescription: String { return L10n.tr("Mainstrings", "hourglasses_description") }
   /// 100 Gold
   public static var hundredGold: String { return L10n.tr("Mainstrings", "hundred_gold") }
+  /// In-app purchases are disabled on this device. To buy Gems or a subscription, allow In-App Purchases in Settings › Screen Time › Content & Privacy Restrictions, or ask whoever manages this device.
+  public static var iapDisabledDescription: String { return L10n.tr("Mainstrings", "iap_disabled_description") }
+  /// Purchases are turned off
+  public static var iapDisabledTitle: String { return L10n.tr("Mainstrings", "iap_disabled_title") }
   /// Inactive
   public static var inactive: String { return L10n.tr("Mainstrings", "inactive") }
   /// You’ll need more Mystic Hourglasses to buy this item! Hourglasses are rewarded for being subscribed for consecutive months.
@@ -2260,6 +2264,8 @@ public enum L10n {
     public static var lookForParty: String { return L10n.tr("Mainstrings", "party.look_for_party") }
     /// You’re looking for a Party!
     public static var lookingForParty: String { return L10n.tr("Mainstrings", "party.looking_for_party") }
+    /// Your Party has no Challenges yet. Create one from the Challenges screen and choose your Party as its location.
+    public static var noChallenges: String { return L10n.tr("Mainstrings", "party.no_challenges") }
     /// Party Challenges
     public static var partyChallenges: String { return L10n.tr("Mainstrings", "party.party_challenges") }
     /// Party Description
