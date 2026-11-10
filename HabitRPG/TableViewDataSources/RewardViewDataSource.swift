@@ -70,7 +70,10 @@ class RewardViewDataSource: BaseReactiveCollectionViewDataSource<BaseRewardProto
         var section: Int?
         if let task = reward as? TaskProtocol {
             section = 0
-            taskRepository.moveTask(task, toPosition: toPosition).observeCompleted {
+            userDrivenDataUpdate = true
+            taskRepository.fixTaskOrder(movedTask: task, toPosition: toPosition)
+            taskRepository.moveTask(task, toPosition: toPosition).observeCompleted {[weak self] in
+                self?.userDrivenDataUpdate = false
                 completion?()
             }
         } else if let reward = reward as? InAppRewardProtocol {

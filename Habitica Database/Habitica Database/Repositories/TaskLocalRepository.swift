@@ -250,7 +250,10 @@ public class TaskLocalRepository: BaseLocalRepository {
             return
         }
         var taskArray = Array(tasks)
-        taskArray.move(fromOffsets: IndexSet(integer: movedTask.order), toOffset: toPosition)
+        guard let fromIndex = taskArray.firstIndex(where: { $0.id == movedTask.id }) else {
+            return
+        }
+        taskArray.move(fromOffsets: IndexSet(integer: fromIndex), toOffset: toPosition > fromIndex ? toPosition + 1 : toPosition)
         
         updateCall { _ in
             for task in taskArray {

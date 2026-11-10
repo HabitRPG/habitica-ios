@@ -119,7 +119,12 @@ class ShopCollectionViewDataSource: BaseReactiveCollectionViewDataSource<InAppRe
             if self?.user?.isSubscribed != user.isSubscribed {
                 shouldReload = true
             }
+            let classChanged = self?.userClass != user.stats?.habitClass
             self?.user = user
+            if classChanged {
+                self?.moveClassGearToTop()
+                shouldReload = true
+            }
             if self?.selectedGearCategory == nil {
                 self?.selectedGearCategory = self?.userClass
             }
@@ -180,6 +185,7 @@ class ShopCollectionViewDataSource: BaseReactiveCollectionViewDataSource<InAppRe
             newSection.showIfEmpty = true
             sections.append(newSection)
         }
+        moveClassGearToTop()
 
         if shopIdentifier == Constants.MarketKey, user?.flags?.rebirthEnabled == true {
             if let specialSectionIndex = sections.firstIndex(where: { $0.key == "special" }) {
@@ -523,5 +529,18 @@ class ShopCollectionViewDataSource: BaseReactiveCollectionViewDataSource<InAppRe
             }
         }
         return false
+    }
+}
+
+extension ShopCollectionViewDataSource {
+    fileprivate func moveClassGearToTop() {
+        guard shopIdentifier == Constants.SeasonalShopKey, let userClass = userClass, sections.count > 2 else {
+            return
+        }
+        let categories = sections[1...]
+        let isClassGear = { (section: ItemSection<InAppRewardProtocol>) -> Bool in
+            section.items.contains { $0.isValid && $0.actualClass == userClass }
+        }
+        sections = [sections[0]] + categories.filter(isClassGear) + categories.filter { !isClassGear($0) }
     }
 }
