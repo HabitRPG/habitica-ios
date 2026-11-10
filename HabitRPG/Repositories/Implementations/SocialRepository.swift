@@ -72,6 +72,14 @@ class SocialRepository: BaseRepository<SocialLocalRepository> {
         })
     }
     
+    func retrieveGroupChallenges(groupID: String) -> Signal<[ChallengeProtocol]?, Never> {
+        return RetrieveChallengesCall(groupID: groupID).arraySignal.on(value: {[weak self] challenges in
+            if let challenges = challenges {
+                self?.localRepository.save(challenges)
+            }
+        })
+    }
+
     func retrieveChallenge(challengeID: String, withTasks: Bool = true) -> Signal<ChallengeProtocol?, Never> {
         let signal = RetrieveChallengeCall(challengeID: challengeID).objectSignal.on(value: {[weak self]challenge in
             if let challenge = challenge {

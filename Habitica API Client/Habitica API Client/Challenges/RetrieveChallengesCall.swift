@@ -18,4 +18,8 @@ public class RetrieveChallengesCall: ResponseArrayCall<ChallengeProtocol, APICha
         }
         super.init(httpMethod: .GET, endpoint: url)
     }
+
+    public init(groupID: String) {
+        super.init(httpMethod: .GET, endpoint: "challenges/groups/\(groupID)")
+    }
 }

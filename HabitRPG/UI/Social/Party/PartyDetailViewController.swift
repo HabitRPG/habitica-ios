@@ -109,6 +109,23 @@ class PartyDetailViewController: GroupDetailViewController {
                 self?.finishedInitialLoad = true
         }).start())
         
+        partyChallengesButton.isHidden = true
+        disposable.inner.add(groupProperty.producer.skipNil()
+            .filter({ $0.isValid })
+            .map({ $0.id })
+            .skipNil()
+            .skipRepeats()
+            .observe(on: QueueScheduler.main)
+            .on(value: {[weak self] groupID in
+                self?.socialRepository.retrieveGroupChallenges(groupID: groupID).observeCompleted {}
+            })
+            .flatMap(.latest, {[weak self] groupID in
+                return self?.socialRepository.getChallenges(predicate: NSPredicate(format: "groupID == %@", groupID))
+                    .flatMapError({ _ in SignalProducer<ReactiveResults<[ChallengeProtocol]>, Never>.empty }) ?? SignalProducer.empty
+            }).on(value: {[weak self] challenges in
+                self?.set(challenges: challenges.value)
+            }).start())
+
         #if !targetEnvironment(macCatalyst)
         let refreshControl = HabiticaRefresControl()
         refreshControl.addTarget(self, action: #selector(refresh), for: UIControl.Event.valueChanged)
@@ -118,7 +135,10 @@ class PartyDetailViewController: GroupDetailViewController {
     @objc
     private func refresh() {
         disposable.inner.add(socialRepository.retrieveGroup(groupID: groupID ?? "party")
-            .flatMap(.latest, { _ in
+            .flatMap(.latest, { group in
+                if let groupID = group?.id {
+                    self.socialRepository.retrieveGroupChallenges(groupID: groupID).observeCompleted {}
+                }
                 return self.socialRepository.retrieveGroupMembers(groupID: self.groupID ?? "party")
             })
             .observeCompleted {
@@ -129,6 +149,9 @@ class PartyDetailViewController: GroupDetailViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         if finishedInitialLoad {
+            if let groupID = groupProperty.value?.id {
+                socialRepository.retrieveGroupChallenges(groupID: groupID).observeCompleted {}
+            }
             socialRepository.retrieveGroupInvites(groupID: groupID ?? "").observeValues { invites in
                 if let invites = invites {
                     self.invitations = invites
@@ -225,6 +248,23 @@ class PartyDetailViewController: GroupDetailViewController {
         controller.didMove(toParent: self)
     }
     
+    private func set(challenges: [ChallengeProtocol]) {
+        for view in challengesStackView.arrangedSubviews where view.tag == 1001 {
+            view.removeFromSuperview()
+        }
+        let list = PartyChallengeList(challenges: challenges) { challenge in
+            if let id = challenge.id {
+                _ = RouterHandler.shared.handle(urlString: "/challenges/\(id)")
+            }
+        }
+        let controller = UIHostingController(rootView: list)
+        controller.view.backgroundColor = .clear
+        addChild(controller)
+        controller.view.tag = 1001
+        challengesStackView.addArrangedSubview(controller.view)
+        controller.didMove(toParent: self)
+    }
+
     override func updateData(group: GroupProtocol) {
         super.updateData(group: group)
         
@@ -448,5 +488,49 @@ class PartyDetailViewController: GroupDetailViewController {
             .padding(.vertical, 16)
         }))
         sheet.show()
+    }
+}
+
+struct PartyChallengeList: View {
+    let challenges: [ChallengeProtocol]
+    let onTap: (ChallengeProtocol) -> Void
+    @ObservedObject var themeService = ThemeService.shared
+
+    var body: some View {
+        VStack(spacing: 8) {
+            if challenges.isEmpty {
+                Text(L10n.Party.noChallenges)
+                    .font(.system(size: 14))
+                    .foregroundStyle(Color(themeService.theme.ternaryTextColor))
+                    .multilineTextAlignment(.center)
+                    .frame(maxWidth: .infinity)
+                    .padding(16)
+            }
+            ForEach(challenges.filter { ($0 as? BaseModelProtocol)?.isValid != false }, id: \.id) { challenge in
+                Button {
+                    onTap(challenge)
+                } label: {
+                    HStack(spacing: 12) {
+                        VStack(alignment: .leading, spacing: 4) {
+                            Text(challenge.name ?? "").font(.headline).multilineTextAlignment(.leading)
+                            Text("\(challenge.memberCount) \(L10n.participants)").font(.subheadline).foregroundStyle(.secondary)
+                        }
+                        Spacer()
+                        if challenge.prize > 0 {
+                            HStack(spacing: 4) {
+                                Image(uiImage: HabiticaIcons.imageOfGem)
+                                Text("\(challenge.prize)").font(.headline).foregroundStyle(Color(UIColor.green10))
+                            }
+                        }
+                    }
+                    .foregroundStyle(Color(themeService.theme.primaryTextColor))
+                    .padding(16)
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                    .background(Color(themeService.theme.windowBackgroundColor))
+                    .cornerRadius(UIConstants.largeCornerRadius)
+                }
+                .buttonStyle(.plain)
+            }
+        }
     }
 }
