@@ -35,7 +35,7 @@ class TaskListTests: HabiticaAppTests {
         stubData["tasks/user"] = stubEmptyListResponse()
         app.launch(withStubs:stubData)
         let tablesQuery = app.tables
-        app.buttons[L10n.Tasks.dailies].firstMatch.tap() // iPadOS 18+ floats tabs at the top, not in a TabBar
+        openTab(L10n.Tasks.dailies)
         XCTAssertTrue(tablesQuery.staticTexts[L10n.Empty.Dailies.title].exists)
     }
     
@@ -43,7 +43,7 @@ class TaskListTests: HabiticaAppTests {
         stubData["tasks/user"] = stubEmptyListResponse()
         app.launch(withStubs:stubData)
         let tablesQuery = app.tables
-        app.buttons[L10n.Tasks.todos].firstMatch.tap()
+        openTab(L10n.Tasks.todos)
         XCTAssertTrue(tablesQuery.staticTexts[L10n.Empty.Todos.title].exists)
     }
     
@@ -54,14 +54,27 @@ class TaskListTests: HabiticaAppTests {
 
     func testDisplaysDailies() {
         app.launch(withStubs:stubData)
-        app.buttons[L10n.Tasks.dailies].firstMatch.tap()
+        openTab(L10n.Tasks.dailies)
         expectExists(withPrefix: "Due, 文字入力を試みても変換が出来ず", in: app.tables.otherElements)
     }
 
     func testDisplaysTodos() {
         app.launch(withStubs:stubData)
-        app.buttons[L10n.Tasks.todos].firstMatch.tap()
+        openTab(L10n.Tasks.todos)
         expectExists(withPrefix: "Not Completed, test. todo", in: app.tables.otherElements)
+    }
+}
+
+extension TaskListTests {
+    // iPadOS 18+ floats tabs at the top instead of a TabBar, so look the button up app-wide.
+    // Right after launch the first tap can be swallowed while the app settles, so tap again if the tab didn't switch.
+    func openTab(_ name: String) {
+        let tab = app.buttons[name].firstMatch
+        XCTAssertTrue(tab.waitForExistence(timeout: 10))
+        tab.tap()
+        if !tab.isSelected {
+            tab.tap()
+        }
     }
 }
 
