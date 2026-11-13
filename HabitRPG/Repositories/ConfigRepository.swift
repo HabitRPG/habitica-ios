@@ -211,10 +211,17 @@ class ConfigRepository {
             return key.defaultValue
         }
         #endif
-        guard let raw = raw, let value = try? raw.decode(T.self) else {
+        guard let raw = raw else {
             return key.defaultValue
         }
-        return value
+        if let value = try? raw.decode(T.self) {
+            return value
+        }
+        if case .string(let string) = raw, let data = string.data(using: .utf8),
+           let value = try? JSONDecoder().decode(T.self, from: data) {
+            return value
+        }
+        return key.defaultValue
     }
 
     func activePromotion() -> HabiticaPromotion? {
