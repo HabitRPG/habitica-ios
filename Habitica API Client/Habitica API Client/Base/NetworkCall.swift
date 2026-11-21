@@ -67,17 +67,18 @@ open class NetworkCall {
                 guard let urlString = response.url?.absoluteString else {
                     return
                 }
-                if HabiticaServerConfig.etags[urlString] != etag {
+                if HabiticaServerConfig.etag(for: urlString) != etag {
                     UserDefaults.standard.set(etag, forKey: "etag\(urlString)")
+                    HabiticaServerConfig.setEtag(etag, for: urlString)
                 }
-                HabiticaServerConfig.etags[urlString] = etag
             }
         })
         dataSignal = dataProperty.signal
         
         errorDataSignal = errorDataProperty.signal.skipNil()
         errorSignal = errorProperty.signal.skipNil()
-        serverErrorSignal = httpResponseSignal.filter({ $0.statusCode > 300 }).map({ NSError(domain: "Server", code: $0.statusCode, userInfo: ["url": $0.url?.absoluteString as Any]) })
+        // 304 answers our own If-None-Match: nothing changed, not an error
+        serverErrorSignal = httpResponseSignal.filter({ $0.statusCode >= 300 && $0.statusCode != 304 }).map({ NSError(domain: "Server", code: $0.statusCode, userInfo: ["url": $0.url?.absoluteString as Any]) })
         
         dataTaskSignal.observeValues { task in
             task.resume()
@@ -109,7 +110,7 @@ open class NetworkCall {
                 self.responseProperty.value = response
                 if error != nil {
                     self.errorDataProperty.value = data
-                } else if let httpResponse = response as? HTTPURLResponse, httpResponse.statusCode > 299 {
+                } else if let httpResponse = response as? HTTPURLResponse, httpResponse.statusCode >= 300 {
                     self.errorDataProperty.value = data
                 } else {
                     self.dataProperty.value = data
@@ -154,7 +155,7 @@ open class NetworkCall {
             }
             if !ignoreEtag {
                 if let urlString = request?.url?.absoluteString {
-                    if let etag = HabiticaServerConfig.etags[urlString] {
+                    if let etag = HabiticaServerConfig.etag(for: urlString) {
                         mutableRequest.addValue(etag, forHTTPHeaderField: "If-None-Match")
                     }
                 }

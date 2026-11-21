@@ -191,6 +191,7 @@ class MainMenuViewController: BaseTableViewController {
     private let configRepository = ConfigRepository.shared
     
     private var disposable = ScopedDisposable(CompositeDisposable())
+    private var configTasks = [Task<Void, Never>]()
     private var seasonalShopTimer: Timer?
     private var promoTimer: Timer?
     private let stretchView = GradientView()
@@ -407,6 +408,15 @@ class MainMenuViewController: BaseTableViewController {
         setupMenu()
         
         NotificationCenter.default.addObserver(self, selector: #selector(languageChanged), name: .languageChanged, object: nil)
+        configTasks = [
+            configRepository.observe(.hideChallenges, includingCurrent: false) {[weak self] isHidden in
+                self?.menuItem(withKey: .challenges).isHidden = isHidden
+                self?.tableView.reloadData()
+            },
+            configRepository.observe(.showSubscriptionBanner, includingCurrent: false) {[weak self] _ in
+                self?.setupFooter()
+            }
+        ]
                 
         disposable.inner.add(userRepository.getUser().on(value: {[weak self] user in
             self?.user = user
@@ -629,6 +639,7 @@ class MainMenuViewController: BaseTableViewController {
     
     deinit {
         NotificationCenter.default.removeObserver(self)
+        configTasks.forEach { $0.cancel() }
     }
     
     @objc

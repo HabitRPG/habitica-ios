@@ -23,12 +23,25 @@ public class HabiticaServerConfig {
     public static let starfish = ServerConfiguration(scheme: "https", host: "starfish.habitica.com", apiRoute: "api/\(Constants.defaultApiVersion)")
     public static let turtle = ServerConfiguration(scheme: "https", host: "turtle.habitica.com", apiRoute: "api/\(Constants.defaultApiVersion)")
 
-    public static let localhost = ServerConfiguration(scheme: "http", host: "192.168.178.52:3000", apiRoute: "api/\(Constants.defaultApiVersion)")
     public static let stub = ServerConfiguration(shouldStub: true, scheme: "https", host: "habitica.com", apiRoute: "api/\(Constants.defaultApiVersion)")
     
     public static var current = production
         
-    public static var etags: [String: String] = [:]
+    // Read on each call's work queue and written on the main queue, so every access goes through the lock
+    private static let etagLock = NSLock()
+    private static var etags: [String: String] = [:]
+
+    public static func etag(for url: String) -> String? {
+        etagLock.lock()
+        defer { etagLock.unlock() }
+        return etags[url]
+    }
+
+    public static func setEtag(_ etag: String?, for url: String) {
+        etagLock.lock()
+        defer { etagLock.unlock() }
+        etags[url] = etag
+    }
     
     public static var stubs = [String: CallStub]()
     

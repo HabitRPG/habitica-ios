@@ -10,6 +10,10 @@ import Foundation
 import ReactiveSwift
 import Habitica_API_Client
 
+extension Notification.Name {
+    static let authenticationChanged = Notification.Name("authenticationChanged")
+}
+
 class AuthenticationManager {
 
     func initialize(withStorage storage: AuthenticationStorage) {
@@ -50,8 +54,12 @@ class AuthenticationManager {
         }
         
         set(newValue) {
+            let hasChanged = storage?.apiKey != newValue
             storage?.apiKey = newValue
             NetworkAuthenticationManager.shared.currentUserKey = newValue
+            if hasChanged {
+                NotificationCenter.default.post(name: .authenticationChanged, object: nil)
+            }
         }
     }
 

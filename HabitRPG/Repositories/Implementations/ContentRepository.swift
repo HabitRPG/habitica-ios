@@ -53,9 +53,8 @@ class ContentRepository: BaseRepository<ContentLocalRepository> {
         return Signal.empty
     }
     
-    func retrieveClientConfig() -> Signal<[String: JSONValue]?, Never> {
-        print("👓 Reading config from server")
-        return RetrieveClientConfigCall().objectSignal
+    func retrieveClientConfig(ignoreEtag: Bool) -> Signal<[String: JSONValue]?, Never> {
+        return RetrieveClientConfigCall(ignoreEtag: ignoreEtag).habiticaResponseSignal.map { $0?.data }
     }
     
     func getWorldState() -> SignalProducer<WorldStateProtocol, ReactiveSwiftRealmError> {

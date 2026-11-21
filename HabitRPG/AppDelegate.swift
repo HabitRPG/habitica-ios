@@ -75,6 +75,10 @@ class HabiticaAppDelegate: UIResponder, MessagingDelegate, UIApplicationDelegate
         
         handleInitialLaunch()
         applySearchAdAttribution()
+        // The launch screen checks for maintenance itself, this catches it being switched on or off later
+        configRepository.observe(.maintenanceData, includingCurrent: false) {[weak self] _ in
+            _ = self?.handleMaintenanceScreen()
+        }
         Measurements.stop(identifier: "didFinishLaunchingWithOptions")
         return true
     }
@@ -180,7 +184,7 @@ class HabiticaAppDelegate: UIResponder, MessagingDelegate, UIApplicationDelegate
         for (key, etag) in userDefaults.dictionaryRepresentation().filter({ (key, _) -> Bool in
             return key.starts(with: "etag")
         }) {
-            HabiticaServerConfig.etags[String(key.dropFirst(4))] = etag as? String
+            HabiticaServerConfig.setEtag(etag as? String, for: String(key.dropFirst(4)))
         }
     }
     

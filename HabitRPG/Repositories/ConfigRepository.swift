@@ -1,6 +1,7 @@
 import Foundation
 import Habitica_API_Client
 import Habitica_Models
+import ReactiveSwift
 
 extension AnyClientConfigKey {
     static let supportEmail = ClientConfigKey("supportEmail", default: "admin@habitica.com")
@@ -13,7 +14,7 @@ extension AnyClientConfigKey {
     static let lastVersionCode = ClientConfigKey<Int>("lastVersionCode", default: 0)
     static let randomizeAvatar = ClientConfigKey("randomizeAvatar", default: false)
     static let showSubscriptionBanner = ClientConfigKey("showSubscriptionBanner", default: false)
-    static let knownIssues = ClientConfigKey<[String]>("knownIssues", default: [])
+    static let knownIssues = ClientConfigKey<[[String: String]]>("knownIssues", default: [])
     static let maintenanceData = ClientConfigKey<[String: String]>("maintenanceData", default: [:])
     static let surveyURL = ClientConfigKey("surveyURL", default: "")
 
@@ -57,6 +58,8 @@ class ConfigRepository {
 
     private static let configStorageKey = "clientConfig"
     private static let lastFetchStorageKey = "clientConfigLastFetch"
+    // Unchanged configs are answered with an empty 304, so checking often is cheap
+    private static let refetchInterval: TimeInterval = 15 * 60
 
     private let userConfig = UserDefaults.standard
     private let contentRepository = ContentRepository()
@@ -74,12 +77,15 @@ class ConfigRepository {
         let notify: (JSONValue?) -> Void
     }
 
-    // Guards config, lastFetch and observers
+    // Guards config, lastFetch, the fetch state and observers
     private let lock = NSLock()
     private var config: [String: JSONValue]
     private var lastFetch: Date?
-    private var lastFetchInSession: Date?
+    private var lastAttemptInSession: Date?
+    private var isFetching = false
+    private var refetchPending = false
     private var observers = [UUID: ConfigObserver]()
+    private var worldStateDisposable: Disposable?
 
     var lastFetchDate: Date? {
         return synchronized { lastFetch }
@@ -93,25 +99,56 @@ class ConfigRepository {
             config = [:]
         }
         lastFetch = userConfig.object(forKey: ConfigRepository.lastFetchStorageKey) as? Date
+        // Targeted values depend on the user, so a login or logout needs a fresh config
+        NotificationCenter.default.addObserver(forName: .authenticationChanged, object: nil, queue: nil) {[weak self] _ in
+            self?.refetchAfterAuthenticationChange()
+        }
+    }
+
+    private func refetchAfterAuthenticationChange() {
+        // Before the launch fetch there is nothing stale, and launch args set credentials before the network client and database exist
+        let hasStarted = synchronized { isFetching || lastAttemptInSession != nil }
+        if hasStarted {
+            fetchRemoteConfig(force: true)
+        }
     }
 
     @objc
     func fetchremoteConfig() {
-        if lastFetchInSession == nil || (lastFetchInSession?.timeIntervalSinceNow ?? 0) < (24 * 60 * 60) {
-            contentRepository.retrieveClientConfig().on(value: {[weak self] config in
-                guard let self = self else {
-                    return
-                }
-                if let config = config {
-                    self.update(config: config)
-                }
-                self.hasFetchedConfig = true
-                if let call = self.onFetchCompleted {
-                    call()
-                }
-            }).observeCompleted {}
-            
-            contentRepository.getWorldState().on(value: {[weak self] state in
+        fetchRemoteConfig(force: false)
+    }
+
+    /// `force` skips the refetch interval, e.g. when the logged in user changes and targeted values might differ.
+    func fetchRemoteConfig(force: Bool) {
+        let ignoreEtag: Bool? = synchronized {
+            if isFetching {
+                // The running request may have been sent with the previous credentials
+                refetchPending = refetchPending || force
+                return nil
+            }
+            if !force, let lastAttempt = lastAttemptInSession, -lastAttempt.timeIntervalSinceNow < ConfigRepository.refetchInterval {
+                return nil
+            }
+            isFetching = true
+            // Without a cached config a 304 would leave us on defaults
+            return config.isEmpty
+        }
+        guard let ignoreEtag = ignoreEtag else {
+            return
+        }
+        contentRepository.retrieveClientConfig(ignoreEtag: ignoreEtag).observe {[weak self] event in
+            guard let self = self else {
+                return
+            }
+            if case .value(let config) = event, let config = config {
+                self.update(config: config)
+            } else if event.isTerminating {
+                self.finishFetch()
+            }
+        }
+
+        if worldStateDisposable == nil {
+            worldStateDisposable = contentRepository.getWorldState().on(value: {[weak self] state in
                 self?.worldState = state
                 var hasAprilFools = false
                 for event in state.events {
@@ -127,13 +164,29 @@ class ConfigRepository {
         }
     }
 
+    private func finishFetch() {
+        let shouldRefetch: Bool = synchronized {
+            isFetching = false
+            lastAttemptInSession = Date()
+            defer { refetchPending = false }
+            return refetchPending
+        }
+        // Also set on 304 and failures, the launch screen only waits for an answer, cached or not
+        hasFetchedConfig = true
+        let completion = onFetchCompleted
+        onFetchCompleted = nil
+        completion?()
+        if shouldRefetch {
+            fetchRemoteConfig(force: true)
+        }
+    }
+
     private func update(config newConfig: [String: JSONValue]) {
         let now = Date()
         let (oldConfig, currentObservers) = synchronized {
             let oldConfig = config
             config = newConfig
             lastFetch = now
-            lastFetchInSession = now
             return (oldConfig, Array(observers.values))
         }
 
@@ -171,6 +224,9 @@ class ConfigRepository {
 #endif
     }
 
+    /// Developer flag: ignore the server config and use every key's default
+    static let useDefaultsFlag = "useDefaultClientConfig"
+
     func setDeveloperFlag(_ isEnabled: Bool, forKey key: String) {
         UserDefaults.standard.set(isEnabled, forKey: key)
     }
@@ -205,23 +261,27 @@ class ConfigRepository {
         }
     }
 
+    /// Calls `onChange` on the main actor with each new value of `key` until the returned task is cancelled.
+    @discardableResult
+    func observe<T>(_ key: ClientConfigKey<T>, includingCurrent: Bool = true, onChange: @escaping @MainActor (T) -> Void) -> Task<Void, Never> {
+        let stream = values(for: key)
+        return Task { @MainActor in
+            for await value in stream.dropFirst(includingCurrent ? 0 : 1) {
+                onChange(value)
+            }
+        }
+    }
+
     private func decode<T>(_ raw: JSONValue?, for key: ClientConfigKey<T>) -> T {
         #if DEBUG
-        if testingLevel.isDeveloper {
+        if testingLevel.isDeveloper && userConfig.bool(forKey: ConfigRepository.useDefaultsFlag) {
             return key.defaultValue
         }
         #endif
-        guard let raw = raw else {
+        guard let raw = raw, let value = try? raw.decodeAllowingJSONString(T.self) else {
             return key.defaultValue
         }
-        if let value = try? raw.decode(T.self) {
-            return value
-        }
-        if case .string(let string) = raw, let data = string.data(using: .utf8),
-           let value = try? JSONDecoder().decode(T.self, from: data) {
-            return value
-        }
-        return key.defaultValue
+        return value
     }
 
     func activePromotion() -> HabiticaPromotion? {

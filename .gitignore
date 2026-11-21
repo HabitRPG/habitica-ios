@@ -34,12 +34,17 @@ fastlane/Preview.html
 /Habitica.ipa
 /Habitica.app.dSYM.zip
 /HabiticaTests/FailureDiffs
-/fastlane/Fastfile
 /fastlane/Snapfile
-/fastlane/Appfile
 /HabitRPG/Generated/Secrets.swift
 /secrets.yml
 /Habitica-Staff
 *.zip
 *.ipa
 /packages
+
+# Bundler (fastlane gems installed locally)
+/.bundle/
+/vendor/
+/fastlane/.env
+/fastlane/Appfile
+/fastlane/Fastfile

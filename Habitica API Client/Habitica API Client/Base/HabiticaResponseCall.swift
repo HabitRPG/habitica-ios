@@ -19,13 +19,16 @@ public class HabiticaResponseCall<T: Any, C: Decodable>: AuthenticatedCall {
     public lazy var habiticaResponseSignal: Signal<HabiticaResponse<C>?, Never> = jsonSignal.map({ json in
         return json as? [String: Any]
     })
-        .skipNil()
+        // Bodies that aren't a JSON object emit nil instead of nothing, so every response produces a value
         .map { (jsonData) -> Data? in
-            return try? JSONSerialization.data(withJSONObject: jsonData)
+            return jsonData.flatMap { try? JSONSerialization.data(withJSONObject: $0) }
         }
-        .skipNil()
-        .map(type(of: self).parse)
+        .map({ [parse = type(of: self).parse] data in data.flatMap(parse) })
         .merge(with: errorDataSignal.map { _ -> HabiticaResponse<C>? in
+            return nil
+        })
+        // Transport errors (offline, DNS) carry no data, so without this the signal would never emit
+        .merge(with: errorSignal.map { _ -> HabiticaResponse<C>? in
             return nil
         })
         .take(first: 1)

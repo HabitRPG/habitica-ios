@@ -43,7 +43,8 @@ class ReportBugViewController: BaseUIViewController, MFMailComposeViewController
     private var supportEmail = ""
     private var user: UserProtocol?
     
-    private var knownIssues: [String] = []
+    private var knownIssues: [[String: String]] = []
+    private var configTask: Task<Void, Never>?
     private var selectedIndex = 0
     
     override func viewDidLoad() {
@@ -65,8 +66,10 @@ class ReportBugViewController: BaseUIViewController, MFMailComposeViewController
             self?.user = user
         }).start()
         
-        knownIssues = configRepository.value(for: .knownIssues)
-        populateKnownIssues()
+        configTask = configRepository.observe(.knownIssues) {[weak self] issues in
+            self?.knownIssues = issues
+            self?.populateKnownIssues()
+        }
         
         knownIssuesStackView.cornerRadius = UIConstants.largeCornerRadius
         updateAppBackground.cornerRadius = UIConstants.largeCornerRadius
@@ -75,6 +78,10 @@ class ReportBugViewController: BaseUIViewController, MFMailComposeViewController
         moreHelpButton.cornerRadius = 22
     }
     
+    deinit {
+        configTask?.cancel()
+    }
+
     override func populateText() {
         super.populateText()
         knownIssuesTitleLabel.text = L10n.knownIssues.uppercased()
@@ -125,9 +132,6 @@ class ReportBugViewController: BaseUIViewController, MFMailComposeViewController
     private func populateKnownIssues() {
         knownIssuesStackView.removeAllArrangedSubviews()
         knownIssues.forEach { issue in
-            guard let issueDict = issue as? NSDictionary else {
-                return
-            }
             let stackView = SeparatedStackView()
             stackView.axis = .horizontal
             stackView.isLayoutMarginsRelativeArrangement = true
@@ -135,7 +139,7 @@ class ReportBugViewController: BaseUIViewController, MFMailComposeViewController
             stackView.layoutMargins = UIEdgeInsets(top: 12, left: 0, bottom: 12, right: 15)
             let title = UILabel()
             title.font = UIFontMetrics.default.scaledSystemFont(ofSize: 15)
-            title.text = issueDict["title"] as? String
+            title.text = issue["title"]
             title.numberOfLines = 0
             title.textColor = ThemeService.shared.theme.primaryTextColor
             let imageView = UIImageView(image: Asset.caretRight.image)
@@ -225,11 +229,12 @@ class ReportBugViewController: BaseUIViewController, MFMailComposeViewController
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == StoryboardSegue.Support.showKnownIssueDetailSegue.rawValue {
             let destination = segue.destination as? FAQDetailViewController
-            guard let issue = knownIssues[selectedIndex] as? NSDictionary else {
+            guard knownIssues.indices.contains(selectedIndex) else {
                 return
             }
-            destination?.faqTitle = issue["title"] as? String
-            destination?.faqText = issue["text"] as? String
+            let issue = knownIssues[selectedIndex]
+            destination?.faqTitle = issue["title"]
+            destination?.faqText = issue["text"]
         }
     }
 }

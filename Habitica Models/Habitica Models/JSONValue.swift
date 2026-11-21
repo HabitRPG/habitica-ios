@@ -54,4 +54,16 @@ public enum JSONValue: Codable, Sendable, Equatable {
     public func decode<T: Decodable>(_ type: T.Type = T.self) throws -> T {
         try JSONDecoder().decode(T.self, from: JSONEncoder().encode(self))
     }
+
+    /// Like `decode`, but a string holding JSON (remote config sends "true", "3000", "[...]") is parsed as that JSON.
+    public func decodeAllowingJSONString<T: Decodable>(_ type: T.Type = T.self) throws -> T {
+        do {
+            return try decode(T.self)
+        } catch {
+            guard case .string(let string) = self else {
+                throw error
+            }
+            return try JSONDecoder().decode(T.self, from: Data(string.utf8))
+        }
+    }
 }
