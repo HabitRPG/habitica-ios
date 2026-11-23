@@ -170,6 +170,11 @@ class HabiticaAppDelegate: UIResponder, MessagingDelegate, UIApplicationDelegate
         NetworkAuthenticationManager.shared.currentUserKey = AuthenticationManager.shared.currentUserKey
         updateServer()
         AuthenticatedCall.errorHandler = HabiticaNetworkErrorHandler()
+        NetworkCall.retryPolicy = {[configRepository] in
+            (configRepository.value(for: .networkTimeoutSeconds),
+             configRepository.value(for: .networkMaxRetries),
+             configRepository.value(for: .networkRetryBackoffMillis))
+        }
         AuthenticatedCall.notificationListener = {[weak self] notifications in
             guard let notifications = notifications else {
                 return

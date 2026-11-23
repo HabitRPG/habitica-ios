@@ -23,7 +23,14 @@ public class HabiticaResponseCall<T: Any, C: Decodable>: AuthenticatedCall {
         .map { (jsonData) -> Data? in
             return jsonData.flatMap { try? JSONSerialization.data(withJSONObject: $0) }
         }
-        .map({ [parse = type(of: self).parse] data in data.flatMap(parse) })
+        .map({ [parse = type(of: self).parse, urlString = self.urlString] data in
+            guard let response = data.flatMap(parse) else {
+                HabiticaServerConfig.setEtag(nil, for: urlString)
+                UserDefaults.standard.removeObject(forKey: "etag\(urlString)")
+                return nil
+            }
+            return response
+        })
         .merge(with: errorDataSignal.map { _ -> HabiticaResponse<C>? in
             return nil
         })

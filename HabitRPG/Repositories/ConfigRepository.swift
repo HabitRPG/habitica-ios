@@ -25,9 +25,18 @@ extension AnyClientConfigKey {
     static let showTaskGraphs = ClientConfigKey("showTaskGraphs", default: false)
     static let enableCronButton = ClientConfigKey("enableCronButton", default: false)
     static let hideChallenges = ClientConfigKey("hideChallenges", default: false)
-}
 
-extension Notification.Name {
+    static let reviewMaxRequests = ClientConfigKey("reviewMaxRequests", default: 5)
+    static let reviewMaxCheckinsSinceFirstRequest = ClientConfigKey("reviewMaxCheckinsSinceFirstRequest", default: 75)
+    static let reviewMinCheckinsBetweenRequests = ClientConfigKey("reviewMinCheckinsBetweenRequests", default: 5)
+
+    // App Store product identifiers, so the server has to send iOS values to iOS clients
+    static let defaultSubscriptionSku = ClientConfigKey("defaultSubscriptionSku", default: PurchaseHandler.subscriptionIdentifiers[3])
+    static let highlightedSubscriptionSku = ClientConfigKey("highlightedSubscriptionSku", default: PurchaseHandler.subscriptionIdentifiers[3])
+
+    static let networkTimeoutSeconds = ClientConfigKey("networkTimeoutSeconds", default: 180)
+    static let networkMaxRetries = ClientConfigKey("networkMaxRetries", default: 0)
+    static let networkRetryBackoffMillis = ClientConfigKey("networkRetryBackoffMillis", default: 1000)
 }
 
 enum TestingLevel: String {
@@ -120,13 +129,8 @@ class ConfigRepository {
         }
     }
 
-    @objc
-    func fetchremoteConfig() {
-        fetchRemoteConfig(force: false)
-    }
-
     /// `force` skips the refetch interval, e.g. when the logged in user changes and targeted values might differ.
-    func fetchRemoteConfig(force: Bool) {
+    func fetchRemoteConfig(force: Bool = false) {
         let ignoreEtag: Bool? = synchronized {
             if isFetching {
                 // The running request may have been sent with the previous credentials
@@ -153,7 +157,9 @@ class ConfigRepository {
                 self.finishFetch()
             }
         }
+    }
 
+    func startWorldStateUpdates() {
         if worldStateDisposable == nil {
             worldStateDisposable = contentRepository.getWorldState().on(value: {[weak self] state in
                 self?.worldState = state
@@ -316,7 +322,7 @@ class ConfigRepository {
         if isOnMac {
             return true
         }
-        return false
+        return value(for: .enableIpadUI)
     }
     
     func shopSpriteSuffix() -> String? {

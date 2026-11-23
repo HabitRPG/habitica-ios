@@ -102,21 +102,52 @@ open class NetworkCall {
         return session
     }
     
+    public static var retryPolicy: () -> (timeoutSeconds: Int, maxRetries: Int, backoffMillis: Int) = { (180, 0, 1000) }
+    private static let retryableStatusCodes: Set<Int> = [502, 503, 504]
+
+    static func clampedRetryPolicy() -> (timeout: TimeInterval, maxRetries: Int, backoff: TimeInterval) {
+        let policy = retryPolicy()
+        return (TimeInterval(min(max(policy.timeoutSeconds, 10), 600)),
+                min(max(policy.maxRetries, 0), 5),
+                TimeInterval(min(max(policy.backoffMillis, 0), 30_000)) / 1000)
+    }
+
     open func fire() {
-        let session = NetworkCall.session(for: configuration.urlConfiguration)
-        if let request = mutableRequest() {
-            dataTaskProperty.value = session.dataTask(with: request as URLRequest) { (data, response, error) in
-                self.errorProperty.value = error as NSError?
-                self.responseProperty.value = response
-                if error != nil {
-                    self.errorDataProperty.value = data
-                } else if let httpResponse = response as? HTTPURLResponse, httpResponse.statusCode >= 300 {
-                    self.errorDataProperty.value = data
-                } else {
-                    self.dataProperty.value = data
-                }
-                self.endCall()
+        guard let request = mutableRequest() else {
+            return
+        }
+        let policy = NetworkCall.clampedRetryPolicy()
+        perform(request as URLRequest, retriesLeft: httpMethod == "GET" ? policy.maxRetries : 0, backoff: policy.backoff,
+                deadline: Date().addingTimeInterval(policy.timeout))
+        DispatchQueue.main.asyncAfter(deadline: .now() + policy.timeout) {[weak self] in
+            if let task = self?.dataTaskProperty.value, task.state == .running {
+                task.cancel()
             }
+        }
+    }
+
+    private func perform(_ request: URLRequest, retriesLeft: Int, backoff: TimeInterval, deadline: Date) {
+        let session = NetworkCall.session(for: configuration.urlConfiguration)
+        dataTaskProperty.value = session.dataTask(with: request) { (data, response, error) in
+            let isCancelled = (error as? URLError)?.code == .cancelled
+            let isRetryable = error != nil ? !isCancelled
+                : NetworkCall.retryableStatusCodes.contains((response as? HTTPURLResponse)?.statusCode ?? 0)
+            if retriesLeft > 0 && isRetryable && Date().addingTimeInterval(backoff) < deadline {
+                DispatchQueue.main.asyncAfter(deadline: .now() + backoff) {
+                    self.perform(request, retriesLeft: retriesLeft - 1, backoff: backoff * 2, deadline: deadline)
+                }
+                return
+            }
+            self.errorProperty.value = error as NSError?
+            self.responseProperty.value = response
+            if error != nil {
+                self.errorDataProperty.value = data
+            } else if let httpResponse = response as? HTTPURLResponse, httpResponse.statusCode >= 300 {
+                self.errorDataProperty.value = data
+            } else {
+                self.dataProperty.value = data
+            }
+            self.endCall()
         }
     }
     

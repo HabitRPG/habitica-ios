@@ -45,18 +45,7 @@ extension UIApplication {
     
     class func requestReview() {
         let defaults = UserDefaults.standard
-        
-        let checkinCount = defaults.integer(forKey: "loginIncentives")
-        if checkinCount < 10 {
-            return
-        }
-        
-        let initialCheckinCount = defaults.integer(forKey: "initialLoginIncentives")
-        if initialCheckinCount == 0 {
-            defaults.set(checkinCount, forKey: "initialLoginIncentives")
-        }
-        
-        if (checkinCount - initialCheckinCount) > 75 {
+        guard canRequestReview(defaults: defaults, config: ConfigRepository.shared) else {
             return
         }
         
@@ -68,6 +57,38 @@ extension UIApplication {
         }
             SKStoreReviewController.requestReview(in: scene)
         #endif
+        recordReviewRequest(defaults: defaults)
+    }
+    
+    static func canRequestReview(defaults: UserDefaults, config: ConfigRepository) -> Bool {
+        let checkinCount = defaults.integer(forKey: "loginIncentives")
+        if checkinCount < 10 {
+            return false
+        }
+        
+        var initialCheckinCount = defaults.integer(forKey: "initialLoginIncentives")
+        if initialCheckinCount == 0 {
+            initialCheckinCount = checkinCount
+            defaults.set(checkinCount, forKey: "initialLoginIncentives")
+        }
+        
+        if checkinCount - initialCheckinCount > config.value(for: .reviewMaxCheckinsSinceFirstRequest) {
+            return false
+        }
+        if defaults.integer(forKey: "reviewRequestCount") >= config.value(for: .reviewMaxRequests) {
+            return false
+        }
+        if let lastCheckin = defaults.object(forKey: "lastReviewCheckin") as? Int,
+           checkinCount - lastCheckin < config.value(for: .reviewMinCheckinsBetweenRequests) {
+            return false
+        }
+        return true
+    }
+    
+    static func recordReviewRequest(defaults: UserDefaults) {
+        // iOS doesn't say whether the prompt was shown, so like Android this counts requests
+        defaults.set(defaults.integer(forKey: "reviewRequestCount") + 1, forKey: "reviewRequestCount")
+        defaults.set(defaults.integer(forKey: "loginIncentives"), forKey: "lastReviewCheckin")
     }
 }
 

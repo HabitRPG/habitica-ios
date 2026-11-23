@@ -91,7 +91,8 @@ class SceneDelegate: NSObject, UIWindowSceneDelegate {
     
     private func cleanAndRefresh() {
         retrieveContent()
-        configRepository.fetchremoteConfig()
+        configRepository.fetchRemoteConfig()
+        configRepository.startWorldStateUpdates()
     }
     
     private func retrieveContent() {

@@ -33,27 +33,12 @@ enum PresentationPoint {
     }
 }
 
-struct SubscriptionOptionStack: View {
-    @ObservedObject var viewModel: SubscriptionViewModel
-    
+struct PopularTag: View {
+    let isShown: Bool
+
     var body: some View {
-        VStack(spacing: 0) {
-                SubscriptionOptionViewUI(price: Text(viewModel.priceFor(PurchaseHandler.subscriptionIdentifiers[0])),
-                                         recurring: Text(L10n.subscriptionDuration(L10n.month)),
-                                         instantGems: "\(viewModel.gemCapTotal)",
-                                         isSelected: PurchaseHandler.subscriptionIdentifiers[0] == viewModel.selectedSubscription)
-            if viewModel.presentationPoint == nil {
-                SubscriptionOptionViewUI(price: Text(viewModel.priceFor(PurchaseHandler.subscriptionIdentifiers[1])),
-                                         recurring: Text(L10n.subscriptionDuration(L10n.xMonths(3))),
-                                         instantGems: "\(viewModel.gemCapTotal)",
-                                         isSelected: PurchaseHandler.subscriptionIdentifiers[1] == viewModel.selectedSubscription)
-                SubscriptionOptionViewUI(price: Text(viewModel.priceFor(PurchaseHandler.subscriptionIdentifiers[2])),
-                                         recurring: Text(L10n.subscriptionDuration(L10n.xMonths(6))),
-                                         instantGems: "\(viewModel.gemCapTotal)",
-                                         isSelected: PurchaseHandler.subscriptionIdentifiers[2] == viewModel.selectedSubscription)
-            }
-            SubscriptionOptionViewUI(price: Text(viewModel.priceFor(PurchaseHandler.subscriptionIdentifiers[3])), recurring: Text(L10n.subscriptionDuration(L10n.xMonths(12))),
-                                     tag: HStack(spacing: 0) {
+        if isShown {
+            HStack(spacing: 0) {
                 Image(uiImage: Asset.flagFlap.image.withRenderingMode(.alwaysTemplate)).foregroundStyle(Color(hexadecimal: "77F4C7"))
                 Text("Popular").foregroundStyle(Color(UIColor.teal1)).font(.system(size: 12, weight: .semibold))
                     .frame(height: 24)
@@ -61,8 +46,40 @@ struct SubscriptionOptionStack: View {
                     .background(LinearGradient(colors: [
                         Color(hexadecimal: "77F4C7"),
                         Color(hexadecimal: "72CFFF")
-                ], startPoint: .leading, endPoint: .trailing))
-            },
+                    ], startPoint: .leading, endPoint: .trailing))
+            }
+        }
+    }
+}
+
+struct SubscriptionOptionStack: View {
+    @ObservedObject var viewModel: SubscriptionViewModel
+    
+    private func tag(_ index: Int) -> PopularTag {
+        return PopularTag(isShown: PurchaseHandler.subscriptionIdentifiers[index] == viewModel.highlightedSubscription)
+    }
+    
+    var body: some View {
+        VStack(spacing: 0) {
+                SubscriptionOptionViewUI(price: Text(viewModel.priceFor(PurchaseHandler.subscriptionIdentifiers[0])),
+                                         recurring: Text(L10n.subscriptionDuration(L10n.month)),
+                                         tag: tag(0),
+                                         instantGems: "\(viewModel.gemCapTotal)",
+                                         isSelected: PurchaseHandler.subscriptionIdentifiers[0] == viewModel.selectedSubscription)
+            if viewModel.presentationPoint == nil {
+                SubscriptionOptionViewUI(price: Text(viewModel.priceFor(PurchaseHandler.subscriptionIdentifiers[1])),
+                                         recurring: Text(L10n.subscriptionDuration(L10n.xMonths(3))),
+                                         tag: tag(1),
+                                         instantGems: "\(viewModel.gemCapTotal)",
+                                         isSelected: PurchaseHandler.subscriptionIdentifiers[1] == viewModel.selectedSubscription)
+                SubscriptionOptionViewUI(price: Text(viewModel.priceFor(PurchaseHandler.subscriptionIdentifiers[2])),
+                                         recurring: Text(L10n.subscriptionDuration(L10n.xMonths(6))),
+                                         tag: tag(2),
+                                         instantGems: "\(viewModel.gemCapTotal)",
+                                         isSelected: PurchaseHandler.subscriptionIdentifiers[2] == viewModel.selectedSubscription)
+            }
+            SubscriptionOptionViewUI(price: Text(viewModel.priceFor(PurchaseHandler.subscriptionIdentifiers[3])), recurring: Text(L10n.subscriptionDuration(L10n.xMonths(12))),
+                                     tag: tag(3),
                                      instantGems: "50",
                                      isSelected: PurchaseHandler.subscriptionIdentifiers[3] == viewModel.selectedSubscription,
                                      nonSalePrice: viewModel.twelveMonthNonSalePrice,
@@ -91,6 +108,13 @@ class SubscriptionViewModel: BaseSubscriptionViewModel {
     @Published var mysteryGearSet: GearSetProtocol?
     
     @Published var selectedSubscription: String = PurchaseHandler.subscriptionIdentifiers[0]
+    let highlightedSubscription = ConfigRepository.shared.value(for: .highlightedSubscriptionSku)
+
+    /// The server's pick when this page offers it (presentation points hide the 3 and 6 month plans), else the 12 month plan.
+    var defaultSubscription: String {
+        let configured = configRepository.value(for: .defaultSubscriptionSku)
+        return availableSubscriptions.contains(configured) ? configured : (availableSubscriptions.last ?? PurchaseHandler.subscriptionIdentifiers[0])
+    }
     @Published var availableSubscriptions = PurchaseHandler.subscriptionIdentifiers
     
     @Published var activePromo: HabiticaPromotion?
@@ -164,7 +188,7 @@ class SubscriptionViewModel: BaseSubscriptionViewModel {
                 }
             }
             self.prices = prices
-            self.selectedSubscription = PurchaseHandler.subscriptionIdentifiers.last ?? PurchaseHandler.subscriptionIdentifiers[0]
+            self.selectedSubscription = self.defaultSubscription
         }
     }
     

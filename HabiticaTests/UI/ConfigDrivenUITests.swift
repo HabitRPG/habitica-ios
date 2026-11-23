@@ -7,6 +7,7 @@
 
 import XCTest
 import Habitica_Models
+import Habitica_API_Client
 @testable import Habitica
 
 class ConfigDrivenUITests: XCTestCase {
@@ -97,6 +98,64 @@ class ConfigDrivenUITests: XCTestCase {
 
         repository.update(config: [:])
         waitUntil("issues cleared") { controller.knownIssuesStackView.arrangedSubviews.isEmpty }
+    }
+
+    // MARK: - Subscriptions
+
+    func testSubscriptionDefaultsToTwelveMonths() {
+        let viewModel = SubscriptionViewModel(presentationPoint: nil)
+        XCTAssertEqual(viewModel.defaultSubscription, PurchaseHandler.subscriptionIdentifiers[3])
+        XCTAssertEqual(viewModel.highlightedSubscription, PurchaseHandler.subscriptionIdentifiers[3])
+    }
+
+    func testSubscriptionDefaultAndHighlightFollowConfig() {
+        let threeMonths = PurchaseHandler.subscriptionIdentifiers[1]
+        repository.update(config: ["defaultSubscriptionSku": .string(threeMonths), "highlightedSubscriptionSku": .string(threeMonths)])
+        let viewModel = SubscriptionViewModel(presentationPoint: nil)
+        XCTAssertEqual(viewModel.defaultSubscription, threeMonths)
+        XCTAssertEqual(viewModel.highlightedSubscription, threeMonths)
+    }
+
+    func testSubscriptionDefaultFallsBackWhenNotOffered() {
+        // Presentation points hide the 3 and 6 month plans; an Android product ID is never offered
+        repository.update(config: ["defaultSubscriptionSku": .string(PurchaseHandler.subscriptionIdentifiers[1])])
+        XCTAssertEqual(SubscriptionViewModel(presentationPoint: .armoire).defaultSubscription, PurchaseHandler.subscriptionIdentifiers[3])
+        repository.update(config: ["defaultSubscriptionSku": .string("com.habitrpg.android.habitica.subscription.1month")])
+        XCTAssertEqual(SubscriptionViewModel(presentationPoint: nil).defaultSubscription, PurchaseHandler.subscriptionIdentifiers[3])
+    }
+
+    func testNetworkPolicyReadsConfig() {
+        repository.update(config: ["networkTimeoutSeconds": .int(30), "networkMaxRetries": .string("2"), "networkRetryBackoffMillis": .int(250)])
+        let policy = NetworkCall.retryPolicy()
+        XCTAssertEqual(policy.timeoutSeconds, 30)
+        XCTAssertEqual(policy.maxRetries, 2)
+        XCTAssertEqual(policy.backoffMillis, 250)
+    }
+
+    // MARK: - Chat
+
+    func testChatTrimsCountingUTF16LikeTheServer() {
+        XCTAssertEqual(MessagesViewController.trimmed("abcdef", toLength: 3), "abc")
+        XCTAssertEqual(MessagesViewController.trimmed("abc", toLength: 3), "abc")
+        XCTAssertEqual(MessagesViewController.trimmed("", toLength: 0), "")
+        // "😀" is 2 UTF-16 units: it must not be split, and must count as 2
+        XCTAssertEqual(MessagesViewController.trimmed("a😀b", toLength: 2), "a")
+        XCTAssertEqual(MessagesViewController.trimmed("a😀b", toLength: 3), "a😀")
+        // A flag is one character made of 4 UTF-16 units
+        XCTAssertEqual(MessagesViewController.trimmed("🇩🇪🇩🇪", toLength: 6), "🇩🇪")
+    }
+
+    func testChatInputFollowsMaxChatLength() {
+        let chat = MessagesViewController()
+        chat.loadViewIfNeeded()
+
+        repository.update(config: ["maxChatLength": .int(5)])
+        chat.inputBar.inputTextView.text = "Hello world"
+        XCTAssertEqual(chat.inputBar.inputTextView.text, "Hello")
+
+        repository.update(config: ["maxChatLength": .string("8")])
+        chat.inputBar.inputTextView.text = "Hello world"
+        XCTAssertEqual(chat.inputBar.inputTextView.text, "Hello wo")
     }
 
     // MARK: - Maintenance

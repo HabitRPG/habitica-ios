@@ -389,7 +389,7 @@ class AboutViewController: BaseTableViewController, MFMailComposeViewControllerD
         case 1:
             open(url: "https://habitica.com")
         case 2:
-            open(url: configRepository.value(for: .appstoreUrl) ?? "")
+            open(url: configRepository.value(for: .appstoreUrl))
         case 3:
             perform(segue: StoryboardSegue.Main.hallOfContributorsSegue)
         case 4:
@@ -407,7 +407,7 @@ class AboutViewController: BaseTableViewController, MFMailComposeViewControllerD
         case 1:
             open(url: "https://bsky.app/profile/habitica.com")
         default:
-            open(url: "https://instagram.com/\(configRepository.value(for: .instagramUsername) ?? "")")
+            open(url: "https://instagram.com/\(configRepository.value(for: .instagramUsername))")
         }
     }
 
@@ -430,7 +430,7 @@ class AboutViewController: BaseTableViewController, MFMailComposeViewControllerD
 
     @objc
     private func updateTapped() {
-        open(url: configRepository.value(for: .appstoreUrl) ?? "")
+        open(url: configRepository.value(for: .appstoreUrl))
     }
 
     @objc
@@ -468,7 +468,7 @@ class AboutViewController: BaseTableViewController, MFMailComposeViewControllerD
     }
 
     private func handleAppFeedback() {
-        open(url: configRepository.value(for: .feedbackURL) ?? "")
+        open(url: configRepository.value(for: .feedbackURL))
     }
 
     private func handleBugReport() {

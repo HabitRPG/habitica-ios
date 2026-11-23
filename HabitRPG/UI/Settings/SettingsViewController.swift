@@ -40,6 +40,7 @@ enum SettingsTags {
     static let manuallyRestartDay = "manuallyRestartDay"
     static let pauseDamage = "pauseDamage"
     static let activePromo = "activePromo"
+    static let useDefaultClientConfig = "useDefaultClientConfig"
 }
 
 // swiftlint:disable:next type_body_length
@@ -168,6 +169,7 @@ class SettingsViewController: FormViewController, Themeable {
         (view as? UITableViewHeaderFooterView)?.textLabel?.textColor = ThemeService.shared.theme.quadTextColor
     }
     
+    // swiftlint:disable:next function_body_length
     private func setupForm() {
         setupUserSection()
         setupSettingsSections()
@@ -257,6 +259,14 @@ class SettingsViewController: FormViewController, Themeable {
                 }
             })
     }
+        <<< SwitchRow(SettingsTags.useDefaultClientConfig) { row in
+            row.title = "Ignore server client config"
+            row.hidden = Condition(booleanLiteral: !configRepository.testingLevel.isDeveloper)
+            row.value = UserDefaults.standard.bool(forKey: ConfigRepository.useDefaultsFlag)
+            row.onChange { [weak self] row in
+                self?.configRepository.setDeveloperFlag(row.value == true, forKey: ConfigRepository.useDefaultsFlag)
+            }
+        }
         <<< ButtonRow(SettingsTags.customUrl) { row in
             row.hidden = true
             row.cellStyle = .subtitle

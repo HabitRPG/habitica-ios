@@ -274,8 +274,22 @@ extension MessagesViewController: AutocompleteManagerDelegate, AutocompleteManag
         }
     }
     
+    static func trimmed(_ text: String, toLength limit: Int) -> String {
+        var length = 0
+        guard let end = text.firstIndex(where: { length += $0.utf16.count; return length > limit }) else {
+            return text
+        }
+        return String(text[..<end])
+    }
+
     @objc
     func inputBar(_ inputBar: InputBarAccessoryView, textViewTextDidChangeTo text: String) {
+        let limited = MessagesViewController.trimmed(text, toLength: configRepository.value(for: .maxChatLength))
+        if limited != text {
+            // Setting the text calls this method again with the trimmed text
+            inputBar.inputTextView.text = limited
+            return
+        }
         if text.isEmpty && inputBar.sendButton.isAnimating {
             return
         }

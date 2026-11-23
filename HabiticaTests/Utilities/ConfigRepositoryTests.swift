@@ -4,6 +4,7 @@
 //
 
 import XCTest
+import UIKit
 import ReactiveSwift
 import Habitica_Models
 @testable import Habitica
@@ -137,6 +138,58 @@ class ConfigRepositoryTests: XCTestCase {
         let issues = repository.value(for: .knownIssues)
         XCTAssertEqual(issues.compactMap { $0["title"]?.stringValue }, ["A", "B"])
         XCTAssertNil(issues[1]["text"]?.stringValue)
+    }
+
+    func testIpadUIFollowsConfig() {
+        let repository = makeRepository()
+        XCTAssertEqual(repository.enableIPadUI(), repository.isOnMac)
+        repository.update(config: ["enableIpadUI": .bool(true)])
+        XCTAssertTrue(repository.enableIPadUI())
+    }
+
+    // MARK: - Review prompt
+
+    private func canRequestReview(checkins: Int, _ repository: ConfigRepository) -> Bool {
+        defaults.set(checkins, forKey: "loginIncentives")
+        return UIApplication.canRequestReview(defaults: defaults, config: repository)
+    }
+
+    private func requestReview(checkins: Int, _ repository: ConfigRepository) -> Bool {
+        let allowed = canRequestReview(checkins: checkins, repository)
+        if allowed {
+            UIApplication.recordReviewRequest(defaults: defaults)
+        }
+        return allowed
+    }
+
+    func testReviewNeedsTenCheckins() {
+        let repository = makeRepository()
+        XCTAssertFalse(canRequestReview(checkins: 9, repository))
+        XCTAssertTrue(canRequestReview(checkins: 10, repository))
+    }
+
+    func testReviewWaitsBetweenRequests() {
+        let repository = makeRepository()
+        repository.update(config: ["reviewMinCheckinsBetweenRequests": .int(3)])
+        XCTAssertTrue(requestReview(checkins: 10, repository))
+        XCTAssertFalse(requestReview(checkins: 12, repository))
+        XCTAssertTrue(requestReview(checkins: 13, repository))
+    }
+
+    func testReviewStopsAfterMaxRequests() {
+        let repository = makeRepository()
+        repository.update(config: ["reviewMaxRequests": .int(2), "reviewMinCheckinsBetweenRequests": .int(0)])
+        XCTAssertTrue(requestReview(checkins: 10, repository))
+        XCTAssertTrue(requestReview(checkins: 11, repository))
+        XCTAssertFalse(requestReview(checkins: 12, repository))
+    }
+
+    func testReviewStopsAfterMaxCheckinsSinceFirstRequest() {
+        let repository = makeRepository()
+        repository.update(config: ["reviewMaxCheckinsSinceFirstRequest": .int(20), "reviewMinCheckinsBetweenRequests": .int(0)])
+        XCTAssertTrue(requestReview(checkins: 100, repository), "a long-time player's first check counts from now, not from zero")
+        XCTAssertTrue(canRequestReview(checkins: 120, repository))
+        XCTAssertFalse(canRequestReview(checkins: 121, repository))
     }
 
     func testDeveloperFlagForcesDefaults() {
