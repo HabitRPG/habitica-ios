@@ -532,16 +532,16 @@ public protocol SortableRealmResults {
 }
 
 extension Results: SortableRealmResults {
-    public func sorted(by: [RealmSwift.SortDescriptor]) -> RealmSwift.Results<Element> {
-        return self
+    public func sorted(by descriptors: [RealmSwift.SortDescriptor]) -> RealmSwift.Results<Element> {
+        return sorted(by: AnySequence(descriptors))
     }
     
     public func sorted(byKeyPath keyPath: String, ascending: Bool) -> RealmSwift.Results<Element> {
-        return self
+        return sorted(by: AnySequence([RealmSwift.SortDescriptor(keyPath: keyPath, ascending: ascending)]))
     }
     
-    public func distinct(by: [String]) -> RealmSwift.Results<Element> {
-        return self
+    public func distinct(by keyPaths: [String]) -> RealmSwift.Results<Element> {
+        return distinct(by: AnySequence(keyPaths))
     }
 }
 

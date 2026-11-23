@@ -50,11 +50,11 @@ public class BaseLocalRepository {
     }
     
     public func delete(object: Any) {
-        if let realmObject = object as? Object {
+        if let realmObject = object as? Object, let liveObject = realmObject.isFrozen ? realmObject.thaw() : realmObject, !liveObject.isInvalidated {
             let realm = getRealm()
             realm?.refresh()
             try? realm?.safeWrite {
-                realm?.delete(realmObject)
+                realm?.delete(liveObject)
             }
         }
     }

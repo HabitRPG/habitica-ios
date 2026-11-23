@@ -135,7 +135,9 @@
 		29DF933F2ECB6B560047801F /* NotificationCardReceivedProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29DF933E2ECB6B4F0047801F /* NotificationCardReceivedProtocol.swift */; };
 		29E31C2A290C005C004BB386 /* AssignedDetailsProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29E31C29290C005C004BB386 /* AssignedDetailsProtocol.swift */; };
 		29EBDA7923290E04006611E3 /* InboxConversation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29EBDA7823290E04006611E3 /* InboxConversation.swift */; };
+		6279F4D57E2BD6E8BD2E7E59 /* TaskProtocolTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61B313F71DDAF15DA6C39766 /* TaskProtocolTests.swift */; };
 		783C010A64130E01CD7A6629 /* ChallengeMemberProgressProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F59FF528CC959A226E37ED1 /* ChallengeMemberProgressProtocol.swift */; };
+		8C0561460D43557BB2ABD03A /* UserProtocolTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 863074FBBB737213E810F1ED /* UserProtocolTests.swift */; };
 		DC2C4767C68C2D9F295C7804 /* ProfileProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC2C4B6483B722EF73FA7153 /* ProfileProtocol.swift */; };
 		DC2C49AA09AF07160BDB05BF /* PreferencesProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC2C4C19F7CA64826BF23A5A /* PreferencesProtocol.swift */; };
 		DC2C4D71684BDBCF39F84273 /* FlagsProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC2C4E928EBDE3260EBA94B5 /* FlagsProtocol.swift */; };
@@ -283,7 +285,9 @@
 		29DF933E2ECB6B4F0047801F /* NotificationCardReceivedProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationCardReceivedProtocol.swift; sourceTree = "<group>"; };
 		29E31C29290C005C004BB386 /* AssignedDetailsProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssignedDetailsProtocol.swift; sourceTree = "<group>"; };
 		29EBDA7823290E04006611E3 /* InboxConversation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InboxConversation.swift; sourceTree = "<group>"; };
+		61B313F71DDAF15DA6C39766 /* TaskProtocolTests.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = TaskProtocolTests.swift; sourceTree = "<group>"; };
 		7F59FF528CC959A226E37ED1 /* ChallengeMemberProgressProtocol.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ChallengeMemberProgressProtocol.swift; sourceTree = "<group>"; };
+		863074FBBB737213E810F1ED /* UserProtocolTests.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = UserProtocolTests.swift; sourceTree = "<group>"; };
 		AA835E7F2EBC102600C6D779 /* project.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = project.xcconfig; sourceTree = "<group>"; };
 		DC2C4B6483B722EF73FA7153 /* ProfileProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileProtocol.swift; sourceTree = "<group>"; };
 		DC2C4C19F7CA64826BF23A5A /* PreferencesProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreferencesProtocol.swift; sourceTree = "<group>"; };
@@ -519,6 +523,8 @@
 			children = (
 				298FB9E0204D9404004DDACC /* Info.plist */,
 				290C3022206B8C150066AF5B /* Test Models */,
+				863074FBBB737213E810F1ED /* UserProtocolTests.swift */,
+				61B313F71DDAF15DA6C39766 /* TaskProtocolTests.swift */,
 			);
 			path = "Habitica ModelsTests";
 			sourceTree = "<group>";
@@ -781,6 +787,8 @@
 				290C301F206B8C030066AF5B /* TestStats.swift in Sources */,
 				290C301B206B89E40066AF5B /* TestUser.swift in Sources */,
 				290C301D206B8BFE0066AF5B /* TestPreferences.swift in Sources */,
+				8C0561460D43557BB2ABD03A /* UserProtocolTests.swift in Sources */,
+				6279F4D57E2BD6E8BD2E7E59 /* TaskProtocolTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

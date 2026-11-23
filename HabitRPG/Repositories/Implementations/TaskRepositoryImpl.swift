@@ -280,7 +280,7 @@ class TaskRepository: BaseRepository<TaskLocalRepository> {
         }
         let call = CreateTagCall(tag: tag)
 
-        call.errorSignal.observeValues {[weak self] _ in
+        Signal.merge(call.errorSignal, call.serverErrorSignal).observeValues {[weak self] _ in
             if let self = self, let localID = localID, !localID.isEmpty {
                 self.localRepository.deleteTag(self.localRepository.getNewTag(id: localID))
             }
@@ -345,7 +345,7 @@ class TaskRepository: BaseRepository<TaskLocalRepository> {
     func getChallengeTasks(id challengeID: String) -> SignalProducer<ReactiveResults<[TaskProtocol]>, ReactiveSwiftRealmError> {
         return currentUserIDProducer.skipNil().flatMap(.latest, {[weak self] (userID) in
             return self?.localRepository.getTasks(userID: userID,
-                                                  predicate: NSPredicate(format: "(challengeID == '\(challengeID)')"),
+                                                  predicate: NSPredicate(format: "challengeID == %@", challengeID),
                                                   sortKey: "order") ?? SignalProducer.empty
         })
     }

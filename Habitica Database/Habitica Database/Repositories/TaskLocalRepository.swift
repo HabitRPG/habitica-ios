@@ -201,6 +201,9 @@ public class TaskLocalRepository: BaseLocalRepository {
     
     public func setTaskSyncing(userID: String?, task: TaskProtocol, isSyncing: Bool) {
         if let realmTask = task as? RealmTask {
+            if realmTask.isInvalidated {
+                return
+            }
             updateCall { _ in
                 realmTask.isSyncing = isSyncing
             }

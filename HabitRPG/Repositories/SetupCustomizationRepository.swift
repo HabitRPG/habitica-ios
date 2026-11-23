@@ -64,7 +64,7 @@ class SetupCustomizationRepository {
     
     private static func getShirts(size: String?) -> [SetupCustomization] {
         if let userSize = size {
-            if userSize == "slin" {
+            if userSize == "slim" {
                 return [
                     SetupCustomization.createShirt(key: "black", icon: #imageLiteral(resourceName: "creator_slim_shirt_black")),
                     SetupCustomization.createShirt(key: "blue", icon: #imageLiteral(resourceName: "creator_slim_shirt_blue")),

@@ -23,8 +23,9 @@ extension Date {
         return userCalendar.date(from: dateComponents) ?? Date()
     }
     
-func getShortRemainingString() -> String {
-        let diff = Calendar.current.dateComponents([.day, .hour, .minute, .second], from: Date(), to: self)
+    func getShortRemainingString() -> String {
+        let now = Date()
+        let diff = Calendar.current.dateComponents([.day, .hour, .minute, .second], from: now, to: max(self, now))
         var string = "\(diff.minute ?? 0)m"
         if let hours = diff.hour, hours > 0 {
             string = "\(hours)h \(string)"
@@ -54,7 +55,7 @@ func getShortRemainingString() -> String {
                 return L10n.xHours(hours)
             }
         }
-        if let minutes = diff.day, minutes > 0 {
+        if let minutes = diff.minute, minutes > 0 {
             if minutes == 1 {
                 return L10n._1Minute
             } else {

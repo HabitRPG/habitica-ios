@@ -22,11 +22,12 @@ extension String {
     ]
     
     func stringWithAbbreviatedNumber(maximumFractionDigits: Int = 2) -> String {
-        guard var value = Double(self) else {
+        guard var value = Double(self), value.isFinite else {
             return ""
         }
+        let rounding = pow(10, Double(maximumFractionDigits))
         var counter = 0
-        while value >= 1000.0 {
+        while (value * rounding).rounded() / rounding >= 1000.0 {
             counter += 1
             value /= 1000
         }

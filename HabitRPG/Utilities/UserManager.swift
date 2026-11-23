@@ -74,6 +74,7 @@ class UserManager: NSObject {
             .start())
         disposable.add(userRepository.getUser()
             .throttle(0.5, on: QueueScheduler.main)
+            .filter { $0.isValid }
             .on(value: {[weak self]user in
                 self?.onUserUpdated(user: user)
             }).filter({ (user) -> Bool in
