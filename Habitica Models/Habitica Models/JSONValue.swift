@@ -51,6 +51,13 @@ public enum JSONValue: Codable, Sendable, Equatable {
         }
     }
 
+    public var stringValue: String? {
+        if case .string(let value) = self {
+            return value
+        }
+        return nil
+    }
+
     public func decode<T: Decodable>(_ type: T.Type = T.self) throws -> T {
         try JSONDecoder().decode(T.self, from: JSONEncoder().encode(self))
     }

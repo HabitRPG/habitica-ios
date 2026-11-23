@@ -14,8 +14,9 @@ extension AnyClientConfigKey {
     static let lastVersionCode = ClientConfigKey<Int>("lastVersionCode", default: 0)
     static let randomizeAvatar = ClientConfigKey("randomizeAvatar", default: false)
     static let showSubscriptionBanner = ClientConfigKey("showSubscriptionBanner", default: false)
-    static let knownIssues = ClientConfigKey<[[String: String]]>("knownIssues", default: [])
-    static let maintenanceData = ClientConfigKey<[String: String]>("maintenanceData", default: [:])
+    // JSONValue fields so an extra non-string field doesn't drop the whole value, like the old NSDictionary parsing
+    static let knownIssues = ClientConfigKey<[[String: JSONValue]]>("knownIssues", default: [])
+    static let maintenanceData = ClientConfigKey<[String: JSONValue]>("maintenanceData", default: [:])
     static let surveyURL = ClientConfigKey("surveyURL", default: "")
 
     static let enableIpadUI = ClientConfigKey("enableIpadUI", default: false)
@@ -61,8 +62,9 @@ class ConfigRepository {
     // Unchanged configs are answered with an empty 304, so checking often is cheap
     private static let refetchInterval: TimeInterval = 15 * 60
 
-    private let userConfig = UserDefaults.standard
+    private let userConfig: UserDefaults
     private let contentRepository = ContentRepository()
+    private let customRetrieveConfig: ((Bool) -> Signal<[String: JSONValue]?, Never>)?
 
     private var worldState: WorldStateProtocol?
     private var hasFetchedConfig = false
@@ -91,7 +93,12 @@ class ConfigRepository {
         return synchronized { lastFetch }
     }
 
-    init() {
+    /// Parameters exist for tests; the app uses the defaults.
+    init(userConfig: UserDefaults = .standard,
+         notificationCenter: NotificationCenter = .default,
+         retrieveConfig: ((Bool) -> Signal<[String: JSONValue]?, Never>)? = nil) {
+        self.userConfig = userConfig
+        customRetrieveConfig = retrieveConfig
         if let data = userConfig.data(forKey: ConfigRepository.configStorageKey),
            let cachedConfig = try? JSONDecoder().decode([String: JSONValue].self, from: data) {
             config = cachedConfig
@@ -100,7 +107,7 @@ class ConfigRepository {
         }
         lastFetch = userConfig.object(forKey: ConfigRepository.lastFetchStorageKey) as? Date
         // Targeted values depend on the user, so a login or logout needs a fresh config
-        NotificationCenter.default.addObserver(forName: .authenticationChanged, object: nil, queue: nil) {[weak self] _ in
+        notificationCenter.addObserver(forName: .authenticationChanged, object: nil, queue: nil) {[weak self] _ in
             self?.refetchAfterAuthenticationChange()
         }
     }
@@ -136,7 +143,7 @@ class ConfigRepository {
         guard let ignoreEtag = ignoreEtag else {
             return
         }
-        contentRepository.retrieveClientConfig(ignoreEtag: ignoreEtag).observe {[weak self] event in
+        (customRetrieveConfig ?? contentRepository.retrieveClientConfig)(ignoreEtag).observe {[weak self] event in
             guard let self = self else {
                 return
             }
@@ -181,7 +188,7 @@ class ConfigRepository {
         }
     }
 
-    private func update(config newConfig: [String: JSONValue]) {
+    func update(config newConfig: [String: JSONValue]) {
         let now = Date()
         let (oldConfig, currentObservers) = synchronized {
             let oldConfig = config
@@ -228,7 +235,7 @@ class ConfigRepository {
     static let useDefaultsFlag = "useDefaultClientConfig"
 
     func setDeveloperFlag(_ isEnabled: Bool, forKey key: String) {
-        UserDefaults.standard.set(isEnabled, forKey: key)
+        userConfig.set(isEnabled, forKey: key)
     }
 
     func value<T>(for key: ClientConfigKey<T>) -> T {
@@ -236,8 +243,8 @@ class ConfigRepository {
         return decode(raw, for: key)
     }
 
-    /// Emits the current value immediately and then again whenever a fetch changes it.
-    func values<T>(for key: ClientConfigKey<T>) -> AsyncStream<T> {
+    /// Emits the current value immediately (unless `includingCurrent` is false) and then again whenever a fetch changes it.
+    func values<T>(for key: ClientConfigKey<T>, includingCurrent: Bool = true) -> AsyncStream<T> {
         return AsyncStream(bufferingPolicy: .bufferingNewest(1)) { continuation in
             let id = UUID()
             synchronized {
@@ -248,7 +255,9 @@ class ConfigRepository {
                     continuation.yield(self.decode(raw, for: key))
                 }
                 // Yield while holding the lock so no update can slip in between registering and the initial value
-                continuation.yield(decode(config[key.key], for: key))
+                if includingCurrent {
+                    continuation.yield(decode(config[key.key], for: key))
+                }
             }
             continuation.onTermination = {[weak self] _ in
                 guard let self = self else {
@@ -264,9 +273,10 @@ class ConfigRepository {
     /// Calls `onChange` on the main actor with each new value of `key` until the returned task is cancelled.
     @discardableResult
     func observe<T>(_ key: ClientConfigKey<T>, includingCurrent: Bool = true, onChange: @escaping @MainActor (T) -> Void) -> Task<Void, Never> {
-        let stream = values(for: key)
+        // Not dropFirst: with a newest-only buffer a change arriving before the task starts would replace the current value and get dropped
+        let stream = values(for: key, includingCurrent: includingCurrent)
         return Task { @MainActor in
-            for await value in stream.dropFirst(includingCurrent ? 0 : 1) {
+            for await value in stream {
                 onChange(value)
             }
         }

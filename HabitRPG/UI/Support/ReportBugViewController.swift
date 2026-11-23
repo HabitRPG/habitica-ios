@@ -43,7 +43,7 @@ class ReportBugViewController: BaseUIViewController, MFMailComposeViewController
     private var supportEmail = ""
     private var user: UserProtocol?
     
-    private var knownIssues: [[String: String]] = []
+    private var knownIssues: [[String: JSONValue]] = []
     private var configTask: Task<Void, Never>?
     private var selectedIndex = 0
     
@@ -139,7 +139,7 @@ class ReportBugViewController: BaseUIViewController, MFMailComposeViewController
             stackView.layoutMargins = UIEdgeInsets(top: 12, left: 0, bottom: 12, right: 15)
             let title = UILabel()
             title.font = UIFontMetrics.default.scaledSystemFont(ofSize: 15)
-            title.text = issue["title"]
+            title.text = issue["title"]?.stringValue
             title.numberOfLines = 0
             title.textColor = ThemeService.shared.theme.primaryTextColor
             let imageView = UIImageView(image: Asset.caretRight.image)
@@ -233,8 +233,8 @@ class ReportBugViewController: BaseUIViewController, MFMailComposeViewController
                 return
             }
             let issue = knownIssues[selectedIndex]
-            destination?.faqTitle = issue["title"]
-            destination?.faqText = issue["text"]
+            destination?.faqTitle = issue["title"]?.stringValue
+            destination?.faqText = issue["text"]?.stringValue
         }
     }
 }

@@ -7,12 +7,13 @@
 //
 
 import UIKit
+import Habitica_Models
 
 // Maintenance
 extension HabiticaAppDelegate {
     func handleMaintenanceScreen() -> Bool {
         let maintenanceData = configRepository.value(for: .maintenanceData)
-        if let title = maintenanceData["title"] as? String, let descriptionString = maintenanceData["description"] as? String {
+        if let title = maintenanceData["title"]?.stringValue, let descriptionString = maintenanceData["description"]?.stringValue {
             displayMaintenanceScreen(title: title, descriptionString: descriptionString)
             return true
         } else {
