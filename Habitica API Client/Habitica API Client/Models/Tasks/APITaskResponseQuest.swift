@@ -17,4 +17,11 @@ class APITaskResponseQuest: TaskResponseQuestProtocol, Decodable {
         case progressDelta
         case collection
     }
+
+    // synthesized decoding would require progressDelta and drop collect-quest results that only send collection
+    required init(from decoder: Decoder) throws {
+        let values = try decoder.container(keyedBy: CodingKeys.self)
+        progressDelta = (try? values.decode(Float.self, forKey: .progressDelta)) ?? 0
+        collection = try? values.decode(Int.self, forKey: .collection)
+    }
 }

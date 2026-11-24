@@ -10,15 +10,59 @@ import Habitica_API_Client
 import Habitica_Database
 @testable import Habitica
 
+private class TestSkill: SkillProtocol {
+    var key: String?
+    var text: String?
+    var notes: String?
+    var mana: Int
+    var level = 1
+    var target: String?
+    var habitClass: String?
+    var value: Float = 0
+    var immediateUse = false
+    var silent = false
+
+    init(key: String, text: String, mana: Int, target: String = "self") {
+        self.key = key
+        self.text = text
+        self.mana = mana
+        self.target = target
+    }
+}
+
+private class TestSpecialItem: SpecialItemProtocol {
+    var key: String?
+    var text: String?
+    var notes: String?
+    var value: Float = 0
+    var itemType: String? = "special"
+    var isSubscriberItem = false
+    var eventStart: Date?
+    var eventEnd: Date?
+    var target: String? = "user"
+    var immediateUse = false
+    var silent = false
+    var isValid = true
+    var isManaged = false
+
+    init(key: String, text: String) {
+        self.key = key
+        self.text = text
+    }
+}
+
 class UserRepositoryTests: RepositoryTestCase {
 
     private var repository: UserRepository!
+    private var feedback: RecordingFeedback!
     private let local = UserLocalRepository()
     private var originalPushToken: String?
 
     override func setUp() {
         super.setUp()
+        feedback = RecordingFeedback()
         repository = UserRepository()
+        repository.feedback = feedback
         originalPushToken = UserDefaults.standard.string(forKey: "PushNotificationDeviceToken")
     }
 
@@ -27,14 +71,8 @@ class UserRepositoryTests: RepositoryTestCase {
         super.tearDown()
     }
 
-    /// The fixture user, owned by the test user ID.
-    private func userJSON() throws -> String {
-        return try fixture("user").replacingOccurrences(of: "\"MOCK\"", with: "\"\(userID)\"")
-    }
-
     private func storeUser() throws {
-        let user = try JSONDecoder().decode(APIUser.self, from: Data(try userJSON().utf8))
-        local.save(user)
+        try storeFixtureUser()
         XCTAssertTrue(repository.hasUserData())
     }
 
@@ -204,5 +242,152 @@ class UserRepositoryTests: RepositoryTestCase {
         let stored = firstValue(repository.getNotifications())!.value[0]
         firstValue(repository.readNotification(notification: stored))
         XCTAssertEqual(requestedPaths, ["POST notifications/abc/read"])
+    }
+
+    // MARK: Skills and items
+
+    func testUsingSkillShowsCostAndSavesResult() throws {
+        try storeUser()
+        stub("POST", "user/class/cast/fireball", data: #"{"user":{"stats":{"mp":20}}}"#)
+        let response = firstValue(repository.useSkill(skill: TestSkill(key: "fireball", text: "Burst of Flames", mana: 10, target: "task"), targetId: "t1"))
+        XCTAssertNotNil(response ?? nil)
+        XCTAssertEqual(feedback.skillsUsed.map(\.name), ["Burst of Flames"])
+        XCTAssertEqual(feedback.skillsUsed.map(\.mana), [10])
+        XCTAssertEqual(feedback.haptics, [.success])
+        XCTAssertTrue(feedback.questDamage.isEmpty, "no quest progress in the response")
+        XCTAssertEqual(StubURLProtocol.requests.first?.url?.query, "targetType=task&targetId=t1")
+    }
+
+    func testSkillQuestDamageIsTheProgressGained() throws {
+        // the fixture user has 360.35 boss damage pending
+        try storeUser()
+        stub("POST", "user/class/cast/fireball", data: #"{"user":{"party":{"quest":{"progress":{"up":400.35}}}}}"#)
+        firstValue(repository.useSkill(skill: TestSkill(key: "fireball", text: "Burst of Flames", mana: 10)))
+        XCTAssertEqual(feedback.questDamage.count, 1)
+        XCTAssertEqual(feedback.questDamage.first ?? 0, 40, accuracy: 0.01)
+    }
+
+    func testFailedSkillShowsNothing() throws {
+        try storeUser()
+        stub("POST", "user/class/cast/fireball", status: 401, data: "null")
+        let disposable = repository.useSkill(skill: TestSkill(key: "fireball", text: "Burst of Flames", mana: 10)).observeValues { _ in }
+        waitForRequests(1)
+        drain()
+        disposable?.dispose()
+        XCTAssertTrue(feedback.nothingShown)
+        XCTAssertTrue(feedback.haptics.isEmpty)
+    }
+
+    func testTransformationItemOnSelfUsesItemAndRefetches() throws {
+        try storeUser()
+        stub("POST", "user/class/cast/seafoam", data: "{}")
+        // the refetch stays unanswered so it can't restore the fixture's item count
+        let disposable = repository.useTransformationItem(item: TestSpecialItem(key: "seafoam", text: "Seafoam"), targetId: userID).observeValues { _ in }
+        waitForRequests(2)
+        drain()
+        disposable?.dispose()
+        XCTAssertEqual(feedback.toastTexts, [L10n.Skills.usedTransformationItem("Seafoam")])
+        XCTAssertTrue(requestedPaths.contains("GET user"), "using it on yourself changes your own avatar")
+        let seafoam = storedUser?.items?.ownedSpecialItems.first { $0.key == "seafoam" }
+        XCTAssertEqual(seafoam?.numberOwned, 1, "the fixture user had 2")
+    }
+
+    func testTransformationItemOnOthersDoesNotRefetch() throws {
+        try storeUser()
+        stub("POST", "user/class/cast/seafoam", data: "{}")
+        let disposable = repository.useTransformationItem(item: TestSpecialItem(key: "seafoam", text: "Seafoam"), targetId: "friend").observeValues { _ in }
+        waitForRequests(1)
+        drain()
+        disposable?.dispose()
+        XCTAssertEqual(requestedPaths, ["POST user/class/cast/seafoam"])
+        XCTAssertEqual(feedback.toastTexts, [L10n.Skills.usedTransformationItem("Seafoam")])
+    }
+
+    // MARK: Account
+
+    func testPasswordChangeStoresNewTokenAndConfirms() {
+        stub("PUT", "user/auth/update-password", data: #"{"id":"\#(userID)","apiToken":"rotated-key"}"#)
+        firstValue(repository.updatePassword(newPassword: "new", password: "old", confirmPassword: "new"))
+        XCTAssertEqual(AuthenticationManager.shared.currentUserKey, "rotated-key")
+        XCTAssertEqual(feedback.toastTexts, [L10n.Settings.updatedPassword])
+    }
+
+    func testFailedPasswordChangeKeepsToken() {
+        stub("PUT", "user/auth/update-password", status: 400, data: "null")
+        let disposable = repository.updatePassword(newPassword: "new", password: "wrong", confirmPassword: "new").observeValues { _ in }
+        waitForRequests(1)
+        drain()
+        disposable?.dispose()
+        XCTAssertEqual(AuthenticationManager.shared.currentUserKey, apiKey)
+        XCTAssertTrue(feedback.toasts.isEmpty)
+    }
+
+    func testRevivingNamesTheGearThatBroke() throws {
+        try storeUser()
+        let gear = #"{"gear":{"flat":{"headAccessory_special_blackHeadband":{"key":"headAccessory_special_blackHeadband","text":"Black Headband","type":"headAccessory"}}}}"#
+        ContentLocalRepository().save(try JSONDecoder().decode(APIContent.self, from: Data(gear.utf8)))
+        stub("POST", "user/revive", data: #"{"gear":{"owned":{"headAccessory_special_blackHeadband":false,"headAccessory_special_blueHeadband":true}}}"#)
+        stub("GET", "user", data: try userJSON())
+        let disposable = repository.revive().observeValues { _ in }
+        waitForRequests(2)
+        drain()
+        disposable?.dispose()
+        XCTAssertEqual(feedback.brokenItems, ["Black Headband"])
+    }
+
+    func testRevivingWithoutLosingGearShowsNothing() throws {
+        try storeUser()
+        stub("POST", "user/revive", data: #"{"gear":{"owned":{"headAccessory_special_blueHeadband":true}}}"#)
+        let disposable = repository.revive().observeValues { _ in }
+        waitForRequests(2)
+        drain()
+        disposable?.dispose()
+        XCTAssertTrue(feedback.brokenItems.isEmpty)
+    }
+
+    func testRerollConfirmsAndRefetches() {
+        stub("POST", "user/reroll", data: "{}")
+        let disposable = repository.reroll().observeValues { _ in }
+        waitForRequests(2)
+        disposable?.dispose()
+        XCTAssertEqual(feedback.toastTexts, [L10n.purchased("Fortify Potion")])
+        XCTAssertTrue(requestedPaths.contains("GET user"))
+    }
+
+    func testRebirthSavesReturnedUser() throws {
+        try storeUser()
+        stub("POST", "user/rebirth", data: #"{"id":"\#(userID)","balance":3}"#)
+        let disposable = repository.rebirth().observeValues { _ in }
+        waitForRequests(2)
+        drain()
+        disposable?.dispose()
+        XCTAssertEqual(storedUser?.balance, 3)
+    }
+
+    // MARK: Class selection
+
+    func testSelectingClassShowsConfirmation() {
+        stub("POST", "user/change-class", data: "{}")
+        let disposable = repository.selectClass(.rogue).observeValues { _ in }
+        waitForRequests(1)
+        drain()
+        disposable?.dispose()
+        XCTAssertEqual(feedback.selectedClasses, [.rogue])
+        XCTAssertEqual(StubURLProtocol.requests.first?.url?.query, "class=rogue")
+    }
+
+    func testFailedOrClearedClassSelectionShowsNothing() {
+        stub("POST", "user/change-class", status: 401, data: "null")
+        let failed = repository.selectClass(.rogue).observeValues { _ in }
+        waitForRequests(1)
+        drain()
+        failed?.dispose()
+        repository.lastClassSelection = nil
+        stub("POST", "user/change-class", data: "{}")
+        let cleared = repository.selectClass(nil).observeValues { _ in }
+        waitForRequests(2)
+        drain()
+        cleared?.dispose()
+        XCTAssertTrue(feedback.selectedClasses.isEmpty)
     }
 }

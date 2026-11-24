@@ -16,6 +16,7 @@ final class StubURLProtocol: URLProtocol {
     struct Response {
         var status: Int
         var body: String
+        var delay: TimeInterval = 0
     }
 
     static var responses: [String: Response] = [:]
@@ -55,9 +56,16 @@ final class StubURLProtocol: URLProtocol {
               let response = HTTPURLResponse(url: url, statusCode: stub.status, httpVersion: "HTTP/1.1", headerFields: ["Content-Type": "application/json"]) else {
             return
         }
-        client?.urlProtocol(self, didReceive: response, cacheStoragePolicy: .notAllowed)
-        client?.urlProtocol(self, didLoad: Data(stub.body.utf8))
-        client?.urlProtocolDidFinishLoading(self)
+        let deliver = {
+            self.client?.urlProtocol(self, didReceive: response, cacheStoragePolicy: .notAllowed)
+            self.client?.urlProtocol(self, didLoad: Data(stub.body.utf8))
+            self.client?.urlProtocolDidFinishLoading(self)
+        }
+        if stub.delay > 0 {
+            DispatchQueue.main.asyncAfter(deadline: .now() + stub.delay, execute: deliver)
+        } else {
+            deliver()
+        }
     }
 
     override func stopLoading() {}
@@ -77,6 +85,43 @@ private extension Data {
             append(buffer, count: read)
         }
     }
+}
+
+/// Records what a repository would show instead of presenting it.
+final class RecordingFeedback: RepositoryFeedback {
+    var toasts: [(text: String, color: ToastColor)] = []
+    var goldEarned: [Float] = []
+    var armoires: [ArmoireResponseProtocol] = []
+    var hatchedPets: [(pet: PetProtocol, equip: () -> Void)] = []
+    var raisedMounts: [(pet: PetProtocol, equip: () -> Void)] = []
+    var missingSaddleShown = 0
+    var haptics: [Haptic] = []
+    var scoreChanges: [ScoreChange] = []
+    var levelUps = 0
+    var skillsUsed: [(name: String, mana: Int)] = []
+    var questDamage: [Float] = []
+    var brokenItems: [String] = []
+    var selectedClasses: [HabiticaClass] = []
+
+    var toastTexts: [String] { toasts.map(\.text) }
+    var nothingShown: Bool {
+        toasts.isEmpty && goldEarned.isEmpty && armoires.isEmpty && hatchedPets.isEmpty && raisedMounts.isEmpty && missingSaddleShown == 0
+            && scoreChanges.isEmpty && levelUps == 0 && skillsUsed.isEmpty && questDamage.isEmpty && brokenItems.isEmpty && selectedClasses.isEmpty
+    }
+
+    func showToast(_ text: String, color: ToastColor, delay: TimeInterval) { toasts.append((text, color)) }
+    func showGoldEarned(_ gold: Float) { goldEarned.append(gold) }
+    func showArmoire(_ armoire: ArmoireResponseProtocol) { armoires.append(armoire) }
+    func showPetHatched(_ pet: PetProtocol, equip: @escaping () -> Void) { hatchedPets.append((pet, equip)) }
+    func showMountRaised(_ pet: PetProtocol, equip: @escaping () -> Void) { raisedMounts.append((pet, equip)) }
+    func showMissingSaddle() { missingSaddleShown += 1 }
+    func haptic(_ haptic: Haptic) { haptics.append(haptic) }
+    func showScoreChange(_ change: ScoreChange) { scoreChanges.append(change) }
+    func showLevelUp() { levelUps += 1 }
+    func showSkillUsed(_ name: String, mana: Int) { skillsUsed.append((name, mana)) }
+    func showQuestDamage(_ damage: Float) { questDamage.append(damage) }
+    func showItemBroken(_ name: String) { brokenItems.append(name) }
+    func showClassSelected(_ habiticaClass: HabiticaClass) { selectedClasses.append(habiticaClass) }
 }
 
 private final class InMemoryAuthenticationStorage: AuthenticationStorage {
@@ -139,9 +184,10 @@ class RepositoryTestCase: XCTestCase {
 
     // MARK: Stubbing
 
-    func stub(_ method: String, _ path: String, status: Int = 200, data: String = "{}") {
+    /// `delay` holds the answer back, to check what happens while a request is in flight.
+    func stub(_ method: String, _ path: String, status: Int = 200, data: String = "{}", delay: TimeInterval = 0) {
         StubURLProtocol.responses[StubURLProtocol.key(method: method, path: path)] =
-            StubURLProtocol.Response(status: status, body: "{\"success\":\(status < 300),\"data\":\(data)}")
+            StubURLProtocol.Response(status: status, body: "{\"success\":\(status < 300),\"data\":\(data)}", delay: delay)
     }
 
     func stubRaw(_ method: String, _ path: String, status: Int = 200, body: String) {
@@ -151,6 +197,27 @@ class RepositoryTestCase: XCTestCase {
     func fixture(_ name: String) throws -> String {
         let url = try XCTUnwrap(Bundle(for: RepositoryTestCase.self).url(forResource: name, withExtension: "json"))
         return try String(contentsOf: url, encoding: .utf8)
+    }
+
+    /// The fixture user as JSON, owned by the test user.
+    func userJSON() throws -> String {
+        return try fixture("user").replacingOccurrences(of: "\"MOCK\"", with: "\"\(userID)\"")
+    }
+
+    /// Saves the fixture user (balance 20.75, a few pets, mounts and items) for the test user.
+    func storeFixtureUser() throws {
+        let user = try JSONDecoder().decode(APIUser.self, from: Data(try userJSON().utf8))
+        UserLocalRepository().save(user)
+    }
+
+    /// Saves pet and mount content, e.g. ["Wolf-Base"].
+    func storeAnimals(_ keys: [String]) throws {
+        let animals = keys.map { key -> String in
+            let parts = key.split(separator: "-")
+            return #""\#(key)":{"key":"\#(key)","egg":"\#(parts[0])","potion":"\#(parts[1])","type":"drop","text":"\#(key)"}"#
+        }.joined(separator: ",")
+        let json = #"{"petInfo":{\#(animals)},"mountInfo":{\#(animals)}}"#
+        ContentLocalRepository().save(try JSONDecoder().decode(APIContent.self, from: Data(json.utf8)))
     }
 
     var requestedPaths: [String] {

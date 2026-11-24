@@ -15,6 +15,7 @@ import ReactiveSwift
 class InventoryRepository: BaseRepository<InventoryLocalRepository> {
 
     let localUserRepository = UserLocalRepository()
+    var feedback: RepositoryFeedback = AppRepositoryFeedback.shared
     
     func getOwnedGear(userID: String? = nil) -> SignalProducer<ReactiveResults<[OwnedGearProtocol]>, ReactiveSwiftRealmError> {
         return currentUserIDProducer.skipNil().flatMap(.latest, {[weak self] (currentUserID) in
@@ -69,10 +70,10 @@ class InventoryRepository: BaseRepository<InventoryLocalRepository> {
     
     func sell(item: ItemProtocol) -> Signal<UserProtocol?, Never> {
         let call = SellItemCall(item: item)
-        let toastView = ToastView(goldDiff: item.value, background: .green, delay: 0.5)
+        let gold = item.value
         
         return call.objectSignal.on(value: {[weak self]user in
-            ToastManager.show(toast: toastView)
+            self?.feedback.showGoldEarned(gold)
             if let user = user, let userID = self?.currentUserId {
                 self?.localUserRepository.updateUser(id: userID, updateUser: user)
             }
@@ -98,11 +99,9 @@ class InventoryRepository: BaseRepository<InventoryLocalRepository> {
                 })
                 .skipNil()
                 .on(value: { pet in
-                    let sheet = PetHatchedSheet(pet: pet) {
+                    self.feedback.showPetHatched(pet) {
                         self.equip(type: "pet", key: pet.key ?? "").observeCompleted {}
                     }
-                    let viewController = HostingBottomSheetController(rootView: sheet, prefersGrabberVisible: false)
-                    viewController.show()
                 }).start()
         })
     }
@@ -130,20 +129,12 @@ class InventoryRepository: BaseRepository<InventoryLocalRepository> {
                 self?.localUserRepository.updateUser(id: userID, price: price, buyResponse: buyResponse)
                 if let armoire = buyResponse.armoire {
                     if openArmoireView {
-                        let viewController = ArmoireViewController()
-                        viewController.configure(type: armoire.type ?? "", text: armoire.dropText ?? "", key: armoire.dropKey, value: armoire.value)
-                        viewController.showFullscreen(delay: 1.5)
+                        self?.feedback.showArmoire(armoire)
                     }
                 } else {
-                    DispatchQueue.main.asyncAfter(deadline: DispatchTime.now()+1.0) {
-                        if quantity > 1 {
-                            ToastManager.show(text: L10n.purchasedAmount(quantity, text), color: .green)
-                        } else {
-                            ToastManager.show(text: L10n.purchased(text), color: .green)
-                        }
-                    }
+                    self?.showPurchased(text, quantity: quantity)
                 }
-                UINotificationFeedbackGenerator.oneShotNotificationOccurred(.success)
+                self?.feedback.haptic(.success)
             }
         }).map({ habiticaResponse in
             return habiticaResponse?.data
@@ -158,13 +149,7 @@ class InventoryRepository: BaseRepository<InventoryLocalRepository> {
                 self?.localUserRepository.updateUser(id: userID, balanceDiff: -(Float(value) / 4.0))
                 self?.localUserRepository.updateUser(id: userID, updateUser: updatedUser)
             }
-            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now()+1) {
-                if quantity > 1 {
-                    ToastManager.show(text: L10n.purchasedAmount(quantity, text), color: .green)
-                } else {
-                    ToastManager.show(text: L10n.purchased(text), color: .green)
-                }
-            }
+            self?.showPurchased(text, quantity: quantity)
         })
     }
     
@@ -175,9 +160,7 @@ class InventoryRepository: BaseRepository<InventoryLocalRepository> {
             if let updatedUser = updatedUser, let userID = self?.currentUserId {
                 self?.localUserRepository.updateUser(id: userID, updateUser: updatedUser)
             }
-            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now()+1) {
-                ToastManager.show(text: L10n.purchased(text), color: .green)
-            }
+            self?.showPurchased(text, quantity: 1)
         })
     }
     
@@ -188,9 +171,7 @@ class InventoryRepository: BaseRepository<InventoryLocalRepository> {
             if let updatedUser = updatedUser, let userID = self?.currentUserId {
                 self?.localUserRepository.updateUser(id: userID, updateUser: updatedUser)
             }
-            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now()+1) {
-                ToastManager.show(text: L10n.purchased(text), color: .green)
-            }
+            self?.showPurchased(text, quantity: 1)
         })
     }
     
@@ -221,9 +202,7 @@ class InventoryRepository: BaseRepository<InventoryLocalRepository> {
             if let updatedUser = updatedUser, let userID = self?.currentUserId {
                 self?.localUserRepository.updateUser(id: userID, updateUser: updatedUser)
             }
-            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now()+1) {
-                ToastManager.show(text: L10n.purchased(text), color: .green)
-            }
+            self?.showPurchased(text, quantity: 1)
         })
     }
     
@@ -275,36 +254,27 @@ class InventoryRepository: BaseRepository<InventoryLocalRepository> {
         let call = FeedPetCall(pet: pet.key ?? "", food: food)
         
         if food == "Saddle" {
-            call.httpResponseSignal.observeValues { response in
+            call.httpResponseSignal.observeValues {[weak self] response in
                 if response.statusCode == 404 {
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 1, execute: {
-                        let alert = HabiticaAlertController(title: L10n.Inventory.noSaddleTile, message: L10n.Inventory.noSaddleDescription)
-                        alert.addAction(title: L10n.Inventory.visitMarket, style: .default, isMainAction: true) {_ in
-                            RouterHandler.shared.handle(urlString: "/inventory/market/food")
-                        }
-                        alert.addCloseAction()
-                        alert.show()
-                    })
+                    self?.feedback.showMissingSaddle()
                 }
             }
         }
         
         return call.habiticaResponseSignal.on(value: {[weak self] response in
             if response?.data == -1 {
-                StableLocalRepository().getMounts(keys: [pet.key ?? ""]).map { mounts in
-                    return mounts.value.first?.text
-                }.on(value: { _ in
-                    let sheet = MountRaisedSheet(mount: pet) {
-                        self?.equip(type: "mount", key: pet.key ?? "").observeCompleted {}
-                    }
-                    let viewController = HostingBottomSheetController(rootView: sheet, prefersGrabberVisible: false)
-                    viewController.show()
-                }).start()
+                self?.feedback.showMountRaised(pet) {
+                    self?.equip(type: "mount", key: pet.key ?? "").observeCompleted {}
+                }
             }
             if let userID = self?.currentUserId, let trained = response?.data {
                 self?.localRepository.updatePetTrained(userID: userID, key: pet.key ?? "", trained: trained, consumedFood: food)
             }
         })
+    }
+    
+    private func showPurchased(_ text: String, quantity: Int) {
+        feedback.showToast(quantity > 1 ? L10n.purchasedAmount(quantity, text) : L10n.purchased(text), color: .green, delay: 1)
     }
     
     func getNewInAppReward() -> InAppRewardProtocol {

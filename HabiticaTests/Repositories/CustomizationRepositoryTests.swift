@@ -13,11 +13,14 @@ import Habitica_Database
 class CustomizationRepositoryTests: RepositoryTestCase {
 
     private var repository: CustomizationRepository!
+    private var feedback: RecordingFeedback!
     private let userLocal = UserLocalRepository()
 
     override func setUp() {
         super.setUp()
+        feedback = RecordingFeedback()
         repository = CustomizationRepository()
+        repository.feedback = feedback
         let user = try? JSONDecoder().decode(APIUser.self, from: Data(#"{"id":"\#(userID)","balance":10}"#.utf8))
         userLocal.save(user!)
     }
@@ -32,6 +35,7 @@ class CustomizationRepositoryTests: RepositoryTestCase {
         firstValue(repository.unlock(path: "hair.color.rainbow", value: 2, text: "Rainbow"))
         drain()
         XCTAssertEqual(balance, 10 - 0.5, "2 gems are 0.5 balance")
+        XCTAssertEqual(feedback.toastTexts, [L10n.purchased("Rainbow")])
         XCTAssertEqual(StubURLProtocol.requests.first?.url?.query, "path=hair.color.rainbow")
     }
 
@@ -47,6 +51,7 @@ class CustomizationRepositoryTests: RepositoryTestCase {
         firstValue(repository.unlock(path: "shirt.black", value: 0, text: ""))
         drain()
         XCTAssertEqual(balance, 10)
+        XCTAssertTrue(feedback.toasts.isEmpty, "free items are not announced as purchases")
     }
 
     func testFailedUnlockKeepsBalance() {
@@ -56,6 +61,7 @@ class CustomizationRepositoryTests: RepositoryTestCase {
         drain()
         disposable?.dispose()
         XCTAssertEqual(balance, 10)
+        XCTAssertTrue(feedback.toasts.isEmpty)
     }
 }
 

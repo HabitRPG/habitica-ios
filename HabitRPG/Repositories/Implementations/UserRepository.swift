@@ -19,6 +19,7 @@ class UserRepository: BaseRepository<UserLocalRepository> {
     var lastPushDeviceSync: Date?
     var lastClassSelection: Date?
     var taskRepository = TaskRepository()
+    var feedback: RepositoryFeedback = AppRepositoryFeedback.shared
     
     func retrieveUser(withTasks: Bool = true, forced: Bool = false) -> Signal<UserProtocol?, Never> {
         let signal = RetrieveUserCall(forceLoading: forced).objectSignal.on(value: { user in
@@ -87,25 +88,14 @@ class UserRepository: BaseRepository<UserLocalRepository> {
                     guard let skillResponse = values.0 else {
                         return
                     }
-                    let toastView = ToastView(title: L10n.Skills.useSkill(skill.text ?? ""),
-                                              rightIcon: HabiticaIcons.imageOfMagic,
-                                              rightText: "-\(skill.mana)",
-                                            rightTextColor: UIColor.blue10,
-                                            background: .blue,
-                                            delay: 0.5)
-                    ToastManager.show(toast: toastView)
+                    self?.feedback.showSkillUsed(skill.text ?? "", mana: skill.mana)
                     let newDamage = skillResponse.user?.party?.quest?.progress?.up ?? 0
-                        let oldDamage = values.1.party?.quest?.progress?.up ?? 0
-                        if newDamage > oldDamage {
-                            ToastManager.show(toast: ToastView(title: L10n.Skills.causedDamage,
-                                                      rightIcon: HabiticaIcons.imageOfDamage,
-                                                      rightText: "+\(newDamage - oldDamage)",
-                                                      rightTextColor: UIColor.green10,
-                                                      background: .green,
-                                                      delay: 0.5))
-                        }
+                    let oldDamage = values.1.party?.quest?.progress?.up ?? 0
+                    if newDamage > oldDamage {
+                        self?.feedback.showQuestDamage(newDamage - oldDamage)
+                    }
                     self?.localRepository.save(userID: self?.currentUserId, skillResponse: skillResponse)
-                    UINotificationFeedbackGenerator.oneShotNotificationOccurred(.success)
+                    self?.feedback.haptic(.success)
                 })
                 .map { $0.0 }
         }
@@ -115,9 +105,7 @@ class UserRepository: BaseRepository<UserLocalRepository> {
         return UseTransformationItemCall(item: item, target: targetId).objectSignal
             .on(value: {[weak self] _ in
             self?.localRepository.usedTransformationItem(userID: self?.currentUserId ?? "", key: item.key ?? "")
-            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now()+1) {
-                ToastManager.show(text: L10n.Skills.usedTransformationItem(item.text ?? ""), color: .gray)
-            }
+            self?.feedback.showToast(L10n.Skills.usedTransformationItem(item.text ?? ""), color: .gray, delay: 1)
         })
             .flatMap(.latest, { _ in
                 if targetId == self.currentUserId {
@@ -299,6 +287,7 @@ class UserRepository: BaseRepository<UserLocalRepository> {
         }
 
         let userID = currentUserId
+        let deregistration = userID != nil ? deregisterPushDevice() : nil
 
         let defaults = UserDefaults.standard
         let themeMode = defaults.string(forKey: "themeMode")
@@ -330,7 +319,7 @@ class UserRepository: BaseRepository<UserLocalRepository> {
                 finalize()
             }
 
-            deregisterPushDevice().observe { event in
+            deregistration?.observe { event in
                 switch event {
                 case .completed, .interrupted:
                     finalize()
@@ -409,10 +398,7 @@ class UserRepository: BaseRepository<UserLocalRepository> {
                     }
                     if response.apiToken?.isEmpty == false {
                         AuthenticationManager.shared.currentUserKey = response.apiToken
-                        ToastManager.show(
-                                            text: L10n.Settings.updatedPassword,
-                                            color: .green
-                                        )
+                        self.feedback.showToast(L10n.Settings.updatedPassword, color: .green, delay: 0)
                     }
                 }
             })
@@ -432,9 +418,7 @@ class UserRepository: BaseRepository<UserLocalRepository> {
                     return InventoryLocalRepository().getGear(predicate: NSPredicate(format: "key == %@", brokenItem?.key ?? ""))
                 }).on(value: { items in
                     if let itemText = items.value.first?.text {
-                        DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
-                            ToastManager.show(text: "Your \(itemText) broke", color: .black, duration: 3.0)
-                        }
+                        self.feedback.showItemBroken(itemText)
                     }
                 })
                 .start()
@@ -496,12 +480,7 @@ class UserRepository: BaseRepository<UserLocalRepository> {
         return SelectClassCall(class: habiticaClass).httpResponseSignal
             .on(value: { response in
                 if response.statusCode == 200, let habiticaClass = habiticaClass {
-                    let viewController = HostingBottomSheetController(rootView: ClassConfirmationSheet(selectedClass: habiticaClass), prefersGrabberVisible: false)
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
-                        viewController.show()
-                    }
-                    
-                    UIApplication.requestReview()
+                    self.feedback.showClassSelected(habiticaClass)
                 }
             })
             .flatMap(.latest, { _ in
@@ -513,8 +492,8 @@ class UserRepository: BaseRepository<UserLocalRepository> {
     
     func reroll() -> Signal<UserProtocol?, Never> {
         return RerollCall().objectSignal
-            .on(value: { _ in
-                ToastManager.show(text: L10n.purchased("Fortify Potion"), color: .green, delay: 1)
+            .on(value: {[weak self] _ in
+                self?.feedback.showToast(L10n.purchased("Fortify Potion"), color: .green, delay: 1)
             })
             .flatMap(.latest, {[weak self] (_) in
             return self?.retrieveUser() ?? Signal.empty

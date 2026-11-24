@@ -23,6 +23,8 @@ class TaskRepository: BaseRepository<TaskLocalRepository> {
     
     static var currentUserQuestStatus: UserQuestStatus = .noQuest
     static var currentQuestKey: String?
+    var feedback: RepositoryFeedback = AppRepositoryFeedback.shared
+    var questStatus: () -> UserQuestStatus = { TaskRepository.currentUserQuestStatus }
     
     func retrieveTasks(dueOnDay: Date? = nil) -> Signal<[TaskProtocol]?, Never> {
         let call = RetrieveTasksCall(dueOnDay: dueOnDay)
@@ -90,7 +92,7 @@ class TaskRepository: BaseRepository<TaskLocalRepository> {
             if !task.isValid {
                 return Signal.empty
             }
-            UIImpactFeedbackGenerator.oneShotImpactOccurred(.light)
+            feedback.haptic(.tap)
             
             let scoreCall = ScoreTaskCall(task: task, direction: direction)
             let scoreSignal = scoreCall.objectSignal
@@ -115,9 +117,7 @@ class TaskRepository: BaseRepository<TaskLocalRepository> {
                 let magicDiff = (response.magic ?? 0) - stats.mana
                 var expDiff = (response.experience ?? 0) - stats.experience
                 if stats.level < (response.level ?? 0) {
-                    let levelUpView = HostingBottomSheetController(rootView: LevelupSheet(), prefersGrabberVisible: false)
-                    levelUpView.show()
-                    SoundManager.shared.play(effect: .levelUp)
+                    self?.feedback.showLevelUp()
                     
                     expDiff = stats.toNextLevel - stats.experience + (response.experience ?? 0)
                     // score response lacks toNextLevel, so fetch the user to get the new target
@@ -133,10 +133,10 @@ class TaskRepository: BaseRepository<TaskLocalRepository> {
                     let formatter = NumberFormatter()
                     formatter.minimumFractionDigits = 0
                     formatter.maximumFractionDigits = 2
-                    ToastManager.show(text: L10n.buyReward(task.text ?? "", formatter.string(from: NSNumber(value: task.value)) ?? ""), color: .green)
-                } else if healthDiff + magicDiff + goldDiff + questDamage != 0 && (response.level ?? 0) > 0 {
+                    self?.feedback.showToast(L10n.buyReward(task.text ?? "", formatter.string(from: NSNumber(value: task.value)) ?? ""), color: .green, delay: 0)
+                } else if [healthDiff, magicDiff, goldDiff, questDamage].contains(where: { $0 != 0 }) && (response.level ?? 0) > 0 {
                     let questDamageToShow: Float = {
-                        switch TaskRepository.currentUserQuestStatus {
+                        switch self?.questStatus() ?? .noQuest {
                         case .questBoss:
                             return questDamage
                         default:
@@ -144,19 +144,13 @@ class TaskRepository: BaseRepository<TaskLocalRepository> {
                         }
                     }()
                     
-                    let toastView = ToastView(healthDiff: healthDiff,
-                                              magicDiff: magicDiff,
-                                              expDiff: expDiff,
-                                              goldDiff: goldDiff,
-                                              questDamage: questDamageToShow,
-                                              background: healthDiff >= 0 ? .green : .red)
-                    ToastManager.show(toast: toastView)
+                    self?.feedback.showScoreChange(ScoreChange(health: healthDiff, mana: magicDiff, experience: expDiff, gold: goldDiff, questDamage: questDamageToShow))
                 }
                 if let drop = response.temp?.drop {
-                    ToastManager.show(text: drop.dialog ?? "You found a \(drop.key ?? "")", color: .gray)
+                    self?.feedback.showToast(drop.dialog ?? "You found a \(drop.key ?? "")", color: .gray, delay: 0)
                 }
-                if TaskRepository.currentUserQuestStatus == .questCollect, let questItemsFound = response.temp?.quest?.collection, questItemsFound > 0 {
-                    ToastManager.show(text: questItemsFound == 1 ? L10n.oneQuestItemFound : L10n.questItemsFound(questItemsFound), color: .gray)
+                if self?.questStatus() == .questCollect, let questItemsFound = response.temp?.quest?.collection, questItemsFound > 0 {
+                    self?.feedback.showToast(questItemsFound == 1 ? L10n.oneQuestItemFound : L10n.questItemsFound(questItemsFound), color: .gray, delay: 0)
                 }
             }).map({ (response, _) in
                 return response

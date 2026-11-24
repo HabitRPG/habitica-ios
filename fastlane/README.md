@@ -21,15 +21,7 @@ For _fastlane_ installation instructions, see [Installing _fastlane_](https://do
 [bundle exec] fastlane ios test
 ```
 
-Runs all the tests
-
-### ios screenshots
-
-```sh
-[bundle exec] fastlane ios screenshots
-```
-
-
+Runs the unit tests
 
 ### ios beta
 
@@ -37,7 +29,7 @@ Runs all the tests
 [bundle exec] fastlane ios beta
 ```
 
-Submit a new Beta Build to Apple TestFlight
+Upload a staff build to TestFlight for internal testers only
 
 ### ios betapublic
 
@@ -45,7 +37,7 @@ Submit a new Beta Build to Apple TestFlight
 [bundle exec] fastlane ios betapublic
 ```
 
-
+Upload a beta build to TestFlight and distribute it to the external testers
 
 ### ios release
 

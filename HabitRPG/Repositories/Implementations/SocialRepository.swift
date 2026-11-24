@@ -15,6 +15,7 @@ import Habitica_Database
 // swiftlint:disable:next type_body_length
 class SocialRepository: BaseRepository<SocialLocalRepository> {
     private let userRepository = UserRepository()
+    var feedback: RepositoryFeedback = AppRepositoryFeedback.shared
     
     func getGroups(predicate: NSPredicate) -> SignalProducer<ReactiveResults<[GroupProtocol]>, ReactiveSwiftRealmError> {
         return localRepository.getGroups(predicate: predicate)
@@ -321,10 +322,10 @@ class SocialRepository: BaseRepository<SocialLocalRepository> {
     }
     
     public func joinGroup(groupID: String, isParty: Bool) -> Signal<GroupProtocol?, Never> {
-        UISelectionFeedbackGenerator.oneShotSelectionChanged()
+        feedback.haptic(.selection)
         return JoinGroupCall(groupID: groupID).objectSignal.on(value: {[weak self]group in
             if let userID = AuthenticationManager.shared.currentUserId {
-                ToastManager.show(text: isParty ? L10n.Guilds.joinedParty : L10n.Guilds.joinedGuild, color: .green)
+                self?.feedback.showToast(isParty ? L10n.Guilds.joinedParty : L10n.Guilds.joinedGuild, color: .green, delay: 0)
                 self?.localRepository.joinGroup(userID: userID, groupID: groupID, group: group)
                 self?.localRepository.deleteGroupInvitation(userID: userID, groupID: groupID)
             }
@@ -332,18 +333,18 @@ class SocialRepository: BaseRepository<SocialLocalRepository> {
     }
     
     public func leaveGroup(groupID: String, leaveChallenges: Bool, isParty: Bool) -> Signal<GroupProtocol?, Never> {
-        UISelectionFeedbackGenerator.oneShotSelectionChanged()
+        feedback.haptic(.selection)
         return LeaveGroupCall(groupID: groupID, leaveChallenges: leaveChallenges)
             .objectSignal.on(value: {[weak self]group in
             if let userID = AuthenticationManager.shared.currentUserId {
-                ToastManager.show(text: isParty ? L10n.Guilds.leftParty : L10n.Guilds.leftGuild, color: .green)
+                self?.feedback.showToast(isParty ? L10n.Guilds.leftParty : L10n.Guilds.leftGuild, color: .green, delay: 0)
                 self?.localRepository.leaveGroup(userID: userID, groupID: groupID, group: group)
             }
         })
     }
     
     public func rejectGroupInvitation(groupID: String) -> Signal<EmptyResponseProtocol?, Never> {
-        UISelectionFeedbackGenerator.oneShotSelectionChanged()
+        feedback.haptic(.selection)
         return RejectGroupInvitationCall(groupID: groupID)
             .objectSignal.on(value: {[weak self] response in
             if response != nil, let userID = AuthenticationManager.shared.currentUserId {
@@ -354,15 +355,9 @@ class SocialRepository: BaseRepository<SocialLocalRepository> {
     
     public func invite(toGroup groupID: String, members: [String: Any]) -> Signal<EmptyResponseProtocol?, Never> {
         let call = InviteToGroupCall(groupID: groupID, members: members)
-        call.habiticaResponseSignal.observeValues { (response) in
-            DispatchQueue.main.asyncAfter(wallDeadline: .now()+1) {
-                if let error = response?.message {
-                    ToastManager.show(text: error, color: .red)
-                    UINotificationFeedbackGenerator.oneShotNotificationOccurred(.error)
-                } else if response != nil {
-                    UINotificationFeedbackGenerator.oneShotNotificationOccurred(.success)
-                }
-            }
+        // failed responses arrive as nil; their message is already shown by the global network error handler
+        call.habiticaResponseSignal.observeValues {[weak self] (response) in
+            self?.feedback.haptic(response != nil ? .success : .error)
         }
         return call.objectSignal
     }
@@ -407,16 +402,22 @@ class SocialRepository: BaseRepository<SocialLocalRepository> {
     }
     
     public func joinChallenge(challengeID: String) -> Signal<ChallengeProtocol?, Never> {
-        UISelectionFeedbackGenerator.oneShotSelectionChanged()
+        feedback.haptic(.selection)
         if let userID = AuthenticationManager.shared.currentUserId {
             localRepository.joinChallenge(userID: userID, challengeID: challengeID, challenge: nil)
         }
-        return JoinChallengeCall(challengeID: challengeID)
-            .objectSignal.on(value: {[weak self]challenge in
+        let call = JoinChallengeCall(challengeID: challengeID)
+        // failed calls never reach objectSignal, so undo the optimistic join here
+        Signal.merge(call.errorSignal, call.serverErrorSignal).observeValues {[weak self] _ in
+            if let userID = AuthenticationManager.shared.currentUserId {
+                self?.localRepository.leaveChallenge(userID: userID, challengeID: challengeID, challenge: nil)
+            }
+        }
+        return call.objectSignal.on(value: {[weak self]challenge in
             if let userID = AuthenticationManager.shared.currentUserId {
                 self?.localRepository.joinChallenge(userID: userID, challengeID: challengeID, challenge: challenge)
             }
-                ToastManager.show(text: L10n.joinedChallenge, color: .green)
+            self?.feedback.showToast(L10n.joinedChallenge, color: .green, delay: 0)
         }).flatMap(.latest, {[weak self] challenge -> Signal<ChallengeProtocol?, Never> in
             return self?.userRepository.retrieveUser().map({ _ in
                 challenge
@@ -425,16 +426,22 @@ class SocialRepository: BaseRepository<SocialLocalRepository> {
     }
     
     public func leaveChallenge(challengeID: String, keepTasks: Bool) -> Signal<ChallengeProtocol?, Never> {
-        UISelectionFeedbackGenerator.oneShotSelectionChanged()
+        feedback.haptic(.selection)
         if let userID = AuthenticationManager.shared.currentUserId {
             localRepository.leaveChallenge(userID: userID, challengeID: challengeID, challenge: nil)
         }
-        return LeaveChallengeCall(challengeID: challengeID, keepTasks: keepTasks)
-            .objectSignal.on(value: {[weak self]challenge in
+        let call = LeaveChallengeCall(challengeID: challengeID, keepTasks: keepTasks)
+        // failed calls never reach objectSignal, so undo the optimistic leave here
+        Signal.merge(call.errorSignal, call.serverErrorSignal).observeValues {[weak self] _ in
+            if let userID = AuthenticationManager.shared.currentUserId {
+                self?.localRepository.joinChallenge(userID: userID, challengeID: challengeID, challenge: nil)
+            }
+        }
+        return call.objectSignal.on(value: {[weak self]challenge in
             if let userID = AuthenticationManager.shared.currentUserId {
                 self?.localRepository.leaveChallenge(userID: userID, challengeID: challengeID, challenge: challenge)
             }
-            ToastManager.show(text: L10n.leftChallenge, color: .green)
+            self?.feedback.showToast(L10n.leftChallenge, color: .green, delay: 0)
         })
     }
 
@@ -499,27 +506,36 @@ class SocialRepository: BaseRepository<SocialLocalRepository> {
     }
     
     public func rejectQuestInvitation(groupID: String) -> Signal<QuestStateProtocol?, Never> {
-        UISelectionFeedbackGenerator.oneShotSelectionChanged()
+        feedback.haptic(.selection)
         localRepository.changeQuestRSVP(userID: currentUserId ?? "", rsvpNeeded: false)
-        return RejectQuestInvitationCall(groupID: groupID)
-            .objectSignal.on(value: saveQuestState(objectID: groupID, groupID: groupID))
+        let call = RejectQuestInvitationCall(groupID: groupID)
+        restoreQuestRSVPOnFailure(call)
+        return call.objectSignal.on(value: saveQuestState(objectID: groupID, groupID: groupID))
     }
     
     public func acceptQuestInvitation(groupID: String) -> Signal<QuestStateProtocol?, Never> {
-        UISelectionFeedbackGenerator.oneShotSelectionChanged()
+        feedback.haptic(.selection)
         localRepository.changeQuestRSVP(userID: currentUserId ?? "", rsvpNeeded: false)
-        return AcceptQuestInvitationCall(groupID: groupID)
-            .objectSignal.on(value: saveQuestState(objectID: groupID, groupID: groupID))
+        let call = AcceptQuestInvitationCall(groupID: groupID)
+        restoreQuestRSVPOnFailure(call)
+        return call.objectSignal.on(value: saveQuestState(objectID: groupID, groupID: groupID))
+    }
+
+    /// The invitation is hidden before the server answers; bring it back if the answer didn't go through.
+    private func restoreQuestRSVPOnFailure(_ call: NetworkCall) {
+        Signal.merge(call.errorSignal, call.serverErrorSignal).observeValues {[weak self] _ in
+            self?.localRepository.changeQuestRSVP(userID: self?.currentUserId ?? "", rsvpNeeded: true)
+        }
     }
     
     public func cancelQuestInvitation(groupID: String) -> Signal<QuestStateProtocol?, Never> {
-        UISelectionFeedbackGenerator.oneShotSelectionChanged()
+        feedback.haptic(.selection)
         return CancelQuestInvitationCall(groupID: groupID)
             .objectSignal.on(value: saveQuestState(objectID: groupID, groupID: groupID))
     }
     
     public func abortQuest(groupID: String) -> Signal<GroupProtocol?, Never> {
-        UISelectionFeedbackGenerator.oneShotSelectionChanged()
+        feedback.haptic(.selection)
         return AbortQuestCall(groupID: groupID)
             .objectSignal.on(value: saveQuestState(objectID: groupID, groupID: groupID))
             .flatMap(.latest) { _ in
@@ -528,7 +544,7 @@ class SocialRepository: BaseRepository<SocialLocalRepository> {
     }
     
     public func forceStartQuest(groupID: String) -> Signal<GroupProtocol?, Never> {
-        UISelectionFeedbackGenerator.oneShotSelectionChanged()
+        feedback.haptic(.selection)
         return ForceStartQuestCall(groupID: groupID)
             .objectSignal.on(value: saveQuestState(objectID: groupID, groupID: groupID))
             .flatMap(.latest) { _ in
@@ -537,7 +553,7 @@ class SocialRepository: BaseRepository<SocialLocalRepository> {
     }
     
     public func leaveQuest(groupID: String) -> Signal<GroupProtocol?, Never> {
-        UISelectionFeedbackGenerator.oneShotSelectionChanged()
+        feedback.haptic(.selection)
         return LeaveQuestCall(groupID: groupID).objectSignal.flatMap(.latest) { _ in
             self.retrieveGroup(groupID: groupID)
         }

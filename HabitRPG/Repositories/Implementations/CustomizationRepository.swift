@@ -15,6 +15,7 @@ import ReactiveSwift
 class CustomizationRepository: BaseRepository<CustomizationLocalRepository> {
     
     private let userLocalRepository = UserLocalRepository()
+    var feedback: RepositoryFeedback = AppRepositoryFeedback.shared
     
     public func getCustomizations(type: String, group: String?) -> SignalProducer<ReactiveResults<[CustomizationProtocol]>, ReactiveSwiftRealmError> {
         return localRepository.getCustomizations(type: type, group: group)
@@ -45,9 +46,7 @@ class CustomizationRepository: BaseRepository<CustomizationLocalRepository> {
                 self?.userLocalRepository.updateUser(id: userID, updateUser: user)
             }
             if value > 0 {
-                DispatchQueue.main.asyncAfter(deadline: DispatchTime.now()+1) {
-                    ToastManager.show(text: L10n.purchased(text), color: .green)
-                }
+                self?.feedback.showToast(L10n.purchased(text), color: .green, delay: 1)
             }
         })
     }
